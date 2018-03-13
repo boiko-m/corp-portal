@@ -18,4 +18,9 @@ class Gift extends ActiveRecord
     {
         return $this->hasOne(GiftType::className(), ['id' => 'type_gift']);
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_add']);
+    }
 }
