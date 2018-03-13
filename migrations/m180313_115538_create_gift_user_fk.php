@@ -13,30 +13,30 @@ class m180313_115538_create_gift_user_fk extends Migration
     public function safeUp()
     {
         $this->createIndex(
-            'idx-corplbr_gift_user-id_user',
+            'idx-corplbr_gift_user-id_user_from',
             'corplbr.gift_user',
-            'id_user'
+            'id_user_from'
         );
 
         $this->addForeignKey(
-            'fk-corplbr_gift_user-id_user',
+            'fk-corplbr_gift_user-id_user_from',
             'corplbr.gift_user',
-            'id_user',
+            'id_user_from',
             '[corplbr].[user]',
             'id',
             'NO ACTION'
         );
 
         $this->createIndex(
-            'idx-corplbr_gift_user-giftto',
+            'idx-corplbr_gift_user-id_user_to',
             'corplbr.gift_user',
-            'giftto'
+            'id_user_to'
         );
 
         $this->addForeignKey(
-            'fk-corplbr_gift_user-giftto',
+            'fk-corplbr_gift_user-id_user_to',
             'corplbr.gift_user',
-            'giftto',
+            'id_user_to',
             '[corplbr].[user]',
             'id',
             'NO ACTION'
@@ -74,22 +74,22 @@ class m180313_115538_create_gift_user_fk extends Migration
         );
 
         $this->dropForeignKey(
-            'fk-corplbr_gift_user-giftto',
+            'fk-corplbr_gift_user-id_user_to',
             'corplbr.gift_user'
         );
 
         $this->dropIndex(
-            'idx-corplbr_gift_user-giftto',
+            'idx-corplbr_gift_user-id_user_to',
             'corplbr.gift_user'
         );
 
         $this->dropForeignKey(
-            'fk-corplbr_gift_user-id_user',
+            'fk-corplbr_gift_user-id_user_from',
             'corplbr.gift_user'
         );
 
         $this->dropIndex(
-            'idx-corplbr_gift_user-id_user',
+            'idx-corplbr_gift_user-id_user_from',
             'corplbr.gift_user'
         );
     }

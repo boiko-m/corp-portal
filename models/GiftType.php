@@ -16,6 +16,6 @@ class GiftType extends ActiveRecord
 
     public function getGifts()
     {
-        return $this->hasMany(Gift::className(), ['type_gift' => 'id']);
+        return $this->hasMany(Gift::className(), ['id_gift_type' => 'id']);
     }
 }

@@ -16,11 +16,11 @@ class Gift extends ActiveRecord
 
     public function getGiftType()
     {
-        return $this->hasOne(GiftType::className(), ['id' => 'type_gift']);
+        return $this->hasOne(GiftType::className(), ['id' => 'id_gift_type']);
     }
 
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_add']);
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 }

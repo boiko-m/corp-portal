@@ -21,11 +21,11 @@ class GiftUser extends ActiveRecord
 
     public function getUserFrom()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_user']);
+        return $this->hasOne(User::className(), ['id' => 'id_user_from']);
     }
 
     public function getUserTo()
     {
-        return $this->hasOne(User::className(), ['id' => 'giftto']);
+        return $this->hasOne(User::className(), ['id' => 'id_user_to']);
     }
 }
