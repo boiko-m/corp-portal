@@ -67,12 +67,21 @@ class Comments extends ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 
-    public function getComment()
+    public function getPost()
+    {
+        if ($this->type_fk == "faq" || $this->type_fk == "training") {
+            return $this->hasOne(Faq::className(), ['id' => 'fk_id']);
+        } elseif ($this->type_fk == "videos") {
+            return $this->hasOne(Videos::className(), ['id' => 'fk_id']);
+        }
+    }
+
+    public function getParentComment()
     {
         return $this->hasOne(Comments::className(), ['id' => 'id_comment_to']);
     }
 
-    public function getSubComments()
+    public function getChildComments()
     {
         return $this->hasMany(Comments::className(), ['id_comment_to' => 'id']);
     }
