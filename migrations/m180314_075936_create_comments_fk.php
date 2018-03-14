@@ -34,20 +34,14 @@ class m180314_075936_create_comments_fk extends Migration
      */
     public function safeDown()
     {
-        $this->createIndex(
-            'idx-corplbr_comments-id_user',
-            'corplbr.comments',
-            'id_user'
+        $this->dropForeignKey(
+            'fk-corplbr_comments-id_user',
+            'corplbr.comments'
         );
 
-        $this->addForeignKey(
-            'fk-corplbr_comments-id_user',
-            'corplbr.comments',
-            'id_user',
-            'corplbr.[user]',
-            'id',
-            'CASCADE',
-            'CASCADE'
+        $this->dropIndex(
+            'idx-corplbr_comments-id_user',
+            'corplbr.comments'
         );
     }
 
