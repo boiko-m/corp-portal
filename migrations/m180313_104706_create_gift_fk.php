@@ -22,7 +22,7 @@ class m180313_104706_create_gift_fk extends Migration
             'fk-corplbr_gift-id_user',
             'corplbr.gift',
             'id_user',
-            'corplbr.[user]',
+            '[corplbr].[user]',
             'id',
             'CASCADE',
             'CASCADE'

@@ -52,22 +52,22 @@ class m180314_083028_create_faq_fk extends Migration
     {
         $this->dropForeignKey(
             'fk-corplbr_faq-id_type',
-            'corplbr.comments'
+            'corplbr.faq'
         );
 
         $this->dropIndex(
             'idx-corplbr_faq-id_type',
-            'corplbr.comments'
+            'corplbr.faq'
         );
 
         $this->dropForeignKey(
             'fk-corplbr_faq-id_user',
-            'corplbr.comments'
+            'corplbr.faq'
         );
 
         $this->dropIndex(
             'idx-corplbr_faq-id_user',
-            'corplbr.comments'
+            'corplbr.faq'
         );
     }
 }
