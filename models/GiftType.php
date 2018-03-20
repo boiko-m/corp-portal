@@ -2,16 +2,47 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
-class GiftType extends ActiveRecord
+/**
+ * This is the model class for table "corplbr.gift_type".
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $visible
+ */
+class GiftType extends \yii\db\ActiveRecord
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
-
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return 'corplbr.gift_type';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'visible'], 'required'],
+            [['name'], 'string'],
+            [['visible'], 'integer'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Name',
+            'visible' => 'Visible',
+        ];
     }
 
     public function getGifts()

@@ -2,16 +2,55 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
-class GiftUser extends ActiveRecord
+/**
+ * This is the model class for table "corplbr.gift_user".
+ *
+ * @property int $id
+ * @property int $id_gift
+ * @property int $id_user_from
+ * @property string $date
+ * @property int $anonim
+ * @property string $message
+ * @property int $id_user_to
+ */
+class GiftUser extends \yii\db\ActiveRecord
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
-
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return 'corplbr.gift_user';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['id_gift', 'id_user_from', 'date', 'anonim', 'message', 'id_user_to'], 'required'],
+            [['id_gift', 'id_user_from', 'anonim', 'id_user_to'], 'integer'],
+            [['date', 'message'], 'string'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'id_gift' => 'Id Gift',
+            'id_user_from' => 'Id User From',
+            'date' => 'Date',
+            'anonim' => 'Anonim',
+            'message' => 'Message',
+            'id_user_to' => 'Id User To',
+        ];
     }
 
     public function getGift()
