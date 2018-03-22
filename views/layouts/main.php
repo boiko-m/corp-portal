@@ -12,6 +12,7 @@ use app\assets\AppAsset;
 use app\assets\AppAssetBottom;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -233,7 +234,7 @@ AppAsset::register($this);
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Комания</li>
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <i class="fi-air-play"></i> <span> Главная </span>
                                 </a>
                             </li>
@@ -242,7 +243,7 @@ AppAsset::register($this);
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="https://www.lbr.ru/company/contacts/" target="_blank">Филиалы</a></li>
-                                    <li><a href="ui-cards.html">Презентация компании</a></li>
+                                    <li><a href="/present/">Презентация компании</a></li>
                                 </ul>
                             </li>
 

@@ -3,53 +3,108 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Презентация компании ЛБР';
-
+$this->params['breadcrumbs'][] = $this->title;
 //echo "<pre>".print_r($users, true)."</pre>";
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
 
-    <div class="body-content">
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-12">
+        <div class="card-box">
+            
+<div class="present">
+    <table border="0">
+    <tbody>
+        <tr>
+            <td>
+            <p><strong><img alt="" src="https://www.lbr.ru/images/news/shapka.jpg" class="img-fluid" style="width: 50%"></strong></p>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <p><strong>Уважаемые друзья и партнеры!</strong></p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <table border="0">
+                <tbody>
+                    <tr>
+                        <td><img alt="команда лбр" src="https://www.lbr.ru/images/news/komanda_LBR.jpg"></td>
+                        <td>
+                        <p>Уже 16 лет мы работаем для вас! За это время многие из вас стали нашими партнерами, более того – друзьями. Без вас наша работа не имела бы смысла, и мы благодарны вам за совместное сотрудничество.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                        <p>Сложившаяся экономическая ситуация вынуждает нас меняться, более тщательно подбирать ассортимент предлагаемой техники, адаптировать его под спрос агрохолдингов и хозяйств. Анализируя рынок, работая рука об руку с мировыми поставщиками техники и оборудования, мы с уверенностью можем предложить своим клиентам технику, которая надежна, функциональна, а также доступна по цене.</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                        <p>Помимо ассортимента мы предлагаем выгодные финансовые программы для обновления парка техники.&nbsp; Всю необходимую информацию мы разместили на страницах нашего сайта.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                        <p><br>
+                        <strong>Команда «ЛБР-АгроМаркет»</strong></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><strong>16 ЛЕТ НА РЫНКЕ СЕЛЬСКОХОЗЯЙСТВЕННОЙ ТЕХНИКИ</strong></p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <p>Компания «ЛБР-АгроМаркет» работает на рынке поставок техники с 1993 года и последние 16 лет поставляет только сельскохозяйственную технику, запасные части и расходные материалы, оказывает сервисное обслуживание.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <p>Многолетний опыт на рынке позволяет нам предлагать услуги на уровне европейских стандартов, оказывать прямые поставки от заводов-изготовителей, проводить таможенную очистку и предпродажную подготовку,&nbsp; предлагать выгодные финансовые программы приобретения техники и запчастей.</p>
+
+            <p>У компании налажены партнерские отношения с ведущими мировыми производителями России, стран ЕС, Америки, Канады, Китая. Мы предлагаем аграриям комплексные решения стоящих перед ними технических задач на основе применения современной сельскохозяйственной техники и технологий.</p>
+
+            <p><img alt="о компании1" src="https://www.lbr.ru/images/news/foto1.jpg" width="300">&nbsp; &nbsp;<img alt="о компании2" src="https://www.lbr.ru/images/news/foto2.jpg" width="300"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><strong>ВСЯ ТЕХНИКА ДОСТУПНА В ВАШЕМ РЕГИОНЕ</strong></p>
+
+            <p>Территориальная близость к клиентам помогает нам своевременно решать задачи аграриев. Сеть агромаркетов состоит из 23 филиалов по всей территории Российской Федерации, каждый из которых располагает офисами, демонстрационными площадками, складами запчастей и расходных материалов.</p>
+
+            <p>Техника на каждой площадке представлена в широком ассортименте, чтобы у наших клиентов была возможность выбора: не только изучить конструкционные особенности, но и сравнить модели, а, самое главное - приобрести моментально. Если выбранная модель отсутствует на площадке филиала, мы доставим ее в кратчайшие сроки в нужный город или напрямую в хозяйство с распределительного склада в г.Смоленск.&nbsp;</p>
+
+            <p>Своим клиентам мы предлагаем не просто технику, а готовые комплексные решения под определенные задачи, технологии и финансовые возможности. Наши специалисты помогут вам подобрать технику для каждого этапа технологического цикла, учитывая структуру почв, площадь территорий, возможности агрегатирования.</p>
+
+            <p><strong><img alt="о компании3" src="https://www.lbr.ru/images/news/foto3.jpg" width="350">&nbsp; &nbsp;&nbsp;<img alt="о компании4" src="https://www.lbr.ru/images/news/foto4.jpg" width="350"></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><strong>ФИНАНСИРОВАНИЕ</strong></p>
+
+            <p>Клиентское финансирование - одно из стратегических направлений «ЛБР – АгроМаркет», &nbsp;в рамках которого&nbsp; собственная профессиональная финансовая служба компании создает эффективные и конкурентные решения для приобретения техники и запчастей. Наш опыт в сфере клиентского финансирования позволяет разрабатывать и предлагать максимальный выбор условий финансирования: наиболее оптимальные сроки, размер аванса, сезонность и структуру платежей.</p>
+
+            <p>Подробнее ознакомиться с условиями финансовых продуктов и программ можно в разделе «<a href="https://www.lbr.ru/finance/products/">Финансовые программы</a>».</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><strong>ЗАПАСНЫЕ ЧАСТИ И РАСХОДНЫЕ МАТЕРИАЛЫ</strong></p>
+
+            <p>Более 60 тысяч наименований запасных частей и расходных материалов позволяют нам быстро и оперативно реагировать на запросы клиентов. Мы поставляем запчасти ко всем представленным на российском рынке брендам сельхозтехники. Мы работаем напрямую с заводами-изготовителями комплектующих, которые поставляют запчасти на конвейеры производителям сельхозмашин, что позволяет нам предлагать вам лучшие цены.</p>
+
+            <p>Мы развиваемся, совершенствуем свои бизнес-процессы, чтобы Вы, наши клиенты, могли быстрее и проще оформлять покупки. Именно поэтому мы открыли&nbsp;<strong>on-line</strong><strong>&nbsp;площадку взаимодействия с клиентами&nbsp;<a href="https://lbr-market.ru/">lbr-market.ru</a></strong>. Здесь можно получить консультацию опытных специалистов, расценить заказ, оформить покупку.</p>
+
+            <p><img alt="о компании5" src="https://www.lbr.ru/images/news/foto5.jpg" width="300">&nbsp; &nbsp;<img alt="о компании6" src="https://www.lbr.ru/images/news/foto61.jpg" width="300">&nbsp; &nbsp;<img alt="о компании7" src="https://www.lbr.ru/images/news/foto71.jpg" width="300"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><strong>СЕРВИС И ПОСТПРОДАЖНАЯ ПОДДЕРЖКА</strong></p>
+
+            <p>Мобильность и оперативность, квалификация и профессионализм - вот основные постулаты нашей сервисной поддержки. 110 инженеров ежегодно проходят обучение и повышают свою квалификацию, в том числе и в обучающих центрах заводов-производителей по всему миру. 95 специализированных автомобилей с необходимыми инструментами и оборудованием позволяют нам быстро реагировать на обращения клиентов.</p>
+
+            <p><img alt="о компании8" src="https://www.lbr.ru/images/news/foto8.jpg" width="330">&nbsp; &nbsp;<img alt="о компании9" src="https://www.lbr.ru/images/news/foto9.jpg" width="330"></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</div>              
         </div>
-
     </div>
 </div>
+
+
+
+

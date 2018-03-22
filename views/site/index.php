@@ -2,10 +2,21 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Главная';
 
 //echo "<pre>".print_r($users, true)."</pre>";
 ?>
+
+
+
+
+
+
+
+
+
+
+
 <div class="site-index">
 
     <div class="jumbotron">
