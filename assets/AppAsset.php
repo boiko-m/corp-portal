@@ -23,7 +23,8 @@ class AppAsset extends AssetBundle
         'css/bootstrap.min.css',
         'css/icons.css',
         'css/metismenu.min.css',
-        'css/style.css'
+        'css/style.css',
+        'css/styles-new.css'
     ];
     public $js = [
         'js/modernizr.min.js',

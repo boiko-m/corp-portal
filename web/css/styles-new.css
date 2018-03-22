@@ -1,0 +1,12 @@
+.presentation-wrap img {
+    /*width: 440px;*/
+    margin: 0 10px 10px 0;
+}
+
+.present-main-img {
+    width: 400px;
+}
+
+.presentation-wrap {
+    text-align: justify;
+}

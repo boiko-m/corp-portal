@@ -7,7 +7,7 @@
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Комания</li>
                 <li>
-                    <a href="index.html">
+                    <a href="/">
                         <i class="fi-air-play"></i> <span> Главная </span>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="ui-typography.html">Филиалы</a></li>
-                        <li><a href="ui-cards.html">Презентация компании</a></li>
+                        <li><a href="/company/presentation">Презентация компании</a></li>
                     </ul>
                 </li>
 
