@@ -277,7 +277,7 @@ AppAsset::register($this);
                             </li>
 
 
-                            
+
 
                             <?php // <li class="menu-title">Дни Рождения:</li> ?>
 
@@ -306,10 +306,13 @@ AppAsset::register($this);
                                 <div class="page-title-box">
                                     <h4 class="page-title float-left">Главная</h4>
 
-                                    <ol class="breadcrumb float-right">
-                                        <li class="breadcrumb-item"><a href="#">Abstack</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
-                                    </ol>
+                                    <?= Breadcrumbs::widget([
+                                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                                        'tag' => 'ol',
+                                        'options' => ['class' => 'breadcrumb float-right'],
+                                        'itemTemplate' => "<li class=\"breadcrumb-item\">{link}</li>\n",
+                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n"
+                                    ]) ?>
 
                                     <div class="clearfix"></div>
                                 </div>
