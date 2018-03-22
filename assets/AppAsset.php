@@ -26,9 +26,19 @@ class AppAsset extends AssetBundle
         'css/style.css'
     ];
     public $js = [
+        'js/modernizr.min.js',
+        'js/jquery.min.js',
+        'js/popper.min.js',
+        'js/bootstrap.min.js',
+        'js/metisMenu.min.js',
+        'js/waves.js',
+        'js/jquery.slimscroll.js',
+        'plugins/waypoints/lib/jquery.waypoints.min.js',
+        'plugins/counterup/jquery.counterup.min.js',
+        //'pages/jquery.dashboard.init.js',
+        'js/jquery.core.js',
+        'js/jquery.app.js'
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
     ];
 }
