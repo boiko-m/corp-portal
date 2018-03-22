@@ -241,7 +241,7 @@ AppAsset::register($this);
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="ui-typography.html">Филиалы</a></li>
+                                    <li><a href="https://www.lbr.ru/company/contacts/" target="_blank">Филиалы</a></li>
                                     <li><a href="ui-cards.html">Презентация компании</a></li>
                                 </ul>
                             </li>
