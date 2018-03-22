@@ -311,7 +311,8 @@ AppAsset::register($this);
                                         'tag' => 'ol',
                                         'options' => ['class' => 'breadcrumb float-right'],
                                         'itemTemplate' => "<li class=\"breadcrumb-item\">{link}</li>\n",
-                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n"
+                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
+                                        'homeLink' => ['label' => 'Главная', 'url' => '/']
                                     ]) ?>
 
                                     <div class="clearfix"></div>
