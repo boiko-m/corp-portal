@@ -224,6 +224,7 @@ AppAsset::register($this);
             </div>
             <!-- end topbar -->
 
+<<<<<<< HEAD
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left side-menu">
                 <div class="slimscroll-menu" id="remove-scroll">
@@ -295,6 +296,9 @@ AppAsset::register($this);
 
             </div>
             <!-- Left Sidebar End -->
+=======
+            <?=$this->render('_left_menu.php')?>
+>>>>>>> c45fd770b14382b6216740af725be0bb03f88922
 
 
             <div class="content-page">
@@ -312,7 +316,8 @@ AppAsset::register($this);
                                         'tag' => 'ol',
                                         'options' => ['class' => 'breadcrumb float-right'],
                                         'itemTemplate' => "<li class=\"breadcrumb-item\">{link}</li>\n",
-                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n"
+                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
+                                        'homeLink' => ['label' => 'Главная', 'url' => '/']
                                     ]) ?>
 
                                     <div class="clearfix"></div>
