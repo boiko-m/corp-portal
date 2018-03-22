@@ -21,7 +21,7 @@
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="/profiles">
                         <i class="fi-air-play"></i> <span> Сотрудники </span>
                     </a>
                 </li>
