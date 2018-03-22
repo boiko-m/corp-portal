@@ -11,9 +11,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\AppAssetBottom;
 
-
 AppAsset::register($this);
-AppAssetBottom::register($this); 
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -47,7 +45,7 @@ AppAssetBottom::register($this);
                 <nav class="navbar-custom">
 
                     <ul class="list-unstyled topbar-right-menu float-right mb-0">
-                        
+
 
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
@@ -208,7 +206,7 @@ AppAssetBottom::register($this);
                                 <i class="dripicons-menu"></i>
                             </button>
                         </li>
-                        <?php 
+                        <?php
                             /*
                             <li class="hide-phone app-search">
                             <form role="search" class="">
@@ -230,5 +228,3 @@ AppAssetBottom::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
-
-
