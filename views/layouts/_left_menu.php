@@ -15,7 +15,7 @@
                 <li>
                     <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="ui-typography.html">Филиалы</a></li>
+                        <li><a href="https://www.lbr.ru/company/contacts/">Филиалы</a></li>
                         <li><a href="/company/presentation">Презентация компании</a></li>
                     </ul>
                 </li>

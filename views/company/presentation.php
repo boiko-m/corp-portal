@@ -12,12 +12,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-box">
             <div class="row">
                 <div class="col-12">
-                    <p class="text-muted m-b-30">
-                        <img alt="" src="https://www.lbr.ru/images/news/shapka.jpg" class="img-fluid">
+                    <p class="m-b-30">
+                        <a href="https://www.lbr.ru/" target="_blank">
+                            <img alt="" src="https://www.lbr.ru/images/news/shapka.jpg" class="img-fluid">
+                        </a>
                     </p>
                     <h2>Уважаемые друзья и партнеры!</h2>
                     <div class="presentation-wrap">
+
                         <img alt="команда лбр" src="https://www.lbr.ru/images/news/komanda_LBR.jpg" class="img-fluid float-left present-main-img">
+
                         <p>
                             Уже 16 лет мы работаем для вас! За это время многие из вас стали нашими партнерами, более того – друзьями.
                             Без вас наша работа не имела бы смысла, и мы благодарны вам за совместное сотрудничество.
