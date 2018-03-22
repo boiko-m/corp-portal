@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-xs-12 col-md-6 col-lg-6 col-xl-12">
         <div class="card-box">
-            
+
 <div class="present">
     <table border="0">
     <tbody>
@@ -100,11 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </tbody>
 </table>
 
-</div>              
+</div>
         </div>
     </div>
 </div>
-
-
-
-
