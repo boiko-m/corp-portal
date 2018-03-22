@@ -59,7 +59,7 @@ AppAssetBottom::register($this);
 
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
-                                    <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Clear All</small></a> </span>Notification</h6>
+                                    <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Удалить все</small></a> </span>Уведомления</h6>
                                 </div>
 
                                 <div class="slimscroll" style="max-height: 190px;">
@@ -102,7 +102,7 @@ AppAssetBottom::register($this);
 
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                                    View all <i class="fi-arrow-right"></i>
+                                    Отобразить все <i class="fi-arrow-right"></i>
                                 </a>
 
                             </div>
@@ -118,15 +118,15 @@ AppAssetBottom::register($this);
 
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
-                                    <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Clear All</small></a> </span>Chat</h6>
+                                    <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Очистить</small></a> </span>Чат</h6>
                                 </div>
 
                                 <div class="slimscroll" style="max-height: 190px;">
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                        <p class="notify-details">Cristina Pride</p>
-                                        <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next meeting</p>
+                                        <p class="notify-details">Максим Лешик</p>
+                                        <p class="text-muted font-13 mb-0 user-msg">Привет, как дела? Возьми у меня заказ</p>
                                     </a>
 
                                     <!-- item-->
@@ -160,7 +160,7 @@ AppAssetBottom::register($this);
 
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                                    View all <i class="fi-arrow-right"></i>
+                                    Все сообщения <i class="fi-arrow-right"></i>
                                 </a>
 
                             </div>
@@ -169,37 +169,32 @@ AppAssetBottom::register($this);
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                aria-haspopup="false" aria-expanded="false">
-                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span class="ml-1">Samuel <i class="mdi mdi-chevron-down"></i> </span>
+                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span class="ml-1">Андрей <i class="mdi mdi-chevron-down"></i> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                    <h6 class="text-overflow m-0">Добро пожаловать !</h6>
                                 </div>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-head"></i> <span>My Account</span>
+                                    <i class="fi-head"></i> <span>Мой профиль</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-cog"></i> <span>Settings</span>
+                                    <i class="fi-cog"></i> <span>Настройки</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-help"></i> <span>Support</span>
+                                    <i class="fi-help"></i> <span>Помощь</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-lock"></i> <span>Lock Screen</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-power"></i> <span>Logout</span>
+                                    <i class="fi-power"></i> <span>Выйти</span>
                                 </a>
 
                             </div>
@@ -213,12 +208,16 @@ AppAssetBottom::register($this);
                                 <i class="dripicons-menu"></i>
                             </button>
                         </li>
-                        <li class="hide-phone app-search">
+                        <?php 
+                            /*
+                            <li class="hide-phone app-search">
                             <form role="search" class="">
-                                <input type="text" placeholder="Search..." class="form-control">
+                                <input type="text" placeholder="Поиск..." class="form-control">
                                 <a href=""><i class="fa fa-search"></i></a>
                             </form>
                         </li>
+                        */
+                         ?>
                     </ul>
 
                 </nav>
