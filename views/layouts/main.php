@@ -277,12 +277,10 @@ AppAsset::register($this);
                             </li>
 
 
+                            
 
-                            <li class="menu-title">Дни Рождения:</li>
+                            <?php // <li class="menu-title">Дни Рождения:</li> ?>
 
-
-                            <li><a href="/user/"> <span>Андрей Гавриленко</span> </a></li>
-                            <li><a href="/user/"> <span>Максим Лешик</span> </a></li>
 
 
                         </ul>
