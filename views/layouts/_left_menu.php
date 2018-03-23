@@ -8,7 +8,12 @@
                 <li class="menu-title">Комания</li>
                 <li>
                     <a href="/">
-                        <i class="fi-air-play"></i> <span> Главная </span>
+                        <i class="fi-grid"></i> <span> Главная </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ordersclient/">
+                        <i class="dripicons-list"></i> <span> Мои заказы </span>
                     </a>
                 </li>
 
@@ -22,12 +27,12 @@
 
                 <li>
                     <a href="/profiles">
-                        <i class="fi-air-play"></i> <span> Сотрудники </span>
+                        <i class="dripicons-user-group"></i> <span> Сотрудники </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Документы </span> <span class="menu-arrow"></span></a>
+                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Документы </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/documents/it/">Часто задаваемые вопросы - Отдел ИТ</a></li>
                         <li><a href="/documents/catalog/">Доступ к каталогам компании</a></li>
@@ -35,7 +40,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);"><i class="fi-mail"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
+                    <a href="javascript: void(0);"><i class=" dripicons-information"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
                         <li><a href="email-read.html">Обучающий материал</a></li>
@@ -46,7 +51,7 @@
 
                  <li>
                     <a href="index.html">
-                        <i class="fi-air-play"></i> <span> Помощь сотруднику </span>
+                        <i class="fi-help"></i> <span> Помощь сотруднику </span>
                     </a>
                 </li>
 
