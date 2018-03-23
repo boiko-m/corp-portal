@@ -16,6 +16,16 @@ class User extends ActiveRecord implements IdentityInterface
         return '[corplbr].[user]';
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Email',
+        ];
+    }
+
     public static function findIdentity($id)
     {
         return static::findOne($id);
