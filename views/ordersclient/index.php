@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
      <div class="col-xl-12 container-fluid">
         <div class="card-box">
             <div class="row">
-                <div class="col-3 left_menu_orders">
+                <div class="col-xl-12 left_menu_orders">
                 	<h6>Заказы по запчастям</h6>
                 	<?php foreach ($allorders as $order): ?>
                 		<?php if ($order['ДелениеПоТипуТовара'] == "ДляЗапчастей"): ?>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 	<?php endforeach ?>
                 	
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9">
                     <ul class="nav nav-tabs tabs-bordered nav-justified">
                         <li class="nav-item">
                             <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home-b2">
-                            <table class="table table-bordered" style="text-align: center;">
+                            <table class="table table-bordered table-responsive" style="text-align: center;">
 	                           <thead>
 	                            <tr>
 	                                <th>#</th>
