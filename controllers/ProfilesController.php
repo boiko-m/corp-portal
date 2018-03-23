@@ -33,7 +33,7 @@ class ProfilesController extends Controller
         $searchModel = new ProfileSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider->query->orderBy('last_name');
+        $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
         $dataProvider->query->with('user');
 
         if(isset($letter) && mb_strlen($letter) == 1 && !is_numeric($letter)) {

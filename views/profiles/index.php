@@ -12,6 +12,7 @@ use app\widgets\Alphabet;
 $this->title = 'Сотрудники';
 $this->params['breadcrumbs'][] = $this->title;
 
+echo Html::jsFile('@web/js/ajax.js');
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -19,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="table-responsive wrap-relative">
                 <div class="preloader"></div>
                 <?php Pjax::begin(['timeout' => 5000]); ?>
-                
+
                 <?= Alphabet::widget([
                     'options' => ['class' => 'alphabet-wrap'],
                     'letters' => $alphabet,
@@ -64,12 +65,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
-<script>
-    $(document).on('pjax:send', function() {
-        $(".preloader").show();
-    });
-    $(document).on('pjax:complete', function() {
-        $(".preloader").hide();
-    });
-</script>
