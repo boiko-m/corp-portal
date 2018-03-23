@@ -29,3 +29,27 @@
 	font-size: 15px;
 	padding-top: 15px;
 }
+
+.alphabet-wrap {
+    display: flex;
+    align-content: center;
+    width: 100%;
+    background: #4f5a6e;
+    margin-bottom: 15px;
+}
+
+.alphabet-wrap a {
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px 5px;
+    font-weight: bold;
+}
+
+.alphabet-wrap a:hover,
+.alphabet-wrap a.active {
+    color:black;
+    background: white;
+    padding: 7px 2px;
+    border: 3px solid #4f5a6e;
+}
