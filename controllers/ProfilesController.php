@@ -27,7 +27,7 @@ class ProfilesController extends Controller
      * Lists all Profile models.
      * @return mixed
      */
-    public function actionIndex($letter = "а")
+    public function actionIndex($letter = "А")
     {
         $query = Profile::find()->orderBy('last_name');
         $query = $query->with('user');

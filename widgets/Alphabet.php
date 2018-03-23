@@ -20,7 +20,10 @@ class Alphabet extends Widget
         $links = [];
         foreach ($this->letters as $index => $letter) {
             $options = [];
-            if(Yii::$app->request->get('letter') == $letter) {
+            if(
+                (!Yii::$app->request->get('letter') && $index == 0) ||
+                (Yii::$app->request->get('letter') == $letter)
+            ) {
                 $options['class'] = 'active';
             }
             $links[] = Html::a($letter, [$this->actionLink, 'letter' => $letter], $options);

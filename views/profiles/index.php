@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-12">
         <div class="card-box">
             <div class="table-responsive">
-                <?php Pjax::begin(['timeout' => 2000]); ?>
+            <?php Pjax::begin(['timeout' => 5000]); ?>
                 <?= Alphabet::widget([
                     'options' => ['class' => 'alphabet-wrap'],
                     'letters' => $alphabet,
@@ -56,9 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'disabledPageCssClass' => 'page-link'
                     ],
                 ]); ?>
-                <?php Pjax::end(); ?>
+            <?php Pjax::end(); ?>
             </div>
-
         </div>
     </div>
 </div>
