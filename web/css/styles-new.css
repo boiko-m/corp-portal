@@ -17,3 +17,15 @@
 .cat_main div {
 	padding-top: 10px;
 }
+.helpitnext > div {
+	padding-top: 20px;
+}
+.helpitnext > div > div:first-child {
+	color: black;
+	font-weight: bold;
+}
+.helpitnext h4 {
+	color: black;
+	font-size: 15px;
+	padding-top: 15px;
+}
