@@ -37,7 +37,7 @@
                 <li>
                     <a href="javascript: void(0);"><i class="fi-mail"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="email-inbox.html">Словари и глоссарии</a></li>
+                        <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
                         <li><a href="email-read.html">Обучающий материал</a></li>
                         <li><a href="email-compose.html">Видео материал</a></li>
                         <li><a href="email-compose.html">Общение с клиентом по погашению просроченной задолжности</a></li>
