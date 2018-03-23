@@ -46,7 +46,13 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'db' => $db,
-
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD ],
+                ],
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

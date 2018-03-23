@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Profile;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -10,7 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProfilesController implements the CRUD actions for User model.
+ * ProfilesController implements the CRUD actions for Profile model.
  */
 class ProfilesController extends Controller
 {
@@ -23,22 +24,28 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Lists all User models.
+     * Lists all Profile models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($letter = "а")
     {
+        $query = Profile::find()->orderBy('last_name');
+        $query = $query->with('user');
+        if(mb_strlen($letter) == 1 && !is_numeric($letter)) {
+            $query = $query->where(['like', 'last_name', $letter."%", false]);
+        }
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
+            'query' => $query,
         ]);
-
+        $alphabetModels = Profile::find()->select(['last_name'])->all();
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'alphabet' => $this->getAlphabet($alphabetModels)
         ]);
     }
 
     /**
-     * Displays a single User model.
+     * Displays a single Profile model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -51,18 +58,26 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return User the loaded model
+     * @return Profile the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Profile::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    private function getAlphabet($models) {
+        $letters = [];
+        foreach ($models as $index => $model) {
+            $letters[] = mb_strtoupper(substr($model->last_name, 0, 2));
+        }
+        return array_unique($letters);
     }
 }

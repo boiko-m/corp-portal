@@ -44,7 +44,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'sex'], 'integer'],
+            [['id', 'sex', 'sip'], 'integer'],
             [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
             [['birthday', 'date_job'], 'safe'],
             [['id'], 'unique'],
@@ -62,20 +62,31 @@ class Profile extends \yii\db\ActiveRecord
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
             'middle_name' => 'Middle Name',
-            'birthday' => 'Birthday',
+            'birthday' => 'Дата рождения',
             'date_job' => 'Date Job',
-            'sex' => 'Sex',
+            'sex' => 'Пол',
             'skype' => 'Skype',
-            'phone1' => 'Phone1',
+            'phone1' => 'Телефон',
             'phone2' => 'Phone2',
-            'branch' => 'Branch',
-            'position' => 'Position',
-            'department' => 'Department',
+            'branch' => 'Филиал',
+            'position' => 'Должность',
+            'department' => 'Подразделение',
             'cabinet' => 'Cabinet',
             'phone_cabinet' => 'Phone Cabinet',
-            'about' => 'About',
+            'about' => 'Описание',
             'category' => 'Category',
             'service' => 'Service',
+            'sip' => 'SIP',
         ];
+    }
+
+    public static function primaryKey()
+    {
+        return ['id'];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id']);
     }
 }
