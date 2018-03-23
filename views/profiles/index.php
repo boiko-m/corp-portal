@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'filterModel' => new \app\models\Profile(),
+                    'filterModel' => $searchModel,
                     'summary' => "",
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
@@ -44,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             'format' => 'raw'
                         ],
+                        'user.email',
                         'branch',
                         'department',
-                        'user.email',
                         'phone1'
                     ],
                     'pager' => [

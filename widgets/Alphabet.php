@@ -18,10 +18,11 @@ class Alphabet extends Widget
     public function run()
     {
         $links = [];
+        $links[] = Html::a("Все", [$this->actionLink], !Yii::$app->request->get('letter') ? ['class' => 'active'] : []);
         foreach ($this->letters as $index => $letter) {
             $options = [];
             if(
-                (!Yii::$app->request->get('letter') && $index == 0) ||
+                //(!Yii::$app->request->get('letter') && $index == 0) ||
                 (Yii::$app->request->get('letter') == $letter)
             ) {
                 $options['class'] = 'active';

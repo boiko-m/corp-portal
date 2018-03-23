@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Profile;
+use app\models\ProfileSearch;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -27,20 +28,24 @@ class ProfilesController extends Controller
      * Lists all Profile models.
      * @return mixed
      */
-    public function actionIndex($letter = "А")
+    public function actionIndex($letter = "")
     {
-        $query = Profile::find()->orderBy('last_name');
-        $query = $query->with('user');
-        if(mb_strlen($letter) == 1 && !is_numeric($letter)) {
-            $query = $query->where(['like', 'last_name', $letter."%", false]);
+        $searchModel = new ProfileSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->query->orderBy('last_name');
+        $dataProvider->query->with('user');
+
+        if(isset($letter) && mb_strlen($letter) == 1 && !is_numeric($letter)) {
+            $dataProvider->query->andWhere(['like', 'last_name', $letter."%", false]);
         }
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+
         $alphabetModels = Profile::find()->select(['last_name'])->all();
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'alphabet' => $this->getAlphabet($alphabetModels)
+            'alphabet' => $this->getAlphabet($alphabetModels),
+            'searchModel' => $searchModel,
         ]);
     }
 
