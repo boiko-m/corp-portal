@@ -72,15 +72,14 @@ class OrdersclientController extends Controller
         return $this->render('index');
     }
 
-    public function actionTime()
+    public function actionMessages()
     {
-        return $this->render('time-date', ['response' => date('H:i:s')]);
+        $message = 123;
+        echo var_dump($message);
+        exit;
+        return $this->render('index', ['message' => $message]);
     }
 
-    public function actionDate()
-    {
-        return $this->render('time-date', ['response' => date('d.m.Y')]);
-    }
 
 
 
