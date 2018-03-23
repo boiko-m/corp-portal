@@ -29,8 +29,8 @@
                 <li>
                     <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Документы </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="chart-flot.html">Часто задаваемые вопросы - Отдел ИТ</a></li>
-                        <li><a href="chart-morris.html">Доступ к каталогам компании</a></li>
+                        <li><a href="/documents/it/">Часто задаваемые вопросы - Отдел ИТ</a></li>
+                        <li><a href="/documents/catalog/">Доступ к каталогам компании</a></li>
                     </ul>
                 </li>
 
@@ -40,7 +40,7 @@
                         <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
                         <li><a href="email-read.html">Обучающий материал</a></li>
                         <li><a href="email-compose.html">Видео материал</a></li>
-                        <li><a href="email-compose.html">Общение с клиентом по погашению просроченной задолжности</a></li>
+                        <li><a href="/knowledge/indebtedness/">Общение с клиентом по погашению просроченной задолжности</a></li>
                     </ul>
                 </li>
 

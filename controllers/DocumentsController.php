@@ -11,7 +11,7 @@ use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
 
-class KnowledgeController extends Controller
+class DocumentsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -28,7 +28,7 @@ class KnowledgeController extends Controller
      */
     public function actionIndex()
     {
-        return $this->redirect(['knowledge/dictionary']);
+        return $this->redirect(['documents/it']);
     }
 
     /**
@@ -36,14 +36,14 @@ class KnowledgeController extends Controller
      *
      * @return string
      */
-    public function actionDictionary()
+    public function actionIt()
     {
-        return $this->render('dictionary');
+        return $this->render('it');
     }
 
-    public function actionIndebtedness()
+    public function actionCatalog()
     {
-        return $this->render('indebtedness');
+        return $this->render('catalog');
     }
 
 

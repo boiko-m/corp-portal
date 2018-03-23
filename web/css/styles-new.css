@@ -10,3 +10,10 @@
 .presentation-wrap {
     text-align: justify;
 }
+
+.cat_main a{
+	font-weight: bold
+}
+.cat_main div {
+	padding-top: 10px;
+}
