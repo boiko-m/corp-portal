@@ -12,6 +12,8 @@ use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\Odata;
 
+
+
 class OrdersclientController extends Controller
 {
     /**
@@ -69,6 +71,17 @@ class OrdersclientController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionTime()
+    {
+        return $this->render('time-date', ['response' => date('H:i:s')]);
+    }
+
+    public function actionDate()
+    {
+        return $this->render('time-date', ['response' => date('d.m.Y')]);
+    }
+
 
 
 }

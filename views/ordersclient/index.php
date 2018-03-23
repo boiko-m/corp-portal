@@ -1,6 +1,8 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Yii;
+use yii\widgets\Pjax;
 
 $this->title = 'Заказ покупателя';
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,6 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 	
+	<?php
+$script = <<< JS
+$(document).ready(function() {
+    setInterval(function(){ $("#refreshButton").click(); }, 3000);
+});
+JS;
+$this->registerJs($script);
+?>
 
 	<div class="row">
 		<div class="col-xl-12 container-fluid">
@@ -39,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
      <div class="col-xl-12 container-fluid">
         <div class="card-box">
             <div class="row">
-                <div class="col-xl-12 left_menu_orders">
+                <div class="col-xl-3 col-xs-12 left_menu_orders">
                 	<h6>Заказы по запчастям</h6>
                 	<?php foreach ($allorders as $order): ?>
                 		<?php if ($order['ДелениеПоТипуТовара'] == "ДляЗапчастей"): ?>
@@ -79,7 +89,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             </a>
                         </li>
                     </ul>
+
+                   
+
                     <div class="tab-content">
+
+
                         <div class="tab-pane active" id="home-b2">
                             <table class="table table-bordered table-responsive" style="text-align: center;">
 	                           <thead>
@@ -118,10 +133,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                         </div>
+
                         <div class="tab-pane" id="messages-b2">
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                             <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                         </div>
+
                     </div>
                 </div>
             </div>
