@@ -38,7 +38,7 @@ echo Html::jsFile('@web/js/ajax.js');
                             'value' => function ($data) {
                                 return Html::a(sprintf("%s %s %s", $data->last_name, $data->first_name, $data->middle_name), Url::to(['view', 'id' => $data->id]));
                             },
-                            'format' => 'raw'
+                            'format' => 'raw',
                         ],
                         [
                             'label' => 'SIP',
