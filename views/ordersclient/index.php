@@ -67,27 +67,211 @@ $this->params['breadcrumbs'][] = $this->title;
                 	
                 </div>
 
-                <?php Pjax::begin(["timeout" => 2000, "enablePushState" => true]); ?>                
+                             
 
-                <div class="col-xl-12">
-                    <ul class="nav nav-tabs tabs-bordered nav-justified">
-                        <li class="nav-item">
-                            <?= Html::a("Спецификация", ['/ordersclient/specifications', "#"=>"specifications"], ['class' => 'nav-link active', 'data-toggle' => 'tab', 'aria-expanded' => false]);?>
+                <div class="col-xl-8 col-xs-12 container-fluid">
+                    <ul class="nav nav-tabs tabs-bordered nav-justified col-xs-6 container-fluid">
+                        <li class="nav-item col-xs-12">
+                            <a href="#stage" class="nav-link active" data-toggle = "tab" aria-expanded = "false">Этапы по заказу </a>
                         </li>
-                        <li class="nav-item">
-                            <?= Html::a("Прогноз по товару", ['/ordersclient/forecast', "#"=>"forecast"], ['class' => 'nav-link', 'data-toggle' => 'tab', 'aria-expanded' => false]);?>
+                        <li class="nav-item col-xs-12">
+                            <a href="#specifications" class="nav-link" data-toggle = "tab" aria-expanded = "false">Спецификации</a>
                         </li>
-                        <li class="nav-item">
-                            <?= Html::a("Сообщения", "#messages", ['class' => 'nav-link', 'data-toggle' => 'tab', 'aria-expanded' => "false"]);?>
-                            <a href="#messages" class="nav-link" data-toggle = "tab" aria-expanded = "false">asd</a>
+                        <li class="nav-item col-xs-12">
+                            <a href="#forecast" class="nav-link" data-toggle = "tab" aria-expanded = "false">Прогноз по товару</a>
+                        </li>
+                        <li class="nav-item col-xs-12">
+                            <a href="#messages" class="nav-link" data-toggle = "tab" aria-expanded = "false">Сообщения</a>
                         </li>
                     </ul>
 
                    
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="specifications">
-                            <table class="table table-bordered table-responsive" style="text-align: center;">
+                    <div class="tab-content ">
+
+                        <div class="tab-pane active" id="stage">
+                            
+                            <div class="timeline">
+                                        <article class="timeline-item alt">
+                                            <div class="text-right">
+                                                <div class="time-show first">
+                                                    <a href="#" class="btn btn-gradient w-lg">Сегодня</a>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="">10.04.2018</h4>
+                                                        <p>Получить аванс </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item ">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-success"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-success">05.04.2018</h4>
+                                                        <p>Договор отправлен, подписать </p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon bg-primary"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-primary">10 hours ago</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>3 new photo Uploaded on facebook fan page</p>
+                                                        <div class="album">
+                                                            <a href="#">
+                                                                <img alt="" src="assets/images/small/img-1.jpg">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img alt="" src="assets/images/small/img-2.jpg">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img alt="" src="assets/images/small/img-3.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-purple"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-purple">14 hours ago</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Outdoor visit at California State Route 85 with John Boltana &amp;
+                                                            Harry Piterson regarding to setup a new show room.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-muted">19 hours ago</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Jonatha Smith added new milestone <span><a href="#">Pathek</a></span>
+                                                            Lorem ipsum dolor sit amet consiquest dio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article class="timeline-item alt">
+                                            <div class="text-right">
+                                                <div class="time-show">
+                                                    <a href="#" class="btn btn-gradient w-lg">Yesterday</a>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-warning"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-warning">07 January 2016</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Montly Regular Medical check up at Greenland Hospital by the
+                                                            doctor <span><a href="#"> Johm meon </a></span>
+                                                        </p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon bg-primary"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-primary">07 January 2016</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Download the new updates of Ubold admin dashboard</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article class="timeline-item">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-success"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-success">07 January 2016</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Jonatha Smith added new milestone <span><a class="blue" href="#">crishtian</a></span>
+                                                            Lorem ipsum dolor sit amet consiquest dio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="text-right">
+                                                <div class="time-show">
+                                                    <a href="#" class="btn btn-gradient w-lg">Last Month</a>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-muted">31 December 2015</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Download the new updates of Ubold admin dashboard</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                        <article class="timeline-item">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-danger"><i class="mdi mdi-adjust"></i></span>
+                                                        <h4 class="text-danger">16 Decembar 2015</h4>
+                                                        <p class="timeline-date text-muted"><small>08:25 am</small></p>
+                                                        <p>Jonatha Smith added new milestone <span><a href="#">prank</a></span>
+                                                            Lorem ipsum dolor sit amet consiquest dio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    </div>
+
+                        </div>
+
+                        <div class="tab-pane " id="specifications">
+                            <table class="table table-bordered table-responsive col-xs-12" style="text-align: center;">
 	                           <thead>
 	                            <tr>
 	                                <th>#</th>
@@ -133,7 +317,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
+                <?php Pjax::begin(["timeout" => 0, "enablePushState" => true]); ?>   
                 <?php Pjax::end(); ?>
+
 
             </div>
         </div>
