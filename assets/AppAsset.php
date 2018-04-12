@@ -38,7 +38,8 @@ class AppAsset extends AssetBundle
         'plugins/counterup/jquery.counterup.min.js',
         //'pages/jquery.dashboard.init.js',
         'js/jquery.core.js',
-        'js/jquery.app.js'
+        'js/jquery.app.js',
+        'js/myajax.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'

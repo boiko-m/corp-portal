@@ -15,7 +15,7 @@ use app\models\Videos;
 use app\models\User;
 
 
-class SiteController extends Controller
+class ScriptsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -73,11 +73,6 @@ class SiteController extends Controller
         $role = Yii::$app->authManager->createRole('user');
         $role->description = 'Юзер';
         Yii::$app->authManager->add($role);*/
-        $a="asd";
-        $news = News::find()->orderBy('id desc')->limit(5)->all();
-        $video = Videos::find()->orderBy('id desc')->one();
-        $user_new = User::find()->orderBy('id desc')->limit(3)->all();
-
 
         return $this->render('index', array("a" => $a, "news" => $news, 'video' => $video, 'user_new' => $user_new));
     }

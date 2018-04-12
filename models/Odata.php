@@ -22,7 +22,7 @@ class Odata // библеотека для работы с odata by Андрей
 
     public function params($params) {
 
-        $mas = array("dateto", "datefrom", "key", "date");
+        $mas = array("dateto", "datefrom", "key", "date", "where", "eq");
         foreach ($params as $name_params => $param) {
             if (!in_array($name_params, $mas)) {
                 $this->params['$'.$name_params] = $param;
@@ -32,12 +32,31 @@ class Odata // библеотека для работы с odata by Андрей
         }
     }
 
+    public function link() {
+        echo '<a target = "blank" href ="' . urldecode($this->link) . '">' . urldecode($this->link) . '</a>';
+        return true;
+    }
+
     public function generateParams() {
         return "?".http_build_query($this->params, null ,"&" , PHP_QUERY_RFC3986);
     }
 
     public function document($doc) {
         $this->doc = $doc;
+    }
+
+    public function eq($paramsAll) {
+        if (isset($paramsAll[1])) {
+            foreach ($paramsAll as $params) {
+                foreach ($params as $param => $value) {
+                    $this->filter($param . " eq '" . $value . "'");
+                }
+            }
+        } else {
+            foreach ($paramsAll as $param => $value) {
+                $this->filter($param . " eq '" . $value . "'");
+            }
+        }
     }
 
     public function getParams() {
@@ -83,6 +102,26 @@ class Odata // библеотека для работы с odata by Андрей
         }
         return false;
     }
+    public function getReturnOne() {
+        $this->connect();
+         $return = curl_exec($this->curl); // выполнение curl и выдача результата
+
+        if ($return) {
+            $this->getErrors($return);
+            $return_array = json_decode($return, true);
+            return $return_array;
+        }
+        return false;
+    }
+
+    public function where($params) {
+        if (isset($params[2])) {
+            $this->filter($params[0] . " eq cast(guid'" . $params[1] . "', '" . $params[2] . "')");
+        } else {
+            $this->filter($params[0] . " eq '" . $params[1] . "'");
+        }
+        
+    }
 
     public function get($doc, $params = null) {
         $this->params = null;
@@ -95,6 +134,20 @@ class Odata // библеотека для работы с odata by Андрей
         }
         return $this->getReturn();
 
+    }
+    public function one ($doc, $key, $params = null) {
+        $this->params = null;
+
+        $this->params(array('format'=> $this->format));
+
+        $this->doc = $doc . "(guid'" . $key . "')";
+
+        if ($params) {
+            $this->params($params);
+        }
+
+
+        return $this->getReturnOne();
     }
 
     public function filter($filter_attr, $prefix = " and ") {

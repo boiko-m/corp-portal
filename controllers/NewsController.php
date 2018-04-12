@@ -7,15 +7,10 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\RegisterForm;
-use app\models\ContactForm;
 use app\models\News;
-use app\models\Videos;
-use app\models\User;
 
 
-class SiteController extends Controller
+class NewsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -64,6 +59,13 @@ class SiteController extends Controller
      *
      * @return string
      */
+    public function actionView($id) {
+        $news = News::findOne($id);
+
+        return $this->render('news', array(
+            'news' => $news
+        ));
+    }
     public function actionIndex()
     {
         /*$role = Yii::$app->authManager->createRole('admin');
@@ -73,13 +75,11 @@ class SiteController extends Controller
         $role = Yii::$app->authManager->createRole('user');
         $role->description = 'Юзер';
         Yii::$app->authManager->add($role);*/
+        return false;
         $a="asd";
-        $news = News::find()->orderBy('id desc')->limit(5)->all();
-        $video = Videos::find()->orderBy('id desc')->one();
-        $user_new = User::find()->orderBy('id desc')->limit(3)->all();
-
-
-        return $this->render('index', array("a" => $a, "news" => $news, 'video' => $video, 'user_new' => $user_new));
+        $news = News::findOne($id);
+        
+        return $this->render('index', array("a" => $a, "news" => $news));
     }
 
     /**
