@@ -166,45 +166,8 @@ AppAsset::register($this);
                             </div>
                         </li>
 */?>
-                        <? if (!Yii::$app->user->isGuest): ?>
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="false" aria-expanded="false">
-                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
-                                <span class="ml-1">
-                                    <? echo Yii::$app->user->identity->profile->first_name; ?>
-                                    <i class="mdi mdi-chevron-down"></i>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h6 class="text-overflow m-0">Мой аккаунт</h6>
-                                </div>
-
-                                <!-- item-->
-                                <a href="<?=Url::toRoute(['profiles/view', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
-                                    <i class="fi-head"></i> <span>Профиль</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-cog"></i> <span>Настройки</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-help"></i> <span>Помощь</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="/user/logout" class="dropdown-item notify-item">
-                                    <i class="fi-power"></i> <span>Выйти</span>
-                                </a>
-
-                            </div>
-                        </li>
-                        <? endif; ?>
+                        <?=$this->render('_profile_header.php')?>
+                        
                     </ul>
 
                     <ul class="list-inline menu-left mb-0">
