@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -47,7 +48,7 @@ AppAsset::register($this);
 
                     <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-
+<?/*
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                                aria-haspopup="false" aria-expanded="false">
@@ -164,11 +165,16 @@ AppAsset::register($this);
 
                             </div>
                         </li>
-
+*/?>
+                        <? if (!Yii::$app->user->isGuest): ?>
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                aria-haspopup="false" aria-expanded="false">
-                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span class="ml-1">Андрей <i class="mdi mdi-chevron-down"></i> </span>
+                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                <span class="ml-1">
+                                    <? echo Yii::$app->user->identity->profile->first_name; ?>
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
@@ -177,7 +183,7 @@ AppAsset::register($this);
                                 </div>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="<?=Url::toRoute(['profiles/view', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
                                     <i class="fi-head"></i> <span>Профиль</span>
                                 </a>
 
@@ -192,13 +198,13 @@ AppAsset::register($this);
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="/user/logout" class="dropdown-item notify-item">
                                     <i class="fi-power"></i> <span>Выйти</span>
                                 </a>
 
                             </div>
                         </li>
-
+                        <? endif; ?>
                     </ul>
 
                     <ul class="list-inline menu-left mb-0">
