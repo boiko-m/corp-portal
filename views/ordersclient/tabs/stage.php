@@ -28,14 +28,46 @@ foreach ($stage as $st) {
         $cur_stage = $i;
     }
 }
+$array_stage[$cur_stage-10]['opacity'] = 0;
+$array_stage[$cur_stage-9]['opacity'] = 0;
+$array_stage[$cur_stage-8]['opacity'] = 0;
+$array_stage[$cur_stage-7]['opacity'] = 0;
+$array_stage[$cur_stage-6]['opacity'] = 0;
+$array_stage[$cur_stage-5]['opacity'] = 0;
+$array_stage[$cur_stage-4]['opacity'] = 0;
+$array_stage[$cur_stage-3]['opacity'] = 0.22;
+$array_stage[$cur_stage-2]['opacity'] = 0.33;
+$array_stage[$cur_stage-1]['opacity'] = 0.66;
 
-$array_stage[$cur_stage-6]['opacity'] = 0.22;
-$array_stage[$cur_stage-5]['opacity'] = 0.22;
-$array_stage[$cur_stage-4]['opacity'] = 0.22;
-$array_stage[$cur_stage-3]['opacity'] = 0.44;
-$array_stage[$cur_stage-2]['opacity'] = 0.66;
-$array_stage[$cur_stage-1]['opacity'] = 0.88;
+$array_stage[$cur_stage + $i]['class'] = "cur_stage";
 
+for ($i=0; $i < 10; $i++) { 
+    $array_stage[$cur_stage + $i]['opacity'] = 1;
+}
+
+foreach ($array_stage as $array_s) {
+    if ($array_s['opacity'] and $array_s['Название']) {
+        $otobrashenie++;
+    }
+}
+
+$end_stage = 0;
+for ($i=0; $i < count($array_stage); $i++) { 
+    if ($array_stage[$i]['opacity'] and !$end_stage) {
+        $end_stage = 6;
+    } 
+
+    if ($end_stage and $array_stage[$i]['opacity']) {
+        $array_stage[$i+$end_stage]['opacity'] = 0;
+    }
+        
+    
+    
+
+}
+/*if (!$count_stage) {
+    $count_stage=10;
+}*/
 $procent = $cur_stage/$count_stage*100;
 
 if ($cur_stag+3 >= $count_stage) {
@@ -68,11 +100,13 @@ if ($cur_stag+3 >= $count_stage) {
    </style>
 
    <div class="row">
-       <?php foreach ($array_stage as $stage): ?>
-           <div class="col-md-2 col-xs-12" style="opacity: <?=$stage['opacity']?>">
-               <?=$stage['Название'] ?>
-           </div>
-       <?php endforeach ?>
+       <?php foreach ($array_stage as $stage) { ?>
+           <?php if ($stage['opacity']): ?>
+               <div class="col-md-2 col-xs-12" style="opacity: <?=$stage['opacity']?>">
+                   <?=$stage['Название'] ?>
+               </div>
+           <?php endif ?>
+       <?php } ?>
    </div>
     <div class="row etap ">
             <div class="hidden-xs col-md-2">
