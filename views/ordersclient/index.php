@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-12">
                 	Контрагент: <span class="m-t-0 header-title" style="color: black"><?=$client[0]['ПолноеНаименование']?></span> <br>
                 	УНН: <?=$client[0]['УНН']?> <br>
-                	Код контрагента: <?=$client[0]['ИБ'].$client[0]['Code']?> <br>
+                	Код контрагента: <?=$client[0]['Code']?> <br>
                 	Холдинг: Да
                 	<?php // echo var_dump($allorders); ?>
                 
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-12 col-md-6 col-lg-6 col-xl-12">
         <div class="card-box">
             <b style="color: red">* для тестирования </b><?php echo $stop ?> <a href="<?=$odata->link?>" target = blank>ссылка</a> <br>
@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endif ?>
             </div>
         </div>
-</div>
+</div> -->
 
 
 <script>

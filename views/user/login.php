@@ -11,9 +11,9 @@ $this->title = 'Авторизация пользователя';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<section>
-    <div class="container">
-        <div class="row">
+<section style="background: #f1f1f1!important">
+    <div class="container" >
+        <div class="row" st>
             <div class="col-sm-12">
 
                 <div class="wrapper-page">
@@ -43,7 +43,7 @@ $this->title = 'Авторизация пользователя';
                                             <?/*<label for="emailaddress">Email address</label>
                                             <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">*/?>
 
-                                            <?= $form->field($model, 'username')->textInput(['placeholder' => "Введите ваш логин в 1С"])->label("Логин") ?>
+                                            <?= $form->field($model, 'username')->textInput(['placeholder' => "Введите ваш логин в 1C"])->label("Логин") ?>
                                         </div>
                                     </div>
 

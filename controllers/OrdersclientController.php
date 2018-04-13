@@ -58,7 +58,7 @@ class OrdersclientController extends Controller
             ));
         }
 
-        if (count($messages) < $count_messages and $this->messages_old == true) { // если новых сообщений в течении 3 месяцев нет
+        if (count($messages) < $count_messages and $this->messages_old == true or count($messages) == 0 ) { // если новых сообщений в течении 3 месяцев нет
 
             $skip_old = 0;
 
@@ -70,8 +70,6 @@ class OrdersclientController extends Controller
                 'expand' => "Отправитель",
                 'orderby' => 'ДатаОтправления desc'
             ));
-
-            
         }
 
         if (count($messages) < $count_messages) { // запускаем загрузку след пачки старых сообщений со следующего нажатия на кнопку

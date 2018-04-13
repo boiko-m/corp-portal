@@ -10,105 +10,148 @@ function convertDate($date) { // 18.12.2018 - normal date,  2018-03-18T00:00:00 
     return $cur_date;
 }
 
-foreach ($stage as $st) {
-    $count_stage++;
-    $i++;
-    $rand = rand(0, 100);
-    $data = $odata->one("Catalog_ЭтапыПрохожденияСделки", $st['Этап_Key'], array(
-        'select' => "Description"
-    ));
-    $array_stage[$i]['Название'] = $data['Description'];
-    if ($rand>90) {
-        $array_stage[$i]['ТекущийЭтап'] = true;
+
+if ($stage) {
+    foreach ($stage as $st) {
+        $count_stage++;
+        $i++;
+        $rand = rand(0, 100);
+        $data = $odata->one("Catalog_ЭтапыПрохожденияСделки", $st['Этап_Key'], array(
+            'select' => "Description"
+        ));
+        $array_stage[$i]['Название'] = $data['Description'];
+        if ($rand>90) {
+            $array_stage[$i]['ТекущийЭтап'] = true;
+        } else {
+            $array_stage[$i]['ТекущийЭтап'] = $st['ТекущийЭтап'];
+        }
+
+        if ($array_stage[$i]['ТекущийЭтап'] ==true) {
+            $cur_stage = $i;
+        }
+    }
+
+
+
+    $array_stage[$cur_stage-3]['opacity'] = 0.22;
+    $array_stage[$cur_stage-2]['opacity'] = 0.33;
+    $array_stage[$cur_stage-1]['opacity'] = 0.66;
+
+
+
+
+
+    for ($i=1; $i < 10; $i++) { 
+        $array_stage[$cur_stage + $i]['opacity'] = 1;
+    }
+
+    foreach ($array_stage as $array_s) {
+        if ($array_s['opacity'] and $array_s['Название']) {
+            $otobrashenie++;
+        }
+    }
+
+    $end_stage = 0;
+    for ($i=1; $i < count($array_stage); $i++) { 
+        if ($array_stage[$i]['opacity'] and !$end_stage) {
+            $end_stage = 6;
+        } 
+
+        if ($end_stage and $array_stage[$i]['opacity']) {
+            $array_stage[$i+$end_stage]['opacity'] = 0;
+        }
+
+    }
+    if (!$cur_stage) {
+        $cur_stage=0;
     } else {
-        $array_stage[$i]['ТекущийЭтап'] = $st['ТекущийЭтап'];
+        $array_stage[$cur_stage]['cur_stage'] = true;
+        $array_stage[$cur_stage + $i]['class'] = "cur_stage";
     }
 
-    if ($array_stage[$i]['ТекущийЭтап'] ==true) {
-        $cur_stage = $i;
+
+    foreach ($array_stage as $array_s) {
+        if ($array_s['opacity'] and $array_s['Название']) {
+            $count_visible++;
+        }
     }
-}
-$array_stage[$cur_stage-10]['opacity'] = 0;
-$array_stage[$cur_stage-9]['opacity'] = 0;
-$array_stage[$cur_stage-8]['opacity'] = 0;
-$array_stage[$cur_stage-7]['opacity'] = 0;
-$array_stage[$cur_stage-6]['opacity'] = 0;
-$array_stage[$cur_stage-5]['opacity'] = 0;
-$array_stage[$cur_stage-4]['opacity'] = 0;
-$array_stage[$cur_stage-3]['opacity'] = 0.22;
-$array_stage[$cur_stage-2]['opacity'] = 0.33;
-$array_stage[$cur_stage-1]['opacity'] = 0.66;
-
-$array_stage[$cur_stage + $i]['class'] = "cur_stage";
-
-for ($i=0; $i < 10; $i++) { 
-    $array_stage[$cur_stage + $i]['opacity'] = 1;
-}
-
-foreach ($array_stage as $array_s) {
-    if ($array_s['opacity'] and $array_s['Название']) {
-        $otobrashenie++;
+    if ($count_visible == 3) {
+        $array_stage[$cur_stage-4]['opacity'] = 0.22;
+        $array_stage[$cur_stage-5]['opacity'] = 0.22;
     }
-}
-
-$end_stage = 0;
-for ($i=0; $i < count($array_stage); $i++) { 
-    if ($array_stage[$i]['opacity'] and !$end_stage) {
-        $end_stage = 6;
-    } 
-
-    if ($end_stage and $array_stage[$i]['opacity']) {
-        $array_stage[$i+$end_stage]['opacity'] = 0;
+    if ($count_visible == 4) {
+        $array_stage[$cur_stage-5]['opacity'] = 0.22;
     }
-        
-    
-    
 
-}
-/*if (!$count_stage) {
-    $count_stage=10;
-}*/
-$procent = $cur_stage/$count_stage*100;
+    $procent = $cur_stage/$count_stage*100;
+   
 
-if ($cur_stag+3 >= $count_stage) {
-    # code...
+} else {
+    $etap_error = true;
 }
+
+
+
+
 ?>
 
 
-    
-    <div class="row">
-        <div class="col-xs-12">
-            <h5>Этап заказа</h5>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="hidden-xs col-md-12">
-            <div class="progress mb-10">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?=$procent?>%"></div>      
+    <?php if (!$etap_error) { ?>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Этап заказа</h5>
+                <h6>Выполнено <?=round($procent, 0)?>%</h6>
             </div>
         </div>
-    </div>
 
-   <style>
-       .etap {
-            text-align: center;
-            background: #f7f7f7;
-            border-radius: 5px;
-       }
-   </style>
+        <div class="row">
+            <div class="hidden-xs col-md-12">
+                <div class="progress mb-10">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?=$procent?>%"></div>      
+                </div>
+            </div>
+        </div>
 
-   <div class="row">
-       <?php foreach ($array_stage as $stage) { ?>
-           <?php if ($stage['opacity']): ?>
-               <div class="col-md-2 col-xs-12" style="opacity: <?=$stage['opacity']?>">
-                   <?=$stage['Название'] ?>
-               </div>
-           <?php endif ?>
-       <?php } ?>
-   </div>
-    <div class="row etap ">
+       <style>
+           .etap {
+                text-align: center;
+                background: #f7f7f7;
+                border-radius: 5px;
+                padding: 10px 0px;
+           }
+           .cur_stage {
+                color: black;
+                border-left:1px solid #d7d7d7;
+           }
+           .etap > div:hover {
+                opacity: 1!important;
+           }
+       </style>
+
+       <div class="row etap">
+           <?php foreach ($array_stage as $stage) { ?>
+               <?php if ($stage['opacity'] and !$stage['cur_stage']): ?>
+                   <div class="col-md-2 col-xs-12 stage_etap" style="opacity: <?=$stage['opacity']?>" >
+                       <?=$stage['Название'] ?>
+                   </div>
+               <?php endif ?>
+               <?php if ($stage['cur_stage']): ?>
+                   <div class="col-md-2 col-xs-12 cur_stage stage_etap">
+                       <?=$stage['Название'] ?> <br>
+                       <i class="dripicons-star"></i>
+                   </div>
+               <?php endif ?>
+           <?php } ?>
+       </div>
+    <?php } else { ?>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Этапы заказа не добавлены</h5>
+            </div>
+        </div>
+    <?php } ?>
+    
+    <!-- <div class="row etap ">
             <div class="hidden-xs col-md-2">
                 Подготовка к продаже
             </div>
@@ -128,7 +171,7 @@ if ($cur_stag+3 >= $count_stage) {
                 Получение аванса
             </div>
        
-    </div>
+    </div> -->
     
 
 <div class="mb-10" style="color: white;">
