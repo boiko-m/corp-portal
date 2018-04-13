@@ -21,12 +21,12 @@ $this->title = 'Авторизация пользователя';
                     <div class="account-pages">
                         <div class="account-box">
                             <div class="account-logo-box">
-                                <h2 class="text-uppercase text-center" style="background: #3c86d8; border-radius: 5px; padding: 5px;">
+                                <h2 class="text-uppercase text-center">
                                     <a href="/" class="text-success">
-                                        <span><img src="/images/logo.png" alt="" height="32"></span>
+                                        <span><img src="/images/logo_dark.png" alt="" height="32"></span>
                                     </a>
                                 </h2>
-                                <h6 class="text-uppercase text-center font-bold mt-4">Авторизация пользователя</h6>
+                                
                             </div>
                             <div class="account-content">
                                 <?php $form = ActiveForm::begin([
@@ -72,7 +72,7 @@ $this->title = 'Авторизация пользователя';
                                         <div class="col-12">
                                             <?= Html::submitButton(
                                                 'Войти',
-                                                ['class' => 'btn btn-block btn-gradient waves-effect waves-light', 'name' => 'login-button']
+                                                ['style' => 'background:#495a6f!important','class' => 'btn btn-block btn-gradient waves-effect waves-light', 'name' => 'login-button']
                                             ) ?>
                                         </div>
                                     </div>
