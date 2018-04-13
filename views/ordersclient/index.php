@@ -5,7 +5,8 @@ use yii\helpers\html;
 use yii\widgets\Pjax;
 
 $this->title = 'Заказ покупателя';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Все заказы', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title . ": " . $client[0]['ПолноеНаименование'];
 //echo "<pre>".print_r($users, true)."</pre>";
 
 ?>
@@ -32,12 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
      <div class="col-xl-12 container-fluid">
         <div class="card-box">
             <div class="row">
-                <div class="col-xl-3 col-xs-12 left_menu_orders">
+                <div class="col-xl-3 col-xs-12 left_menu_orders" style="border-right:1px solid #ededed;padding: 0px 0px 0px 5px;">
                     <?php 
                         $spares = $allorders[1];
                         $tehnika = $allorders[0];
                      ?>
-                	<h6>Заказы в работе</h6>
                     <?php if ($spares): ?>
                         <h7>Запчасти</h7>
                         <?php foreach ($spares as $order): ?>
@@ -48,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </a>
                             </div>
                         <?php endforeach ?>
+                        <br>
                     <?php endif ?>
                     
                 	<?php if (isset($tehnika)): ?>
@@ -65,7 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                
                 <div id="ajax-container" class="col-xl-8 col-xs-12 container-fluid mainorders">
-                    Выберите заказ
+                    <div class="text-danger" style="text-align: center;">
+                        <h2><i class="dripicons-warning"></i></h2>  Выберите активный заказ слева
+                    </div>
                 </div>               
 
     

@@ -113,19 +113,37 @@ class OrdersclientController extends Controller
         return $this->renderPartial('tab', array('order' => $order, "odata" => $odata, "allmessages" => $allmessages, "bussiness" => $bussiness));
     }
 
-    public function actionIndex($id = null, $type = null)
+    public function actionIndex($client = null, $type = null)
     {
         $odata = new Odata();
         $start = microtime(true);
 
-        $user_key = "73fa0e86-916d-11da-98f1-505054503030";
+        $user_key = "d1e7037f-3fa3-11d9-8d9d-0050da61c030";
 
-        $kontragent_key = "5511ca99-5e7a-11d9-977f-505054503030";
+        //$kontragent_key = "5511ca99-5e7a-11d9-977f-505054503030";
         // $company_key = "8450e1c2-cffa-46bf-b5d0-3d0b8d00c202";
-        $kontragent_code = "MOS-000457"; //VOL-003812
+        //$kontragent_code = "MOS-000457"; //VOL-003812
+
+        
+
+        if (!$client) {
+            $allorders = $odata->get("Document_ЗаказПокупателя", array(
+                //'expand' => "УчастникиСделки.Сотрудник_Key",
+                //'eq' => array("УчастникиСделки/Сотрудник_Key" => $user_key)
+                'top' =>15,
+                //'key' => array("УчастникиСделки/Сотрудник_Key" => $user_key),
+                'eq' => array("Статус" => "ВРаботе"),
+                'expand' => 'Контрагент',
+                'orderby' => 'Date desc',
+                'select' => "Date, Контрагент/Description, Контрагент/Ref_Key, Контрагент/Code, Контрагент/ТипКонтрагента"
+            ));
+            // 1e2a8c87-5e73-11d9-977f-505054503030
+            //$odata->link();
+            return $this->render('orders', array('odata' => $odata, 'allorders' => $allorders));
+        }
 
         $client_code = $odata->get("Catalog_Контрагенты", array(
-            'where' => array('Code', $kontragent_code)
+            'where' => array('Code', $client)
         ));
 
 
