@@ -14,11 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-        ],
-    ]) ?>
-
+    <?
+    echo "<pre>".print_r($model->first_name, true)."</pre>";
+    echo "<pre>".print_r($model->img, true)."</pre>";
+    echo "<pre>".print_r($model->position, true)."</pre>";
+    ?>
 </div>
