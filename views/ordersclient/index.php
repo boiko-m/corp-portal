@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title . ": " . $client[0]['Полное�
     <div class="col-md-12 container-fluid">
         <div class="card-box">
             <div class="row">
-                <div class="col-12">
+                <div class="col-xs-12">
                 	Контрагент: <span class="m-t-0 header-title" style="color: black"><?=$client[0]['ПолноеНаименование']?></span> <br>
                 	УНН: <?=$client[0]['УНН']?> <br>
                 	Код контрагента: <?=$client[0]['Code']?> <br>

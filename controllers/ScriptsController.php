@@ -59,105 +59,11 @@ class ScriptsController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
-        /*$role = Yii::$app->authManager->createRole('admin');
-        $role->description = 'Админ';
-        Yii::$app->authManager->add($role);
-
-        $role = Yii::$app->authManager->createRole('user');
-        $role->description = 'Юзер';
-        Yii::$app->authManager->add($role);*/
-
-        return $this->render('index', array("a" => $a, "news" => $news, 'video' => $video, 'user_new' => $user_new));
+        $scripts = 123;
+        return $this->render('index', compact("scripts"));
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Register action.
-     *
-     * @return Response|string
-     */
-    public function actionRegister()
-    {
-        $model = new RegisterForm();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->register()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
-
-        return $this->render('register', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
+   
 }
