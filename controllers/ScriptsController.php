@@ -10,10 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
-use app\models\News;
-use app\models\Videos;
-use app\models\User;
 
+use app\models\Scripts;
 
 class ScriptsController extends Controller
 {
@@ -61,8 +59,19 @@ class ScriptsController extends Controller
 
     public function actionIndex()
     {
-        $scripts = 123;
+        $scripts = Scripts::find()->orderBy('id asc')->where(['id_fk_scripts' => null])->all();
         return $this->render('index', compact("scripts"));
+    }
+    public function actionUpdate($id) {
+        if ($id == 'reset') {
+            $reset=true;
+            $scripts = Scripts::find()->orderBy('id asc')->where(['id_fk_scripts' => null])->all();
+        } else {
+            $data = Scripts::find()->where(['id' => $id])->one();
+            $answers = Scripts::find()->orderBy('id desc')->where(['id_fk_scripts' => $id])->all();
+        }
+        
+        return $this->renderPartial('view', compact("data", "answers", "reset", "scripts"));
     }
 
    
