@@ -35,6 +35,13 @@ $profile = Yii::$app->user->identity->profile;
             <i class="fi-head"></i> <span>Профиль</span>
         </a>
 
+        <?if(\Yii::$app->user->can("Admin")):?>
+        <!-- item-->
+        <a href="/admin/" class="dropdown-item notify-item">
+            <i class="fi-lock"></i> <span>Админ-панель</span>
+        </a>
+        <?endif;?>
+
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item notify-item">
             <i class="fi-cog"></i> <span>Настройки</span>

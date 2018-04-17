@@ -5,11 +5,27 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru',
+    'sourceLanguage' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\AdminModule',
+            'layout' => '/admin'
+        ],
+        'rbac' => [
+            'class' => 'yii2mod\rbac\Module',
+            'layout' => '/admin',
+            //'sourceLanguage' => 'ru',
+            /*'as access' => [
+                'class' => yii2mod\rbac\filters\AccessControl::class
+            ],*/
+        ]
     ],
     'components' => [
         'request' => [
@@ -45,6 +61,24 @@ $config = [
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest', 'user'],
+        ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
+                    'sourceLanguage' => 'ru',
+                    'fileMap' => [
+                        //'main' => 'main.php',
+                    ],
+                ],
+                'rbac' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'ru',
+                    'basePath' => '@vendor/yii2mod/yii2-rbac/messages',
+                ]
+            ],
         ],
         'db' => $db,
         'assetManager' => [
@@ -64,7 +98,6 @@ $config = [
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
             ],
         ],
-
     ],
     'as beforeRequest' => [
         'class' => 'yii\filters\AccessControl',
