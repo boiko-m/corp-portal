@@ -5,8 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'language' => 'ru',
     'sourceLanguage' => 'ru',
+    'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -65,6 +65,11 @@ $config = [
         ],
         'i18n' => [
             'translations' => [
+                'rbac' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'ru',
+                    'basePath' => '@vendor/yii2mod/yii2-rbac/messages',
+                ],
                 '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@app/messages', // if advanced application, set @frontend/messages
@@ -73,11 +78,7 @@ $config = [
                         //'main' => 'main.php',
                     ],
                 ],
-                'rbac' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'sourceLanguage' => 'ru',
-                    'basePath' => '@vendor/yii2mod/yii2-rbac/messages',
-                ]
+
             ],
         ],
         'db' => $db,
