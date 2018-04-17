@@ -35,7 +35,24 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '
+                    {view}
+                    {update}
+                    {delete}
+                    {auth}
+                ',
+                'buttons' => [
+                    'auth' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-user"></span>', $url, [
+                            'title' => 'Авторизироваться',
+                            'data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?"
+                        ]);
+                    },
+                ]
+
+            ],
         ],
     ]); ?>
 </div>

@@ -58,6 +58,21 @@ class UserController extends Controller
     }
 
     /**
+     * Authentication by the selected user.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionAuth($id)
+    {
+        if($user = $this->findModel($id)) {
+            \Yii::$app->user->login($user);
+            return $this->goHome();
+        }
+        return $this->goBack();
+    }
+
+    /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
