@@ -33,19 +33,19 @@ use app\models\User;
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Пользователи </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="<?=Url::toRoute(['user/index'])?>">Дан. авторизации</a></li>
-                        <li><a href="<?=Url::toRoute(['profile/index'])?>">Профили</a></li>
+                        <li><a href="/admin/user">Дан. авторизации</a></li>
+                        <li><a href="/admin/profile">Профили</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="<?=Url::toRoute(['news/index'])?>">
+                    <a href="/admin/news">
                         <i class="fi-file"></i> <span>Новости</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="<?=Url::toRoute(['videos/index'])?>">
+                    <a href="/admin/videos">
                         <i class="fi-file"></i> <span>Видео</span>
                     </a>
                 </li>
@@ -53,8 +53,8 @@ use app\models\User;
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Подарки </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="<?=Url::toRoute(['gift/index'])?>">Подарки</a></li>
-                        <li><a href="<?=Url::toRoute(['gift-type/index'])?>">Типы подарков</a></li>
+                        <li><a href="/admin/gift">Подарки</a></li>
+                        <li><a href="/admin/gift-type">Типы подарков</a></li>
                     </ul>
                 </li>
 
