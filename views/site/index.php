@@ -32,14 +32,14 @@ use app\models\Profile;
             </div>
         </div>
         <div class="col-xs-12 col-md-4">
-            <div class="card-box">
-                <h5 class="card-title">Новое видео на портале</h5>
+            <div class="card">
+                <h5 class="card-title" style="padding: 15px">Новое видео на портале</h5>
                 <div class="m-b-10">
                     <a href="/video/<?=$video['id']?>">
                         <img src="http://portal.lbr.ru/img/videos/4dhYmbB1pEA.jpg" alt="" style="width: 100%">
                     </a>
                 </div>
-                <div class="block m-t-10" style="padding-top: 10px">
+                <div class="block m-t-10" style="padding: 10px">
                     <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
                     <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Все видео</button>
                 </div>
@@ -103,7 +103,7 @@ use app\models\Profile;
     <div class="col-xs-12 col-md-4">
         <div class="card-box">
             <div>
-                Коллеги онлайн
+                Пользователи в сети: <?=count($online) ?>
             </div>
             <div class="row">
                 <div class="col">
