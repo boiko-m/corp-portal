@@ -10,6 +10,10 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Авторизация пользователя';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php if ($_GET['password_reset']): ?>
+    На вашу почту <?=$_GET['password_reset']?> отправлено письмо с дальнейшими действиями. 
+<?php exit;endif ?>
+
 
 <section style="background: #f1f1f1!important">
     <div class="container" >
@@ -19,7 +23,7 @@ $this->title = 'Авторизация пользователя';
                 <div class="wrapper-page">
 
                     <div class="account-pages">
-                        <div class="account-box">
+                        <div class="account-box" >
                             <div class="account-logo-box">
                                 <h2 class="text-uppercase text-center">
                                     <a href="/" class="text-success">
@@ -28,7 +32,17 @@ $this->title = 'Авторизация пользователя';
                                 </h2>
                                 
                             </div>
-                            <div class="account-content">
+                            
+                            <div class="account-content" id = "account-content">
+                                <?php if ($_GET['password_save']): ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 0px;margin-bottom: 20px;">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        Пароль успешно изменен!
+                                    </div>
+                                <?php endif ?>
+
                                 <?php $form = ActiveForm::begin([
                                     'id' => 'login-form',
                                     'layout' => 'horizontal',
@@ -51,12 +65,13 @@ $this->title = 'Авторизация пользователя';
                                         <div class="col-12">
                                             <?/*<label for="password">Password</label>
                                             <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">*/?>
-                                            <a href="javascript:void(0);" class="text-muted pull-right"><small>Забыли пароль?</small></a>
+                                            
                                             <?= $form->field($model, 'password')->passwordInput(['placeholder' => "Введите ваш пароль"])->label("Пароль") ?>
+
                                         </div>
                                     </div>
-
-                                    <div class="form-group row m-b-20">
+                                   
+                                    <div class="form-group row m-b-0" style="margin:0px -10px">
                                         <div class="col-12">
 
                                             <div class="checkbox checkbox-success">
@@ -67,7 +82,12 @@ $this->title = 'Авторизация пользователя';
 
                                         </div>
                                     </div>
-
+                                     <div class="col-12 m-b-30">
+                                        
+                                                    <a href = "#reset" onclick = "ajax('/user/login','reset=true','account-content')" class="text-muted"><small>Я новый пользователь. Я забыл свой пароль. Что делать?</small></a>
+                                                
+                                            </div>
+                                    
                                     <div class="form-group row text-center m-t-10">
                                         <div class="col-12">
                                             <?= Html::submitButton(
@@ -90,3 +110,4 @@ $this->title = 'Авторизация пользователя';
         </div>
     </div>
 </section>
+

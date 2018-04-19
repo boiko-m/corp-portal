@@ -1,11 +1,12 @@
 
-	function loadimage($attr) {
-        $($attr).html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">Загрузка</div></div>');
+	function loadimage($attr, $text = null) {
+        if (!$text) {$text = "Загрузка";};
+        $($attr).html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">' + $text + '</div></div>');
     }
 
-     function ajax($action = null, $data = null, $ajax_container = "ajax-container") {
+     function ajax($action = null, $data = null, $ajax_container = "ajax-container", $text = null) {
         $ajax_container = "#" + $ajax_container;
-        loadimage($ajax_container);
+        loadimage($ajax_container, $text);
         $.ajax({
             url: $action + '/',  
             data: $data,
@@ -13,6 +14,7 @@
                 $($ajax_container).html(data);
             }               
         });
+
      }
 
      function ajaxappend($action = null, $data = null, $ajax_container = "ajax-container") {
