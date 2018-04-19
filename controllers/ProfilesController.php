@@ -41,11 +41,13 @@ class ProfilesController extends Controller
         }
 
         $alphabetModels = Profile::find()->select(['last_name'])->all();
+        
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'alphabet' => $this->getAlphabet($alphabetModels),
             'searchModel' => $searchModel,
+            'user' => $user
         ]);
     }
 
@@ -57,8 +59,12 @@ class ProfilesController extends Controller
      */
     public function actionView($id)
     {
+       $model = $this->findModel($id);
+       $user = User::findIdentity($model->id);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'user' => $user
         ]);
     }
 

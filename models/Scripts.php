@@ -57,4 +57,18 @@ class Scripts extends ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
+
+    public static function getScript($id) {
+        return Scripts::find()->orderBy('id desc')->where(['id_fk_scripts' => $id])->all();
+    }
+
+    public static function getScriptTop($id) {
+        $script = static::findOne(['id' => $id]);
+        if (!$script['id_fk_scripts']) {
+            return $script; 
+        } else {
+            return static::getScriptTop($script['id_fk_scripts']);
+        }
+    }
+
 }

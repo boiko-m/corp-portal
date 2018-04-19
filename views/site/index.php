@@ -49,7 +49,7 @@ $this->title = 'Главная';
     </div>
 </div>
 
-
+<!-- 
 <div class="row">
     <div class="col-xs-12 col-md-4 ">
         <div class="card-box font-13">
@@ -77,7 +77,7 @@ $this->title = 'Главная';
             Коллеги онлайн
         </div>
     </div>
-</div>
+</div> -->
     
 
 </div>

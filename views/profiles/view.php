@@ -14,55 +14,167 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
 	<div class="col-xs-12 col-md-4">
-        <div class="card m-b-30" style="padding: 20px;">
-            <img class="card-img-top img-fluid" src="http://portal.lbr.ru/img/user/thumbnail_<?=$model->img?>" alt="Card image cap" style = "border-radius: 5px">
-            <div class="card-body" style="padding: 10px 0px">
-                <h5 class="card-title" style="font-weight: bold;color: black"><?=$model->first_name?> <?=$model->last_name?></h5>
-                <p class="card-text">
-                    <?=$model->department?> <br>
-                    <?=$model->position?> <br>
-                </p>
-                <p class="card-text">
-                    <small class="text-muted">Был в сети 3 минуты назад</small>
-                </p>
+        
+
+        <div class="row">
+            <div class="card col-12" style="padding: 20px;margin-bottom: 10px">
+                
+
+                <img class="card-img-top img-fluid" src="http://portal.lbr.ru/img/user/thumbnail_<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
+
+                <div class="card-body" style="padding: 10px 0px">
+                    
+                   
+                    <!-- <p class="card-text">
+                        <small class="text-muted">Был в сети 3 минуты назад</small>
+                    </p> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 card-box">
+                asd
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-8" style="    font-family: Open Sans,Helvetica,Arial,sans-serif;">
+    <div class="col-xs-12 col-md-8">
+
+        
+
         <div class="card-box m-b-30">
+
+            <div class="row">
+                <div class="col-10">
+                    <h5 class="card-title" style="font-weight: bold;color: black"><?=$model->first_name?> <?=$model->last_name?></h5>
+                    <p class="card-text">
+                        <?=$model->branch?>,
+                        <?=$model->department?>, 
+                        <?=$model->position?>
+                    </p>
+                </div>
+                <div class="col-2" style="color:#d6d6d6;font-size: 12px;text-align: right">
+                    online
+                </div>
+            </div>
+
+            <br>
                     <ul class="nav nav-tabs tabs-bordered">
                         <li class="nav-item">
                             <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                Основная
+                                Основная информация
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
                                 Сообщения
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                Управление
+                            </a>
+                        </li> -->
                     </ul>
+                    <style>
+                        .information_row {
+                            border-bottom: 1px solid #ebebeb;
+                            padding: 5px;
+                        }
+                    </style>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="home-b1">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                            
+                            
+                            <?php if ($model->phone1): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон 1
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone1 ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($model->phone2): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон 2
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone2 ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+
+                            <div class="row information_row">
+                                <div class="col">
+                                    Скайп
+                                </div>
+                                <div class="col">
+                                    <a href="skype:<?=$model->skype ?>?chat"><?=$model->skype ?></a>
+                                </div>
+                            </div>
+
+                            <div class="row information_row">
+                                <div class="col">
+                                    Электронная почта
+                                </div>
+                                <div class="col">
+                                    <a href="mailto:<?=$user->email ?>"><?=$user->email ?></a>
+                                </div>
+                            </div>
+
+                            <?php if (isset($model->sip) and $model->sip != 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        SIP
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->sip ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            
+                            <?php if ($model->cabinet): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Кабинет
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->cabinet ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($model->phone_cabinet and $model->phone_cabinet != "-"): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Внутренний телефон
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone_cabinet ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($model->about): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Обо мне
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->about ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+
                         </div>
+
                         <div class="tab-pane fade" id="profile-b1">
-                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                            2 часть
                         </div>
             </div>
 
         </div>
     </div>
-    <div class="col-xs-12 col-md-4 ">
-        <div class="card-box">
-            asd
-        </div>
-        
-    </div>
+   
 </div>
