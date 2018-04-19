@@ -28,6 +28,11 @@ $config = [
         ]
     ],
     'components' => [
+        'session' => [
+            'class' => 'app\widgets\CustomDbSession',
+            // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
+            'sessionTable' => 'session', // session table name. Defaults to 'session'.
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '7UNVz0EmjzrmhMLgN5GnWJBUcvwoL2d_',

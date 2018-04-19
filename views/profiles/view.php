@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Session;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -10,7 +11,6 @@ $this->title = "Профиль: " . $model->first_name . " " . $model->last_name
 $this->params['breadcrumbs'][] = ['label' => 'Сотрудники', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 
 <div class="row">
 	<div class="col-xs-12 col-md-4 ">
@@ -25,24 +25,32 @@ $this->params['breadcrumbs'][] = $this->title;
         </div> -->
     </div>
     <div class="col-xs-12 col-md-8">
-
-        
-
         <div class="card-box m-b-30">
 
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-title" style="font-weight: bold;color: black"><?=$model->first_name?> <?=$model->last_name?></h5>
-                    <p class="card-text">
-                        <?=$model->branch?>,
-                        <?=$model->department?>, 
-                        <?=$model->position?>
-                    </p>
+                    <div >
+                        <h5  class="card-title" style="font-weight: bold;color: black"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
+                    </div>
+                    
                 </div>
                 <div class="col-2" style="color:#d6d6d6;font-size: 12px;text-align: right">
                     online
                 </div>
+             </div>
+            <div class="row">
+                <div class="col-auto d-xs-block">
+                    <?=$model->branch?>
+                </div>
+                <div class="col-auto d-xs-block">
+                    <?=$model->department?>
+                </div>
+                <div class="col-auto d-xs-block">
+                    <?=$model->position?>
+                </div>
             </div>
+
+           
 
             <br>
                     <ul class="nav nav-tabs tabs-bordered">

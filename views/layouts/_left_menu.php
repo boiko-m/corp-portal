@@ -13,31 +13,31 @@
                 </li>
 
                 <?if(\Yii::$app->user->can("viewOrdersClient")):?>
-                <li>
-                    <a href="/ordersclient/">
-                        <i class="dripicons-list"></i> <span> Мои заказы </span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/ordersclient/">
+                            <i class="dripicons-list"></i> <span> Мои заказы </span>
+                        </a>
+                    </li>
                 <?endif;?>
 
 
                 <?if(\Yii::$app->user->can("viewScripts")):?>
-                <li>
-                    <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/scripts/">Скрипты</a></li>
-                    </ul>
-                    <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
-                        <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
-                            <ul class="nav-third-level nav collapse" aria-expanded="false">
-                                <li><a href="javascript: void(0);">энергонасыщенные тракторы</a></li>
-                                <li><a href="javascript: void(0);">прикатывающие катки</a></li>
-                                <li><a href="javascript: void(0);">навесное оборудование к фронтальным погрузчикам</a></li>
-                                <li><a href="javascript: void(0);">косилки</a></li>
-                            </ul>
-                        </li>
-                    </ul> -->
-                </li>
+                    <li>
+                        <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="/scripts/">Скрипты</a></li>
+                        </ul>
+                        <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
+                            <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
+                                <ul class="nav-third-level nav collapse" aria-expanded="false">
+                                    <li><a href="javascript: void(0);">энергонасыщенные тракторы</a></li>
+                                    <li><a href="javascript: void(0);">прикатывающие катки</a></li>
+                                    <li><a href="javascript: void(0);">навесное оборудование к фронтальным погрузчикам</a></li>
+                                    <li><a href="javascript: void(0);">косилки</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
                 <?endif;?>
 
                 <li>

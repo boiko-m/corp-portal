@@ -13,7 +13,8 @@ use app\models\ContactForm;
 use app\models\News;
 use app\models\Videos;
 use app\models\User;
-
+use app\models\Session;
+use app\models\Profile;
 
 class SiteController extends Controller
 {
@@ -51,7 +52,8 @@ class SiteController extends Controller
         return $this->render('index', [
             "news" => News::find()->orderBy('id desc')->limit(5)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
-            'user_new' => User::find()->orderBy('id desc')->limit(3)->all()
+            'user_new' => Profile::find()->orderBy('id desc')->limit(3)->all(),
+            'online' => Session::getOnline()
         ]);
     }
 }
