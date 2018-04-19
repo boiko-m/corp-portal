@@ -52,7 +52,7 @@ class Session extends \yii\db\ActiveRecord
         $users_online = static::find()->groupby("user_id")->all();
         foreach ($users_online as $user_online) {
             if ($user_online['user_id']) {
-                $result_to[] = static::find()->where(["user_id" => $user_online['user_id']])->orderby("expire desc")->one();
+                $result_to[] = static::find()->where("user_id = " . $user_online['user_id'] . " and expire > " . time() - 60*2)->orderby("expire desc")->one();
                 
             }
         }

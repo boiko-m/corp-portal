@@ -66,8 +66,8 @@
                     <a href="javascript: void(0);"><i class=" dripicons-information"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
-                        <li><a href="email-read.html">Обучающий материал</a></li>
-                        <li><a href="email-compose.html">Видео материал</a></li>
+                        <li><a href="/training/">Обучающий материал</a></li>
+                        <li><a href="/videos/">Видео материал</a></li>
                         <li><a href="/knowledge/indebtedness/">Общение с клиентом по погашению просроченной задолжности</a></li>
                     </ul>
                 </li>

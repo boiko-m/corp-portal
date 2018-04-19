@@ -28,30 +28,45 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-box m-b-30">
 
             <div class="row">
-                <div class="col-10">
+                <div class="col-9">
                     <div >
                         <h5  class="card-title" style="font-weight: bold;color: black"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
                     </div>
                     
                 </div>
-                <?php if (Session::getOnlineUser($model->id)): ?>
-                    <div class="col-2" style="color:#d6d6d6;font-size: 12px;text-align: right">
+                <?php if (Session::getOnlineUser($model->id)) { ?>
+                    <div class="col-3 text-right" style="color:#d6d6d6;font-size: 12px;">
                         online
                     </div>
-                <?php endif ?>
+                <?php } ?>
                 
              </div>
             <div class="row">
-                <div class="col-auto d-xs-block">
+                <div class="col-2">
+                    Филиал:
+                </div>
+                <div>
                     <?=$model->branch?>
                 </div>
-                <div class="col-auto d-xs-block">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    Отдел:
+                </div>
+                <div>
                     <?=$model->department?>
                 </div>
-                <div class="col-auto d-xs-block">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    Должность:
+                </div>
+                <div>
                     <?=$model->position?>
                 </div>
             </div>
+                
+                
 
            
 

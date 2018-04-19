@@ -4,30 +4,39 @@
 
 $this->title = 'Главная';
 use app\models\Profile;
-//echo "<pre>".print_r($users, true)."</pre>";
+
 ?>
-
-
-
-
-
-
-
+<style>
+    .news-a {
+        margin-top: 10px;
+    }
+    .news-a a {
+        color:#444444;
+        transition: 0.3s;
+        display: block;
+        padding: 0px 5px;
+    }
+    .news-a a:hover {
+        color: black;
+        background: #f5f5f5;
+        padding-left: 10px;
+    }
+</style>
     <div class="row">
         <div class="col-xs-12 col-md-8">
             <div class="card-box">
                 <h5 class="card-title">Новости</h5>
-                <div class="col-xs-12 conteiner-fluid">
+                <div class="col-xs-12" style="margin-left: 15px">
                     <?php foreach ($news as $item): ?>
-                        <div class="col-xs-12" style="margin-top: 10px;">
-                            <a href="/news/<?=$item['id']?>" style="color:#444444">
-                                <?=$item['title'] ?> <br><small class="text-muted">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
+                        <div class="col-xs-12 news-a">
+                            <a href="/news/<?=$item['id']?>">
+                                <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
                             </a>
                         </div>
                     <?php endforeach ?>
                 </div>
                 <div style="padding-top: 10px;">
-                    <button class="btn btn-link waves-effect w-md btn-warning">Открыть все новости</button>
+                    <button class="btn  waves-effect w-md btn-light">Открыть все новости</button>
                 </div>
             </div>
         </div>

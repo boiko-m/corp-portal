@@ -30,7 +30,6 @@ $this->title = 'Авторизация пользователя';
                                         <span><img src="/images/logo_dark.png" alt="" height="32"></span>
                                     </a>
                                 </h2>
-                                
                             </div>
                             
                             <div class="account-content" id = "account-content">
