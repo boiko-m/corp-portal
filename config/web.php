@@ -22,9 +22,9 @@ $config = [
             'class' => 'yii2mod\rbac\Module',
             'layout' => '/admin',
             //'sourceLanguage' => 'ru',
-            /*'as access' => [
+            'as access' => [
                 'class' => yii2mod\rbac\filters\AccessControl::class
-            ],*/
+            ],
         ]
     ],
     'components' => [
