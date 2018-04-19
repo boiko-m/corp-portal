@@ -23,7 +23,17 @@ class OrdersclientController extends Controller
 
     public function behaviors()
     {
-        return [];
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['Manager'],
+                    ],
+                ],
+            ]
+        ];
     }
 
     /**
@@ -75,9 +85,9 @@ class OrdersclientController extends Controller
         if (count($messages) < $count_messages) { // запускаем загрузку след пачки старых сообщений со следующего нажатия на кнопку
            $this->messages_old = true;
         }
-        
 
-        
+
+
 
         return $this->renderPartial("tabs/messages", array("messages" => $messages, "odata" => $odata, 'skip' => $skip+$count_messages, 'ref' => $ref, 'count_messages' => $count_messages));
     }
@@ -98,7 +108,7 @@ class OrdersclientController extends Controller
             'expand' => "Отправитель",
             'orderby' => 'ДатаОтправления desc'
         ))); // количество старых
-        
+
 
 
         $bussiness = $odata->get("BusinessProcess_ПоручениеЗадание", array(
@@ -109,7 +119,7 @@ class OrdersclientController extends Controller
         ));
 
        $order = $odata->getOne("Document_ЗаказПокупателя", $ref);
-    
+
         return $this->renderPartial('tab', array('order' => $order, "odata" => $odata, "allmessages" => $allmessages, "bussiness" => $bussiness));
     }
 
@@ -124,7 +134,7 @@ class OrdersclientController extends Controller
         // $company_key = "8450e1c2-cffa-46bf-b5d0-3d0b8d00c202";
         //$kontragent_code = "MOS-000457"; //VOL-003812
 
-        
+
 
         if (!$client) {
             $allorders = $odata->get("Document_ЗаказПокупателя", array(
@@ -160,15 +170,15 @@ class OrdersclientController extends Controller
             'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
             'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляТоваров"))
         ));
-        
+
         $allorders[1] = $debug = $odata->get("Document_ЗаказПокупателя", array(
             'top' => 10,
             'orderby' => "Date desc",
             'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
             'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляЗапчастей"))
         ));
-        
-        
+
+
 
         $stop = 'Время получения ответа: ' . round( microtime(true) - $start, 2 ) . ' сек.';
 

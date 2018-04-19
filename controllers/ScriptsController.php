@@ -18,28 +18,20 @@ class ScriptsController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+     public function behaviors()
+     {
+         return [
+             'access' => [
+                 'class' => AccessControl::className(),
+                 'rules' => [
+                     [
+                         'allow' => true,
+                         'roles' => ['Manager'],
+                     ],
+                 ],
+             ]
+         ];
+     }
 
     /**
      * {@inheritdoc}
@@ -74,9 +66,9 @@ class ScriptsController extends Controller
             }
         }
 
-        
+
         return $this->renderPartial('view', compact("data", "answers", "reset", "scripts"));
     }
 
-   
+
 }
