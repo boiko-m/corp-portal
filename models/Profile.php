@@ -45,7 +45,7 @@ class Profile extends \yii\db\ActiveRecord
         return [
             [['id'], 'required'],
             [['id', 'sex', 'sip'], 'integer'],
-            [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
+            [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service', 'email'], 'string'],
             [['birthday', 'date_job'], 'safe'],
             [['id'], 'unique'],
         ];
@@ -88,5 +88,26 @@ class Profile extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id']);
+    }
+
+    public function getImage() {
+
+        if ($this->img) {
+            $img = "/img/user/thumbnail_" . $this->img;
+        }
+
+        if (!$img or $this->img == "noimg.jpg") {
+            if ($this->sex == 1) {
+                $img = '/img/user/thumbnail_no-profile-m.png';
+            } else {
+                $img = '/img/user/thumbnail_no-profile-f.png';
+            }
+        }
+
+        /*if (!$this->img_accept) { // доделать
+            $img = $not_img;
+            $this->img == "noimg.jpg"
+        }*/
+        return $img;
     }
 }
