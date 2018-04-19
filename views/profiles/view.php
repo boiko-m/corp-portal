@@ -34,9 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     
                 </div>
-                <div class="col-2" style="color:#d6d6d6;font-size: 12px;text-align: right">
-                    online
-                </div>
+                <?php if (Session::getOnlineUser($model->id)): ?>
+                    <div class="col-2" style="color:#d6d6d6;font-size: 12px;text-align: right">
+                        online
+                    </div>
+                <?php endif ?>
+                
              </div>
             <div class="row">
                 <div class="col-auto d-xs-block">
