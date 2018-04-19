@@ -13,30 +13,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="row">
-	<div class="col-xs-12 col-md-4">
+	<div class="col-xs-12 col-md-4 ">
+        <img class="card-img-top img-fluid card" src="http://portal.lbr.ru/img/user/thumbnail_<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
+
         
 
-        <div class="row">
-            <div class="card col-12" style="padding: 20px;margin-bottom: 10px">
-                
-
-                <img class="card-img-top img-fluid" src="http://portal.lbr.ru/img/user/thumbnail_<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
-
-                <div class="card-body" style="padding: 10px 0px">
-                    
-                   
-                    <!-- <p class="card-text">
-                        <small class="text-muted">Был в сети 3 минуты назад</small>
-                    </p> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 card-box">
                 asd
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="col-xs-12 col-md-8">
 
