@@ -13,8 +13,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="row">
-    <div class="col-12">
-        <?php $odata->link(); ?>
-        <pre><?=var_dump($data) ?></pre>
+    <div class="col-12 card-box" >
+
+        <button class="btn  waves-effect w-md btn-light" onclick="ajax('insert','', 'update_user','Идет добавление пользователей...')">
+            Добавить новых пользователей
+        </button>
+
+        <div class="row">
+             <div class="col-12" id = "update_user">
+                 
+             </div>
+        </div>
+        
     </div>
 </div>
