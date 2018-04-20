@@ -16,7 +16,16 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
-            'layout' => '/admin'
+            'layout' => '/admin',
+            'as access' => [
+                'class' => 'yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['viewAdminPanel'],
+                    ]
+                ]
+            ],
         ],
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
