@@ -51,6 +51,14 @@ use app\models\User;
                 </li>
 
                 <li>
+                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Обуч. материал </span> <span class="menu-arrow"></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/admin/faq">FAQ</a></li>
+                        <li><a href="/admin/faq-type">Типы</a></li>
+                    </ul>
+                </li>
+
+                <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Подарки </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/admin/gift">Подарки</a></li>
