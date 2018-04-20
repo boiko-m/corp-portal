@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-12">
 		<?=$faqtype->description?>
 	</div>
-	<div class="col-xl-4">
+	<div class="col-xl-7">
 		<?php foreach ($faqs as $faq): ?>
 			<form action="/training/<?=$faq['id']?>">
-				<button class="btn btn-light waves-effect waves-light btn-block" href="#src" style="text-align: left;margin-top: 10px;white-space: normal;"><i class="mdi mdi-arrow-right-bold-hexagon-outline"></i> <?=$faq['name']?></button>
+				<button class="btn btn-light waves-effect waves-light btn-block" href="#src" style="text-align: left;margin-top: 10px;white-space: normal;"> <?=$faq['name']?></button>
 			</form>
 		<?php endforeach ?>
 	</div>
