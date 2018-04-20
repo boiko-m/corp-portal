@@ -20,7 +20,7 @@ class UserupController extends Controller
     	$odata = new Odata();
 
     	$data = $odata->get("Catalog_Сотрудники", array(
-    		'top' => 5,
+    		'top' => 30,
     		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, ОфициальнаяДолжность/Description, ДатаРождения,Ref_Key',
     		'expand' => 'КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение',
     		'orderby' => 'ДатаПриема desc'
@@ -102,7 +102,7 @@ class UserupController extends Controller
     			
     			// добавление в бд
     			$max_id = User::find()->max('id');
-    			
+
     			$user = new User();
     			
     			$user->id = $max_id+1;

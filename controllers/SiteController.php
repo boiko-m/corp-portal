@@ -52,7 +52,7 @@ class SiteController extends Controller
         return $this->render('index', [
             "news" => News::find()->orderBy('id desc')->limit(5)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
-            'user_new' => Profile::find()->orderBy('id desc')->limit(3)->all(),
+            'user_new' => Profile::find()->orderBy('date_job desc')->limit(3)->all(),
             'online' => Session::getOnline()
         ]);
     }

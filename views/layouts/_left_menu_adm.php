@@ -33,6 +33,7 @@ use app\models\User;
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Пользователи </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/admin/userup/">Обновление</a></li>
                         <li><a href="/admin/user">Дан. авторизации</a></li>
                         <li><a href="/admin/profile">Профили</a></li>
                     </ul>
@@ -65,6 +66,7 @@ use app\models\User;
                         <li><a href="/admin/gift-type">Типы подарков</a></li>
                     </ul>
                 </li>
+                
 
             </ul>
 

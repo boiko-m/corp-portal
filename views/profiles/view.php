@@ -101,20 +101,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php if ($model->phone1): ?>
                                 <div class="row information_row">
                                     <div class="col">
-                                        Телефон 1
+                                        Контакты
                                     </div>
                                     <div class="col">
-                                        <?=$model->phone1 ?>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-                            <?php if ($model->phone2): ?>
-                                <div class="row information_row">
-                                    <div class="col">
-                                        Телефон 2
-                                    </div>
-                                    <div class="col">
-                                        <?=$model->phone2 ?>
+                                        <?php $phones = explode(";", $model->phone1); ?>
+                                        <?php foreach ($phones as $phone): ?>
+                                            <div>
+                                                <a href="tel:<?=$phone?>"><?=$phone?></a>
+                                            </div> 
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
                             <?php endif ?>
