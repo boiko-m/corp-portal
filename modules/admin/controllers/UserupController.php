@@ -16,11 +16,11 @@ class UserupController extends Controller
      * @return string
      */
 
-    public function actionUpdate() {
+    public function actionInsert() {
     	$odata = new Odata();
 
     	$data = $odata->get("Catalog_Сотрудники", array(
-    		'top' => 1,
+    		'top' => 5,
     		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, ОфициальнаяДолжность/Description, ДатаРождения,Ref_Key',
     		'expand' => 'КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение',
     		'orderby' => 'ДатаПриема desc'
@@ -88,8 +88,9 @@ class UserupController extends Controller
 
     	
     	$isset_users = User::find()->select('username')->where(["dismissed" => null])->all();
+    	
 
-    	foreach ($isset_users as $isset_user) {
+	    foreach ($isset_users as $isset_user) {
     		if (isset($isset_user['username'])) {
     			$users[] = $isset_user['username'];
     		}
@@ -98,11 +99,13 @@ class UserupController extends Controller
 
     	foreach ($data as $up) {
     		if (!in_array($up['Логин'], $users)) {
-    			$update[] = $up['Логин'];
+    			
     			// добавление в бд
+    			$max_id = User::find()->max('id');
+    			
     			$user = new User();
     			
-
+    			$user->id = $max_id+1;
 				$user->username = $up['Логин'];
 				$user->auth_key = $user->generateAuthKey();
 				$user->email = $up['Email'];
@@ -114,13 +117,7 @@ class UserupController extends Controller
 				$user->key_external = $up['Ref_Key'];
 				$user->password_external = $up['Пароль1С'];
 
-    			if ($user->save()) {
-    				echo "Пользователь сохранен с id:" . $user->id;
-    			} else {
-    				echo "Ошибка";
-    				exit;
-    			}
-
+    			$user->save();
 
     			$profile = new Profile();
 
@@ -133,7 +130,6 @@ class UserupController extends Controller
     			$profile->date_job = $up['ДатаПриема'];
     			$profile->sex = $up['ПоловаяПринадлежность'];
     			$profile->skype = $up['Email'];
-    			$profile->email = $up['Email'];
     			$profile->phone1 = $up['Сотовые'];
     			$profile->branch = $up['Подразделение']['НаименованиеКраткое'];
     			$profile->position = $up['ОфициальнаяДолжность']['Description'];
@@ -142,7 +138,11 @@ class UserupController extends Controller
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
     			$profile->sip = $up['SIP'];
 
-    			$profile->save();
+    			if ($profile->save()) {
+    				$update[]['success'] = $up['Логин']. ";".$profile->id;
+    			} else {
+    				$update[]['error'] = $up['Логин'];
+    			}
     			
     		} else {
     			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";
@@ -151,8 +151,7 @@ class UserupController extends Controller
 
     	// КорпоративнаяДолжность/ПрофильКандидата 
         return $this->renderPartial('update', array(
-        	'data' => $data,
-        	'odata' => $odata
+        	'update' => $update
         ));
     }
     public function actionIndex()

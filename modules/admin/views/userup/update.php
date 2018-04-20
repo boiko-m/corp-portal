@@ -13,8 +13,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-<div>
-	<?php $odata->link(); ?>
-	<pre><?=var_dump($data) ?></pre>
-
+<div class="row">
+	<div class="col-12">
+		<?php if ($update): ?>
+			<?php foreach ($update as $up) {
+				if ($up['success']) {
+					$user = explode(";", $up['success']);?>
+					<div>
+						<a href="/profiles/<?=$user['1']?>" target = "_blank"><?=$user['0']?></a> добавлен
+					</div>
+					<?php
+				} else {?>
+					<div style="color:red">
+						<?=$up['error']?> ошибка
+					</div>
+				<?php } ?>
+			<div>
+				
+			</div>
+			<?php } ?>
+		<?php endif ?>
+		<?php if (!$update): ?>
+			Все возможные пользователи подгружены!
+		<?php endif ?>
+	</div>
 </div>
