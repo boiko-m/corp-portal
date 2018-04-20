@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\CropboxForm;
 
 /**
  * ProfilesController implements the CRUD actions for Profile model.
@@ -41,13 +42,25 @@ class ProfilesController extends Controller
         }
 
         $alphabetModels = Profile::find()->select(['last_name'])->all();
-        
+
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'alphabet' => $this->getAlphabet($alphabetModels),
             'searchModel' => $searchModel,
             'user' => $user
+        ]);
+    }
+
+    /**
+     * Uploads profile photo.
+     * @return mixed
+     */
+    public function actionUploadImg()
+    {
+        $form = new CropboxForm;
+        return $this->render('upload-img', [
+            'form' => $form,
         ]);
     }
 
