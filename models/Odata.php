@@ -22,7 +22,7 @@ class Odata // библеотека для работы с odata by Андрей
 
     public function params($params) {
 
-        $mas = array("dateto", "datefrom", "key", "date", "where", "eq");
+        $mas = array("dateto", "datefrom", "key", "date", "where", "eq", "ne");
         foreach ($params as $name_params => $param) {
             if (!in_array($name_params, $mas)) {
                 $this->params['$'.$name_params] = $param;
@@ -55,6 +55,20 @@ class Odata // библеотека для работы с odata by Андрей
         } else {
             foreach ($paramsAll as $param => $value) {
                 $this->filter($param . " eq '" . $value . "'");
+            }
+        }
+    }
+
+    public function ne($paramsAll) {
+        if (isset($paramsAll[1])) {
+            foreach ($paramsAll as $params) {
+                foreach ($params as $param => $value) {
+                    $this->filter($param . " ne '" . $value . "'");
+                }
+            }
+        } else {
+            foreach ($paramsAll as $param => $value) {
+                $this->filter($param . " ne '" . $value . "'");
             }
         }
     }
