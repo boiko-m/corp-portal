@@ -77,7 +77,7 @@ class NewsController extends Controller
         Yii::$app->authManager->add($role);*/
         return false;
         $a="asd";
-        $news = News::findOne($id);
+        $news = News::find();
         
         return $this->render('index', array("a" => $a, "news" => $news));
     }
