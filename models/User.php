@@ -26,6 +26,20 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function getAvatar() {
+        $profile = Profile::find()->where(["id" => $this->id])->select('img')->one();
+        return "http://portal.lbr.ru/img/user/thumbnail_".$profile['img'];
+    }
+
+    public function getUsername() {
+        $profile = Profile::find()->where(["id" => $this->id])->select('last_name,first_name')->one();
+        return $profile['first_name'] . " " . $profile['last_name'] ;
+    }
+
+    public function getUrl() {
+        return "/profiles/".$this->id;
+    }
+
     public static function findIdentity($id)
     {
         return static::findOne($id);

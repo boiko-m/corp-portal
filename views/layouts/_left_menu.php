@@ -67,7 +67,7 @@
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
                         <li><a href="/training/">Обучающий материал</a></li>
-                        <li><a href="/videos/">Видео материал</a></li>
+                        <li><a href="/video/">Видео материал</a></li>
                         <li><a href="/knowledge/indebtedness/">Общение с клиентом по погашению просроченной задолжности</a></li>
                     </ul>
                 </li>

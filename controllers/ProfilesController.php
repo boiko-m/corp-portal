@@ -56,7 +56,7 @@ class ProfilesController extends Controller
      * Uploads profile photo.
      * @return mixed
      */
-    public function actionUploadImg()
+    public function actionImage()
     {
         $form = new CropboxForm;
         return $this->render('upload-img', [

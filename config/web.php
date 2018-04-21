@@ -14,6 +14,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
+        'comments' => [
+            'class' => 'ogheo\comments\Module'
+        ],
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
             'layout' => '/admin',
@@ -114,11 +117,18 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:(comments)>/<action:(create|update|delete|rate)>' => '/<controller>/default/<action>',
+
+
                 '<controller:[\w\-]+>' => '<controller>/index',
                 '<controller:[\w\-]+>/<id:\d+>' => '<controller>/view',
                 '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
+
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
-            ],
+
+                
+            ]
+
         ],
     ],
     'as beforeRequest' => [

@@ -44,13 +44,20 @@ use app\models\Profile;
             <div class="card">
                 <h5 class="card-title" style="padding: 15px">Новое видео на портале</h5>
                 <div class="m-b-10">
-                    <a href="/video/<?=$video['id']?>">
+                    <a href="/video/id/<?=$video['id']?>">
                         <img src="http://portal.lbr.ru/img/videos/4dhYmbB1pEA.jpg" alt="" style="width: 100%">
                     </a>
                 </div>
                 <div class="block m-t-10" style="padding: 10px">
-                    <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
-                    <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Все видео</button>
+                    
+                    <form action="/video" style="padding-bottom: 8px">
+                        <input type="hidden" name = "tab" value="forum">
+                        <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
+                    </form>
+                    <form action="/video">
+                        <input type="hidden" name = "tab" value="allvideo">
+                        <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Все видео</button>
+                    </form>
                 </div>
             </div>
         </div>
