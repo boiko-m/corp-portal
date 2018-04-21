@@ -9,17 +9,6 @@ $this->title = "Видео материал";
 $this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
 $this->params['breadcrumbs'][] = $this->title;
 
-if ($_GET['tab']) {
-	switch ($_GET['tab']) {
-		case 'forum':
-			# code...
-			break;
-		
-		default:
-			# code...
-			break;
-	}
-}
 ?>
 
 

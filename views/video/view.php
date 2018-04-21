@@ -11,7 +11,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 ?>
-<?php echo var_dump($data) ?>
+
+<div class="row">
+	<div class="col-12 card-box ">
+		<iframe  width = "500" height = "500" src="<?=$data['link']?>" frameborder="0" class="col-12"></iframe>
+	</div>
+
+</div>
 <div class="row">
 	<div class="col-12">
 		<?php echo Comments::widget([

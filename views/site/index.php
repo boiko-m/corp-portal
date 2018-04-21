@@ -45,7 +45,11 @@ use app\models\Profile;
                 <h5 class="card-title" style="padding: 15px">Новое видео на портале</h5>
                 <div class="m-b-10">
                     <a href="/video/id/<?=$video['id']?>">
-                        <img src="http://portal.lbr.ru/img/videos/4dhYmbB1pEA.jpg" alt="" style="width: 100%">
+                        <div class="d-flex justify-content-around">
+                            <img class = "col-3 ml-15 " src="http://portal.lbr.ru/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
+                        </div>
+                        
+                        <img src="http://portal.lbr.ru/img/videos/<?=$video['img']?>" alt="" style="width: 100%">
                     </a>
                 </div>
                 <div class="block m-t-10" style="padding: 10px">
