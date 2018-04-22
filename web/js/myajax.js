@@ -31,3 +31,88 @@
             }
         });
      }
+
+     function cur ($container = null) {
+        var $prefix;
+        var $error = {};
+
+        $count_id = $("#" + $container).length;
+        $count_class = $("." + $container).length;
+
+        if ($count_class) { $prefix = "."}
+        if ($count_id) { $prefix = "#"}
+
+        $data_ajax = $($prefix + $container).attr("data-ajax");
+
+        if ($data_ajax) {
+            return $data_ajax;
+        }
+
+        if (!$prefix) { console.log('func.cur - Не найден контейнер: (#,.) ' + $container); }
+        return false;
+     }
+
+
+     /*****************
+
+        tajax('info', {
+            container: 'ajax-info',  - контейнер в который выгрузит результат
+            data : "user=123", - дата для ajax
+            append: true, - добавить в контейнер или же обновить
+            load: false, - будет ли загрузка
+            text: 'Идет обновление пользователей. Ожидайте...' - текст в загрузке
+        })
+
+    *****************/
+
+     function tajax($action = 'view', $params = null) {
+        var $thishtml;
+        var $prefix;
+        var $result;
+
+        if (!$params) { $params = {} }
+        if (!$params.container) { $params.container = $action; }
+
+        ///*******************
+        $count_id = $("#" + $params.container).length;
+        $count_class = $("." + $params.container).length;
+
+        if ($count_class) { $prefix = "."}
+        if ($count_id) { $prefix = "#"}
+
+        $params.container = $prefix + $params.container;
+        ///*******************
+
+
+        $thishtml = $($params.container).html()
+
+        
+
+        if (!$params.text) { $params.text = "Загрузка..." }
+        if ($params.load) { 
+            if (!$params.append) {
+                $($params.container).html('<div class = "tajaxLoad"><div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">' + $params.text + '</div></div></div>');
+            } else {
+                $($params.container + "next").html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div></div>');
+            }
+
+        }
+
+        if ($params.load) {
+            $.ajax({
+                url: $action + '/',  
+                data: $params.data,
+                success: function (data, status) { // вешаем свой обработчик на функцию success
+                    $result = data;
+                    if ($result) {
+                        if (!$params.append) {
+                            $($params.container).html($result);
+                        } else {
+                            $($params.container).append($result);
+                        }
+                    }   
+                }
+            });
+        }
+     }
+

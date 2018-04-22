@@ -43,14 +43,14 @@ $profile = Yii::$app->user->identity->profile;
         <?endif;?>
 
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
-            <i class="fi-cog"></i> <span>Настройки</span>
-        </a>
+<!--         <a href="javascript:void(0);" class="dropdown-item notify-item">
+    <i class="fi-cog"></i> <span>Настройки</span>
+</a>
 
-        <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
-            <i class="fi-help"></i> <span>Помощь</span>
-        </a>
+item
+<a href="javascript:void(0);" class="dropdown-item notify-item">
+    <i class="fi-help"></i> <span>Помощь</span>
+</a> -->
 
         <!-- item-->
         <a href="/user/logout" class="dropdown-item notify-item">

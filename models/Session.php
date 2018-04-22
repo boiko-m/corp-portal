@@ -56,11 +56,13 @@ class Session extends \yii\db\ActiveRecord
                 
             }
         }
-        foreach ($result_to as $res) {
-            $users[] = $res['user_id'];
-        }
+        if ($result_to) {
+            foreach ($result_to as $res) {
+                $users[] = $res['user_id'];
+            }
 
-        $result = Profile::findAll($users);
+            $result = Profile::findAll($users);
+        }
         return $result;
     }
      public static function getOnlineUser($id) {

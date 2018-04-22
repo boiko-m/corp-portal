@@ -40,10 +40,14 @@ $config = [
         ]
     ],
     'components' => [
-        'session' => [
-            'class' => 'app\widgets\CustomDbSession',
-            // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
-            'sessionTable' => 'session', // session table name. Defaults to 'session'.
+        'session'=>[
+            'class'=>'yii\web\DbSession',
+            'writeCallback'=>function($session)
+            {
+                return [
+                    'user_id'=>Yii::$app->user->id,
+                ];
+            }
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

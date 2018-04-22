@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title . ": " . $client[0]['Полное�
 //echo "<pre>".print_r($users, true)."</pre>";
 
 ?>
-
+<?php echo var_dump($odata->link()) ?>
 <div class="row">
 	
     <div class="col-md-12 container-fluid">

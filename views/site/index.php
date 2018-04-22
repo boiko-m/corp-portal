@@ -4,7 +4,7 @@
 
 $this->title = 'Главная';
 use app\models\Profile;
-
+use app\models\Session;
 ?>
 <style>
     .news-a {
@@ -120,26 +120,31 @@ use app\models\Profile;
         </div>
         
     </div>
+
+
     <div class="col-xs-12 col-md-4">
         <div class="card-box">
+            
             <div>
                 Пользователи в сети: <?=count($online) ?>
             </div>
             <div class="row">
                 <div class="col">
-                    <?php foreach ($online as $user): ?>
-                        <div class="row" style="padding:10px">
-                           <div class="col-2">
-                               <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
-                           </div>
-                           <div class="col-10" >
-                                <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                                <div style="font-size: 11px">
-                                    <?=$user->branch ?>, <?=$user->position ?>
-                                </div>
-                           </div>
-                        </div>
-                    <?php endforeach ?>
+                    <?php if ($online): ?>
+                        <?php foreach ($online as $user): ?>
+                            <div class="row" style="padding:10px">
+                               <div class="col-2">
+                                   <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                               </div>
+                               <div class="col-10" >
+                                    <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
+                                    <div style="font-size: 11px">
+                                        <?=$user->branch ?>, <?=$user->position ?>
+                                    </div>
+                               </div>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
