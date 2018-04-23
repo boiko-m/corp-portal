@@ -39,7 +39,8 @@ class AppAsset extends AssetBundle
         //'pages/jquery.dashboard.init.js',
         'js/jquery.core.js',
         'js/jquery.app.js',
-        'js/myajax.js'
+        'js/myajax.js',
+        'js/script.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'

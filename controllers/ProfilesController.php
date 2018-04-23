@@ -10,7 +10,12 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\imagine\Image;
+use Imagine\Image\Box;
+use Imagine\Image\Point;
+use yii\helpers\Json;
 use app\models\CropboxForm;
+use \yii\web\UploadedFile;
 
 /**
  * ProfilesController implements the CRUD actions for Profile model.
@@ -58,9 +63,36 @@ class ProfilesController extends Controller
      */
     public function actionImage()
     {
-        $form = new CropboxForm;
+        $model = new CropboxForm();
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $image = Image::getImagine()->open($model->image->tempName);
+            $cropInfo = Json::decode($model->crop_info)[0];
+
+            $newSizeThumb = new Box(intval($cropInfo['width'] / $cropInfo['ratio']), intval($cropInfo['height'] / $cropInfo['ratio']));
+            $cropSizeThumb = new Box(250, 250);
+            $cropPointThumb = new Point(intval($cropInfo['x'] / $cropInfo['ratio']), intval($cropInfo['y'] / $cropInfo['ratio']));
+            $imageName = Yii::$app->user->id . '.' . $model->image->getExtension();
+            $pathThumbImage = Yii::getAlias('@app/web/upload/images')
+                . '/thumbnail_'
+                . $imageName;
+
+
+
+            $isSaved = $image->crop($cropPointThumb, $newSizeThumb)
+                ->resize($cropSizeThumb)
+                ->save($pathThumbImage, ['quality' => 100]);
+            if($isSaved) {
+                $profile = Yii::$app->user->identity->profile;
+                $profile->img = $imageName;
+                $profile->save();
+            }
+            return $this->redirect(['view', 'id' => Yii::$app->user->id]);
+        }
+
         return $this->render('upload-img', [
-            'form' => $form,
+            'form' => $model,
         ]);
     }
 
