@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
 	<div class="col card-box">
 		<button>Подгрузка</button>
-		<div id="info" data-ajax = "asd">
+		<div id="info" data-ajax = "asd" onclick = "tajax('info')">
 			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, doloribus.</div>
 			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, velit non illum dolor accusamus aliquid quam, praesentium! Quaerat omnis, dolore.</div>
 			<div>Veritatis quis accusamus ratione quas, ipsa provident ullam consectetur labore voluptates recusandae ea. Soluta deleniti ab quisquam temporibus, laboriosam maxime.</div>
@@ -23,15 +23,5 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 </div>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('button').on('click', function() {
-			tajax('info', {
-				container: "info",
-				data: "user=123",
-				//append: true,
-				load: false,
-				text: "Обновление пользователей. Ожидайте..."
-			});
-		})
-	});
+	
 </script>

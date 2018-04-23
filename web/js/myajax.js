@@ -69,7 +69,7 @@
         var $thishtml;
         var $prefix;
         var $result;
-
+        console.log('asd');
         if (!$params) { $params = {} }
         if (!$params.container) { $params.container = $action; }
 
