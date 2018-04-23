@@ -26,8 +26,10 @@ class TestController extends \yii\web\Controller
     public function actionInfo()
     {
         $data = new Tdata();
+
         
-        $a = $data->doc("Document_ЗаказПокупателя")->select()->top(3)->date(null, '04-02-2018')->orderby('Date desc')->one();
+        $a = $data->doc("Document_ЗаказПокупателя")->top(3)->all();
+
         return var_dump($a);
     }
 

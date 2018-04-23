@@ -52,3 +52,7 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# other 
+/upload/
+/config/params.php

@@ -69,7 +69,6 @@
         var $thishtml;
         var $prefix;
         var $result;
-        console.log('asd');
         if (!$params) { $params = {} }
         if (!$params.container) { $params.container = $action; }
 
@@ -87,7 +86,8 @@
         $thishtml = $($params.container).html()
 
         
-
+        if (!$params.load) { $params.load = true}
+            
         if (!$params.text) { $params.text = "Загрузка..." }
         if ($params.load) { 
             if (!$params.append) {
@@ -95,7 +95,6 @@
             } else {
                 $($params.container + "next").html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div></div>');
             }
-
         }
 
         if ($params.load) {

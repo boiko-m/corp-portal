@@ -5,10 +5,10 @@ use Yii;
 
 class Tdata
 {
-    public $url = 'http://172.16.112.2/Base/odata/standard.odata/';
+    public $url;
     public $curl;
-    public $login = "gavrilenko";
-    public $password = "3gxrYcR8orK";
+    public $login;
+    public $password;
     public $doc;
     public $link;
     public $format = "json";
@@ -24,6 +24,16 @@ class Tdata
         }
         $this->curl = curl_init();
         $this->query['$format'] = $this->format;
+        if (!$params['url']) {
+            $this->url = Yii::$app->params['odataUrl'];
+        }
+        if (Yii::$app->user->identity->password_external) {
+            $this->password = Yii::$app->user->identity->password_external;
+            $this->login = Yii::$app->user->identity->username;
+        } else {
+            $this->login = Yii::$app->params['odataLogin'];
+            $this->password = Yii::$app->params['odataPassword'];
+        }
     }
     
     public function where($data = null) {
