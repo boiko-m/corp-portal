@@ -1,14 +1,15 @@
 <?php
 namespace app\models;
 
+use Yii;
 
 class Odata // библеотека для работы с odata by Андрей Гавриленко 2018
 {
-    public $url = 'http://172.16.112.2/Base/odata/standard.odata/';
+    public $url;
     public $curl;
     public $params;
-    public $login = "gavrilenko";
-    public $password = "3gxrYcR8orK";
+    public $login;
+    public $password;
     public $doc;
     public $link;
     public $format = "json";
@@ -17,6 +18,17 @@ class Odata // библеотека для работы с odata by Андрей
     {
         $this->curl = curl_init();
         $this->params(array('format'=> $this->format));
+
+        if (!$params['url']) {
+            $this->url = Yii::$app->params['odataUrl'];
+        }
+        if (Yii::$app->user->identity->password_external) {
+            $this->password = Yii::$app->user->identity->password_external;
+            $this->login = Yii::$app->user->identity->username;
+        } else {
+            $this->login = Yii::$app->params['odataLogin'];
+            $this->password = Yii::$app->params['odataPassword'];
+        }
 
     }
 

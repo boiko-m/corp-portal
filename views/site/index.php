@@ -68,34 +68,37 @@ use app\models\Session;
     </div>
 
 
+<?php $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all(); ?>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4 ">
-        <div class="card-box font-13">
-            <div>
-                Сегодня отмечают дни рождения
+    <?php if ($birthdays): ?>
+        <div class="col-xs-12 col-md-4 ">
+            <div class="card-box font-13">
+                <div>
+                    Сегодня отмечают дни рождения
+                </div>
+                <div>
+                    
+                    <?php foreach ($birthdays as $user): ?>
+                        <div class="row" style="padding:10px">
+                           <div class="col-2">
+                               <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                           </div>
+                           <div class="col-10" >
+                                <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
+                                <div style="font-size: 11px">
+                                    <?=$user->branch ?>, <?=$user->position ?>
+                                </div>
+                           </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
             </div>
             <div>
-                <?php $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all(); ?>
-                <?php foreach ($birthdays as $user): ?>
-                    <div class="row" style="padding:10px">
-                       <div class="col-2">
-                           <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
-                       </div>
-                       <div class="col-10" >
-                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                            <div style="font-size: 11px">
-                                <?=$user->branch ?>, <?=$user->position ?>
-                            </div>
-                       </div>
-                    </div>
-                <?php endforeach ?>
-            </div>
-        </div>
-        <div>
 
+            </div>
         </div>
-    </div>
+    <?php endif ?>
     <div class="col-xs-12 col-md-4 ">
         <div class="card-box">
             Новые сотрудники
@@ -121,6 +124,8 @@ use app\models\Session;
         
     </div>
 
+
+<?php /*
 
     <div class="col-xs-12 col-md-4">
         <div class="card-box">
@@ -149,6 +154,12 @@ use app\models\Session;
             </div>
         </div>
     </div>
+    
+*/
+ ?>
+
+
+
 </div>
     
 

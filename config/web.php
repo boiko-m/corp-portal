@@ -40,7 +40,7 @@ $config = [
         ]
     ],
     'components' => [
-        'session'=>[
+        /*'session'=>[
             'class'=>'yii\web\DbSession',
             'writeCallback'=>function($session)
             {
@@ -48,7 +48,7 @@ $config = [
                     'user_id'=>Yii::$app->user->id,
                 ];
             }
-        ],
+        ],*/
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '7UNVz0EmjzrmhMLgN5GnWJBUcvwoL2d_',
