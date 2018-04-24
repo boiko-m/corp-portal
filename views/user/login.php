@@ -21,9 +21,17 @@ $this->title = 'Авторизация пользователя';
             <div class="col-sm-12">
 
                 <div class="wrapper-page">
-
+                 
                     <div class="account-pages">
+
+
                         <div class="account-box" >
+                            <div class="alert alert-danger   show" role="alert" style="margin: 0px;text-align: center;">
+                                        
+                                        <small>Портал переведен на новую версию! <br>
+                                        Если у вас возникли проблемы со входом смените ваш пароль.</small>
+                                    </div>
+
                             <div class="account-logo-box">
                                 <h2 class="text-uppercase text-center">
                                     <a href="/" class="text-success">
@@ -81,11 +89,9 @@ $this->title = 'Авторизация пользователя';
 
                                         </div>
                                     </div>
-                                     <div class="col-12 m-b-30">
-                                        
-                                                    <a href = "#reset" onclick = "ajax('/user/login','reset=true','account-content')" class="text-muted"><small>Я новый пользователь. Я забыл свой пароль. Что делать?</small></a>
-                                                
-                                            </div>
+                                     <div class="col-12 m-b-300">
+                                            <a href = "#reset" onclick = "ajax('/user/login','reset=true','account-content')" class=" text-center" style="color: black!important;text-align: center;"><small>Я новый пользователь. Я забыл свой пароль. Что делать? <br> <br></small></a>
+                                        </div>
                                     
                                     <div class="form-group row text-center m-t-10">
                                         <div class="col-12">
