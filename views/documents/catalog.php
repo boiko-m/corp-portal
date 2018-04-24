@@ -128,6 +128,15 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 
+		<div>
+			<span><a href="http://bargam.portalservices.it/" target="_blank">15. Bargam </a></span>
+			<div>
+				Логин: dubovik <br>
+				Пароль: bargamconf
+			</div>
+		</div>
+
+
 	</div>
 </div>
 
