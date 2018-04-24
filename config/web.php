@@ -73,8 +73,8 @@ $config = [
             'transport' => [
                  'class' => 'Swift_SmtpTransport',
                  'host' => '185.31.92.231',
-                 'username' => 'test@lbr.ru',
-                 'password' => '',
+                 'username' => 'portal@lbr.ru',
+                 'password' => 'nQJIvXf3zSVDSRU9LT3R',
                  'port' => '25',
              ],
         ],
