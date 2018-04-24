@@ -55,4 +55,5 @@ tests/_support/_generated
 
 # other 
 /web/upload/
+/web/img/
 /config/params.php
