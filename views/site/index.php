@@ -49,7 +49,7 @@ use app\models\Session;
                             <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                         </div>
                         
-                        <img src="/img/videos/<?=$video['img']?>" alt="" style="width: 100%">
+                        <img src="<?=$video['img']?>" alt="" style="width: 100%">
                     </a>
                 </div>
                 <div class="block m-t-10" style="padding: 10px">
