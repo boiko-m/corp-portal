@@ -15,7 +15,7 @@ $profile = Yii::$app->user->identity->profile;
     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
        aria-haspopup="false" aria-expanded="false">
         <?if(isset($profile['img']) && strlen($profile['img']) > 0):?>
-            <img src="http://portal.lbr.ru/img/user/thumbnail_<?=$profile['img']?>" alt="user" class="rounded-circle">
+            <img src="/img/user/thumbnail_<?=$profile['img']?>" alt="user" class="rounded-circle">
         <?else:?>
             <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
         <?endif;?>

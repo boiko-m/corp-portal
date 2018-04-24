@@ -46,10 +46,10 @@ use app\models\Session;
                 <div class="m-b-10">
                     <a href="/video/id/<?=$video['id']?>">
                         <div class="d-flex justify-content-around">
-                            <img class = "col-3 ml-15 " src="http://portal.lbr.ru/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
+                            <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                         </div>
                         
-                        <img src="http://portal.lbr.ru/img/videos/<?=$video['img']?>" alt="" style="width: 100%">
+                        <img src="/img/videos/<?=$video['img']?>" alt="" style="width: 100%">
                     </a>
                 </div>
                 <div class="block m-t-10" style="padding: 10px">
@@ -82,7 +82,7 @@ use app\models\Session;
                     <?php foreach ($birthdays as $user): ?>
                         <div class="row" style="padding:10px">
                            <div class="col-2">
-                               <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                               <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
                            </div>
                            <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
@@ -108,7 +108,7 @@ use app\models\Session;
             <?php foreach ($user_new as $user): ?>
                 <div class="row" style="padding:10px">
                    <div class="col-2">
-                       <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                       <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
                    </div>
                    <div class="col-10" >
                         <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
