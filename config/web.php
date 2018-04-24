@@ -79,7 +79,7 @@ $config = [
                  'host' => '185.31.92.231',
                  'username' => 'portal',
                  'password' => 'nQJIvXf3zSVDSRU9LT3R',
-                 'port' => '25',
+                 'port' => '2525',
              ],
         ],
         'log' => [

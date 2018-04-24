@@ -120,7 +120,7 @@ class UserController extends Controller
                 $user->password_reset_token = Yii::$app->security->generateRandomString();
                 $user->save();
 
-                $body = 'Для создания нового пароля скопируйте и перейдите по ссылке: portal.test/user/login/?email='.$user->password_reset_token.'';
+                $body = 'Для создания нового пароля скопируйте и перейдите по ссылке: http::/portal.lbr.ru/user/login/?email='.$user->password_reset_token.'';
 
                 Yii::$app->mailer->compose()
                  ->setTo($reset_email)
