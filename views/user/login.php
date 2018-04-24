@@ -29,7 +29,7 @@ $this->title = 'Авторизация пользователя';
                             <div class="alert alert-danger   show" role="alert" style="margin: 0px;text-align: center;">
                                         
                                         <small>Портал переведен на новую версию! <br>
-                                        Если у вас возникли проблемы со входом смените ваш пароль.</small>
+                                        Если у вас возникли проблемы со входом смените пароль.</small>
                                     </div>
 
                             <div class="account-logo-box">
