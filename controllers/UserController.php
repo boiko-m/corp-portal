@@ -95,7 +95,6 @@ class UserController extends Controller
 
                 Yii::$app->mailer->compose()
                  ->setTo($user->email)
-                 ->setFrom(['portal@lbr.ru' => "Корпоративный портал"])
                  ->setSubject("Установлен новый пароль.")
                  ->setTextBody("Для доступа на портал используйте следующий пароль: ". $password)
                  ->send();
@@ -125,7 +124,6 @@ class UserController extends Controller
 
                 Yii::$app->mailer->compose()
                  ->setTo($reset_email)
-                 ->setFrom(['portal@lbr.ru' => "Корпоративный портал"])
                  ->setSubject($subject)
                  ->setTextBody($body)
                  ->send();

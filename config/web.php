@@ -70,10 +70,14 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => false,
+            'messageConfig' => [
+            'charset' => 'UTF-8',
+                'from' => ['portal@lbr.ru' => 'Корпоративный портал'],
+            ],
             'transport' => [
-                 'class' => 'Swift_SmtpTransport',
+                 'class' => Swift_SmtpTransport::class,
                  'host' => '185.31.92.231',
-                 'username' => 'portal@lbr.ru',
+                 'username' => 'portal',
                  'password' => 'nQJIvXf3zSVDSRU9LT3R',
                  'port' => '25',
              ],
