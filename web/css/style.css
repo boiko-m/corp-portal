@@ -38,10 +38,11 @@ File: Main Css File
 31. Spinners
 32. Widgets
 33. Responsive
-*/
+
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Karla:700|Nunito+Sans:600,700");
 @import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700|Roboto:400,500,700");
-/* =============
+ =============
   Menu
 ============= */
 /* Metis Menu css */
@@ -85,7 +86,7 @@ File: Main Css File
   top: 0;
   z-index: 999; }
   .topbar .topbar-left {
-    background: #4f5a6e;
+    background: #f7931d;
     /* background: linear-gradient(to top, #5d6dc3, #3c86d8); */
     box-shadow: -12px 0px 18px 0 rgba(0, 0, 0, 0.3);
     float: left;
@@ -100,7 +101,7 @@ File: Main Css File
         display: none; }
 
 .navbar-custom {
-  background: #4f5a6e;
+  background: #f7931d;
   /* background: linear-gradient(to top, #5d6dc3, #3c86d8); */
   border-radius: 0;
   margin-bottom: 0;
@@ -111,7 +112,7 @@ File: Main Css File
   .navbar-custom .nav-link {
     padding: 0;
     line-height: 70px;
-    color: rgba(255, 255, 255, 0.6); }
+    color: black; }
   .navbar-custom .dropdown-toggle:after {
     content: initial; }
   .navbar-custom .menu-left {
@@ -170,7 +171,7 @@ File: Main Css File
   font-size: 16px; }
 
 #sidebar-menu > ul > li > a {
-  color: rgba(49, 58, 70, 0.8);
+  color: black;
   display: block;
   padding: 12px 20px;
   margin: 2px 0;
@@ -237,7 +238,7 @@ File: Main Css File
   font-size: 11px;
   text-transform: uppercase;
   color: #98a6ad;
-  font-family: "Roboto", sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 .enlarged .slimScrollDiv, .enlarged .slimscroll-menu {
   overflow: inherit !important; }
@@ -494,17 +495,17 @@ body {
   margin: 0;
   padding-bottom: 60px;
   overflow-x: hidden;
-  color: #797979;
+  color: black;
   font-size: 15px;
   background-color: #f1f1f1;
-  font-family: Open Sans,Helvetica,Arial,sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 html {
   position: relative;
   min-height: 100%; }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif; }
+  font-family: 'Trebuchet MS'; }
 
 p {
   line-height: 1.6; }
@@ -795,7 +796,7 @@ a:focus {
   color: #f36270 !important; }
 
 .text-muted {
-  color: #98a6ad !important; }
+  color: black !important; }
 
 .text-primary {
   color: #5d6dc3 !important; }
@@ -848,7 +849,7 @@ a:focus {
 
 /* Badge */
 .badge {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Trebuchet MS';
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   padding: .35em .5em; }
 
@@ -1089,7 +1090,7 @@ a:focus {
   border-radius: 2px;
   font-size: 15px;
   outline: none !important;
-  font-family: "Roboto", sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 .btn-gradient {
   background-color: #5d6dc3 !important;
@@ -1876,7 +1877,7 @@ input[type="radio"]:disabled:checked:after,
   padding: 10px 20px !important; }
 
 .tabs-bordered li a.active {
-  border-bottom: 2px solid #3c86d8 !important; }
+  border-bottom: 2px solid #f7931d !important; }
 
 /* Navpills */
 .nav-pills > li > a {
@@ -2231,7 +2232,7 @@ label {
   font-size: 14px;
   color: #313a46;
   letter-spacing: 0.01em;
-  font-family: "Roboto", sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 select[multiple] option + option, select[size] option + option {
   margin-top: 1px; }
@@ -2641,7 +2642,7 @@ textarea.form-control {
   padding: 7px; }
 
 th {
-  font-family: "Roboto", sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 .table-centered td {
   vertical-align: middle !important; }
@@ -2679,7 +2680,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before
   background-color: #f36270; }
 
 table.dataTable > tbody > tr.child span.dtr-title {
-  font-family: "Roboto", sans-serif; }
+      font-family: 'Trebuchet MS'; }
 
 /* Responsive Table */
 .table-rep-plugin .dropdown-menu li.checkbox-row {
@@ -2895,7 +2896,7 @@ table.dataTable > tbody > tr.child span.dtr-title {
   max-width: 200px;
   display: none;
   color: #ffffff;
-  font-family: "Roboto", sans-serif; }
+    font-family: 'Trebuchet MS'; }
 
 .mapael .zoomIn, .mapael .zoomOut, .mapael .zoomReset {
   display: inline-block;
@@ -3193,7 +3194,7 @@ h3.timeline-title {
     font-size: 12px;
     margin-bottom: 4px; }
   .timeline-desk p {
-    color: #999999;
+    color: black;
     font-size: 14px;
     margin-bottom: 0; }
   .timeline-desk .album {

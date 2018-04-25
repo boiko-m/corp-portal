@@ -19,7 +19,7 @@ $profile = Yii::$app->user->identity->profile;
         <?else:?>
             <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
         <?endif;?>
-        <span class="ml-1">
+        <span class="ml-1" style="color: white;">
             <? echo $profile->first_name; ?>
             <i class="mdi mdi-chevron-down"></i>
         </span>
@@ -37,9 +37,9 @@ $profile = Yii::$app->user->identity->profile;
 
         <?if(\Yii::$app->user->can("Admin")):?>
         <!-- item-->
-        <a href="/admin/" class="dropdown-item notify-item">
-            <i class="fi-lock"></i> <span>Админ-панель</span>
-        </a>
+            <a href="/admin/" class="dropdown-item notify-item">
+                <i class="fi-lock"></i> <span>Админ-панель</span>
+            </a>
         <?endif;?>
 
         <!-- item-->
