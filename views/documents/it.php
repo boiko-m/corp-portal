@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 			<div>
 			<i class="fa fa-skype" aria-hidden="true"></i>
-				<a href="skype:lbr-krutiakov?chat" title="Отписать в скайпе">Крутяков Алексей</a>
+				<a href="skype:dashkevich@lbr.ru?chat" title="Отписать в скайпе">Дашкевич Александр</a>
 			</div>
 			<div>
 			<i class="fa fa-skype" aria-hidden="true"></i>
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 			<div>
 			<i class="fa fa-skype" aria-hidden="true"></i>
-				 <a href="skype:live:labanovskiy?chat" title="Отписать в скайпе">Лабановский Сергей</a>
+				 <a href="skype:live:labanovskiy@lbr.ru?chat" title="Отписать в скайпе">Лабановский Сергей</a>
 			</div>
 		</div>  
 	</li>
