@@ -73,7 +73,7 @@ use app\models\Session;
 <div class="row">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4 ">
-            <div class="card-box font-13">
+            <div class="card-box">
                 <div>
                     Сегодня отмечают дни рождения
                 </div>
