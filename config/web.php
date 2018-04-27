@@ -147,6 +147,11 @@ $config = [
                 'allow' => true,
             ],
             [
+                'controllers' => ['analog'],
+                'actions' => ['index'],
+                'allow' => true,
+            ],
+            [
                 'allow' => true,
                 'roles' => ['@'],
             ],
