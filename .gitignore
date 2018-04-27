@@ -54,6 +54,7 @@ tests/_support/_generated
 /.vagrant
 
 # other 
+/web/imagesAll/
 /web/upload/
 /web/img/
 /config/params.php
