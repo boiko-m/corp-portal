@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\Tdata;
 
+
+
 class TestController extends \yii\web\Controller
 {
     public function actionIndex()
@@ -29,7 +31,7 @@ class TestController extends \yii\web\Controller
         
         $contragent_key = "b3ba5d20-6535-11de-8007-00187177ff31";
         //$a = $data->doc("InformationRegister_ПаркТехникиКонтрагента")->key('Контрагент_Key', $contragent_key)->expand("МодельныйРяд")/*->top(3)*/->all();
-        //$a = $data->doc("InformationRegister_ЗапчастиКТоварам")->expand('Запчасть')->top(3)->all();
+        //$a = $data->doc("InformationRegister_ЗапчастиКТоварам")->expand('Запчасть')->last();
 
          //Catalog_ПериодическиеРеквизитыСправочников группы
 

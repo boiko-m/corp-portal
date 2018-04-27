@@ -57,6 +57,7 @@ class Tdata
     }
 
     public function filter ($data) { // для упорядочивания фильтров
+
         if ($this->query['$filter']) {
            $this->query['$filter'] .= " and " . $data;
         } else {
@@ -145,10 +146,11 @@ class Tdata
     }
 
     public function generateLink() {
-        $query = (!$this->query) ?: "?" . http_build_query($this->query, null ,"&" , PHP_QUERY_RFC3986);
+        $query = (!$this->query) ?: "?" . http_build_query($this->query, null ,"&" /*, PHP_QUERY_RFC3986*/);
 
         return $this->url . urlencode($this->doc) . $this->doc_func . $query;
     }
+
 
     public function condition() {
         if ($this->query['$filter']) {
@@ -164,10 +166,10 @@ class Tdata
         }
         $this->doc_func = "/SliceLast(" . $condition . ")";
 
-
+         
         $result = $this->getError();
-
         return $this->generateLink();
+       
     }
 
     public function one($data = null) {
@@ -200,9 +202,10 @@ class Tdata
     public function result() {
         $curl = $this->curl;
 
-        /*echo var_dump($this->generateLink());
-        exit;*/
-        curl_setopt($curl, CURLOPT_URL, $this->generateLink());
+        $url = $this->generateLink();
+
+        echo var_dump($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_USERPWD, $this->login . ":" . $this->password);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_COOKIE, $cookie);
