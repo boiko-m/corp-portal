@@ -14,6 +14,9 @@ class Tdata
     public $format = "json";
     public $query;
     public $defaultTop = 10; // по умолчанию 10 записей
+    public $condition;
+    public $doc_func;
+
 
     function __construct($params = null)
     {
@@ -55,7 +58,7 @@ class Tdata
 
     public function filter ($data) { // для упорядочивания фильтров
         if ($this->query['$filter']) {
-           $this->query['$filter'] .= " " . $data;
+           $this->query['$filter'] .= " and " . $data;
         } else {
            $this->query['$filter'] .= $data;
         }
@@ -87,6 +90,11 @@ class Tdata
     public function findKey($doc, $key) {
         $this->doc = $doc . "(guid'" .$key. "')";
         return $this->one();
+    }
+
+    public function key($key_name, $key) {
+        $this->filter($key_name . " eq guid'" . $key . "'");
+        return $this;
     }
 
     public function select($data = null) {
@@ -138,7 +146,28 @@ class Tdata
 
     public function generateLink() {
         $query = (!$this->query) ?: "?" . http_build_query($this->query, null ,"&" , PHP_QUERY_RFC3986);
-        return $this->url . urlencode($this->doc) . $query;
+
+        return $this->url . urlencode($this->doc) . $this->doc_func . $query;
+    }
+
+    public function condition() {
+        if ($this->query['$filter']) {
+            $this->condition = $this->query['$filter'];
+            unset($this->query['$filter']);
+        }
+        return $this;
+    }
+
+    public function last() {
+        if ($this->condition) {
+            $condition = "Condition='" . $this->condition . "'";
+        }
+        $this->doc_func = "/SliceLast(" . $condition . ")";
+
+
+        $result = $this->getError();
+
+        return $this->generateLink();
     }
 
     public function one($data = null) {
@@ -158,7 +187,9 @@ class Tdata
             if ($result['odata.error']['code']) {
                 $code = "Ошибка. #" . $result['odata.error']['code']. ". ";
             }
-            $result = "<br><b style ='color:red'>" . $code . $result['odata.error']['message']['value']. " !</b>";
+            $result = "<br><b style ='color:red'>" . $code . $result['odata.error']['message']['value']. " !</b> <br>
+                <a href ='" . $this->generateLink() . "' target = '_blank'>" . $this->generateLink() . "</a>
+            ";
             echo $result;
             exit;
         }
@@ -168,7 +199,9 @@ class Tdata
 
     public function result() {
         $curl = $this->curl;
-        
+
+        /*echo var_dump($this->generateLink());
+        exit;*/
         curl_setopt($curl, CURLOPT_URL, $this->generateLink());
         curl_setopt($curl, CURLOPT_USERPWD, $this->login . ":" . $this->password);
         curl_setopt($curl, CURLOPT_HEADER, false);
@@ -177,12 +210,18 @@ class Tdata
         curl_setopt($curl, CURLOPT_VERBOSE, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
         curl_setopt($curl, CURLOPT_ENCODING, "");
 
-        $exec =curl_exec($curl);
+        
+        $exec = curl_exec($curl);
+        if (curl_exec($curl)) {
+            # code...
+        }
+        // если есть подключение
 
-         // если есть подключение
+        echo var_dump($exec);
+        exit;
         if ($exec) {
             $result = json_decode($exec, true);
         } else {
@@ -190,21 +229,6 @@ class Tdata
         }
 
         return $result;
-    }
-
-    public function getReturn() {
-
-        $this->connect();
-
-
-        $return = curl_exec($this->curl); // выполнение curl и выдача результата
-
-        if ($return) {
-            $this->getErrors($return);
-            $return_array = json_decode($return, true);
-            return $return_array["value"];
-        }
-        return false;
     }
     
 

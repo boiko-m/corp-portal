@@ -13,12 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
 	<div class="col card-box">
-		<button onclick = "tajax('info', {container: 'info'})">Подгрузка</button>
+		<button onclick = "tajax('info', {container: 'info2'})">Подгрузка</button>
 		<div id="info" >
-			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, doloribus.</div>
-			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, velit non illum dolor accusamus aliquid quam, praesentium! Quaerat omnis, dolore.</div>
-			<div>Veritatis quis accusamus ratione quas, ipsa provident ullam consectetur labore voluptates recusandae ea. Soluta deleniti ab quisquam temporibus, laboriosam maxime.</div>
-			<div>Laudantium repellat dolor ipsa facere velit enim, porro, harum officia eveniet consequuntur aspernatur. Nulla dolores repellat recusandae libero repellendus voluptatibus!</div>
+			<pre class="info2"></pre>
 		</div>
 	</div>
 </div>
