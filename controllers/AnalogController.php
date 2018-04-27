@@ -6,7 +6,7 @@ namespace app\controllers;
 
 class AnalogController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function actionIndex($json = null)
     {
     	$this->layout = false;
         return $this->renderPartial('index');
