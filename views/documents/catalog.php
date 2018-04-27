@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-box">
             <div class="row">
                 <div class="col-12">
-                   
+
 
 
 				<div class="cat">
@@ -90,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div>
 			<span><a href="http://greatplains-psw.arinet.com/scripts/EmpartISAPI.dll?MF&amp;app=GRP&amp;lang=EN&amp;TF=Empartweb&amp;loginID=cons_grp&amp;Loginpwd=guest">9. Great Plains</a></span>
-			
+
 		</div>
 
 		<div>
@@ -103,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 
 		<div>
-			<span><a href="https://www.agroparts.com/agroparts/start.jsp" target="_blank">11. Lemken, Grimme, Kverneland, Rabe</a></span>
+			<span><a href="https://www.agroparts.com/agroparts/homepage" target="_blank">11. Lemken, Grimme, Kverneland, Rabe</a></span>
 			<div>
 				Логин: lbr-zch <br>
 				Пароль: 13102015
