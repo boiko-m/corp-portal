@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-xl-12 m-b-30">
 		<h4><?=$faq->name ?></h4>
 	</div>
-	<div class="col-xl-12">
+	<div class="col-xl-12 training-img">
 		<?=$faq->content ?>
 	</div>
 </div>

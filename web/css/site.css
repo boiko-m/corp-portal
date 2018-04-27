@@ -116,3 +116,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.training-img img {
+    width: 100%!important;
+}
