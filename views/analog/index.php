@@ -205,10 +205,11 @@ class Analog
     <td>Выгоды:</td>
   </tr>
   <?php 
-    if (!$_REQUEST['json']) {
+    $request = Yii::$app->request;
+    if (!$request->post('json')) {
       $items = $json;
     } else {
-      $items = $_REQUEST['json'];
+      $items = $request->post('json');
     }
     $items = json_decode($items, true);
     $analog = new Analog($items);
