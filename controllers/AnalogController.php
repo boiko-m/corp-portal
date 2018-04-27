@@ -9,10 +9,15 @@ class AnalogController extends \yii\web\Controller
     public function actionIndex($json = null)
     {
     	$this->layout = false;
-    	$this->enableCsrfValidation = false;
-    	
+
         return $this->renderPartial('index');
     }
+
+    public function beforeAction($action) {
+        $this->enableCsrfValidation = ($action->id !== "index"); 
+        return parent::beforeAction($action);
+    }
+
     
 
 }
