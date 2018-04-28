@@ -152,6 +152,11 @@ $config = [
                 'allow' => true,
             ],
             [
+                'controllers' => ['agree'],
+                'actions' => ['index'],
+                'allow' => true,
+            ],
+            [
                 'allow' => true,
                 'roles' => ['@'],
             ],

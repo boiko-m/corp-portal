@@ -37,8 +37,9 @@ class TestController extends \yii\web\Controller
 
 
          $a = $data->doc("InformationRegister_ПериодическиеРеквизитыСправочников")->cast(["Объект", "4ae6ef01-8a12-11e2-8044-005056c00008", "Catalog_Товары"])->key('Реквизит_Key', 'acf2d5f7-eb8e-4e2a-a4fd-c5739cac81fc')->condition()->last();
-
-        return var_dump($a);
+         echo var_dump($a);
+         exit;
+        return true;
     }
 
 }

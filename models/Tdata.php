@@ -3,6 +3,8 @@ namespace app\models;
 
 use Yii;
 
+
+
 class Tdata
 {
     public $url;
@@ -25,7 +27,7 @@ class Tdata
                 $this->$key = (property_exists($this, $this->$key)) ?: $value;
             }
         }
-        $this->curl = curl_init();
+        
         $this->query['$format'] = $this->format;
         if (!$params['url']) {
             $this->url = Yii::$app->params['odataUrl'];
@@ -37,6 +39,20 @@ class Tdata
             $this->login = Yii::$app->params['odataLogin'];
             $this->password = Yii::$app->params['odataPassword'];
         }
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_USERPWD, $this->login . ":" . $this->password);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_COOKIE, $cookie);
+        curl_setopt($curl, CURLOPT_COOKIESESSION, true);
+        curl_setopt($curl, CURLOPT_VERBOSE, true);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_ENCODING, "");
+
+        $this->curl = $curl;
+
     }
     
     public function where($data = null) {
@@ -151,7 +167,6 @@ class Tdata
         return $this->url . urlencode($this->doc) . $this->doc_func . $query;
     }
 
-
     public function condition() {
         if ($this->query['$filter']) {
             $this->condition = $this->query['$filter'];
@@ -162,13 +177,14 @@ class Tdata
 
     public function last() {
         if ($this->condition) {
-            $condition = "Condition='" . $this->condition . "'";
+            $condition = "Condition='" . rawurlencode($this->condition) . "'";
         }
         $this->doc_func = "/SliceLast(" . $condition . ")";
 
          
         $result = $this->getError();
-        return $this->generateLink();
+
+        return $result[0];
        
     }
 
@@ -202,29 +218,9 @@ class Tdata
     public function result() {
         $curl = $this->curl;
 
-        $url = $this->generateLink();
+        curl_setopt($curl, CURLOPT_URL, $this->generateLink());
 
-        echo var_dump($url);
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_USERPWD, $this->login . ":" . $this->password);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_COOKIE, $cookie);
-        curl_setopt($curl, CURLOPT_COOKIESESSION, true);
-        curl_setopt($curl, CURLOPT_VERBOSE, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
-        curl_setopt($curl, CURLOPT_ENCODING, "");
-
-        
         $exec = curl_exec($curl);
-        if (curl_exec($curl)) {
-            # code...
-        }
-        // если есть подключение
-
-        echo var_dump($exec);
-        exit;
         if ($exec) {
             $result = json_decode($exec, true);
         } else {
