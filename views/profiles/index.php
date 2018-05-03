@@ -33,6 +33,10 @@ echo Html::jsFile('@web/js/ajax.js');
                     'summary' => "",
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
+                        [
+                            'class' => 'yii\grid\ActionColumn',
+                            'template' => '{view}'
+                        ],
                         'name',
                         [
                             'label' => 'SIP',

@@ -73,7 +73,7 @@
                 </li>
 
                  <li>
-                    <a href="/">
+                    <a href="javascript:void(0);">
                         <i class="fi-help"></i> <span> Помощь сотруднику </span>
                     </a>
                 </li>
