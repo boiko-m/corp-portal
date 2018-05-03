@@ -5,10 +5,12 @@ use yii\helpers\Html;
 
 $pathThumbImage = '/upload/images/thumbnail_'
     . Yii::$app->user->identity->profile->img;
-    //echo "<pre>".print_r($pathThumbImage, true)."</pre>";
 
 $af = ActiveForm::begin([
-    'options' => ['enctype'=>'multipart/form-data'],
+    'options' => [
+        'enctype' => 'multipart/form-data',
+        'class' => 'crop-form'
+    ],
     'action' => ['image', 'submit'],
 ]);
 
@@ -17,7 +19,7 @@ echo $af->field($form, 'image')->widget(CropboxWidget::className(), [
     //'pathToView' => $pathThumbImage
 ]);
 
-echo Html::submitButton('Отправить', ['class' => 'btn btn-outline-warning waves-light waves-effect']);
+echo Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']);
 
 
 ActiveForm::end();

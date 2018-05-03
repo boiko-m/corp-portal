@@ -5,4 +5,13 @@ $(document).ready(function() {
             $("div.resize-cropbox").hide();
         }
     }, 1);
+
+    $(document).on("submit", "form.crop-form", function(e) {
+        if($(".cropped-images-cropbox img").length == 0) {
+            e.preventDefault();
+            alert('Необходимо выбрать и обезать изображение.');
+        }
+    });
+
+
 });
