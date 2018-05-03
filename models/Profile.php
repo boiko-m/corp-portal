@@ -77,6 +77,7 @@ class Profile extends \yii\db\ActiveRecord
             'category' => 'Category',
             'service' => 'Service',
             'sip' => 'SIP',
+            'name' => 'ФИО',
         ];
     }
 
@@ -88,6 +89,11 @@ class Profile extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id']);
+    }
+
+    public function getName()
+    {
+        return sprintf("%s %s %s", $this->last_name, $this->first_name, $this->middle_name);
     }
 
     public function getImage() {

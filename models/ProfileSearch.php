@@ -12,6 +12,8 @@ use app\models\Profile;
  */
 class ProfileSearch extends Profile
 {
+    public $name;
+
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['id', 'sex', 'sip'], 'integer'],
-            [['id_1c', 'first_name', 'last_name', 'middle_name', 'birthday', 'date_job', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'safe'],
+            [['id_1c', 'first_name', 'last_name', 'middle_name', 'birthday', 'name', 'date_job', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'safe'],
         ];
     }
 
@@ -42,6 +44,11 @@ class ProfileSearch extends Profile
     public function search($params)
     {
         $query = Profile::find();
+
+        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")]);
+        //$query->select("*, CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`");
+
+        //echo "<pre>".print_r($query, true)."</pre>";
 
         // add conditions that should always apply here
 
@@ -80,6 +87,7 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'phone_cabinet', $this->phone_cabinet])
             ->andFilterWhere(['like', 'about', $this->about])
             ->andFilterWhere(['like', 'category', $this->category])
+            ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->name])
             ->andFilterWhere(['like', 'service', $this->service]);
 
         return $dataProvider;

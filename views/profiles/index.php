@@ -19,7 +19,7 @@ echo Html::jsFile('@web/js/ajax.js');
         <div class="card-box">
             <div class="table-responsive wrap-relative">
                 <div class="preloader"></div>
-                <?php Pjax::begin(['timeout' => 5000]); ?>
+                <?php Pjax::begin(['timeout' => 20000]); ?>
 
                 <?= Alphabet::widget([
                     'options' => ['class' => 'alphabet-wrap'],
@@ -33,13 +33,7 @@ echo Html::jsFile('@web/js/ajax.js');
                     'summary' => "",
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
-                        [
-                            'label' => 'ФИО',
-                            'value' => function ($data) {
-                                return Html::a(sprintf("%s %s %s", $data->last_name, $data->first_name, $data->middle_name), Url::to(['view', 'id' => $data->id]));
-                            },
-                            'format' => 'raw',
-                        ],
+                        'name',
                         [
                             'label' => 'SIP',
                             'value' => function ($data) {

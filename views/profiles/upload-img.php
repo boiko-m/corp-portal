@@ -17,6 +17,7 @@ echo $af->field($form, 'image')->widget(CropboxWidget::className(), [
     //'pathToView' => $pathThumbImage
 ]);
 
-echo Html::submitButton('Отправить', ['class' => 'submit']);
+echo Html::submitButton('Отправить', ['class' => 'btn btn-outline-warning waves-light waves-effect']);
+
 
 ActiveForm::end();
