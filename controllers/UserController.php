@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->redirect(['user/login']);
     }
 
     /**
@@ -79,15 +79,15 @@ class UserController extends Controller
     public function actionLogin($reset=null,$reset_email=null, $email=null)
     {
         if ($email) {
-            
+
             $user = User::find()->where(["password_reset_token" => $email])->one();
             if ($user) {
                 $true_password = "Вы успешно сгенерировали пароль. Мы васлали вам его на почту.";
 
                 $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
                 $max=10;
-                $size=StrLen($chars)-1; 
-                while($max--) $password.=$chars[rand(0,$size)]; 
+                $size=StrLen($chars)-1;
+                while($max--) $password.=$chars[rand(0,$size)];
 
                 $user->password_hash = md5($password);
                 $user->password_reset_token = Yii::$app->security->generateRandomString();
@@ -134,9 +134,9 @@ class UserController extends Controller
             } else {
                 return $this->goHome();
             }
-            
 
-            
+
+
         }
 
         if ($reset) {
