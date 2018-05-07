@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
 	<div class="col-xs-12 col-md-4 ">
-        <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">      
+        <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
 
         <!-- <div class="row">
             <div class="col-12 card-box">
@@ -30,14 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div >
                         <h5  class="card-title" style="font-weight: bold;color: black"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
                     </div>
-                    
+
                 </div>
                 <?php if (Session::getOnlineUser($model->id)) { ?>
                     <div class="col-3 text-right" style="color:#d6d6d6;font-size: 12px;">
                         online
                     </div>
                 <?php } ?>
-                
+
              </div>
             <div class="row">
                 <div class="col-2">
@@ -63,10 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?=$model->position?>
                 </div>
             </div>
-                
-                
 
-           
+
+
+
 
             <br>
                     <ul class="nav nav-tabs tabs-bordered">
@@ -94,8 +94,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </style>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="home-b1">
-                            
-                            
+
+
                             <?php if ($model->phone1): ?>
                                 <div class="row information_row">
                                     <div class="col">
@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php foreach ($phones as $phone): ?>
                                             <div>
                                                 <a href="tel:<?=$phone?>"><?=$phone?></a>
-                                            </div> 
+                                            </div>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             <?php endif ?>
-                            
+
                             <?php if ($model->cabinet): ?>
                                 <div class="row information_row">
                                     <div class="col">
@@ -158,6 +158,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                     <div class="col">
                                         <?=$model->phone_cabinet ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+							<?php if ($model->phone1 and strlen($model->phone1) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone1 ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+							<?php if ($model->phone2 and strlen($model->phone2) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон (доп.)
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone2 ?>
                                     </div>
                                 </div>
                             <?php endif ?>
@@ -181,5 +201,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
     </div>
-   
+
 </div>
