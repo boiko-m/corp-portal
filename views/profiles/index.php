@@ -48,7 +48,7 @@ echo Html::jsFile('@web/js/ajax.js');
                         'user.email',
                         'branch',
                         'department',
-                        'phone1'
+                        'phone'
                     ],
                     'pager' => [
                         'options'=>['class' => 'pagination float-right'],

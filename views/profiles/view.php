@@ -161,20 +161,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             <?php endif ?>
-							<?php if ($model->phone1 and strlen($model->phone1) > 0): ?>
+							<?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
                                 <div class="row information_row">
                                     <div class="col">
                                         Телефон
+                                    </div>
+                                    <div class="col">
+                                        <?=$model->phone ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+							<?php if (isset($model->phone1) and strlen($model->phone1) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон (доп. 1)
                                     </div>
                                     <div class="col">
                                         <?=$model->phone1 ?>
                                     </div>
                                 </div>
                             <?php endif ?>
-							<?php if ($model->phone2 and strlen($model->phone2) > 0): ?>
+							<?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
                                 <div class="row information_row">
                                     <div class="col">
-                                        Телефон (доп.)
+                                        Телефон (доп. 2)
                                     </div>
                                     <div class="col">
                                         <?=$model->phone2 ?>

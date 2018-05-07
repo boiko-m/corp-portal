@@ -21,7 +21,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['id', 'sex', 'sip'], 'integer'],
-            [['id_1c', 'first_name', 'last_name', 'middle_name', 'birthday', 'name', 'date_job', 'skype', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'safe'],
+            [['id_1c', 'first_name', 'last_name', 'middle_name', 'birthday', 'name', 'date_job', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'safe'],
         ];
     }
 
@@ -78,6 +78,7 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'last_name', $this->last_name])
             ->andFilterWhere(['like', 'middle_name', $this->middle_name])
             ->andFilterWhere(['like', 'skype', $this->skype])
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'phone1', $this->phone1])
             ->andFilterWhere(['like', 'phone2', $this->phone2])
             ->andFilterWhere(['like', 'branch', $this->branch])
