@@ -58,52 +58,6 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Lists all Profile models.
-     * @return mixed
-     */
-    public function actionImportPhones()
-    {
-
-        $searchModel = new ProfileSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
-        $dataProvider->query->with('user');
-
-        if(isset($letter) && mb_strlen($letter) == 1 && !is_numeric($letter)) {
-            $dataProvider->query->andWhere(['like', 'last_name', $letter."%", false]);
-        }
-
-        $alphabetModels = Profile::find()->select(['last_name'])->all();
-
-        if (($handle = fopen(Yii::getAlias('@app/web/')."test.csv", "r")) !== FALSE) {
-            $arData = array();
-            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-                if(isset($data[1]) && strlen($data[1]) > 0) {
-                    $arData[$data[0]] = $data[1];
-                }
-            }
-            $profiles = Profile::find()->all();
-            foreach ($profiles as $profile) {
-                if(isset($arData[$profile->id]) && strlen($arData[$profile->id]) > 0) {
-                    $profile->phone = $arData[$profile->id];
-                    $profile->save();
-                }
-            }
-
-            fclose($handle);
-        }
-
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'alphabet' => $this->getAlphabet($alphabetModels),
-            'searchModel' => $searchModel,
-            'user' => $user
-        ]);
-    }
-
-    /**
      * Uploads profile photo.
      * @return mixed
      */
