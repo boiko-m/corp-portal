@@ -96,13 +96,56 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="tab-pane fade active show" id="home-b1">
 
 
-                            <?php if ($model->phone1): ?>
+                            <?/*php if ($model->phone1): ?>
                                 <div class="row information_row">
                                     <div class="col">
                                         Контакты
                                     </div>
                                     <div class="col">
                                         <?php $phones = explode(";", $model->phone1); ?>
+                                        <?php foreach ($phones as $phone): ?>
+                                            <div>
+                                                <a href="tel:<?=$phone?>"><?=$phone?></a>
+                                            </div>
+                                        <?php endforeach ?>
+                                    </div>
+                                </div>
+                            <?php endif */?>
+
+							<?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон
+                                    </div>
+                                    <div class="col">
+										<div>
+											<a href="tel:<?=preg_replace("/[\+\s\(\)\-]+/", "", $model->phone)?>"><?=$model->phone?></a>
+										</div>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+							<?php if (isset($model->phone1) and strlen($model->phone1) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон (доп.)
+                                    </div>
+									<div class="col">
+                                        <?php $phones = explode(";", $model->phone1); ?>
+                                        <?php foreach ($phones as $phone): ?>
+                                            <div>
+                                                <a href="tel:<?=$phone?>"><?=$phone?></a>
+                                            </div>
+                                        <?php endforeach ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+							<?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
+                                <div class="row information_row">
+                                    <div class="col">
+                                        Телефон (доп.)
+                                    </div>
+									<div class="col">
+                                        <?php $phones = explode(";", $model->phone2); ?>
                                         <?php foreach ($phones as $phone): ?>
                                             <div>
                                                 <a href="tel:<?=$phone?>"><?=$phone?></a>
@@ -158,36 +201,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                     <div class="col">
                                         <?=$model->phone_cabinet ?>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-							<?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
-                                <div class="row information_row">
-                                    <div class="col">
-                                        Телефон
-                                    </div>
-                                    <div class="col">
-                                        <?=$model->phone ?>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-							<?php if (isset($model->phone1) and strlen($model->phone1) > 0): ?>
-                                <div class="row information_row">
-                                    <div class="col">
-                                        Телефон (доп. 1)
-                                    </div>
-                                    <div class="col">
-                                        <?=$model->phone1 ?>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-							<?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
-                                <div class="row information_row">
-                                    <div class="col">
-                                        Телефон (доп. 2)
-                                    </div>
-                                    <div class="col">
-                                        <?=$model->phone2 ?>
                                     </div>
                                 </div>
                             <?php endif ?>
