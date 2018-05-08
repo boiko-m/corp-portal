@@ -36,7 +36,7 @@ use app\models\Session;
                     <?php endforeach ?>
                 </div>
                 <div style="padding-top: 10px;">
-                    <button class="btn  waves-effect w-md btn-light">Открыть все новости</button>
+                    <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
                 </div>
             </div>
         </div>
@@ -48,12 +48,12 @@ use app\models\Session;
                         <div class="d-flex justify-content-around">
                             <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                         </div>
-                        
+
                         <img src="/<?=$video['img']?>" alt="" style="width: 100%">
                     </a>
                 </div>
                 <div class="block m-t-10" style="padding: 10px">
-                    
+
                     <form action="/video" style="padding-bottom: 8px">
                         <input type="hidden" name = "tab" value="forum">
                         <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
@@ -78,7 +78,7 @@ use app\models\Session;
                     Сегодня отмечают дни рождения
                 </div>
                 <div>
-                    
+
                     <?php foreach ($birthdays as $user): ?>
                         <div class="row" style="padding:10px">
                            <div class="col-2">
@@ -121,7 +121,7 @@ use app\models\Session;
         </div>
 
         </div>
-        
+
     </div>
 
 
@@ -129,7 +129,7 @@ use app\models\Session;
 
     <div class="col-xs-12 col-md-4">
         <div class="card-box">
-            
+
             <div>
                 Пользователи в сети: <?=count($online) ?>
             </div>
@@ -154,13 +154,13 @@ use app\models\Session;
             </div>
         </div>
     </div>
-    
+
 */
  ?>
 
 
 
 </div>
-    
+
 
 </div>
