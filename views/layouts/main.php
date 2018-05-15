@@ -74,7 +74,7 @@ AppAsset::register($this);
                                 </div>
 
                                 <div class="text-center">
-                                    <a href="https://get.teamviewer.com/jbvpufc">
+                                    <a href="https://get.teamviewer.com/jbvpufc" target="_blank">
                                         <img src="/img/icon/help.jpg" alt="" style="width:60%">
                                     </a>
                                 </div>

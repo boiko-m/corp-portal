@@ -136,6 +136,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 
+		<div>
+			<span><a href="http://jdpc.deere.com/jdpc/servlet/com.deere.u90490.partscatalog.view.servlets.HomePageServlet_Alt?ui_lang_code=59" target="_blank">16. John Deere </a></span>
+		</div>
 
 	</div>
 </div>
