@@ -48,6 +48,45 @@ AppAsset::register($this);
 
                     <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
+                        <li class="">
+                            <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="true" aria-expanded="true">
+
+                                <span style="padding: 10px;color:white;">Нужна помощь?</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                                <!-- item-->
+                                <div style="padding: 10px">
+                                    <h6 class="m-0 text-center">Удаленная поддержка</h6>
+
+                                </div>
+                                
+                                <div style="padding:  0px 10px;">
+                                    <small>
+                                        <b>Возникли затруднения?</b> <br>
+                                    <div style="padding-left: 10px">
+                                        Сотрудники IT-отдела готовы  предложить Вам помощь по установке и  настройке ПО и другим вопросам, которые мешают Вам в работе. <br>
+                                    
+                                    </div>
+                                    <b>Просто скачайте и установите:</b>
+                                    </small>
+                                </div>
+
+                                <div class="text-center">
+                                    <a href="https://get.teamviewer.com/jbvpufc">
+                                        <img src="/img/icon/help.jpg" alt="" style="width:60%">
+                                    </a>
+                                </div>
+
+                               
+
+                            </div>
+                        </li>
+
+
+
+                       
 <?/*
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
@@ -166,7 +205,7 @@ AppAsset::register($this);
                             </div>
                         </li>
 */?>
-                        <?=$this->render('_profile_header.php')?>
+                    <?=$this->render('_profile_header.php')?>
                         
                     </ul>
 
