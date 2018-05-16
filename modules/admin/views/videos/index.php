@@ -7,16 +7,23 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\VideosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Videos';
+$this->title = 'Список видео';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<style>
+    .title-list-video {
+        text-align: center;
+    }
+</style>
+
 <div class="videos-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="title-list-video"><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Videos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить видео', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

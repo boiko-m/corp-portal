@@ -35,7 +35,7 @@ class Videos extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'link', 'img', 'id_category', 'id_user', 'date'], 'required'],
+            [['name', /*'description',*/ 'link', 'img', 'id_category', 'id_user', 'date'], 'required'],
             [['name', 'description', 'link', 'img', 'date'], 'string'],
             [['id_category', 'id_user', 'comment_accept', 'youtube_views', 'right_module'], 'integer'],
         ];

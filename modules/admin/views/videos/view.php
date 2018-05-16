@@ -6,13 +6,20 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Videos */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Videos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Видео';
+$this->params['breadcrumbs'][] = ['label' => 'Список видео', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $model->name;
 ?>
+
+<style>
+    .title-view-video {
+        text-align: center;
+    }
+</style>
+
 <div class="videos-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="title-view-video"><?= Html::encode($model->name) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
