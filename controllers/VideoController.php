@@ -8,9 +8,14 @@ use app\models\Comment;
 
 class VideoController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function actionIndex($ajax = "N")
     {
     	$category = VideoCategory::find()->all();
+        if($ajax == "Y") {
+            return $this->renderPartial('index', array(
+        		'category' => $category
+        	));
+        }
         return $this->render('index', array(
         	'category' => $category
         ));
@@ -21,10 +26,13 @@ class VideoController extends \yii\web\Controller
     		'data' => $video,
     	));
     }
-    public function actionAllvideo() {
-    	$data = Videos::find()->orderby('id desc')->all();
+    public function actionAllvideo($id = 0) {
+    	$data = Videos::find()->orderby('id desc');
+        if($id > 0) {
+            $data->where(['id_category' => $id]);
+        }
     	return $this->renderPartial('allvideo', array(
-    		'data' => $data,
+    		'data' => $data->all(),
     	));
     }
     public function actionForum() {

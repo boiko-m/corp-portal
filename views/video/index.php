@@ -71,9 +71,12 @@ $this->params['breadcrumbs'][] = $this->title;
 						<div class="row">
 							<div class="col">
 								<div class="col-12 m-b-30 text-right" style="border-bottom:1px solid #dfdfdf;padding: 10px 0px">
-									<form action="/video/<?=$item['id']?>">
-										<button class="btn  waves-effect w-md btn-light">Открыть категорию</button>
-									</form>
+									<a
+										class="btn  waves-effect w-md btn-light"
+										onclick ="showVideoCategory({id:<?=$item['id']?>})"
+									>
+										Открыть категорию
+									</a>
 								</div>
 							</div>
 						</div>
