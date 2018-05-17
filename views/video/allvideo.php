@@ -21,5 +21,12 @@ $videos = $data;
 			</div>
 		<?php endforeach ?>
 		</div>
+		<?
+		$queryID = \Yii::$app->request->get('id');
+		if(isset($queryID) && intval($queryID) > 0):?>
+			<a class="btn waves-effect w-md btn-light" href="javascript:void(0);" onclick ="ajax('/video/allvideo', '', 'allvideo')">
+				Ко всем видео
+			</a>
+		<?endif;?>
 	</div>
 </div>
