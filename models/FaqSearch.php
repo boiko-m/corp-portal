@@ -41,7 +41,7 @@ class FaqSearch extends Faq
      */
     public function search($params)
     {
-        $query = Faq::find();
+        $query = Faq::find()->where(['id_type' => 1]);
 
         // add conditions that should always apply here
 
