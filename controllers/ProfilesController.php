@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\imagine\Image;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
@@ -55,6 +56,27 @@ class ProfilesController extends Controller
             'searchModel' => $searchModel,
             'user' => $user
         ]);
+    }
+
+    public function actionUpdate($id)
+    {
+        if($id != Yii::$app->user->id) {
+            return $this->redirect(['view', 'id' => Yii::$app->user->id]);
+        }
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    protected function isOwnProfile()
+    {
+        return Yii::$app->request->get('id') == Yii::$app->user->id;
     }
 
     /**
