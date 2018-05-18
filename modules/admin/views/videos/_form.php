@@ -59,7 +59,7 @@ use yii\helpers\ArrayHelper;
       <?= $form->field($model, 'name')->textInput(['rows' => 6])->label('Название'); ?>
       <?= $form->field($model, 'description')->textarea(['rows' => 6])->label('Описание'); ?>
       <?= $form->field($model, 'img')->textInput(['rows' => 6, 'readonly' => true])->label('Картинка'); ?>
-      <?= $form->field($model, 'youtube_views')->textInput(['rows' => 6])->label('Количество просмотров'); ?>
+      <?= $form->field($model, 'youtube_views')->textInput(['rows' => 6, 'value' => 0, 'readonly' => true])->label('Количество просмотров'); ?>
     </div>
     <div class="section"><span>2</span>Детали</div>
     <div class="inner-wrap">
