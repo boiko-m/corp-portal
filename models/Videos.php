@@ -48,16 +48,16 @@ class Videos extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'link' => 'Link',
-            'img' => 'Img',
-            'id_category' => 'Id Category',
-            'id_user' => 'Id User',
-            'date' => 'Date',
-            'comment_accept' => 'Comment Accept',
-            'youtube_views' => 'Youtube Views',
-            'right_module' => 'Right Module',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'link' => 'Ссылка',
+            'img' => 'Картинка',
+            'id_category' => 'Категория',
+            'id_user' => 'Пользлватель',
+            'date' => 'Дата',
+            'comment_accept' => 'Доступ к комментариям',
+            'youtube_views' => 'Количество просмотров',
+            'right_module' => 'Поместить на правую панель',
         ];
     }
 
