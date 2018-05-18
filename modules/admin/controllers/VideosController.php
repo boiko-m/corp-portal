@@ -25,7 +25,7 @@ class VideosController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    'link' => ['POST'],
+                    // 'link' => ['POST'],
                 ],
             ],
         ];
@@ -88,6 +88,8 @@ class VideosController extends Controller
         if (file_exists($model->img)) {
           return 'Видео уже существует';
         }
+
+        $model->link = 'https://www.youtube.com/embed/' . $youtube_id;
 
         return $this->renderAjax('_form', [
           'model' => $model,
