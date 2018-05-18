@@ -21,6 +21,9 @@ $config = [
             'class' => 'app\modules\admin\AdminModule',
             'layout' => '/admin',
             'as access' => [
+                'class' => yii2mod\rbac\filters\AccessControl::class
+            ],
+            /*'as access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
@@ -28,7 +31,7 @@ $config = [
                         'roles' => ['viewAdminPanel'],
                     ]
                 ]
-            ],
+            ],*/
         ],
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
@@ -125,6 +128,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
                 '<controller:(comments)>/<action:(create|update|delete|rate)>' => '/<controller>/default/<action>',
 
 
@@ -133,8 +137,8 @@ $config = [
                 '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
 
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 
-                
             ]
 
         ],

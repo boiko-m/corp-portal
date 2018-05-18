@@ -35,6 +35,10 @@ $profile = Yii::$app->user->identity->profile;
             <i class="fi-head"></i> <span>Профиль</span>
         </a>
 
+        <a href="<?=Url::toRoute(['profiles/update', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
+            <i class="fi-cog"></i> <span>Изм. профиль</span>
+        </a>
+
         <?if(\Yii::$app->user->can("Admin")):?>
         <!-- item-->
             <a href="/admin/" class="dropdown-item notify-item">

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade active show" id="home">
-                
+
                 	<?php foreach ($category as $item): ?>
                 		<div class="row">
 	                		<div class="col-12" style="padding-bottom: 10px">
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							<?php foreach ($videos as $video): ?>
 								<div class="col-xl-3 col-xs-12 videos_link" onclick="window.open('/video/id/<?=$video['id'] ?>')" style = "cursor: pointer;">
 									<div>
-										<img src="http://portal.lbr.ru/img/videos/<?=$video['img'] ?>" alt="" style="width: 100%">
+										<img src="http://portal.lbr.ru/<?=$video['img'] ?>" alt="" style="width: 100%">
 									</div>
 									<div class="text-left" style="font-size: 10px">
 										<?=date('d.m.Y',$video['date']) ?>
@@ -63,35 +63,38 @@ $this->params['breadcrumbs'][] = $this->title;
 									<div class="text-center" style="padding: 5px">
 										<?=$video['name'] ?>
 									</div>
-									
+
 								</div>
 							<?php endforeach ?>
-							
+
 						</div>
 						<div class="row">
 							<div class="col">
 								<div class="col-12 m-b-30 text-right" style="border-bottom:1px solid #dfdfdf;padding: 10px 0px">
-									<form action="/video/<?=$item['id']?>">
-										<button class="btn  waves-effect w-md btn-light">Открыть категорию</button>
-									</form>
+									<a
+										class="btn  waves-effect w-md btn-light"
+										onclick ="showVideoCategory({id:<?=$item['id']?>})"
+									>
+										Открыть категорию
+									</a>
 								</div>
 							</div>
 						</div>
-					<?php endforeach ?> 
-                
+					<?php endforeach ?>
+
             </div>
             <div class="tab-pane fade" id="allvideo">
-                
+
             </div>
             <div class="tab-pane fade" id="forum">
-				
+
             </div>
         </div>
     </div>
 </div>
-		
+
 <?php if ($_GET['tab']): ?>
-	<script type="text/javascript">		
+	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.tab-pane').removeClass('active');
 			$('#<?=$_GET["tab"]?>').addClass('active show');
@@ -101,4 +104,3 @@ $this->params['breadcrumbs'][] = $this->title;
 		});
 	</script>
 <?php endif ?>
-

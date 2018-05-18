@@ -8,22 +8,32 @@
         $ajax_container = "#" + $ajax_container;
         loadimage($ajax_container, $text);
         $.ajax({
-            url: $action + '/',  
+            url: $action + '/',
             data: $data,
             success: function (data, status) { // вешаем свой обработчик на функцию success
                 $($ajax_container).html(data);
-            }               
+            }
         });
 
      }
 
+	 function showVideoCategory(data) {
+		 $('.tab-pane').removeClass('active');
+		 $('.nav-link').removeClass('active');
+
+		 $('#allvideo').addClass('active show');
+		 $('a[href="#allvideo"]').addClass('active');
+
+		 ajax('/video/allvideo', data, 'allvideo');
+	 }
+
      function ajaxappend($action = null, $data = null, $ajax_container = "ajax-container") {
      	$next_ajax = '.' + $ajax_container + "-next";
         $ajax_container = "#" + $ajax_container;
-        
+
         $($next_ajax).html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div></div>');
         $.ajax({
-            url: $action + '/',  
+            url: $action + '/',
             data: $data,
             success: function (data, status) { // вешаем свой обработчик на функцию success
             	$($next_ajax).remove();
@@ -85,11 +95,11 @@
 
         $thishtml = $($params.container).html()
 
-        
+
         if (!$params.load) { $params.load = true}
-            
+
         if (!$params.text) { $params.text = "Загрузка..." }
-        if ($params.load) { 
+        if ($params.load) {
             if (!$params.append) {
                 $($params.container).html('<div class = "tajaxLoad"><div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">' + $params.text + '</div></div></div>');
             } else {
@@ -99,7 +109,7 @@
 
         if ($params.load) {
             $.ajax({
-                url: $action + '/',  
+                url: $action + '/',
                 data: $params.data,
                 success: function (data, status) { // вешаем свой обработчик на функцию success
                     $result = data;
@@ -109,9 +119,8 @@
                         } else {
                             $($params.container).append($result);
                         }
-                    }   
+                    }
                 }
             });
         }
      }
-
