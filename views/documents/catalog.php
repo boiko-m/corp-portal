@@ -141,15 +141,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 
 		<div>
-			<span><a href="https://app.exso.pl/UniaPortal/LOGIN/index.html;jsessionid=0C94828FFBE175CD4075DAE6522ABE25" target="_blank">16. Уния </a></span>
+			<span><a href="https://app.exso.pl/UniaPortal/LOGIN/index.html;jsessionid=0C94828FFBE175CD4075DAE6522ABE25" target="_blank">17. Уния </a></span>
 			<div>
 				Логин: llclbr-agromarket.parts <br>
 				Пароль: LBRUnia2018
 			</div>
-		</div>
-
-		<div>
-			<span><a href="http://jdpc.deere.com/jdpc/servlet/com.deere.u90490.partscatalog.view.servlets.HomePageServlet_Alt?ui_lang_code=59" target="_blank">16. John Deere </a></span>
 		</div>
 
 
