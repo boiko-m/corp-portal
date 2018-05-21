@@ -150,39 +150,43 @@ class OrdersclientController extends Controller
             // 1e2a8c87-5e73-11d9-977f-505054503030
             //$odata->link();
             return $this->render('orders', array('odata' => $odata, 'allorders' => $allorders));
+
+        } else {
+
+            $client_code = $odata->get("Catalog_Контрагенты", array(
+                'where' => array('Code', $client)
+            ));
+
+
+            $client = $odata->get("Catalog_Контрагенты", array(
+                'top' => 1,
+                'select' => "Ref_Key,ПолноеНаименование,УНН, Code, ИБ",
+                "key" => array("Ref_Key" => $client_code[0]['Ref_Key']),
+                'expand' => ""
+            ));
+
+            $allorders[0] = $odata->get("Document_ЗаказПокупателя", array(
+                'top' => 10,
+                'orderby' => "Date desc",
+                'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
+                'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляТоваров"))
+            ));
+
+            $allorders[1] = $debug = $odata->get("Document_ЗаказПокупателя", array(
+                'top' => 10,
+                'orderby' => "Date desc",
+                'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
+                'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляЗапчастей"))
+            ));
+
+
+
+            $stop = 'Время получения ответа: ' . round( microtime(true) - $start, 2 ) . ' сек.';
+            
+            return $this->render('index', array('odata' => $odata, 'allorders' => $allorders, 'stop' => $stop, 'client' => $client, 'debug' => $debug, "stage" => $stage));
         }
 
-        $client_code = $odata->get("Catalog_Контрагенты", array(
-            'where' => array('Code', $client)
-        ));
-
-
-        $client = $odata->get("Catalog_Контрагенты", array(
-            'top' => 1,
-            'select' => "Ref_Key,ПолноеНаименование,УНН, Code, ИБ",
-            "key" => array("Ref_Key" => $client_code[0]['Ref_Key']),
-            'expand' => ""
-        ));
-
-        $allorders[0] = $odata->get("Document_ЗаказПокупателя", array(
-            'top' => 10,
-            'orderby' => "Date desc",
-            'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
-            'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляТоваров"))
-        ));
-
-        $allorders[1] = $debug = $odata->get("Document_ЗаказПокупателя", array(
-            'top' => 10,
-            'orderby' => "Date desc",
-            'key' => array('Контрагент_Key' => $client[0]['Ref_Key']),
-            'eq' => array(array("Статус" => "ВРаботе"), array("ДелениеПоТипуТовара" => "ДляЗапчастей"))
-        ));
-
-
-
-        $stop = 'Время получения ответа: ' . round( microtime(true) - $start, 2 ) . ' сек.';
-
-        return $this->render('index', array('odata' => $odata, 'allorders' => $allorders, 'stop' => $stop, 'client' => $client, 'debug' => $debug, "stage" => $stage));
+        
     }
 
     public function actionIt()
