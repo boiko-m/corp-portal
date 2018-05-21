@@ -70,8 +70,8 @@ use yii\helpers\ArrayHelper;
     </div>
     <div class="section"><span>3</span>Настройки доступа</div>
     <div class="inner-wrap">
-      <?= $form->field($model, "comment_accept")->checkbox(['label' => 'Доступ к комментариям'], ['value' => false]); ?>
-      <?= $form->field($model, "right_module")->checkbox(['label' => 'Поместить на правую панель'], ['value' => true]); ?>
+      <?= $form->field($model, "comment_accept")->checkbox(['label' => 'Доступ к комментариям'], ['value' => 1]); ?>
+      <?= $form->field($model, "right_module")->checkbox(['label' => 'Поместить на правую панель'], ['value' => 0]); ?>
     </div>
     <div class="form-group form-create-button">
         <?= Html::submitButton('Добавить видео', ['class' => 'btn btn-success']); ?>
