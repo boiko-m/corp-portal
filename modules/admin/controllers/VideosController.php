@@ -85,11 +85,11 @@ class VideosController extends Controller
 
         $model->img = "img/videos/". $youtube_id .".jpg";
 
-        if (file_exists($model->img)) {
+        $model->link = 'https://www.youtube.com/embed/' . $youtube_id;
+
+        if (Videos::find()->where(['link' => $model->link])->exists()) {
           return 'Видео уже существует';
         }
-
-        $model->link = 'https://www.youtube.com/embed/' . $youtube_id;
 
         return $this->renderAjax('_form', [
           'model' => $model,
@@ -97,7 +97,7 @@ class VideosController extends Controller
       }
 
       if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        $url_img = "https://img.youtube.com/vi/". $this->findIdVideo($model->link) ."/0.jpg";
+        $url_img = "https://img.youtube.com/vi/". $this->findIdVideo($model->link) ."/mqdefault.jpg";
         file_put_contents($model->img, file_get_contents($url_img));
         return $this->redirect(['view', 'id' => $model->id]);
       }
