@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-12">
                 	<video width="100%" controls>
-					  <source src="/video/effect_client1.mp4" type="video/mp4">
+					  <source src="/videos/effect_client1.mp4" type="video/mp4">
 					  Your browser does not support the video tag.
 					</video>
                 </div>
