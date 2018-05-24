@@ -41,7 +41,7 @@ $json = '
     "value": "",
     "params": {
      "image": "MNS0092586/UPR-00620244_Haulotte.jpg",
-     "info": "проверка"
+     "info": "Равным образом укрепление и развитие структуры позволяет выполнять важные задания по разработке соответствующий условий активизации. Задача организации, в особенности же укрепление и развитие структуры требуют от нас анализа существенных финансовых и административных условий."
     }
    }
   ],
@@ -50,7 +50,7 @@ $json = '
     "value": "Расположение индикатора момента нагрузки стрелы",
     "params": {
      
-     "info": "проверка"
+     "info": "Равным образом укрепление и развитие структуры позволяет выполнять важные задания по разработке соответствующий условий активизации. Задача организации, в особенности же укрепление и развитие структуры требуют от нас анализа существенных финансовых и административных условий!"
     }
    },
    {
@@ -153,7 +153,7 @@ class Analog
             } else {
               $this->params = null;
             }
-            $this->result .= "<td class = '".$this->class."' ".$this->attr.">".$this->value.$this->image."</td>";
+            $this->result .= "<td style = ". $this->style." class = '".$this->class."' ".$this->attr.">".$this->value.$this->image."</td>";
           }
           $this->result .= "</tr>";
         }
@@ -173,7 +173,7 @@ class Analog
   public function info($info) {
     //$this->attr .= " title = '".$info."'";
     $this->class = "info_block";
-    $this->value = " <div class = 'info_block_hidden'> <b>Справочная информация:</b> <br>".$info."</div>".$this->value."<img src='http://portal.lbr.ru/img/icon/info.png' style = 'width: 15px;dissplay: inline-block;display: inline-block;vertical-align: middle;margin-left: 5px;'>";
+    $this->value = " ".$this->value." <div class = 'info_block_hidden'>".$info."</div>";
   }
   public function video ($link) {
     $this->link = str_replace(array("https://youtu.be/", "https://www.youtube.com/watch?v="), "", $link);
@@ -224,7 +224,7 @@ class Analog
 
 <style>
   * {
-      font-family: 'Open Sans',Arial,Helvetica,Verdana,sans-serif;
+      font-family: 'Open Sans',Arial,Helvetica,Verdana,sans-serif!important;
     }
   .analog-table {
     width: 100%;
@@ -237,7 +237,7 @@ class Analog
     background: #f3f3f3;
   }
   .analog-table td:first-child {
-      padding: 8px 45px;
+      padding: 8px 5px;
       font-weight: bold;
       width: 20%;
       text-align: left;
@@ -258,10 +258,18 @@ class Analog
   .analog-table img {
     width: 60%;
   }
-  .info_block:hover .info_block_hidden {
-    display: block;
-  }
   .info_block_hidden {
+    color: #555555;
+    font-size: 11px;
+    text-align: justify;
+    padding: 5px 5px; 
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    margin:5px 0px;
+    font-weight: normal;
+    background: #f5f5f5
+  }
+  /* .info_block_hidden {
     transition: 0.4s;
     display: none;
     position: absolute;
@@ -274,5 +282,5 @@ class Analog
     font-size: 13px;
     font-weight: normal;
     border-radius: 5px;
-  }
+  } */
 </style>
