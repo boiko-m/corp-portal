@@ -165,7 +165,7 @@ class Analog
     }
   }
   public function image ($img) {
-    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt=''>";
+    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt='' style = 'height:50px;'>";
     $this->style .= ";padding:0px;";
   }
   public function colspan ($colspan) {
