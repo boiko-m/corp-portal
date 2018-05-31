@@ -163,4 +163,18 @@ class UserupController extends Controller
         	'odata' => $odata
         ));
     }
+
+    public function actionUpdate() {
+        $odata = new Tdata();
+
+        //$user = $odata->doc("Catalog_Сотрудники")->top(3)->all();
+        
+        $contragent_key = "b3ba5d20-6535-11de-8007-00187177ff31";
+        $a = $odata->doc("InformationRegister_ПаркТехникиКонтрагента")->key('Контрагент_Key', $contragent_key)->expand("МодельныйРяд")->top(3)->all();   
+        echo var_dump($a);
+
+
+        return false;
+    }
+    
 }
