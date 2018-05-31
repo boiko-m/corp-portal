@@ -256,7 +256,7 @@ class Analog
     text-align: left;
   }
   .analog-table img {
-    width: 60%;
+    width: 100%;
   }
   .info_block_hidden {
     color: #555555;

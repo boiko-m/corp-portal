@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use yii\web\Controller;
 use app\models\Odata;
+use app\models\Tdata;
 use app\models\User;
 use app\models\Profile;
 /**
@@ -176,5 +177,5 @@ class UserupController extends Controller
 
         return false;
     }
-    
+
 }
