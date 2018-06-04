@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $model->title;
             // 'date:ntext',
             [
                 'attribute' => 'date',
-                'format' => ['date', 'l jS \of F Y h:i:s A']
+                'format' => ['date', 'dd.MM.yyyy h:i:a']
             ],
             'title:ntext',
             'content:ntext',
