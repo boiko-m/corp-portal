@@ -8,6 +8,7 @@ use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use \yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -24,6 +25,7 @@ class NewsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    // 'upload' => ['POST'],
                 ],
             ],
         ];
@@ -65,6 +67,11 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
+        $model->date = strval(date_timestamp_get(date_create()));
+        $model->id_user = Yii::$app->user->id;
+        $model->type = 0;
+        $model->img_icon = '/img/gift/VAUPWTE.jpg';
+        $model->status = 0;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -73,6 +80,22 @@ class NewsController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpload()
+    {
+        $imageFolder = 'http://portal.lbr.ru/img/news/1.jpg';
+        $folder = 'img/news/';
+        // if (is_uploaded_file($temp ['tmp_name'])) { 
+        //     reset($_FILES);
+        //     $temp = current($_FILES);
+          
+            // $filetowrite = $folder . $temp['name'];
+            // move_uploaded_file($temp['tmp_name'], $filetowrite);
+            file_put_contents($folder . '123123.png', file_get_contents($imageFolder));
+          
+        return json_encode(array('location' => $imageFolder));
+        // }
     }
 
     /**

@@ -38,4 +38,22 @@ class NewsController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionOffer() {
+        $model = new News();
+        $model->date = strval(date_timestamp_get(date_create()));
+        $model->id_user = Yii::$app->user->id;
+        $model->type = 0;
+        $model->img_icon = '/img/gift/VAUPWTE.jpg';
+        $model->status = 0;
+        $model->like_active = 0;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['site/index']);
+        }
+
+        return $this->render('offer', array(
+            'model' => $model,
+        ));
+    }
 }
