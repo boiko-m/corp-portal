@@ -36,7 +36,11 @@ $this->params['breadcrumbs'][] = $model->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'date:ntext',
+            // 'date:ntext',
+            [
+                'attribute' => 'date',
+                'format' => ['date', 'l jS \of F Y h:i:s A']
+            ],
             'title:ntext',
             'content:ntext',
             'type',
