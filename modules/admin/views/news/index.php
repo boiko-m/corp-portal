@@ -32,10 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'headerOptions' => ['style' => 'width:7%'],
+            ],
             [
                 'attribute' => 'date',
-                'format' => ['date', 'l jS \of F Y h:i:s A']
+                'format' => ['date', 'dd.MM.yyyy h:i:a'],
+                'headerOptions' => ['style' => 'width:18%'],
             ],
             'title:ntext',
             // 'content:ntext',

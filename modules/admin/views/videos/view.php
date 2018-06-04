@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $model->name;
             // 'date:ntext',
             [
                 'attribute' => 'date',
-                'format' => ['date', 'l jS \of F Y h:i:s A']
+                'format' => ['date', 'dd.MM.yyyy h:i:a']
             ],
             'comment_accept',
             'youtube_views',
