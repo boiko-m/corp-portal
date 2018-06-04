@@ -106,7 +106,7 @@ use dosamigos\tinymce\TinyMce;
       </iframe>
       <?= $form->field($model, 'img_icon')->hiddenInput(['rows' => 6, 'disabled' => true])->label(false) ?>
       <div>
-        <label>Предпросмотр картинки</label>
+        <label>Предпросмотр иконки</label>
         <img src="http://portal.lbr.ru/img/gift/VAUPWTE.jpg" class="preview-image" width="150px;">
       </div>
     </div>
@@ -120,8 +120,8 @@ use dosamigos\tinymce\TinyMce;
 
     <div class="section"><span>1</span>Настройки доступа и ограничения</div>
     <div class="inner-wrap">
-      <?= $form->field($model, "status")->hiddenInput(['disabled' => true], ['value' => 0])->label(false); ?>
-      <?= $form->field($model, "like_active")->checkbox(['value' => 0]); ?>
+      <?= $form->field($model, "status")->checkbox(['value' => 1]); ?>
+      <?= $form->field($model, "like_active")->checkbox(); ?>
     </div>
 
     <div class="form-group form-create-button">

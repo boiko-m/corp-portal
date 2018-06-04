@@ -1,10 +1,19 @@
 <?php
 
-/* @var $this \yii\web\View */
-
 use yii\helpers\Url;
 use app\models\User;
+use app\models\News;
+
 ?>
+
+<style>
+    .badge-info-status {
+        margin-left: 5px;
+        background-color: #F7931D;
+    }
+</style>
+
+<?php $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count() ?>
 
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
@@ -41,7 +50,7 @@ use app\models\User;
 
                 <li>
                     <a href="/admin/news">
-                        <i class="fi-file"></i> <span>Новости</span>
+                        <i class="fi-file"></i> <span>Новости</span><span class="badge badge-info badge-info-status" style="margin-top: 2px;"><?= $unconfirmedNews ?></span>
                     </a>
                 </li>
 
