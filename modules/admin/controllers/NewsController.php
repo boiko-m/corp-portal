@@ -25,7 +25,6 @@ class NewsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    // 'upload' => ['POST'],
                 ],
             ],
         ];
@@ -80,22 +79,6 @@ class NewsController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-    }
-
-    public function actionUpload()
-    {
-        $imageFolder = 'http://portal.lbr.ru/img/news/1.jpg';
-        $folder = 'img/news/';
-        // if (is_uploaded_file($temp ['tmp_name'])) { 
-        //     reset($_FILES);
-        //     $temp = current($_FILES);
-          
-            // $filetowrite = $folder . $temp['name'];
-            // move_uploaded_file($temp['tmp_name'], $filetowrite);
-            file_put_contents($folder . '123123.png', file_get_contents($imageFolder));
-          
-        return json_encode(array('location' => $imageFolder));
-        // }
     }
 
     /**
