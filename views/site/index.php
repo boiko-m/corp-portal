@@ -24,6 +24,8 @@ use app\models\Session;
     .news-offer {
         text-decoration: underline;
         padding-left: 10px;
+        font-size: 11px;
+        color: #747474; 
     }
 </style>
     <div class="row">
