@@ -6,13 +6,20 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Новость';
+$this->params['breadcrumbs'][] = ['label' => 'Список новостей', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $model->title;
 ?>
+
+<style>
+  .title-view {
+    text-align: center;
+  }
+</style>
+
 <div class="news-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="title-view"><?= Html::encode($model->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,7 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'date:ntext',
+            // 'date:ntext',
+            [
+                'attribute' => 'date',
+                'format' => ['date', 'dd.MM.yyyy h:i:a']
+            ],
             'title:ntext',
             'content:ntext',
             'type',

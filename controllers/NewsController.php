@@ -32,10 +32,29 @@ class NewsController extends Controller
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
+        $dataProvider->query->where('status <> 0');
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionOffer() {
+        $model = new News();
+        $model->date = strval(date_timestamp_get(date_create()));
+        $model->id_user = Yii::$app->user->id;
+        $model->type = 0;
+        $model->img_icon = '/img/gift/VAUPWTE.jpg';
+        $model->status = 0;
+        $model->like_active = 0;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['site/index']);
+        }
+
+        return $this->render('offer', array(
+            'model' => $model,
+        ));
     }
 }

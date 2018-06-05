@@ -42,7 +42,11 @@ $this->params['breadcrumbs'][] = $model->name;
             'img:ntext',
             'id_category',
             'id_user',
-            'date:ntext',
+            // 'date:ntext',
+            [
+                'attribute' => 'date',
+                'format' => ['date', 'dd.MM.yyyy h:i:a']
+            ],
             'comment_accept',
             'youtube_views',
             'right_module',

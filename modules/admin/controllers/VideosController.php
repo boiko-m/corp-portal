@@ -39,6 +39,7 @@ class VideosController extends Controller
     {
         $searchModel = new VideosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

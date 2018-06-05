@@ -21,6 +21,12 @@ use app\models\Session;
         background: #f5f5f5;
         padding-left: 10px;
     }
+    .news-offer {
+        text-decoration: underline;
+        padding-left: 10px;
+        font-size: 11px;
+        color: #747474; 
+    }
 </style>
     <div class="row">
         <div class="col-xs-12 col-md-8">
@@ -35,8 +41,11 @@ use app\models\Session;
                         </div>
                     <?php endforeach ?>
                 </div>
-                <div style="padding-top: 10px;">
+                <div style="padding-top: 10px; display: inline-block;">
                     <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
+                </div>
+                <div style="padding-top: 10px; display: inline-block;">
+                    <a href="/news/offer" class="news-offer">Предложить новость</a>
                 </div>
             </div>
         </div>

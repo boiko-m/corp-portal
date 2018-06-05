@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	}
 
 	.form-check-button {
-    text-align: center;
-  }
+	    text-align: center;
+	  }
 </style>
 
 <div class="videos-create">

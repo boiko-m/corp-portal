@@ -46,14 +46,14 @@ class News extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'date' => 'Date',
-            'title' => 'Title',
-            'content' => 'Content',
-            'type' => 'Type',
-            'img_icon' => 'Img Icon',
-            'id_user' => 'Id User',
-            'status' => 'Status',
-            'like_active' => 'Like Active',
+            'date' => 'Дата добавления',
+            'title' => 'Заголовок',
+            'content' => 'Содержимое',
+            'type' => 'Тип',
+            'img_icon' => 'Иконка',
+            'id_user' => 'Пользлватель',
+            'status' => 'Статус',
+            'like_active' => 'Доступ к оцениванию',
         ];
     }
 

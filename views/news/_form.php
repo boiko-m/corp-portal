@@ -1,68 +1,20 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use dosamigos\tinymce\TinyMce;
+  use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
+  use dosamigos\tinymce\TinyMce;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\News */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<style> 
-  .inner-wrap{
-    padding: 20px;
-    background: #F8F8F8;
-    border-radius: 6px;
-    margin-bottom: 15px;
-  }
-
-  .section{
-    font: normal 20px 'Bitter', serif;
-    color: #2A88AD;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    margin-left: 25px;
-  }
-  .section span {
-    background: #2A88AD;
-    padding: 5px 10px 5px 10px;
-    position: absolute;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border: 4px solid #fff;
-    font-size: 14px;
-    margin-left: -45px;
-    color: #fff;
-    margin-top: -3px;
-  }
-  .form-style-10 .privacy-policy{
-    float: right;
-    width: 250px;
-    font: 12px Arial, Helvetica, sans-serif;
-    color: #4D4D4D;
-    margin-top: 10px;
-    text-align: right;
-  }
-
+<style>
   .form-create-button {
     text-align: center;
   }
-
-  .preview-image {
-    margin-left: auto; 
-    margin-right: auto; 
-    display: block;
-  }
 </style>
 
-<div class="news-form">
+<div class="news-form" style="overflow: hidden;">
   <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <div class="section"><span>1</span>Содеожание</div>
-    <div class="inner-wrap">
       <?= $form->field($model, 'title')->textInput(['rows' => 6]) ?>
-<!--       <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?> -->
       <?= $form->field($model, 'content')->widget(TinyMce::className(), [
           'options' => ['rows' => 20],
           'language' => 'ru',
@@ -104,28 +56,10 @@ use dosamigos\tinymce\TinyMce;
             <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
         </form>
       </iframe>
-      <?= $form->field($model, 'img_icon')->hiddenInput(['rows' => 6, 'disabled' => true])->label(false) ?>
-      <div>
-        <label>Предпросмотр иконки</label>
-        <img src="http://portal.lbr.ru/img/gift/VAUPWTE.jpg" class="preview-image" width="150px;">
-      </div>
     </div>
 
-    <div class="section"><span>2</span>Детали</div>
-    <div class="inner-wrap">
-      <?= $form->field($model, 'type')->textInput(['rows' => 6, 'disabled' => true]) ?>
-      <?= $form->field($model, 'date')->textInput(['rows' => 6, 'disabled' => true]) ?>
-      <?= $form->field($model, 'id_user')->textInput(['rows' => 6, 'disabled' => true]) ?>
-    </div>
-
-    <div class="section"><span>1</span>Настройки доступа и ограничения</div>
-    <div class="inner-wrap">
-      <?= $form->field($model, "status")->checkbox(['value' => 1]); ?>
-      <?= $form->field($model, "like_active")->checkbox(); ?>
-    </div>
-
-    <div class="form-group form-create-button">
-        <?= Html::submitButton('Добавить новость', ['class' => 'btn btn-success']) ?>
+    <div class="form-group form-create-button form-create-button">
+        <?= Html::submitButton('Предложить новость', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -21,7 +21,8 @@
         "yii2mod/yii2-rbac": "*",
         "bupy7/yii2-widget-cropbox": "*",
         "ogheo/yii2-comments": "*",
-        "yiisoft/yii2-imagine": "^2.1"
+        "yiisoft/yii2-imagine": "^2.1",
+        "2amigos/yii2-tinymce-widget": "~1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

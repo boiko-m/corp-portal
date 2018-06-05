@@ -8,6 +8,7 @@ use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use \yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -37,6 +38,7 @@ class NewsController extends Controller
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -65,6 +67,11 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
+        $model->date = strval(date_timestamp_get(date_create()));
+        $model->id_user = Yii::$app->user->id;
+        $model->type = 0;
+        $model->img_icon = '/img/gift/VAUPWTE.jpg';
+        $model->status = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -124,4 +131,5 @@ class NewsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    
 }
