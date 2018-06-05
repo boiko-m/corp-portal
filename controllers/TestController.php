@@ -29,7 +29,11 @@ class TestController extends \yii\web\Controller
     {
         $data = new Tdata();
         
-        /*$contragent_key = "b3ba5d20-6535-11de-8007-00187177ff31";
+
+        $emails = $data->doc("Catalog_КонтактныеАдреса_ВидыКонтактирования")->key('ВидСвязи', '4249f650-b155-416a-acb0-8622c851fc6d')->top(3)->all();
+        //echo "<pre>".print_r($data->link, true)."</pre>"; 4249f650-b155-416a-acb0-8622c851fc6d
+
+        /*$contragent_key = "b3ba5d20-6535-11de-8007-00187177ff31"; 
         $a = $data->doc("InformationRegister_ПаркТехникиКонтрагента")->key('Контрагент_Key', $contragent_key)->expand("МодельныйРяд")/*->top(3)->all();
         //$a = $data->doc("InformationRegister_ЗапчастиКТоварам")->expand('Запчасть')->last();
 
@@ -38,7 +42,7 @@ class TestController extends \yii\web\Controller
 
          $a = $data->doc("InformationRegister_ПериодическиеРеквизитыСправочников")->cast(["Объект", "4ae6ef01-8a12-11e2-8044-005056c00008", "Catalog_Товары"])->key('Реквизит_Key', 'acf2d5f7-eb8e-4e2a-a4fd-c5739cac81fc')->condition()->last();
          echo var_dump($a);*/
-         echo "rest";
+         echo "<pre>".print_r($emails, true)."</pre>";
          exit;
         return true;
     }

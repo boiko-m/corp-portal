@@ -76,9 +76,11 @@
     *****************/
 
      function tajax($action = 'view', $params = null) {
+        
         var $thishtml;
         var $prefix;
         var $result;
+
         if (!$params) { $params = {} }
         if (!$params.container) { $params.container = $action; }
 
