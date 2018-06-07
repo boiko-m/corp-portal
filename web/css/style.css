@@ -51,10 +51,26 @@ File: Main Css File
 
 
 
-#calendar .past-event{
-  opacity: 0.2;
+#calendar .past-event {
+    opacity: 0.2;
+}
+
+a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end{
+    margin-bottom: 5px;
+  padding: 5px 5px 5px 5px;
 
 }
+td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
+  background: #fafafa;
+  color: #f7931d;
+}
+tbody.fc-body{
+  border-color: #dddddd;
+}
+td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
+  border-color: #dddddd;
+}
+
 .metismenu {
   padding: 0; }
   .metismenu ul {

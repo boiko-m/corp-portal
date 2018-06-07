@@ -13,6 +13,9 @@
         this.$modal = $('#event-modal'),
             this.$event = ('#external-events div.external-event'),
             this.$calendar = $('#calendar').fullCalendar({
+                eventColor: '#E2E2E2',
+                //eventBorderColor: '#fff',
+
                 events: function(start, end, timezone, callback) {
                     $.ajax({
                         url: '/profiles/json',
@@ -34,6 +37,10 @@
                             $("div.one").remove();
 
                             $('#calendar').css('visibility', 'visible');
+                            $('.fc-title').css("color", "black");
+                            $('.fc-today').css("background-color", "#fafafa");
+                          //  $('.fc-today').css("background-color", "#fafafa");
+
 
                         },
 
@@ -45,7 +52,8 @@
                                 events.push({
                                     title: data[i].title,
                                     start: data[i].start,
-                                    url: data[i].url
+                                    url: data[i].url,
+                                    description: data[i].description,
                                 });
                             }
                             callback(events);
@@ -61,6 +69,13 @@
                 eventRender: function(event,element,view) {
                     if (event.start <= (new Date().getTime()-86400000))
                         element.addClass("past-event");
+                    element.popover({
+                        title: event.title,
+                        content: event.description,
+                        trigger: 'hover',
+                        placement: 'top',
+                        container: 'body'
+                    });
                 },
                 
                 height: 'auto',

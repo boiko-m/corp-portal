@@ -87,7 +87,8 @@ class ProfilesController extends Controller
 
     public function actionJson(){
 
-        $data = Profile::find()->select(["CONCAT(first_name, ' ', last_name) AS title", 'id', 'birthday'])->asArray()->with('user')->all();
+        $data = Profile::find()->select(["CONCAT(first_name, ' ', last_name)
+         AS title", 'id', 'birthday', 'branch AS description', 'position'])->asArray()->with('user')->all();
 
         $result = array();
 
@@ -101,6 +102,7 @@ class ProfilesController extends Controller
             $value['start'] = $currentBirthday;
             $value['end'] = $currentBirthday;
             $value['url'] =  Url::to('/profiles/'.$value['id']);
+            $value['description'] = $value['description'].', '. $value['position'];
             $result[] = $value;
 
         }
