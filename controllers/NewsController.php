@@ -41,6 +41,7 @@ class NewsController extends Controller
     }
 
     public function actionOffer() {
+
         $model = new News();
         $model->date = strval(date_timestamp_get(date_create()));
         $model->id_user = Yii::$app->user->id;

@@ -49,6 +49,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         return $this->render('index', [
             "news" => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),

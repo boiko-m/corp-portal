@@ -46,6 +46,15 @@ File: Main Css File
   Menu
 ============= */
 /* Metis Menu css */
+/*прелоадер*/
+
+
+
+
+#calendar .past-event{
+  opacity: 0.2;
+
+}
 .metismenu {
   padding: 0; }
   .metismenu ul {
@@ -1072,7 +1081,8 @@ a:focus {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   border-radius: 3px;
   margin-bottom: 30px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
+  z-index: 3;
 }
 
 /* Card */
@@ -3230,7 +3240,8 @@ h3.timeline-title {
 
   .content-page {
     margin-left: 0;
-    margin-top: 0; }
+    margin-top: 0;
+    z-index: 5;}
 
   .card-box, body {
     border: none;
