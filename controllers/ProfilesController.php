@@ -41,19 +41,25 @@ class ProfilesController extends Controller
      */
     public function actionIndex($letter = "")
     {
-
+        if(Yii::$app->request->get('param') == 'new'){
             $get = Yii::$app->request->get('param');
-            $searchModel = new ProfileSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $get);
-
-
-        if(Yii::$app->request->get()){
-            $dataProvider->setSort(['defaultOrder' => ['date_job' => SORT_DESC, ]]);
-            //$dataProvider->query->limit(15);
         }
         else{
-            $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
+            $get = null;
         }
+
+        $searchModel = new ProfileSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $get);
+
+
+            if(Yii::$app->request->get('param') == 'new'){
+                 $dataProvider->setSort(['defaultOrder' => ['date_job' => SORT_DESC, ]]);
+                 //$dataProvider->query->limit(15);
+             }
+             else{
+                 $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
+             }
+        $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
 
         $dataProvider->query->with('user');
 
@@ -110,7 +116,7 @@ class ProfilesController extends Controller
         $query = Json::encode( $result);
 
 
-return $query;
+        return $query;
 
     }
     public function actionUpdate($id)
@@ -181,8 +187,8 @@ return $query;
      */
     public function actionView($id)
     {
-       $model = $this->findModel($id);
-       $user = User::findIdentity($model->id);
+        $model = $this->findModel($id);
+        $user = User::findIdentity($model->id);
 
         return $this->render('view', [
             'model' => $model,

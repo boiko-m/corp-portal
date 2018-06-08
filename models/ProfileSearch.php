@@ -41,24 +41,19 @@ class ProfileSearch extends Profile
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $get)
+    public function search($params, $get = null)
     {
         $query = Profile::find();
-    $query->limit(15);
-
-
-        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")])->limit(15);
-
+        if($get != null){
+            $query->limit(15);
+        }
+        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")]);
         //$query->select("*, CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`");
 
         //echo "<pre>".print_r($query, true)."</pre>";
 
         // add conditions that should always apply here
-
-        $param = [
-            'query' => $query,
-        ];
-
+        $param = [ 'query' => $query,];
         if($get != null){
             $param['pagination'] = false;
         }

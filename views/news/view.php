@@ -15,7 +15,29 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-box">
             <h5 class="card-title"><?=$news['title']?></h5>
             <p class="card-text"><?=htmlspecialchars_decode($news['content'])?></p>
+
+
+
+
+
+
+            <span class="buttonHolder">
+
+                <a href="#" class="button heart"></a>
+
+            </span>
+            <span>111</span>
+
+
+
+
+
+
+
+<hr>
+
             <p class="card-text">
+
                 <small class="text-muted">от <?php echo date("d.m.Y h:s:m", $news['date']) ?></small>
             </p>
         </div>

@@ -34,12 +34,9 @@
                             $('#calendar').css('visibility', 'collapse');
                         },
                         complete: function(){
-                            $("div.one").remove();
-
+                            $("div.tajaxLoad").remove();
                             $('#calendar').css('visibility', 'visible');
                             $('.fc-title').css("color", "black");
-                            $('.fc-today').css("background-color", "#fafafa");
-                          //  $('.fc-today').css("background-color", "#fafafa");
 
 
                         },
@@ -75,9 +72,11 @@
                         trigger: 'hover',
                         placement: 'top',
                         container: 'body'
-                    });
-                },
-                
+                    }
+                    );
+
+                    },
+
                 height: 'auto',
                 disableDragging: true,
                 firstDay: 1,

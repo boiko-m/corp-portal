@@ -137,6 +137,7 @@ use yii\helpers\Url;
                 </div>
             <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
+
                     <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', ])?>
 
                 </div>
