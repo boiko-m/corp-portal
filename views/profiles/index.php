@@ -37,6 +37,7 @@ echo Html::jsFile('@web/js/ajax.js');
                             'class' => 'yii\grid\ActionColumn',
                             'template' => '{view}'
                         ],
+
                         'name',
                         [
                             'label' => 'SIP',
@@ -48,7 +49,18 @@ echo Html::jsFile('@web/js/ajax.js');
                         'user.email',
                         'branch',
                         'department',
-                       // 'phone'
+                        [
+                            'attribute' => 'phone',
+                            'value' =>   function (\app\models\Profile $data) {
+                                $onePhone = explode(",", $data->phone);
+                                $link = "<a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a>';
+                                $link = $link.' '."<a href=tel:".$onePhone[1].'>'.$onePhone[1].'</a>';
+
+
+                                return $link;
+                            },
+                            'format' => 'raw',
+                        ],
                     ],
                     'pager' => [
                         'options'=>['class' => 'pagination float-right'],
