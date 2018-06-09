@@ -10,7 +10,7 @@ use app\models\Profile;
 /**
  * ProfileSearch represents the model behind the search form of `app\models\Profile`.
  */
-class ProfileSearch extends Profile
+class BirthdaySearch extends Profile
 {
     public $name;
 
@@ -41,22 +41,24 @@ class ProfileSearch extends Profile
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $get = null)
+    public function search($params)
     {
         $query = Profile::find();
-        if($get != null){
-            $query->limit(15);
-        }
-        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")]);
+
+
+        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")])->limit(15);
+
         //$query->select("*, CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`");
 
         //echo "<pre>".print_r($query, true)."</pre>";
 
         // add conditions that should always apply here
-        $param = [ 'query' => $query,];
-        if($get != null){
-            $param['pagination'] = false;
-        }
+
+        $param = [
+            'query' => $query,
+        ];
+       //$param['pagination'] = false;
+
 
         $dataProvider = new ActiveDataProvider($param);
 

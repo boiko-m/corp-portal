@@ -9,76 +9,15 @@
     "use strict";
 
     var CalendarApp = function() {
+
         this.$body = $("body")
         this.$modal = $('#event-modal'),
             this.$event = ('#external-events div.external-event'),
             this.$calendar = $('#calendar').fullCalendar({
-                eventColor: '#E2E2E2',
-                //eventBorderColor: '#fff',
-
-                events: function(start, end, timezone, callback) {
-                    $.ajax({
-                        url: '/profiles/json',
-                        dataType: 'json',
-
-
-                        data: {
-                            // our hypothetical feed requires UNIX timestamps
-                            start: start.unix(),
-                            end: end.unix()
-                        },
-
-                        beforeSend: function(){
-
-                            $('.calendar-ajax').html('<div class = " tajaxLoad one"><div><div class=" cssload-thecube"><div class=" cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2 one "></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">Загружается ...</div></div></div>');
-                            $('#calendar').css('visibility', 'collapse');
-                        },
-                        complete: function(){
-                            $("div.tajaxLoad").remove();
-                            $('#calendar').css('visibility', 'visible');
-                            $('.fc-title').css("color", "black");
-
-
-                        },
-
-
-
-                        success: function(data) {
-                            var events = [];
-                            for(var i = 0; i < data.length; i++) {
-                                events.push({
-                                    title: data[i].title,
-                                    start: data[i].start,
-                                    url: data[i].url,
-                                    description: data[i].description,
-                                });
-                            }
-                            callback(events);
-                        }
-                    });
+                events:  {
+                    title  : 'event1',
+                    start  : '2018-05-07'
                 },
-                eventClick: function(event) {
-                    if (event.url) {
-                        window.location.replace(event.url);
-                        return false;
-                    }
-                },
-                eventRender: function(event,element,view) {
-                    if (event.start <= (new Date().getTime()-86400000))
-                        element.addClass("past-event");
-                    element.popover({
-                        title: event.title,
-                        content: event.description,
-                        trigger: 'hover',
-                        placement: 'top',
-                        container: 'body'
-                    }
-                    );
-
-                    },
-
-                height: 'auto',
-                disableDragging: true,
                 firstDay: 1,
                 monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
                 monthNamesShort: ['Янв.','Фев.','Март','Апр.','Май','Июнь','Июль','Авг.','Сент.','Окт.','Ноя.','Дек.'],
@@ -123,27 +62,7 @@
         }
     },
         /* on click on event */
-        CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
-            var $this = this;
-            var form = $("<form></form>");
-            form.append("<label>Change event name</label>");
-            form.append("<div class='input-group m-b-15'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success btn-md waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
-            $this.$modal.modal({
-                backdrop: 'static'
-            });
-            $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-                    return (ev._id == calEvent._id);
-                });
-                $this.$modal.modal('hide');
-            });
-            $this.$modal.find('form').on('submit', function () {
-                calEvent.title = form.find("input[type=text]").val();
-                $this.$calendarObj.fullCalendar('updateEvent', calEvent);
-                $this.$modal.modal('hide');
-                return false;
-            });
-        },
+
         /* on select */
         CalendarApp.prototype.onSelect = function (start, end, allDay) {
             var $this = this;

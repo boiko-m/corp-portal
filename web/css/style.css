@@ -46,6 +46,48 @@ File: Main Css File
   Menu
 ============= */
 /* Metis Menu css */
+
+
+.vote-btn.btn.background-for-like{
+    background-color: white;
+    border-color: #c7d1cd;
+    border-radius: 8px;
+
+}
+span .vote-count{
+  background-color: green;
+}
+.margin{
+  margin: 0 50px 10px 10px;
+}
+
+#calendar .past-event {
+    opacity: 0.2;
+}
+
+a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end{
+    margin-bottom: 5px;
+  padding: 5px 5px 5px 5px;
+
+}
+#calendar .fc-today {
+  background-color: #fafafa;
+}
+td.fc-day-number.fc-today.fc-state-highlight{
+  color: #f7931d;
+  border-color: #dddddd;
+}
+span .icon-like{
+  background-image: url(../images/);
+}
+tbody.fc-body{
+  border-color: #dddddd;
+    background-color: #fafafa;
+}
+td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
+  border-color: #dddddd;
+}
+
 .metismenu {
   padding: 0; }
   .metismenu ul {
@@ -1072,7 +1114,8 @@ a:focus {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   border-radius: 3px;
   margin-bottom: 30px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
+  z-index: 3;
 }
 
 /* Card */
@@ -3230,7 +3273,8 @@ h3.timeline-title {
 
   .content-page {
     margin-left: 0;
-    margin-top: 0; }
+    margin-top: 0;
+    z-index: 5;}
 
   .card-box, body {
     border: none;

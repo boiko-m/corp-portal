@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\BirthdaySearch;
 use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
 use app\models\User;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,6 +20,7 @@ use Imagine\Image\Point;
 use yii\helpers\Json;
 use app\models\CropboxForm;
 use \yii\web\UploadedFile;
+use yii\helpers\Html;
 
 /**
  * ProfilesController implements the CRUD actions for Profile model.
@@ -37,14 +41,31 @@ class ProfilesController extends Controller
      */
     public function actionIndex($letter = "")
     {
-        $searchModel = new ProfileSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->request->get('param') == 'new'){
+            $get = Yii::$app->request->get('param');
+        }
+        else{
+            $get = null;
+        }
 
+        $searchModel = new ProfileSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $get);
+
+
+            if(Yii::$app->request->get('param') == 'new'){
+                 $dataProvider->setSort(['defaultOrder' => ['date_job' => SORT_DESC, ]]);
+                 //$dataProvider->query->limit(15);
+             }
+             else{
+                 $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
+             }
         $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
+
         $dataProvider->query->with('user');
 
         if(isset($letter) && mb_strlen($letter) == 1 && !is_numeric($letter)) {
             $dataProvider->query->andWhere(['like', 'last_name', $letter."%", false]);
+
         }
 
         $alphabetModels = Profile::find()->select(['last_name'])->all();
@@ -58,6 +79,46 @@ class ProfilesController extends Controller
         ]);
     }
 
+
+    public  function actionCalendar() {
+        return '<div id="calendar"></div>';
+    }
+
+
+    public function actionBirthday()
+    {
+        return $this->render('birthday');
+    }
+
+
+    public function actionJson(){
+
+        $data = Profile::find()->select(["CONCAT(first_name, ' ', last_name)
+         AS title", 'id', 'birthday', 'branch AS description', 'position'])->asArray()->with('user')->all();
+
+        $result = array();
+
+        foreach ($data as $value) {
+            if($value['user']['dismissed'] == 1){
+                unset($value);
+                continue;
+            }
+            unset($value['user']);
+            $currentBirthday = date('Y') . '-' . substr($value['birthday'], 5);
+            $value['start'] = $currentBirthday;
+            $value['end'] = $currentBirthday;
+            $value['url'] =  Url::to('/profiles/'.$value['id']);
+            $value['description'] = $value['description'].', '. $value['position'];
+            $result[] = $value;
+
+        }
+
+        $query = Json::encode( $result);
+
+
+        return $query;
+
+    }
     public function actionUpdate($id)
     {
         if($id != Yii::$app->user->id) {
@@ -126,8 +187,8 @@ class ProfilesController extends Controller
      */
     public function actionView($id)
     {
-       $model = $this->findModel($id);
-       $user = User::findIdentity($model->id);
+        $model = $this->findModel($id);
+        $user = User::findIdentity($model->id);
 
         return $this->render('view', [
             'model' => $model,

@@ -5,6 +5,8 @@
 $this->title = 'Главная';
 use app\models\Profile;
 use app\models\Session;
+use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 <style>
     .news-a {
@@ -85,6 +87,7 @@ use app\models\Session;
             <div class="card-box">
                 <div>
                     Сегодня отмечают дни рождения
+
                 </div>
                 <div>
 
@@ -101,6 +104,10 @@ use app\models\Session;
                            </div>
                         </div>
                     <?php endforeach ?>
+                    <div style="padding-top: 10px; display: inline-block;">
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', ])?>
+
+                    </div>
                 </div>
             </div>
             <div>
@@ -108,11 +115,13 @@ use app\models\Session;
             </div>
         </div>
     <?php endif ?>
+
     <div class="col-xs-12 col-md-4 ">
         <div class="card-box">
             Новые сотрудники
 
             <div>
+
             <?php // echo var_dump($user_new); ?>
             <?php foreach ($user_new as $user): ?>
                 <div class="row" style="padding:10px">
@@ -127,6 +136,11 @@ use app\models\Session;
                    </div>
                 </div>
             <?php endforeach ?>
+                <div style="padding-top: 10px; display: inline-block;">
+
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', ])?>
+
+                </div>
         </div>
 
         </div>

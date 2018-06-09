@@ -15,7 +15,37 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-box">
             <h5 class="card-title"><?=$news['title']?></h5>
             <p class="card-text"><?=htmlspecialchars_decode($news['content'])?></p>
+
+
+
+<div class="d-inline-block margin">
+
+
+            <?= \hauntd\vote\widgets\Like::widget([
+                'entity' => 'itemLike',
+                'model' => $news,
+
+                'buttonOptions' => [
+                    'class' => ' btn  background-for-like',
+
+                    'label' => Yii::t('app', 'Мне нравится'),
+
+                ]
+
+            ]); ?>
+</div>
+
+
+          
+
+
+
+
+
+<hr>
+
             <p class="card-text">
+
                 <small class="text-muted">от <?php echo date("d.m.Y h:s:m", $news['date']) ?></small>
             </p>
         </div>

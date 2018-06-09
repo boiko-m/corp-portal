@@ -82,6 +82,7 @@
         -ms-transform: rotateZ(45deg);
         -webkit-transform: rotateZ(45deg);
         -moz-transform: rotateZ(45deg);
+
 }
 .cssload-thecube .cssload-cube {
     position: relative;

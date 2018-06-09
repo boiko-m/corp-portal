@@ -103,7 +103,7 @@
         if (!$params.text) { $params.text = "Загрузка..." }
         if ($params.load) {
             if (!$params.append) {
-                $($params.container).html('<div class = "tajaxLoad"><div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">' + $params.text + '</div></div></div>');
+                $($params.container).html('<div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">' + $params.text + '</div></div>');
             } else {
                 $($params.container + "next").html('<div style = "text-align:center;"><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div></div>');
             }
@@ -126,3 +126,24 @@
             });
         }
      }
+
+
+    $('.heart').on('click',
+
+        function(){
+            $.ajax({
+                url:    '/profiles/ajax/',
+                type:     "POST", //метод отправки
+                success: function(response) { //Данные отправлены успешно
+                    alert(response);
+                    // console.log(result);
+
+                },
+                error: function() { // Данные не отправлен
+                    alert('Ошибка. Данные не отправлены.');
+                }
+            });
+            return false;
+        }
+    );
+

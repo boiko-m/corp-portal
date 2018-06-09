@@ -20,11 +20,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+
+        'plugins/jquery-ui/jquery-ui.min.css',
         'css/bootstrap.min.css',
         'css/icons.css',
         'css/metismenu.min.css',
         'css/style.css',
-        'css/styles-new.css'
+        'css/styles-new.css',
+        'plugins/fullcalendar/css/fullcalendar.min.css',
     ];
     public $js = [
         'js/modernizr.min.js',
@@ -34,9 +37,13 @@ class AppAsset extends AssetBundle
         'js/metisMenu.min.js',
         'js/waves.js',
         'js/jquery.slimscroll.js',
+        'plugins/moment/moment.js',
         'plugins/waypoints/lib/jquery.waypoints.min.js',
         'plugins/counterup/jquery.counterup.min.js',
         //'pages/jquery.dashboard.init.js',
+        'plugins/counterup/jquery.counterup.min.js',
+        'plugins/fullcalendar/js/fullcalendar.min.js',
+        'pages/jquery.calendar.js',
         'js/jquery.core.js',
         'js/jquery.app.js',
         'js/myajax.js',
