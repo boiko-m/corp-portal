@@ -52,6 +52,7 @@ File: Main Css File
     background-color: white;
     border-color: #c7d1cd;
     border-radius: 8px;
+  cursor: pointer;
 
 }
 span .vote-count{
