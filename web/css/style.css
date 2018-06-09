@@ -56,6 +56,7 @@ File: Main Css File
 }
 .vote-btn.btn.background-for-like:hover{
   cursor: pointer;
+  background-color: #eeeeee;
 }
 span .vote-count{
   background-color: green;
