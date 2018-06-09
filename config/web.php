@@ -14,6 +14,28 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
+        'vote' => [
+            'class' => hauntd\vote\Module::class,
+            'guestTimeLimit' => 3600,
+            'entities' => [
+                // Entity -> Settings
+                'itemVote' => app\models\News::class, // your model
+                'itemVoteGuests' => [
+                    'modelName' => app\models\News::class, // your model
+                    'allowGuests' => true,
+                    'allowSelfVote' => false,
+                    'entityAuthorAttribute' => 'user_id',
+                ],
+                'itemLike' => [
+                    'modelName' => app\models\News::class, // your model
+                    'type' => hauntd\vote\Module::TYPE_TOGGLE, // like/favorite button
+                ],
+                'itemFavorite' => [
+                    'modelName' => app\models\News::class, // your model
+                    'type' => hauntd\vote\Module::TYPE_TOGGLE, // like/favorite button
+                ],
+            ],
+        ],
         'comments' => [
             'class' => 'ogheo\comments\Module'
         ],
@@ -40,7 +62,8 @@ $config = [
             'as access' => [
                 'class' => yii2mod\rbac\filters\AccessControl::class
             ],
-        ]
+            ]
+
     ],
     'components' => [
         /*'session'=>[
@@ -167,7 +190,8 @@ $config = [
         ],
     ],
     'params' => $params,
-];
+
+    ];
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

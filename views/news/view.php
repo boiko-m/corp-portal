@@ -18,17 +18,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
+<div class="d-inline-block margin">
 
 
+            <?= \hauntd\vote\widgets\Like::widget([
+                'entity' => 'itemLike',
+                'model' => $news,
 
-            <span class="buttonHolder">
+                'buttonOptions' => [
+                    'class' => ' btn  background-for-like',
 
-                <a href="#" class="button heart"></a>
+                    'label' => Yii::t('app', 'Мне нравится'),
 
-            </span>
-            <span>111</span>
+                ]
+
+            ]); ?>
+</div>
 
 
+          
 
 
 
