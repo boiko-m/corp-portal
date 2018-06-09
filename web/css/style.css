@@ -52,8 +52,10 @@ File: Main Css File
     background-color: white;
     border-color: #c7d1cd;
     border-radius: 8px;
-  cursor: pointer;
 
+}
+.vote-btn.btn.background-for-like:hover{
+  cursor: pointer;
 }
 span .vote-count{
   background-color: green;
