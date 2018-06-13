@@ -19,6 +19,14 @@
                         </a>
                     </li>
                 <?endif;?>
+                
+                <?if(\Yii::$app->user->can("viewOrdersClient")):?>
+                    <li>
+                        <a href="/project/">
+                            <i class="fi-share"></i> <span> Проекты компании </span>
+                        </a>
+                    </li>
+                <?endif;?>
 
 
                 <?if(\Yii::$app->user->can("viewScripts")):?>

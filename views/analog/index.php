@@ -8,221 +8,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-<?php 
-
-$json = '
-{
- "items": [
-  [
-   {
-    "value": "Наименование товара"
-   },
-    {
-    "value": "Цель использования для наименование"
-   },
-   {
-    "value": "Haulotte 32.10 (Олот, Франция) погрузчик телескопический с вилами для паллет, 84 л.с"
-   },
-   {
-    "value": "Haulotte 40.10 (Олот, Франция) погрузчик телескопический с вилами для паллет, 95 л.с"
-   }
-  ],
-  [
-   {
-    "value": "Изображение"
-   },
-   {
-    "value": "",
-    "params": {
-     "image": "MNS0092584/UPR-00620240_Haulotte.jpg"
-    }
-   },
-   {
-    "value": "",
-    "params": {
-     "image": "MNS0092586/UPR-00620244_Haulotte.jpg",
-     "info": "Равным образом укрепление и развитие структуры позволяет выполнять важные задания по разработке соответствующий условий активизации. Задача организации, в особенности же укрепление и развитие структуры требуют от нас анализа существенных финансовых и административных условий."
-    }
-   }
-  ],
-  [
-   {
-    "value": "Расположение индикатора момента нагрузки стрелы",
-    "params": {
-     
-     "info": "Равным образом укрепление и развитие структуры позволяет выполнять важные задания по разработке соответствующий условий активизации. Задача организации, в особенности же укрепление и развитие структуры требуют от нас анализа существенных финансовых и административных условий!"
-    }
-   },
-   {
-    "value": "на уровне глаз, на стойке кабины"
-   },
-   {
-    "value": "на уровне глаз, на стойке кабины"
-   }
-  ],
-  [
-   {
-    "value": "Высота подъема, м"
-   },
-   {
-    "value": "10"
-   },
-   {
-    "value": "10"
-   }
-  ],
-  [
-   {
-    "value": "Масса, кг"
-   },
-   {
-    "value": "7 950"
-   },
-   {
-    "value": "8 740"
-   }
-  ],
-  [
-   {
-    "value": "Гарантия на товар, мес."
-   },
-   {
-    "value": "24"
-   },
-   {
-    "value": "24"
-   }
-  ],
-  [
-   {
-    "value": "Трансмисиия"
-   },
-   {
-    "value": "гидростатическая"
-   },
-   {
-    "value": "гидростатическая"
-   }
-  ],
-  [
-   {
-    "value": "Форма кабины и углы обзора"
-   },
-   {
-    "value": "Яйцевидная, угол обзором 360 град. ширина 94 см"
-   },
-   {
-    "value": "test",
-    "params": {
-     
-     "video":"https://youtu.be/GEgP04blOZU",
-     "video_start":"60",
-     "video_stop":"120"
-    }
-   }
-  ]
- ]
-}
-';
-
-
-
-class Analog
-{
-  public $items;
-  public $value;
-  public $attr;
-  public $result;
-  public $image;
-  public $class;
-  public $link;
-  public $attr_link;
-  function __construct($items)
-  {
-    $this->items = $items;
-    foreach ($items as $item) {
-        foreach ($item as $line) {
-          $this->result .= "<tr>";
-          foreach ($line as $cell) {
-            $this->image = null;
-            $this->value = $cell['value'];
-            $this->attr = null;
-            $this->attr_link = null;
-            if ($cell['params']) {
-              $this->params($cell['params']);
-            } else {
-              $this->params = null;
-            }
-            $this->result .= "<td style = ". $this->style." class = '".$this->class."' ".$this->attr.">".$this->value.$this->image."</td>";
-          }
-          $this->result .= "</tr>";
-        }
-    }
-  }
-  public function params($params) {
-    foreach ($params as $key => $param) {
-      $this->$key($param);
-    }
-  }
-  public function image ($img) {
-    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt='' style = 'a'>";
-    $this->style .= ";padding:0px;";
-  }
-  public function colspan ($colspan) {
-    $this->attr .= " colspan = '0'";
-  }
-  public function info($info) {
-    //$this->attr .= " title = '".$info."'";
-    $this->class = "info_block";
-    $this->value = " ".$this->value." <div class = 'info_block_hidden'>".$info."</div>";
-  }
-  public function video ($link) {
-    $this->link = str_replace(array("https://youtu.be/", "https://www.youtube.com/watch?v="), "", $link);
-    $this->attr_link = "?fs=1";
-    $this->value = "<iframe class='ytplayer' width='640' height='360' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
-  }
-  public function video_start($attr) {
-    $this->attr_link .= "&start=".$attr;
-    $this->value = "<iframe class='ytplayer' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
-  }
-  public function video_stop($attr) {
-    $this->attr_link .= "&end=".$attr;
-    $this->value = "<iframe class='ytplayer' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
-  }
-  public function result() {
-    return $this->result;
-  }
-
-
-} 
-
-
- ?>
-
-
-<table class="analog-table" border="1" bordercolor = "#cccccc">
-  <tr>
-    <td>Характеристика:</td>
-    <td>Выгоды:</td>
-  </tr>
-  <?php 
-    $request = Yii::$app->request;
-    if (!$request->post('json')) {
-      $items = $json;
-    } else {
-      $items = $request->post('json');
-    }
-    $items = json_decode($items, true);
-    $analog = new Analog($items);
-    echo $analog->result();
-  ?>
-</table>
-
-
-
-
-
-
 <style>
   * {
       font-family: 'Open Sans',Arial,Helvetica,Verdana,sans-serif!important;
@@ -285,3 +70,119 @@ class Analog
     border-radius: 5px;
   } */
 </style>
+
+<?php 
+
+$json = '
+{"items":[[{"value":"Наименование товара"},{"value":""},{"value":"RCW 10 000 Разбрасыватель"},{"value":"MX - 3000 на шасси KASTOR PR – 02"}],[{"value":"Производитель"},{"value":""},{"value":"AGROMET PILMET"},{"value":"AGROMET PILMET"}],[{"value":"Изображение"},{"value":""},{"value":"","params": {
+     "image": "MNS0092586/UPR-00620244_Haulotte.jpg"
+    }},{"value":""}],[{"value":"Ширина внесения, м","params":{"info":"От ширины внесения зависит производительность техники, площадь обработки и агротехнические сроки внесения удобрений. На рынке существуют модели с шириной внесения от 8 до 48 м,"}},{"value":"больше ширина внесения - выше производительность, ниже расход топлива"},{"value":"гранулированные удобрения: 10-36  пылевидные: 8-16"},{"value":"10-36"}],[{"value":"Производительность, га/ч","params":{"info":"С производительностью от 6,5 до 55 га/ч. Производительность должна позволять внести удобрения на нужные посевные площади за агросрок."}},{"value":""},{"value":"Граждане, весна оттрубила свое, тем не менее задав старт высокому отпускному сезону. Настала пора поставить на паузу свои перенапрягшиеся нервы, мозг и тело и заслуженно отдохнуть. В большинстве своем белорусское народонаселение ассоциирует отпуск с заграницей, к которой желательно прикрученное море с пляжем. Но есть и любители другого вида релакса."},{"value":"до 40"}],[{"value":"Объем вместимости, м.куб","params":{"info":"Объем вместимости позволяет обработать большую площадь без дополнительных дозаправок удобрениями, за счет чего экономится ГСМ. Меньше холостых перездов, что увеличивает обрабатываемые площади в агросрок. Прицепные разбрасыватели бывают от 1,6 до 12 м.куб"}},{"value":"больше бункер - меньше остановок на заправку, больше выработка в смену"},{"value":"10"},{"value":"3"}],[{"value":"Тип транспортера","params":{"info":"Транспортер разбрасывателя точно доставляет материал на диски разбрасывателя, ленточный не нарушает целостность гранулированных удобрений. Равномерно подает удобрения. Дольше служит. Бывают цепные и ленточные транспортеры. Цепные - способны повредить удобрения при подаче на диски, подача не равномерная. Цепные подвержены коррозии при контакте с удобрениями."}},{"value":"Ленточные лучше цепных, не повреждают гранулы удобрений"},{"value":"ленточный"},{"value":"ворошилка"}],[{"value":"Количество разбрасывающих тарелок","params":{"info":"Под каждый вид удобрений целесообразно использовать определенную размерность разбрасывающих тарелок для обеспечения точности и равномерности внесения и максимальной производительности. Обработка по краю поля намного проще при наличии крайнего диска, экономятся удобрения. На рынке существуют разбрасыватели с 1 комплектом тарелок, без крайнего диска."}},{"value":""},{"value":"2 для гранул, 2 для извести и 1 крайний диск"},{"value":"2"}],[{"value":"Диапазон регулировки дозирующего отверстия","params":{"info":"Регулировка отверстия позволяет увеличивать или уменьшать дозу внесения, а также использовать разбрасыватель для посева зерновых или обработки дорог песком или солью. Широкий диапазон обеспечивает многофункциональность разбрасывателя."}},{"value":"Широкий диапазон нужен для  разных материалов (соль, песок, известь, минеральные убобрения, зерно)"},{"value":"0-250 мм"},{"value":""}],[{"value":"Число колес, шины","params":{"info":"На объем бункера свыше 9 м.куб целесообразно использовать двухосную модель, либо одноосную с большими колесами низкого давления -  для большей устойчивости и проходимости. Меньшее давление на почву, позволяет входить в переувлажненное поле и осуществить внесение удобрений в более ранние сроки."}},{"value":"Широкие колеса и несколько осей - не вязнет во влажной почве, растягиваем агросрок внесения."},{"value":"4 шт, 500 / 60–22,5"},{"value":"2 шт, 400 / 60–15,5"}],[{"value":"Габаритные размеры","params":{"info":"Габаритные размеры разбрасывателя влияют на возможность производить транспортировку по дорогам общего пользования, например для внесения песка и соли на дорожное полотно. На рынке существуют разбрасыватели свыше 2,6м в ширину - неудобны для транспортировки в стандартавто."}},{"value":""},{"value":"6,8х2,35х2,56"},{"value":"2,5х2,7х2,5"}],[{"value":"Масса, кг","params":{"info":"Легкий собственный вес при большой грузоподъемности позволяет агрегатироваться с тракторами меньшей мощности. Мощность трактора тратится не на перевозку прицепа ,а груза. экономится ГСМ, Меньшее давление на почву, позволяет входить в переувлажненное поле и осуществить внесение удобрений в более ранние сроки. На рынке существуют разбрасыватели свыше от 4 до 5 и более тонн собственной массы"}},{"value":""},{"value":"3960"},{"value":"950"}],[{"value":"Агрегатируется с трактором, л.с.","params":{"info":"Прицепные разбрасыватели имея большой объем вместимости способны эксплуатироваться с тракторами меньшей мощности, как вывод - экономия ГСМ при увеличенной производительности. На рынке существуют разбрасыватели, которые агрегатируются с тракторами от 150 л.с. - имея аналогичный объем вместимости (за счет собственной массы прицепа)"}},{"value":""},{"value":"от 110"},{"value":"от 60"}],[{"value":"Привод напольного транспортера","params":{"info":"Напольный транспортер может приводиться в действие либо от гидравлики трактора, либо механически - от шпорного колеса. Ленточный транспортер подает удобрения на разбрасывающие диски. При работе шпорного колеса - подача осуществляется только при движении разбрасывателя по полю"}},{"value":"Шпоровое колесо - работает без компьютера; гидравлика только через дорогой компьютер и датчики."},{"value":"шпорное колесо (опция гидравлика)"},{"value":"нет"}],[{"value":"Многофункциональность","params":{"info":"Отличным показателем разбрасывателя удобрений является его многофункциональность, чтобы по максимуму использовать его на протяжении года, а не только в период внесения удобрений."}},{"value":""},{"value":"гранулы, порошковые, посев зерна,песок,соль,навоз"},{"value":"гранул. удобрения, зерно, песок, соль"}],[{"value":"Тормозная система","params":{"info":"Внесение удобрений производится на скорости до 12 км/ч, поля могут быть с уклонами. Наличие тормозной системы является необходимым в вышеуказанных условиях. Работа с прицепом без тормозной системе на склонах приводит к повышенной нагрузке на трактор, а в некоторых случаях внесение удобрений невозможно."}},{"value":""},{"value":"1-пр. пневматическая система + ручной тормоз"},{"value":"нет"}],[{"value":"Сито для загрузки в бункер","params":{"info":"Установка сита не допускает поподания в бункер сторонних предметов, которые могут привести к поломке привода и дисков."}},{"value":""},{"value":"есть"},{"value":"да"}],[{"value":"Разбрасывающие диски","params":{"info":"Нержавеющая сталь не вступает в реакцию с минеральными удобрениями, долго сохраняет функициональность и не подвержена коррозии. На рынке имеются разбрасыватели с дисками из черного металла, окрашенные."}},{"value":""},{"value":"Из нержавеющей стали"},{"value":"Из нержавеющей стали"}],[{"value":"Компьютер","params":{"info":" поддержание заданной дозы удобрения или извести независимо от скорости движения, нанесение карты полей, передачи данных в отдоленный компьютер и т.д. Повышает урожайность и экономит удобрения."}},{"value":""},{"value":"Superior (опция)"},{"value":"нет"}],[{"value":"Тент","params":{"info":"Наличие тента позволяет вносить удобрения в плохих погодных условиях."}},{"value":""},{"value":"есть","params":{"video":"https://youtu.be/GEgP04blOZU","video_start":"317","video_stop":"327"}},{"value":"есть (опция)"}],[{"value":"Гарантия","params":{"info":"Гарантия производителя подтверждает надежность и качество техники. Большинство импортных разбрасывателей на рынке с гарантией 1 год"}},{"value":""},{"value":"2 года"},{"value":"2 года"}],[{"value":"Цена","params":{"info":"Экономия вложенных средств"}},{"value":""},{"value":"22000 евро в Смоленске"},{"value":"7500 евро"}]],"parameters":{"header":"Рекомендуем ознакомиться с техническими характеристиками товаров.","client":"Уважаемая Дворникова Татьяна Валериевна","user":"dushin         ","user_info":"Душин Игорь Анатольевич<br>Телефон: +375296086802<br>E-mail: dushin@lbr.ru<br>","user_guid":"bbaf2c3a-64b1-11e4-8582-005056a36ce0","filial":"SMK","email":"dushin@lbr.ru","print":"0"}}
+';
+
+
+class Analog
+{
+  public $items;
+  public $value;
+  public $attr;
+  public $result;
+  public $image;
+  public $class;
+  public $link;
+  public $attr_link;
+  function __construct($items)
+  {
+
+    $this->items = $items;
+
+
+
+        foreach ($items as $item) {
+          $this->result .= "<tr>";
+          foreach ($item as $cell) {
+            $this->image = null;
+            $this->value = $cell['value'];
+            $this->attr = null;
+            $this->attr_link = null;
+            if ($cell['params']) {
+              $this->params($cell['params']);
+            } else {
+              $this->params = null;
+            }
+            $this->result .= "<td style = ". $this->style." class = '".$this->class."' ".$this->attr.">".$this->value.$this->image."</td>";
+          }
+          $this->result .= "</tr>";
+        }
+    
+  }
+  public function params($params) {
+    foreach ($params as $key => $param) {
+      $this->$key($param);
+    }
+  }
+  public function image ($img) {
+    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt='' style = 'a'>";
+    $this->style .= ";padding:0px;";
+  }
+  public function colspan ($colspan) {
+    $this->attr .= " colspan = '0'";
+  }
+  public function info($info) {
+    //$this->attr .= " title = '".$info."'";
+    $this->class = "info_block";
+    $this->value = " ".$this->value." <div class = 'info_block_hidden'>".$info."</div>";
+  }
+  public function video ($link) {
+    $this->link = str_replace(array("https://youtu.be/", "https://www.youtube.com/watch?v="), "", $link);
+    $this->attr_link = "?fs=1";
+    $this->value = "<iframe class='ytplayer' width='640' height='360' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
+  }
+  public function video_start($attr) {
+    $this->attr_link .= "&start=".$attr;
+    $this->value = "<iframe class='ytplayer' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
+  }
+  public function video_stop($attr) {
+    $this->attr_link .= "&end=".$attr;
+    $this->value = "<iframe class='ytplayer' src='http://www.youtube.com/embed/".$this->link."?".$this->attr_link."' frameborder='0' allowfullscreen></iframe>";
+  }
+  public function result() {
+    return $this->result;
+  }
+
+
+} 
+
+
+ ?>
+
+
+<table class="analog-table" border="1" bordercolor = "#cccccc">
+  <tr>
+    <td>Характеристика:</td>
+    <td>Выгоды:</td>
+  </tr>
+  <?php 
+    $request = Yii::$app->request;
+
+    if (!$request->post('json')) {
+      $items = $json;
+    } else {
+      $items = $request->post('json');
+    }
+
+
+    $items = json_decode($items, true);
+
+    
+
+    $analog = new Analog($items['items']);
+    echo $analog->result();
+
+    echo "<pre>".print_r($items['parameters']['user_info'], true)."</pre>";
+    exit;
+  ?>
+</table>
+
+
+
+
