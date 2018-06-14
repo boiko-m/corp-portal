@@ -15,16 +15,29 @@
                 <?if(\Yii::$app->user->can("viewOrdersClient")):?>
                     <li>
                         <a href="/ordersclient/">
-                            <i class="dripicons-list"></i> <span> Мои заказы </span>
+                            <i class="dripicons-list"></i> <span> Заказ покупателя </span>
                         </a>
                     </li>
                 <?endif;?>
                 
-                <?if(\Yii::$app->user->can("viewOrdersClient")):?>
+                <?if(\Yii::$app->user->can("viewProject")):?>
                     <li>
-                        <a href="/project/">
-                            <i class="fi-share"></i> <span> Проекты компании </span>
-                        </a>
+                        <a href="javascript: void(0);"><i class="fi-share"></i> <span> Проекты компании </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="/project/">Проекты в работе</a></li>
+                            <li><a href="/project/news/">Новости</a></li>
+                            <li><a href="/project/forum/">Форум проектов</a></li>
+                        </ul>
+                        <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
+                            <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
+                                <ul class="nav-third-level nav collapse" aria-expanded="false">
+                                    <li><a href="javascript: void(0);">энергонасыщенные тракторы</a></li>
+                                    <li><a href="javascript: void(0);">прикатывающие катки</a></li>
+                                    <li><a href="javascript: void(0);">навесное оборудование к фронтальным погрузчикам</a></li>
+                                    <li><a href="javascript: void(0);">косилки</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
                     </li>
                 <?endif;?>
 

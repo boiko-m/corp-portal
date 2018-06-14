@@ -2,11 +2,14 @@
 
 namespace app\modules\admin\controllers;
 
+use Yii;
 use yii\web\Controller;
 use app\models\Odata;
 use app\models\Tdata;
 use app\models\User;
 use app\models\Profile;
+
+ini_set('max_execution_time', 900);
 /**
  * Default controller for the `admin` module
  */
@@ -89,6 +92,7 @@ class UserupController extends Controller
 
     	
     	$isset_users = User::find()->select('username')->where(["dismissed" => null])->all();
+        exit;
     	
 
 	    foreach ($isset_users as $isset_user) {
@@ -166,16 +170,100 @@ class UserupController extends Controller
     }
 
     public function actionUpdate() {
-        $odata = new Tdata();
-
-        //$user = $odata->doc("Catalog_Сотрудники")->top(3)->all();
         
-        $contragent_key = "b3ba5d20-6535-11de-8007-00187177ff31";
-        $a = $odata->doc("InformationRegister_ПаркТехникиКонтрагента")->key('Контрагент_Key', $contragent_key)->expand("МодельныйРяд")->top(3)->all();   
-        echo var_dump($a);
-
-
-        return false;
     }
+
+     public function actionReplace() {
+        $data = new Tdata();
+
+        for ($p = 1; $p <= 25; $p++) {
+        
+            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,ОфициальнаяДолжность/Description,ДатаРождения,Ref_Key')->where("ДатаУвольнения ne '0001-01-01T00:00:00'")->orderby('ДатаПриема desc')->page($p, 50)->all();
+
+            for ($i=0; $i < count($client); $i++) {
+                $data_cat = $data->doc('InformationRegister_РейтингиСотрудников')->key('Сотрудник_Key', $client[$i]['Ref_Key'])->select('Period,Рейтинг/Description')->expand('Рейтинг')->orderby('Period desc')->top(1)->all();
+
+                $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
+
+                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->all();
+
+                foreach ($phones as $phone) {
+                    if ($phone['ВидСвязи']['Description'] == "Сотовая") {
+                        $client[$i]['Сотовые'] .= $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона'];
+                    }
+                }
+
+                $client[$i]['Категория'] = $data_cat['0']['Рейтинг']['Description'];
+                $client[$i]['Логин'] = $login['0']['Description'];
+            }
+
+            for ($i=0; $i < count($client); $i++) { 
+                if ($client[$i]['ПоловаяПринадлежность'] == "Мальчик") {
+                    $client[$i]['ПоловаяПринадлежность'] = 1;
+                } else {
+                    $client[$i]['ПоловаяПринадлежность'] = 2;
+                }
+                $client[$i]['ДатаРождения'] = date("Y-m-d", strtotime($client[$i]['ДатаРождения']));
+                $client[$i]['ДатаПриема'] = date("Y-m-d", strtotime($client[$i]['ДатаПриема']));
+                $name = explode(" ", $client[$i]['Description']);
+                $client[$i]['Имя'] = $name[1];
+                $client[$i]['Фамилия'] = $name[0];
+                $client[$i]['Отчество'] = $name[2];
+            }
+
+            foreach ($client as $key => $up) {
+                if ($up['Фамилия'] == 'Стажеры')
+                    continue;
+
+                $profile = Profile::find()->where(['id_1c' => ("\r\n" . $up['Code'])])->one();
+
+                if ($profile == null)
+                    continue;
+
+                $profile->first_name = $up['Имя'];
+                $profile->last_name = $up['Фамилия'];
+                $profile->middle_name = $up['Отчество'];
+                $profile->birthday = $up['ДатаРождения'];
+                $profile->date_job = $up['ДатаПриема'];
+                $profile->sex = $up['ПоловаяПринадлежность'];
+
+                if ($up['Email'] == '' && $up['Логин'] == '') {
+                    $profile->skype = $this->generateEmail($up['ФИОЛат']);
+                    $user = User::find()->where(['id' => $profile->id])->one();
+                    $user->email = $this->generateEmail($up['ФИОЛат']);
+                    $user->save();
+                }
+                if ($up['Email'] == '' && $up['Логин'] != '') {
+                    $profile->skype = $up['Логин'] . '@lbr.ru';
+                    $user = User::find()->where(['id' => $profile->id])->one();
+                    $user->email = $up['Логин'] . '@lbr.ru';
+                    $user->save();
+                }
+                if ($profile->skype == '') {
+                     $profile->skype = $up['Email'];
+                }
+
+                $profile->phone = $up['Сотовые'];
+                $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
+                $profile->position = $up['ОфициальнаяДолжность']['Description'];
+                $profile->department = $up['ФункциональноеПодразделение']['Description'];
+                $profile->category = $up['Категория'];
+                $profile->save();
+            }
+        }
+
+        return $this->renderPartial('update', array(
+            'update' => $update
+        ));
+     }
+
+    protected function generateEmail($lat_name) {
+        return strtolower(substr($lat_name, strpos($lat_name, " ") + 1) . '@lbr.ru');
+    }
+
+    protected function getUser($id) {
+        return User::find()->where(['id' => $id])->one();
+    }
+
 
 }
