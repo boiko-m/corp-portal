@@ -83,17 +83,19 @@ class Tdata
 
     public function doc($data) {
         $this->query['$skip'] = $this->query['$filter'] = $this->query['$orderby'] = $this->query['$expand'] = $this->query['$select'] = null; // новый запрос
-        $this->query['$top'] = $defaultTop;
+        
         $this->doc = $data;
         return $this;
     }
 
     public function date( $data1=null, $data2=null, $data = "Date") {
         if ($data1 or $data2) {
+
             if ($data1) {
-                $date = new \DateTime(strtotime($data1));
-                echo var_dump($date);
+                $date = new \DateTime($data1);
                 $this->filter($data . " ge datetime'".$date->format("Y-m-d".'\T'."H:i:s") . "'");
+                echo var_dump($date->format("Y-m-d".'\T'."H:i:s"));
+                exit;
             } 
 
             if ($data2) {
@@ -125,6 +127,7 @@ class Tdata
         $this->filter($params[0] . " eq cast(guid'" . $params[1] . "', '" . $params[2] . "')"); // состовной тип
         return $this;
     }
+    
     public function debug () {
         return "<pre> " . var_dump($this->getError()) ."</pre>";
     }
@@ -162,7 +165,7 @@ class Tdata
     }
 
     public function generateLink() {
-        $query = (!$this->query) ?: "?" . http_build_query($this->query, null ,"&" /*, PHP_QUERY_RFC3986*/);
+        $query = (!$this->query) ?: "?" . http_build_query($this->query, null ,"&" , PHP_QUERY_RFC3986);
 
         return $this->url . urlencode($this->doc) . $this->doc_func . $query;
     }

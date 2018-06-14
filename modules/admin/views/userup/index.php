@@ -12,9 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-<div class="row">
-    <div class="col-12 card-box" >
-
+<div class="row card-box" style="text-align: center;">
+    <div class="col-6">
         <button class="btn  waves-effect w-md btn-light" onclick="ajax('insert','', 'update_user','Идет синхронизация. Ожидайте...')">
             Синхронизация новых пользователей
         </button>
@@ -24,6 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
                  
              </div>
         </div>
-        
+    </div>
+
+    <div class="col-6">
+        <button class="btn  waves-effect w-md btn-light" onclick="ajax('replace','', 'replace_user','Идет синхронизация. Ожидайте...')">
+            Обновление пользовательской информации
+        </button>
+
+        <div class="row">
+             <div class="col-12" id = "replace_user">
+                 
+             </div>
+        </div>
     </div>
 </div>
