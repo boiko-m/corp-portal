@@ -50,10 +50,32 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-2 ">
-
+    <div class="col-xs-12 col-md-12">
+        <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
+                <li class="nav-item">
+                    <a href="#spr1" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1</a>
+                </li>
+               <li class="nav-item">
+                    <a href="#spr2" class="nav-link active" data-toggle="tab" aria-expanded="false">Этап 2 <small>до 20.06</small></a>
+                </li>
+                 <li class="nav-item">
+                    <a href="#spr3" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 3</a>
+                </li>
+                 <li class="nav-item">
+                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 4</a>
+                </li>
+                <li class="nav-item col-xs-3 col-md-3">
+                    <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Проект</a>
+                </li>
+            </ul>
+    </div>
+</div>
+<br>
+<div class="row">
+    <!-- <div class="col-xs-12 col-md-2 ">
+    
         <div class="card project-menu-left" >
-                <!-- item-->
+                item
                 <div class="card-header">
                     Этапы
                 </div>
@@ -66,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         Завершен
                     </small>
                 </a>
-
+    
                 <a href="javascript:void(0);" class="dropdown-item">
                     <div>
                         Этап 2
@@ -76,8 +98,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         Завершен
                     </small>
                 </a>
-
-
+    
+    
                 <a href="javascript:void(0);" class="dropdown-item" style="background: #f5f5f5;">
                     <div>
                         Этап 3
@@ -87,17 +109,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         В работе
                     </small>
                 </a>
-
+    
                 
-
+    
                 <div style="padding: 3px 10px">
                     <a href="" class = "crad-link"><small>Создать этап</small></a>
                     <a href="" class = "crad-link"><small>Управление</small></a>
                 </div>
-
+    
         </div>
-    </div>
-    <div class="col-xs-12 col-md-7 ">
+    </div> -->
+    <div class="col-xs-12 col-md-9 ">
         <div class="card">
             <div class="card-header">
                 Этап 3 <small> с 20.01.2018 по 20.02.2018</small>
@@ -116,8 +138,11 @@ $this->params['breadcrumbs'][] = $this->title;
                  <li class="nav-item">
                     <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>4</a>
                 </li>
-                <li class="nav-item col-xs-3 col-md-3">
-                    <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Цели и <br> итоги</a>
+                <li class="nav-item">
+                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>5</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>6</a>
                 </li>
             </ul>
 
@@ -135,7 +160,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th style="text-align: center;">План.</th>
                                 <th>Факт.</th>
                                 <th>%</th>
-                                <th>Статус</th>
+                                <th>Исполнитель</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -146,7 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td>3</td>
                                     <td>1</td>
                                     <td>33</td>
-                                    <td>выполнено</td>
+                                    <td><a href="" class="card-link">Гавриленко А.С.</a></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -155,7 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td>3</td>
                                     <td>32</td>
                                     <td>5</td>
-                                    <td>в работе</td>
+                                    <td><a href="" class="card-link">Савченко А.Е.</a></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -164,7 +189,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td>3</td>
                                     <td>3</td>
                                     <td>100</td>
-                                    <td>выполнено</td>
+                                    <td><a href="" class="card-link">Михлай И.К.</a></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -350,7 +375,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="work-group-view-content">
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Масюк Е.М.</button>
+                                    <button type="button" class="btn btn-light">Савченко А. Е.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
