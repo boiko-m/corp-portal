@@ -142,7 +142,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>5</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>6</a>
+                    <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Цели и<br>итоги</a>
                 </li>
             </ul>
 
