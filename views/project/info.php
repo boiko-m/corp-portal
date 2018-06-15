@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Проект "Индивидуальный план рекламы"';
+$this->title = 'Проект "Доставки запчастей до двери клиента"';
 $this->params['breadcrumbs'][] = "Проекты компании";
 $this->params['breadcrumbs'][] = $this->title;
 ?>

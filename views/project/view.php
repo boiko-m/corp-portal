@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Проект "Индивидуальный план рекламы"';
+$this->title = 'Проект "Доставки запчастей до двери клиента"';
 $this->params['breadcrumbs'][] = "Проекты компании";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -50,8 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-12">
-        <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
+    <div class="col-xs-12 col-md-12 ">
+        <div class="card">
+            <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
                 <li class="nav-item">
                     <a href="#spr1" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1</a>
                 </li>
@@ -68,6 +69,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Проект</a>
                 </li>
             </ul>
+        </div>
+        
     </div>
 </div>
 <br>
