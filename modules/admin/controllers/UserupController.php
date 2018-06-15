@@ -176,18 +176,24 @@ class UserupController extends Controller
      public function actionReplace() {
         $data = new Tdata();
 
-        for ($p = 1; $p <= 25; $p++) {
-        
-            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,ОфициальнаяДолжность/Description,ДатаРождения,Ref_Key')->where("ДатаУвольнения ne '0001-01-01T00:00:00'")->orderby('ДатаПриема desc')->page($p, 50)->all();
+        for ($p = 1; $p <= 15; $p++) {
+
+            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,ОфициальнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
 
             for ($i=0; $i < count($client); $i++) {
-                $data_cat = $data->doc('InformationRegister_РейтингиСотрудников')->key('Сотрудник_Key', $client[$i]['Ref_Key'])->select('Period,Рейтинг/Description')->expand('Рейтинг')->orderby('Period desc')->top(1)->all();
+                $data_cat = $data->doc('InformationRegister_РейтингиСотрудников')->key('Сотрудник_Key', $client[$i]['Ref_Key'])->select('Рейтинг/Description')->expand('Рейтинг')->orderby('Period desc')->top(1)->all();
 
                 $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
 
                 $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->all();
 
                 foreach ($phones as $phone) {
+                    // if ($phone['ВидСвязи']['Description'] == "IP") {
+                    //     $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
+                    // }
+                    // if ($phone['ВидСвязи']['Description'] == "ГТС") {
+                    //     $client[$i]['ГТС'] .= $phone['ВидСвязи']['Description'];
+                    // }
                     if ($phone['ВидСвязи']['Description'] == "Сотовая") {
                         $client[$i]['Сотовые'] .= $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона'];
                     }
@@ -240,14 +246,16 @@ class UserupController extends Controller
                     $user->save();
                 }
                 if ($profile->skype == '') {
-                     $profile->skype = $up['Email'];
+                        $profile->skype = $up['Email'];
                 }
 
                 $profile->phone = $up['Сотовые'];
                 $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
                 $profile->position = $up['ОфициальнаяДолжность']['Description'];
                 $profile->department = $up['ФункциональноеПодразделение']['Description'];
+                // $profile->phone_cabinet = $up['ГТС'];
                 $profile->category = $up['Категория'];
+                // $profile->sip = $up['SIP'];
                 $profile->save();
             }
         }
