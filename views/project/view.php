@@ -234,12 +234,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class = "project-target-items">
                                 <div class="project-target-item">
-                                    Отработать ИПР на 2-х клиентах.  Разобраться с проблемами: 1) что такое "отработать " (найти ЛВП и ЛВПР, как найти и найти каналы воздействия).
-                                </div>
-                                <small></small>
-                            </div>
-                            <div class = "project-target-items">
-                                <div class="project-target-item">
                                     Опоздание  -  не более 5 клиентам  и/или более 10% опозданий (на 2-3 дня) -  считаем вручную.
                                 </div>
                                 <small></small>
