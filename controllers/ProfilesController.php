@@ -7,6 +7,8 @@ use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
 use app\models\User;
+use app\models\SettingOptions;
+use app\models\SettingValues;
 use yii\data\ActiveDataProvider;
 use yii\db\Query;
 use yii\helpers\Url;
@@ -133,6 +135,21 @@ class ProfilesController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpdateSettingNbBg()
+    {
+        $settingOptionsId = SettingOptions::find()->where(['code' => 'navbar-background-color'])->one();
+        if ($settingValue = SettingValues::find()->where(['id_profile' => Yii::$app->user->id, 'id_setting_option' => $settingOptionsId->id])->one()) {
+            $settingValue->value = Yii::$app->request->get('hat-color');
+        } else {
+            $settingValues = new SettingValues();
+            $settingValues->value = Yii::$app->request->get('hat-color');
+            $settingValues->id_setting_option = $settingOptionsId->id;
+            $settingValues->id_profile = Yii::$app->user->id;
+        }
+        $settingValue->save();
+        return Yii::$app->setting->getValue('navbar-background-color');
     }
 
     protected function isOwnProfile()

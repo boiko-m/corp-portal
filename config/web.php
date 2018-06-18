@@ -165,6 +165,12 @@ $config = [
             ]
 
         ],
+        // 'UserSetting' => [
+        //     'class' => 'app\components\UserSetting'
+        // ],
+        'setting' => [
+            'class' => 'app\models\SettingValues',
+        ],
     ],
     'as beforeRequest' => [
         'class' => 'yii\filters\AccessControl',
