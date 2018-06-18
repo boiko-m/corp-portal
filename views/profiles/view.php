@@ -34,9 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             		<?php if ($model->position): ?>
             			<div> Должность: <?=$model->position?> </div>
             		<?php endif ?>
-            		
             	</div>
-                    <?php if (isset($model->email)): ?>
+
+                    <?php if (isset($user->email)): ?>
                     	<ul class="nav nav-tabs tabs-bordered">
 	                        <li class="nav-item">
 	                            <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
