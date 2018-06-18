@@ -178,7 +178,6 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 <script>
   $('.event').on('click', function (e) {
     var color = $('.event').serialize();
-    console.log(color);
     $.ajax({
       url: '/profiles/update-setting-nb-bg',
       data: color,

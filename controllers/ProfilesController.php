@@ -147,16 +147,7 @@ class ProfilesController extends Controller
 
     public function actionUpdateSettingNbBg()
     {
-        $settingOptionsId = SettingOptions::find()->where(['code' => 'navbar-background-color'])->one();
-        if ($settingValue = SettingValues::find()->where(['id_profile' => Yii::$app->user->id, 'id_setting_option' => $settingOptionsId->id])->one()) {
-            $settingValue->value = Yii::$app->request->get('hat-color');
-        } else {
-            $settingValues = new SettingValues();
-            $settingValues->value = Yii::$app->request->get('hat-color');
-            $settingValues->id_setting_option = $settingOptionsId->id;
-            $settingValues->id_profile = Yii::$app->user->id;
-        }
-        $settingValue->save();
+        Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
         return Yii::$app->setting->getValue('navbar-background-color');
     }
 

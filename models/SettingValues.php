@@ -55,6 +55,17 @@ class SettingValues extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function setValue($code, $value)
+    {
+        $settingOptionsId = SettingOptions::find()->where(['code' => $code])->one();
+        $settingValue = SettingValues::find()->where(['id_profile' => Yii::$app->user->id, 'id_setting_option' => $settingOptionsId->id])->one();
+        $settingValue->value = $value;
+        $settingValue->save();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getValue($code)
     {
         $settingOptionsId = SettingOptions::find()->where(['code' => $code])->one();
