@@ -47,6 +47,21 @@ File: Main Css File
 ============= */
 /* Metis Menu css */
 
+
+.update-img:hover{
+
+ opacity: 0.5;
+
+
+}
+.update-img:hover:after{
+
+  content: attr(data-title);
+
+}
+.search-a-size{
+  font-size: 15px;
+}
 /*крестик для поиска*/
 .close {
   position: absolute;

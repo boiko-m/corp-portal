@@ -26,12 +26,21 @@
 
 
         <div id="two" style="padding: -5px 0 0 0">
-        <span>
+        <span class="search-a-size">
                        <?= \yii\helpers\Html::a($name, '/profiles/' . $value['id']) ?>
                     </span>
 
 
         <br>
+            <?php if (($value['user']['email']) != '') {
+
+                ?>
+                <span>
+                        <?= $value['user']['email']; ?>
+                    </span>
+                <br>
+            <?php }
+            ?>
 
         <span title="<?= $value['position'] ?>" class="branch">
                         <?php
@@ -42,15 +51,7 @@
 
         <br>
 
-        <?php if (($value['user']['email']) != '') {
 
-            ?>
-            <span>
-                        <?= $value['user']['email']; ?>
-                    </span>
-            <br>
-        <?php }
-        ?>
 
         <span title="<?= $branch ?>" class="branch">
                         <?php

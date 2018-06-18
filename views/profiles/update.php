@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                         <?php
                         $phone = explode(',', $model->phone);
                        /* debug($phone);*/
-                       echo Html::a(Html::img($model->getImage()
+                       echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img','style'=>'width: 250px;border-radius: 5px;"']
                             ), '/profiles/image' . $value['id']);
 
 

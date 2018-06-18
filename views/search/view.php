@@ -63,13 +63,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div id="two" style="padding: -5px 0 0 0">
-        <span>
+        <span class="search-a-size">
                        <?= \yii\helpers\Html::a($name, '/profiles/' . $value['id']) ?>
                     </span>
 
 
                         <br>
-
+                        <?php if (($value['user']['email']) != '') {
+                            ?>
+                            <span>
+                        <?= $value['user']['email']; ?>
+                    </span>
+                            <br>
                         <span title="<?= $value['position'] ?>" class="branch">
                         <?php
                         echo mb_strimwidth($value['position'], 0, 45, '...');
@@ -78,12 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <br>
 
-                        <?php if (($value['user']['email']) != '') {
-                            ?>
-                            <span>
-                        <?= $value['user']['email']; ?>
-                    </span>
-                            <br>
+
                         <?php }
                         ?>
 

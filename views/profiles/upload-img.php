@@ -9,7 +9,7 @@ $pathThumbImage = '/upload/images/thumbnail_'
     <div class="col-md-12">
     <div class="card-box">
         <?php
-echo Html::img($profile->getImage());
+echo Html::img($profile->getImage(), ['style'=>'width: 250px;border-radius: 5px;']);
 
 
 
@@ -23,6 +23,7 @@ $af = ActiveForm::begin([
 
 echo $af->field($form, 'image')->widget(CropboxWidget::className(), [
     'croppedDataAttribute' => 'crop_info',
+
     //'pathToView' => $pathThumbImage
 ]);
 
