@@ -48,11 +48,13 @@ use yii\widgets\ActiveForm;
                                 </a>
                             </div>
                         <?php endforeach ?>
-                        <div style="padding-top: 10px; display: inline-block;">
-                            <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
-                        </div>
-                        <div style="padding-top: 10px; display: inline-block;">
-                            <a href="/news/offer" class="news-offer">Предложить новость</a>
+                        <div style="padding-left: 10px;">
+                            <div style="padding-top: 10px; display: inline-block; ;">
+                                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
+                            </div>
+                            <div style="padding-top: 10px; display: inline-block;">
+                                <a href="/news/offer" class="news-offer">Предложить новость</a>
+                            </div>
                         </div>
                     </div>
                 </div>
