@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px;">
+            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
                 <li class="nav-item">
                     <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
                         Новости
@@ -77,16 +77,12 @@ use yii\widgets\ActiveForm;
 
                 </a>
             </div>
+           
             <div class="block m-t-10" style="padding: 10px">
-
-                <form action="/video" style="padding-bottom: 8px">
-                    <input type="hidden" name = "tab" value="forum">
-                    <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
-                </form>
-                <form action="/video">
-                    <input type="hidden" name = "tab" value="allvideo">
-                    <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Все видео</button>
-                </form>
+                <div class="btn-group mb-2" style="width: 100%">
+                    <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
+                    <a href = "/video/" class="btn  waves-effect w-md btn-light" style="width: 100%">Все видео</a>
+                </div>
             </div>
         </div>
     </div>
