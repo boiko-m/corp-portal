@@ -8,6 +8,7 @@ use app\models\Session;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 use yii\widgets\ActiveForm;
 
 ?>
@@ -28,6 +29,15 @@ use yii\widgets\ActiveForm;
         color: #747474;
     }
 </style>
+
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+            <b>Уважаемый пользователь портала!</b> <br>
+            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
