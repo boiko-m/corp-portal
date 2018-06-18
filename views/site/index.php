@@ -77,7 +77,7 @@ use yii\widgets\ActiveForm;
 
                 </a>
             </div>
-           
+
             <div class="block m-t-10" style="padding: 10px">
                 <div class="btn-group mb-2" style="width: 100%">
                     <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
@@ -94,12 +94,12 @@ use yii\widgets\ActiveForm;
 <div class="row">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4 ">
-
-            <div class="card-box">
-                <div>
-                    Сегодня отмечают дни рождения
-
+            
+            <div class="card">
+                <div class="card-header">
+                    Дни Рождения
                 </div>
+
                 <div>
 
                     <?php foreach ($birthdays as $user): ?>
@@ -110,13 +110,14 @@ use yii\widgets\ActiveForm;
                             <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                                 <div style="font-size: 11px">
-                                    <?=$user->branch ?>, <?=$user->position ?>
+                                    <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+
                                 </div>
                             </div>
                         </div>
                     <?php endforeach ?>
                     <div style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', ])?>
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
 
                     </div>
                 </div>
@@ -128,12 +129,13 @@ use yii\widgets\ActiveForm;
     <?php endif ?>
 
     <div class="col-xs-12 col-md-4 ">
-        <div class="card-box">
-            Новые сотрудники
+        <div class="card">
+            
+            <div class="card-header">
+                Новые сотрудники
+            </div>
 
             <div>
-
-                <?php // echo var_dump($user_new); ?>
                 <?php foreach ($user_new as $user): ?>
                     <div class="row" style="padding:10px">
                         <div class="col-2">
@@ -142,15 +144,16 @@ use yii\widgets\ActiveForm;
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                             <div style="font-size: 11px">
-                                <?=$user->branch ?>, <?=$user->position ?>
+                                <?=$user->branch ?>
+                                <?php if (isset($user->position)): ?>
+                                    , <?=$user->position ?>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
                 <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', ])?>
-
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
                 </div>
             </div>
 
