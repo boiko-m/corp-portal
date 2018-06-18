@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-9">
                     <div >
                         <h5  class="card-title" style="font-weight: bold;color: black"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>
-                            <?=Html::a('Редактировать профиль', '/profiles/update/'.$model->id)?></h5>
+                            <?php
+                            if($model->id == Yii::$app->user->id){
+                                 echo Html::a('Редактировать профиль', '/profiles/update/'.$model->id);
+                            }
+                            ?></h5>
+
 
                     </div>
 

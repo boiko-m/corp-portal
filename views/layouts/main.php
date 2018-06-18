@@ -243,6 +243,7 @@ AppAsset::register($this);
                             'placeholder' => 'Поиск...',
                             'class' => 'form-control hidden-xs',
                             'id' => 'text-search',
+                            'autocomplete'=>'off'
 
                         ])->label(false); ?>
 
