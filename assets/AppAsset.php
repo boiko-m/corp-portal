@@ -47,6 +47,7 @@ class AppAsset extends AssetBundle
         'js/jquery.core.js',
         'js/jquery.app.js',
         'js/myajax.js',
+        'js/search.js',
         'js/script.js'
     ];
     public $depends = [

@@ -7,105 +7,127 @@ use app\models\Profile;
 use app\models\Session;
 use yii\helpers\Html;
 use yii\helpers\Url;
+
+
+use yii\widgets\ActiveForm;
+
 ?>
 <style>
-    .news-a {
-        margin-top: 10px;
-    }
-    .news-a a {
+    .news-a > a {
         color:#444444;
         transition: 0.3s;
         display: block;
-        padding: 0px 5px;
+        padding: 5px;
     }
     .news-a a:hover {
         color: black;
         background: #f5f5f5;
-        padding-left: 10px;
     }
     .news-offer {
         text-decoration: underline;
-        padding-left: 10px;
         font-size: 11px;
-        color: #747474; 
+        color: #747474;
     }
 </style>
-    <div class="row">
-        <div class="col-xs-12 col-md-8">
-            <div class="card-box">
-                <h5 class="card-title">Новости</h5>
-                <div class="col-xs-12" style="margin-left: 15px">
-                    <?php foreach ($news as $item): ?>
-                        <div class="col-xs-12 news-a">
-                            <a href="/news/<?=$item['id']?>">
-                                <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
-                            </a>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-                <div style="padding-top: 10px; display: inline-block;">
-                    <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
-                </div>
-                <div style="padding-top: 10px; display: inline-block;">
-                    <a href="/news/offer" class="news-offer">Предложить новость</a>
-                </div>
-            </div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+            <b>Уважаемый пользователь портала!</b> <br>
+            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
         </div>
-        <div class="col-xs-12 col-md-4">
-            <div class="card">
-                <h5 class="card-title" style="padding: 15px">Новое видео на портале</h5>
-                <div class="m-b-10">
-                    <a href="/video/id/<?=$video['id']?>">
-                        <div class="d-flex justify-content-around">
-                            <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
-                        </div>
-
-                        <img src="/<?=$video['img']?>" alt="" style="width: 100%">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 m-b-30">
+        <div class="card">
+            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
+                <li class="nav-item">
+                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        Новости
                     </a>
-                </div>
-                <div class="block m-t-10" style="padding: 10px">
-
-                    <form action="/video" style="padding-bottom: 8px">
-                        <input type="hidden" name = "tab" value="forum">
-                        <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Форум</button>
-                    </form>
-                    <form action="/video">
-                        <input type="hidden" name = "tab" value="allvideo">
-                        <button class="btn btn-outline-warning waves-light waves-effect w-md btn-block">Все видео</button>
-                    </form>
+                </li>
+            </ul>
+            <div class="tab-content" style="padding-top: 10px;">
+                <div class="tab-pane fade active show" id="home-b1">
+                    <div style="margin-bottom: 15px;">
+                        <?php foreach ($news as $item): ?>
+                            <div class="col-xs-12 news-a" >
+                                <a href="/news/<?=$item['id']?>" style = "padding-left: 15px;">
+                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+                        <div style="padding-left: 10px;">
+                            <div style="padding-top: 10px; display: inline-block; ;">
+                                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
+                            </div>
+                            <div style="padding-top: 10px; display: inline-block;">
+                                <a href="/news/offer" class="news-offer">Предложить новость</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="card">
+            <h5 class="card-header">Новое видео на портале</h5>
+
+            <div class="m-b-10" style="padding-top: 10px">
+                <a href="/video/id/<?=$video['id']?>">
+                    <div class="d-flex justify-content-around">
+                        <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
+                    </div>
+
+                    <img src="/<?=$video['img']?>" alt="" style="width: 100%">
 
 
-<?php $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all(); ?>
+
+                </a>
+            </div>
+
+            <div class="block m-t-10" style="padding: 10px">
+                <div class="btn-group mb-2" style="width: 100%">
+                    <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
+                    <a href = "/video/" class="btn  waves-effect w-md btn-light" style="width: 100%">Все видео</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div class="row">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4 ">
-            <div class="card-box">
-                <div>
-                    Сегодня отмечают дни рождения
-
+            
+            <div class="card">
+                <div class="card-header">
+                    Дни Рождения
                 </div>
+
                 <div>
 
                     <?php foreach ($birthdays as $user): ?>
                         <div class="row" style="padding:10px">
-                           <div class="col-2">
-                               <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
-                           </div>
-                           <div class="col-10" >
+                            <div class="col-2">
+                                <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                            </div>
+                            <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                                 <div style="font-size: 11px">
-                                    <?=$user->branch ?>, <?=$user->position ?>
+                                    <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+
                                 </div>
-                           </div>
+                            </div>
                         </div>
                     <?php endforeach ?>
                     <div style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', ])?>
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
 
                     </div>
                 </div>
@@ -117,38 +139,40 @@ use yii\helpers\Url;
     <?php endif ?>
 
     <div class="col-xs-12 col-md-4 ">
-        <div class="card-box">
-            Новые сотрудники
+        <div class="card">
+            
+            <div class="card-header">
+                Новые сотрудники
+            </div>
 
             <div>
-
-            <?php // echo var_dump($user_new); ?>
-            <?php foreach ($user_new as $user): ?>
-                <div class="row" style="padding:10px">
-                   <div class="col-2">
-                       <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
-                   </div>
-                   <div class="col-10" >
-                        <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                        <div style="font-size: 11px">
-                            <?=$user->branch ?>, <?=$user->position ?>
+                <?php foreach ($user_new as $user): ?>
+                    <div class="row" style="padding:10px">
+                        <div class="col-2">
+                            <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
                         </div>
-                   </div>
-                </div>
-            <?php endforeach ?>
+                        <div class="col-10" >
+                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
+                            <div style="font-size: 11px">
+                                <?=$user->branch ?>
+                                <?php if (isset($user->position)): ?>
+                                    , <?=$user->position ?>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', ])?>
-
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
                 </div>
-        </div>
+            </div>
 
         </div>
 
     </div>
 
 
-<?php /*
+    <?php /*
 
     <div class="col-xs-12 col-md-4">
         <div class="card-box">
@@ -179,7 +203,7 @@ use yii\helpers\Url;
     </div>
 
 */
- ?>
+    ?>
 
 
 

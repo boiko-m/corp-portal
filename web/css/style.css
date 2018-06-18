@@ -48,6 +48,268 @@ File: Main Css File
 /* Metis Menu css */
 
 
+.update-img:hover{
+
+ opacity: 0.5;
+
+
+}
+.update-img:hover:after{
+
+  content: attr(data-title);
+
+}
+.search-a-size{
+  font-size: 15px;
+}
+/*крестик для поиска*/
+.close {
+  position: absolute;
+  margin-right: 1%;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.3;
+  color: black;
+  vertical-align: center;
+  font-size: 10px;
+  transition: background 85ms,color 85ms;
+  z-index: 1;
+  display: block;
+  visibility: inherit;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  vertical-align: center;
+  left: 15px;
+  content: ' ';
+  height: 18px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+/*/крестик для поиска*/
+
+
+/*при клике на поле увеличение поиска и добавление иконки*/
+input#text-search:focus {
+  background-color: #fff;
+  box-shadow: none;
+  color: #444;
+  padding-right: 54px;
+ /* Параметры рамки */
+}
+
+#hidden-search-close{
+  display: none;
+}
+
+
+/*/при клике увеличение поиска и добавление иконки*/
+
+
+      /*не показывать поиск мобильным устрйоствам*/
+@media screen and (max-width: 600px) {
+  .for-desktop {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+/*/не показывать поиск мобильным устрйоствам*/
+.all{
+  margin: 0 0 10px 0;
+  height:75px;
+  max-height: 600px;
+  font-size: 13px;
+  text-align: left;
+
+
+
+
+
+}
+
+#one{
+  float: left;
+  width: 12%;
+  height: 50px;
+
+
+}
+
+#two{
+  float:left;
+  width:50%;
+  height:50px;
+
+}
+
+
+
+#three{
+  float:left;
+  width: 15%;
+  height:50px;
+}
+
+
+#four{
+  float:left;
+  width: 17%;
+  height:50px;
+
+}
+
+
+.active-like{
+  color: #e74c3c;
+}
+#five{
+  font-size: 40px;
+  opacity: 0.5;
+  float:left;
+  width:6%;
+  height:50px;
+}
+#five:hover {
+  opacity: 1;
+}
+
+
+#for-search {/* блок div для вывода поиска в шаблоне*/
+  position: absolute;
+  width:50%;
+  border: 1px solid #CCC;
+  display: none;
+  float: left;
+  margin: -16px;
+  padding: 1% 1% 0 1%;
+  min-height: 80px;
+  height: auto;
+  max-height: 770%;
+  overflow-y: auto;
+  background-color: white;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+  border-radius: 3px;
+  z-index: 9999999999;
+}
+
+
+
+
+#for-search::-webkit-scrollbar {
+  width: 8px;
+  opacity: 0.4;
+}
+
+/* Track */
+#for-search::-webkit-scrollbar-track {
+
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  opacity: 0.3;
+
+}
+
+/* Handle */
+#for-search::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.16);
+  position: absolute;
+  top: 52px;
+
+  display: block;
+  border-radius: 7px;
+  z-index: 99;
+  right: 1px;
+  opacity: 0.3;
+
+
+}
+#for-search::-webkit-scrollbar-track {
+
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  opacity: 0.3;
+
+}
+
+/* Handle */
+#for-search::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.16);
+  position: absolute;
+  top: 52px;
+
+  display: block;
+  border-radius: 7px;
+  z-index: 99;
+  right: 1px;
+  opacity: 0.3;
+
+
+}
+
+/* Handle */
+
+
+
+
+.button-search{ /*//кнопка поиска на полной странице*/
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 45px;
+  font-size: 20px;
+  right: 0;
+  display: block;
+  color: #CCCCCC;
+
+}
+.button-search:hover{
+  color: black;
+}
+
+
+
+.fa.fa-search{
+  border: none;
+  background-color: transparent;
+}
+
+.main-search { /*кнопка поиска(лупа) в шаблоне*/
+  position: absolute;
+  top: 18px;
+  right: 0;
+  display: block;
+  height: 34px;
+  line-height: 34px;
+  width: 34px;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+
+.main-search:hover{
+  color: black;
+}
+
+
+ .fa.fa-search-plus:hover {
+
+  color: black;
+
+}
+
+
 .vote-btn.btn.background-for-like{
     background-color: white;
     border-color: #c7d1cd;
@@ -389,6 +651,10 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
   right: 0; }
 
 /* Search */
+
+
+
+
 .app-search {
   position: relative;
   padding-top: 18px; }
@@ -414,7 +680,7 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     padding-right: 40px;
     background: transparent;
     box-shadow: none;
-    border-radius: 30px;
+    border-radius: 5px;
     width: 200px; }
 
 .app-search input::-webkit-input-placeholder {

@@ -103,11 +103,33 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 
 </style>
 
-<div class="row">
-    <div class="col-md-12 container-fluid">
-        <div class="card-box">
-            <div class="row">
-                <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
+<div class="row ">
+    <div class="col-xs-12 col-xl-3 m-b-30 text-center" >
+        <div class="card-header">
+            Фотография профиля
+        </div>
+        <div class="card mb-2">
+            <?php 
+           echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img col-md-12','style'=>'margin:15px 0px;border-radius:5px;']
+                ), '/profiles/image' . $value['id']); ?>
+        </div>
+        <div class="card">
+            <a href="/profiles/image/<?php echo Yii::$app->user->identity->id;?>" class = "btn waves-effect w-md btn-light">Изменить фотографию</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-xl-9">
+        <div class="card">
+            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
+                <li class="nav-item">
+                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        Основные настройки
+                    </a>
+                </li>
+            </ul>
+
+            <div style="padding: 0px 20px;">
+              <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
                     <div class="colorPicker" style="float: none; margin: 0 auto;">
                       <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
                       <label class="red" for="hat-color-red">red</label>
@@ -125,32 +147,30 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                       <label class="violet" for="hat-color-violet">violet</label>
                     </div>
                 <? endif; ?>
+                <?php
+                    $phone = explode(',', $model->phone);
+                   /* debug($phone);*/
 
-                <div class="col-12">
-                    <div class="profile-form">
 
-                        <?php $form = ActiveForm::begin(); ?>
+                $form = ActiveForm::begin(); ?>
 
-                        <?= $form->field($model, 'id')->label(false)->hiddenInput() ?>
+                    <?= $form->field($model, 'id')->label(false)->hiddenInput() ?>
 
-                        <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
 
-                        <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>
 
-                        <?= $form->field($model, 'cabinet')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'cabinet')->textInput(['maxlength' => true]) ?>
 
-                        <?= $form->field($model, 'about')->textarea(['rows' => 6]) ?>
+                    <?= $form->field($model, 'about')->textarea(['rows' => 6]) ?>
 
-                        <div class="form-group">
-                            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']) ?>
-                        </div>
-
-                        <?php ActiveForm::end(); ?>
-
+                    <div class="form-group">
+                        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']) ?>
                     </div>
-                </div>
 
+                    <?php ActiveForm::end(); ?>  
             </div>
+          
         </div>
     </div>
 </div>

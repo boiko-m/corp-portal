@@ -54,7 +54,7 @@ class Analog
     }
   }
   public function image ($img) {
-    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt='' style = 'width: 160px;'>";
+    $this->image = "<img src='http://api.lbr.ru/images/analog/".$img."' alt='' width=\"160\" style = 'width: 160px;'>";
     $this->style .= ";padding:0px;";
   }
   public function colspan ($colspan) {
@@ -128,7 +128,7 @@ curl_close($ch);
                     <td>
                         <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" align="center" style="border: 0; border-collapse: collapse; background: white;">
                             <tbody>
-                            <?if($items['parameters']['print'] == 1):?>
+                            <?if($items['parameters']['print'] == 0):?>
                             <tr>
                                 <td style="padding: 0px 20px 20px 20px;">
                                     <table width="100%" cellspacing="0" cellpadding="0" bgcolor="white" align="center" style="border: 0; border-collapse: collapse; background: #ffffff;">
@@ -140,7 +140,9 @@ curl_close($ch);
                                             </td>
                                             <td width="640" style="padding: 20px 0px 0px 10px; text-align: left;" valign="top">
                                                 <span style="margin: 0; padding: 0; color: #000000; background: none !important; font-size: 13px; font-weight: normal; font-family: Verdana, Arial, Arial Narrow, Helvetica,sans-serif; outline: none;">
-                                                    <?php echo $items['parameters']['header']?>                                                </span>
+                                                    <?php echo $items['parameters']['client']?>,<br>
+                                                    <?php echo $items['parameters']['header']?>
+                                                </span>
                                             </td>
                                         </tr>
                                     </tbody></table>
@@ -174,12 +176,7 @@ curl_close($ch);
 </tbody></table>
                 </td></tr>
 
-                <?if($items['parameters']['print'] == 1):?>
-                <tr>
-                    <td style="padding: 25px 20px 10px 20px; background: white;">
-                        <p style="margin: 0; padding: 0; font-family: 'Trebuchet MS', sans-serif; font-size: 13px;">Всю подробную информацию по заинтересовавшим Вас моделям техники, а также опыт эксплуатации и отзывы потребителей Вы сможете получить у Вашего персонального менеджера. </p>
-                    </td>
-                </tr>
+                <?if($items['parameters']['print'] == 0):?>
                 <tr>
                     <td style="padding: 0 20px; background: white;">
                         <table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" align="left" bgcolor="#FFFFFF">

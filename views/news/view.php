@@ -8,6 +8,9 @@ use yii\widgets\Date;
 $this->title = 'Новость';
 $this->params['breadcrumbs'][] = $this->title;
 //echo "<pre>".print_r($users, true)."</pre>";
+if(!isset($like)){
+    $like = '';
+}
 ?>
 
 <div class="row">
@@ -20,14 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="d-inline-block margin">
 
-
+<?php
+$icon = '<i class="glyphicon glyphicon-glyphicon glyphicon-heart '.$like.'"></i>';
+?>
             <?= \hauntd\vote\widgets\Like::widget([
                 'entity' => 'itemLike',
                 'model' => $news,
 
                 'buttonOptions' => [
+                    'icon' => $icon,
+                    'id' => 'like-id',
                     'class' => ' btn  background-for-like',
-
                     'label' => Yii::t('app', 'Мне нравится'),
 
                 ]

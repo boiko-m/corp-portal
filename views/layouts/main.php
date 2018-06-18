@@ -10,11 +10,13 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use app\assets\ltAppAsset;
 use app\assets\AppAssetBottom;
+use yii\widgets\ActiveForm;
+use cinghie\fontawesome\FontAwesomeAsset;
+
+//FontAwesomeAsset::register($this);
 
 AppAsset::register($this);
-ltAppAsset::register($this);
 
 ?>
 <?php $this->beginPage() ?>
@@ -35,62 +37,62 @@ ltAppAsset::register($this);
 <div id = "wrapper">
     <div class="topbar">
 
-                <!-- LOGO -->
-                <div class="topbar-left">
-                    <a href="/" class="logo">
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="/" class="logo">
                         <span>
                             <img src="/images/logo.png" alt="" height="35">
                         </span>
-                        <i>
-                            <img src="/images/logo_sm.png" alt="" height="35">
-                        </i>
+                <i>
+                    <img src="/images/logo_sm.png" alt="" height="35">
+                </i>
+            </a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                <li class="">
+                    <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="true">
+
+                        <span style="padding: 10px;color:white;">Нужна помощь?</span>
                     </a>
-                </div>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
-                <nav class="navbar-custom">
+                        <!-- item-->
+                        <div style="padding: 10px">
+                            <h6 class="m-0 text-center">Удаленная поддержка</h6>
 
-                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                        </div>
 
-                        <li class="">
-                            <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="true" aria-expanded="true">
+                        <div style="padding:  0px 10px;">
+                            <small>
+                                <b>Возникли затруднения?</b> <br>
+                                <div style="padding-left: 10px">
+                                    Сотрудники IT-отдела готовы  предложить Вам помощь по установке и  настройке ПО и другим вопросам, которые мешают Вам в работе. <br>
 
-                                <span style="padding: 10px;color:white;">Нужна помощь?</span>
+                                </div>
+                                <b>Просто скачайте и запустите:</b>
+                            </small>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://get.teamviewer.com/jbvpufc" target="_blank">
+                                <img src="/img/icon/help.jpg" alt="" style="width:60%">
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                                <!-- item-->
-                                <div style="padding: 10px">
-                                    <h6 class="m-0 text-center">Удаленная поддержка</h6>
-
-                                </div>
-                                
-                                <div style="padding:  0px 10px;">
-                                    <small>
-                                        <b>Возникли затруднения?</b> <br>
-                                    <div style="padding-left: 10px">
-                                        Сотрудники IT-отдела готовы  предложить Вам помощь по установке и  настройке ПО и другим вопросам, которые мешают Вам в работе. <br>
-                                    
-                                    </div>
-                                    <b>Просто скачайте и запустите:</b>
-                                    </small>
-                                </div>
-
-                                <div class="text-center">
-                                    <a href="https://get.teamviewer.com/jbvpufc" target="_blank">
-                                        <img src="/img/icon/help.jpg" alt="" style="width:60%">
-                                    </a>
-                                </div>
-
-                               
-
-                            </div>
-                        </li>
+                        </div>
 
 
 
-                       
-<?/*
+                    </div>
+                </li>
+
+
+
+
+                <?/*
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                                aria-haspopup="false" aria-expanded="false">
@@ -208,74 +210,121 @@ ltAppAsset::register($this);
                             </div>
                         </li>
 */?>
-                    <?=$this->render('_profile_header.php')?>
-                        
-                    </ul>
+                <?=$this->render('_profile_header.php')?>
 
-                    <ul class="list-inline menu-left mb-0">
-                        <li class="float-left">
-                            <button class="button-menu-mobile open-left waves-light waves-effect">
-                                <i class="dripicons-menu"></i>
-                            </button>
-                        </li>
-                        <?php
-                            /*
-                            <li class="hide-phone app-search">
-                            <form role="search" class="">
-                                <input type="text" placeholder="Поиск..." class="form-control">
-                                <a href=""><i class="fa fa-search"></i></a>
-                            </form>
-                        </li>
-                        */
-                         ?>
-                    </ul>
+            </ul>
 
-                </nav>
-
-            </div>
-            <!-- end topbar -->
-
-            <?=$this->render('_left_menu.php')?>
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+                <li class=" app-search">
 
 
-            <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container-fluid">
+                    <div class="hidden-xs for-desktop search">
+                        <?php  $model = new \app\models\ProfileMain;
+                        $form = ActiveForm::begin([
+                            'method'=> 'post',
+                            'id' => 'MainForm',
+                            'action' => ['/search/index'],
+                            'class' => 'hidden-xs',
+                            'enableAjaxValidation' => true,
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title float-left"><? echo $this->title; ?></h4>
 
-                                    <?= Breadcrumbs::widget([
-                                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                                        'tag' => 'ol',
-                                        'options' => ['class' => 'breadcrumb float-right'],
-                                        'itemTemplate' => "<li class=\"breadcrumb-item\">{link}</li>\n",
-                                        'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
-                                        'homeLink' => ['label' => 'Главная', 'url' => '/']
-                                    ]) ?>
 
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
+                        ]);
+
+                        ?>
+
+                        <!-- <input type="text" placeholder="Поиск..." class="form-control">-->
+                        <?= $form->field($model, 'text')->textInput( [
+                            'placeholder' => 'Поиск...',
+                            'class' => 'form-control hidden-xs',
+                            'id' => 'text-search',
+                            'autocomplete'=>'off'
+
+                        ])->label(false); ?>
+
+                        <?/*= Html::input('text','MainForm','', ['class' => 'form-control hidden-xs',
+                            'placeholder' => 'Поиск..', 'novalidate' => 'novalidate',
+
+
+                        ])*/ ?>
+
+
+                        <?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => 'main-search',
+                            'form' => 'MainForm', 'id' => 'submitSearch',]) ?>
+                        <?= Html::button('<span class="close" id="fa-close"></span>', ['class' => 'main-search',
+                            'form' => 'MainForm', 'id' => 'hidden-search-close', 'label' =>'input']) ?>
+                        <?php $form = ActiveForm::end(); ?>
+
+
+                    </div>
+
+                </li>
+
+
+            </ul>
+
+        </nav>
+
+
+                 <div id="for-search" class="hidden-xs container1">
+                   
+        </div>
+
+
+
+
+
+
+    </div>
+    <!-- end topbar -->
+
+    <?=$this->render('_left_menu.php')?>
+
+
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+
+                            <h4 class="page-title float-left"><? echo $this->title; ?></h4>
+
+                            <?= Breadcrumbs::widget([
+                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                                'tag' => 'ol',
+                                'options' => ['class' => 'breadcrumb float-right'],
+                                'itemTemplate' => "<li class=\"breadcrumb-item\">{link}</li>\n",
+                                'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
+                                'homeLink' => ['label' => 'Главная', 'url' => '/']
+                            ]) ?>
+
+                            <div class="clearfix"></div>
                         </div>
-                        <!-- end row -->
+                    </div>
+                </div>
+                <!-- end row -->
 
-                        <div>
-                            <? echo $content; ?>
-                        </div>
+                <div>
+                    <? echo $content; ?>
+                </div>
 
-                    </div> <!-- container -->
+            </div> <!-- container -->
 
-                </div> <!-- content -->
+        </div> <!-- content -->
 
 
 
-</div>
-
-<?php $this->endBody() ?>
+    </div>
+    <script src="//apps.skaip.su/buttons/widget/core.min.js" defer="defer"></script>
+    <?php $this->endBody() ?>
 
 </body>
 </html>

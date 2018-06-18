@@ -15,6 +15,9 @@ use app\models\Videos;
 use app\models\User;
 use app\models\Session;
 use app\models\Profile;
+use yii\db\Query;
+use yii\helpers\Json;
+
 
 class SiteController extends Controller
 {
@@ -49,11 +52,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
         return $this->render('index', [
             "news" => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
             'user_new' => Profile::find()->orderBy('date_job desc')->limit(3)->all(),
-            'online' => Session::getOnline()
+            'online' => Session::getOnline(),
+            'birthdays' => $birthdays,
         ]);
     }
+
+
 }
