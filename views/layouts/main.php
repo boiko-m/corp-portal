@@ -247,6 +247,12 @@ AppAsset::register($this);
 
                         ])->label(false); ?>
 
+                        <?/*= Html::input('text','MainForm','', ['class' => 'form-control hidden-xs',
+                            'placeholder' => 'Поиск..', 'novalidate' => 'novalidate',
+
+
+                        ])*/ ?>
+
 
                         <?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'submitSearch',]) ?>
@@ -265,11 +271,8 @@ AppAsset::register($this);
         </nav>
 
 
-                 <div id="for-search" class="hidden-xs ">
-
-
-
-            </div>
+                 <div id="for-search" class="hidden-xs container1">
+                   
         </div>
 
 
