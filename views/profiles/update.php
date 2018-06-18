@@ -46,11 +46,6 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 
                     <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
 
-                    <?= $form->field($model, 'phone1')->textInput(['maxlength' => true, 'value' => $phone[0]]) ?>
-
-                    <?= $form->field($model, 'phone2')->textInput(['maxlength' => true, 'value' => $phone[1]]) ?>
-
-
                     <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>
 
                     <?= $form->field($model, 'cabinet')->textInput(['maxlength' => true]) ?>
