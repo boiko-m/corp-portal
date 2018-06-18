@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Проект "Индивидуальный план рекламы"';
+$this->title = 'Проект "Доставки запчастей до двери клиента"';
 $this->params['breadcrumbs'][] = "Проекты компании";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -30,15 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-12 card-box">
-        <div class="">
+    <div class="col-xs-12 col-md-7 ">
+        <div class="card-box">
 
             <h5 class="card-title" id = "information">
                 О проекте
             </h5>
-            <div class="project-info">
-                <small>Дата начала: 20.08.2017</small> <br> <br>
-            </div>
             <div class="small">
                 Доставка запчастей до двери клиента в оговоренные с ним сроки и по рыночным ценам позволит нам быть конкурентноспособными на рынке,   удержать старых и привлечь новых клиентов,   и  за счет этого   увеличить доход от продажи запчастей . Для того,  чтобы  такая доставка стала доступной в оперативном режиме, следует разработать и внедрить механизм автоматического расчета стоимости и сроков доставки .  В результате чего должны получить понятную  и удобную систему работы:  для продавцов запчастей   (расчет стоимости и сроков доставки в заказе покупателя) , для  логистов (своевременная и точная информация  для заказа транспорта и доставки); для Клиентов - оперативную информацию по ценам с доставкой и срокам доставки (счет на оплату). Внедрение разработанного механизма , применение его на практике и соблюдение озвученных условий перед клиентом , поможет получить довольного клиента.  
             </div>
@@ -58,11 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-</div>
 
-
-<div class="row card-box" id = "work_group">
-    <div class="col-xs-3 col-md-3">
+    <div class="col-xs-12 col-md-5 card-box">
         <div style="font-size: 20px;" >
             <span style="display: inline-block;">Рабочая группа</span> <a href=""><i class="mdi mdi-settings" style="display: inline-block;"></i></a>
         </div>
@@ -71,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 Руководитель проекта
             </div>
             <div class="work-group-content">
-                <a href="">Масюк Е.М.</a>
+                <a href="">Савченко А. Е.</a>
             </div>
         </div>
 
@@ -107,7 +101,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     </div>
+
 </div>
+
+
 
 <div id = "news">
     <h5>

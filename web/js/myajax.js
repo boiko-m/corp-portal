@@ -128,22 +128,8 @@
      }
 
 
-    $('.heart').on('click',
 
-        function(){
-            $.ajax({
-                url:    '/profiles/ajax/',
-                type:     "POST", //метод отправки
-                success: function(response) { //Данные отправлены успешно
-                    alert(response);
-                    // console.log(result);
 
-                },
-                error: function() { // Данные не отправлен
-                    alert('Ошибка. Данные не отправлены.');
-                }
-            });
-            return false;
-        }
-    );
+
+
 

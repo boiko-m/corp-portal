@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "corplbr.profile".
@@ -27,12 +28,13 @@ use Yii;
  * @property string $category
  * @property string $service
  */
-class Profile extends \yii\db\ActiveRecord
+class ProfileMain extends \yii\db\ActiveRecord
 {
-     public $phone1; public $phone2;
     /**
      * @inheritdoc
+     *
      */
+    public $text;
     public static function tableName()
     {
         return 'corplbr.profile';
@@ -47,7 +49,7 @@ class Profile extends \yii\db\ActiveRecord
             [['id'], 'required'],
             [['id', 'sex', 'sip'], 'integer'],
             [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
-            [['birthday', 'date_job'], 'safe'],
+            [['birthday', 'date_job', 'text'], 'safe'],
             [['id'], 'unique'],
         ];
     }
@@ -98,6 +100,8 @@ class Profile extends \yii\db\ActiveRecord
         return sprintf("%s %s %s", $this->last_name, $this->first_name, $this->middle_name);
     }
 
+
+
     public function getImage() {
 
         if ($this->img) {
@@ -117,5 +121,31 @@ class Profile extends \yii\db\ActiveRecord
             $this->img == "noimg.jpg"
         }*/
         return $img;
+    }
+    public function search($params)
+    {
+
+        $session = Yii::$app->session;
+        $session->open();
+        $search = $session->get('search');
+        $query = Profile::find();
+        if($search != null){
+            $query->where(['like', 'last_name',  $search])->with('user')
+                ->orWhere(['like', 'first_name',  $search]);
+        }
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => false,
+        ]);
+        $this->load($params);
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        return $dataProvider;
     }
 }
