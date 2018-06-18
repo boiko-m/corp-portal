@@ -127,3 +127,5 @@ $('.vote-toggle').click(function () {
     $('.glyphicon-heart').removeClass('active-like');
 });
 
+$('.full-search').css('left',20 + $('#full-search').width() );
+$('.main-search').css('left',90 + $('#text-search').width() );

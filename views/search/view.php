@@ -6,6 +6,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\widgets\Alphabet;
 use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -21,7 +22,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-12">
     <div class="card-box">
         <h3>Поиск по "<?=$search?>"</h3>
+<div class="for-search">
+        <?php  $model = new \app\models\ProfileMain;
+        $form = ActiveForm::begin([
+            'method'=> 'get',
+            'action' => ['/search/view'],
+                  ]);
 
+        ?>
+
+        <!-- <input type="text" placeholder="Поиск..." class="form-control">-->
+        <?= $form->field($model, 'text')->textInput( [
+            'placeholder' => 'Поиск...',
+            'class' => 'form-control',
+            'id' => 'full-search',
+            'autocomplete'=>'off'
+
+        ])->label(false); ?>
+
+        <?/*= Html::input('text','MainForm','', ['class' => 'form-control hidden-xs',
+                            'placeholder' => 'Поиск..', 'novalidate' => 'novalidate',
+
+
+                        ])*/ ?>
+
+
+        <?= Html::submitButton('<i class="fas fa-search"></i>', ['class'=>'full-search',
+            ]) ?>
+
+        <?php $form = ActiveForm::end(); ?>
+
+</div>
         <?php foreach ($models as $value) {
 $branch = $value['branch'] . ', ' . $value['department'];
 $name = $value['first_name'] . ' ' . $value['last_name'];
@@ -99,7 +130,7 @@ $name = $value['first_name'] . ' ' . $value['last_name'];
 
     <div id="five" style="padding: 10px 0 0 0">
         <?php if ($value['skype'] != ''){ ?>
-            <a href="skype:<?= $value['skype']; ?>"><i class="fab fa-skype"></i></a>
+            <a href="skype:<?= $value['skype']; ?>"><i class="fa fa-skype"></i></a>
 
         <?php } ?>
     </div>

@@ -14,7 +14,7 @@ use app\assets\AppAssetBottom;
 use yii\widgets\ActiveForm;
 use cinghie\fontawesome\FontAwesomeAsset;
 
-FontAwesomeAsset::register($this);
+//FontAwesomeAsset::register($this);
 
 AppAsset::register($this);
 
@@ -247,12 +247,6 @@ AppAsset::register($this);
 
                         ])->label(false); ?>
 
-                        <?/*= Html::input('text','MainForm','', ['class' => 'form-control hidden-xs',
-                            'placeholder' => 'Поиск..', 'novalidate' => 'novalidate',
-
-
-                        ])*/ ?>
-
 
                         <?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'submitSearch',]) ?>
@@ -270,11 +264,9 @@ AppAsset::register($this);
 
         </nav>
 
-        <div class='wrapper' id='wrapper'>
-            <div class='scroller' id='scroller'>
-                 <div id="for-search" class="hidden-xs container1">
-                     <div class='search-scroll-bar'></div>
-                 </div>
+
+                 <div id="for-search" class="hidden-xs ">
+
 
 
             </div>

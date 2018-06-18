@@ -16,11 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-xs-12 col-md-4 ">
         <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
 
-        <!-- <div class="row">
-            <div class="col-12 card-box">
-                asd
-            </div>
-        </div> -->
+
     </div>
     <div class="col-xs-12 col-md-8">
         <div class="card-box m-b-30">

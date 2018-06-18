@@ -43,7 +43,9 @@ class SearchController extends Controller
 
         $get = Yii::$app->request->get('ProfileSearch');
 
-
+        if(Yii::$app->request->get('ProfileMain')){
+          $get = Yii::$app->request->get('ProfileMain')['text'];
+        }
         $profile = Profile::find()->where(['like', 'last_name',  $get])->with('user')
             ->orWhere(['like', 'first_name',  $get]);
         $countQuery = clone $profile;

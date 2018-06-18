@@ -47,15 +47,6 @@ File: Main Css File
 ============= */
 /* Metis Menu css */
 
-
-
-
-.fa-door-open:before {
-  font-size: 20px;
-}
-.fa-mobile:before {
-  font-size: 30px;
-}
 /*крестик для поиска*/
 .close {
   position: absolute;
@@ -259,7 +250,6 @@ input#text-search:focus {
 .main-search { /*кнопка поиска(лупа)*/
   position: absolute;
   top: 18px;
-  left: 170px;
   display: block;
   height: 34px;
   line-height: 34px;
@@ -269,9 +259,21 @@ input#text-search:focus {
   border: none;
   background-color: transparent;
 
+
 }
+.full-search { /*кнопка поиска(лупа)*/
+  position: absolute;
+  top: 55px;
 
+  display: block;
 
+  text-align: center;
+  color: #CCCCCC;
+  border: none;
+  background-color: transparent;
+  z-index: 999;
+
+}
 
 
 button .fa.fa-search:before {
