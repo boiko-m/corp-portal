@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
         </div>
         <div class="card mb-2">
             <?php 
-           echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img','style'=>'width: 250px;border-radius: 5px;margin:10px;"']
+           echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img col-md-12','style'=>'margin:5px 0px;border-radius:5px;']
                 ), '/profiles/image' . $value['id']); ?>
         </div>
         <div class="card">
-            <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>" class = "btn  waves-effect w-md btn-light">Изменить фотографию</a>
+            <a href="/profiles/image/<?php echo Yii::$app->user->identity->id;?>" class = "btn waves-effect w-md btn-light">Изменить фотографию</a>
         </div>
     </div>
 
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
             <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
                 <li class="nav-item">
                     <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                        Основный настройки
+                        Основные настройки
                     </a>
                 </li>
             </ul>
