@@ -147,7 +147,11 @@ class ProfilesController extends Controller
 
     public function actionUpdateSettingNbBg()
     {
-        Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        if (Yii::$app->setting->isValue('navbar-background-color', Yii::$app->request->get('hat-color'))) {
+            Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        } else {
+            Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        }
         return Yii::$app->setting->getValue('navbar-background-color');
     }
 

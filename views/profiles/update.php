@@ -47,8 +47,8 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
     }
 
     .colorPicker label.orange {
-      background-color: #ff8d05;
-      -webkit-tap-highlight-color: #ff8d05;
+      background-color: #f7931d;
+      -webkit-tap-highlight-color: #f7931d;
     }
 
     .colorPicker label.yellow {
@@ -126,49 +126,49 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                         Основные настройки
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        Настройки интерфейса
+                    </a>
+                </li> -->
             </ul>
 
             <div style="padding: 0px 20px;">
               <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
-                    <div class="colorPicker" style="float: none; margin: 0 auto;">
+                <div style="text-align: center;">
+                    <div class="colorPicker">
                       <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
-                      <label class="red" for="hat-color-red">red</label>
-                      <input class="orange event" type="radio" name="hat-color" value="#ffa500" id="hat-color-orange"/>
-                      <label class="orange" for="hat-color-orange">orange</label>
+                      <label class="red" for="hat-color-red">Красный</label>
+                      <input class="orange event" type="radio" name="hat-color" value="#f7931d" id="hat-color-orange"/>
+                      <label class="orange" for="hat-color-orange">Оранжевый</label>
                       <input class="yellow event" type="radio" name="hat-color" value="#ffff00" id="hat-color-yellow"/>
-                      <label class="yellow" for="hat-color-yellow">yellow</label>
+                      <label class="yellow" for="hat-color-yellow">Желтый</label>
                       <input class="green event" type="radio" name="hat-color" value="#008000" id="hat-color-green"/>
-                      <label class="green" for="hat-color-green">green</label>
+                      <label class="green" for="hat-color-green">Зеленый</label>
                       <input class="blue event" type="radio" name="hat-color" value="#0000ff" id="hat-color-blue"/>
-                      <label class="blue" for="hat-color-blue">blue</label>
+                      <label class="blue" for="hat-color-blue">Синий</label>
                       <input class="indigo event" type="radio" name="hat-color" value="#4b0082" id="hat-color-indigo"/>
-                      <label class="indigo" for="hat-color-indigo">indigo</label>
+                      <label class="indigo" for="hat-color-indigo">Индиго</label>
                       <input class="violet event" type="radio" name="hat-color" value="#ee82ee" id="hat-color-violet"/>
-                      <label class="violet" for="hat-color-violet">violet</label>
+                      <label class="violet" for="hat-color-violet">Фиолетовый</label>
                     </div>
+                  </div>
                 <? endif; ?>
                 <?php
-                    $phone = explode(',', $model->phone);
-                   /* debug($phone);*/
+                  $phone = explode(',', $model->phone);
+                 /* debug($phone);*/
 
 
                 $form = ActiveForm::begin(); ?>
-
-                    <?= $form->field($model, 'id')->label(false)->hiddenInput() ?>
-
-                    <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
-
-                    <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>
-
-                    <?= $form->field($model, 'cabinet')->textInput(['maxlength' => true]) ?>
-
-                    <?= $form->field($model, 'about')->textarea(['rows' => 6]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']) ?>
-                    </div>
-
-                    <?php ActiveForm::end(); ?>  
+                  <?= $form->field($model, 'id')->label(false)->hiddenInput() ?>
+                  <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($model, 'cabinet')->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($model, 'about')->textarea(['rows' => 6]) ?>
+                  <div class="form-group">
+                      <?= Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']) ?>
+                  </div>
+                <?php ActiveForm::end(); ?>  
             </div>
           
         </div>
