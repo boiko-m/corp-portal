@@ -140,7 +140,9 @@ curl_close($ch);
                                             </td>
                                             <td width="640" style="padding: 20px 0px 0px 10px; text-align: left;" valign="top">
                                                 <span style="margin: 0; padding: 0; color: #000000; background: none !important; font-size: 13px; font-weight: normal; font-family: Verdana, Arial, Arial Narrow, Helvetica,sans-serif; outline: none;">
-                                                    <?php echo $items['parameters']['header']?>                                                </span>
+                                                    <?php echo $items['parameters']['client']?>,<br>
+                                                    <?php echo $items['parameters']['header']?>
+                                                </span>
                                             </td>
                                         </tr>
                                     </tbody></table>
@@ -175,11 +177,6 @@ curl_close($ch);
                 </td></tr>
 
                 <?if($items['parameters']['print'] == 0):?>
-                <tr>
-                    <td style="padding: 25px 20px 10px 20px; background: white;">
-                        <p style="margin: 0; padding: 0; font-family: 'Trebuchet MS', sans-serif; font-size: 13px;">Всю подробную информацию по заинтересовавшим Вас моделям техники, а также опыт эксплуатации и отзывы потребителей Вы сможете получить у Вашего персонального менеджера. </p>
-                    </td>
-                </tr>
                 <tr>
                     <td style="padding: 0 20px; background: white;">
                         <table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" align="left" bgcolor="#FFFFFF">
