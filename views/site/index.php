@@ -12,45 +12,50 @@ use yii\widgets\ActiveForm;
 
 ?>
 <style>
-    .news-a {
-        margin-top: 10px;
-    }
-    .news-a a {
+    .news-a > a {
         color:#444444;
         transition: 0.3s;
         display: block;
-        padding: 0px 5px;
+        padding: 5px;
     }
     .news-a a:hover {
         color: black;
         background: #f5f5f5;
-        padding-left: 10px;
     }
     .news-offer {
         text-decoration: underline;
-        padding-left: 10px;
         font-size: 11px;
         color: #747474;
     }
 </style>
 <div class="row">
-    <div class="col-xs-12 col-md-8">
-        <div class="card-box">
-            <h5 class="card-title">Новости</h5>
-            <div class="col-xs-12" style="margin-left: 15px">
-                <?php foreach ($news as $item): ?>
-                    <div class="col-xs-12 news-a">
-                        <a href="/news/<?=$item['id']?>">
-                            <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
-                        </a>
+    <div class="col-xs-12 col-md-8 m-b-30">
+        <div class="card">
+            <ul class="nav nav-tabs tabs-bordered">
+                <li class="nav-item">
+                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        Новости
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" style="padding-top: 10px;">
+                <div class="tab-pane fade active show" id="home-b1">
+                    <div style="margin-bottom: 10px;">
+                        <?php foreach ($news as $item): ?>
+                            <div class="col-xs-12 news-a" >
+                                <a href="/news/<?=$item['id']?>" style = "padding-left: 15px;">
+                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+                        <div style="padding-top: 10px; display: inline-block;">
+                            <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
+                        </div>
+                        <div style="padding-top: 10px; display: inline-block;">
+                            <a href="/news/offer" class="news-offer">Предложить новость</a>
+                        </div>
                     </div>
-                <?php endforeach ?>
-            </div>
-            <div style="padding-top: 10px; display: inline-block;">
-                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
-            </div>
-            <div style="padding-top: 10px; display: inline-block;">
-                <a href="/news/offer" class="news-offer">Предложить новость</a>
+                </div>
             </div>
         </div>
     </div>

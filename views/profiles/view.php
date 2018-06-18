@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h5  class="" style="font-weight: bold;color: black;margin: 0px;"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
                     </div>
             	
-            	<div class="col-12" style="padding: 10px;">
+            	<div class="col-12" style="padding: 10px 20px;">
             		<?php if ($model->branch): ?>
             			<div> Филиал: <?=$model->branch?> </div>
             		<?php endif ?>
