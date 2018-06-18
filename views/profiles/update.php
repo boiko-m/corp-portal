@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
         </div>
         <div class="card mb-2">
             <?php 
-           echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img col-md-12','style'=>'margin:5px 0px;border-radius:5px;']
+           echo Html::a(Html::img($model->getImage(),['title' => 'изменить фотографию', 'class' => 'update-img col-md-12','style'=>'margin:15px 0px;border-radius:5px;']
                 ), '/profiles/image' . $value['id']); ?>
         </div>
         <div class="card">
