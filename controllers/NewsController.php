@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use hauntd\vote\models\Vote;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -22,8 +23,19 @@ class NewsController extends Controller
     }
 
     public function actionView($id) {
+        $newsEntity = '2788134213';
+
+        $user_id = Yii::$app->user->id;
+        $like = Vote::find()->where(['user_id' => $user_id])->andWhere(['entity' =>$newsEntity])->andWhere(['target_id' =>$id])->one();
+        if(isset($like)){
+            $like = 'active-like';
+
+        }
+        else{
+            $like = '';
+        }
         return $this->render('view', array(
-            'news' => News::findOne($id)
+            'news' => News::findOne($id), 'like' =>$like,
         ));
     }
 

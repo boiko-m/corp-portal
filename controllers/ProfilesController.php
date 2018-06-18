@@ -59,7 +59,7 @@ class ProfilesController extends Controller
              else{
                  $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
              }
-        $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
+
 
         $dataProvider->query->with('user');
 
@@ -80,9 +80,7 @@ class ProfilesController extends Controller
     }
 
 
-    public  function actionCalendar() {
-        return '<div id="calendar"></div>';
-    }
+
 
 
     public function actionBirthday()
@@ -121,16 +119,26 @@ class ProfilesController extends Controller
     }
     public function actionUpdate($id)
     {
+
         if($id != Yii::$app->user->id) {
             return $this->redirect(['view', 'id' => Yii::$app->user->id]);
         }
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if(Yii::$app->request->post() && $model->validate()) {
+            $post = Yii::$app->request->post('Profile');
+            $model->skype = $post['skype'];
+            $model->phone = $post['phone1'] . ', ' . $post['phone2'];
+            $model->phone_cabinet = $post['phone_cabinet'];
+            $model->cabinet = $post['cabinet'];
+            $model->about = $post['about'];
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+
         return $this->render('update', [
+
             'model' => $model,
         ]);
     }
@@ -147,6 +155,8 @@ class ProfilesController extends Controller
     public function actionImage()
     {
         $model = new CropboxForm();
+        $id = Yii::$app->user->id;
+        $profile = Profile::find()->where(['id' => $id])->one();
         if ($model->load(Yii::$app->request->post()))
         {
             $model->image = UploadedFile::getInstance($model, 'image');
@@ -175,6 +185,7 @@ class ProfilesController extends Controller
         }
 
         return $this->render('upload-img', [
+            'profile' => $profile,
             'form' => $model,
         ]);
     }
