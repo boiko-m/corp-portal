@@ -86,7 +86,7 @@
 
     <div id="five" style="padding: 10px 0 0 0">
         <?php if ($value['skype'] != ''){ ?>
-            <a href="skype:<?= $value['skype']; ?>"><i class="fa fa-skype"></i></a>
+            <a href="skype:<?= $value['skype']; ?>?add"><i class="fa fa-skype"></i></a>
 
             <?php } ?>
     </div>
