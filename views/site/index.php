@@ -40,7 +40,7 @@ use yii\widgets\ActiveForm;
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
                 <div class="tab-pane fade active show" id="home-b1">
-                    <div style="margin-bottom: 10px;">
+                    <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
                                 <a href="/news/<?=$item['id']?>" style = "padding-left: 15px;">
