@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 <style>
     .colorPicker {
       margin-top: 1em;
+      margin-bottom: 1em;
       font-size: 0.875em;
       text-align: center;
       display: inline-table;
@@ -51,9 +52,9 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
       -webkit-tap-highlight-color: #f7931d;
     }
 
-    .colorPicker label.yellow {
-      background-color: #ecca05;
-      -webkit-tap-highlight-color: #ecca05;
+    .colorPicker label.violet {
+      background-color: #4b0059;
+      -webkit-tap-highlight-color: #4b0059;
     }
 
     .colorPicker label.green {
@@ -71,9 +72,9 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
       -webkit-tap-highlight-color: #7500ca;
     }
 
-    .colorPicker label.violet {
-      background-color: #cc6fcc;
-      -webkit-tap-highlight-color: #cc6fcc;
+    .colorPicker label.black {
+      background-color: #000000;
+      -webkit-tap-highlight-color: #000000;
     }
 
     .colorPicker label:first-of-type {
@@ -120,40 +121,23 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 
     <div class="col-xs-12 col-xl-9">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
+            <ul class="nav nav-tabs tabs-bordered" role="tablist" style="padding-top: 5px">
                 <li class="nav-item">
-                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                    <a href="#home-b1" data-toggle="tab" class="nav-link active">
                         Основные настройки
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
-                        Настройки интерфейса
-                    </a>
-                </li> -->
+                <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
+                  <li class="nav-item">
+                      <a href="#home-b2" data-toggle="tab" class="nav-link">
+                          Настройки интерфейса
+                      </a>
+                  </li>
+                <? endif; ?>
             </ul>
 
-            <div style="padding: 0px 20px;">
-              <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
-                <div style="text-align: center;">
-                    <div class="colorPicker">
-                      <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
-                      <label class="red" for="hat-color-red">Красный</label>
-                      <input class="orange event" type="radio" name="hat-color" value="#f7931d" id="hat-color-orange"/>
-                      <label class="orange" for="hat-color-orange">Оранжевый</label>
-                      <input class="yellow event" type="radio" name="hat-color" value="#ffff00" id="hat-color-yellow"/>
-                      <label class="yellow" for="hat-color-yellow">Желтый</label>
-                      <input class="green event" type="radio" name="hat-color" value="#008000" id="hat-color-green"/>
-                      <label class="green" for="hat-color-green">Зеленый</label>
-                      <input class="blue event" type="radio" name="hat-color" value="#0000ff" id="hat-color-blue"/>
-                      <label class="blue" for="hat-color-blue">Синий</label>
-                      <input class="indigo event" type="radio" name="hat-color" value="#4b0082" id="hat-color-indigo"/>
-                      <label class="indigo" for="hat-color-indigo">Индиго</label>
-                      <input class="violet event" type="radio" name="hat-color" value="#ee82ee" id="hat-color-violet"/>
-                      <label class="violet" for="hat-color-violet">Фиолетовый</label>
-                    </div>
-                  </div>
-                <? endif; ?>
+            <div class="tab-content" style="padding: 0px 20px;">
+              <div id="home-b1" class="container tab-pane active">
                 <?php
                   $phone = explode(',', $model->phone);
                  /* debug($phone);*/
@@ -168,7 +152,31 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                   <div class="form-group">
                       <?= Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect']) ?>
                   </div>
-                <?php ActiveForm::end(); ?>  
+                <?php ActiveForm::end(); ?>
+              </div>
+
+              <div id="home-b2" class="container tab-pane fade">
+              <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
+                <div style="text-align: center;">
+                    <div class="colorPicker">
+                      <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
+                      <label class="red" for="hat-color-red">Красный</label>
+                      <input class="orange event" type="radio" name="hat-color" value="#f7931d" id="hat-color-orange"/>
+                      <label class="orange" for="hat-color-orange">Оранжевый</label>
+                      <input class="violet event" type="radio" name="hat-color" value="#4b0059" id="hat-color-violet"/>
+                      <label class="violet" for="hat-color-violet">Фиолетовый</label>
+                      <input class="green event" type="radio" name="hat-color" value="#008000" id="hat-color-green"/>
+                      <label class="green" for="hat-color-green">Зеленый</label>
+                      <input class="blue event" type="radio" name="hat-color" value="#0000ff" id="hat-color-blue"/>
+                      <label class="blue" for="hat-color-blue">Синий</label>
+                      <input class="indigo event" type="radio" name="hat-color" value="#4b0082" id="hat-color-indigo"/>
+                      <label class="indigo" for="hat-color-indigo">Индиго</label>
+                      <input class="black event" type="radio" name="hat-color" value="#000000" id="hat-color-black"/>
+                      <label class="black" for="hat-color-black">Черный</label>
+                    </div>
+                  </div>
+                <? endif; ?>
+              </div>
             </div>
           
         </div>
@@ -182,7 +190,7 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
       url: '/profiles/update-setting-nb-bg',
       data: color,
       success: function(data) {
-        console.log(data);
+        location.reload();
       },
       error: function(xhr, str){
         alert('Возникла ошибка: ' + xhr.responseCode);

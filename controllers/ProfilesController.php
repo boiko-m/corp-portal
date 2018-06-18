@@ -152,7 +152,6 @@ class ProfilesController extends Controller
         } else {
             Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
         }
-        return Yii::$app->setting->getValue('navbar-background-color');
     }
 
     protected function isOwnProfile()

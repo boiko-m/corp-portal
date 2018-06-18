@@ -38,7 +38,7 @@ AppAsset::register($this);
     <div class="topbar">
 
         <!-- LOGO -->
-        <div class="topbar-left">
+        <div class="topbar-left" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
             <a href="/" class="logo">
                         <span>
                             <img src="/images/logo.png" alt="" height="35">
@@ -49,7 +49,7 @@ AppAsset::register($this);
             </a>
         </div>
 
-        <nav class="navbar-custom">
+        <nav class="navbar-custom" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
 

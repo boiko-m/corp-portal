@@ -31,33 +31,33 @@ AppAsset::register($this);
 
 <div id = "wrapper">
     <div class="topbar">
-                <!-- LOGO -->
-                <div class="topbar-left">
-                    <a href="/" class="logo">
-                        <span>
-                            <img src="/images/logo.png" alt="" height="32">
-                        </span>
-                        <i>
-                            <img src="/images/logo_sm.png" alt="" height="28">
-                        </i>
-                    </a>
-                </div>
+        <!-- LOGO -->
+        <div class="topbar-left" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
+            <a href="/" class="logo">
+                <span>
+                    <img src="/images/logo.png" alt="" height="32">
+                </span>
+                <i>
+                    <img src="/images/logo_sm.png" alt="" height="28">
+                </i>
+            </a>
+        </div>
 
-                <nav class="navbar-custom">
+        <nav class="navbar-custom" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
 
-                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
-                        <?=$this->render('_profile_header.php')?>
-                    </ul>
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                <?=$this->render('_profile_header.php')?>
+            </ul>
 
-                    <ul class="list-inline menu-left mb-0">
-                        <li class="float-left">
-                            <button class="button-menu-mobile open-left waves-light waves-effect">
-                                <i class="dripicons-menu"></i>
-                            </button>
-                        </li>
-                    </ul>
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+            </ul>
 
-                </nav>
+        </nav>
 
             </div>
             <!-- end topbar -->
