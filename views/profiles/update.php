@@ -13,8 +13,13 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 ?>
 
 <style>
-    .colorPicker {
+    .colorPanel {
       margin-top: 1em;
+      text-align: center;
+    }
+
+    .colorPicker {
+      margin-top: 0.1em;
       margin-bottom: 1em;
       font-size: 0.875em;
       text-align: center;
@@ -156,8 +161,11 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
               </div>
 
               <div id="home-b2" class="container tab-pane fade">
-              <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
-                <div style="text-align: center;">
+                <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
+                  <div class="colorPanel">
+                    <div>
+                      <h5><?= Yii::$app->setting->getName('navbar-background-color'); ?></h5>
+                    </div>
                     <div class="colorPicker">
                       <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
                       <label class="red" for="hat-color-red">Красный</label>

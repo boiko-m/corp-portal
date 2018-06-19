@@ -39,6 +39,16 @@
         $('.button-menu-mobile').on('click', function (event) {
             event.preventDefault();
             $("body").toggleClass("enlarged");
+            // $.ajax({
+            //   url: '/profiles/update-setting-side-bar',
+            //   data: ($("body").attr('class'),
+            //   success: function(data) {
+            //     location.reload();
+            //   },
+            //   error: function(xhr, str){
+            //     alert('Возникла ошибка: ' + xhr.responseCode);
+            //   }
+            // });
         });
     }
 

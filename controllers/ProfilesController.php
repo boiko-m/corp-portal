@@ -154,6 +154,15 @@ class ProfilesController extends Controller
         }
     }
 
+    public function actionUpdateSettingSideBar()
+    {
+        if (Yii::$app->setting->isValue('navbar-background-color', Yii::$app->request->get('hat-color'))) {
+            Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        } else {
+            Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        }
+    }
+
     protected function isOwnProfile()
     {
         return Yii::$app->request->get('id') == Yii::$app->user->id;

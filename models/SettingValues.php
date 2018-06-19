@@ -52,6 +52,11 @@ class SettingValues extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getName($code)
+    {
+        return (SettingOptions::find()->where(['code' => $code])->one())->name;
+    }
+
     public function newValue($code, $value)
     {
         $settingOptionsId = SettingOptions::find()->where(['code' => $code])->one();
