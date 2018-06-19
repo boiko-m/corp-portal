@@ -25,6 +25,8 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <?php include 'css/setting.css.php'; ?>
 </head>
 <body class="<?= Yii::$app->setting->getValue('sidebar-user-toggle'); ?>">
 <?php $this->beginBody() ?>
@@ -32,7 +34,7 @@ AppAsset::register($this);
 <div id = "wrapper">
     <div class="topbar">
         <!-- LOGO -->
-        <div class="topbar-left" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
+        <div class="topbar-left">
             <a href="/" class="logo">
                 <span>
                     <img src="/images/logo.png" alt="" height="32">
@@ -43,7 +45,7 @@ AppAsset::register($this);
             </a>
         </div>
 
-        <nav class="navbar-custom" style="background-color: <?= Yii::$app->setting->getValue('navbar-background-color'); ?>">
+        <nav class="navbar-custom">
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
                 <?=$this->render('_profile_header.php')?>
