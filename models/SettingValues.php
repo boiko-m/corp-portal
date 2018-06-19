@@ -73,6 +73,14 @@ class SettingValues extends \yii\db\ActiveRecord
     public function isValue($code)
     {
         $settingOptionsId = SettingOptions::find()->where(['code' => $code])->one();
+        if (!isset($settingOptionsId)) {
+            $setting = new SettingOptions;
+            $setting->code = $code;
+            $setting->name = "Новая опция";
+            if ($setting->save()) {
+                $settingOptionsId = $setting;
+            } 
+        }
         if (!empty(SettingValues::find()->where(['id_profile' => Yii::$app->user->id, 'id_setting_option' => $settingOptionsId->id])->one())) {
             return 1;
         } else {
