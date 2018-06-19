@@ -39,17 +39,19 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
       cursor: pointer;
       vertical-align: middle;
       padding: 0.5em 1em;
+      max-height: 35px;
       text-transform: capitalize;
       letter-spacing: -0.5em;
       color: transparent;
       opacity: 0.35;
       width: 1%;
+      height: 35px;
       background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
     }
 
     .colorPicker label.red {
-      background-color: #ff3e05;
-      -webkit-tap-highlight-color: #ff3e05;
+      background-color: #e50f0f;
+      -webkit-tap-highlight-color: #e50f0f;
     }
 
     .colorPicker label.orange {
@@ -58,28 +60,28 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
     }
 
     .colorPicker label.violet {
-      background-color: #4b0059;
-      -webkit-tap-highlight-color: #4b0059;
+      background-color: #720586;
+      -webkit-tap-highlight-color: #720586;
     }
 
     .colorPicker label.green {
-      background-color: #40af04;
-      -webkit-tap-highlight-color: #40af04;
+      background-color: #008d77;
+      -webkit-tap-highlight-color: #008d77;
     }
 
     .colorPicker label.blue {
-      background-color: #057fff;
-      -webkit-tap-highlight-color: #057fff;
+      background-color: #195fb1;
+      -webkit-tap-highlight-color: #195fb1;
     }
 
-    .colorPicker label.indigo {
-      background-color: #7500ca;
-      -webkit-tap-highlight-color: #7500ca;
+    .colorPicker label.dark-blue {
+      background-color: #4f5a6e;
+      -webkit-tap-highlight-color: #4f5a6e;
     }
 
     .colorPicker label.black {
-      background-color: #000000;
-      -webkit-tap-highlight-color: #000000;
+      background-color: #2e2b2b;
+      -webkit-tap-highlight-color: #2e2b2b;
     }
 
     .colorPicker label:first-of-type {
@@ -132,13 +134,11 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                         Основные настройки
                     </a>
                 </li>
-                <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
-                  <li class="nav-item">
-                      <a href="#home-b2" data-toggle="tab" class="nav-link">
-                          Настройки интерфейса
-                      </a>
-                  </li>
-                <? endif; ?>
+                <li class="nav-item">
+                    <a href="#home-b2" data-toggle="tab" class="nav-link">
+                        Настройки интерфейса
+                    </a>
+                </li>
             </ul>
 
             <div class="tab-content" style="padding: 0px 20px;">
@@ -161,48 +161,30 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
               </div>
 
               <div id="home-b2" class="container tab-pane fade">
-                <?php if (Yii::$app->user->can('SuperAdmin')) : ?>
-                  <div class="colorPanel">
-                    <div>
-                      <h5><?= Yii::$app->setting->getName('navbar-background-color'); ?></h5>
-                    </div>
-                    <div class="colorPicker">
-                      <input class="red event" type="radio" name="hat-color" value="#ff0000" id="hat-color-red"/>
-                      <label class="red" for="hat-color-red">Красный</label>
-                      <input class="orange event" type="radio" name="hat-color" value="#f7931d" id="hat-color-orange"/>
-                      <label class="orange" for="hat-color-orange">Оранжевый</label>
-                      <input class="violet event" type="radio" name="hat-color" value="#4b0059" id="hat-color-violet"/>
-                      <label class="violet" for="hat-color-violet">Фиолетовый</label>
-                      <input class="green event" type="radio" name="hat-color" value="#008000" id="hat-color-green"/>
-                      <label class="green" for="hat-color-green">Зеленый</label>
-                      <input class="blue event" type="radio" name="hat-color" value="#0000ff" id="hat-color-blue"/>
-                      <label class="blue" for="hat-color-blue">Синий</label>
-                      <input class="indigo event" type="radio" name="hat-color" value="#4b0082" id="hat-color-indigo"/>
-                      <label class="indigo" for="hat-color-indigo">Индиго</label>
-                      <input class="black event" type="radio" name="hat-color" value="#000000" id="hat-color-black"/>
-                      <label class="black" for="hat-color-black">Черный</label>
-                    </div>
+                <div class="colorPanel">
+                  <div>
+                    <h5><?= Yii::$app->setting->getName('navbar-background-color'); ?></h5>
                   </div>
-                <? endif; ?>
+                  <div class="colorPicker">
+                    <input class="red event" type="radio" name="hat-color" value="#e50f0f" id="hat-color-red"/>
+                    <label class="red" for="hat-color-red"></label>
+                    <input class="orange event" type="radio" name="hat-color" value="#f7931d" id="hat-color-orange"/>
+                    <label class="orange" for="hat-color-orange"></label>
+                    <input class="violet event" type="radio" name="hat-color" value="#720586" id="hat-color-violet"/>
+                    <label class="violet" for="hat-color-violet"></label>
+                    <input class="green event" type="radio" name="hat-color" value="#008d77" id="hat-color-green"/>
+                    <label class="green" for="hat-color-green"></label>
+                    <input class="blue event" type="radio" name="hat-color" value="#195fb1" id="hat-color-blue"/>
+                    <label class="blue" for="hat-color-blue"></label>
+                    <input class="dark-blue event" type="radio" name="hat-color" value="#4f5a6e" id="hat-color-dark-blue"/>
+                    <label class="dark-blue" for="hat-color-dark-blue"></label>
+                    <input class="black event" type="radio" name="hat-color" value="#2e2b2b" id="hat-color-black"/>
+                    <label class="black" for="hat-color-black"></label>
+                  </div>
+                </div>
               </div>
             </div>
           
         </div>
     </div>
 </div>
-
-<script>
-  $('.event').on('click', function (e) {
-    var color = $('.event').serialize();
-    $.ajax({
-      url: '/profiles/update-setting-nb-bg',
-      data: color,
-      success: function(data) {
-        location.reload();
-      },
-      error: function(xhr, str){
-        alert('Возникла ошибка: ' + xhr.responseCode);
-      }
-    });
-  });
-</script>

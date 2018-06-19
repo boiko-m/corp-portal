@@ -26,7 +26,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="<?= Yii::$app->setting->getValue('sidebar-user-toggle'); ?>">
 <?php $this->beginBody() ?>
 
 <div id = "wrapper">

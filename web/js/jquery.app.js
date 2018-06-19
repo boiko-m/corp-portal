@@ -58,6 +58,22 @@
         }
     }
 
+    function initChangeBgNb() {
+        $('.event').on('click', function (e) {
+            let color = $('.event').serialize();
+            $.ajax({
+              url: '/profiles/update-setting-nb-bg',
+              data: color,
+              success: function(data) {
+                location.reload();
+              },
+              error: function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+              }
+            });
+        });
+    }
+
     function initActiveMenu() {
         // === following js will activate the menu in left side bar based on url ====
         $("#sidebar-menu a").each(function () {
@@ -80,6 +96,7 @@
         initLeftMenuCollapse();
         // initEnlarge();
         initActiveMenu();
+        initChangeBgNb();
     }
 
     init();
