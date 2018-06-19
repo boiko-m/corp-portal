@@ -143,12 +143,8 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
 
             <div class="tab-content" style="padding: 0px 20px;">
               <div id="home-b1" class="container tab-pane active">
-                <?php
-                  $phone = explode(',', $model->phone);
-                 /* debug($phone);*/
-
-
-                $form = ActiveForm::begin(); ?>
+                <?php $phone = explode(',', $model->phone); ?>
+                <?php $form = ActiveForm::begin(); ?>
                   <?= $form->field($model, 'id')->label(false)->hiddenInput() ?>
                   <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
                   <?= $form->field($model, 'phone_cabinet')->textInput(['maxlength' => true]) ?>

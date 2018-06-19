@@ -40,7 +40,7 @@ AppAsset::register($this);
     <div class="topbar">
 
         <!-- LOGO -->
-        <div class="topbar-left">
+        <div class="topbar-left preview-nb-bg-color">
             <a href="/" class="logo">
                         <span>
                             <img src="/images/logo.png" alt="" height="35">
