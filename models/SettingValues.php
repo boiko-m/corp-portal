@@ -31,7 +31,7 @@ class SettingValues extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['value', 'id_setting_option'], 'required'],
+            [['id_setting_option'], 'required'],
             [['id_setting_option', 'id_profile'], 'integer'],
             [['value'], 'string', 'max' => 100],
             [['id_profile'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['id_profile' => 'id']],

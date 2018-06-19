@@ -147,7 +147,7 @@ class ProfilesController extends Controller
 
     public function actionUpdateSettingNbBg()
     {
-        if (Yii::$app->setting->isValue('navbar-background-color', Yii::$app->request->get('hat-color'))) {
+        if (Yii::$app->setting->isValue('navbar-background-color')) {
             Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
         } else {
             Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
@@ -156,10 +156,10 @@ class ProfilesController extends Controller
 
     public function actionUpdateSettingSideBar()
     {
-        if (Yii::$app->setting->isValue('navbar-background-color', Yii::$app->request->get('hat-color'))) {
-            Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        if (Yii::$app->setting->isValue('sidebar-user-toggle')) {
+            Yii::$app->setting->setValue('sidebar-user-toggle', Yii::$app->request->get('toggle-side-bar'));
         } else {
-            Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+            Yii::$app->setting->newValue('sidebar-user-toggle', Yii::$app->request->get('toggle-side-bar'));
         }
     }
 
