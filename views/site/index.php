@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
+            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 3px">
                 <li class="nav-item">
                     <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
                         Новости
@@ -73,7 +73,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="col-xs-12 col-md-4">
         <div class="card">
-            <h5 class="card-header">Новое видео на портале</h5>
+            <div class="card-header">Новое видео на портале</div>
 
             <div class="m-b-10" style="padding-top: 10px">
                 <a href="/video/id/<?=$video['id']?>">
