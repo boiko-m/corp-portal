@@ -263,16 +263,16 @@ class UserupController extends Controller
                     $profile->skype = $up['Email'];
                     $user->email = $up['Email'];
                     $user->password_external = $up['Пароль1С'];
-                } else {
-                    $profile->skype = $up['Email'];
-                    $user->password_external = $up['Пароль1С'];
-                }
+                } 
+                // else
+                //     $profile->skype = $up['Email'];
 
                 $profile->phone = $up['Сотовые'];
                 $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
                 $profile->position = $up['КорпоративнаяДолжность']['Description'];
                 $profile->department = $up['ФункциональноеПодразделение']['Description'];
                 $profile->category = $up['Категория'];
+                $user->password_external = $up['Пароль1С'];
                 $user->key_external = $up['Ref_Key'];
 
                 // if ($up['ГТС'] != '') {
