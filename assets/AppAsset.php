@@ -26,11 +26,13 @@ class AppAsset extends AssetBundle
         'css/icons.css',
         'css/metismenu.min.css',
         'css/style.css',
+        'css/styles-carousel.css',
         'css/styles-new.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
     ];
     public $js = [
         'js/modernizr.min.js',
+        'js/carousel.js',
         //'js/jquery.min.js',
         'js/popper.min.js',
         'js/bootstrap.min.js',

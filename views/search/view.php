@@ -1,9 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
-use app\widgets\Alphabet;
 use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
@@ -128,15 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <hr>
             <?php }?>
-            <?php
-            echo LinkPager::widget([
-                'pagination' => $pages,
-                    'options'=>['class' => 'pagination float-right'],
-                    'linkOptions' => ['class' => 'page-link'],
 
-                    'disabledPageCssClass' => 'page-link'
-            ]);
-            ?>
             </div></div></div></div>
 
 

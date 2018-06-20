@@ -3,6 +3,11 @@
 use app\models\Session;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -13,10 +18,40 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-	<div class="col-xs-12 col-md-4 ">
-        <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
+    <div class="col-xs-12 col-md-4 ">
+        <div class="row">
+            <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
+        </div>
+
+        <div class="row">
 
 
+                <?php  $i = 0;
+                foreach ($gift as $value){
+                    $i++;
+                    if($i == 5 ){
+                        break;
+                    }
+                    if($value['gift']['img'][0] != '/') {
+                        $img = '/'.$value['gift']['img'];
+                    }
+                    else{
+                        $img = $value['gift']['img'];
+                    }
+                    ?>
+            <div class="col-md-3">
+                    <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 70px; width: 70px">
+            </div>
+                <?php }?>
+            </div>
+
+
+       <!-- <div class="row">
+            <div class="btn-group mb-2" style="width: 100%">
+                <a href = "/" class="btn  waves-effect w-md btn-light" style="width: 100%">Подарить</a>
+                <a href = "/" class="btn  waves-effect w-md btn-light" style="width: 100%">Просмотреть все</a>
+            </div>
+        </div>-->
     </div>
     <div class="col-xs-12 col-md-8">
         <div class="card m-b-30">
@@ -43,16 +78,18 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                Основная информация
 	                            </a>
 	                        </li>
-	                        <!-- <li class="nav-item">
-	                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
-	                                Сообщения
-	                            </a>
-	                        </li>
+
 	                        <li class="nav-item">
 	                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
-	                                Управление
+	                               Подарки
 	                            </a>
-	                        </li> -->
+	                        </li>
+                            <!--
+                           <li class="nav-item">
+                               <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                   Управление
+                               </a>
+                           </li> -->
 	                    </ul>
                     
                     <style>
@@ -193,8 +230,35 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
 
                         <div class="tab-pane fade" id="profile-b1">
-                            2 часть
+
+
+
+                            <?php if(Yii::$app->user->id != $id){?>
+                                <?=Html::a('Сделать подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' =>$id])?>
+
+                            <?php }?>
+
+                            <div class="row" style="padding: 0 50px 0 50px">
+                                <?php
+                                foreach ($gift as $value){
+
+                                    if($value['gift']['img'][0] != '/') {
+                                        $img = '/'.$value['gift']['img'];
+                                    }
+                                    else{
+                                        $img = $value['gift']['img'];
+                                    }
+                                    ?>
+                                    <div class="col-md-3" >
+                                        <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 100px; width: 100px;">
+                                    </div>
+
+                                <?php }
+                                ?>
+
+                            </div>
                         </div>
+
             </div>
 		<?php endif // если нет email, то не выводим всю общую информацию?>
 
@@ -202,3 +266,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+
+

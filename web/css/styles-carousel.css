@@ -1,0 +1,64 @@
+.carousel  {
+   max-width: 1080px; /* ширина всего блока */
+   margin: 10px auto;
+   border-radius: 5px;
+   width:100%;
+}
+.carousel-wrapper {
+   margin: 0 30px; /* отступы для стрелок */
+   overflow: hidden; /* скрываем содержимое, выходящее за рамки основной области */
+   position:relative;
+}
+.carousel-items {
+   width: 10000px; /* устанавливаем большую ширину для набора элементов */
+   position: relative; /* позиционируем блок относительно основной области карусели */
+}
+.carousel-block {
+   float: left; /* выстраиваем все элементы карусели в ряд */
+   width: 80px; /* задаём ширину каждого элемента */
+   padding: 10px 30px 10px 0px; /* делаем оступы, чтобы элементы не сливались */
+   margin: 0 10px;
+
+
+}
+.carousel-block img{
+   display:block;
+}
+
+/*********** BUTTONS ***********/
+.carousel-button-left a, .carousel-button-right a{
+   width: 25px;
+   height: 36px;
+   position: relative;
+   top: 25px;
+   cursor: pointer;
+   text-decoration:none;
+}
+
+/*********** BUTTONS ***********/
+.carousel-button-left a, .carousel-button-right a{
+   width: 25px; 
+   height: 36px; 
+   position: relative;
+   top: 25px;
+   cursor: pointer; 
+   text-decoration:none;
+}
+.carousel-button-left a{
+   float: left; 
+   background: url(../img/content/carousel-left.png);
+}
+.carousel-button-right a{
+   float: right;
+   background: url(../img/content/carousel-right.png);
+}
+
+/*********** SHADOW ***********/
+.shadow{
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+div .col-md-4.col-md-4-sizeModal{
+   height: 100px;
+}
+

@@ -112,11 +112,11 @@ $('#text-search').focus(function(){
     }
     $('#text-search').css('width', width);
     if( $(window).width() >= '1100' ) {
-        $('.close').css('right', 210 - width);
+        $('.close-search').css('right', 210 - width);
     }
 
     $('#submitSearch').hide(1);
-    $('.close').css('right', 210 - width);
+    $('.close-search').css('right', 210 - width);
     $('#hidden-search-close').show(500);// скрываем отображение лупы при клике
 
 
@@ -128,4 +128,32 @@ $('.vote-toggle').click(function () {
 });
 
 $('.full-search').css('left',20 + $('#full-search').width() );
-$('.main-search').css('left',90 + $('#text-search').width() );
+
+
+
+$(function() {
+   /* $(document).on('click', '.showModalButton', function (e) {*/
+    $('.showModalButton').click( function (e) {
+        var data = $(this).attr('data');
+        $.ajax({
+            url: '/profiles/modal/',
+            type: "POST", //метод отправки
+            data: {'data':data},
+            success: function (response) {
+               var a = $.parseJSON(response);
+                //Данные отправлены успешно
+                $('#modalHeader').html('Отправить подарок<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
+                $('.modal-dialog').addClass('modal-lg');
+                $('#modalContent').html(a[0]);
+                $('.modal-footer').html(a[1]);
+                $('#modal').modal('show');
+
+            },
+            error: function () { // Данные не отправлены
+                alert('Ошибка. Данные не отправлены.');
+            }
+        });
+        return false;
+    })
+});
+
