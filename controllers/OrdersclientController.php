@@ -29,7 +29,7 @@ class OrdersclientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['Manager'],
+                        'roles' => ['viewOrdersClient'],
                     ],
                 ],
             ]
@@ -182,11 +182,11 @@ class OrdersclientController extends Controller
 
 
             $stop = 'Время получения ответа: ' . round( microtime(true) - $start, 2 ) . ' сек.';
-            
+
             return $this->render('index', array('odata' => $odata, 'allorders' => $allorders, 'stop' => $stop, 'client' => $client, 'debug' => $debug, "stage" => $stage));
         }
 
-        
+
     }
 
     public function actionIt()

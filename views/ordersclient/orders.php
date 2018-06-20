@@ -13,13 +13,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-xs-12 col-xl-12">
         <div class="card-box">
             <h5>Мои заказы в активной работе:</h5>
-            <?php foreach ($allorders as $client): ?>
-                <a href="/ordersclient/?client=<?=$client['Контрагент']['Code']?>" style = "padding-left: 15px"><?=$client['Контрагент']['Description']?></a> от <?=$client['Date']?><br>
-            <?php endforeach ?>
+            <?if(!empty($allorders)):?>
+                <?php foreach ($allorders as $client): ?>
+                    <a href="/ordersclient/?client=<?=$client['Контрагент']['Code']?>" style = "padding-left: 15px"><?=$client['Контрагент']['Description']?></a> от <?=$client['Date']?><br>
+                <?php endforeach ?>
+            <?else:?>
+                Список заказов пуст.
+            <?endif;?>
         </div>
     </div>
 </div>
-<!-- 
+<!--
 <div class="row">
      <div class="col-xs-12 col-xl-12">
         <pre><?php echo var_dump($allorders) ?>
