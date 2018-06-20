@@ -9,6 +9,8 @@ use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
 use app\models\User;
+use app\models\SettingOptions;
+use app\models\SettingValues;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\db\Query;
@@ -144,6 +146,24 @@ class ProfilesController extends Controller
 
             'model' => $model,
         ]);
+    }
+
+    public function actionUpdateSettingNbBg()
+    {
+        if (Yii::$app->setting->isValue('navbar-background-color')) {
+            Yii::$app->setting->setValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        } else {
+            Yii::$app->setting->newValue('navbar-background-color', Yii::$app->request->get('hat-color'));
+        }
+    }
+
+    public function actionUpdateSettingSideBar()
+    {
+        if (Yii::$app->setting->isValue('sidebar-user-toggle')) {
+            Yii::$app->setting->setValue('sidebar-user-toggle', Yii::$app->request->get('toggle-side-bar'));
+        } else {
+            Yii::$app->setting->newValue('sidebar-user-toggle', Yii::$app->request->get('toggle-side-bar'));
+        }
     }
 
     protected function isOwnProfile()

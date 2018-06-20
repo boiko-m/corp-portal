@@ -25,8 +25,8 @@ class UserupController extends Controller
 
     	$data = $odata->get("Catalog_Сотрудники", array(
     		'top' => 30,
-    		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, ОфициальнаяДолжность/Description, ДатаРождения,Ref_Key',
-    		'expand' => 'КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение',
+    		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
+    		'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
     		'orderby' => 'ДатаПриема desc'
     	));
 
@@ -137,7 +137,7 @@ class UserupController extends Controller
     			$profile->skype = $up['Email'];
     			$profile->phone1 = $up['Сотовые'];
     			$profile->branch = $up['Подразделение']['НаименованиеКраткое'];
-    			$profile->position = $up['ОфициальнаяДолжность']['Description'];
+    			$profile->position = $up['КорпоративнаяДолжность']['Description'];
     			$profile->department = $up['ФункциональноеПодразделение']['Description'];
     			$profile->phone_cabinet = $up['ГТС'];
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
@@ -178,7 +178,7 @@ class UserupController extends Controller
 
         for ($p = 1; $p <= 13; $p++) {
 
-            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,ОфициальнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,ОфициальнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
+            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,КорпоративнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
 
             for ($i=0; $i < count($client); $i++) {
                 $data_cat = $data->doc('InformationRegister_РейтингиСотрудников')->key('Сотрудник_Key', $client[$i]['Ref_Key'])->select('Рейтинг/Description')->expand('Рейтинг')->orderby('Period desc')->top(1)->all();
@@ -255,9 +255,10 @@ class UserupController extends Controller
 
                 $profile->phone = $up['Сотовые'];
                 $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
-                $profile->position = $up['ОфициальнаяДолжность']['Description'];
+                $profile->position = $up['КорпоративнаяДолжность']['Description'];
                 $profile->department = $up['ФункциональноеПодразделение']['Description'];
                 $profile->category = $up['Категория'];
+                $user->key_external = $up['Ref_Key'];
 
                 // if ($up['ГТС'] != '') {
                 //     $profile->phone_cabinet = $up['ГТС'];
@@ -270,6 +271,22 @@ class UserupController extends Controller
                 $user->save();
             }
         }
+
+        $dismissed = $data->doc('Catalog_Пользователи')->select('Description,Parent_Key')->all();
+        $employees = User::find()->select('username')->all();
+        for ($i = 0; $i < count($employees); $i++) {
+            for ($j = 0; $j <= count($dismissed); $j++) {
+                if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
+                    $user = User::find()->where(['username' => $employees[$i]['username']])->one();
+                    $profile = Profile::find()->where(['id' => $user->id])->one();
+                    if ($profile != null)
+                        $profile->delete();
+                    $user->delete();
+                    break;
+                }
+            }
+        }
+        
 
         return $this->renderPartial('update', array(
             'update' => $update

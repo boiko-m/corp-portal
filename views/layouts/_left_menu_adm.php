@@ -45,6 +45,7 @@ use app\models\News;
                         <li><a href="/admin/userup/">Обновление</a></li>
                         <li><a href="/admin/user">Дан. авторизации</a></li>
                         <li><a href="/admin/profile">Профили</a></li>
+                        <li><a href="/admin/setting-options">Настройки интерфейса</a></li>
                     </ul>
                 </li>
 

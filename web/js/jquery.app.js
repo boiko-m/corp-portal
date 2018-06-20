@@ -39,6 +39,14 @@
         $('.button-menu-mobile').on('click', function (event) {
             event.preventDefault();
             $("body").toggleClass("enlarged");
+            $.ajax({
+              url: '/profiles/update-setting-side-bar',
+              data: 'toggle-side-bar=' + $("body").attr('class'),
+              success: function(data) {},
+              error: function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+              }
+            });
         });
     }
 
@@ -48,6 +56,22 @@
         } else {
             $('body').removeClass('enlarged');
         }
+    }
+
+    function initChangeBgNb() {
+        $('.event').on('click', function (e) {
+            let color = $('.event').serialize();
+            $.ajax({
+              url: '/profiles/update-setting-nb-bg',
+              data: color,
+              success: function(data) {
+                location.reload();
+              },
+              error: function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+              }
+            });
+        });
     }
 
     function initActiveMenu() {
@@ -70,8 +94,9 @@
         initSlimscroll();
         initMetisMenu();
         initLeftMenuCollapse();
-        initEnlarge();
+        // initEnlarge();
         initActiveMenu();
+        initChangeBgNb();
     }
 
     init();

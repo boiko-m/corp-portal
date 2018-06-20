@@ -8,6 +8,7 @@ use app\models\Session;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 use yii\widgets\ActiveForm;
 
 ?>
@@ -28,10 +29,19 @@ use yii\widgets\ActiveForm;
         color: #747474;
     }
 </style>
+
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+            <b>Уважаемый пользователь портала!</b> <br>
+            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 5px">
+            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 3px">
                 <li class="nav-item">
                     <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
                         Новости
@@ -63,21 +73,17 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="col-xs-12 col-md-4">
         <div class="card">
-            <h5 class="card-header">Новое видео на портале</h5>
+            <div class="card-header">Новое видео на портале</div>
 
             <div class="m-b-10" style="padding-top: 10px">
                 <a href="/video/id/<?=$video['id']?>">
                     <div class="d-flex justify-content-around">
                         <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                     </div>
-
                     <img src="/<?=$video['img']?>" alt="" style="width: 100%">
-
-
-
                 </a>
             </div>
-           
+
             <div class="block m-t-10" style="padding: 10px">
                 <div class="btn-group mb-2" style="width: 100%">
                     <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
@@ -94,12 +100,12 @@ use yii\widgets\ActiveForm;
 <div class="row">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4 ">
-
-            <div class="card-box">
-                <div>
-                    Сегодня отмечают дни рождения
-
+            
+            <div class="card">
+                <div class="card-header">
+                    Дни Рождения
                 </div>
+
                 <div>
 
                     <?php foreach ($birthdays as $user): ?>
@@ -110,13 +116,14 @@ use yii\widgets\ActiveForm;
                             <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                                 <div style="font-size: 11px">
-                                    <?=$user->branch ?>, <?=$user->position ?>
+                                    <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+
                                 </div>
                             </div>
                         </div>
                     <?php endforeach ?>
                     <div style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', ])?>
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
 
                     </div>
                 </div>
@@ -128,12 +135,13 @@ use yii\widgets\ActiveForm;
     <?php endif ?>
 
     <div class="col-xs-12 col-md-4 ">
-        <div class="card-box">
-            Новые сотрудники
+        <div class="card">
+            
+            <div class="card-header">
+                Новые сотрудники
+            </div>
 
             <div>
-
-                <?php // echo var_dump($user_new); ?>
                 <?php foreach ($user_new as $user): ?>
                     <div class="row" style="padding:10px">
                         <div class="col-2">
@@ -142,15 +150,16 @@ use yii\widgets\ActiveForm;
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                             <div style="font-size: 11px">
-                                <?=$user->branch ?>, <?=$user->position ?>
+                                <?=$user->branch ?>
+                                <?php if (isset($user->position)): ?>
+                                    , <?=$user->position ?>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
                 <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', ])?>
-
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
                 </div>
             </div>
 

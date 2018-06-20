@@ -26,15 +26,17 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <?php include 'css/setting.css.php'; ?>
 </head>
-<body>
+<body class="<?= Yii::$app->setting->getValue('sidebar-user-toggle'); ?>">
 <?php $this->beginBody() ?>
 
 <div id = "wrapper">
     <div class="topbar">
 
         <!-- LOGO -->
-        <div class="topbar-left">
+        <div class="topbar-left preview-nb-bg-color">
             <a href="/" class="logo">
                         <span>
                             <img src="/images/logo.png" alt="" height="35">
