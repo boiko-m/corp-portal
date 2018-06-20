@@ -258,6 +258,7 @@ class UserupController extends Controller
                 $profile->position = $up['КорпоративнаяДолжность']['Description'];
                 $profile->department = $up['ФункциональноеПодразделение']['Description'];
                 $profile->category = $up['Категория'];
+                $user->key_external = $up['Ref_Key'];
 
                 // if ($up['ГТС'] != '') {
                 //     $profile->phone_cabinet = $up['ГТС'];
@@ -270,6 +271,22 @@ class UserupController extends Controller
                 $user->save();
             }
         }
+
+        $dismissed = $data->doc('Catalog_Пользователи')->select('Description,Parent_Key')->all();
+        $employees = User::find()->select('username')->all();
+        for ($i = 0; $i < count($employees); $i++) {
+            for ($j = 0; $j <= count($dismissed); $j++) {
+                if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
+                    $user = User::find()->where(['username' => $employees[$i]['username']])->one();
+                    $profile = Profile::find()->where(['id' => $user->id])->one();
+                    if ($profile != null)
+                        $profile->delete();
+                    $user->delete();
+                    break;
+                }
+            }
+        }
+        
 
         return $this->renderPartial('update', array(
             'update' => $update
