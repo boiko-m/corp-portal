@@ -176,6 +176,21 @@ class UserupController extends Controller
      public function actionReplace() {
         $data = new Tdata();
 
+        $dismissed = $data->doc('Catalog_Пользователи')->select('Description,Parent_Key')->all();
+        $employees = User::find()->select('username')->all();
+        for ($i = 0; $i < count($employees); $i++) {
+            for ($j = 0; $j <= count($dismissed); $j++) {
+                if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
+                    $user_delete = User::find()->where(['username' => $employees[$i]['username']])->one();
+                    $profile_delete = Profile::find()->where(['id' => $user_delete->id])->one();
+                    if ($profile_delete != null)
+                        $profile_delete->delete();
+                    $user_delete->delete();
+                    break;
+                }
+            }
+        }
+
         for ($p = 1; $p <= 13; $p++) {
 
             $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,КорпоративнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
@@ -269,21 +284,6 @@ class UserupController extends Controller
                 
                 $profile->save();
                 $user->save();
-            }
-        }
-
-        $dismissed = $data->doc('Catalog_Пользователи')->select('Description,Parent_Key')->all();
-        $employees = User::find()->select('username')->all();
-        for ($i = 0; $i < count($employees); $i++) {
-            for ($j = 0; $j <= count($dismissed); $j++) {
-                if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
-                    $user = User::find()->where(['username' => $employees[$i]['username']])->one();
-                    $profile = Profile::find()->where(['id' => $user->id])->one();
-                    if ($profile != null)
-                        $profile->delete();
-                    $user->delete();
-                    break;
-                }
             }
         }
         
