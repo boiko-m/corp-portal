@@ -35,8 +35,8 @@ class GiftUser extends \yii\db\ActiveRecord
         return [
             ['id_gift','required','message'=>'Выберите подарок'],
             [[ 'id_user_from', 'date', 'anonim', 'message', 'id_user_to', ], 'required'],
-            [['id_gift', 'id_user_from', 'anonim', 'id_user_to'], 'integer'],
-            [['date', 'message'], 'string'],
+            [['id_gift', 'id_user_from', 'anonim', 'id_user_to','date'], 'integer'],
+            [[ 'message'], 'string'],
         ];
     }
 

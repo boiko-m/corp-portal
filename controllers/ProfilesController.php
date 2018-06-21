@@ -247,7 +247,7 @@ class ProfilesController extends Controller
             $gift_user->message = $post['message'];
             $gift_user->id_user_to = intval($id);
             $gift_user->anonim = 0;
-            $gift_user->date = date_timestamp_get(date_create());
+            $gift_user->date = time();
             $gift_user->save();
             return $this->refresh();
            /* $gift_user->errors;

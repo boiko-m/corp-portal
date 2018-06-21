@@ -19,19 +19,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
     <div class="col-xs-12 col-md-4 ">
-        <div class="row">
-            <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
-        </div>
 
-        <div class="row">
+            <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
 
 
-                <?php  $i = 0;
+
+
+            <div class="carousel view">
+                <?php if(count($gift)>4){?>
+                <div class="carousel-button-left view"><a href="#"></a></div>
+                <div class="carousel-button-right view"><a href="#"></a></div>
+                <?php }?>
+                <div class="carousel-wrapper">
+                    <div class="carousel-items">
+                <?php
                 foreach ($gift as $value){
-                    $i++;
-                    if($i == 5 ){
-                        break;
-                    }
+
                     if($value['gift']['img'][0] != '/') {
                         $img = '/'.$value['gift']['img'];
                     }
@@ -39,11 +42,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         $img = $value['gift']['img'];
                     }
                     ?>
-            <div class="col-md-3">
-                    <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 70px; width: 70px">
+                    <div class="carousel-block view">
+                    <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 50px; width: 50px; margin: 5px">
             </div>
                 <?php }?>
             </div>
+                </div>
+            </div>
+
 
 
        <!-- <div class="row">
@@ -234,7 +240,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                             <?php if(Yii::$app->user->id != $id){?>
-                                <?=Html::a('Сделать подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' =>$id])?>
+                                <?=Html::a('Отправить подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' =>$id])?>
 
                             <?php }?>
 
@@ -249,8 +255,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $img = $value['gift']['img'];
                                     }
                                     ?>
-                                    <div class="col-md-3" >
-                                        <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 100px; width: 100px;">
+                                    <div class=" margin15"  >
+                                        <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 75px; width: 75px;">
                                     </div>
 
                                 <?php }

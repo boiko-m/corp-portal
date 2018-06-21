@@ -5,24 +5,9 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<?php Pjax::begin();
-?>
-
-<script>
-
-    $(".canСhoose").on('click', function() {
-         var atr = $(this).attr('id');
-        var atr1 = $(this).attr('data-coin');
-        $('.canСhoose').removeClass('shadow');
-         $("#"+atr ).addClass('shadow');
-         $('#giftuser-id_gift').val(atr);
-         $('#giftuser-costcoin').val(atr1);
 
 
-    });
 
-
-</script>
 
 
 <?php
@@ -67,12 +52,16 @@ $bigArr[4]    = [
 
 <div class="col-md-8">
     <div id="slimmcroll">
-    <?php foreach ($bigArr as $arr){?>
-    <h3><?=$arr[0]?></h3>
+    <?php
+    $i= 0;
+    foreach ($bigArr as $arr){ $i++;?>
+    <h4><?=$arr[0]?></h4>
 
     <div class="carousel">
-        <div class="carousel-button-left"><a href="#"></a></div>
-        <div class="carousel-button-right"><a href="#"></a></div>
+        <?php if(count($arr[1])>4){?>
+            <div class="carousel-button-left  hidden left<?=$i;?>" id="<?='left'.$i;?>" data-count="<?=$i;?>" onclick="functCalc(<?=$i;?>, 'left')"><a href="#"></a></div>
+            <div class="carousel-button-right " id="<?='right'.$i;?>" data-count="<?=$i;?>" onclick="functCalc(<?=$i;?>, 'right')"><a href="#"></a></div>
+        <?php }?>
         <div class="carousel-wrapper">
             <div class="carousel-items">
                 <?php
@@ -90,23 +79,35 @@ $bigArr[4]    = [
 
                     <div class="carousel-block">
 
-                        <img src="<?=$img?>" id="<?=$value['id']?>" data-coin="<?=$value['sum_coin']?>" class="shadow-modal <?=$style?>" style = "border-radius: 5px; <?=$style?> height: 60px; width: 60px;">
+                        <img src="<?=$img?>" id="<?=$value['id']?>" data-coin="<?=$value['sum_coin']?>" class="shadow-modal <?=$style?>" style = " height: 60px; width: 60px;">
 
+                       <?php $vallast1 = substr($value['sum_coin'], -1);
+                       $vallast2 = substr($value['sum_coin'], -2);
+                       if($vallast1 == 1){ $text = '1 монета'; }
+                       elseif($value['sum_coin'] == 0){ $text = 'Бесплатно'; }
+                       elseif (preg_match('/[1][1-9]?/', $vallast2)){ $text = $value['sum_coin'].' монет';}
+                       elseif($vallast1 == 2 || $vallast1 == 3 || $vallast1 == 4){ $text = $value['sum_coin'].' монеты';}
 
-                    </div>
+                       else{ $text = $value['sum_coin'].' монет';}
+                       ?>
+                        <div id="gift-cost<?=$value['id']?>" class="hidden gift-cost"><?=$text?> </div>
+                </div>
+
                 <?php }?>
             </div>
         </div>
     </div>
     <?php }?>
 
+</div>
+</div>
 
-</div>
-</div>
 <div class="col-md-4">
-    <h5>What is Lorem Ipsum?</h5>
-    What is Lorem Ipsum?
-    <h4>Прикрепить сообщение к подарку</h4>
+    <h5 class="btn  waves-effect w-md btn-light gift-submit ">Мои монеты: <?=$profile->coins?></h5>
+<div class="hidden" id="form-for-gift">
+    <h4>Cообщение</h4>
+    <div id="gift">
+    </div>
 
     <?php
     $form = ActiveForm::begin([
@@ -114,14 +115,18 @@ $bigArr[4]    = [
         'action' => '/profiles/'.$curentId['data'],
 
     ]) ?>
-    <?= $form->field($model, 'message')->textarea()->label(false);
+    <?= $form->field($model, 'message')->textarea(['rows' => '8'])->label(false);
     //echo Html::activeHiddenInput($model, 'hiddenInput');
     echo $form->field($model, 'id_gift')->hiddenInput()->label(false);
     echo Html::activeHiddenInput($model, 'costCoin');
     ?>
-</div>
 
-<?= Html::submitButton('Подарить', ['name' => 'submit1', 'class' => 'btn btn-primary', 'form' => 'form']) ?>
+    <?php ActiveForm::end() ?>
+    <div class="choosenGift"></div>
+    <?= Html::submitButton('Подарить', ['name' => 'submit1', 'class' => 'btn  waves-effect w-md btn-light gift-submit ', 'form' => 'form']) ?>
+
+</div>
+</div>
 
 
 
@@ -134,11 +139,15 @@ $bigArr[4]    = [
         });
     });
 
-
+    $(function(){
+        $('.shadow-modal').hover(function(){
+                var cost = $(this).attr('id');
+                $('#gift-cost'+cost).removeClass('hidden');
+            },
+            function(){
+                var cost = $(this).attr('id');
+                $('#gift-cost'+cost).addClass('hidden');
+            });
+    });
 </script>
 
-<?php ActiveForm::end() ?>
-
-</div>
-
-<?php Pjax::end(); ?>

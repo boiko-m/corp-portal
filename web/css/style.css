@@ -46,9 +46,21 @@ File: Main Css File
   Menu
 ============= */
 /* Metis Menu css */
-.canСhoose{
-  cursor: pointer;
+
+
+.margin15{
+  margin: 15px;
 }
+.carousel-button-left.view a, .carousel-button-right.view a {
+  width: 25px;
+  height: 36px;
+  position: relative;
+  top: 35px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
 
 .opacity-modal{
   opacity: 0.5;
@@ -69,6 +81,7 @@ div .modal .modal-dialog .modal-content .modal-body {
 .update-img:hover{
 
   opacity: 0.5;
+
 
 
 }

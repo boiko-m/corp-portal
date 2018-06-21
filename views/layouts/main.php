@@ -307,7 +307,6 @@ AppAsset::register($this);
             'data-dismiss' =>'modal',
         ],
         'header' => '',
-        'footer' => "<div class='modal-footer'></div>",
         //keeps from closing modal with esc key or by clicking out of the modal.
         // user must click cancel or X to close
         'clientOptions' => [
