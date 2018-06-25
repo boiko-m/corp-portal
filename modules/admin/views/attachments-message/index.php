@@ -1,29 +1,27 @@
 <?php
     use yii\helpers\Html;
     use yii\grid\GridView;
+    use yii\widgets\Pjax;
 
-    /* @var $this yii\web\View */
-    /* @var $searchModel app\models\SettingOptionsSearch */
-    /* @var $dataProvider yii\data\ActiveDataProvider */
-
-    $this->title = 'Пользовательские настройки';
+    $this->title = 'Вложения сообщений';
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style>
-    .title-user-options {
+    .title-attachments-message {
         text-align: center;
         margin-bottom: 40px;
     }
 </style>
 
-<div class="setting-options-index">
+<div class="attachments-message-index">
 
-    <h1 class="title-user-options"><?= Html::encode($this->title) ?></h1>
+    <h1 class="title-attachments-message"><?= Html::encode($this->title) ?></h1>
+    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать пользовательскую настройку', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать вложение', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -33,10 +31,14 @@
             // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'code',
+            'date',
             'name',
+            'link',
+            'type',
+            'id_message',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>

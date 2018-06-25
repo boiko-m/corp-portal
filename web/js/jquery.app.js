@@ -51,10 +51,8 @@
     }
 
     function initEnlarge() {
-        if ($(window).width() < 1025) {
+        if ($(window).width() < 1025 && !$('body').hasClass('enlarged')) {
             $('body').addClass('enlarged');
-        } else {
-            $('body').removeClass('enlarged');
         }
     }
 
@@ -94,7 +92,7 @@
         initSlimscroll();
         initMetisMenu();
         initLeftMenuCollapse();
-        // initEnlarge();
+        initEnlarge();
         initActiveMenu();
         initChangeBgNb();
     }

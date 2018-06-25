@@ -1,29 +1,27 @@
 <?php
     use yii\helpers\Html;
     use yii\grid\GridView;
+    use yii\widgets\Pjax;
 
-    /* @var $this yii\web\View */
-    /* @var $searchModel app\models\SettingOptionsSearch */
-    /* @var $dataProvider yii\data\ActiveDataProvider */
-
-    $this->title = 'Пользовательские настройки';
+    $this->title = 'Тип групп диалогов';
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style>
-    .title-user-options {
+    .title-type-group-im {
         text-align: center;
         margin-bottom: 40px;
     }
 </style>
 
-<div class="setting-options-index">
+<div class="type-group-im-index">
 
-    <h1 class="title-user-options"><?= Html::encode($this->title) ?></h1>
+    <h1 class="title-type-group-im"><?= Html::encode($this->title) ?></h1>
+    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать пользовательскую настройку', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать тип', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -33,10 +31,11 @@
             // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'code',
             'name',
+            'code',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>

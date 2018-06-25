@@ -50,6 +50,15 @@ use app\models\News;
                 </li>
 
                 <li>
+                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Сообщения </span> <span class="menu-arrow"></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="/admin/group-im/">Группы</a></li>
+                        <li><a href="/admin/type-group-im">Тип групп</a></li>
+                        <li><a href="/admin/attachments-message">Вложения сообщений</a></li>
+                    </ul>
+                </li>
+
+                <li>
                     <a href="/admin/news">
                         <i class="fi-file"></i> <span>Новости</span><span class="badge badge-info badge-info-status" style="margin-top: 2px;"><?= $unconfirmedNews ?></span>
                     </a>

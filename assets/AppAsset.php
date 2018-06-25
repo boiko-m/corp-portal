@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/style.css',
         'css/styles-new.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
+        'css/chat.css',
     ];
     public $js = [
         'js/modernizr.min.js',
@@ -47,7 +48,8 @@ class AppAsset extends AssetBundle
         'js/jquery.app.js',
         'js/myajax.js',
         'js/search.js',
-        'js/script.js'
+        'js/script.js',
+        'js/chat.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset'
