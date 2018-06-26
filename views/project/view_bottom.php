@@ -94,6 +94,12 @@
                         </p>
                     </div>
 
+                    <div id="spr5" class="tab-pane show ">
+                        <p>
+                            spr5
+                        </p>
+                    </div>
+
                     <div id="target" class="tab-pane show" style="padding: 0px 20px;">
                         <h5>
                             Цели этапа
@@ -111,12 +117,16 @@
                                 <div class="text-right">
                                     <small>Решено 5/30</small>
                                 </div>
-                            </div>
-                            <div class="progress" style="height: 5px;margin:0px;border:1px solid #3ec396; border-radius: 0px;">
-                                <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+
+                                <div class="progress" style="height: 5px;margin:0px;border:1px solid #3ec39685;">
+                                    <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+
                             </div>
 
-        
+
+
                             <div class = "project-target-items">
                                 <div class="project-target-item">
                                     Посадочная страница для клиента - персонализировать данные для клиента. При переходе по ссылке клиент попадает на страницу с предложениями специально для него
@@ -126,7 +136,7 @@
                                     <b>Причина:</b> Перенос на следующий этап.
                                     </small>
                                 </div>
-                            </div>                            
+                            </div>
 
                             <div class = "project-target-items success-border">
                                 <div class="project-target-item">
@@ -146,7 +156,7 @@
                                 </div>
                             </div>
 
-                            
+
                         </div>
 
                         <br> <br>
@@ -170,10 +180,10 @@
 
 
                     </div>
-                    
+
                 </div>
-            
+
         </div>
     </div>
-    
+
 </div>

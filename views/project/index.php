@@ -58,7 +58,7 @@ $this->title = 'Проекты компании';
                         <i class=" mdi mdi-account-star"></i>
                     </span>
                     <a href="/project/1" style="display: inline-block;">
-                        <h5 class="card-title">БДДС (Прогноз и управление кассовыми разрывами)</h5>
+                        <h5 class="card-title">Индивидуальный план рекламы (ИПР)</h5>
                     </a>
 
 
@@ -71,11 +71,11 @@ $this->title = 'Проекты компании';
                               
                             <a href="/project/info/1#information">Информация</a>
                             <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Новости</a>
+                            <a href="/project/info/1#news">Движение по проекту</a>
 
                         </div>
                         <div style="">
-                            <small>Доставка запчастей до двери клиента в оговоренные с ним сроки и по рыночным ценам позволит нам быть конкурентноспособными на рынке,   удержать старых и привлечь новых ...</small>
+                            <small>Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту. Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров ...</small>
                         </div>
                     </div>
             </div>
@@ -98,7 +98,7 @@ $this->title = 'Проекты компании';
                               
                             <a href="/project/info/1#information">Информация</a>
                             <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Новости</a>
+                            <a href="/project/info/1#news">Движение по проекту</a>
 
                         </div>
                         <div style="">
@@ -117,7 +117,7 @@ $this->title = 'Проекты компании';
                               
                             <a href="/project/info/1#information">Информация</a>
                             <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Новости</a>
+                            <a href="/project/info/1#news">Движение по проекту</a>
 
                         </div>
                         <div style="">
@@ -136,7 +136,7 @@ $this->title = 'Проекты компании';
                               
                             <a href="/project/info/1#information">Информация</a>
                             <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Новости</a>
+                            <a href="/project/info/1#news">Движение по проекту</a>
 
                         </div>
                         <div style="">
