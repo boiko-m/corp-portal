@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div>
 			<span>
 				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=877D0F77-9657-42F5-846F-FDBC8E66B3FD" target="_blank">5. CASE+NewHolland(online)</a> и
-				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=73D7A754-7C12-4011-A65B-63184C8452BC" target="_blank">ASE+OtherBrands(online)</a>
+				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=73D7A754-7C12-4011-A65B-63184C8452BC" target="_blank">CASE+OtherBrands(online)</a>
 			</span>
 			<div>
 				Входить через chrome. Далее необходимо подождать, с экрана может пропасть окно входа на некоторое время. После чего, появится окно загрузки оболочки каталога. <br>
