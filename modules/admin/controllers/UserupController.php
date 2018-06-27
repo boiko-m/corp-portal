@@ -192,7 +192,6 @@ class UserupController extends Controller
         }
 
         for ($p = 1; $p <= 13; $p++) {
-
             $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,КорпоративнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
 
             for ($i=0; $i < count($client); $i++) {
@@ -200,8 +199,8 @@ class UserupController extends Controller
 
                 $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
 
-                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->all();
-
+                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->top(20)->all();
+                
                 foreach ($phones as $phone) {
                     if ($phone['ВидСвязи']['Description'] == "IP") {
                         $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
@@ -210,7 +209,7 @@ class UserupController extends Controller
                     //     $client[$i]['ГТС'] .= $phone['ВидСвязи']['Description'];
                     // }
                     if ($phone['ВидСвязи']['Description'] == "Сотовая") {
-                        $client[$i]['Сотовые'] .= $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона'];
+                        $client[$i]['Сотовые'] .= ($client[$i]['Сотовые']) ? ";".$phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона'] : $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона'];
                     }
                 }
 
