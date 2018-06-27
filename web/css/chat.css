@@ -48,13 +48,14 @@
     font-size: 25px;
 }
 
-.im-icon-add {
-    text-align: center;
+.rotate45 {
+    transition: transform 0.5s;
+    transform: rotate(45deg)
 }
 
-.im-icon-times {
-    padding: 0 5px;
-    text-align: center;
+.rotate-45 {
+    transition: transform 0.5s;
+    transform: rotate(0deg)
 }
 
 .im-list-user-field {
@@ -71,18 +72,18 @@
 
 .im-list-user-message-select {
     cursor: pointer;
-    /*margin: 3px 10px 0 0px;*/
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 10px 20px 1px 0;
 }
 
-.im-list-user-message-select:hover {
+.im-list-user-message-select-hover {
     background-color: #F5F7FA;
 }
 
 .im-list-user-message-choose {
     background-color: #5B88BD;
+    color: white;
 }
 
 .im-list-user-message {
@@ -143,8 +144,8 @@
 }
 
 .im-icon-arrow {
-    font-size: 30px;
-    margin-left: 40px;
+    font-size: 20px;
+    margin-left: 30px;
     vertical-align: middle;
     display: none;
 }
@@ -154,7 +155,7 @@
     height: 35px;
     border-radius: 50%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .im-dialog-panel-name {
@@ -189,11 +190,30 @@
 .im-dialog-field {
     height: 100%;
     margin-right: 14px;
+    height: 380px;
     max-height: 380px;
     overflow: auto;
     overflow-x: hidden;
     margin-left: 20px;
     margin-top: 10px;
+}
+
+.upload-drop-zone {
+    display: none;
+    overflow: hidden;
+    height: 380px;
+    max-height: 380px;
+    margin: 10px 20px;
+    border-width: 2px;
+    margin-bottom: 20px;
+    border-style: dashed;
+    line-height: 350px;
+    text-align: center;
+}
+
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
 }
 
 .im-dialog-field-image {
@@ -242,18 +262,21 @@
 
 .time {
     color: hsla(220,8%,51%,.6);
-    font-size: 0.7em;
+    font-size: 1em;
 }
 
 .im-dialog-footer {
-    display: grid;
-    grid-template-columns: 1fr 20fr 1fr;
-    grid-template-rows: 50px 50px;
     border-top: 1px solid #F1F1F1;
     padding: 15px 40px 10px 20px;
     bottom: 0;
     max-height: 65px;
     min-height: 65px;
+}
+
+.im-dialog-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 20fr 1fr;
+    grid-template-rows: 50px;
 }
 
 .im-icon-paperclip {
@@ -279,11 +302,12 @@
 }
 
 .im-icon-paper {
-    font-size: 30px;
+    font-size: 25px;
+    padding-top: 2px;
 }
 
 .im-icon-paper:before {
-    padding-left: 25px;
+    padding-left: 30px;
 }
 
 .im-icon-microphone {
@@ -300,5 +324,47 @@
 }
 
 .im-dialog-va-mid {
-    vertical-align:middle;
+    vertical-align: middle;
+}
+
+.attachment {
+    padding: 0 10px;
+    cursor: pointer;
+    /*text-overflow: ellipsis;*/
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 33%;
+}
+
+.attachment i {
+    font-size: 30px;
+    padding-right: 5px;
+    margin-left: 20px;
+    float: left;
+    margin-right: 1rem;
+}
+
+.attachment span {
+    vertical-align: top;
+    color: #42648b;
+    font-size: 0.8em;
+    line-height: 1.3;
+}
+
+.file-size {
+    display: block;
+    font-size: 0.8em;
+    color: hsla(220, 8%, 51%, .6);
+    line-height: 1.3;
+    margin-top: -5px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .dialog-panel {
+        display: none;
+    }
+
+    .im-icon-arrow {
+        display: inline-block;
+    }
 }
