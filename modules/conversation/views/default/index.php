@@ -1,10 +1,7 @@
 <?php
-
-use yii\helpers\Html;
-
-/* @var $this yii\web\View */
-
-$this->title = 'Диалоги';
+    use yii\helpers\Html;
+    /* @var $this yii\web\View */
+    $this->title = 'Диалоги';
 ?>
 
 <div class="row">
@@ -22,69 +19,6 @@ $this->title = 'Диалоги';
                             <li class="im-list-user-message-select">
                                 <div class="im-list-user-message">
                                     <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_4153.png" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1513762845.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1516088870.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1510554059.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1518096010.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1517570875.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1512653121.jpg" alt="profilepicture" class="im-list-user-field-image">
                                     <span class="im-list-user-link">Имя Пользователя</span>
                                     <p class="message-list-user">
                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -122,46 +56,10 @@ $this->title = 'Диалоги';
                         <ul class="im-dialog-list-messages">
                             <li class="im-dialog-message-select">
                                 <div class="im-dialog-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" alt="profilepicture" class="im-dialog-field-image">
-                                    <a class="im-message-user-link" style="color: #42648b; font-weight: 700; ">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
-                                    <p class="message">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-dialog-message-select">
-                                <div class="im-dialog-message">
                                     <img src="http://portal.lbr.ru/img/user/thumbnail_4153.png" alt="profilepicture" class="im-dialog-field-image">
                                     <a class="im-message-user-link" style="color: #42648b; font-weight: 700;">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
                                     <p class="message">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-dialog-message-select">
-                                <div class="im-dialog-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" alt="profilepicture" class="im-dialog-field-image">
-                                    <a class="im-message-user-link" style="color: #42648b; font-weight: 700; ">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
-                                    <p class="message">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-dialog-message-select">
-                                <div class="im-dialog-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_4153.png" alt="profilepicture" class="im-dialog-field-image">
-                                    <a class="im-message-user-link" style="color: #42648b; font-weight: 700; ">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
-                                    <p class="message">
-                                        Lorem ipsum.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="im-dialog-message-select">
-                                <div class="im-dialog-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" alt="profilepicture" class="im-dialog-field-image">
-                                    <a class="im-message-user-link" style="color: #42648b; font-weight: 700; ">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
-                                    <p class="message">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
                                     </p>
                                 </div>
                             </li>
@@ -187,6 +85,11 @@ $this->title = 'Диалоги';
                         </div>
                         <div class="row im-dialog-footer-attachments"></div>
                     </div>
+                </div>
+                <div class="im-dialog-preview">
+                    <i class="fa fa-envelope im-icon im-icon-envelope"></i>
+                    <p class="im-dialog-preview-text">Выберите диалог и начните переписываться</p>
+                    
                 </div>
             </div>
         </div>

@@ -48,6 +48,10 @@
     font-size: 25px;
 }
 
+.im-icon-plus {
+    margin-right: 5px;
+}
+
 .rotate45 {
     transition: transform 0.5s;
     transform: rotate(45deg)
@@ -129,9 +133,24 @@
 }
 
 .dialog-panel {
+    display: none;
     border-right: 1px solid #F1F1F1;
     min-height: 500px;
     padding: 0;
+}
+
+.im-dialog-preview {
+    margin:0px auto;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.im-icon-envelope {
+    font-size: 140px;
+}
+
+.im-dialog-preview-text {
+    color: #3b77d6;
 }
 
 .im-dialog-header {

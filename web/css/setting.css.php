@@ -45,4 +45,12 @@
 	.upload-drop-zone.drop {
 		border-color: <?= $backgroundColor ?> !important;
 	}
+
+	.im-dialog-preview-text {
+		color: <?= $backgroundColor ?> !important;
+	}
+
+	.im-icon-envelope {
+		color: <?= $backgroundColor ?> !important;
+	}
 </style>

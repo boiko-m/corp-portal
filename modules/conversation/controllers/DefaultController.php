@@ -4,7 +4,7 @@ namespace app\modules\conversation\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\User;
+use app\models\Messages;
 
 /**
  * Default controller for the `im` module
