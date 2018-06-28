@@ -21,22 +21,16 @@ $this->params['breadcrumbs'][] = $this->title;
            <div class="col-xs-12 col-md-4">
                 <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
 
-           <!-- <div class="row">-->
-              <!--  <div style="margin: 10px auto; text-align: center;     width: 100%;">-->
-<?php $col = count($gift4);?>
+
+            <?php $col = count($gift4);?>
                <?if(\Yii::$app->user->can("Admin") || $col != 0):?>
-               <div class=" gift-four" style="width: 100%;    padding: 10px;">
-
-
-                            <?php
+                 <div class=" gift-four" style="width: 100%;    padding: 10px;">
+                         <?php
                             $count = "<span style='color: #CCC'>$col</span>"?>
-<!--                            --><?/*=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view', 'data' =>$id, 'style'=>' color: black; cursor: pointer'])*/?>
-                        <?php if(!$col == 0){?>
+                            <?php if(!$col == 0){?>
                             <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
                             <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
                                 'data-id' =>$id,
-                              /*'data-toggle' => "modal",
-                                'data-target' => "#main-modal",*/
                                 'style'=>' color: black; cursor: pointer'])?>
                             </div>
                             <?php }?>
