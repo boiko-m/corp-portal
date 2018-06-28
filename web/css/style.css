@@ -84,7 +84,7 @@ div.content .modal .modal-dialog .modal-content .modal-body {
 }
 
 .content-page .modal .modal-dialog .modal-content{
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 
@@ -120,7 +120,8 @@ div .modal .modal-dialog .modal-content .modal-body {
 }
 .modal .modal-dialog .modal-content {
   top: 20px;
-height: 500px;
+  height: auto;
+max-height: 520px;
  }
 
 .modal .modal-dialog .modal-content .modal-small{
@@ -160,7 +161,8 @@ height: 500px;
   opacity: 0.5;
 }
 .scroll-gift-view{
-  height: 420px;
+  height: auto;
+  max-height: 450px;
 }
 #slimmcroll{
   height: 400px;

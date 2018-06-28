@@ -26,20 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $col = count($gift4);?>
                <?if(\Yii::$app->user->can("Admin") || $col != 0):?>
                <div class=" gift-four" style="width: 100%;    padding: 10px;">
-                        <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+
 
                             <?php
                             $count = "<span style='color: #CCC'>$col</span>"?>
 <!--                            --><?/*=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view', 'data' =>$id, 'style'=>' color: black; cursor: pointer'])*/?>
                         <?php if(!$col == 0){?>
+                            <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
                             <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
                                 'data-id' =>$id,
                               /*'data-toggle' => "modal",
                                 'data-target' => "#main-modal",*/
                                 'style'=>' color: black; cursor: pointer'])?>
+                            </div>
                             <?php }?>
-                        </div>
-                        <div style="padding: 0 0 10px 0">
+
+
                     <?php
                         $i = 0;
                     foreach ($gift4 as $value){
@@ -48,7 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             break;
                         }
 
-                        $tooltip = "123<img src='/img/user/thumbnail_'".$value['userFrom']['profile']['img']." alt='user' class='rounded-circle' style='width: 40px'>";
                         $a = Html::a($value['userFrom']['profile']['first_name'].' '.$value['userFrom']['profile']['last_name'], '/profiles/'.$value['userFrom']['id']);
 
                         if($value['gift']['img'][0] != '/') {
@@ -58,54 +59,54 @@ $this->params['breadcrumbs'][] = $this->title;
                             $img = $value['gift']['img'];
                         }
 ?>
+ <span class="tooltiplbr">
+    <img class="gift-in-view gift-button-view" id="<?=$value['id']?>" src="<?=$img?>"  data-id="<?=$id?>">
+        <span class="tooltiptext"  style=" width: auto">
+             <div class="row" style="padding: 10px; width: auto">
 
+                 <div class="col-md-3">
+                     <?if(isset($value['userFrom']['profile']['img']) && strlen($value['userFrom']['profile']['img']) > 0):?>
+                         <img src="/img/user/thumbnail_<?=$value['userFrom']['profile']['img']?>" alt="user"
+                          class="rounded-circle" style="width: 35px">
+                     <?else:?>
+                         <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
+                     <?endif;?>
+                 </div>
+                 <div class="col-md-9" style=" text-align: justify; font-size: 13px">
+                  <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
+                         ' '.$value['userFrom']['profile']['last_name'],
+                         \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
+                         ['class' => 'author', 'style' => 'text-align: left'])?>
+                     <div style="color: #0a0a0a; text-align: left" >
+                        <?=$value['userFrom']['profile']['branch']?>
+                    </div>
+                 </div>
+                 </div>
 
-                                 <span class="tooltiplbr">
-                     <img class="gift-in-view gift-button-view" id="<?=$value['id']?>" src="<?=$img?>"  data-id="<?=$id?>"">
-
-                        <span class="tooltiptext"  style=" width: auto"> <div class="row" style="padding: 10px; width: auto">
-<div class="col-md-3">
-   <?if(isset($value['userFrom']['profile']['img']) && strlen($value['userFrom']['profile']['img']) > 0):?>
-       <img src="/img/user/thumbnail_<?=$value['userFrom']['profile']['img']?>" alt="user"
-            class="rounded-circle" style="width: 45px">
-   <?else:?>
-       <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
-   <?endif;?>
-</div>
-    <div class="col-md-9" style=" text-align: justify">
-        <div style="">
-
-                <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
-                    ' '.$value['userFrom']['profile']['last_name'],
-                    \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
-                    ['class' => 'author', 'style' => 'text-align: left'])?>
-            </div>
-
-                                  <div style="color: #0a0a0a; text-align: left" >
-                                <?=$value['userFrom']['profile']['branch']?>
-                            </div>
                     <?php   if($value['message'] != '' && !empty($value['message'])): ?>
+                     <?php if($col !=1):?>   <hr style="  margin-top: 0;<?php endif;?>
+     margin-bottom: 0; ">
 
-                        <div style="color: #0a0a0a; text-align: left" >
-                            "<?=($value['message'])?>"
-                        </div>
-                     <?php endif;?>
-                        <?php   if($value['date'] != '' && !empty($value['date'])): ?>
-
-                            <div class="date-gift">  <?=date('Y.m.d', $value['date']);?></div>
-                        <?php endif;?>
+                     <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
+                         "<?=($value['message'])?>"
                      </div>
-        </div>
-                        </span>
-                                 </span>
+
+                         <?php endif;?>  <div class="row" style=" width: auto">
+                         <?php   if($value['date'] != '' && !empty($value['date'])): ?>
+                    <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d.m', $value['date']);?></div>
+                         <?php endif;?>
+
+                     </div>
+        </span>
+ </span>
 
 
-                    <?php }?>
+                                  <?php }?>
 
-                        </div>
+
                             <?php if(Yii::$app->user->id != $id){?>
 
-                                <div class="" style=" border-radius: 5px; ">
+                                <div class="" style=" border-radius: 5px; padding: 10px">
                                      <?=Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
                                              'class' => 'btn  waves-effect w-md btn-light showModalButton',
                                              'data' => $id,

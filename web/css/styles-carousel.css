@@ -185,7 +185,7 @@ tooltip*/
 
 .tooltiplbr .tooltiptext {
     visibility: hidden;
-    min-width: 190px;
+    min-width: 220px;
     max-width: 500px;
     background-color: #fff;
     color: #fff;
@@ -194,8 +194,8 @@ tooltip*/
     padding: 5px 0;
     position: absolute;
     z-index: 11 ;
-    bottom: 260%;
-    left: 5px;
+    bottom: 250%;
+    left: -5px;
     right: 20px;
     margin-left: -60px;
     opacity: 0;

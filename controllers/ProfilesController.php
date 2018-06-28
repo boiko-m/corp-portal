@@ -289,7 +289,7 @@ public function actionModal(){
     {
         if(Yii::$app->request->isAjax) {
             $id = Yii::$app->request->post('data');
-            $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')->all();
+            $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->orderBy('id DESC')->with('gift', 'userFrom', 'userFrom.profile')->all();
 
             $count = count($gift);
             $a[0] = $this->renderAjax('giftmodal/head', compact('count'));

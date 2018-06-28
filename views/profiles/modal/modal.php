@@ -125,7 +125,7 @@ foreach ($giftType as $type_gift){
 </div>
 
 
-<div class="col-md-4" style="float:left; height: 400px">
+<div class="col-md-4" style="float:left; height: 440px">
     <h6 class="" style="">Мои монеты: <?=$profile->coins?></h6>
 
 <div class="hidden" id="form-for-gift">
