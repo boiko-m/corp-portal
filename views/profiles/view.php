@@ -23,20 +23,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
            <!-- <div class="row">-->
               <!--  <div style="margin: 10px auto; text-align: center;     width: 100%;">-->
-
-               <?if(\Yii::$app->user->can("Admin")):?>
+<?php $col = count($gift4);?>
+               <?if(\Yii::$app->user->can("Admin") || $col != 0):?>
                <div class=" gift-four" style="width: 100%;    padding: 10px;">
                         <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
 
-                            <?php $col = count($gift4);
+                            <?php
                             $count = "<span style='color: #CCC'>$col</span>"?>
 <!--                            --><?/*=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view', 'data' =>$id, 'style'=>' color: black; cursor: pointer'])*/?>
-
+                        <?php if(!$col == 0){?>
                             <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
                                 'data-id' =>$id,
                               /*'data-toggle' => "modal",
                                 'data-target' => "#main-modal",*/
                                 'style'=>' color: black; cursor: pointer'])?>
+                            <?php }?>
                         </div>
                         <div style="padding: 0 0 10px 0">
                     <?php
