@@ -42,7 +42,7 @@ ActiveForm::end();
 --><?php
 $this->registerJs(
     '$("document").ready(function(){
-            $("#new_img").on("pjax:end", function() {
+            $("#new_img").on("pjax:success", function() {
     $("#gift-img").val($(\'#new_img\').text());
     $("#new_img").hide();
 });

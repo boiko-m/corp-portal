@@ -232,13 +232,8 @@ AppAsset::register($this);
                         <?= Html::button('<div class="box_x_button close-search" aria-label="Закрыть" tabindex="0" role="button"></div>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'hidden-search-close', 'label' =>'input']) ?>
                         <?php $form = ActiveForm::end(); ?>
-
-
-                    </div>
-
-                </li>
-
-
+                     </div>
+                  </li>
             </ul>
 
         </nav>
@@ -296,27 +291,7 @@ AppAsset::register($this);
 
     </div>
 
-    <?php
-/*    yii\bootstrap\Modal::begin([
-        'headerOptions' => ['id' => 'modalHeader'],
-        'id' => 'main-modal',
-        'options' => [
-                'class' => 'modal fade',
-          'tabindex' => '-1',
-            'role' => 'dialog',
-            'aria-labelledby' => 'myLargeModalLabel',
-            'aria-hidden' => 'true'
-        ],
-        'class' => 'modal-dialog',
 
-        'header' => '',
-        'clientOptions' => false
-    ]);
-
-    echo "<div id='modalContent'></div>";
-
-    yii\bootstrap\Modal::end();
-    */?>
     <?php
     yii\bootstrap\Modal::begin([
         'headerOptions' =>   ['id' => 'modalHeader'],

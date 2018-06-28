@@ -23,16 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             <?php $col = count($gift4);?>
-               <?if(\Yii::$app->user->can("Admin") || $col != 0):?>
+               <?if(\Yii::$app->user->can("Admin") || isset($gift4)):?>
                  <div class=" gift-four" style="width: 100%;    padding: 10px;">
                          <?php
                             $count = "<span style='color: #CCC'>$col</span>"?>
-                            <?php if(!$col == 0){?>
-                            <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
-                            <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
-                                'data-id' =>$id,
-                                'style'=>' color: black; cursor: pointer'])?>
-                            </div>
+                              <?php if(!$col == 0){?>
+                                <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+                                     <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
+                                         'data-id' =>$id,
+                                         'style'=>' color: black; cursor: pointer'])?>
+                                </div>
                             <?php }?>
 
 
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                           class="rounded-circle" style="width: 35px">
                      <?else:?>
                          <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
-                     <?endif;?>
+                        <?endif;?>
                             </div>
                                 <div class="col-md-9" style=" text-align: justify; font-size: 13px">
                                  <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php endif;?>  <div class="row" style=" width: auto">
                                <?php   if($value['date'] != '' && !empty($value['date'])): ?>
-                                     <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d h:i A', $value['date']);?></div>
+                                     <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d h:i G', $value['date']);?></div>
                                <?php endif;?>
 
                      </div>
