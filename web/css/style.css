@@ -786,6 +786,32 @@ body.enlarged.bg-transparent {
   .notification-list .profile-dropdown .notify-item {
     padding: 7px 20px; }
 
+.notification-list .notify-item .notify-details.unread {
+    font-weight: bold;
+}
+
+.notification-list .empty-row {
+    /*padding: 40px 20px;*/
+    line-height: 175px;
+    font-size: 10px;
+    color: gray;
+    text-align: center;
+}
+
+.jq-toast-single .close-jq-toast-single {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    font-size: 20px;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    background-color: #313a46;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+}
+
 .profile-dropdown {
   width: 170px; }
   .profile-dropdown i {
@@ -1262,7 +1288,7 @@ a:focus {
   color: fade(#ffffff, 70%); }
 
 /* =============
-   Waves 
+   Waves
 ============= */
 /*!
  * Waves v0.6.0

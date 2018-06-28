@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
         'css/metismenu.min.css',
         'css/style.css',
         'css/styles-new.css',
+        'plugins/jquery-toastr/jquery.toast.min.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
     ];
     public $js = [
@@ -36,6 +37,7 @@ class AppAsset extends AssetBundle
         'js/metisMenu.min.js',
         'js/waves.js',
         'js/jquery.slimscroll.js',
+        'plugins/jquery-toastr/jquery.toast.min.js',
         'plugins/moment/moment.js',
         'plugins/waypoints/lib/jquery.waypoints.min.js',
         'plugins/counterup/jquery.counterup.min.js',

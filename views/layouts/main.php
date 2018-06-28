@@ -54,8 +54,7 @@ AppAsset::register($this);
         <nav class="navbar-custom">
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
-                <li class="">
+                <li>
                     <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="true">
 
@@ -72,7 +71,7 @@ AppAsset::register($this);
                         <div style="padding:  0px 10px;">
                             <small>
                                 <b>Возникли затруднения?</b> <br>
-                                <div style="padding-left: 10px">
+                                <div>
                                     Сотрудники IT-отдела готовы  предложить Вам помощь по установке и  настройке ПО и другим вопросам, которые мешают Вам в работе. <br>
 
                                 </div>
@@ -90,6 +89,8 @@ AppAsset::register($this);
 
                     </div>
                 </li>
+
+                <?php echo \app\widgets\LbrNotifications::widget() ?>
 
 
 
@@ -274,7 +275,7 @@ AppAsset::register($this);
 
 
                  <div id="for-search" class="hidden-xs container1">
-                   
+
         </div>
 
 
@@ -313,7 +314,7 @@ AppAsset::register($this);
                     </div>
                 </div>
                 <!-- end row -->
-
+                <?php //echo \webzop\notifications\widgets\Notifications::widget() ?>
                 <div>
                     <? echo $content; ?>
                 </div>
@@ -325,6 +326,9 @@ AppAsset::register($this);
 
 
     </div>
+    <script>
+        //$(document).on("click", ".dropdown-toggle", function() {console.log(1)})
+    </script>
     <script src="//apps.skaip.su/buttons/widget/core.min.js" defer="defer"></script>
     <?php $this->endBody() ?>
 
