@@ -30,8 +30,8 @@ class UserupController extends Controller
     		'orderby' => 'ДатаПриема desc'
     	));
 
-    	
-    	for ($i=0; $i < count($data); $i++) { 
+
+    	for ($i=0; $i < count($data); $i++) {
 
     		$data_cat = $odata->get("InformationRegister_РейтингиСотрудников", array(
 	    		'top' => 1,
@@ -75,7 +75,7 @@ class UserupController extends Controller
 	    	$data[$i]['Пароль1С'] = $login['0']['Пароль'];
     	}
 
-    	for ($i=0; $i < count($data); $i++) { 
+    	for ($i=0; $i < count($data); $i++) {
     		if ($data[$i]['ПоловаяПринадлежность'] == "Мальчик") {
     			$data[$i]['ПоловаяПринадлежность'] = 1;
     		} else {
@@ -90,26 +90,26 @@ class UserupController extends Controller
     	}
 
 
-    	
+
     	$isset_users = User::find()->select('username')->where(["dismissed" => null])->all();
-        exit;
-    	
+      
+
 
 	    foreach ($isset_users as $isset_user) {
     		if (isset($isset_user['username'])) {
     			$users[] = $isset_user['username'];
     		}
     	}
-    	
+
 
     	foreach ($data as $up) {
     		if (!in_array($up['Логин'], $users)) {
-    			
+
     			// добавление в бд
     			$max_id = User::find()->max('id');
 
     			$user = new User();
-    			
+
     			$user->id = $max_id+1;
 				$user->username = $up['Логин'];
 				$user->auth_key = $user->generateAuthKey();
@@ -148,21 +148,21 @@ class UserupController extends Controller
     			} else {
     				$update[]['error'] = $up['Логин'];
     			}
-    			
+
     		} else {
     			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";
     		}
     	}
 
-    	// КорпоративнаяДолжность/ПрофильКандидата 
+    	// КорпоративнаяДолжность/ПрофильКандидата
         return $this->renderPartial('update', array(
         	'update' => $update
         ));
     }
     public function actionIndex()
     {
-    	
-    	// КорпоративнаяДолжность/ПрофильКандидата 
+
+    	// КорпоративнаяДолжность/ПрофильКандидата
         return $this->render('index', array(
         	'data' => $data,
         	'odata' => $odata
@@ -170,7 +170,7 @@ class UserupController extends Controller
     }
 
     public function actionUpdate() {
-        
+
     }
 
      public function actionReplace() {
@@ -200,7 +200,7 @@ class UserupController extends Controller
                 $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
 
                 $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->top(20)->all();
-                
+
                 foreach ($phones as $phone) {
                     if ($phone['ВидСвязи']['Description'] == "IP") {
                         $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
@@ -218,7 +218,7 @@ class UserupController extends Controller
                 $client[$i]['Пароль1С'] = $login['0']['Пароль'];
             }
 
-            for ($i=0; $i < count($client); $i++) { 
+            for ($i=0; $i < count($client); $i++) {
                 if ($client[$i]['ПоловаяПринадлежность'] == "Мальчик") {
                     $client[$i]['ПоловаяПринадлежность'] = 1;
                 } else {
@@ -230,7 +230,7 @@ class UserupController extends Controller
                 $client[$i]['Имя'] = $name[1];
                 $client[$i]['Фамилия'] = $name[0];
                 $client[$i]['Отчество'] = $name[2];
-            } 
+            }
 
             foreach ($client as $key => $up) {
                 if ($up['Фамилия'] == 'Стажеры')
@@ -262,7 +262,7 @@ class UserupController extends Controller
                     $profile->skype = $up['Email'];
                     $user->email = $up['Email'];
                     $user->password_external = $up['Пароль1С'];
-                } 
+                }
                 // else
                 //     $profile->skype = $up['Email'];
 
@@ -280,12 +280,12 @@ class UserupController extends Controller
                 if ($up['SIP'] != '') {
                     $profile->sip = $up['SIP'];
                 }
-                
+
                 $profile->save();
                 $user->save();
             }
         }
-        
+
 
         return $this->renderPartial('update', array(
             'update' => $update
