@@ -124,7 +124,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <hr>
             <?php }?>
+               <?php echo LinkPager::widget([
+                'pagination' => $pages,
+                   'options'=>['class' => 'pagination float-right'],
+                   'linkOptions' => ['class' => 'page-link'],
+                   'hideOnSinglePage' => true,
+                   'disabledPageCssClass' => 'page-link'
 
+                ]);?>
             </div></div></div></div>
 
 

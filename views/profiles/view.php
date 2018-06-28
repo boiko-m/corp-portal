@@ -78,12 +78,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
 
                     <?php   if($value['message'] != '' && !empty($value['message'])): ?>
-                 <?php if($col !=1):?>   <hr style="  margin-top: 0; margin-bottom: 0; ">
-                    <?php endif;?>
-
-                     <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
-                         "<?=($value['message'])?>"
-                     </div>
+                          <?php if($col !=1):?>   <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif;?>
+                          <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
+                              "<?=($value['message'])?>"
+                          </div>
 
                     <?php endif;?>  <div class="row" style=" width: auto">
                                <?php   if($value['date'] != '' && !empty($value['date'])): ?>
