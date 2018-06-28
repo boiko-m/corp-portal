@@ -10,23 +10,19 @@ use yii\widgets\Pjax;
         <?php Pjax::begin(['id' => 'new_img']); ?>
         <?php
         $af = ActiveForm::begin([
-    'options' => [
+            'options' => [
 
-            'data' => ['pjax' => true],
-            //'method' => 'post',
-            'id' => 'img_gift',
-        'enctype' => 'multipart/form-data',
-        'class' => 'crop-form',
-
-
-    ],
-            'action'=>'/admin/gift/create',
-]);
+                    'data' => ['pjax' => true],
+                    //'method' => 'post',
+                    'id' => 'img_gift',
+                'enctype' => 'multipart/form-data',
+                'class' => 'crop-form',
+            ],
+             'action'=>'create',
+              ]);
 
 echo $af->field($form, 'image')->widget(CropboxWidget::className(), [
     'croppedDataAttribute' => 'crop_info',
-    'id' => uniqid(),
-    //'pathToView' => $pathThumbImage
 ]);
 
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warning waves-light waves-effect submit-img-gift',
@@ -43,11 +39,9 @@ ActiveForm::end();
 $this->registerJs(
     '$("document").ready(function(){
             $("#new_img").on("pjax:success", function() {
-    $("#gift-img").val($(\'#new_img\').text());
+            $("#gift-img").val($(\'#new_img\').text());
     $("#new_img").hide();
 });
-
-        });
-    '
+ });'
 );
 ?>
