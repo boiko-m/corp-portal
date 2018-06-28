@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\GroupIm;
+use app\models\ImGroups;
 
 /**
- * GroupImSearch represents the model behind the search form of `app\models\GroupIm`.
+ * ImGroupsSearch represents the model behind the search form of `app\models\ImGroups`.
  */
-class GroupImSearch extends GroupIm
+class ImGroupsSearch extends ImGroups
 {
     /**
      * {@inheritdoc}
@@ -19,7 +19,7 @@ class GroupImSearch extends GroupIm
     {
         return [
             [['id', 'id_type_group_im'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'avatar'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class GroupImSearch extends GroupIm
      */
     public function search($params)
     {
-        $query = GroupIm::find();
+        $query = ImGroups::find();
 
         // add conditions that should always apply here
 
@@ -63,7 +63,8 @@ class GroupImSearch extends GroupIm
             'id_type_group_im' => $this->id_type_group_im,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'avatar', $this->avatar]);
 
         return $dataProvider;
     }

@@ -13,7 +13,7 @@
     }
 </style>
 
-<div class="group-im-create">
+<div class="im-groups-create">
 
     <h1 class="title-create-group-im"><?= Html::encode($this->title) ?></h1>
 

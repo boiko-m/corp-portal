@@ -12,6 +12,7 @@ use Yii;
  * @property int $visible
  * @property int $visible_all
  * @property int $read
+ * @property int $is_show
  * @property int $create_at
  * @property int $update_at
  * @property int $id_group
@@ -20,7 +21,7 @@ use Yii;
  *
  * @property AttachmentsMessage[] $attachmentsMessages
  * @property User $userTo
- * @property GroupIm $group
+ * @property ImGroups $group
  * @property User $userFrom
  */
 class Messages extends \yii\db\ActiveRecord
@@ -39,11 +40,11 @@ class Messages extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['message', 'create_at', 'update_at', 'id_user_from', 'id_user_to'], 'required'],
+            [['message', 'create_at', 'update_at', 'id_user_from'], 'required'],
             [['message'], 'string'],
-            [['visible', 'visible_all', 'read', 'create_at', 'update_at', 'id_group', 'id_user_from', 'id_user_to'], 'integer'],
+            [['visible', 'visible_all', 'read', 'is_show', 'create_at', 'update_at', 'id_group', 'id_user_from', 'id_user_to'], 'integer'],
             [['id_user_to'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user_to' => 'id']],
-            [['id_group'], 'exist', 'skipOnError' => true, 'targetClass' => GroupIm::className(), 'targetAttribute' => ['id_group' => 'id']],
+            [['id_group'], 'exist', 'skipOnError' => true, 'targetClass' => ImGroups::className(), 'targetAttribute' => ['id_group' => 'id']],
             [['id_user_from'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user_from' => 'id']],
         ];
     }
@@ -55,15 +56,16 @@ class Messages extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'message' => 'Message',
-            'visible' => 'Visible',
-            'visible_all' => 'Visible All',
-            'read' => 'Read',
-            'create_at' => 'Create At',
-            'update_at' => 'Update At',
-            'id_group' => 'Id Group',
-            'id_user_from' => 'Id User From',
-            'id_user_to' => 'Id User To',
+            'message' => 'Сообщение',
+            'visible' => 'Видимость',
+            'visible_all' => 'Видимость для всех',
+            'read' => 'Прочитано',
+            'is_show' => 'Отображено',
+            'create_at' => 'Дата создания',
+            'update_at' => 'Дата обновления',
+            'id_group' => 'Группа',
+            'id_user_from' => 'Отправитель',
+            'id_user_to' => 'Получатель',
         ];
     }
 
@@ -88,7 +90,7 @@ class Messages extends \yii\db\ActiveRecord
      */
     public function getGroup()
     {
-        return $this->hasOne(GroupIm::className(), ['id' => 'id_group']);
+        return $this->hasOne(ImGroups::className(), ['id' => 'id_group']);
     }
 
     /**

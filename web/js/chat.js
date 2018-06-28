@@ -27,11 +27,14 @@ $('body').delegate('.im-icon-arrow','click',function() {
 $('body').delegate('.im-list-user-message-select','click',function() {
   if(!/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && !($(window).width() < 1024)) {
     $(".im-list-user-messages li").removeClass("im-list-user-message-choose")
+    let thisElement = $(this)
     $(this).toggleClass("im-list-user-message-choose")
     $.ajax({
       url: '/im/dialog/choose-dialog',
       data: 'id=' + $(this).attr('id'),
       beforeSend: function() {
+        $('.im-dialog-preview').show()
+        $('.dialog-panel').hide()
         spinnerShow('.im-dialog-preview')
       },
       complete: function() {
@@ -40,6 +43,9 @@ $('body').delegate('.im-list-user-message-select','click',function() {
       success: function(data) {
         $('.im-dialog-preview').hide()
         $('.dialog-panel').show()
+        $(this).children('.im-list-user-link').text()
+        $('.im-dialog-panel-name').text(thisElement.children('div').children('span').text())
+        $('.im-dialog-header-image').attr('src', thisElement.children('div').children('img').attr('src'))
       },
       error: function(xhr, str){
         console.log('Возникла ошибка: ' + xhr.responseText)
@@ -220,7 +226,7 @@ function bytesToSize(bytes) {
 
 function spinnerShow(selector) {
   $(selector).show()
-  $(selector).html('<div class="tajaxLoad"><div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2 one"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">Загружается ...</div></div></div>');
+  $(selector).html('<div class="tajaxLoad tajax-vertigal-center"><div><div class="cssload-thecube"><div class="cssload-cube cssload-c1"></div><div class="cssload-cube cssload-c2 one"></div><div class="cssload-cube cssload-c4"></div><div class="cssload-cube cssload-c3"></div></div><div class="loadinfo">Загружается ...</div></div></div>');
 }
 
 function spinnerRemove() {
@@ -232,7 +238,7 @@ function spinnerRemove() {
 
 $('.im-user-input-search').on('input', function(){ 
   let inputValue = $('.im-user-input-search').val()
-  if (inputValue.length > 3) {
+  if (inputValue.length > 2) {
     $.ajax({
       url: '/im/dialog/search-employees',
       data: 'text=' + inputValue,
@@ -243,19 +249,25 @@ $('.im-user-input-search').on('input', function(){
         spinnerRemove()
       },
       success: function(data) {
-        $(".im-list-user-messages").empty()
         var result = $.parseJSON(data)
-        for(var i = 0; i < result.length; i++){
-          $('.im-list-user-messages').append('<li class="im-list-user-message-select" id="' + 
-            result[i].id + '"><div class="im-list-user-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
-            result[i].img + '" alt="profilepicture" class="im-list-user-field-image"><span class="im-list-user-link">' +
-            result[i].first_name + ' ' + result[i].last_name + '</span><p class="message-list-user">Нет сообщений</p></div></li>');
+        $(".im-list-user-messages").empty()
+        if (result.length != 0) {
+          for(var i = 0; i < result.length; i++) {
+            $('.im-list-user-messages').append('<li class="im-list-user-message-select" id="' + 
+              result[i].id + '"><div class="im-list-user-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
+              result[i].img + '" alt="profilepicture" class="im-list-user-field-image"><span class="im-list-user-link">' +
+              result[i].first_name + ' ' + result[i].last_name + '</span><p class="message-list-user">Нет сообщений</p></div></li>');
+          }
+        } else {
+          $('.im-list-user-messages').append('<li class="im-list-user-empty-search">Нет результатов поиска</li>')
         }
       },
       error: function(xhr, str){
         console.log('Возникла ошибка: ' + xhr.responseText)
       }
     });
+  } else {
+    $(".im-list-user-messages").empty()
   }
 });
 

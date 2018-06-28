@@ -10,12 +10,20 @@
     }
 </style>
 
-<div class="group-im-form">
+<div class="im-groups-form">
+
     <?php $form = ActiveForm::begin(); ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'id_type_group_im')->textInput() ?>
+
     <div class="form-group button-save-group-im">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
+
     <?php ActiveForm::end(); ?>
+
 </div>

@@ -14,7 +14,7 @@
     }
 </style>
 
-<div class="group-im-index">
+<div class="im-groups-index">
 
     <h1 class="title-group-im"><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
@@ -32,6 +32,7 @@
 
             'id',
             'name',
+            'avatar',
             'id_type_group_im',
 
             ['class' => 'yii\grid\ActionColumn'],

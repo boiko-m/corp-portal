@@ -122,8 +122,6 @@ class UserupController extends Controller
 				$user->key_external = $up['Ref_Key'];
 				$user->password_external = $up['Пароль1С'];
 
-    			$user->save();
-
     			$profile = new Profile();
 
     			$profile->id = $user->id;
@@ -143,11 +141,13 @@ class UserupController extends Controller
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
     			$profile->sip = $up['SIP'];
 
-    			if ($profile->save()) {
-    				$update[]['success'] = $up['Логин']. ";".$profile->id;
-    			} else {
-    				$update[]['error'] = $up['Логин'];
-    			}
+                if ($user->validate()) {
+        			if ($user->save() && $profile->save()) {
+        				$update[]['success'] = $up['Логин']. ";".$profile->id;
+        			} else {
+        				$update[]['error'] = $up['Логин'];
+        			}
+                }
 
     		} else {
     			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";

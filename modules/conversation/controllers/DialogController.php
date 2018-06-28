@@ -14,13 +14,18 @@ class DialogController extends \yii\web\Controller
     public function actionSearchEmployees()
     {
         $textSearch = Yii::$app->request->get('text');
-        $profiles = Profile::find()->asArray()->where(['like', 'last_name',  $textSearch])->with('user')
-            ->orWhere(['like', 'first_name',  $textSearch])->all();
+        $profiles = Profile::find()->where(['OR',
+                ['like', 'first_name',  $textSearch],
+                ['like', 'last_name',  $textSearch],
+            ])->all();
         return JSON::encode($profiles);
     }
 
     public function actionChooseDialog()
     {
+        while ($i <= 33333333) {
+            $i = $i + 1;
+        }
         $id = Yii::$app->request->get('id');
         return $id;
     }

@@ -14,7 +14,7 @@
     }
 </style>
 
-<div class="group-im-view">
+<div class="im-groups-view">
 
     <h1 class="title-view-group-im"><?= Html::encode($this->title) ?></h1>
 
@@ -34,6 +34,7 @@
         'attributes' => [
             'id',
             'name',
+            'avatar',
             'id_type_group_im',
         ],
     ]) ?>

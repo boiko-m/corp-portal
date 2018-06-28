@@ -5,23 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "group_im".
+ * This is the model class for table "im_groups".
  *
  * @property int $id
  * @property string $name
+ * @property string $avatar
  * @property int $id_type_group_im
  *
+ * @property ImGroupUsers[] $imGroupUsers
  * @property TypeGroupIm $typeGroupIm
  * @property Messages[] $messages
  */
-class GroupIm extends \yii\db\ActiveRecord
+class ImGroups extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'group_im';
+        return 'im_groups';
     }
 
     /**
@@ -30,9 +32,9 @@ class GroupIm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'id_type_group_im'], 'required'],
+            [['id_type_group_im'], 'required'],
             [['id_type_group_im'], 'integer'],
-            [['name'], 'string', 'max' => 100],
+            [['name', 'avatar'], 'string', 'max' => 100],
             [['id_type_group_im'], 'exist', 'skipOnError' => true, 'targetClass' => TypeGroupIm::className(), 'targetAttribute' => ['id_type_group_im' => 'id']],
         ];
     }
@@ -45,8 +47,17 @@ class GroupIm extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Название',
+            'avatar' => 'Картинка',
             'id_type_group_im' => 'Тип группы',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImGroupUsers()
+    {
+        return $this->hasMany(ImGroupUsers::className(), ['id_group_im' => 'id']);
     }
 
     /**
