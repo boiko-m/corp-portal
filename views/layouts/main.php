@@ -229,7 +229,7 @@ AppAsset::register($this);
 
                         <?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'submitSearch',]) ?>
-                        <?= Html::button('<span class="close-search" id="fa-close"></span>', ['class' => 'main-search',
+                        <?= Html::button('<div class="box_x_button close-search" aria-label="Закрыть" tabindex="0" role="button"></div>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'hidden-search-close', 'label' =>'input']) ?>
                         <?php $form = ActiveForm::end(); ?>
 
@@ -297,28 +297,38 @@ AppAsset::register($this);
     </div>
 
     <?php
-    yii\bootstrap\Modal::begin([
+/*    yii\bootstrap\Modal::begin([
         'headerOptions' => ['id' => 'modalHeader'],
-        'id' => 'modal',
-        'class' => 'modal-dialog',
-        'closeButton' => [
-            'id'=>'close-button',
-            'class'=>'close',
-            'data-dismiss' =>'modal',
+        'id' => 'main-modal',
+        'options' => [
+                'class' => 'modal fade',
+          'tabindex' => '-1',
+            'role' => 'dialog',
+            'aria-labelledby' => 'myLargeModalLabel',
+            'aria-hidden' => 'true'
         ],
+        'class' => 'modal-dialog',
+
         'header' => '',
-        //keeps from closing modal with esc key or by clicking out of the modal.
-        // user must click cancel or X to close
-        'clientOptions' => [
-            'backdrop' => false, 'keyboard' => true
-        ]
+        'clientOptions' => false
     ]);
 
     echo "<div id='modalContent'></div>";
 
     yii\bootstrap\Modal::end();
-    ?>
+    */?>
+    <?php
+    yii\bootstrap\Modal::begin([
+        'headerOptions' =>   ['id' => 'modalHeader'],
+        'id' => 'main-modal',
+        'class' => 'modal-dialog',
+        'header' => '',
+        'clientOptions' =>   false
+    ]);
 
+    echo "<div id='modalContent'></div>";
+    yii\bootstrap\Modal::end();
+    ?>
     <script src="//apps.skaip.su/buttons/widget/core.min.js" defer="defer"></script>
     <?php $this->endBody() ?>
 

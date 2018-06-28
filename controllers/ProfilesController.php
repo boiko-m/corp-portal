@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\BirthdaySearch;
 use app\models\Gift;
+use app\models\GiftType;
 use app\models\GiftUser;
 use Yii;
 use app\models\Profile;
@@ -226,11 +227,15 @@ class ProfilesController extends Controller
         debug($allGift);*/
 
 
-      $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-      $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift')->all();
+          $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
+          $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift')->with('userFrom', 'userFrom.profile')->all();
 
         $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
+        $gift4 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+            ->orderBy(['id' => SORT_DESC //Need this line to be fixed
+            ])->all();
+
 
         if(Yii::$app->request->post()){
             $post = Yii::$app->request->post('GiftUser');
@@ -250,9 +255,7 @@ class ProfilesController extends Controller
             $gift_user->date = time();
             $gift_user->save();
             return $this->refresh();
-           /* $gift_user->errors;
-            echo var_dump($gift_user->errors);
-            die();*/
+
         }
 
         return $this->render('view', [
@@ -261,6 +264,7 @@ class ProfilesController extends Controller
             'gift' => $gift,
             'model' => $model,
             'user' => $user,
+            'gift4' => $gift4,
 
         ]);
     }
@@ -269,19 +273,10 @@ public function actionModal(){
         $curentId = Yii::$app->request->post();
         $id = Yii::$app->user->id;
         $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-        $allGift = Gift::find()->with('giftType')->asArray()->all();
-
-       /* $countQuery = clone $allGift;
-        // подключаем класс Pagination, выводим по 10 пунктов на страницу
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 18]);
-        // приводим параметры в ссылке к ЧПУ
-        $pages->pageSizeParam = false;
-        $models = $allGift->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();*/
-        //return 123;
+        $allGift = Gift::find()->with('giftType')->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
         $model = new GiftUser();
-        $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId'));
+        $giftType = GiftType::find()->asArray()->all();
+        $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId', 'giftType'));
         $b = $this->renderAjax('modal/footer', compact('models', 'pages'));
         $c[0] = $a;
         $c[1] = $b;
@@ -289,6 +284,20 @@ public function actionModal(){
         return Json::encode($c);
     }
 }
+
+    public function actionGiftmodal()
+    {
+        if(Yii::$app->request->isAjax) {
+            $id = Yii::$app->request->post('data');
+            $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')->all();
+
+            $count = count($gift);
+            $a[0] = $this->renderAjax('giftmodal/head', compact('count'));
+          $a[1] = $this->renderAjax('giftmodal/smallmodal', compact('gift'));
+
+            return Json::encode($a);
+        }
+    }
     /**
      * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

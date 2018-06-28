@@ -18,53 +18,120 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4 ">
+           <div class="col-xs-12 col-md-4">
+                <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
 
-            <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
+           <!-- <div class="row">-->
+              <!--  <div style="margin: 10px auto; text-align: center;     width: 100%;">-->
+
+               <?if(\Yii::$app->user->can("Admin")):?>
+               <div class=" gift-four" style="width: 100%;    padding: 10px;">
+                        <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+
+                            <?php $col = count($gift4);
+                            $count = "<span style='color: #CCC'>$col</span>"?>
+<!--                            --><?/*=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view', 'data' =>$id, 'style'=>' color: black; cursor: pointer'])*/?>
+
+                            <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
+                                'data-id' =>$id,
+                              /*'data-toggle' => "modal",
+                                'data-target' => "#main-modal",*/
+                                'style'=>' color: black; cursor: pointer'])?>
+                        </div>
+                        <div style="padding: 0 0 10px 0">
+                    <?php
+                        $i = 0;
+                    foreach ($gift4 as $value){
+                        $i++;
+                        if($i== 4){
+                            break;
+                        }
+
+                        $tooltip = "123<img src='/img/user/thumbnail_'".$value['userFrom']['profile']['img']." alt='user' class='rounded-circle' style='width: 40px'>";
+                        $a = Html::a($value['userFrom']['profile']['first_name'].' '.$value['userFrom']['profile']['last_name'], '/profiles/'.$value['userFrom']['id']);
+
+                        if($value['gift']['img'][0] != '/') {
+                            $img = '/'.$value['gift']['img'];
+                        }
+                        else{
+                            $img = $value['gift']['img'];
+                        }
+?>
 
 
+                                 <span class="tooltiplbr">
+                     <img class="gift-in-view gift-button-view" id="<?=$value['id']?>" src="<?=$img?>"  data-id="<?=$id?>"">
 
+                        <span class="tooltiptext"  style=" width: auto"> <div class="row" style="padding: 10px; width: auto">
+<div class="col-md-3">
+   <?if(isset($value['userFrom']['profile']['img']) && strlen($value['userFrom']['profile']['img']) > 0):?>
+       <img src="/img/user/thumbnail_<?=$value['userFrom']['profile']['img']?>" alt="user"
+            class="rounded-circle" style="width: 45px">
+   <?else:?>
+       <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
+   <?endif;?>
+</div>
+    <div class="col-md-9" style=" text-align: justify">
+        <div style="">
 
-            <div class="carousel view">
-                <?php if(count($gift)>4){?>
-                <div class="carousel-button-left view"><a href="#"></a></div>
-                <div class="carousel-button-right view"><a href="#"></a></div>
-                <?php }?>
-                <div class="carousel-wrapper">
-                    <div class="carousel-items">
-                <?php
-                foreach ($gift as $value){
-
-                    if($value['gift']['img'][0] != '/') {
-                        $img = '/'.$value['gift']['img'];
-                    }
-                    else{
-                        $img = $value['gift']['img'];
-                    }
-                    ?>
-                    <div class="carousel-block view">
-                    <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 50px; width: 50px; margin: 5px">
+                <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
+                    ' '.$value['userFrom']['profile']['last_name'],
+                    \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
+                    ['class' => 'author', 'style' => 'text-align: left'])?>
             </div>
-                <?php }?>
-            </div>
-                </div>
-            </div>
+
+                                  <div style="color: #0a0a0a; text-align: left" >
+                                <?=$value['userFrom']['profile']['branch']?>
+                            </div>
+                    <?php   if($value['message'] != '' && !empty($value['message'])): ?>
+
+                        <div style="color: #0a0a0a; text-align: left" >
+                            "<?=($value['message'])?>"
+                        </div>
+                     <?php endif;?>
+                        <?php   if($value['date'] != '' && !empty($value['date'])): ?>
+
+                            <div class="date-gift">  <?=date('Y.m.d', $value['date']);?></div>
+                        <?php endif;?>
+                     </div>
+        </div>
+                        </span>
+                                 </span>
+
+
+                    <?php }?>
+
+                        </div>
+                            <?php if(Yii::$app->user->id != $id){?>
+
+                                <div class="" style=" border-radius: 5px; ">
+                                     <?=Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
+                                             'class' => 'btn  waves-effect w-md btn-light showModalButton',
+                                             'data' => $id,
+                                             'style'=>' border-radius: 5px'
+                                     ])?>
+                                </div>
+                            <?php }?>
 
 
 
-       <!-- <div class="row">
-            <div class="btn-group mb-2" style="width: 100%">
-                <a href = "/" class="btn  waves-effect w-md btn-light" style="width: 100%">Подарить</a>
-                <a href = "/" class="btn  waves-effect w-md btn-light" style="width: 100%">Просмотреть все</a>
-            </div>
-        </div>-->
-    </div>
+               </div>
+
+    <!--  </div>-->
+            <!--</div>-->
+
+               <?php endif;?>
+        </div>
+
+
+
+
     <div class="col-xs-12 col-md-8">
         <div class="card m-b-30">
 			<div class = "card-header">
                         <h5  class="" style="font-weight: bold;color: black;margin: 0px;"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
                     </div>
-            	
+
             	<div class="col-12" style="padding: 10px 20px;">
             		<?php if ($model->branch): ?>
             			<div> Филиал: <?=$model->branch?> </div>
@@ -85,11 +152,11 @@ $this->params['breadcrumbs'][] = $this->title;
 	                            </a>
 	                        </li>
 
-	                        <li class="nav-item">
+	                        <!--<li class="nav-item">
 	                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
 	                               Подарки
 	                            </a>
-	                        </li>
+	                        </li>-->
                             <!--
                            <li class="nav-item">
                                <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
@@ -97,7 +164,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                </a>
                            </li> -->
 	                    </ul>
-                    
+
                     <style>
                         .information_row {
                             border-bottom: 1px solid #ebebeb;
@@ -155,7 +222,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							<?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
                                 <div class="row information_row">
                                     <div class="col">
-                                        Телефон (доп.)
+                                        <Те></Те>лефон (доп.)
                                     </div>
 									<div class="col">
                                         <?php $phones = explode(";", $model->phone2); ?>
@@ -167,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             <?php endif ?>
-							
+
 							<?php if ($model->skype): ?>
 								<div class="row information_row">
 	                                <div class="col">
@@ -178,7 +245,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                </div>
 	                            </div>
 							<?php endif ?>
-                            
+
 							<?php if ($user->email): ?>
 								<div class="row information_row">
 	                                <div class="col">
@@ -189,7 +256,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                </div>
 	                            </div>
 							<?php endif ?>
-                            
+
 
                             <?php if (isset($model->sip) and $model->sip != 0): ?>
                                 <div class="row information_row">
@@ -243,34 +310,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?=Html::a('Отправить подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' =>$id])?>
 
                             <?php }?>
+                            <?=Html::a('Просмотреть все', '', ['class' => 'btn  waves-effect w-md btn-light gift-button-view', 'data' =>$id])?>
 
-                            <div class="row" style="padding: 0 50px 0 50px">
-                                <?php
-                                foreach ($gift as $value){
 
-                                    if($value['gift']['img'][0] != '/') {
-                                        $img = '/'.$value['gift']['img'];
-                                    }
-                                    else{
-                                        $img = $value['gift']['img'];
-                                    }
-                                    ?>
-                                    <div class=" margin15"  >
-                                        <img class="card-img-top img-fluid card m-b-30" src="<?=$img?>"  style = "border-radius: 5px; height: 75px; width: 75px;">
-                                    </div>
 
-                                <?php }
-                                ?>
-
-                            </div>
-                        </div>
-
-            </div>
+                       </div>
 		<?php endif // если нет email, то не выводим всю общую информацию?>
 
         </div>
     </div>
 
 </div>
-
 

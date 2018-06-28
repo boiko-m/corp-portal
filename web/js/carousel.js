@@ -44,49 +44,37 @@ $(document).on('mouseenter', '.carousel', function(){$(this).addClass('hover')})
 //Убрали курсор с карусели
 $(document).on('mouseleave', '.carousel', function(){$(this).removeClass('hover')})
 
-$(document).on("click", ".canСhoose", function(e) {
-    var atr = $(this).attr('id');
-    var src =  $(this).attr('src');
-    var img ='<img src="'+src+'" class="gift-to-send" style = "border-radius: 5px; height: 80px; width: 80px; align: center;">';
-    var atr1 = $(this).attr('data-coin');
-    $('.canСhoose').removeClass('shadow');
-    $("#"+atr ).addClass('shadow');
-    $('.choosenGift').html(img);
-    $('#form-for-gift').removeClass('hidden');
-    $('#giftuser-id_gift').val(atr);
-    $('#giftuser-costcoin').val(atr1);
-});
 
 
 
-
-//крытие кнопки влево слайдера
-var i = 0;
-var col = [];
-while (i < 6) {
-    col[i] = 0;
-    i++;
-}
-function functCalc(id, type) {
-    if(type == 'right'){
-        col[id] ++;
-    }
-    if(type == 'left'){
-        col[id] --;
-    }
-    if(col[id] == 0){
-        $('.left'+id).addClass('hidden');
-    }
-    else {
-        $('.left'+id).removeClass('hidden');
-    }
-}
 
 
 
 $(function(){
     $('#slimmcroll').slimScroll({
-        height: '400px',
+        height: '350px',
         railVisible: true,
     });
 });
+
+
+$(document).on('click', '.test', function (e) {
+
+        $.ajax({
+            url: '/admin/gift/formimg',
+            type: "get",
+
+            success: function (response) {
+                $('.admin-gift').html(response);
+                $(".admin-gift").show();
+
+
+            },
+            error: function (response) {
+                console.log(response);
+                alert('error');
+            }
+        });
+
+    });
+

@@ -41,7 +41,7 @@
 
 
 .carousel-button-left a{
-   float: left; 
+   float: left;
    background: url(../img/content/back.png);
 }
 .carousel-button-right a{
@@ -51,9 +51,7 @@
 
 /*********** SHADOW ***********/
 .shadow{
-
-
-   border-bottom-width: 3px; /* Толщина линии внизу */
+ border-bottom-width: 3px; /* Толщина линии внизу */
    border-bottom-style: solid; /* Стиль линии внизу */
    border-bottom-color: #720586; /* Цвет линии внизу */
 }
@@ -70,11 +68,11 @@ div .col-md-4.col-md-4-sizeModal{
 }
 
 .gift-to-send{
-margin: 0 0 0 70px;
+margin: 0 0 0 20px;
 }
 .gift-submit{
     min-width: 100%; min-height: 100%; position: relative;
-   bottom: 0;
+    bottom: -20px;
 }
 .gift-cost{
     position: absolute;
@@ -86,7 +84,7 @@ margin: 0 0 0 70px;
    margin: 0 1px;
    color: #42648b;
    font-weight: 700;
-   bottom: 10px;
+    bottom: 4px;
    text-align: center;
    z-index: 1;
     /* position: absolute;
@@ -95,6 +93,20 @@ margin: 0 0 0 70px;
      right: 0;
     */
 }
+.gift-cost-tosend{
+   /* position: absolute;*/
+    font-size: 12.5px;
+    border-radius: 3px;
+    padding: 30px 4px 2px;
+    margin: 0 1px;
+    color: black;
+    font-weight: 700;
+    bottom: 30px;
+    text-align: center;
+    z-index: 1;
+
+}
+
 .canСhoose:hover::after {
    position: absolute; /* Абсолютное позиционирование */
    left: 0; right: 0; bottom: 5px; /* Положение подсказки */
@@ -118,7 +130,7 @@ margin: 0 0 0 70px;
    width:24px;
    height: 24px;
    position: relative;
-   top: 25px;
+   top: 30px;
    cursor: pointer;
    text-decoration:none;
 }
@@ -129,7 +141,7 @@ margin: 0 0 0 70px;
 .carousel-block.view {
     position: relative;
    float: left; /* выстраиваем все элементы карусели в ряд */
-    width: 72px;/* задаём ширину каждого элемента */
+    width: 85px;/* задаём ширину каждого элемента */
    padding: 10px 4px 10px 0px; /* делаем оступы, чтобы элементы не сливались */
 
 }
@@ -139,4 +151,71 @@ margin: 0 0 0 70px;
    margin: 10px auto;
    width:100%;
    float: left;
+}
+
+.modal-dialog.modal-gift{
+    height: 400px;
+    width: 500px;
+}
+
+
+
+.modal-header.card-header{
+    text-align: left;
+}
+div .modal-header{
+    display: block;
+}
+.date-gift{
+    padding: 0 0 0 50px;
+    font-size: 12px;
+    color: #CCCCCC;
+
+
+}
+
+/*
+
+tooltip*/
+.tooltiplbr {
+    position: relative;
+    display: inline;
+
+}
+
+.tooltiplbr .tooltiptext {
+    visibility: hidden;
+    min-width: 190px;
+    max-width: 500px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 11 ;
+    bottom: 260%;
+    left: 5px;
+    right: 20px;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: #CCCCCC solid 1px;
+
+}
+
+.tooltiplbr .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltiplbr:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

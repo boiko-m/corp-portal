@@ -31,8 +31,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/modernizr.min.js',
-        'js/carousel.js',
-        //'js/jquery.min.js',
+
+        'js/jquery.min.js',
         'js/popper.min.js',
         'js/bootstrap.min.js',
         'js/metisMenu.min.js',
@@ -49,7 +49,9 @@ class AppAsset extends AssetBundle
         'js/jquery.app.js',
         'js/myajax.js',
         'js/search.js',
-        'js/script.js'
+        'js/script.js',
+        'js/carousel.js',
+        'js/modal.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset'

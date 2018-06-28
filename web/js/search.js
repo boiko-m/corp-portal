@@ -104,20 +104,12 @@ $("#text-search").focusout(function () {
 
 $('#text-search').focus(function(){
     var width = $('#for-search').outerWidth();
-    if( $(window).width() <= '1100' ){
-        width = '200px';
-    }
-    else if($("body").is('.enlarged') && $(window).width() <= '1100' ){
-        width = '200px';
-    }
-    $('#text-search').css('width', width);
-    if( $(window).width() >= '1100' ) {
-        $('.close-search').css('right', 210 - width);
-    }
+    var width1 = $('#text-search').outerWidth();
 
+    $('#text-search').css('width', width);
     $('#submitSearch').hide(1);
-    $('.close-search').css('right', 210 - width);
-    $('#hidden-search-close').show(500);// скрываем отображение лупы при клике
+    $('.close-search').css('right', width1 - width);
+    $('#hidden-search-close').show(100);// скрываем отображение лупы при клике
 
 
 });
@@ -129,32 +121,12 @@ $('.vote-toggle').click(function () {
 
 $('.full-search').css('left',20 + $('#full-search').width() );
 
+$(document).on('click', '.close-search', function () {
+    $('#text-search').val('');
+});
 
-
-$(function() {
-   /* $(document).on('click', '.showModalButton', function (e) {*/
-    $('.showModalButton').click( function (e) {
-        var data = $(this).attr('data');
-        $.ajax({
-            url: '/profiles/modal/',
-            type: "POST", //метод отправки
-            data: {'data':data},
-            success: function (response) {
-               var a = $.parseJSON(response);
-                //Данные отправлены успешно
-                $('#modalHeader').html('Отправить подарок<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
-                $('.modal-dialog').addClass('modal-lg');
-                $('#modalContent').html(a[0]);
-                $('.modal-footer').html(a[1]);
-                $('#modal').modal('show');
-
-            },
-            error: function () { // Данные не отправлены
-                alert('Ошибка. Данные не отправлены.');
-            }
-        });
-        return false;
-    })
+$(document).ready(function(){
+     $('.gift-in-view ').tooltip({ trigger: "click"});
 });
 
 

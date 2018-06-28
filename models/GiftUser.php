@@ -33,8 +33,8 @@ class GiftUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            ['id_gift','required','message'=>'Выберите подарок'],
-            [[ 'id_user_from', 'date', 'anonim', 'message', 'id_user_to', ], 'required'],
+            ['id_gift','safe','message'=>'Выберите подарок'],
+            [[ 'id_user_from', 'date', 'anonim', 'id_user_to', ], 'required'],
             [['id_gift', 'id_user_from', 'anonim', 'id_user_to','date'], 'integer'],
             [[ 'message'], 'string'],
         ];
