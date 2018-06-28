@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_message
+ * Class m180628_081036_create_tables_type_group_im_group_im_im_group_user_messages_attachments_message
  */
-class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_message extends Migration
+class m180628_081036_create_tables_type_group_im_group_im_im_group_user_messages_attachments_message extends Migration
 {
     /**
      * {@inheritdoc}
@@ -19,19 +19,20 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
         ]);
 
 
-        $this->createTable('group_im', [
+        $this->createTable('im_groups', [
             'id' => $this->primaryKey(),
-            'name'=>$this->string(100)->notNull(),
+            'name'=>$this->string(100),
+            'avatar'=>$this->string(100),
             'id_type_group_im' => $this->integer()->notNull(),
         ]);
         $this->createIndex(
-            'ifk-group_im-id_type_group_im',
-            'group_im',
+            'ifk-im_groups-id_type_group_im',
+            'im_groups',
             'id_type_group_im'
         );
         $this->addForeignKey(
-            'fk-group_im-id_type_group_im',
-            'group_im',
+            'fk-im_groups-id_type_group_im',
+            'im_groups',
             'id_type_group_im',
             'type_group_im',
             'id',
@@ -45,11 +46,12 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
             'visible' => $this->boolean()->defaultValue(false),
             'visible_all' => $this->boolean()->defaultValue(false),
             'read' => $this->boolean()->defaultValue(false),
+            'is_show' => $this->boolean()->defaultValue(false),
             'create_at' => $this->integer()->notNull(),
             'update_at' => $this->integer()->notNull(),
             'id_group' => $this->integer(),
             'id_user_from' => $this->integer()->notNull(),
-            'id_user_to' => $this->integer()->notNull(),
+            'id_user_to' => $this->integer(),
         ]);
         $this->createIndex(
             'ifk-messages-id_group',
@@ -60,7 +62,7 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
             'fk-messages-id_group',
             'messages',
             'id_group',
-            'group_im',
+            'im_groups',
             'id',
             'CASCADE'
         );
@@ -113,6 +115,39 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
             'id',
             'CASCADE'
         );
+
+
+        $this->createTable('im_group_users', [
+            'id' => $this->primaryKey(),
+            'id_group_im' => $this->integer()->notNull(),
+            'id_user' => $this->integer()->notNull(),
+        ]);
+        $this->createIndex(
+            'ifk-im_group_users-id_group_im',
+            'im_group_users',
+            'id_group_im'
+        );
+        $this->addForeignKey(
+            'fk-im_group_users-id_group_im',
+            'im_group_users',
+            'id_group_im',
+            'im_groups',
+            'id',
+            'CASCADE'
+        );
+        $this->createIndex(
+            'ifk-im_group_users-id_user',
+            'im_group_users',
+            'id_user'
+        );
+        $this->addForeignKey(
+            'fk-im_group_users-id_user',
+            'im_group_users',
+            'id_user',
+            'user',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**
@@ -120,7 +155,7 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
      */
     public function safeDown()
     {
-        echo "m180622_071051_create_tables_type_group_im_group_im_messages_attachments_message cannot be reverted.\n";
+        echo "m180628_081036_create_tables_type_group_im_group_im_im_group_user_messages_attachments_message cannot be reverted.\n";
 
         return false;
     }
@@ -134,7 +169,7 @@ class m180622_071051_create_tables_type_group_im_group_im_messages_attachments_m
 
     public function down()
     {
-        echo "m180622_071051_create_tables_type_group_im_group_im_messages_attachments_message cannot be reverted.\n";
+        echo "m180628_081036_create_tables_type_group_im_group_im_im_group_user_messages_attachments_message cannot be reverted.\n";
 
         return false;
     }

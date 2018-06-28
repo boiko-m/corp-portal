@@ -19,4 +19,10 @@ class DialogController extends \yii\web\Controller
         return JSON::encode($profiles);
     }
 
+    public function actionChooseDialog()
+    {
+        $id = Yii::$app->request->get('id');
+        return $id;
+    }
+
 }

@@ -140,13 +140,13 @@
 }
 
 .im-dialog-preview {
-    margin:0px auto;
+    margin: 0px auto;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 170px;
 }
 
 .im-icon-envelope {
-    font-size: 140px;
+    font-size: 100px;
 }
 
 .im-dialog-preview-text {
