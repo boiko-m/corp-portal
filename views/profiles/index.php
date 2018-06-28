@@ -23,17 +23,16 @@ echo Html::jsFile('@web/js/ajax.js');
                 <?php Pjax::begin(['timeout' => 20000]); ?>
             <?php
             if(!Yii::$app->request->get('param') == 'new'){
-                 Alphabet::widget([
+               echo  Alphabet::widget([
                     'options' => ['class' => 'alphabet-wrap',
                         ],
                     'letters' => $alphabet,
                     'actionLink' => 'profiles/index'
                 ]);
 
-                $searchModels = $searchModel;
             }
             else{
-                $searchModels = null;
+                $searchModel = null;
             }
 
             ?>
@@ -42,7 +41,7 @@ echo Html::jsFile('@web/js/ajax.js');
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModels,
+                    'filterModel' => $searchModel,
                     'summary' => "",
 
                     'options'=>['class'=>'table table-striped',],
