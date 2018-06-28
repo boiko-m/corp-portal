@@ -52,6 +52,12 @@ class SettingValues extends \yii\db\ActiveRecord
         ];
     }
 
+    // public function afterSave($insert, $changedAttributes)
+    // {
+    //     parent::afterSave($insert, $changedAttributes);
+    //     echo 'Worked!';
+    // }
+
     public function getName($code)
     {
         return (SettingOptions::find()->where(['code' => $code])->one())->name;

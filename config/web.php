@@ -39,6 +39,12 @@ $config = [
         'comments' => [
             'class' => 'ogheo\comments\Module'
         ],
+        'im' => [
+            'class' => 'app\modules\conversation\ConversationModule',
+            'as access' => [
+                'class' => yii2mod\rbac\filters\AccessControl::class
+            ],
+        ],
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
             'layout' => '/admin',

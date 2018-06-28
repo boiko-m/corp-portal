@@ -21,7 +21,17 @@ class ProjectController extends \yii\web\Controller
         return $this->render('info');
     }
 
+    public function actionInfoajax($id)
+    {
+        return $this->renderPartial('info');
+    }
 
-    
+    public function actionAll($id)
+    {
+        return $this->renderPartial('view_bottom');
+    }
+
+
+
 
 }

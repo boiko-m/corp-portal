@@ -25,14 +25,12 @@ class AppAsset extends AssetBundle
         'css/icons.css',
         'css/metismenu.min.css',
         'css/style.css',
-        'css/styles-carousel.css',
         'css/styles-new.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
     ];
     public $js = [
         'js/modernizr.min.js',
-
-        'js/jquery.min.js',
+        //'js/jquery.min.js',
         'js/popper.min.js',
         'js/bootstrap.min.js',
         'js/metisMenu.min.js',
@@ -50,8 +48,9 @@ class AppAsset extends AssetBundle
         'js/myajax.js',
         'js/search.js',
         'js/script.js',
-        'js/carousel.js',
+         'js/carousel.js',
         'js/modal.js',
+        'js/chat.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset'

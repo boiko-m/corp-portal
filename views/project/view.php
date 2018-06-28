@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Проект "Доставки запчастей до двери клиента"';
+$this->title = 'Проект "Индивидуальный план рекламы (ИПР)"';
 $this->params['breadcrumbs'][] = "Проекты компании";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -47,232 +47,56 @@ $this->params['breadcrumbs'][] = $this->title;
         font-size:14px;
         text-align: justify;
     }
+    .nav-tabs .nav-link {
+        border: 5px solid #ff000000;
+    }
+    
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-12 ">
+    <div class="col-xs-9 col-md-9 ">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
+            <ul class="nav nav-tabs nav-justified nav-project " style="margin: 10px;">
                 <li class="nav-item">
-                    <a href="#spr1" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1</a>
+                    <a href="#id=1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick = "tajax('/project/all', {
+                        container : 'projectall',
+                        data: 'id=1'
+                    })">1 этап (01.01. -21.02.18)</a>
                 </li>
                <li class="nav-item">
-                    <a href="#spr2" class="nav-link active" data-toggle="tab" aria-expanded="false">Этап 2 <small>до 20.06</small></a>
+                    <a href="#spr2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick = "tajax('/project/all', {
+                        container : 'projectall',
+                        data: 'id=2'
+                    })">2 этап (21.02. - 25.04.18)</small></a>
                 </li>
                  <li class="nav-item">
-                    <a href="#spr3" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 3</a>
+                    <a href="#spr3" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick = "tajax('/project/all', {
+                        container : 'projectall',
+                        data: 'id=3'
+                    })">3 этап (27.04 - 21.06.18)</a>
                 </li>
                  <li class="nav-item">
-                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 4</a>
+                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false" onclick = "tajax('/project/all', {
+                        container : 'projectall',
+                        data: 'id=4'
+                    })">4 этап <br> <br></a>
                 </li>
                 <li class="nav-item col-xs-3 col-md-3">
-                    <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Проект</a>
+                    <a href="#target2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick = "tajax('/project/infoajax', {
+                        container : 'projectall',
+                        data: 'id=1'
+                    })">Проект <br> <br></a>
                 </li>
             </ul>
-        </div>
-        
-    </div>
-</div>
-<br>
-<div class="row">
-    <!-- <div class="col-xs-12 col-md-2 ">
-    
-        <div class="card project-menu-left" >
-                item
-                <div class="card-header">
-                    Этапы
+
+            <div>
+                <div id = "projectall">
+                    // контент
                 </div>
-                <a href="javascript:void(0);" class="dropdown-item">
-                    <div>
-                        Этап 1
-                    </div>
-                    <small>
-                        с 20.01.2018 по 27.02.2018 <br>
-                        Завершен
-                    </small>
-                </a>
-    
-                <a href="javascript:void(0);" class="dropdown-item">
-                    <div>
-                        Этап 2
-                    </div>
-                    <small>
-                        с 27.02.2018 по 27.04.2018 <br>
-                        Завершен
-                    </small>
-                </a>
-    
-    
-                <a href="javascript:void(0);" class="dropdown-item" style="background: #f5f5f5;">
-                    <div>
-                        Этап 3
-                    </div>
-                    <small>
-                        с 27.04.2018 по 27.06.2018 <br>
-                        В работе
-                    </small>
-                </a>
-    
-                
-    
-                <div style="padding: 3px 10px">
-                    <a href="" class = "crad-link"><small>Создать этап</small></a>
-                    <a href="" class = "crad-link"><small>Управление</small></a>
-                </div>
-    
-        </div>
-    </div> -->
-    <div class="col-xs-12 col-md-9 ">
-        <div class="card">
-            <div class="card-header">
-                Этап 3 <small> с 20.01.2018 по 20.02.2018</small>
             </div>
 
-            <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
-                <li class="nav-item">
-                    <a href="#spr1" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>1</a>
-                </li>
-               <li class="nav-item">
-                    <a href="#spr2" class="nav-link active" data-toggle="tab" aria-expanded="false">Спринт 2<br><small>(20.02 - 20.03)</small> </a>
-                </li>
-                 <li class="nav-item">
-                    <a href="#spr3" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>3</a>
-                </li>
-                 <li class="nav-item">
-                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>4</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false">Спринт<br>5</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#target" class="nav-link" data-toggle="tab" aria-expanded="false">Цели и<br>итоги</a>
-                </li>
-            </ul>
-
-
-                <div  class="tab-content">
-                    <div id="spr1" class="tab-pane  show ">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est excepturi quis totam expedita voluptas veniam, molestias itaque perspiciatis libero aliquid, laborum possimus velit, nemo tempore in repudiandae beatae reprehenderit repellendus eius cumque enim numquam dolor. Eaque maiores fuga iure quia, necessitatibus, nesciunt architecto dolor magni. Voluptatum cum quae, vero laudantium!
-                        </p>
-                    </div>
-                    <div id="spr2" class="tab-pane show active">
-                        <table class="table project-table table-striped">
-                            <thead>
-                                <th>Задача</th>
-                                <th style="text-align: center;">План.</th>
-                                <th>Факт.</th>
-                                <th>%</th>
-                                <th>Исполнитель</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <a href=""><i class="dripicons-document-edit"></i></a>
-                                        <small><a href="" class="card-link">Разобраться, как конкуренты предлагают зпч, сразу с доставкой или после</a></small>
-                                    </td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>33</td>
-                                    <td><a href="" class="card-link">Гавриленко А.С.</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <small><a href="" class="card-link">Доделать алгоритм автоматизации доставки в 1С и сделать ТЗ в ИТ </a></small>
-                                    </td>
-                                    <td>3</td>
-                                    <td>32</td>
-                                    <td>5</td>
-                                    <td><a href="" class="card-link">Савченко А.Е.</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <small><a href="" class="card-link">Сделать в алгоритме автоматизации в блоке транспорта предложения, замечания </a></small>
-                                    </td>
-                                    <td>3</td>
-                                    <td>3</td>
-                                    <td>100</td>
-                                    <td><a href="" class="card-link">Михлай И.К.</a></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="spr3" class="tab-pane show ">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt earum, reprehenderit sequi qui recusandae rem labore numquam, deserunt soluta quo?
-                        </p>
-                    </div>
-
-                    <div id="spr4" class="tab-pane show ">
-                        <p>
-                            spr4
-                        </p>
-                    </div>
-
-                    <div id="target" class="tab-pane show" style="padding: 0px 20px;">
-                        <h5>
-                            Цели этапа
-                        </h5>
-                        <p class="text-muted" style="padding-left: 20px;">
-                            Начинаем считать фактические даты доставки клиенту, Дату, к которой обещаем привезти (не позже).  И разницу= опоздание по сроку. 
-                        </p>
-                        <div class="project-target" style="padding-left: 20px;">
-                            <div class = "project-target-items" style = "background: #f7931d1c">
-                                <div class="project-target-item">
-                                    Cделать 50 клиентов /отгрузок по программе.
-                                </div>
-                                <small> - Скорректированная цель: <a href="">Алла Чиж</a> от 15.02.2018</small>
-                            </div>
-                            <div class = "project-target-items">
-                                <div class="project-target-item">
-                                    Опоздание  -  не более 5 клиентам  и/или более 10% опозданий (на 2-3 дня) -  считаем вручную.
-                                </div>
-                                <small></small>
-                            </div>
-                            <div class = "project-target-items">
-                                <div class="project-target-item">
-                                    Некомплект при отправках.
-                                </div>
-                                <small></small>
-                            </div>
-                        </div>
-
-                        <br> <br>
-                        <h5>
-                            Итоги этапа
-                        </h5>
-                        <p class="text-muted" style="padding-left: 20px;">
-                            Начинаем считать фактические даты доставки клиенту, Дату, к которой обещаем привезти (не позже).  И разницу= опоздание по сроку. 
-                        </p>
-                        <div class="project-target" style="padding-left: 20px;">
-                            <div class = "project-target-items">
-                                <div class="project-target-item">
-                                    Разобрались с  проблемой и выработали план действий на примере 3-х клиентов
-                                </div>
-                            </div>
-                            <div class = "project-target-items">
-                                <div class="project-target-item">
-                                    Выполнили задачи этапа, приняли решение закрыть этап с оценкой Хорошо (зеленая зона).
-                                </div>
-                                <small></small>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    
-                </div>
-            
         </div>
+
     </div>
     <div class="col-xs-12 col-md-3 ">
         <div class="card">
@@ -372,7 +196,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="work-group-view-content">
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Савченко А. Е.</button>
+                                    <button type="button" class="btn btn-light">Масюк Е.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
@@ -391,7 +215,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="work-group-view-content">
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Гавриленко А.С.</button>
+                                    <button type="button" class="btn btn-light">Гавриленко А.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
@@ -403,7 +227,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
 
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Червяков Д. В.</button>
+                                    <button type="button" class="btn btn-light">Власов С.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
@@ -415,7 +239,75 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
 
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Тищенко А. В.</button>
+                                    <button type="button" class="btn btn-light">Горустович Ю.</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Добавить задачу</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="#">Добавить задачу</a>
+                                        <div class="dropdown-divider"></div>
+                                        <small style="padding: 10px;">с 20.01.2018</small>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group m-b-10">
+                                    <button type="button" class="btn btn-light">Савченко А.</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Добавить задачу</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="#">Добавить задачу</a>
+                                        <div class="dropdown-divider"></div>
+                                        <small style="padding: 10px;">с 20.01.2018</small>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group m-b-10">
+                                    <button type="button" class="btn btn-light">Солтан Д.</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Добавить задачу</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="#">Добавить задачу</a>
+                                        <div class="dropdown-divider"></div>
+                                        <small style="padding: 10px;">с 20.01.2018</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="work-group-view">
+                            <div class="work-group-view-title">
+                                Привлеченный состав:
+                            </div>
+                            <div class="work-group-view-content">
+                                <div class="btn-group m-b-10">
+                                    <button type="button" class="btn btn-light">Жуковский Ю.</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Добавить задачу</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="#">Добавить задачу</a>
+                                        <div class="dropdown-divider"></div>
+                                        <small style="padding: 10px;">с 20.01.2018</small>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group m-b-10">
+                                    <button type="button" class="btn btn-light">Бондарев С.</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Добавить задачу</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="#">Добавить задачу</a>
+                                        <div class="dropdown-divider"></div>
+                                        <small style="padding: 10px;">с 20.01.2018</small>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group m-b-10">
+                                    <button type="button" class="btn btn-light">Дубовик С.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
@@ -434,7 +326,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="work-group-view-content">
                                 <div class="btn-group m-b-10">
-                                    <button type="button" class="btn btn-light">Михлай И. К.</button>
+                                    <button type="button" class="btn btn-light">Чиж А.</button>
                                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Добавить задачу</span>
                                     </button>
@@ -516,8 +408,70 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
-    
+
 </div>
+<script>
+$( document ).ready(function() {
+  tajax('/project/all', {
+                        container : 'projectall',
+                        data: 'id=3'
+                    })
+});
+    
+</script>
+<br>
+
+    <!-- <div class="col-xs-12 col-md-2 ">
+    
+        <div class="card project-menu-left" >
+                item
+                <div class="card-header">
+                    Этапы
+                </div>
+                <a href="javascript:void(0);" class="dropdown-item">
+                    <div>
+                        Этап 1
+                    </div>
+                    <small>
+                        с 20.01.2018 по 27.02.2018 <br>
+                        Завершен
+                    </small>
+                </a>
+    
+                <a href="javascript:void(0);" class="dropdown-item">
+                    <div>
+                        Этап 2
+                    </div>
+                    <small>
+                        с 27.02.2018 по 27.04.2018 <br>
+                        Завершен
+                    </small>
+                </a>
+    
+    
+                <a href="javascript:void(0);" class="dropdown-item" style="background: #f5f5f5;">
+                    <div>
+                        Этап 3
+                    </div>
+                    <small>
+                        с 27.04.2018 по 27.06.2018 <br>
+                        В работе
+                    </small>
+                </a>
+    
+                
+    
+                <div style="padding: 3px 10px">
+                    <a href="" class = "crad-link"><small>Создать этап</small></a>
+                    <a href="" class = "crad-link"><small>Управление</small></a>
+                </div>
+    
+        </div>
+    </div> -->
+    
+
+    
+
 <style>
     .project-news-title {
         font-size: 14px;
@@ -549,7 +503,10 @@ $this->params['breadcrumbs'][] = $this->title;
     .project-target-items{
         padding: 10px;
         background: #f5f5f5;
-        border-radius: 3px;
-        margin-top: 5px;
+        margin-top: 10px;
+        box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+    }
+    .success-border {
+        border: 1px solid #43c499;
     }
 </style>

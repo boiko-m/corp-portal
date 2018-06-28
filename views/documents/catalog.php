@@ -52,8 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		<div>
 			<span>
-				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=877D0F77-9657-42F5-846F-FDBC8E66B3FD" target="_blank">5. CASE+FlexiCoil (online)</a> и
-				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=3E97196B-B1F5-4538-AC76-C2B18A551AA8" target="_blank">NewHolland(online)</a>
+				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=877D0F77-9657-42F5-846F-FDBC8E66B3FD" target="_blank">5. CASE+NewHolland(online)</a> и
+				<a href="https://ngpc.cnh.com/Lp/es/ds?dealerhash=73D7A754-7C12-4011-A65B-63184C8452BC" target="_blank">CASE+OtherBrands(online)</a>
 			</span>
 			<div>
 				Входить через chrome. Далее необходимо подождать, с экрана может пропасть окно входа на некоторое время. После чего, появится окно загрузки оболочки каталога. <br>
@@ -139,15 +139,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div>
 			<span><a href="http://jdpc.deere.com/jdpc/servlet/com.deere.u90490.partscatalog.view.servlets.HomePageServlet_Alt?ui_lang_code=59" target="_blank">16. John Deere </a></span>
 		</div>
-
-		<div>
-			<span><a href="https://app.exso.pl/UniaPortal/LOGIN/index.html;jsessionid=0C94828FFBE175CD4075DAE6522ABE25" target="_blank">17. Уния </a></span>
-			<div>
-				Логин: llclbr-agromarket.parts <br>
-				Пароль: LBRUnia2018
-			</div>
-		</div>
-
 
 	</div>
 </div>
