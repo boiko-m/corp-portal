@@ -16,17 +16,11 @@ use yii\widgets\ActiveForm;
 </style>
 
 <div class="setting-options-form">
-
     <?php $form = ActiveForm::begin(); ?>
-
     <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
     <div class="form-group button-save-user-options">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
-
     <?php ActiveForm::end(); ?>
-
 </div>

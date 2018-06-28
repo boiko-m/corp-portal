@@ -37,4 +37,20 @@
 		box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
 		margin-bottom: 1px;
 	}
+
+	.im-list-user-message-choose {
+		background-color: <?= $backgroundColor ?> !important;
+	}
+
+	.upload-drop-zone.drop {
+		border-color: <?= $backgroundColor ?> !important;
+	}
+
+	.im-dialog-preview-text {
+		color: <?= $backgroundColor ?> !important;
+	}
+
+	.im-icon-envelope {
+		color: <?= $backgroundColor ?> !important;
+	}
 </style>

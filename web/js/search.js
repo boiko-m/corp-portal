@@ -104,20 +104,12 @@ $("#text-search").focusout(function () {
 
 $('#text-search').focus(function(){
     var width = $('#for-search').outerWidth();
-    if( $(window).width() <= '1100' ){
-        width = '200px';
-    }
-    else if($("body").is('.enlarged') && $(window).width() <= '1100' ){
-        width = '200px';
-    }
-    $('#text-search').css('width', width);
-    if( $(window).width() >= '1100' ) {
-        $('.close').css('right', 210 - width);
-    }
+    var width1 = $('#text-search').outerWidth();
 
+    $('#text-search').css('width', width);
     $('#submitSearch').hide(1);
-    $('.close').css('right', 210 - width);
-    $('#hidden-search-close').show(500);// скрываем отображение лупы при клике
+    $('.close-search').css('right', width1 - width);
+    $('#hidden-search-close').show(100);// скрываем отображение лупы при клике
 
 
 });
@@ -128,4 +120,14 @@ $('.vote-toggle').click(function () {
 });
 
 $('.full-search').css('left',20 + $('#full-search').width() );
-$('.main-search').css('left',90 + $('#text-search').width() );
+
+$(document).on('click', '.close-search', function () {
+    $('#text-search').val('');
+});
+
+$(document).ready(function(){
+     $('.gift-in-view ').tooltip({ trigger: "click"});
+});
+
+
+

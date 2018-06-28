@@ -8,6 +8,14 @@ use app\models\GiftSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\CropboxForm;
+use app\models\Profile;
+use yii\imagine\Image;
+use Imagine\Image\Box;
+use Imagine\Image\Point;
+use yii\helpers\Json;
+use \yii\web\UploadedFile;
+
 
 /**
  * GiftController implements the CRUD actions for Gift model.
@@ -65,11 +73,35 @@ class GiftController extends Controller
     public function actionCreate()
     {
         $model = new Gift();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        $model1 = new CropboxForm();
+        if (Yii::$app->request->isAjax && $model1->load(Yii::$app->request->post()))
 
+
+        {   $model1->image = UploadedFile::getInstance($model1, 'image');
+            $image = Image::getImagine()->open($model1->image->tempName);
+            $cropInfo = Json::decode($model1->crop_info)[0];
+
+            $newSizeThumb = new Box(intval($cropInfo['width'] / $cropInfo['ratio']), intval($cropInfo['height'] / $cropInfo['ratio']));
+            $cropSizeThumb = new Box(400, 400);
+            $cropPointThumb = new Point(intval($cropInfo['x'] / $cropInfo['ratio']), intval($cropInfo['y'] / $cropInfo['ratio']));
+            $imageName ='/gift_'. time() . '.' . $model1->image->getExtension();
+            $pathThumbImage = Yii::getAlias('@app/web/img/gift')
+                . $imageName;
+
+
+
+            $isSaved = $image->crop($cropPointThumb, $newSizeThumb)
+                ->resize($cropSizeThumb)
+                ->save($pathThumbImage, ['quality' => 100]);
+
+            if($isSaved) {
+               // return $this->renderAjax('create', compact('imageName', 'model'));
+                return  '/img/gift'.$imageName;
+            }
+        }
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -124,4 +156,15 @@ class GiftController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionFormimg(){
+        $model = new CropboxForm();
+
+            return $this->renderAjax('upload-img', [
+                'form' => $model,
+            ]);
+    }
+
+
+
 }

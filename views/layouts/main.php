@@ -1,8 +1,6 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -13,11 +11,9 @@ use app\assets\AppAsset;
 use app\assets\AppAssetBottom;
 use yii\widgets\ActiveForm;
 use cinghie\fontawesome\FontAwesomeAsset;
-
+use yii\bootstrap\Modal;
 //FontAwesomeAsset::register($this);
-
 AppAsset::register($this);
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -103,58 +99,48 @@ AppAsset::register($this);
                                 <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
                                     <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Удалить все</small></a> </span>Уведомления</h6>
                                 </div>
-
                                 <div class="slimscroll" style="max-height: 190px;">
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i></div>
                                         <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">1 min ago</small></p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
                                         <p class="notify-details">New user registered.<small class="text-muted">5 hours ago</small></p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-danger"><i class="mdi mdi-heart"></i></div>
                                         <p class="notify-details">Carlos Crouch liked <b>Admin</b><small class="text-muted">3 days ago</small></p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i></div>
                                         <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days ago</small></p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-purple"><i class="mdi mdi-account-plus"></i></div>
                                         <p class="notify-details">New user registered.<small class="text-muted">7 days ago</small></p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-custom"><i class="mdi mdi-heart"></i></div>
                                         <p class="notify-details">Carlos Crouch liked <b>Admin</b><small class="text-muted">13 days ago</small></p>
                                     </a>
                                 </div>
-
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                                     Отобразить все <i class="fi-arrow-right"></i>
                                 </a>
-
                             </div>
                         </li>
-
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                                aria-haspopup="false" aria-expanded="false">
@@ -162,12 +148,10 @@ AppAsset::register($this);
                                 <span class="badge badge-light badge-pill noti-icon-badge">6</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
                                     <h6 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Очистить</small></a> </span>Чат</h6>
                                 </div>
-
                                 <div class="slimscroll" style="max-height: 190px;">
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -175,28 +159,24 @@ AppAsset::register($this);
                                         <p class="notify-details">Максим Лешик</p>
                                         <p class="text-muted font-13 mb-0 user-msg">Привет, как дела? Возьми у меня заказ</p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="/images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt="" /> </div>
                                         <p class="notify-details">Sam Garret</p>
                                         <p class="text-muted font-13 mb-0 user-msg">Yeah everything is fine</p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
                                         <p class="notify-details">Karen Robinson</p>
                                         <p class="text-muted font-13 mb-0 user-msg">Wow that's great</p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="/images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt="" /> </div>
                                         <p class="notify-details">Sherry Marshall</p>
                                         <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next meeting</p>
                                     </a>
-
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="/images/users/avatar-6.jpg" class="img-fluid rounded-circle" alt="" /> </div>
@@ -204,12 +184,10 @@ AppAsset::register($this);
                                         <p class="text-muted font-13 mb-0 user-msg">Yeah everything is fine</p>
                                     </a>
                                 </div>
-
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                                     Все сообщения <i class="fi-arrow-right"></i>
                                 </a>
-
                             </div>
                         </li>
 */?>
@@ -234,11 +212,7 @@ AppAsset::register($this);
                             'action' => ['/search/index'],
                             'class' => 'hidden-xs',
                             'enableAjaxValidation' => true,
-
-
-
                         ]);
-
                         ?>
 
                         <!-- <input type="text" placeholder="Поиск..." class="form-control">-->
@@ -247,34 +221,26 @@ AppAsset::register($this);
                             'class' => 'form-control hidden-xs',
                             'id' => 'text-search',
                             'autocomplete'=>'off'
-
                         ])->label(false); ?>
 
                         <?/*= Html::input('text','MainForm','', ['class' => 'form-control hidden-xs',
                             'placeholder' => 'Поиск..', 'novalidate' => 'novalidate',
-
-
                         ])*/ ?>
 
 
                         <?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'submitSearch',]) ?>
-                        <?= Html::button('<span class="close" id="fa-close"></span>', ['class' => 'main-search',
+                        <?= Html::button('<div class="box_x_button close-search" aria-label="Закрыть" tabindex="0" role="button"></div>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'hidden-search-close', 'label' =>'input']) ?>
                         <?php $form = ActiveForm::end(); ?>
-
-
-                    </div>
-
-                </li>
-
-
+                     </div>
+                  </li>
             </ul>
 
         </nav>
 
 
-                 <div id="for-search" class="hidden-xs container1">
+        <div id="for-search" class="hidden-xs container1">
 
         </div>
 
@@ -285,7 +251,6 @@ AppAsset::register($this);
 
     </div>
     <!-- end topbar -->
-
     <?=$this->render('_left_menu.php')?>
 
 
@@ -326,9 +291,20 @@ AppAsset::register($this);
 
 
     </div>
-    <script>
-        //$(document).on("click", ".dropdown-toggle", function() {console.log(1)})
-    </script>
+
+
+    <?php
+    yii\bootstrap\Modal::begin([
+        'headerOptions' =>   ['id' => 'modalHeader'],
+        'id' => 'main-modal',
+        'class' => 'modal-dialog',
+        'header' => '',
+        'clientOptions' =>   false
+    ]);
+
+    echo "<div id='modalContent'></div>";
+    yii\bootstrap\Modal::end();
+    ?>
     <script src="//apps.skaip.su/buttons/widget/core.min.js" defer="defer"></script>
     <?php $this->endBody() ?>
 

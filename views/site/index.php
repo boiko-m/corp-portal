@@ -80,11 +80,7 @@ use yii\widgets\ActiveForm;
                     <div class="d-flex justify-content-around">
                         <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                     </div>
-
                     <img src="/<?=$video['img']?>" alt="" style="width: 100%">
-
-
-
                 </a>
             </div>
 

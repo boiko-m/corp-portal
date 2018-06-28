@@ -16,6 +16,13 @@ class User extends ActiveRecord implements IdentityInterface
         return 'corplbr.user';
     }
 
+    public function rules()
+    {
+        return [
+            [['username', 'email', 'auth_key'], 'required'],
+        ];
+    }
+
     /**
      * @inheritdoc
      */

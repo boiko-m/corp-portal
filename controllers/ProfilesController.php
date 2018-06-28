@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\BirthdaySearch;
+use app\models\Gift;
+use app\models\GiftType;
+use app\models\GiftUser;
 use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
@@ -10,6 +13,7 @@ use app\models\User;
 use app\models\SettingOptions;
 use app\models\SettingValues;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\db\Query;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -218,15 +222,82 @@ class ProfilesController extends Controller
      */
     public function actionView($id)
     {
+        //подарки
+       /* $allGift = Gift::find()->with('giftType')->asArray()->all();
+        debug($allGift);*/
+
+
+          $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
+          $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift')->with('userFrom', 'userFrom.profile')->all();
+
         $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
+        $gift4 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+            ->orderBy(['id' => SORT_DESC //Need this line to be fixed
+            ])->all();
+
+
+        if(Yii::$app->request->post()){
+            $post = Yii::$app->request->post('GiftUser');
+           $user_id = Yii::$app->user->id;
+            $profile = Profile::find()->where(['id' => $user_id])->one();
+            $coins = (string)$profile->coins - (string)$post['costCoin'];
+            $profile->coins = intval($coins);
+            $profile->save();
+
+            $gift_user = new GiftUser();
+           // debug($post);
+            $gift_user->id_gift = intval($post['id_gift']);
+            $gift_user->id_user_from = $user_id;
+            $gift_user->message = $post['message'];
+            $gift_user->id_user_to = intval($id);
+            $gift_user->anonim = 0;
+            $gift_user->date = time();
+            $gift_user->save();
+            return $this->refresh();
+
+        }
 
         return $this->render('view', [
+            'id' => $id,
+            'profile' => $profile,
+            'gift' => $gift,
             'model' => $model,
-            'user' => $user
+            'user' => $user,
+            'gift4' => $gift4,
+
         ]);
     }
+public function actionModal(){
+    if(Yii::$app->request->isAjax) {
+        $curentId = Yii::$app->request->post();
+        $id = Yii::$app->user->id;
+        $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
+        $allGift = Gift::find()->with('giftType')->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
+        $model = new GiftUser();
+        $giftType = GiftType::find()->asArray()->all();
+        $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId', 'giftType'));
+        $b = $this->renderAjax('modal/footer', compact('models', 'pages'));
+        $c[0] = $a;
+        $c[1] = $b;
 
+        return Json::encode($c);
+    }
+}
+
+    public function actionGiftmodal()
+    {
+        if(Yii::$app->request->isAjax) {
+            $id = Yii::$app->request->post('data');
+            $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->orderBy('id DESC')->with('gift', 'userFrom', 'userFrom.profile')->all();
+
+            $count = count($gift);
+            $a[0] = $this->renderAjax('giftmodal/head', compact('count'));
+          $a[1] = $this->renderAjax('giftmodal/smallmodal', compact('gift'));
+
+            return Json::encode($a);
+        }
+    }
     /**
      * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

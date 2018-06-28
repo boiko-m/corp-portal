@@ -3,6 +3,11 @@
 use app\models\Session;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -13,17 +18,114 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-	<div class="col-xs-12 col-md-4 ">
-        <img class="card-img-top img-fluid card" src="<?=$model->getImage()?>" alt="Card image cap" style = "border-radius: 5px">
+           <div class="col-xs-12 col-md-4">
+                <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
 
 
-    </div>
+            <?php $col = count($gift4);?>
+               <?if(\Yii::$app->user->can("Admin") || isset($gift4)):?>
+                 <div class=" gift-four" style="width: 100%;    padding: 10px;">
+                         <?php
+                            $count = "<span style='color: #CCC'>$col</span>"?>
+                              <?php if(!$col == 0){?>
+                                <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+                                     <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
+                                         'data-id' =>$id,
+                                         'style'=>' color: black; cursor: pointer'])?>
+                                </div>
+                            <?php }?>
+
+
+                    <?php
+                        $i = 0;
+                    foreach ($gift4 as $value){
+                        $i++;
+                        if($i== 4){
+                            break;
+                        }
+
+                        $a = Html::a($value['userFrom']['profile']['first_name'].' '.$value['userFrom']['profile']['last_name'], '/profiles/'.$value['userFrom']['id']);
+
+                        if($value['gift']['img'][0] != '/') {
+                            $img = '/'.$value['gift']['img'];
+                        }
+                        else{
+                            $img = $value['gift']['img'];
+                        }
+?>
+ <span class="tooltiplbr">
+    <img class="gift-in-view gift-button-view" id="<?=$value['id']?>" src="<?=$img?>"  data-id="<?=$id?>">
+        <span class="tooltiptext"  style=" width: auto">
+             <div class="row" style="padding: 10px; width: auto">
+
+                 <div class="col-md-3">
+                     <?if(isset($value['userFrom']['profile']['img']) && strlen($value['userFrom']['profile']['img']) > 0):?>
+                         <img src="/img/user/thumbnail_<?=$value['userFrom']['profile']['img']?>" alt="user"
+                          class="rounded-circle" style="width: 35px">
+                     <?else:?>
+                         <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
+                        <?endif;?>
+                            </div>
+                                <div class="col-md-9" style=" text-align: justify; font-size: 13px">
+                                 <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
+                                        ' '.$value['userFrom']['profile']['last_name'],
+                                        \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
+                                        ['class' => 'author', 'style' => 'text-align: left'])?>
+                                    <div style="color: #0a0a0a; text-align: left" >
+                                       <?=$value['userFrom']['profile']['branch']?>
+                                   </div>
+                                </div>
+                            </div>
+
+                    <?php   if($value['message'] != '' && !empty($value['message'])): ?>
+                          <?php if($col !=1):?>   <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif;?>
+                          <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
+                              "<?=($value['message'])?>"
+                          </div>
+
+                         <?php endif;?>  <div class="row" style=" width: auto">
+                                    <?php   if($value['date'] != '' && !empty($value['date'])): ?>
+                                          <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d G:i', $value['date']);?></div>
+                                    <?php endif;?>
+
+                     </div>
+        </span>
+ </span>
+
+
+                                  <?php }?>
+
+
+                            <?php if(Yii::$app->user->id != $id){?>
+
+                                <div class="" style=" border-radius: 5px; padding: 10px">
+                                     <?=Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
+                                             'class' => 'btn  waves-effect w-md btn-light showModalButton',
+                                             'data' => $id,
+                                             'style'=>' border-radius: 5px'
+                                     ])?>
+                                </div>
+                            <?php }?>
+
+
+
+               </div>
+
+    <!--  </div>-->
+            <!--</div>-->
+
+               <?php endif;?>
+        </div>
+
+
+
+
     <div class="col-xs-12 col-md-8">
         <div class="card m-b-30">
 			<div class = "card-header">
                         <h5  class="" style="font-weight: bold;color: black;margin: 0px;"><?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?></h5>
                     </div>
-            	
+
             	<div class="col-12" style="padding: 10px 20px;">
             		<?php if ($model->branch): ?>
             			<div> Филиал: <?=$model->branch?> </div>
@@ -43,18 +145,20 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                Основная информация
 	                            </a>
 	                        </li>
-	                        <!-- <li class="nav-item">
+
+	                        <!--<li class="nav-item">
 	                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
-	                                Сообщения
+	                               Подарки
 	                            </a>
-	                        </li>
-	                        <li class="nav-item">
-	                            <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
-	                                Управление
-	                            </a>
-	                        </li> -->
+	                        </li>-->
+                            <!--
+                           <li class="nav-item">
+                               <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                   Управление
+                               </a>
+                           </li> -->
 	                    </ul>
-                    
+
                     <style>
                         .information_row {
                             border-bottom: 1px solid #ebebeb;
@@ -112,7 +216,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							<?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
                                 <div class="row information_row">
                                     <div class="col">
-                                        Телефон (доп.)
+                                        <Те></Те>лефон (доп.)
                                     </div>
 									<div class="col">
                                         <?php $phones = explode(";", $model->phone2); ?>
@@ -124,7 +228,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             <?php endif ?>
-							
+
 							<?php if ($model->skype): ?>
 								<div class="row information_row">
 	                                <div class="col">
@@ -135,7 +239,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                </div>
 	                            </div>
 							<?php endif ?>
-                            
+
 							<?php if ($user->email): ?>
 								<div class="row information_row">
 	                                <div class="col">
@@ -146,7 +250,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                                </div>
 	                            </div>
 							<?php endif ?>
-                            
+
 
                             <?php if (isset($model->sip) and $model->sip != 0): ?>
                                 <div class="row information_row">
@@ -193,12 +297,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
 
                         <div class="tab-pane fade" id="profile-b1">
-                            2 часть
-                        </div>
-            </div>
+
+
+
+                            <?php if(Yii::$app->user->id != $id){?>
+                                <?=Html::a('Отправить подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' =>$id])?>
+
+                            <?php }?>
+                            <?=Html::a('Просмотреть все', '', ['class' => 'btn  waves-effect w-md btn-light gift-button-view', 'data' =>$id])?>
+
+
+
+                       </div>
 		<?php endif // если нет email, то не выводим всю общую информацию?>
 
         </div>
     </div>
 
 </div>
+
