@@ -21,22 +21,16 @@ $this->params['breadcrumbs'][] = $this->title;
            <div class="col-xs-12 col-md-4">
                 <img class="card-img-top img-fluid card m-b-30" src="<?=$model->getImage()?>" alt="<?=$model->last_name?> <?=$model->first_name?> <?=$model->middle_name?>" style = "border-radius: 5px">
 
-           <!-- <div class="row">-->
-              <!--  <div style="margin: 10px auto; text-align: center;     width: 100%;">-->
-<?php $col = count($gift4);?>
+
+            <?php $col = count($gift4);?>
                <?if(\Yii::$app->user->can("Admin") || $col != 0):?>
-               <div class=" gift-four" style="width: 100%;    padding: 10px;">
-
-
-                            <?php
+                 <div class=" gift-four" style="width: 100%;    padding: 10px;">
+                         <?php
                             $count = "<span style='color: #CCC'>$col</span>"?>
-<!--                            --><?/*=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view', 'data' =>$id, 'style'=>' color: black; cursor: pointer'])*/?>
-                        <?php if(!$col == 0){?>
+                            <?php if(!$col == 0){?>
                             <div  style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
                             <?=Html::a('Подарки: '.$count, '', ['class' => 'gift-button-view',
                                 'data-id' =>$id,
-                              /*'data-toggle' => "modal",
-                                'data-target' => "#main-modal",*/
                                 'style'=>' color: black; cursor: pointer'])?>
                             </div>
                             <?php }?>
@@ -71,30 +65,28 @@ $this->params['breadcrumbs'][] = $this->title;
                      <?else:?>
                          <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle" style="width: 40px">
                      <?endif;?>
-                 </div>
-                 <div class="col-md-9" style=" text-align: justify; font-size: 13px">
-                  <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
-                         ' '.$value['userFrom']['profile']['last_name'],
-                         \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
-                         ['class' => 'author', 'style' => 'text-align: left'])?>
-                     <div style="color: #0a0a0a; text-align: left" >
-                        <?=$value['userFrom']['profile']['branch']?>
-                    </div>
-                 </div>
-                 </div>
+                            </div>
+                                <div class="col-md-9" style=" text-align: justify; font-size: 13px">
+                                 <?=\yii\helpers\Html::a($value['userFrom']['profile']['first_name'].
+                                        ' '.$value['userFrom']['profile']['last_name'],
+                                        \yii\helpers\Url::to(['/profiles/'.$value['userFrom']['profile']['id']]),
+                                        ['class' => 'author', 'style' => 'text-align: left'])?>
+                                    <div style="color: #0a0a0a; text-align: left" >
+                                       <?=$value['userFrom']['profile']['branch']?>
+                                   </div>
+                                </div>
+                            </div>
 
                     <?php   if($value['message'] != '' && !empty($value['message'])): ?>
-                     <?php if($col !=1):?>   <hr style="  margin-top: 0;<?php endif;?>
-     margin-bottom: 0; ">
+                          <?php if($col !=1):?>   <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif;?>
+                          <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
+                              "<?=($value['message'])?>"
+                          </div>
 
-                     <div class="col-md-12" style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;" >
-                         "<?=($value['message'])?>"
-                     </div>
-
-                         <?php endif;?>  <div class="row" style=" width: auto">
-                         <?php   if($value['date'] != '' && !empty($value['date'])): ?>
-                    <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d.m', $value['date']);?></div>
-                         <?php endif;?>
+                    <?php endif;?>  <div class="row" style=" width: auto">
+                               <?php   if($value['date'] != '' && !empty($value['date'])): ?>
+                                     <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d h:i A', $value['date']);?></div>
+                               <?php endif;?>
 
                      </div>
         </span>
