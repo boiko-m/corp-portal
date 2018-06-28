@@ -118,13 +118,14 @@ var Notifications = (function(opts) {
             timeout: opts.xhrTimeout,
             success: function (data) {
                 markRead(elem.find('.notify-lbr').remove());
-                //switchDisplayByCount(0);
-                showList();
+                switchDisplayByCount(0);
+                //showList();
             }
         });
     });
 
     var switchDisplayByCount = function(cnt) {
+        console.log(elem.find('.empty-row'))
         if(cnt == 0) {
             elem.find('.empty-row').show();
             return;
@@ -135,7 +136,7 @@ var Notifications = (function(opts) {
     var markRead = function(mark){
         mark.off('click').on('click', function(){ return false; });
         mark.attr('title', options.readLabel);
-        mark.tooltip('dispose').tooltip();
+        //mark.tooltip('dispose').tooltip();
         mark.closest('.dropdown-item').addClass('read');
     };
 
