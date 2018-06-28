@@ -29,7 +29,6 @@ use Yii;
  */
 class Profile extends \yii\db\ActiveRecord
 {
-     public $phone1; public $phone2;
     /**
      * @inheritdoc
      */
@@ -45,7 +44,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'sex', 'sip'], 'integer'],
+            [['id', 'sex', 'sip', 'coins'], 'integer'],
             [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
             [['birthday', 'date_job'], 'safe'],
             [['id'], 'unique'],

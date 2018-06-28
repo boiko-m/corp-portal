@@ -1,0 +1,221 @@
+.carousel  {
+   max-width: 1080px; /* ширина всего блока */
+   margin: 10px auto;
+   width:95%;
+   float: left;
+}
+.carousel-wrapper {
+   margin: 0 30px; /* отступы для стрелок */
+   overflow: hidden; /* скрываем содержимое, выходящее за рамки основной области */
+   position:relative;
+}
+.carousel-items {
+   width: 10000px; /* устанавливаем большую ширину для набора элементов */
+   position: relative; /* позиционируем блок относительно основной области карусели */
+}
+.carousel-block {
+    position: relative;
+   float: left; /* выстраиваем все элементы карусели в ряд */
+   width: 80px; /* задаём ширину каждого элемента */
+    height: 100px;
+   padding: 10px 4px 10px 0px; /* делаем оступы, чтобы элементы не сливались */
+
+
+}
+.carousel-block img{
+    position: absolute;
+   display:block;
+
+
+}
+
+/*********** BUTTONS ***********/
+.carousel-button-left a, .carousel-button-right a{
+   width:24px;
+   height: 24px;
+   position: relative;
+   top: 25px;
+   cursor: pointer;
+   text-decoration:none;
+}
+
+
+.carousel-button-left a{
+   float: left;
+   background: url(../img/content/back.png);
+}
+.carousel-button-right a{
+   float: right;
+   background: url(../img/content/next.png);
+}
+
+/*********** SHADOW ***********/
+.shadow{
+ border-bottom-width: 3px; /* Толщина линии внизу */
+   border-bottom-style: solid; /* Стиль линии внизу */
+   border-bottom-color: #720586; /* Цвет линии внизу */
+}
+
+div .col-md-4.col-md-4-sizeModal{
+   height: 100px;
+}
+
+
+
+.canСhoose:hover{
+ opacity: 0.4;
+   cursor: pointer;
+}
+
+.gift-to-send{
+margin: 0 0 0 20px;
+}
+.gift-submit{
+    min-width: 100%; min-height: 100%; position: relative;
+    bottom: -20px;
+}
+.gift-cost{
+    position: absolute;
+   font-size: 12.5px;
+  background: #e5ebf1;
+   background: rgba(229,235,241,.9);
+   border-radius: 3px;
+   padding: 1px 4px 2px;
+   margin: 0 1px;
+   color: #42648b;
+   font-weight: 700;
+    bottom: 4px;
+   text-align: center;
+   z-index: 1;
+    /* position: absolute;
+  /* bottom: 0;
+     left: 0;
+     right: 0;
+    */
+}
+.gift-cost-tosend{
+   /* position: absolute;*/
+    font-size: 12.5px;
+    border-radius: 3px;
+    padding: 30px 4px 2px;
+    margin: 0 1px;
+    color: black;
+    font-weight: 700;
+    bottom: 30px;
+    text-align: center;
+    z-index: 1;
+
+}
+
+.canСhoose:hover::after {
+   position: absolute; /* Абсолютное позиционирование */
+   left: 0; right: 0; bottom: 5px; /* Положение подсказки */
+   z-index: 1; /* Отображаем подсказку поверх других элементов */
+   background: rgba(0,42,167,0.6); /* Полупрозрачный цвет фона */
+   color: #fff; /* Цвет текста */
+   text-align: center; /* Выравнивание текста по центру */
+   font-family: Arial, sans-serif; /* Гарнитура шрифта */
+   font-size: 11px; /* Размер текста подсказки */
+   padding: 5px 10px; /* Поля */
+   border: 1px solid #333; /* Параметры рамки */
+}
+
+
+
+
+/*слайдер для стр user*/
+
+
+.carousel-button-left.view a, .carousel-button-right.view a{
+   width:24px;
+   height: 24px;
+   position: relative;
+   top: 30px;
+   cursor: pointer;
+   text-decoration:none;
+}
+
+/*********** BUTTONS ***********/
+
+
+.carousel-block.view {
+    position: relative;
+   float: left; /* выстраиваем все элементы карусели в ряд */
+    width: 85px;/* задаём ширину каждого элемента */
+   padding: 10px 4px 10px 0px; /* делаем оступы, чтобы элементы не сливались */
+
+}
+
+.carousel.view  {
+   max-width: 1080px; /* ширина всего блока */
+   margin: 10px auto;
+   width:100%;
+   float: left;
+}
+
+.modal-dialog.modal-gift{
+    height: 400px;
+    width: 500px;
+}
+
+
+
+.modal-header.card-header{
+    text-align: left;
+}
+div .modal-header{
+    display: block;
+}
+.date-gift{
+    padding: 0 0 0 50px;
+    font-size: 12px;
+    color: #CCCCCC;
+
+
+}
+
+/*
+
+tooltip*/
+.tooltiplbr {
+    position: relative;
+    display: inline;
+
+}
+
+.tooltiplbr .tooltiptext {
+    visibility: hidden;
+    min-width: 220px;
+    max-width: 500px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 11 ;
+    bottom: 250%;
+    left: -5px;
+    right: 20px;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: #CCCCCC solid 1px;
+
+}
+
+.tooltiplbr .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltiplbr:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

@@ -46,14 +46,128 @@ File: Main Css File
   Menu
 ============= */
 /* Metis Menu css */
+.gift-button-view{
+  width: 100%;
+}
 
+div.content .modal .modal-dialog .modal-content .modal-body {
+   top: 20px;
+}
+
+.gift-four{
+  background-color: white;
+  border-radius: 5px;
+  border-color: #CCCCCC;
+  margin: 8px 0;
+  height: auto;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+  text-align: center;
+}
+
+.gift-in-view{
+  width: 55px;
+  height: 55px;
+  margin: 10px 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.gift-in-view:hover{
+  cursor: pointer;
+}
+.block-gift-view{
+  margin: 15px;
+}
+.content-page .modal .modal-dialog .modal-content .modal-body.padding{
+  padding: 0;
+  top: 0;
+}
+
+.content-page .modal .modal-dialog .modal-content{
+  border-radius: 4px;
+}
+
+
+div .modal .modal-content .modal-dialog .modal-content .modal-body {
+  padding: 0;
+  top: 0;
+}
+
+
+.margin15{
+  margin: 15px;
+}
+.carousel-button-left.view a, .carousel-button-right.view a {
+  width: 25px;
+  height: 36px;
+  position: relative;
+  top: 35px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
+.opacity-modal{
+  opacity: 0.5;
+}
+div .modal-body {
+  padding: 20px 20px 10px 20px;
+}
+div .modal .modal-dialog .modal-content .modal-body {
+  padding: 20px 20px 6px 20px;
+  top: 10px;
+}
+.modal .modal-dialog .modal-content {
+  top: 20px;
+  height: auto;
+max-height: 520px;
+ }
+
+.modal .modal-dialog .modal-content .modal-small{
+  top: 40px;
+  min-height: 270px;
+  height: auto;
+  max-height: 600px;
+}
+
+
+
+
+
+.showModalButton{
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  margin: 0 5px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+
+}
+.fa-gift:before {
+  color: #98a8c0;
+  width: 20px;
+  margin: 0 6px -2px 0;
+  font-size: 18px;
+  top: -5px;
+}
+.btn.waves-effect.w-md.btn-light.gift-in-view{
+  border-color: #CCCCCC;
+
+  margin: 0 10px 20px 10px;
+  width: auto;
+}
 
 .update-img:hover{
 
- opacity: 0.5;
-
-
+  opacity: 0.5;
 }
+.scroll-gift-view{
+  height: auto;
+  max-height: 450px;
+}
+#slimmcroll{
+  height: 400px;
+}
+
 .update-img:hover:after{
 
   content: attr(data-title);
@@ -63,37 +177,49 @@ File: Main Css File
   font-size: 15px;
 }
 /*крестик для поиска*/
-.close {
+.close-search {
   position: absolute;
+  padding: 30px 18px 21px 12px;
   margin-right: 1%;
-  top: 8px;
-  width: 18px;
-  height: 18px;
+  right: 2px;
+    top: 8px;
+  width: 22px;
+  height: 22px;
   opacity: 0.3;
-  color: black;
   vertical-align: center;
   font-size: 10px;
-  transition: background 85ms,color 85ms;
-  z-index: 1;
-  display: block;
   visibility: inherit;
 }
-.close:hover {
-  opacity: 1;
-}
-.close:before, .close:after {
+
+.box_x_button {
+  top: -2px;
   position: absolute;
-  vertical-align: center;
-  left: 15px;
-  content: ' ';
-  height: 18px;
-  width: 2px;
-  background-color: #333;
+  right: -5px;
+  float: right;
+  padding: 30px 25px 21px 12px;
+  background: url(../images/cross_popup.png) no-repeat 12px 21px;
+  width: 12px;
+  height: 12px;
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+  cursor: pointer;
+  outline: none;
 }
-.close:before {
+.close-search.box_x_button{
+  padding: 30px 18px 21px 12px;
+  width: 20px;
+  height: 20px;
+  top: -10px;
+}
+.close-search:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.close-search:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close-search:after {
   transform: rotate(-45deg);
 }
 /*/крестик для поиска*/
@@ -105,7 +231,7 @@ input#text-search:focus {
   box-shadow: none;
   color: #444;
   padding-right: 54px;
- /* Параметры рамки */
+  /* Параметры рамки */
 }
 
 #hidden-search-close{
@@ -116,7 +242,7 @@ input#text-search:focus {
 /*/при клике увеличение поиска и добавление иконки*/
 
 
-      /*не показывать поиск мобильным устрйоствам*/
+/*не показывать поиск мобильным устрйоствам*/
 @media screen and (max-width: 600px) {
   .for-desktop {
     visibility: hidden;
@@ -150,6 +276,7 @@ input#text-search:focus {
   float:left;
   width:50%;
   height:50px;
+  padding: 0 0 0 7px;
 
 }
 
@@ -181,7 +308,7 @@ input#text-search:focus {
   height:50px;
 }
 #five:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 
@@ -277,7 +404,9 @@ input#text-search:focus {
   color: black;
 }
 
-
+.hidden{
+  display: none !important;
+}
 
 .fa.fa-search{
   border: none;
@@ -287,7 +416,7 @@ input#text-search:focus {
 .main-search { /*кнопка поиска(лупа) в шаблоне*/
   position: absolute;
   top: 18px;
-  right: 0;
+  left: 225px;
   display: block;
   height: 34px;
   line-height: 34px;
@@ -299,16 +428,17 @@ input#text-search:focus {
 }
 
 .main-search:hover{
-  color: black;
+  cursor: pointer;
 }
 
-
- .fa.fa-search-plus:hover {
+.giftButton{
+  margin: 15px 0  30px 30px;
+}
+.fa.fa-search-plus:hover {
 
   color: black;
 
 }
-
 
 .vote-btn.btn.background-for-like{
     background-color: white;
@@ -1262,7 +1392,7 @@ a:focus {
   color: fade(#ffffff, 70%); }
 
 /* =============
-   Waves 
+   Waves
 ============= */
 /*!
  * Waves v0.6.0

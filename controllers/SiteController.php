@@ -62,5 +62,13 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionTooltip(){
+        $post = Yii::$app->request->post();
+        $profile = Profile::find()->where(['id' => $post['data']])->one();
+        $a = $this->renderAjax('tooltip', compact('profile'));
+
+        return $a;
+    }
+
 
 }

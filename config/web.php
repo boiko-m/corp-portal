@@ -150,7 +150,11 @@ $config = [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
                     'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD ],
+
                 ],
+                    'yii\bootstrap\BootstrapAsset' => [
+                        'css' => [],
+                    ]
             ],
         ],
         'urlManager' => [

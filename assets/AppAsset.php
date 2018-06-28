@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
         'css/metismenu.min.css',
         'css/style.css',
         'css/styles-new.css',
+        'css/styles-carousel.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
         'css/chat.css',
     ];
@@ -50,6 +51,8 @@ class AppAsset extends AssetBundle
         'js/search.js',
         'js/script.js',
         'js/chat.js',
+        'js/carousel.js',
+        'js/modal.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset'

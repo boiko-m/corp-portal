@@ -6,6 +6,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\widgets\Alphabet;
 
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -20,22 +21,36 @@ echo Html::jsFile('@web/js/ajax.js');
             <div class="table-responsive wrap-relative">
                 <div class="preloader"></div>
                 <?php Pjax::begin(['timeout' => 20000]); ?>
-
-                <?= Alphabet::widget([
-                    'options' => ['class' => 'alphabet-wrap'],
+            <?php
+            if(!Yii::$app->request->get('param') == 'new'){
+                 Alphabet::widget([
+                    'options' => ['class' => 'alphabet-wrap',
+                        ],
                     'letters' => $alphabet,
                     'actionLink' => 'profiles/index'
-                ]); ?>
+                ]);
+
+                $searchModels = $searchModel;
+            }
+            else{
+                $searchModels = null;
+            }
+
+            ?>
+
+
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModel,
+                    'filterModel' => $searchModels,
                     'summary' => "",
-                    'options'=>['class'=>'table table-striped'],
+
+                    'options'=>['class'=>'table table-striped',],
                     'columns' => [
                         [
+
                             'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}'
+                            'template' => '{view}',
                         ],
 
                         'name',
@@ -60,6 +75,7 @@ echo Html::jsFile('@web/js/ajax.js');
                                 return $link;
                             },
                             'format' => 'raw',
+
                         ],
                     ],
                     'pager' => [

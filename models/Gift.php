@@ -45,13 +45,13 @@ class Gift extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Название подарка',
             'img' => 'Img',
             'id_user' => 'Id User',
             'date' => 'Date',
-            'sum_coin' => 'Sum Coin',
-            'id_gift_type' => 'Id Gift Type',
-            'visible' => 'Visible',
+            'sum_coin' => 'Стоимость подарка',
+            'id_gift_type' => 'Тип подарка',
+            'visible' => 'Видимость',
         ];
     }
 

@@ -17,6 +17,8 @@ use Yii;
  */
 class GiftUser extends \yii\db\ActiveRecord
 {
+    public $hiddenInput;
+    public $costCoin;
     /**
      * @inheritdoc
      */
@@ -31,9 +33,10 @@ class GiftUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_gift', 'id_user_from', 'date', 'anonim', 'message', 'id_user_to'], 'required'],
-            [['id_gift', 'id_user_from', 'anonim', 'id_user_to'], 'integer'],
-            [['date', 'message'], 'string'],
+            ['id_gift','safe','message'=>'Выберите подарок'],
+            [[ 'id_user_from', 'date', 'anonim', 'id_user_to', ], 'required'],
+            [['id_gift', 'id_user_from', 'anonim', 'id_user_to','date'], 'integer'],
+            [[ 'message'], 'string'],
         ];
     }
 
@@ -48,7 +51,7 @@ class GiftUser extends \yii\db\ActiveRecord
             'id_user_from' => 'Id User From',
             'date' => 'Date',
             'anonim' => 'Anonim',
-            'message' => 'Message',
+            'message' => 'Сообщение',
             'id_user_to' => 'Id User To',
         ];
     }
