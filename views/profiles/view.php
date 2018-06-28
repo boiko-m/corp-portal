@@ -83,10 +83,10 @@ $this->params['breadcrumbs'][] = $this->title;
                               "<?=($value['message'])?>"
                           </div>
 
-                    <?php endif;?>  <div class="row" style=" width: auto">
-                               <?php   if($value['date'] != '' && !empty($value['date'])): ?>
-                                     <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d h:i G', $value['date']);?></div>
-                               <?php endif;?>
+                         <?php endif;?>  <div class="row" style=" width: auto">
+                                    <?php   if($value['date'] != '' && !empty($value['date'])): ?>
+                                          <div class="col-md-11 date-gift" style="text-align: right">  <?=date('Y.m.d G:i', $value['date']);?></div>
+                                    <?php endif;?>
 
                      </div>
         </span>
