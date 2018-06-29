@@ -19,7 +19,7 @@ class GiftNotification extends Notification
     public function getTitle(){
         switch($this->key){
            case self::GIFT_NOTIFY:
-                return Yii::t('app', sprintf("%s %s прислал Вам подарок", $this->userFrom->first_name, $this->userFrom->last_name));
+                return Yii::t('app', sprintf("%s %s прислал(a) Вам подарок", $this->userFrom->first_name, $this->userFrom->last_name));
            case self::GIFT_NOTIFY_FROM:
                 return Yii::t('app', 'Вы отправили подарок');
        }
