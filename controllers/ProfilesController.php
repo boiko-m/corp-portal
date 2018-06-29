@@ -228,13 +228,11 @@ class ProfilesController extends Controller
 
 
           $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-          $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift')->with('userFrom', 'userFrom.profile')->all();
-
-        $model = $this->findModel($id);
+         $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
-        $gift4 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+        $gift3 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
-            ])->all();
+            ])->limit(3)->all();
 
 
         if(Yii::$app->request->post()){
@@ -264,7 +262,7 @@ class ProfilesController extends Controller
             'gift' => $gift,
             'model' => $model,
             'user' => $user,
-            'gift4' => $gift4,
+            'gift3' => $gift3,
 
         ]);
     }

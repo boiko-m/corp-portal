@@ -47,7 +47,7 @@ use yii\widgets\Pjax;
         <?= $form->field($model, 'visible')
             ->radioList([1=>'Видимый', 2=> 'Скрытый']);?>
 
-        <?= $form->field($model, 'img')->textInput(['disabled' => 'true']) ?>
+        <?= $form->field($model, 'img')->textInput(/*['disabled' => 'true']*/) ?>
         <?= $form->field($model, 'id_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false); ?>
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success',  'form' => 'full_gift']) ?>
