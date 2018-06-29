@@ -46,7 +46,7 @@ class Gift extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Название подарка',
-            'img' => 'Img',
+            'img' => 'Подарок',
             'id_user' => 'Id User',
             'date' => 'Date',
             'sum_coin' => 'Стоимость подарка',
