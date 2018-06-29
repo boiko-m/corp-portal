@@ -29,6 +29,7 @@ class AppAsset extends AssetBundle
         'css/styles-carousel.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
         'css/chat.css',
+        'css/my-style.css',
         'plugins/jquery-toastr/jquery.toast.min.css',
     ];
     public $js = [
@@ -57,6 +58,6 @@ class AppAsset extends AssetBundle
         'js/modal.js',
     ];
     public $depends = [
-        'yii\web\JqueryAsset'
+        'yii\web\JqueryAsset',
     ];
 }
