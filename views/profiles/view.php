@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
              style="border-radius: 5px">
 
 
-        <? if (\Yii::$app->user->can("Admin") || isset($gifts_user)): ?>
+        <? if (\Yii::$app->user->can("Admin") and isset($gifts_user)): ?>
             <div class=" gift-four" style="width: 100%;padding: 10px;">
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
