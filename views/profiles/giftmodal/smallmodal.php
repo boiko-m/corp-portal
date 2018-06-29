@@ -43,7 +43,7 @@ use yii\helpers\Url;
                                                     <?php }  ?>
                                                 </span>
 
-                                                <img class="  gift-in-view" id="<?=$value['id']?>" src="<?=$img?>"  style = " display: block; margin: 30px auto; padding: 20px;  height: 200px; width: 200px;">
+                                                <img class="  gift-in-view" id="<?=$value['id']?>" src="<?=$img?>"  style = " display: block; margin: 30px auto; padding: 0px;  height: 250px; width: 250px;">
 
                                         <div style="text-align: center"> <?=$value['message'];?></div>
 
@@ -69,4 +69,3 @@ use yii\helpers\Url;
 <style
 
 </style>
-

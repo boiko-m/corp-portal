@@ -183,4 +183,3 @@ foreach ($giftType as $type_gift){
         $('#gift-cost'+cost).addClass('hidden');
     });
 </script>
-

@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
              alt="<?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name ?>"
              style="border-radius: 5px">
 
-
-        <? if (\Yii::$app->user->can("Admin") and isset($gifts_user)): ?>
+      <?php if (\Yii::$app->user->can("Admin")): ?>
+        <? if (isset($gifts_user)): ?>
             <div class=" gift-four" style="width: 100%;padding: 10px;">
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                       <?php if ($col != 1): ?>
                                           <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif; ?>
                                       <div class="col-md-12"
-                                           style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;">
+                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 20px;">
                                                     "<?= ($value['message']) ?>"
                                                 </div>
                                   <?php endif; ?>
@@ -105,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             </div>
-
+            <?php endif; ?>
             <!--  </div>-->
             <!--</div>-->
 
