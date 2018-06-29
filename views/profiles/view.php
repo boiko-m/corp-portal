@@ -60,47 +60,40 @@ $this->params['breadcrumbs'][] = $this->title;
                                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle"
                                                     style="width: 40px">
                                            <? endif; ?>
-                                                  </div>
-                                                      <div class="col-md-9"
-                                                           style=" text-align: justify; font-size: 13px">
-                                                       <?= \yii\helpers\Html::a($value['userFrom']['profile']['first_name'] .
-                                                           ' ' . $value['userFrom']['profile']['last_name'],
-                                                           \yii\helpers\Url::to(['/profiles/' . $value['userFrom']['profile']['id']]),
-                                                           ['class' => 'author', 'style' => 'text-align: left']) ?>
-                                                          <div style="color: #0a0a0a; text-align: left">
-                                                             <?= $value['userFrom']['profile']['branch'] ?>
-                                                         </div>
-                                                      </div>
-                                                  </div>
+                                        </div>
+                                        <div class="col-md-9"
+                                             style=" text-align: justify; font-size: 13px">
+                                         <?= \yii\helpers\Html::a($value['userFrom']['profile']['first_name'] .
+                                             ' ' . $value['userFrom']['profile']['last_name'],
+                                             \yii\helpers\Url::to(['/profiles/' . $value['userFrom']['profile']['id']]),
+                                             ['class' => 'author', 'style' => 'text-align: left']) ?>
+                                            <div style="color: #0a0a0a; text-align: left">
+                                               <?= $value['userFrom']['profile']['branch'] ?>
+                                           </div>
+                                        </div>
+                                    </div>
 
                                   <?php if ($value['message'] != '' && !empty($value['message'])): ?>
                                       <?php if ($col != 1): ?>
                                           <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif; ?>
-
-
-
                                       <div class="col-md-12"
                                            style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;">
                                                     "<?= ($value['message']) ?>"
                                                 </div>
-
                                   <?php endif; ?>
+
                                   <div class="row" style=" width: auto">
-                                                          <?php if ($value['date'] != '' && !empty($value['date'])): ?>
-                                                              <div class="col-md-11 date-gift"
-                                                                   style="text-align: right">  <?= date('Y.m.d G:i', $value['date']); ?></div>
-                                                          <?php endif; ?>
-
-                                           </div>
-                                        </span>
-                                  </span>
-
-
+                                      <?php if ($value['date'] != '' && !empty($value['date'])): ?>
+                                          <div class="col-md-11 date-gift"
+                                               style="text-align: right">  <?= date('Y.m.d G:i', $value['date']); ?></div>
+                                      <?php endif; ?>
+                                  </div>
+                              </span>
+                        </span>
                 <?php } ?>
 
 
                 <?php if (Yii::$app->user->id != $id) { ?>
-
                     <div class="" style=" border-radius: 5px; padding: 10px">
                         <?= Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
                             'class' => 'btn  waves-effect w-md btn-light showModalButton',
