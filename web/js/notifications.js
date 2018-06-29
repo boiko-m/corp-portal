@@ -14,7 +14,7 @@ var Notifications = (function(opts) {
     }
 
     var options = $.extend({
-        pollInterval: 40000,
+        pollInterval: 30000,
         xhrTimeout: 2000,
         readLabel: 'read',
         markAsReadLabel: 'mark as read'
@@ -94,7 +94,7 @@ var Notifications = (function(opts) {
                     if(object.seen == '0'){
                         seen += 1;
                     }
-                    list.append(item);
+                    list.prepend(item);
                 });
 
                 switchDisplayByCount(cnt);

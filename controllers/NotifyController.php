@@ -19,7 +19,7 @@ class NotifyController extends DefaultController {
         $list = (new Query())
             ->from('{{%notifications}}')
             ->andWhere(['or', 'user_id = 0', 'user_id = :user_id'], [':user_id' => $userId])
-            ->orderBy(['id' => SORT_DESC])
+            ->orderBy(['created_at' => SORT_ASC])
             ->all();
         $notifs = $this->prepareNotifications($list);
         $this->ajaxResponse(['list' => $notifs]);
