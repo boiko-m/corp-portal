@@ -14,7 +14,7 @@ var Notifications = (function(opts) {
     }
 
     var options = $.extend({
-        pollInterval: 60000,
+        pollInterval: 40000,
         xhrTimeout: 2000,
         readLabel: 'read',
         markAsReadLabel: 'mark as read'
@@ -22,6 +22,7 @@ var Notifications = (function(opts) {
 
     var getIcon = function(key) {
         switch (key) {
+            case "gift_notify_from":
             case "gift_notify":
                 return "mdi-gift";
             default:
