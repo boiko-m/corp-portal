@@ -31,11 +31,11 @@ $profile = Yii::$app->user->identity->profile;
         </div>
 
         <!-- item-->
-        <a href="<?=Url::toRoute(['profiles/view', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
+        <a href="<?=Url::toRoute(['/profiles/view', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
             <i class="fi-head"></i> <span>Профиль</span>
         </a>
 
-        <a href="<?=Url::toRoute(['profiles/update', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
+        <a href="<?=Url::toRoute(['/profiles/update', 'id' => Yii::$app->user->id])?>" class="dropdown-item notify-item">
             <i class="fi-cog"></i> <span>Изм. профиль</span>
         </a>
 
