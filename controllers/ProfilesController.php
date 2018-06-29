@@ -226,6 +226,8 @@ class ProfilesController extends Controller
         //подарки
        /* $allGift = Gift::find()->with('giftType')->asArray()->all();
         debug($allGift);*/
+        //$profile = Profile::findOne(3675);
+        ///echo "<pre>".print_r($profile, true)."</pre>"; die();
 
 
           $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
@@ -253,7 +255,11 @@ class ProfilesController extends Controller
             $gift_user->anonim = 0;
             $gift_user->date = time();
             $gift_user->save();
-            GiftNotification::create(GiftNotification::GIFT_NOTIFY, ['userId' => $id, 'userIdPath' => $id])->send();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY, [
+                'userId' => $id,
+                'userIdPath' => $id,
+                'userFrom' => Profile::findOne($user_id)
+            ])->send();
             GiftNotification::create(GiftNotification::GIFT_NOTIFY_FROM, ['userId' => $user_id, 'userIdPath' => $id])->send();
             return $this->refresh();
 
