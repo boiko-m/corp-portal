@@ -40,6 +40,7 @@ $this->registerJs(
     '$("document").ready(function(){
             $("#new_img").on("pjax:success", function() {
             $("#gift-img").val($(\'#new_img\').text());
+            $(\'.update-new-img\').attr(\'src\', $(\'#gift-img\').val());
     $("#new_img").hide();
 });
  });'
