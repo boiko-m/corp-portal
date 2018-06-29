@@ -273,7 +273,7 @@ public function actionModal(){
         $curentId = Yii::$app->request->post();
         $id = Yii::$app->user->id;
         $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-        $allGift = Gift::find()->with('giftType')->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
+        $allGift = Gift::find()->joinWith('giftType')->where(['gift_type.visible' => 1, 'gift.visible' => 1])->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
         $model = new GiftUser();
         $giftType = GiftType::find()->asArray()->all();
         $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId', 'giftType'));
