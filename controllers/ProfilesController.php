@@ -27,6 +27,7 @@ use yii\helpers\Json;
 use app\models\CropboxForm;
 use \yii\web\UploadedFile;
 use yii\helpers\Html;
+use app\notifications\GiftNotification;
 
 /**
  * ProfilesController implements the CRUD actions for Profile model.
@@ -252,6 +253,7 @@ class ProfilesController extends Controller
             $gift_user->anonim = 0;
             $gift_user->date = time();
             $gift_user->save();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY, ['userId' => $id])->send();
             return $this->refresh();
 
         }

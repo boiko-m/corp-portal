@@ -36,6 +36,20 @@ $config = [
                 ],
             ],
         ],
+        'notifications' => [
+            'class' => 'webzop\notifications\Module',
+            'channels' => [
+                'screen' => [
+                    'class' => 'webzop\notifications\channels\ScreenChannel',
+                ],
+                'email' => [
+                    'class' => 'webzop\notifications\channels\EmailChannel',
+                    'message' => [
+                        'from' => 'test@test.com'
+                    ],
+                ],
+            ],
+        ],
         'comments' => [
             'class' => 'ogheo\comments\Module'
         ],
@@ -170,8 +184,7 @@ $config = [
                 '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
 
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
-                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>'
             ]
 
         ],

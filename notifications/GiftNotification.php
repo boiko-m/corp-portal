@@ -1,0 +1,17 @@
+<?php
+namespace app\notifications;
+
+use Yii;
+use webzop\notifications\Notification;
+
+class GiftNotification extends Notification
+{
+    const GIFT_NOTIFY = 'gift_notify';
+
+    /**
+     * @inheritdoc
+     */
+    public function getTitle(){
+        return Yii::t('app', 'Вам прислали подарок');
+    }
+}
