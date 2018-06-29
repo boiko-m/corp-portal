@@ -231,7 +231,7 @@ class ProfilesController extends Controller
           $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
          $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
-        $gift3 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+        $gifts_user = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
             ])->limit(3)->all();
 
@@ -264,8 +264,8 @@ class ProfilesController extends Controller
             'gift' => $gift,
             'model' => $model,
             'user' => $user,
-            'gift3' => $gift3,
-
+            'gifts_user' => $gifts_user,
+            'col' => GiftUser::find()->where(['id_user_to' => $id])->with('gift', 'userFrom', 'userFrom.profile')->count()
         ]);
     }
 public function actionModal(){

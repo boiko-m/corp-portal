@@ -24,9 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
              style="border-radius: 5px">
 
 
-        <?php $col = count($gift3); ?>
-        <? if (\Yii::$app->user->can("Admin") || isset($gift3)): ?>
-            <div class=" gift-four" style="width: 100%;    padding: 10px;">
+        <? if (\Yii::$app->user->can("Admin") || isset($gifts_user)): ?>
+            <div class=" gift-four" style="width: 100%;padding: 10px;">
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
@@ -39,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?php
-                foreach ($gift3 as $value) { //формирование 3 подарков под пользователем
+                foreach ($gifts_user as $value) { //формирование 3 подарков под пользователем
                     $a = Html::a($value['userFrom']['profile']['first_name'] . ' ' . $value['userFrom']['profile']['last_name'], '/profiles/' . $value['userFrom']['id']);
                     if ($value['gift']['img'][0] != '/') {
                         $img = '/' . $value['gift']['img'];
@@ -316,4 +315,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     </div>
-
