@@ -94,7 +94,7 @@ class LbrNotifications extends \webzop\notifications\widgets\Notifications
             'readUrl' => Url::to(['/notify/read']),
             'readAllUrl' => Url::to(['/notify/read-all']),
             'xhrTimeout' => Html::encode($this->xhrTimeout),
-            'pollInterval' => Html::encode($this->pollInterval),
+            //'pollInterval' => Html::encode($this->pollInterval),
         ], $this->clientOptions);
 
         $js = 'Notifications(' . Json::encode($this->clientOptions) . ');';

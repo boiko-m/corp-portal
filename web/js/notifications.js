@@ -36,7 +36,7 @@ var Notifications = (function(opts) {
      * @returns {jQuery|HTMLElement|*}
      */
     var renderRow = function (object) {
-        var html = '<a href="javascript:void(0);" class="dropdown-item notify-lbr notify-item" data-id="' + object.id + '">' +
+        var html = '<a href="' + (object.url ? object.url : "javascript:void(0);") + '" class="dropdown-item notify-lbr notify-item" data-id="' + object.id + '">' +
                         '<div class="notify-icon bg-success"><i class="mdi ' + getIcon(object.key) + '"></i></div>' +
                         '<p class="notify-details" title="' + object.message + '" >' + object.message + '<small class="text-muted">' + object.timeago + '</small></p>' +
                     '</a>';
@@ -125,7 +125,6 @@ var Notifications = (function(opts) {
     });
 
     var switchDisplayByCount = function(cnt) {
-        console.log(elem.find('.empty-row'))
         if(cnt == 0) {
             elem.find('.empty-row').show();
             return;
@@ -159,9 +158,8 @@ var Notifications = (function(opts) {
             url: options.countUrl,
             type: "GET",
             dataType: "json",
-            timeout: opts.xhrTimeout,
+            timeout: options.xhrTimeout,
             success: function(data) {
-                //console.log(11);
                 setCount(data.count);
                 showToastList();
             },
@@ -178,9 +176,8 @@ var Notifications = (function(opts) {
         }
         _updateTimeout = setTimeout(function() {
             updateCount();
-        }, opts.pollInterval);
+        }, options.pollInterval);
     };
-
     // Fire the initial poll
     startPoll();
     showToastList();
