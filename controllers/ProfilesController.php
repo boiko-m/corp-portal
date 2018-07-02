@@ -230,7 +230,8 @@ class ProfilesController extends Controller
     {
         $time_online = time() - 180;
         $online = Profile::find()->where(['>','last_visit',$time_online])->andWhere(['id' => $id])->one();
-        if(isset($online) && $online != ''){
+        debug($online);
+        if(isset($online) && $online != null){
             $online = 'online';
         }
         else{
