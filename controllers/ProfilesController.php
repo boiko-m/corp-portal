@@ -229,8 +229,8 @@ class ProfilesController extends Controller
     public function actionView($id)
     {
         $time_online = time() - 180;
-        $online = Profile::find()->where(['>','last_visit',$time_online])->where(['id' => $id])->one();
-        if(isset($online)){
+        $online = Profile::find()->where(['>','last_visit',$time_online])->andWhere(['id' => $id])->one();
+        if(isset($online) && $online != ''){
             $online = 'online';
         }
         else{
