@@ -173,7 +173,7 @@ use yii\widgets\ActiveForm;
         </div>
 
     </div>
-    <div class="col-xs-12 col-md-4" style="margin-top: 10px">
+    <div class="col-xs-12 col-md-4" style="    margin-top: -80px;">
         <div class="card">
             <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
 
