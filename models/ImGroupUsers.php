@@ -60,6 +60,14 @@ class ImGroupUsers extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getGroupIm()
     {
         return $this->hasOne(ImGroups::className(), ['id' => 'id_group_im']);

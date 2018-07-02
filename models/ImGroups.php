@@ -52,6 +52,12 @@ class ImGroups extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public function getIdTypeGroup($code)
+    {
+        return (TypeGroupIm::find()->where(['code' => $code])->one())->id;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
