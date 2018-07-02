@@ -237,7 +237,7 @@ class ProfilesController extends Controller
         }
         elseif( $last_online->last_visit != null){
 
-            $online = 'был в сети: '.date('d.m.y G:i' ,$last_online->last_visit);
+            $online = 'был в сети: '.date('G:i d.m.y' ,$last_online->last_visit);
         }
         else{
             $online = '';
