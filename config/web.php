@@ -8,7 +8,7 @@ $config = [
     'sourceLanguage' => 'ru',
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'MyGlobalClass'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -33,6 +33,20 @@ $config = [
                 'itemFavorite' => [
                     'modelName' => app\models\News::class, // your model
                     'type' => hauntd\vote\Module::TYPE_TOGGLE, // like/favorite button
+                ],
+            ],
+        ],
+        'notifications' => [
+            'class' => 'webzop\notifications\Module',
+            'channels' => [
+                'screen' => [
+                    'class' => 'webzop\notifications\channels\ScreenChannel',
+                ],
+                'email' => [
+                    'class' => 'webzop\notifications\channels\EmailChannel',
+                    'message' => [
+                        'from' => 'test@test.com'
+                    ],
                 ],
             ],
         ],
@@ -72,6 +86,9 @@ $config = [
 
     ],
     'components' => [
+        'MyGlobalClass'=>[
+            'class'=>'app\components\MyGlobalClass'
+        ],
         /*'session'=>[
             'class'=>'yii\web\DbSession',
             'writeCallback'=>function($session)
@@ -170,8 +187,7 @@ $config = [
                 '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
 
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
-                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>'
             ]
 
         ],
@@ -202,6 +218,7 @@ $config = [
             ],
         ],
     ],
+    'timeZone' => 'Europe/Minsk',
     'params' => $params,
 
     ];

@@ -27,6 +27,7 @@ use yii\helpers\Json;
 use app\models\CropboxForm;
 use \yii\web\UploadedFile;
 use yii\helpers\Html;
+use app\notifications\GiftNotification;
 
 /**
  * ProfilesController implements the CRUD actions for Profile model.
@@ -62,6 +63,7 @@ class ProfilesController extends Controller
                  $dataProvider->setSort(['defaultOrder' => ['date_job' => SORT_DESC, ]]);
                  //$dataProvider->query->limit(15);
              }
+
              else{
                  $dataProvider->setSort(['defaultOrder' => ['last_name' => SORT_ASC]]);
              }
@@ -73,7 +75,11 @@ class ProfilesController extends Controller
             $dataProvider->query->andWhere(['like', 'last_name', $letter."%", false]);
 
         }
+        if(Yii::$app->request->get('param') == 'online') {
+            $time_online = time() - 180;
+            $dataProvider->query->where(['>','last_visit',$time_online]);
 
+        }
         $alphabetModels = Profile::find()->select(['last_name'])->all();
 
 
@@ -222,19 +228,28 @@ class ProfilesController extends Controller
      */
     public function actionView($id)
     {
-        //подарки
-       /* $allGift = Gift::find()->with('giftType')->asArray()->all();
-        debug($allGift);*/
+        $time_online = time() - 180;
+        $last_online =  Profile::find()->andWhere(['id' => $id])->one();
+        $online = Profile::find()->where(['>','last_visit',$time_online])->andWhere(['id' => $id])->one();
+
+        if(isset($online) && $online != null){
+            $online = 'online';
+        }
+        elseif( $last_online->last_visit != null){
+
+            $online = 'был в сети: '.date('G:i d.m.y' ,$last_online->last_visit);
+        }
+        else{
+            $online = '';
+        }
 
 
           $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-          $gift = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift')->with('userFrom', 'userFrom.profile')->all();
-
-        $model = $this->findModel($id);
+         $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
-        $gift4 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+        $gifts_user = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
-            ])->all();
+            ])->limit(3)->all();
 
 
         if(Yii::$app->request->post()){
@@ -254,6 +269,12 @@ class ProfilesController extends Controller
             $gift_user->anonim = 0;
             $gift_user->date = time();
             $gift_user->save();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY, [
+                'userId' => $id,
+                'userIdPath' => $id,
+                'userFrom' => Profile::findOne($user_id)
+            ])->send();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY_FROM, ['userId' => $user_id, 'userIdPath' => $id])->send();
             return $this->refresh();
 
         }
@@ -261,11 +282,11 @@ class ProfilesController extends Controller
         return $this->render('view', [
             'id' => $id,
             'profile' => $profile,
-            'gift' => $gift,
             'model' => $model,
             'user' => $user,
-            'gift4' => $gift4,
-
+            'gifts_user' => $gifts_user,
+            'online' => $online,
+            'col' => GiftUser::find()->where(['id_user_to' => $id])->with('gift', 'userFrom', 'userFrom.profile')->count()
         ]);
     }
 public function actionModal(){
@@ -273,7 +294,7 @@ public function actionModal(){
         $curentId = Yii::$app->request->post();
         $id = Yii::$app->user->id;
         $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-        $allGift = Gift::find()->with('giftType')->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
+        $allGift = Gift::find()->joinWith('giftType')->where(['gift_type.visible' => 1, 'gift.visible' => 1])->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
         $model = new GiftUser();
         $giftType = GiftType::find()->asArray()->all();
         $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId', 'giftType'));

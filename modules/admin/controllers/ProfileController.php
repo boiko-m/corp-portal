@@ -6,8 +6,10 @@ use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
 use yii\web\Controller;
+use yii\web\DbSession;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Session;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -35,6 +37,7 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new ProfileSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -54,6 +57,7 @@ class ProfileController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+
         ]);
     }
 

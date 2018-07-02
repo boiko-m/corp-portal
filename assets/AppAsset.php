@@ -29,6 +29,8 @@ class AppAsset extends AssetBundle
         'css/styles-carousel.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
         'css/chat.css',
+        'css/my-style.css',
+        'plugins/jquery-toastr/jquery.toast.min.css',
     ];
     public $js = [
         'js/modernizr.min.js',
@@ -38,6 +40,7 @@ class AppAsset extends AssetBundle
         'js/metisMenu.min.js',
         'js/waves.js',
         'js/jquery.slimscroll.js',
+        'plugins/jquery-toastr/jquery.toast.min.js',
         'plugins/moment/moment.js',
         'plugins/waypoints/lib/jquery.waypoints.min.js',
         'plugins/counterup/jquery.counterup.min.js',
@@ -55,6 +58,6 @@ class AppAsset extends AssetBundle
         'js/modal.js',
     ];
     public $depends = [
-        'yii\web\JqueryAsset'
+        'yii\web\JqueryAsset',
     ];
 }

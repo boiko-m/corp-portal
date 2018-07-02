@@ -89,10 +89,20 @@ use yii\widgets\ActiveForm;
                     <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
                     <a href = "/video/" class="btn  waves-effect w-md btn-light" style="width: 100%">Все видео</a>
                 </div>
+
             </div>
+
         </div>
+
+
+
+        </div>
+
+
     </div>
+
 </div>
+
 
 
 
@@ -150,10 +160,7 @@ use yii\widgets\ActiveForm;
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                             <div style="font-size: 11px">
-                                <?=$user->branch ?>
-                                <?php if (isset($user->position)): ?>
-                                    , <?=$user->position ?>
-                                <?php endif ?>
+                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
                             </div>
                         </div>
                     </div>
@@ -164,6 +171,39 @@ use yii\widgets\ActiveForm;
             </div>
 
         </div>
+
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="card">
+            <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
+
+            <div>
+
+                <?php $i=0;
+                foreach ($online as $user): $i++ ?>
+
+                    <?php if($i == 5){break;}
+                    ?>
+                    <div class="row" style="padding:10px">
+                        <div class="col-2">
+                            <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                        </div>
+                        <div class="col-10" >
+                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>
+                            <div style="font-size: 11px">
+                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+                <div style="padding-top: 10px; display: inline-block;">
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
+                </div>
+            </div>
+
+        </div>
+
+
 
     </div>
 

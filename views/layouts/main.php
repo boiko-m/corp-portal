@@ -50,8 +50,7 @@ AppAsset::register($this);
         <nav class="navbar-custom">
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
-                <li class="">
+                <li>
                     <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="true">
 
@@ -68,7 +67,7 @@ AppAsset::register($this);
                         <div style="padding:  0px 10px;">
                             <small>
                                 <b>Возникли затруднения?</b> <br>
-                                <div style="padding-left: 10px">
+                                <div>
                                     Сотрудники IT-отдела готовы  предложить Вам помощь по установке и  настройке ПО и другим вопросам, которые мешают Вам в работе. <br>
 
                                 </div>
@@ -86,6 +85,8 @@ AppAsset::register($this);
 
                     </div>
                 </li>
+
+                <?php echo \app\widgets\LbrNotifications::widget() ?>
 
 
 
@@ -232,13 +233,8 @@ AppAsset::register($this);
                         <?= Html::button('<div class="box_x_button close-search" aria-label="Закрыть" tabindex="0" role="button"></div>', ['class' => 'main-search',
                             'form' => 'MainForm', 'id' => 'hidden-search-close', 'label' =>'input']) ?>
                         <?php $form = ActiveForm::end(); ?>
-
-
-                    </div>
-
-                </li>
-
-
+                     </div>
+                  </li>
             </ul>
 
         </nav>
@@ -283,7 +279,7 @@ AppAsset::register($this);
                     </div>
                 </div>
                 <!-- end row -->
-
+                <?php //echo \webzop\notifications\widgets\Notifications::widget() ?>
                 <div>
                     <? echo $content; ?>
                 </div>
@@ -296,27 +292,7 @@ AppAsset::register($this);
 
     </div>
 
-    <?php
-/*    yii\bootstrap\Modal::begin([
-        'headerOptions' => ['id' => 'modalHeader'],
-        'id' => 'main-modal',
-        'options' => [
-                'class' => 'modal fade',
-          'tabindex' => '-1',
-            'role' => 'dialog',
-            'aria-labelledby' => 'myLargeModalLabel',
-            'aria-hidden' => 'true'
-        ],
-        'class' => 'modal-dialog',
 
-        'header' => '',
-        'clientOptions' => false
-    ]);
-
-    echo "<div id='modalContent'></div>";
-
-    yii\bootstrap\Modal::end();
-    */?>
     <?php
     yii\bootstrap\Modal::begin([
         'headerOptions' =>   ['id' => 'modalHeader'],

@@ -1,0 +1,487 @@
+.gift-button-view{
+    width: 100%;
+}
+
+div.content .modal .modal-dialog .modal-content .modal-body {
+    top: 20px;
+}
+
+.gift-four{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #CCCCCC;
+    margin: 8px 0;
+    height: auto;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+    text-align: center;
+}
+
+.gift-in-view{
+    width: 70px;
+    height: 70px;
+    margin: 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.gift-in-view:hover{
+    cursor: pointer;
+}
+.block-gift-view{
+    margin: 15px;
+}
+.content-page .modal .modal-dialog .modal-content .modal-body.padding{
+    padding: 0;
+    top: 0;
+}
+
+.content-page .modal .modal-dialog .modal-content{
+    border-radius: 4px;
+}
+
+
+div .modal .modal-content .modal-dialog .modal-content .modal-body {
+    padding: 0;
+    top: 0;
+}
+
+
+.margin15{
+    margin: 15px;
+}
+.carousel-button-left.view a, .carousel-button-right.view a {
+    width: 25px;
+    height: 36px;
+    position: relative;
+    top: 35px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+.opacity-modal{
+    opacity: 0.5;
+}
+div .modal-body {
+    padding: 20px 20px 10px 20px;
+}
+div .modal .modal-dialog .modal-content .modal-body {
+    padding: 20px 20px 6px 20px;
+    top: 10px;
+}
+.modal .modal-dialog .modal-content {
+    top: 20px;
+    height: auto;
+    max-height: 520px;
+}
+
+.modal .modal-dialog .modal-content .modal-small{
+    top: 40px;
+    min-height: 270px;
+    height: auto;
+    max-height: 600px;
+}
+
+
+
+
+
+.showModalButton{
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    margin: 0 5px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+
+}
+.fa-gift:before {
+    color: #98a8c0;
+    width: 20px;
+    margin: 0 6px -2px 0;
+    font-size: 18px;
+    top: -5px;
+}
+.btn.waves-effect.w-md.btn-light.gift-in-view{
+    border-color: #CCCCCC;
+
+    margin: 0 10px 20px 10px;
+    width: auto;
+}
+
+.update-img:hover{
+
+    opacity: 0.5;
+}
+.scroll-gift-view{
+    height: auto;
+    max-height: 450px;
+}
+#slimmcroll{
+    height: 400px;
+}
+
+.update-img:hover:after{
+
+    content: attr(data-title);
+
+}
+.search-a-size{
+    font-size: 15px;
+}
+/*крестик для поиска*/
+.close-search {
+    position: absolute;
+    padding: 30px 18px 21px 12px;
+    margin-right: 1%;
+    right: 2px;
+    top: 8px;
+    width: 22px;
+    height: 22px;
+    opacity: 0.3;
+    vertical-align: center;
+    font-size: 10px;
+    visibility: inherit;
+}
+
+.box_x_button {
+    top: -2px;
+    position: absolute;
+    right: -5px;
+    float: right;
+    padding: 30px 25px 21px 12px;
+    background: url(../images/cross_popup.png) no-repeat 12px 21px;
+    width: 12px;
+    height: 12px;
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+    cursor: pointer;
+    outline: none;
+}
+.close-search.box_x_button{
+    padding: 30px 18px 21px 12px;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+}
+.close-search:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.close-search:before {
+    transform: rotate(45deg);
+}
+.close-search:after {
+    transform: rotate(-45deg);
+}
+/*/крестик для поиска*/
+
+
+/*при клике на поле увеличение поиска и добавление иконки*/
+input#text-search:focus {
+    background-color: #fff;
+    box-shadow: none;
+    color: #444;
+    padding-right: 54px;
+    /* Параметры рамки */
+}
+
+#hidden-search-close{
+    display: none;
+}
+
+
+/*/при клике увеличение поиска и добавление иконки*/
+
+
+/*не показывать поиск мобильным устрйоствам*/
+@media screen and (max-width: 600px) {
+    .for-desktop {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+/*/не показывать поиск мобильным устрйоствам*/
+.all{
+    margin: 0 0 10px 0;
+    height:75px;
+    max-height: 600px;
+    font-size: 13px;
+    text-align: left;
+
+
+
+
+
+}
+
+#one{
+    float: left;
+    width: 12%;
+    height: 50px;
+
+
+}
+
+#two{
+    float:left;
+    width:50%;
+    height:50px;
+    padding: 0 0 0 7px;
+
+}
+
+
+
+#three{
+    float:left;
+    width: 15%;
+    height:50px;
+}
+
+
+#four{
+    float:left;
+    width: 17%;
+    height:50px;
+
+}
+
+
+.active-like{
+    color: #e74c3c;
+}
+#five{
+    font-size: 40px;
+    opacity: 0.5;
+    float:left;
+    width:6%;
+    height:50px;
+}
+#five:hover {
+    opacity: 0.8;
+}
+
+
+#for-search {/* блок div для вывода поиска в шаблоне*/
+    position: absolute;
+    width:50%;
+    border: 1px solid #CCC;
+    display: none;
+    float: left;
+    margin: -16px;
+    padding: 1% 1% 0 1%;
+    min-height: 80px;
+    height: auto;
+    max-height: 770%;
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+    border-radius: 3px;
+    z-index: 9999999999;
+}
+
+
+
+
+#for-search::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0.4;
+}
+
+/* Track */
+#for-search::-webkit-scrollbar-track {
+
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    opacity: 0.3;
+
+}
+
+/* Handle */
+#for-search::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.16);
+    position: absolute;
+    top: 52px;
+
+    display: block;
+    border-radius: 7px;
+    z-index: 99;
+    right: 1px;
+    opacity: 0.3;
+
+
+}
+#for-search::-webkit-scrollbar-track {
+
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    opacity: 0.3;
+
+}
+
+/* Handle */
+#for-search::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.16);
+    position: absolute;
+    top: 52px;
+
+    display: block;
+    border-radius: 7px;
+    z-index: 99;
+    right: 1px;
+    opacity: 0.3;
+
+
+}
+
+/* Handle */
+
+
+
+
+.button-search{ /*//кнопка поиска на полной странице*/
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 45px;
+    font-size: 20px;
+    right: 0;
+    display: block;
+    color: #CCCCCC;
+
+}
+.button-search:hover{
+    color: black;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.fa.fa-search{
+    border: none;
+    background-color: transparent;
+}
+
+.main-search { /*кнопка поиска(лупа) в шаблоне*/
+    position: absolute;
+    top: 18px;
+    left: 225px;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    width: 34px;
+    text-align: center;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+.main-search:hover{
+    cursor: pointer;
+}
+
+.giftButton{
+    margin: 15px 0  30px 30px;
+}
+.fa.fa-search-plus:hover {
+
+    color: black;
+
+}
+
+.vote-btn.btn.background-for-like{
+    background-color: white;
+    border-color: #c7d1cd;
+    border-radius: 8px;
+
+}
+.vote-btn.btn.background-for-like:hover{
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+span .vote-count{
+    background-color: green;
+}
+.margin{
+    margin: 0 50px 10px 10px;
+}
+
+#calendar .past-event {
+    opacity: 0.2;
+}
+
+a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end{
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 5px;
+
+}
+#calendar .fc-today {
+    background-color: #fafafa;
+}
+td.fc-day-number.fc-today.fc-state-highlight{
+    color: #f7931d;
+    border-color: #dddddd;
+}
+span .icon-like{
+    background-image: url(../images/);
+}
+tbody.fc-body{
+    border-color: #dddddd;
+    background-color: #fafafa;
+}
+td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
+    border-color: #dddddd;
+}
+.img-to-send{
+    border-radius: 5px;
+    height: 80px;
+    width: 80px;
+    float: left;
+    margin-left: 20px;
+}
+.shadow-modal{
+    height: 65px;
+    width: 65px;
+}
+.my-coins{
+    float:left;
+    height: 440px
+}
+.choosenGift{
+    cursor: pointer;
+}
+
+.gift-in-modal{
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+    margin: 30px auto;
+    padding: 0px;
+    height: 250px;
+    width: 250px;
+}
+
+.gift-in-modal:hover{
+    cursor: pointer;
+}
+
+.online{
+    color: #000;
+    border-bottom: none;
+    font-size: 1em;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin: 0;
+    padding: 0;
+    float: right;
+    font-size: 11.5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    line-height: 18px;
+    color: #939393;
+    text-align: center;
+}
