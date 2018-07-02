@@ -34,7 +34,7 @@ use yii\widgets\ActiveForm;
     <div class="col-12">
         <div class="alert alert-danger" role="alert">
             <b>Уважаемый пользователь портала!</b> <br>
-            <?=$online?>Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
+            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
         </div>
     </div>
 </div>
@@ -173,7 +173,7 @@ use yii\widgets\ActiveForm;
         </div>
 
     </div>
-    <div class="col-xs-12 col-md-4" style="    margin-top: -80px;">
+    <div class="col-xs-12 col-md-4">
         <div class="card">
             <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
 
