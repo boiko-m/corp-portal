@@ -173,12 +173,17 @@ use yii\widgets\ActiveForm;
         </div>
 
     </div>
-    <div class="col-xs-12 col-md-4" style="margin-top: 28px">
+    <div class="col-xs-12 col-md-4" style="margin-top: 10px">
         <div class="card">
             <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
 
             <div>
-                <?php foreach ($online as $user): ?>
+
+                <?php $i=0;
+                foreach ($online as $user): $i++ ?>
+
+                    <?php if($i=5){break;}
+                    ?>
                     <div class="row" style="padding:10px">
                         <div class="col-2">
                             <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
