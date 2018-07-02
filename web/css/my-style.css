@@ -435,3 +435,53 @@ tbody.fc-body{
 td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     border-color: #dddddd;
 }
+.img-to-send{
+    border-radius: 5px;
+    height: 80px;
+    width: 80px;
+    float: left;
+    margin-left: 20px;
+}
+.shadow-modal{
+    height: 65px;
+    width: 65px;
+}
+.my-coins{
+    float:left;
+    height: 440px
+}
+.choosenGift{
+    cursor: pointer;
+}
+
+.gift-in-modal{
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+    margin: 30px auto;
+    padding: 0px;
+    height: 250px;
+    width: 250px;
+}
+
+.gift-in-modal:hover{
+    cursor: pointer;
+}
+
+.online{
+    color: #000;
+    border-bottom: none;
+    font-size: 1em;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin: 0;
+    padding: 0;
+    float: right;
+    font-size: 11.5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    line-height: 18px;
+    color: #939393;
+    text-align: center;
+}

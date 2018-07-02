@@ -52,6 +52,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $time_online = time() - 180;
+        $online = Profile::find()->where(['>','last_visit',$time_online])->all();
+        $countOnline = count($online);
         $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
         return $this->render('index', [
             "news" => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
@@ -59,6 +62,8 @@ class SiteController extends Controller
             'user_new' => Profile::find()->orderBy('date_job desc')->limit(3)->all(),
             'online' => Session::getOnline(),
             'birthdays' => $birthdays,
+            'online' =>$online,
+            'countOnline' =>$countOnline,
         ]);
     }
 
@@ -66,9 +71,15 @@ class SiteController extends Controller
         $post = Yii::$app->request->post();
         $profile = Profile::find()->where(['id' => $post['data']])->one();
         $a = $this->renderAjax('tooltip', compact('profile'));
-
         return $a;
     }
+   /* public function actionOnline(){
+        $profile = Profile::find()->where(['id' => Yii::$app->user->id])->one();
+        $profile->last_visit = time();
+        $profile->save();
+        $time_online = time() - 600;
+        $online = Profile::find()->where(['>','last_visit',$time_online])->all();
+    }*/
 
 
 }

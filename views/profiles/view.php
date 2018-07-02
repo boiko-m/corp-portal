@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                   <div class="row" style=" width: auto">
                                       <?php if ($value['date'] != '' && !empty($value['date'])): ?>
                                           <div class="col-md-11 date-gift"
-                                               style="text-align: right">  <?= date('Y.m.d G:i', $value['date']); ?></div>
+                                               style="text-align: right">  <?= date('d.m.y G:i', $value['date']); ?></div>
                                       <?php endif; ?>
                                   </div>
                               </span>
@@ -117,7 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card m-b-30">
             <div class="card-header">
                 <h5 class=""
-                    style="font-weight: bold;color: black;margin: 0px;"><?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name ?></h5>
+                    style="font-weight: bold;color: black;margin: 0px;"><?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name?>  <span class="online"><?=' '.$online?></span> </h5>
             </div>
 
             <div class="col-12" style="padding: 10px 20px;">

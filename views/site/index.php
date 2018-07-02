@@ -34,7 +34,7 @@ use yii\widgets\ActiveForm;
     <div class="col-12">
         <div class="alert alert-danger" role="alert">
             <b>Уважаемый пользователь портала!</b> <br>
-            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
+            <?=$online?>Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
         </div>
     </div>
 </div>
@@ -89,10 +89,20 @@ use yii\widgets\ActiveForm;
                     <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
                     <a href = "/video/" class="btn  waves-effect w-md btn-light" style="width: 100%">Все видео</a>
                 </div>
+
             </div>
+
         </div>
+
+
+
+        </div>
+
+
     </div>
+
 </div>
+
 
 
 
@@ -150,10 +160,7 @@ use yii\widgets\ActiveForm;
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                             <div style="font-size: 11px">
-                                <?=$user->branch ?>
-                                <?php if (isset($user->position)): ?>
-                                    , <?=$user->position ?>
-                                <?php endif ?>
+                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
                             </div>
                         </div>
                     </div>
@@ -164,6 +171,34 @@ use yii\widgets\ActiveForm;
             </div>
 
         </div>
+
+    </div>
+    <div class="col-xs-12 col-md-4" style="margin-top: 28px">
+        <div class="card">
+            <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
+
+            <div>
+                <?php foreach ($online as $user): ?>
+                    <div class="row" style="padding:10px">
+                        <div class="col-2">
+                            <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                        </div>
+                        <div class="col-10" >
+                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>
+                            <div style="font-size: 11px">
+                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+                <div style="padding-top: 10px; display: inline-block;">
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
+                </div>
+            </div>
+
+        </div>
+
+
 
     </div>
 

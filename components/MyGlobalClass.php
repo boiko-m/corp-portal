@@ -1,12 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: okotchik
- * Date: 02.07.2018
- * Time: 8:41
- */
+namespace app\components;
+use Yii;
+use app\models\Profile;
+class MyGlobalClass extends \yii\base\Component{
+    public function init() {
 
-class MyGlobalClass
-{
+        $id = Yii::$app->user->id;
 
+        if(!empty($id)){
+
+            $profile = Profile::find()->where(['id' => $id])->one();
+            $profile->last_visit = time();
+            $profile->save();
+            parent::init();
+        }
+
+    }
 }

@@ -8,7 +8,7 @@ $config = [
     'sourceLanguage' => 'ru',
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'MyGlobalClass'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -86,6 +86,9 @@ $config = [
 
     ],
     'components' => [
+        'MyGlobalClass'=>[
+            'class'=>'app\components\MyGlobalClass'
+        ],
         /*'session'=>[
             'class'=>'yii\web\DbSession',
             'writeCallback'=>function($session)
