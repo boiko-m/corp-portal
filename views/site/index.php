@@ -182,7 +182,7 @@ use yii\widgets\ActiveForm;
                 <?php $i=0;
                 foreach ($online as $user): $i++ ?>
 
-                    <?php if($i=5){break;}
+                    <?php if($i == 5){break;}
                     ?>
                     <div class="row" style="padding:10px">
                         <div class="col-2">
