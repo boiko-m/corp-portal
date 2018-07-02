@@ -231,7 +231,7 @@ class ProfilesController extends Controller
           $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
          $model = $this->findModel($id);
         $user = User::findIdentity($model->id);
-        $gift3 = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
+        $gifts_user = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
             ])->limit(3)->all();
 
@@ -264,8 +264,8 @@ class ProfilesController extends Controller
             'gift' => $gift,
             'model' => $model,
             'user' => $user,
-            'gift3' => $gift3,
-
+            'gifts_user' => $gifts_user,
+            'col' => GiftUser::find()->where(['id_user_to' => $id])->with('gift', 'userFrom', 'userFrom.profile')->count()
         ]);
     }
 public function actionModal(){
@@ -273,7 +273,7 @@ public function actionModal(){
         $curentId = Yii::$app->request->post();
         $id = Yii::$app->user->id;
         $profile = Profile::find()->select(['id', 'coins'])->where(['id' => $id])->one();
-        $allGift = Gift::find()->with('giftType')->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
+        $allGift = Gift::find()->joinWith('giftType')->where(['gift_type.visible' => 1, 'gift.visible' => 1])->asArray()->orderBy('id_gift_type asc, sum_coin asc, ')->all();
         $model = new GiftUser();
         $giftType = GiftType::find()->asArray()->all();
         $a = $this->renderAjax('modal/modal', compact('allGift', 'pages', 'model', 'profile', 'curentId', 'giftType'));

@@ -14,4 +14,11 @@ class GiftNotification extends Notification
     public function getTitle(){
         return Yii::t('app', 'Вам прислали подарок');
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRoute(){
+        return ['/profiles/view/', 'id' => $this->userId];
+    }
 }

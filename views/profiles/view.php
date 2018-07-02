@@ -23,10 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
              alt="<?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name ?>"
              style="border-radius: 5px">
 
-
-        <?php $col = count($gift3); ?>
-        <? if (\Yii::$app->user->can("Admin") && isset($gift3)): ?>
-            <div class=" gift-four" style="width: 100%;    padding: 10px;">
+      <?php if (\Yii::$app->user->can("Admin")): ?>
+        <? if (isset($gifts_user)): ?>
+            <div class=" gift-four" style="width: 100%;padding: 10px;">
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
@@ -39,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?php
-                foreach ($gift3 as $value) { //формирование 3 подарков под пользователем
+                foreach ($gifts_user as $value) { //формирование 3 подарков под пользователем
                     $a = Html::a($value['userFrom']['profile']['first_name'] . ' ' . $value['userFrom']['profile']['last_name'], '/profiles/' . $value['userFrom']['id']);
                     if ($value['gift']['img'][0] != '/') {
                         $img = '/' . $value['gift']['img'];
@@ -61,47 +60,40 @@ $this->params['breadcrumbs'][] = $this->title;
                                                <img src="/images/users/avatar-1.jpg" alt="user" class="rounded-circle"
                                                     style="width: 40px">
                                            <? endif; ?>
-                                                  </div>
-                                                      <div class="col-md-9"
-                                                           style=" text-align: justify; font-size: 13px">
-                                                       <?= \yii\helpers\Html::a($value['userFrom']['profile']['first_name'] .
-                                                           ' ' . $value['userFrom']['profile']['last_name'],
-                                                           \yii\helpers\Url::to(['/profiles/' . $value['userFrom']['profile']['id']]),
-                                                           ['class' => 'author', 'style' => 'text-align: left']) ?>
-                                                          <div style="color: #0a0a0a; text-align: left">
-                                                             <?= $value['userFrom']['profile']['branch'] ?>
-                                                         </div>
-                                                      </div>
-                                                  </div>
+                                        </div>
+                                        <div class="col-md-9"
+                                             style=" text-align: justify; font-size: 13px">
+                                         <?= \yii\helpers\Html::a($value['userFrom']['profile']['first_name'] .
+                                             ' ' . $value['userFrom']['profile']['last_name'],
+                                             \yii\helpers\Url::to(['/profiles/' . $value['userFrom']['profile']['id']]),
+                                             ['class' => 'author', 'style' => 'text-align: left']) ?>
+                                            <div style="color: #0a0a0a; text-align: left">
+                                               <?= $value['userFrom']['profile']['branch'] ?>
+                                           </div>
+                                        </div>
+                                    </div>
 
                                   <?php if ($value['message'] != '' && !empty($value['message'])): ?>
                                       <?php if ($col != 1): ?>
                                           <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif; ?>
-
-
-
                                       <div class="col-md-12"
-                                           style="color: #0a0a0a; text-align: left; padding: 5px 0 0 20px;">
+                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 20px;">
                                                     "<?= ($value['message']) ?>"
                                                 </div>
-
                                   <?php endif; ?>
+
                                   <div class="row" style=" width: auto">
-                                                          <?php if ($value['date'] != '' && !empty($value['date'])): ?>
-                                                              <div class="col-md-11 date-gift"
-                                                                   style="text-align: right">  <?= date('Y.m.d G:i', $value['date']); ?></div>
-                                                          <?php endif; ?>
-
-                                           </div>
-                                        </span>
-                                  </span>
-
-
+                                      <?php if ($value['date'] != '' && !empty($value['date'])): ?>
+                                          <div class="col-md-11 date-gift"
+                                               style="text-align: right">  <?= date('Y.m.d G:i', $value['date']); ?></div>
+                                      <?php endif; ?>
+                                  </div>
+                              </span>
+                        </span>
                 <?php } ?>
 
 
                 <?php if (Yii::$app->user->id != $id) { ?>
-
                     <div class="" style=" border-radius: 5px; padding: 10px">
                         <?= Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
                             'class' => 'btn  waves-effect w-md btn-light showModalButton',
@@ -113,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             </div>
-
+            <?php endif; ?>
             <!--  </div>-->
             <!--</div>-->
 
@@ -316,4 +308,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     </div>
-

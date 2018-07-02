@@ -29,7 +29,10 @@ $this->title = Yii::t('modules/notifications', 'История уведомле�
                     <?php foreach($notifications as $notif): ?>
                         <tr>
                             <td>
-                                <a href="<?= $notif['url'] ?>"><?= Html::encode($notif['message']); ?></a> - <?= $notif['timeago']; ?>
+                                <a href="<?= $notif['url'] ? $notif['url'] : "javascript:void(0);" ?>">
+                                    <?= Html::encode($notif['message']); ?>
+                                </a>
+                                - <?= $notif['timeago']; ?>
                                 <?php if(!$notif['read']): ?> (Не прочитано) <?php endif; ?>
                             </td>
                         </tr>

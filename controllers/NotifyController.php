@@ -34,7 +34,7 @@ class NotifyController extends DefaultController {
             }
             $route = @unserialize($notif['route']);
             $notif['url'] = !empty($route) ? Url::to($route) : '';
-            $notif['timeago'] = TimeElapsed::timeElapsed($notif['created_at'], null, false);
+            $notif['timeago'] = Yii::$app->formatter->asDate($notif['created_at'], 'php:d.m.Y H:i');
             $notifs[] = $notif;
         }
 
