@@ -218,6 +218,7 @@ $config = [
             ],
         ],
     ],
+    'timeZone' => 'Europe/Minsk',
     'params' => $params,
 
     ];

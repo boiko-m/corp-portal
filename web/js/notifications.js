@@ -22,6 +22,7 @@ var Notifications = (function(opts) {
 
     var getIcon = function(key) {
         switch (key) {
+            case "gift_notify_from":
             case "gift_notify":
                 return "mdi-gift";
             default:
@@ -93,7 +94,7 @@ var Notifications = (function(opts) {
                     if(object.seen == '0'){
                         seen += 1;
                     }
-                    list.append(item);
+                    list.prepend(item);
                 });
 
                 switchDisplayByCount(cnt);

@@ -263,7 +263,12 @@ class ProfilesController extends Controller
             $gift_user->anonim = 0;
             $gift_user->date = time();
             $gift_user->save();
-            GiftNotification::create(GiftNotification::GIFT_NOTIFY, ['userId' => $id])->send();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY, [
+                'userId' => $id,
+                'userIdPath' => $id,
+                'userFrom' => Profile::findOne($user_id)
+            ])->send();
+            GiftNotification::create(GiftNotification::GIFT_NOTIFY_FROM, ['userId' => $user_id, 'userIdPath' => $id])->send();
             return $this->refresh();
 
         }
