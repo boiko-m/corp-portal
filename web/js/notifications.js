@@ -14,7 +14,7 @@ var Notifications = (function(opts) {
     }
 
     var options = $.extend({
-        pollInterval: 30000,
+        pollInterval: 60000,
         xhrTimeout: 2000,
         readLabel: 'read',
         markAsReadLabel: 'mark as read'
