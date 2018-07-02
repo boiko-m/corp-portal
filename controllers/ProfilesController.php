@@ -229,10 +229,15 @@ class ProfilesController extends Controller
     public function actionView($id)
     {
         $time_online = time() - 180;
+        $last_online =  Profile::find()->andWhere(['id' => $id])->one();
         $online = Profile::find()->where(['>','last_visit',$time_online])->andWhere(['id' => $id])->one();
-        
+
         if(isset($online) && $online != null){
             $online = 'online';
+        }
+        elseif( $last_online->last_visit != null){
+
+            $online = 'был в сети: '.date('d.m.y G:i' ,$last_online->last_visit);
         }
         else{
             $online = '';
