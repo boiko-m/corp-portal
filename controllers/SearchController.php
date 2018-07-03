@@ -20,23 +20,13 @@ class SearchController extends Controller
 {
     public function actionIndex()
     {
+        $post = Yii::$app->request->post('ProfileMain')['text'];
 
-            $post = Yii::$app->request->post('ProfileMain')['text'];
+        $profile = Profile::find()->where(['like', 'last_name',  $post])->with('user')
+            ->orWhere(['like', 'first_name',  $post])->limit(10)->all();
 
-            $profile = Profile::find()->where(['like', 'last_name',  $post])->with('user')
-                ->orWhere(['like', 'first_name',  $post])->limit(10)->all();
-
-
-
-
-            return $this->renderAjax('index', compact('profile', 'post'));
-
-        }
-
-
-
-
-
+        return $this->renderAjax('index', compact('profile', 'post'));
+    }
 
     public function actionView()
     {
@@ -60,9 +50,5 @@ class SearchController extends Controller
             'profile' => $profile,
             'pages' => $pages,
         ]);
-
-
     }
 }
-
-

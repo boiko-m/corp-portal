@@ -15,17 +15,7 @@
                         <i class="fa fa-plus im-icon im-icon-plus"></i>
                     </div>
                     <div class="im-list-user-field" id="slimmcroll-1">
-                        <ul class="im-list-user-messages">
-                            <li class="im-list-user-message-select">
-                                <div class="im-list-user-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" alt="profilepicture" class="im-list-user-field-image">
-                                    <span class="im-list-user-link">Имя Пользователя</span>
-                                    <p class="message-list-user">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+                        <ul class="im-list-user-messages"></ul>
                     </div>
                     <div class="list-user-footer">
                         <div class="dropup">
@@ -40,9 +30,9 @@
                 <div class="col-md-9 dialog-panel">
                     <div class="im-dialog-header">
                         <i class="fa fa-arrow-left im-icon im-icon-arrow"></i>
-                        <a href="">
+                        <a target="_blank">
                             <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" class="im-dialog-header-image (img-thumbnail rounded)">
-                            <span class="im-dialog-panel-name">Имя Пользователя</span>
+                            <span class="im-dialog-panel-name"></span>
                         </a>
                         <div class="btn-group im-dialog-options">
                             <i class="fa fa-ellipsis-h im-icon im-icon-ellipsis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -53,17 +43,7 @@
                         </div>
                     </div>
                     <div class="im-dialog-field" id="slimmcroll-2">
-                        <ul class="im-dialog-list-messages">
-                            <li class="im-dialog-message-select">
-                                <div class="im-dialog-message">
-                                    <img src="http://portal.lbr.ru/img/user/thumbnail_4153.png" alt="profilepicture" class="im-dialog-field-image">
-                                    <a class="im-message-user-link" style="color: #42648b; font-weight: 700;">Имя Пользователя<span class="time" style="font-weight: 400;"> 18-07-2018</span></a>
-                                    <p class="message">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+                        <ul class="im-dialog-list-messages"></ul>
                     </div>
                     <div class="im-dialog-drop-zone">
                         <div class="upload-drop-zone" id="drop-zone">

@@ -100,4 +100,12 @@ class Messages extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_user_from']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfileFrom()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user_from'])->select('id, first_name, last_name, img');
+    }
 }

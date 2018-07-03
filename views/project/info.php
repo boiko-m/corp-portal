@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use ogheo\comments\widget\Comments;
 
 $this->title = 'Проект "Индивидуальный план рекламы (ИПР)"';
 $this->params['breadcrumbs'][] = "Проекты компании";
@@ -30,28 +31,24 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-7 ">
-        <div class="card">
-
+    <div class="col-xs-12 col-md-9">
+        <div class="card mb-2">
             <h5 class="card-header" id = "information">
-                Индивидуальный план рекламы (ИПР)
+                О проекте
             </h5>
             <div style="padding: 20px;">
-                <h5>
-                   О проекте
-                </h5>
-                <div class="" style="padding-left: 15px">
-                    Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту. 
-    Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы. 
-    Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
+                <div>
+                    Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту.
+                    Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
+                    Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
                 </div>
-                <hr>
+                <!--<hr>
                 <h5>
                     Цель проекта:
                 </h5>
                 <div  style="padding-left: 15px">
                     Увеличить выручку по зпч на 100млн р (20 млн р дохода) за счет доставки этих зпч клиентам , которые с нами не работают или работают мало, не всего потенциала  из-за отсутствия доставки
-                </div>
+                </div> -->
                 <!-- <h5>
                     Итоги проекта:
                 </h5>
@@ -60,60 +57,92 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div> -->
             </div>
         </div>
-    </div>
-
-    <div class="col-xs-12 col-md-5">
 
         <div class="card">
+              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="line-height: 1;">
+                <li class="nav-item">
+                      <a href="#stage1" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#stage1" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
+                  </li>
+                 <li class="nav-item">
+                      <a href="#stage2" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
+                  </li>
+                   <li class="nav-item">
+                      <a href="#stage3" class="nav-link active" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
+                  </li>
+                   <li class="nav-item">
+                      <a href="#stage4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
+                  </li>
+              </ul>
+              <div  class="tab-content">
+                  <div id="stage1" class="tab-pane  show ">
+                      stage1
+                  </div>
+                  <div id="stage2" class="tab-pane  show ">
+                      stage2
+                  </div>
+                  <div id="stage3" class="tab-pane  show active">
+                      stage3
+                  </div>
+                  <div id="stage4" class="tab-pane  show ">
+                      stage4
+                  </div>
+              </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+        <div class="card">
             <h5 class="card-header">
-                <span style="display: inline-block;">Рабочая группа</span> <a href=""><i class="mdi mdi-settings" style="display: inline-block;"></i></a>
+                <span style="display: inline-block;">Рабочая группа</span>
             </h5>
-            <div style="font-size: 20px;" >
-            
-        </div>
-        <div class="work-group">
-            <div class="work-group-title">
-                Руководитель проекта
-            </div>
-            <div class="work-group-content">
-                <a href="">Масюк Е.</a>
-            </div>
-        </div>
 
-        <div class="work-group">
-            <div class="work-group-title">
-                Команда
-            </div>
-            <div class="work-group-content">
-                <a href="">Власов С. <small>c 2.12.2018</small></a> 
-                <a href="">Гавриленко А.</a>
-                <a href="">Горустович Ю.</a>
-                <a href="">Савченко А.</a>
-                <a href="">Солтан Д.</a>
-            </div>
-        </div>
-        
-        <div class="work-group">
-            <div class="work-group-title">
-                Привлеченный состав:
-            </div>
-            <div class="work-group-content">
-                <a href="">Жуковский Ю.</a>
-                <a href="">Дубовик С.</a>
-                <a href="">Бондарев С.</a>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Руководитель проекта
+              </div>
+              <div class="work-group-content">
+                  <a href="">Масюк Е.</a>
+              </div>
+          </div>
 
-        <div class="work-group">
-            <div class="work-group-title">
-                Скрам мастер
-            </div>
-            <div class="work-group-content">
-                <a href="">Чиж А.</a> <br>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Скрам-мастер
+              </div>
+              <div class="work-group-content">
+                  <a href="">Чиж А.</a> 
+              </div>
+          </div>
 
+          <div class="work-group">
+              <div class="work-group-title">
+                  Команда
+              </div>
+              <div class="work-group-content">
+                  <a href="">Власов С.</a>
+                  <a href="">Гавриленко А.</a>
+                  <a href="">Горустович Ю.</a>
+                  <a href="">Савченко А.</a>
+                  <a href="">Солтан Д.</a>
+              </div>
+          </div>
 
+          <div class="work-group">
+              <div class="work-group-title">
+                  Привлеченный состав:
+              </div>
+              <div class="work-group-content">
+                  <a href="">Жуковский Ю.</a>
+                  <a href="">Дубовик С.</a>
+                  <a href="">Бондарев С.</a><br>
+              </div>
+          </div>
+
+          
         </div>
     </div>
 </div>
@@ -122,50 +151,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div id = "news">
     <h5>
-                Движение по проекту
-            </h5>
+        Движение по проекту
+    </h5>
 </div>
+
 <div class="row">
-            <div class="col-xs-3 col-md-3">
-                <div class = "card-box">
-                    <h6 style="text-align: center;">
-                        Начата работа над 1-м этапом проекта
-                    </h6>
-                    <div>
-                        <small>
-                            20.04.2018
-                        </small>
-                    </div>
-                    <div style="text-align: justify!important;">
-                        <small style="">
-                            Для того , чтобы  привлечь клиентов на первом этапе ,  рассылаем КП с предложением доставки бесплатной для клиента. 
-                        </small>
-                    </div>
-                    <div style="text-align: right">
-                        <a href="">Открыть новость</a>
-                    </div>
-                </div>
-            </div>
-             <div class="col-xs-3 col-md-3">
-                <div class = "card-box">
-                    <h6 style="text-align: center;">
-                        Начинаем первые отгрузки в рамках проекта:
-                    </h6>
-                    <div>
-                        <small>
-                            20.03.2018
-                        </small>
-                    </div>
-                    <div style="text-align: justify!important;">
-                        <small style="">
-                            Отгрузить зпч с доставкой 20 клиентам, с которыми не работали более 1 года 
-                        </small>
-                    </div>
-                    <div style="text-align: right">
-                        <a href="">Открыть новость</a>
-                    </div>
-                </div>
-            </div>
+
              <div class="col-xs-3 col-md-3">
                 <div class = "card-box">
                     <h6 style="text-align: center;">
@@ -178,7 +169,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div style="text-align: justify!important;">
                         <small style="">
-                            Врамках этого  этапа  выполнили   первые доставки  запчастей , в т.ч бесплатные ,  клиенту.    Но  количество доставок получилось меньше, чем мы планировали , также не понятно не подвели ли мы клиентов со сроками поставки,   поэтому этап закрыли с оценкой Удовлетворительно (желтая зона).
+                            Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
                         </small>
                     </div>
                     <div style="text-align: right">
@@ -186,6 +177,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             </div>
+
              <div class="col-xs-3 col-md-3">
                 <div class = "card-box">
                     <h6 style="text-align: center;">
@@ -198,7 +190,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div style="text-align: justify!important;">
                         <small style="">
-                            В планах внедрение и отработка системы на практике , получение обратной связи. Работа над улучшением качества и соблюдением сроков доставки .  Также разбираемся с экономикой  - доходность заказов с доставкой (от алгоритма расчета и соответствующих изменений в учете  до выработки  и автоматизации условий,  при которых возможна бесплатная доставка)
+                            Разработан индивидуальный план рекламы для 7 клиентов. Выработана методику поиска контактов. Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч.
                         </small>
                     </div>
                     <div style="text-align: right">
@@ -207,4 +199,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<?php echo Comments::widget([
+		    'model' => 'project_news',
+		    'model_key' => $data['id']
+		]); ?>
+	</div>
 </div>
