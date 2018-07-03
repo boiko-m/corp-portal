@@ -24,12 +24,13 @@ class UserupController extends Controller
     	$odata = new Odata();
 
     	$data = $odata->get("Catalog_Сотрудники", array(
-    		'top' => 30,
+    		'top' => 10,
     		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
     		'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
     		'orderby' => 'ДатаПриема desc'
     	));
 
+        
 
     	for ($i=0; $i < count($data); $i++) {
 
@@ -109,10 +110,11 @@ class UserupController extends Controller
     			$max_id = User::find()->max('id');
 
     			$user = new User();
+                $user->generateAuthKey();
 
     			$user->id = $max_id+1;
 				$user->username = $up['Логин'];
-				$user->auth_key = $user->generateAuthKey();
+				$user->auth_key = $user->getAuthKey();
 				$user->email = $up['Email'];
 				$user->status = 10;
 
@@ -140,7 +142,10 @@ class UserupController extends Controller
     			$profile->phone_cabinet = $up['ГТС'];
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
     			$profile->sip = $up['SIP'];
+                $profile->coins = 6;
 
+
+                
                 if ($user->validate()) {
         			if ($user->save() && $profile->save()) {
         				$update[]['success'] = $up['Логин']. ";".$profile->id;
@@ -148,6 +153,7 @@ class UserupController extends Controller
         				$update[]['error'] = $up['Логин'];
         			}
                 }
+
 
     		} else {
     			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";
@@ -199,8 +205,7 @@ class UserupController extends Controller
 
                 $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
 
-                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->top(20)->all();
-
+                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->where("ДатаОкончания eq datetime'0001-01-01T00:00:00' and НеОтображатьТелефон eq false")/*->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи')*/->expand('ВидСвязи')->top(20)->all();              
                 foreach ($phones as $phone) {
                     if ($phone['ВидСвязи']['Description'] == "IP") {
                         $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
@@ -217,6 +222,9 @@ class UserupController extends Controller
                 $client[$i]['Логин'] = $login['0']['Description'];
                 $client[$i]['Пароль1С'] = $login['0']['Пароль'];
             }
+
+
+
 
             for ($i=0; $i < count($client); $i++) {
                 if ($client[$i]['ПоловаяПринадлежность'] == "Мальчик") {
@@ -285,6 +293,7 @@ class UserupController extends Controller
                 $user->save();
             }
         }
+
 
 
         return $this->renderPartial('update', array(

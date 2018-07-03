@@ -219,3 +219,49 @@ tooltip*/
     visibility: visible;
     opacity: 1;
 }
+
+
+
+
+.tooltipuser {
+    position: relative;
+    display: inline;
+
+}
+
+.tooltipuser .toolajax {
+    visibility: hidden;
+    min-width: 150px;
+    max-width: 500px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 11;
+    bottom: 100%;
+    left: -50px;
+    /* right: 20px; */
+    /* margin-left: -65px; */
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: #CCCCCC solid 1px;
+
+}
+
+.tooltipuser .toolajax::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltipuser:hover .toolajax {
+    visibility: visible;
+    opacity: 1;
+}
