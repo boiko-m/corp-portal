@@ -50,6 +50,7 @@ $('body').delegate('.im-list-user-message-select','click',function() {
         $('.im-dialog-header').children('a').attr('href', '/profiles/' + user_id)
         $('.im-dialog-panel-name').text(thisElement.children('div').children('span').text())
         $('.im-dialog-header-image').attr('src', thisElement.children('div').children('img').attr('src'))
+        appendMessage(data)
       },
       error: function(xhr, str){
         console.log('Возникла ошибка: ' + xhr.responseText)
@@ -255,12 +256,6 @@ $('body').delegate('.im-icon-paper','click',function() {
     url: '/im/dialog/send-message',
     data: 'id=' + user_id + '&message=' + inputMessage,
     success: function(data) {
-      $('.im-dialog-list-messages').append('<li class="im-dialog-message-select"><div class="im-dialog-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
-       user_id + '.png" alt="profilepicture" class="im-dialog-field-image"><a href=' +
-       user_id + ' class="im-message-user-link" style="color: #42648b; font-weight: 700;">' +
-       'Имя отправителя' + '<span class="time" style="font-weight: 400;">' +
-       ' 24:00' + '</span></a><p class="message">' +
-       inputMessage + '</p></div></li>')
       $('.im-dialog-message-input').val("")
     },
     error: function(xhr, str){
@@ -330,5 +325,23 @@ function appendListDialog(data) {
     }
   } else {
     $('.im-list-user-messages').append('<li class="im-list-user-empty-search">Нет результатов поиска</li>')
+  }
+}
+
+function appendMessage(data) {
+  let result = $.parseJSON(data)
+  $(".im-dialog-list-messages").empty()
+  if (result != 0) {
+    for(let i = 0; i < result.length; i++) {
+      $('.im-dialog-list-messages').append('<li class="im-dialog-message-select" id-message=' +
+       result[i].id + '><div class="im-dialog-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
+       result[i]['profileFrom'].img + '" alt="profilepicture" class="im-dialog-field-image"><a href=/profiles/' +
+       result[i]['profileFrom'].id + ' class="im-message-user-link" style="color: #42648b; font-weight: 700;">' +
+       result[i]['profileFrom'].first_name + '<span class="time" style="font-weight: 400;"> ' +
+       moment.unix(result[i].create_at).format("HH:mm") + '</span></a><p class="message">' +
+       result[i].message + '</p></div></li>')
+    }
+  } else {
+    $('.im-dialog-list-messages').append('<li class="im-list-user-empty-search">Нет сообщений с данным сотрудником</li>')
   }
 }

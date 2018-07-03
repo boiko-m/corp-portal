@@ -24,11 +24,14 @@ class DialogController extends \yii\web\Controller
 
     public function actionChooseDialog()
     {
-        while ($i <= 22222222) {
-            $i = $i + 1;
+        $id_type = ImGroups::getIdTypeGroup('private');
+        if ($this->isGroupExist(Yii::$app->request->get('id')) == 0) {
+            return 0;
+        } else {
+            $id_group = $this->isGroupExist(Yii::$app->request->get('id'));
+            $messages = Messages::find()->select('id, message, create_at, id_user_from')->where(['id_group' => $id_group])->with('profileFrom')->orderBy('update_at')->asArray()->all();
+            return JSON::encode($messages);
         }
-        $id = Yii::$app->request->get('id');
-        return $id;
     }
 
     public function actionSendMessage()
