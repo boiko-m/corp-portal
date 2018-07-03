@@ -20,12 +20,6 @@ class ParsecsvController extends Controller
 {
     public function actionIndex()
     {
-
-
-
-
-
-
         if (Yii::$app->request->get()) {
             $csvFile = file('../web/upload/coins.csv');
 
@@ -41,13 +35,10 @@ class ParsecsvController extends Controller
                 $data1[$value[0]] = $value[1];
 
             }
+
             array_shift($data1);
 
-
             $profile = Profile::find()->select(['id', 'coins'])->asArray()->with('user')->all();
-
-
-
 
             foreach ($profile as $value) {
                 foreach ($data1 as $item => $value1) {
