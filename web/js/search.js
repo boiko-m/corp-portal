@@ -178,7 +178,7 @@ $('.ajax').on({
 
 
 
-$(document).on('mouseenter', '.ajax', function () {
+$(document).on('mouseenter', '.ajax-user', function () {
     var id = $(this).attr('data-default');
     if($("#ajax_"+id).next().is('.toolajax')){
       /*  $('.toolajax').show();*/
@@ -204,7 +204,7 @@ $(document).on('mouseenter', '.ajax', function () {
         });
 
 $(document).ready(function() {
-    $('.ajax').each(function () {
+    $('.ajax-user').each(function () {
         var id = $(this).attr('data-default');
 
         $.ajax({

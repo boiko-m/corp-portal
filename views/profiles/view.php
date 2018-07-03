@@ -131,12 +131,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div> Должность: <?= $model->position ?> </div>
                 <?php endif ?>
             </div>
-           <!-- <span class="tooltipuser">
-                 <span data-default="<?/*=$model->id;*/?>" id="ajax_<?/*=$model->id;*/?>" class="ajax "></span>
+            <span class="tooltipuser">
+                 <span data-default="<?=$model->id;?>" id="ajax_<?=$model->id;?>" class="ajax-user "></span>
             </span>
             <span class="tooltipuser">
                  <span data-default="4080" id="ajax_4080"  class="ajax "></span>
-            </span>-->
+            </span>
 
             <?php if (isset($user->email)): ?>
             <ul class="nav nav-tabs tabs-bordered">
