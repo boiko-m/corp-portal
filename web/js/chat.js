@@ -243,7 +243,7 @@ $('.im-user-input-search').on('input', function(){
         console.log('Возникла ошибка: ' + xhr.responseText)
       }
     });
-  } else {
+  } else if (inputValue.length == 0) {
     $(".im-list-user-messages").empty()
     getListDialogs()
   }

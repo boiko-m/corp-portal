@@ -28,7 +28,6 @@ class AppAsset extends AssetBundle
         'css/styles-new.css',
         'css/styles-carousel.css',
         'plugins/fullcalendar/css/fullcalendar.min.css',
-        'css/chat.css',
         'css/my-style.css',
         'plugins/jquery-toastr/jquery.toast.min.css',
     ];
@@ -50,11 +49,9 @@ class AppAsset extends AssetBundle
         'pages/jquery.calendar.js',
         'js/jquery.core.js',
         'js/jquery.app.js',
-        // 'js/moment.js',
         'js/myajax.js',
         'js/search.js',
         'js/script.js',
-        // 'js/chat.js',
         'js/carousel.js',
         'js/modal.js',
     ];

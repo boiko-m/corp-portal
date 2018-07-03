@@ -205,8 +205,7 @@ class UserupController extends Controller
 
                 $login = $data->doc('Catalog_Пользователи')->key("Сотрудник_Key", $client[$i]['Ref_Key'])->select('ДоступныеРоли,Description,Пароль')->top(1)->all();
 
-                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description')->expand('ВидСвязи')->top(20)->all();
-
+                $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->where("ДатаОкончания eq datetime'0001-01-01T00:00:00' and НеОтображатьТелефон eq false")/*->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи')*/->expand('ВидСвязи')->top(20)->all();              
                 foreach ($phones as $phone) {
                     if ($phone['ВидСвязи']['Description'] == "IP") {
                         $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
@@ -223,6 +222,9 @@ class UserupController extends Controller
                 $client[$i]['Логин'] = $login['0']['Description'];
                 $client[$i]['Пароль1С'] = $login['0']['Пароль'];
             }
+
+
+
 
             for ($i=0; $i < count($client); $i++) {
                 if ($client[$i]['ПоловаяПринадлежность'] == "Мальчик") {
@@ -291,6 +293,7 @@ class UserupController extends Controller
                 $user->save();
             }
         }
+
 
 
         return $this->renderPartial('update', array(
