@@ -24,12 +24,13 @@ class UserupController extends Controller
     	$odata = new Odata();
 
     	$data = $odata->get("Catalog_Сотрудники", array(
-    		'top' => 30,
+    		'top' => 10,
     		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
     		'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
     		'orderby' => 'ДатаПриема desc'
     	));
 
+        
 
     	for ($i=0; $i < count($data); $i++) {
 
@@ -109,10 +110,11 @@ class UserupController extends Controller
     			$max_id = User::find()->max('id');
 
     			$user = new User();
+                $user->generateAuthKey();
 
     			$user->id = $max_id+1;
 				$user->username = $up['Логин'];
-				$user->auth_key = $user->generateAuthKey();
+				$user->auth_key = $user->getAuthKey();
 				$user->email = $up['Email'];
 				$user->status = 10;
 
@@ -140,7 +142,10 @@ class UserupController extends Controller
     			$profile->phone_cabinet = $up['ГТС'];
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
     			$profile->sip = $up['SIP'];
+                $profile->coins = 6;
 
+
+                
                 if ($user->validate()) {
         			if ($user->save() && $profile->save()) {
         				$update[]['success'] = $up['Логин']. ";".$profile->id;
@@ -148,6 +153,7 @@ class UserupController extends Controller
         				$update[]['error'] = $up['Логин'];
         			}
                 }
+
 
     		} else {
     			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";
