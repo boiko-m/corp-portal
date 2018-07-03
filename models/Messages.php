@@ -106,6 +106,6 @@ class Messages extends \yii\db\ActiveRecord
      */
     public function getProfileFrom()
     {
-        return $this->hasOne(Profile::className(), ['id' => 'id_user_from']);
+        return $this->hasOne(Profile::className(), ['id' => 'id_user_from'])->select('id, first_name, last_name, img');
     }
 }

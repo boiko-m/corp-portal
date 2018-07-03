@@ -62,7 +62,7 @@ class ImGroupUsers extends \yii\db\ActiveRecord
      */
     public function getProfile()
     {
-        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
+        return $this->hasOne(Profile::className(), ['id' => 'id_user'])->select('id, first_name, last_name, img');
     }
 
     /**

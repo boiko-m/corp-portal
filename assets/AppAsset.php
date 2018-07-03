@@ -50,11 +50,11 @@ class AppAsset extends AssetBundle
         'pages/jquery.calendar.js',
         'js/jquery.core.js',
         'js/jquery.app.js',
-        'js/moment.js',
+        // 'js/moment.js',
         'js/myajax.js',
         'js/search.js',
         'js/script.js',
-        'js/chat.js',
+        // 'js/chat.js',
         'js/carousel.js',
         'js/modal.js',
     ];
