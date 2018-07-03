@@ -1,4 +1,4 @@
-<div class="tooltiptext tooltiptextto ">
+<div class="toolajax">
     <div class="row" style="padding: 10px">
 <div class="col-md-3">
    <?if(isset($profile->img) && strlen($profile->img) > 0):?>

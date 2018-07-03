@@ -69,17 +69,20 @@ class SiteController extends Controller
 
     public function actionTooltip(){
         $post = Yii::$app->request->post();
+
         $profile = Profile::find()->where(['id' => $post['data']])->one();
         $a = $this->renderAjax('tooltip', compact('profile'));
         return $a;
     }
-   /* public function actionOnline(){
-        $profile = Profile::find()->where(['id' => Yii::$app->user->id])->one();
-        $profile->last_visit = time();
-        $profile->save();
-        $time_online = time() - 600;
-        $online = Profile::find()->where(['>','last_visit',$time_online])->all();
-    }*/
 
+    public function actionData(){
+
+        $post = Yii::$app->request->post();
+        $time_online = time() - 180;
+        $profile = Profile::find()->where(['id' => $post['data']])->one();
+        $a = $this->renderAjax('dataajax', compact('profile'));
+
+        return $a;
+    }
 
 }

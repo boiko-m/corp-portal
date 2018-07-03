@@ -293,8 +293,23 @@ AppAsset::register($this);
     </div>
 
 
+
+    <div id="main-modal" class="fade modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div id="modalHeader" class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div id='modalContent'></div>
+                </div>
+
+            </div>
+        </div>
+
     <?php
-    yii\bootstrap\Modal::begin([
+/*    yii\bootstrap\Modal::begin([
         'headerOptions' =>   ['id' => 'modalHeader'],
         'id' => 'main-modal',
         'class' => 'modal-dialog',
@@ -304,7 +319,7 @@ AppAsset::register($this);
 
     echo "<div id='modalContent'></div>";
     yii\bootstrap\Modal::end();
-    ?>
+    */?>
     <script src="//apps.skaip.su/buttons/widget/core.min.js" defer="defer"></script>
     <?php $this->endBody() ?>
 
