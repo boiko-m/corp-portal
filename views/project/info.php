@@ -111,10 +111,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
           <div class="work-group">
               <div class="work-group-title">
-                  Скрам мастер
+                  Скрам-мастер
               </div>
               <div class="work-group-content">
-                  <a href="">Чиж А.</a> <br>
+                  <a href="">Чиж А.</a> 
               </div>
           </div>
 
@@ -138,7 +138,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <div class="work-group-content">
                   <a href="">Жуковский Ю.</a>
                   <a href="">Дубовик С.</a>
-                  <a href="">Бондарев С.</a>
+                  <a href="">Бондарев С.</a><br>
               </div>
           </div>
 
