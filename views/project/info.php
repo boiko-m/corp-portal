@@ -31,20 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <div class="row">
-    <div class="col-xs-12 col-md-7 ">
-        <div class="card">
-
+    <div class="col-xs-12 col-md-9">
+        <div class="card mb-2">
             <h5 class="card-header" id = "information">
-                Индивидуальный план рекламы (ИПР)
+                О проекте
             </h5>
             <div style="padding: 20px;">
-                <h5>
-                   О проекте
-                </h5>
-                <div class="" style="padding-left: 15px">
+                <div>
                     Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту.
-    Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
-    Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
+                    Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
+                    Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
                 </div>
                 <!--<hr>
                 <h5>
@@ -61,60 +57,92 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div> -->
             </div>
         </div>
-    </div>
-
-    <div class="col-xs-12 col-md-5">
 
         <div class="card">
+              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="line-height: 1;">
+                <li class="nav-item">
+                      <a href="#stage1" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#stage1" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
+                  </li>
+                 <li class="nav-item">
+                      <a href="#stage2" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
+                  </li>
+                   <li class="nav-item">
+                      <a href="#stage3" class="nav-link active" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
+                  </li>
+                   <li class="nav-item">
+                      <a href="#stage4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
+                  </li>
+              </ul>
+              <div  class="tab-content">
+                  <div id="stage1" class="tab-pane  show ">
+                      stage1
+                  </div>
+                  <div id="stage2" class="tab-pane  show ">
+                      stage2
+                  </div>
+                  <div id="stage3" class="tab-pane  show active">
+                      stage3
+                  </div>
+                  <div id="stage4" class="tab-pane  show ">
+                      stage4
+                  </div>
+              </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+        <div class="card">
             <h5 class="card-header">
-                <span style="display: inline-block;">Рабочая группа</span> <a href=""><i class="mdi mdi-settings" style="display: inline-block;"></i></a>
+                <span style="display: inline-block;">Рабочая группа</span>
             </h5>
-            <div style="font-size: 20px;" >
 
-        </div>
-        <div class="work-group">
-            <div class="work-group-title">
-                Руководитель проекта
-            </div>
-            <div class="work-group-content">
-                <a href="">Масюк Е.</a>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Руководитель проекта
+              </div>
+              <div class="work-group-content">
+                  <a href="">Масюк Е.</a>
+              </div>
+          </div>
 
-        <div class="work-group">
-            <div class="work-group-title">
-                Команда
-            </div>
-            <div class="work-group-content">
-                <a href="">Власов С. <small>c 2.12.2018</small></a>
-                <a href="">Гавриленко А.</a>
-                <a href="">Горустович Ю.</a>
-                <a href="">Савченко А.</a>
-                <a href="">Солтан Д.</a>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Скрам мастер
+              </div>
+              <div class="work-group-content">
+                  <a href="">Чиж А.</a> <br>
+              </div>
+          </div>
 
-        <div class="work-group">
-            <div class="work-group-title">
-                Привлеченный состав:
-            </div>
-            <div class="work-group-content">
-                <a href="">Жуковский Ю.</a>
-                <a href="">Дубовик С.</a>
-                <a href="">Бондарев С.</a>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Команда
+              </div>
+              <div class="work-group-content">
+                  <a href="">Власов С.</a>
+                  <a href="">Гавриленко А.</a>
+                  <a href="">Горустович Ю.</a>
+                  <a href="">Савченко А.</a>
+                  <a href="">Солтан Д.</a>
+              </div>
+          </div>
 
-        <div class="work-group">
-            <div class="work-group-title">
-                Скрам мастер
-            </div>
-            <div class="work-group-content">
-                <a href="">Чиж А.</a> <br>
-            </div>
-        </div>
+          <div class="work-group">
+              <div class="work-group-title">
+                  Привлеченный состав:
+              </div>
+              <div class="work-group-content">
+                  <a href="">Жуковский Ю.</a>
+                  <a href="">Дубовик С.</a>
+                  <a href="">Бондарев С.</a>
+              </div>
+          </div>
 
-
+          
         </div>
     </div>
 </div>
@@ -149,6 +177,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             </div>
+
              <div class="col-xs-3 col-md-3">
                 <div class = "card-box">
                     <h6 style="text-align: center;">
