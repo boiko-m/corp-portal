@@ -1,6 +1,9 @@
 <?php
     use yii\helpers\Html;
-    /* @var $this yii\web\View */
+    use app\assets\ImAsset;
+    use app\assets\AppAsset;
+    AppAsset::register($this);
+    ImAsset::register($this);
     $this->title = 'Диалоги';
 ?>
 
@@ -31,7 +34,7 @@
                     <div class="im-dialog-header">
                         <i class="fa fa-arrow-left im-icon im-icon-arrow"></i>
                         <a target="_blank">
-                            <img src="http://portal.lbr.ru/img/user/thumbnail_1513319153.jpg" class="im-dialog-header-image (img-thumbnail rounded)">
+                            <img src="" class="im-dialog-header-image (img-thumbnail rounded)">
                             <span class="im-dialog-panel-name"></span>
                         </a>
                         <div class="btn-group im-dialog-options">
