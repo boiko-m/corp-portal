@@ -485,3 +485,23 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     color: #939393;
     text-align: center;
 }
+
+.circle {
+    margin: 2px;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: green;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+/*.circle::before {*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*background-color: #8ac176;*/
+    /*border-radius: 50%;*/
+
+/*}*/

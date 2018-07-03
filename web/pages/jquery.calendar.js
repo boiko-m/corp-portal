@@ -67,15 +67,15 @@
                     if (event.start <= (new Date().getTime()-86400000))
                         element.addClass("past-event");
                     element.popover({
-                        title: event.title,
-                        content: event.description,
-                        trigger: 'hover',
-                        placement: 'top',
-                        container: 'body'
-                    }
+                            title: event.title,
+                            content: event.description,
+                            trigger: 'hover',
+                            placement: 'top',
+                            container: 'body'
+                        }
                     );
 
-                    },
+                },
 
                 height: 'auto',
                 disableDragging: true,

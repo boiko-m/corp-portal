@@ -131,3 +131,92 @@ $(document).ready(function(){
 
 
 
+//tooltipAjax
+/*
+$('.ajax').on({ mouseenter: function () {
+            var data_id = $(this).attr('data-default');
+          /!*  alert(data_id);*!/
+            $.ajax({
+                url: '/site/tooltip',
+                type: "POST", //метод отправки
+                data: {'data': data_id},
+                success: function (response) {
+                    //Данные отправлены успешно
+                    $(".tooltipAjax").attr('title', response);
+
+                },
+                error: function (response) { // Данные не отправлены
+                    alert('Ошибка. Данные не отправлены.');
+                }
+            });
+        }});
+*/
+
+
+/*
+$('.ajax').on({
+    mouseenter: function () {
+                   var data_id = $(this).attr('data-default');
+            $.ajax({
+                url: '/site/tooltip',
+                type: "POST", //метод отправки
+                data: {'data': data_id},
+                success: function (response) {
+                    //Данные отправлены успешно
+                    $(".ajax").after(response);
+                },
+                error: function (response) { // Данные не отправлены
+                    alert('Ошибка. Данные не отправлены.');
+                }
+            });
+           },
+    mouseleave: function () {
+        $('.toolajax').remove();
+    }
+});
+*/
+
+
+
+$(document).on('mouseenter', '.ajax', function () {
+    var id = $(this).attr('data-default');
+    if($("#ajax_"+id).next().is('.toolajax')){
+      /*  $('.toolajax').show();*/
+        $("#ajax_"+id).next().show();
+           }
+    else{
+        $.ajax({
+            url: '/site/tooltip',
+            type: "POST", //метод отправки
+            data: {'data': id},
+            success: function (response) {
+                //Данные отправлены успешно
+                $("#ajax_"+id).after(response);
+            },
+            error: function (response) { // Данные не отправлены
+                alert('Ошибка. Данные не отправлены.');
+            }
+        });
+    }
+});
+    $(document).on('mouseleave', '.tooltipuser', function () {
+            $('.toolajax').hide();
+        });
+
+$(document).ready(function() {
+    $('.ajax').each(function () {
+        var id = $(this).attr('data-default');
+
+        $.ajax({
+            url: '/site/data',
+            type: "post", //метод отправки
+            data: {'data': id, _csrf: yii.getCsrfToken()},
+            success: function (response) {
+                $("#ajax_"+id).html(response);
+            },
+            error: function (response) { // Данные не отправлены
+                console.log(response);
+            }
+        });
+    });
+});
