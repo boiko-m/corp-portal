@@ -8,7 +8,7 @@ $config = [
     'sourceLanguage' => 'ru',
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'MyGlobalClass'],
+    'bootstrap' => ['log', 'UpdateLastVisitClass', 'AddCoinClass'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -86,8 +86,11 @@ $config = [
 
     ],
     'components' => [
-        'MyGlobalClass'=>[
-            'class'=>'app\components\MyGlobalClass'
+        'UpdateLastVisitClass'=>[
+            'class'=>'app\components\UpdateLastVisitClass'
+        ],
+        'AddCoinClass'=>[
+            'class'=>'app\components\AddCoinClass'
         ],
         /*'session'=>[
             'class'=>'yii\web\DbSession',

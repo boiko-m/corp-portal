@@ -2,7 +2,7 @@
 namespace app\components;
 use Yii;
 use app\models\Profile;
-class MyGlobalClass extends \yii\base\Component{
+class UpdateLastVisitClass extends \yii\base\Component{
     public function init() {
 
         $id = Yii::$app->user->id;

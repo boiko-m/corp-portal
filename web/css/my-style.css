@@ -178,13 +178,26 @@ div .modal .modal-dialog .modal-content .modal-body {
 
 
 /*при клике на поле увеличение поиска и добавление иконки*/
-input#text-search:focus {
+ body input.text-search-focus {
     background-color: #fff;
     box-shadow: none;
     color: #444;
     padding-right: 54px;
     /* Параметры рамки */
 }
+
+.app-search .form-control.text-search-focus {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    height: 34px;
+    color: black;
+    padding-left: 20px;
+    padding-right: 40px;
+    background: white;
+    box-shadow: none;
+    border-radius: 5px;
+    width: 200px; }
+
 
 #hidden-search-close{
     display: none;
@@ -486,6 +499,18 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     text-align: center;
 }
 
+span .online-in-tooltip{
+    border-bottom: none;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin: 0;
+    padding: 0;
+    font-size: 9px;
+    color: #939393;
+    text-align: left;
+}
+
 .circle {
     margin: 2px;
     display: inline-block;
@@ -497,11 +522,23 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     border-radius: 5px;
 
 }
-
-/*.circle::before {*/
-    /*content: '';*/
-    /*position: absolute;*/
-    /*background-color: #8ac176;*/
-    /*border-radius: 50%;*/
-
-/*}*/
+.ajax-tooltip-img{
+    margin-top: 10px;
+    width: 40px;
+    padding: 2px;
+}
+.toolajax{
+    width: 250px;
+    font-size: 13px;
+}
+.text-in-tooltip{
+    color: #0a0a0a;
+    text-align: left;
+    font-size: 11px;
+}
+.block-text-tooltip{
+    margin: 8px;
+}
+.href-tooltip{
+    text-align: left;
+    }

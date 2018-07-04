@@ -230,14 +230,19 @@ class ProfilesController extends Controller
     {
         $time_online = time() - 180;
         $last_online =  Profile::find()->andWhere(['id' => $id])->one();
-        $online = Profile::find()->where(['>','last_visit',$time_online])->andWhere(['id' => $id])->one();
 
-        if(isset($online) && $online != null){
+
+
+        if($last_online->last_visit > $time_online && $last_online->last_visit != null){
             $online = 'online';
         }
         elseif( $last_online->last_visit != null){
-
-            $online = 'был в сети: '.date('G:i d.m.y' ,$last_online->last_visit);
+            if($last_online->sex == 1){
+                $online = 'был в сети: '.date('G:i d.m.y' ,$last_online->last_visit);
+            }
+            if($last_online->sex == 2){
+                $online = 'была в сети: '.date('G:i d.m.y' ,$last_online->last_visit);
+            }
         }
         else{
             $online = '';

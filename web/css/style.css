@@ -363,6 +363,8 @@ File: Main Css File
     color: rgba(255, 255, 255, 0.5); }
     .app-search a:hover {
       color: #ffffff; }
+
+
   .app-search .form-control,
   .app-search .form-control:focus {
     border: 1px solid rgba(255, 255, 255, 0.3);
