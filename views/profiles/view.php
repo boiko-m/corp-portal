@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
              alt="<?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name ?>"
              style="border-radius: 5px">
 
-      <?php if (\Yii::$app->user->can("Admin")): ?>
+
         <? if (isset($gifts_user)): ?>
             <div class=" gift-four" style="width: 100%;padding: 10px;">
                 <?php
@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <!--  </div>-->
             <!--</div>-->
 
-        <?php endif; ?>
+
     </div>
 
 
