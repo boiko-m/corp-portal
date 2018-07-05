@@ -28,20 +28,98 @@ $this->params['breadcrumbs'][] = $this->title;
     .work-group-content small {
         color: black
     }
+    h5 {
+      font-size:20px!important;
+    }
 </style>
 
 <div class="row">
     <div class="col-xs-12 col-md-9">
-        <div class="card mb-3">
-            <h5 class="card-header" id = "information">
+        
+
+                <div class="card mb-3">
+
+
+          <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
+                <li class="nav-item">
+                      <a href="#tab1" style="line-height: 1;" class="nav-link active" data-toggle="tab" aria-expanded="false">О проекте</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#tab2" style = "line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цели</a>
+                  </li>
+              </ul>
+
+            <!-- <h5 class="card-header" id = "information">
                 О проекте
-            </h5>
-            <div style="padding: 20px;">
-                <div>
+            </h5> -->
+            <div >
+              <div class = "tab-content">
+                
+              
+                <div id = "tab1" class="tab-pane active" style="padding: 0px 20px 10px;font-size:13px;">
                     Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту.
                     Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
                     Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
+                    <br>
+                    <br>
+ <hr> <br>
+<div id = "news">
+    <h5>
+        Движение по проекту
+    </h5>
+</div>
+
+
+<div style="padding: 10px;">
+  <div style="font-size: 20px">Название новости <small style="color:grey;font-size:10px"> от 20.02.2018</small></div>
+  <div>
+    Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
+  </div>
+    <div style="font-size: 20px">Название новости <small style="color:grey;font-size:10px"> от 20.02.2018</small></div>
+  <div>
+    Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
+  </div>
+</div>
                 </div>
+
+                <div id = "tab2" class="tab-pane">
+                    <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
+                      <li class="nav-item">
+                            <a href="#stage_project" style="line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#stage1" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
+                        </li>
+                       <li class="nav-item">
+                            <a href="#stage2" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="#stage3" class="nav-link " style = "opacity: 0.4;line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="#stage4" class="nav-link active" style = "line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
+                        </li>
+                    </ul>
+                    <div  class="tab-content">
+                      <div id="stage_project" class="tab-pane   ">
+                            stage_project
+                        </div>
+                        <div id="stage1" class="tab-pane   ">
+                            stage1
+                        </div>
+                        <div id="stage2" class="tab-pane   ">
+                            stage2
+                        </div>
+                        <div id="stage3" class="tab-pane  ">
+                            stage3
+                        </div>
+                        <div id="stage4" class="tab-pane  show active ">
+                            stage4
+                        </div>
+                    </div>
+                </div>
+              </div>
+
                 <!--<hr>
                 <h5>
                     Цель проекта:
@@ -58,42 +136,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <div class="card">
-              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
-                <li class="nav-item">
-                      <a href="#stage_project" style="line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#stage1" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
-                  </li>
-                 <li class="nav-item">
-                      <a href="#stage2" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
-                  </li>
-                   <li class="nav-item">
-                      <a href="#stage3" class="nav-link " style = "opacity: 0.4;line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
-                  </li>
-                   <li class="nav-item">
-                      <a href="#stage4" class="nav-link active" style = "line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
-                  </li>
-              </ul>
-              <div  class="tab-content">
-                <div id="stage_project" class="tab-pane   ">
-                      stage_project
-                  </div>
-                  <div id="stage1" class="tab-pane   ">
-                      stage1
-                  </div>
-                  <div id="stage2" class="tab-pane   ">
-                      stage2
-                  </div>
-                  <div id="stage3" class="tab-pane  ">
-                      stage3
-                  </div>
-                  <div id="stage4" class="tab-pane  show active ">
-                      stage4
-                  </div>
-              </div>
+       <div class="card mb-3">
+              
         </div>
+
+
+
+       
 
     </div>
 
@@ -108,7 +157,9 @@ $this->params['breadcrumbs'][] = $this->title;
                   Руководитель проекта
               </div>
               <div class="work-group-content">
-                  <a href="">Масюк Е.</a>
+                <span class="tooltipuser">
+                   <span data-default="3844" id="ajax_3844" class="ajax-user"></span>
+              </span>
               </div>
           </div>
 
@@ -151,7 +202,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
-
+<!-- 
 <div id = "news">
     <h5>
         Движение по проекту
@@ -202,7 +253,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
-</div>
+</div> -->
 
 <div class="row">
 	<div class="col-12">
