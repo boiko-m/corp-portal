@@ -61,7 +61,6 @@ $this->title = 'Проекты компании';
                         <h5 class="card-title">Индивидуальный план рекламы (ИПР)</h5>
                     </a>
 
-
                     <a href="" style="margin-left:10px;display: inline-block; color: #555555">
                         <i class="mdi mdi-settings"></i>
                     </a>

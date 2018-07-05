@@ -90,6 +90,64 @@ $this->params['breadcrumbs'][] = $this->title;
   }
 </style>
 
+
+<style>
+    .project-news-title {
+        font-size: 14px;
+        padding-left: 10px;
+        padding-top: 3px;
+    }
+    .project-news-title a {
+        font-size: 14px;
+        color: #979797;
+        transition: 0.3s;
+
+    }
+    .project-news-title a:hover {
+        color: black;
+    }
+    .project-news-content {
+        padding: 5px;
+    }
+    .project .btn-group {
+        margin-top: 5px;
+    }
+    .work-group-view-content .btn-group {
+        margin-top: 5px;
+    }
+    .work-group-view-content .btn {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .project-target-items {
+      margin:10px;
+    }
+    .project-target-items{
+        padding: 10px;
+        background: #f5f5f5;
+        margin-top: 10px;
+        box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+    }\
+    .success-border {
+        border: 1px solid #43c499;
+    }
+    .stage-goal > div {
+      margin:10px;
+      background: #f5f5f5;
+      box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+    }
+
+    .stage-goal > div > div {
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    .stage-goal > div > div:nth-child(1) {
+      border-right:1px solid #dbdbdb;
+    }
+    
+</style>
+
 <div class="news-project-n">
   <div class="row">
     <div class="col-xs-12 col-md-1">
@@ -133,36 +191,109 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div id = "tab2" class="tab-pane">
                     <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
                       <li class="nav-item">
-                            <a href="#stage_project" style="line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+                            <a href="#stage_project" style="line-height: 1;font-size:14px" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#stage1" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
+                            <a href="#stage1" style = "opacity: 0.4;line-height: 1;font-size:14px" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
                         </li>
                        <li class="nav-item">
-                            <a href="#stage2" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
+                            <a href="#stage2" style = "opacity: 0.4;line-height: 1;font-size:14px" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
                         </li>
                          <li class="nav-item">
-                            <a href="#stage3" class="nav-link " style = "opacity: 0.4;line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
+                            <a href="#stage3" class="nav-link " style = "opacity: 0.4;line-height: 1;font-size:14px" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
                         </li>
                          <li class="nav-item">
-                            <a href="#stage4" class="nav-link active" style = "line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
+                            <a href="#stage4" class="nav-link active" style = "line-height: 1;font-size:14px" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
                         </li>
                     </ul>
                     <div  class="tab-content">
-                      <div id="stage_project" class="tab-pane   ">
-                            stage_project
+                      <div id="stage_project" class="tab-pane   " style="padding: 0px 10px 10px">
+                            Цели проекта пока не известны
                         </div>
                         <div id="stage1" class="tab-pane   ">
-                            stage1
+                          
+                           <div style="padding: 0px 10px 10px;">
+                              Цели этапа:
+                            </div>
+                            <div class="stage-goal">
+                              
+                              <div class="row">
+                                  <div class="col-xs-12 col-md-6">
+                                    Посадочная страница для клиента - персонализировать данные для клиента. При переходе по ссылке клиент попадает на страницу с предложениями специально для него.
+                                  </div>
+                                  <div class="col-xs-12 col-md-6">
+                                    <b>Корректировка цели:</b> <br>Перенос на следующий этап
+                                  </div>
+                               </div>
+
+                               <div class="row">
+                                  <div class="col-xs-12 col-md-6">
+                                    Составить индивидуальный план рекламы (ИПР)  для  30 клиентов.Выбираем 3-4 филиала, на них взять по несколько клиентов, на ком тренируемся составлять ИПР - ставим по клиенту товарные цели на базе потенциала, чем занимается клиент. Определяем, что можем предложить, в какой срок, по каким каналам связи.
+                                  </div>
+                                  <div class="col-xs-12 col-md-6">
+                                    <b>Корректировка цели:</b> <br>
+                                    Перенос на следующий этап
+                                  </div>
+                               </div>
+
+                               <div class="row">
+                                  <div class="col-xs-12 col-md-6">
+                                    Сформировать стандартный перечень должностей и их роли.
+                                  </div>
+                                  <div class="col-xs-12 col-md-6">
+                                    <b>Итог:</b> <br>
+                                    Должности приведены к одному стандарту. Теперь в 1с контакты заносятся с выбором из перечня должностей
+                                  </div>
+                               </div>
+
+                               <div class="row">
+                                  <div class="col-xs-12 col-md-6">
+                                    Привести в порядок моб телефоны, емэйлы, найти контакты соц сетей.
+                                  </div>
+                                  <div class="col-xs-12 col-md-6">
+                                    <b>Итог:</b> <br>
+                                    Поиск нового сотрудника в отдел рекламы для отработки контактных данных и информации по контрагенту
+                                  </div>
+                               </div>
+                            </div>
+
                         </div>
-                        <div id="stage2" class="tab-pane   ">
+                        <div id="stage2" class="tab-pane ">
                             stage2
                         </div>
                         <div id="stage3" class="tab-pane  ">
                             stage3
                         </div>
                         <div id="stage4" class="tab-pane  show active ">
-                            stage4
+
+                            
+<!-- 
+                            <div class = "project-target-items" style = "background: #f5f5f5">
+                                <div class="project-target-item">
+                                    Размещения счета по запчастям на посадочной странице. Отправка таким образом 20 счетов по запчастям.
+                                </div>
+                               <div style="padding-left: 20px;">
+                                   <small> Цель скорректирована:
+                                   <b>Причина:</b> Перенос на следующий этап.
+                                   </small>
+                               </div>
+                                <div class="text-right">
+                                    <small>Решено 5/20</small>
+                                </div>
+
+
+                                <div class="progress" style="height: 5px;margin:0px;border:1px solid #3ec39685;">
+                                    <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+
+                            </div>
+
+                            <div class = "project-target-items" style = "background: #f5f5f5">
+                                <div class="project-target-item">
+                                    Проработка вопроса безопастности посадочной страницы (создание личного кабинета, исключение утечки информации по клиенту сторонним лицам) 
+                                </div>
+                            </div> -->
+
                         </div>
                     </div>
                 </div>
