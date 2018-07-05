@@ -106,10 +106,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             </div>
             <?php endif; ?>
-            <!--  </div>-->
-            <!--</div>-->
-
-
     </div>
 
 
@@ -169,66 +165,23 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
 
-
-                    <? /*php if ($model->phone1): ?>
-                                <div class="row information_row">
-                                    <div class="col">
-                                        Контакты
-                                    </div>
-                                    <div class="col">
-                                        <?php $phones = explode(";", $model->phone1); ?>
-                                        <?php foreach ($phones as $phone): ?>
-                                            <div>
-                                                <a href="tel:<?=$phone?>"><?=$phone?></a>
-                                            </div>
-                                        <?php endforeach ?>
-                                    </div>
-                                </div>
-                            <?php endif */ ?>
-
                     <?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
-                        <div class="row information_row">
-                            <div class="col">
-                                Телефон
-                            </div>
-                            <div class="col">
-                                <div>
-                                    <a href="tel:<?= preg_replace("/[\+\s\(\)\-]+/", "", $model->phone) ?>"><?= $model->phone ?></a>
+                        <?php $phones = explode(";", $model->phone); ?>
+                        <?php foreach ($phones as $phone): ++$i;?>
+                            <div class="row information_row">
+                                <div class="col">
+                                    Телефон <?php echo ($i>1) ?  "№".$i: ''; ?>
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <a href="tel:<?=$phone?>"><?=$phone;?></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endforeach ?>
+                        
                     <?php endif ?>
-                    <?php if (isset($model->phone1) and strlen($model->phone1) > 0): ?>
-                        <div class="row information_row">
-                            <div class="col">
-                                Телефон (доп.)
-                            </div>
-                            <div class="col">
-                                <?php $phones = explode(";", $model->phone1); ?>
-                                <?php foreach ($phones as $phone): ?>
-                                    <div>
-                                        <a href="tel:<?= $phone ?>"><?= $phone ?></a>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
-                    <?php if (isset($model->phone2) and strlen($model->phone2) > 0): ?>
-                        <div class="row information_row">
-                            <div class="col">
-                                <Те></Те>
-                                лефон (доп.)
-                            </div>
-                            <div class="col">
-                                <?php $phones = explode(";", $model->phone2); ?>
-                                <?php foreach ($phones as $phone): ?>
-                                    <div>
-                                        <a href="tel:<?= $phone ?>"><?= $phone ?></a>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
+
 
                     <?php if ($model->skype): ?>
                         <div class="row information_row">
@@ -294,19 +247,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-
                 </div>
 
                 <div class="tab-pane fade" id="profile-b1">
-
-
                     <?php if (Yii::$app->user->id != $id) { ?>
                         <?= Html::a('Отправить подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' => $id]) ?>
 
                     <?php } ?>
                     <?= Html::a('Просмотреть все', '', ['class' => 'btn  waves-effect w-md btn-light gift-button-view', 'data' => $id]) ?>
-
-
                 </div>
                 <?php endif // если нет email, то не выводим всю общую информацию?>
 
