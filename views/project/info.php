@@ -145,7 +145,12 @@ $this->params['breadcrumbs'][] = $this->title;
     .stage-goal > div > div:nth-child(1) {
       border-right:1px solid #dbdbdb;
     }
-    
+    .colorgreen {
+      color: #109d10
+    }
+    .colororange {
+      color: #ff8f00;
+    }
 </style>
 
 <div class="news-project-n">
@@ -208,7 +213,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </ul>
                     <div  class="tab-content">
                       <div id="stage_project" class="tab-pane   " style="padding: 0px 10px 10px">
-                            Цели проекта пока не известны
+
                         </div>
                         <div id="stage1" class="tab-pane   ">
 
@@ -222,7 +227,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     Посадочная страница для клиента - персонализировать данные для клиента. При переходе по ссылке клиент попадает на страницу с предложениями специально для него.
                                   </div>
                                   <div class="col-xs-12 col-md-6">
-                                    <b>Корректировка цели:</b> <br>Перенос на следующий этап
+                                    <b>Итог: <span class="colororange">Корректировка цели</span></b> <br>
+                                    Перенос на следующий этап
                                   </div>
                                </div>
 
@@ -231,7 +237,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     Составить индивидуальный план рекламы (ИПР)  для  30 клиентов.Выбираем 3-4 филиала, на них взять по несколько клиентов, на ком тренируемся составлять ИПР - ставим по клиенту товарные цели на базе потенциала, чем занимается клиент. Определяем, что можем предложить, в какой срок, по каким каналам связи.
                                   </div>
                                   <div class="col-xs-12 col-md-6">
-                                    <b>Корректировка цели:</b> <br>
+                                    <b>Итог: <span class="colororange">Корректировка цели</span></b> <br>
                                     Перенос на следующий этап
                                   </div>
                                </div>
@@ -241,7 +247,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     Сформировать стандартный перечень должностей и их роли.
                                   </div>
                                   <div class="col-xs-12 col-md-6 ">
-                                    <b>Итог: <span style="color: #109d10">Выполнено</span></b> <br>
+                                    <b>Итог: <span class="colorgreen">Выполнено</span></b> <br>
                                     Должности приведены к одному стандарту. Теперь в 1с контакты заносятся с выбором из перечня должностей
                                   </div>
                                </div>
