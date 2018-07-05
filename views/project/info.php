@@ -71,12 +71,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <style>
+  .news-project-n div {
+    padding: 0px;
+  }
   .news-project-n {
     padding-top: 10px;
   }
   .news-project-n > div > div:nth-child(1) {
     color:grey;
     text-align: right;
+    padding-right: 10px;
+  }
+  .news-project-n > div > div:nth-child(2) {
+    font-size:17px;
   }
   .news-project-n > div:nth-child(2) > div:nth-child(2) {
     font-size: 13px;
