@@ -2,6 +2,7 @@
 namespace app\components;
 use app\models\Profile;
 use Yii;
+use app\notifications\CoinNotification;
 class AddCoinClass  extends \yii\base\Component
 {
     public function init() {
@@ -17,6 +18,10 @@ class AddCoinClass  extends \yii\base\Component
                 $user->coins = $user->coins + 3;
                 $user->last_coin = time();
                 $user->save();
+                CoinNotification::create(CoinNotification::COIN_NOTIFY, [
+                    'userId' => Yii::$app->user->id,
+                ])->send();
+
             }
         }
 
