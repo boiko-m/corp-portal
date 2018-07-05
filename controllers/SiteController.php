@@ -55,6 +55,8 @@ class SiteController extends Controller
         $time_online = time() - 180;
         $online = Profile::find()->where(['>','last_visit',$time_online])->all();
         $countOnline = count($online);
+
+
         $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
         return $this->render('index', [
             "news" => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
@@ -69,9 +71,23 @@ class SiteController extends Controller
 
     public function actionTooltip(){
         $post = Yii::$app->request->post();
-
+        $time_online = time() - 180;
         $profile = Profile::find()->where(['id' => $post['data']])->one();
-        $a = $this->renderAjax('tooltip', compact('profile'));
+        if($profile->last_visit > $time_online && $profile->last_visit != null){
+            $online = 'online';
+        }
+        elseif( $profile->last_visit != null){
+            if($profile->sex == 1){
+                $online = 'был в сети: '.date('G:i d.m' ,$profile->last_visit);
+            }
+            if($profile->sex == 2){
+                $online = 'была в сети: '.date('G:i d.m' ,$profile->last_visit);
+            }
+        }
+        else{
+            $online = '';
+        }
+        $a = $this->renderAjax('tooltip', compact('profile', 'online'));
         return $a;
     }
 
