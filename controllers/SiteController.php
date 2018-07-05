@@ -85,7 +85,12 @@ class SiteController extends Controller
             }
         }
         else{
-            $online = 'не был на портале';
+            if($profile->sex == 1){
+                $online = 'не был на портале';
+            }
+            if($profile->sex == 2){
+                $online = 'не была на портале';
+            }
         }
         $a = $this->renderAjax('tooltip', compact('profile', 'online'));
         return $a;
