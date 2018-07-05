@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 О проекте
             </h5> -->
             <div >
-              <div class = "tab-content">
+              <div class = "tab-content" style="padding-top: 10px">
                 
               
                 <div id = "tab1" class="tab-pane active" style="padding: 0px 20px 10px;">
@@ -127,9 +127,9 @@ $this->params['breadcrumbs'][] = $this->title;
         background: #f5f5f5;
         margin-top: 10px;
         box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
-    }\
+    }
     .success-border {
-        border: 1px solid #43c499;
+        border: 1px solid #43c499!important;
     }
     .stage-goal > div {
       margin:10px;
@@ -211,7 +211,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Цели проекта пока не известны
                         </div>
                         <div id="stage1" class="tab-pane   ">
-                          
+
                            <div style="padding: 0px 10px 10px;">
                               Цели этапа:
                             </div>
@@ -236,25 +236,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                   </div>
                                </div>
 
-                               <div class="row">
+                               <div class="row success-border">
                                   <div class="col-xs-12 col-md-6">
                                     Сформировать стандартный перечень должностей и их роли.
                                   </div>
-                                  <div class="col-xs-12 col-md-6">
+                                  <div class="col-xs-12 col-md-6 ">
                                     <b>Итог:</b> <br>
                                     Должности приведены к одному стандарту. Теперь в 1с контакты заносятся с выбором из перечня должностей
                                   </div>
                                </div>
 
-                               <div class="row">
-                                  <div class="col-xs-12 col-md-6">
-                                    Привести в порядок моб телефоны, емэйлы, найти контакты соц сетей.
-                                  </div>
-                                  <div class="col-xs-12 col-md-6">
-                                    <b>Итог:</b> <br>
-                                    Поиск нового сотрудника в отдел рекламы для отработки контактных данных и информации по контрагенту
-                                  </div>
-                               </div>
                             </div>
 
                         </div>
