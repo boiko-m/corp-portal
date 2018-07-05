@@ -12,6 +12,9 @@ class AddCoinClass  extends \yii\base\Component
                 $user->last_coin = time();
                 $user->coins = $user->coins + 6;
                 $user->save();
+                CoinNotification::create(CoinNotification::COIN_NOTIFY, [
+                    'userId' => Yii::$app->user->id,
+                ])->send();
             }
             $currentData = date('y,m,d', time());
             if($currentData != date('y,m,d',$user->last_coin)){
