@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
     <div class="col-xs-12 col-md-9">
-        <div class="card mb-2">
+        <div class="card mb-3">
             <h5 class="card-header" id = "information">
                 О проекте
             </h5>
@@ -59,34 +59,37 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="card">
-              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="line-height: 1;">
+              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
                 <li class="nav-item">
-                      <a href="#stage1" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+                      <a href="#stage_project" style="line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
                   </li>
                   <li class="nav-item">
-                      <a href="#stage1" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
+                      <a href="#stage1" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 1 <br><small>21.02.2018</small></a>
                   </li>
                  <li class="nav-item">
-                      <a href="#stage2" style = "opacity: 0.4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
+                      <a href="#stage2" style = "opacity: 0.4;line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 2<br><small>25.04.2018</small></a>
                   </li>
                    <li class="nav-item">
-                      <a href="#stage3" class="nav-link active" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
+                      <a href="#stage3" class="nav-link " style = "opacity: 0.4;line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 3<br><small>21.06.2018</small></a>
                   </li>
                    <li class="nav-item">
-                      <a href="#stage4" class="nav-link" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
+                      <a href="#stage4" class="nav-link active" style = "line-height: 1;" data-toggle="tab" aria-expanded="false">Этап 4 <br> <small style="color: blue">23.07.2018</small></a>
                   </li>
               </ul>
               <div  class="tab-content">
-                  <div id="stage1" class="tab-pane  show ">
+                <div id="stage_project" class="tab-pane   ">
+                      stage_project
+                  </div>
+                  <div id="stage1" class="tab-pane   ">
                       stage1
                   </div>
-                  <div id="stage2" class="tab-pane  show ">
+                  <div id="stage2" class="tab-pane   ">
                       stage2
                   </div>
-                  <div id="stage3" class="tab-pane  show active">
+                  <div id="stage3" class="tab-pane  ">
                       stage3
                   </div>
-                  <div id="stage4" class="tab-pane  show ">
+                  <div id="stage4" class="tab-pane  show active ">
                       stage4
                   </div>
               </div>
@@ -94,11 +97,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-3 mb-2">
         <div class="card">
-            <h5 class="card-header">
+            <h3 class="card-header">
                 <span style="display: inline-block;">Рабочая группа</span>
-            </h5>
+            </h3>
 
           <div class="work-group">
               <div class="work-group-title">
