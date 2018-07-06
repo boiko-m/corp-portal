@@ -256,12 +256,109 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         </div>
                         <div id="stage2" class="tab-pane ">
-                            stage2
+
+
+
+                          <div style="padding: 0px 10px 10px;">
+                              Цели этапа:
+                            </div>
+                            <div class="stage-goal">
+                              
+                              <div class="row">
+                                  <div class="col-xs-12 col-md-6">
+                                    На последней неделе этапа  - 400 писем рекламных  электронных  по зч в новом формате. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч. Продумать, чем кроме почты можно доставить ссылку
+                                  </div>
+                                  <div class="col-xs-12 col-md-6">
+                                    <b>Итог: <span class="colororange">Корректировка цели</span></b> <br>
+                                    Перенос на следующий этап
+                                  </div>
+                               </div>
+
+                               <div class="row success-border">
+                                  <div class="col-xs-12 col-md-6">
+                                    Разработать индивидуальный план рекламы для 7 клиентов (разных по размеру хоз-ва) - отработать ИПР с конкретными задачами: куда впишутся задачи, кем будут взяты, когда/кому отправляем (Фермеры, небольшой холдинг). Определить механизм подбора товаров
+                                  </div>
+                                  <div class="col-xs-12 col-md-6 ">
+                                    <b>Итог: <span class="colorgreen">Выполнено</span></b> <br>
+                                    Определили ИПР для 2 клиентов. Разработать алгоритм по технике оказалось нереальным. Решили начать стого, что сможем подобрать под клиента с бОльшей вероятность - с посадочной страницы по запчастям
+                                  </div>
+                               </div>
+
+                               <div class="row success-border">
+                                  <div class="col-xs-12 col-md-6">
+                                    Выработать методику поиска контактов(хватает ли нужных людей, если не хватает, то каких и как получить, действует ли предприятие, есть ли контакты руководящего состава, в завис от размера хоз-ва, есть ли весь состав, ФИО, должности, роли, контакты….) 
+                                  </div>
+                                  <div class="col-xs-12 col-md-6 ">
+                                    <b>Итог: <span class="colorgreen">Выполнено</span></b> <br>
+                                    Выведен отдельный человек в отдел рекламы, который занимается поиском всей необходимой информации по контрагенту . Теперь есть возможность делать запрос в отдел маркетинга
+                                  </div>
+                               </div>
+
+
+                               <div class="row success-border">
+                                  <div class="col-xs-12 col-md-6">
+                                    Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту (с топ товарами, какая есть скидка, какая доставка..)
+                                  </div>
+                                  <div class="col-xs-12 col-md-6 ">
+                                    <b>Итог: <span class="colorgreen">Выполнено</span></b> <br>
+                                    Первый макет посадочной страницы
+                                  </div>
+                               </div>
+
+
+
+                            </div>                    
+
+
                         </div>
                         <div id="stage3" class="tab-pane  ">
-                            stage3
+                            <div style="padding: 0px 10px 10px;">
+                              Цели этапа:
+                            </div>
+                            <div class="stage-goal">
+                              <div class="row success-border">
+                                  <div class="col-xs-12 col-md-6">
+                                    Первая массовая рассылка на посадочную страницу по зч
+
+Выбрать топ-10 - топ-30 техники, по которым продаем в основном запчасти и сделать рассылку на целевых клиентов по данному виду техники
+                                  </div>
+                                  <div class="col-xs-12 col-md-6 ">
+                                    <b>Итог: <span class="colorgreen">Выполнено</span></b> <br>
+                                    Сделали рассылку. Отправка ушла почти на 3 тыс клиентов. Результатом стало всего 4 ВО и 127 переходов по ссылке на посадочную страницу (по данным на 05.07.18)
+                                  </div>
+                               </div>
+                            </div>
                         </div>
                         <div id="stage4" class="tab-pane  show active ">
+                            <div style="padding: 0px 10px 10px;">
+                              Цели этапа:
+                            </div>
+                            <div class = "project-target-items" style = "background: #f5f5f5">
+                                <div class="project-target-item">
+                                    Размещения счета по запчастям на посадочной странице. Отправка таким образом 20 счетов по запчастям.
+                                </div>
+                                <div class="text-right">
+                                    <small>Выполнение 5/20</small>
+                                </div>
+
+                                <div class="progress" style="height: 5px;margin:0px;border:1px solid #3ec39685;">
+                                    <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+
+                            </div>
+
+                            <div class = "project-target-items" style = "background: #f5f5f5">
+                                <div class="project-target-item">
+                                    Проработка вопроса безопастности посадочной страницы (создание личного кабинета, исключение утечки информации по клиенту сторонним лицам)
+                                </div>
+                            </div>
+
+                             <div class = "project-target-items" style = "background: #f5f5f5">
+                                <div class="project-target-item">
+                                    Проработка вопроса рассылки ссылки на посадочную страницу через мессенджеры
+                                </div>
+                            </div>
+
 
                             
 <!-- 
@@ -432,10 +529,10 @@ $this->params['breadcrumbs'][] = $this->title;
 </div> -->
 
 <div class="row">
-	<div class="col-12">
-		<?php echo Comments::widget([
-		    'model' => 'project_news',
-		    'model_key' => $data['id']
-		]); ?>
-	</div>
+  <div class="col-12">
+    <?php echo Comments::widget([
+        'model' => 'project_news',
+        'model_key' => $data['id']
+    ]); ?>
+  </div>
 </div>
