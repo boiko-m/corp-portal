@@ -26,4 +26,14 @@ class LbrComments extends \ogheo\comments\widget\Comments
      * @var string
      */
     public $formView = '_form';
+
+    /**
+     * Register assets.
+     */
+    public function registerAssets()
+    {
+        $view = $this->getView();
+        CommentsAsset::register($view);
+        $view->registerJs("jQuery('#{$this->wrapperId}').comment({$this->getClientOptions()});");
+    }
 }

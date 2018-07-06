@@ -6,8 +6,7 @@ use yii\widgets\ListView;
 use ogheo\comments\helpers\CommentsHelper;
 use ogheo\comments\Module as CommentsModule;
 
-use app\assets\CommentsAsset;
-CommentsAsset::register($this);
+
 
 $cacheKey = $commentModel->url . $commentModel->model . $commentModel->model_key;
 $cacheTag = Url::previous(CommentsModule::getInstance()->urlCacheSessionKey);
