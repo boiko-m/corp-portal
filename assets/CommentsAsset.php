@@ -12,7 +12,7 @@ class CommentsAsset extends \ogheo\comments\assets\CommentsAsset
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $sourcePath = '@web';
+    // public $sourcePath = '@web';
 
     public $css = [
     	'css/comments.css',
@@ -20,5 +20,9 @@ class CommentsAsset extends \ogheo\comments\assets\CommentsAsset
 
     public $js = [
     	'js/comments.js',
+    ];
+
+    public $depends = [
+        'yii\web\JqueryAsset',
     ];
 }
