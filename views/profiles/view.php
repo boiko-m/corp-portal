@@ -27,20 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
-                    <div class="row">
-                    <div class="col-md-4" style="padding: 0 0 0 10px; text-align: right; text-decoration: none">
-                       <span>
-                            <?= Html::a('Подарки: ' . $count, '', ['class' => 'gift-button-view',
-                                'data-id' => $id,
-                                'style' => ' color: black; cursor: pointer']) ?>
-                       </span>
-                        <?if(Yii::$app->user->id == $id) {?>
+                    <div style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+                        <?= Html::a('Подарки: ' . $count, '', ['class' => 'gift-button-view',
+                            'data-id' => $id,
+                            'style' => ' color: black; cursor: pointer']) ?>
+                        <?if(Yii::$app->user->id == $id) {
+                       echo "<span style='text-align: right'>Количество монет: <span/><span style='color: #CCC'>$model->coins</span>" ?>
+                        <?php }?>
+
                     </div>
-                        <div class="col-md-8" style="   text-align: center;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
-                    </div>
-                    <?php }?>
-                      <?php } ?>
-                 <?php
+                <?php } ?>
+
+
+                <?php
                 foreach ($gifts_user as $value) { //формирование 3 подарков под пользователем
                     $a = Html::a($value['userFrom']['profile']['first_name'] . ' ' . $value['userFrom']['profile']['last_name'], '/profiles/' . $value['userFrom']['id']);
                     if ($value['gift']['img'][0] != '/') {

@@ -138,3 +138,4 @@ $(document).ready(function() {
 $('.vote-toggle').click(function () {
     $('.glyphicon-heart').removeClass('active-like');
 });
+
