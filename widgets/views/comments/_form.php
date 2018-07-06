@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use ogheo\comments\helpers\CommentsHelper;
+use app\models\User;
 
 /** @var $commentModel */
 /** @var $widget */
@@ -15,7 +16,7 @@ use ogheo\comments\helpers\CommentsHelper;
         <?php if (Yii::$app->user->isGuest && ($widget->guestComments === false)): ?>
 
             <div class="disabled-form">
-                <?= Yii::t('comments', '<a href="{url}">Log in</a> to post a comment.', ['url' => Url::to(Yii::$app->getUser()->loginUrl)]) ?>
+                <?= '<a href="{url}">Войдите</a>, чтобы оставить комментарий.', ['url' => Url::to(Yii::$app->getUser()->loginUrl)] ?>
             </div>
 
         <?php else: ?>
@@ -45,7 +46,7 @@ use ogheo\comments\helpers\CommentsHelper;
                     <?= $commentModel->getAuthorUrl() === null ? (
                     $commentModel->getAuthorAvatar() === null ?
                         Html::tag(
-                            'span', '', ['class' => 'media-object img-rounded without-image']
+                            'span', '', ['class' => 'media-object without-image']
                         ) : Html::img(
                             $commentModel->getAuthorAvatar(),
                             [
@@ -56,7 +57,7 @@ use ogheo\comments\helpers\CommentsHelper;
                     ) : Html::a(
                         $commentModel->getAuthorAvatar() === null ?
                             Html::tag(
-                                'span', '', ['class' => 'media-object img-rounded without-image']
+                                'span', '', ['class' => 'media-object without-image']
                             ) : Html::img(
                                 $commentModel->getAuthorAvatar(), [
                                     'class' => 'media-object img-rounded',
@@ -67,7 +68,7 @@ use ogheo\comments\helpers\CommentsHelper;
                     ) ?>
                 </div>
                 <div class="media-body">
-                    <?= $form->field($commentModel, 'content', ['template' => '{input}{error}'])->textarea(['placeholder' => Yii::t('comments', 'Share your thoughts...')]) ?>
+                    <?= $form->field($commentModel, 'content', ['template' => '{input}{error}'])->textarea(['placeholder' => 'Поделитесь своими мыслями...']) ?>
                     <div class="media-buttons">
                         <div class="row nospace">
                             <?php if (Yii::$app->user->isGuest): ?>
@@ -79,7 +80,7 @@ use ogheo\comments\helpers\CommentsHelper;
                                         ])->textInput([
                                             'maxlength' => true,
                                             'class' => 'form-control input-sm',
-                                            'placeholder' => Yii::t('comments', 'Name')
+                                            'placeholder' => 'Имя'
                                         ])->label(false) ?>
                                     </div>
                                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 user-data">
@@ -87,24 +88,24 @@ use ogheo\comments\helpers\CommentsHelper;
                                             'maxlength' => true,
                                             'email' => true,
                                             'class' => 'form-control input-sm',
-                                            'placeholder' => Yii::t('comments', 'Email')
+                                            'placeholder' => 'Эл. адрес'
                                         ])->label(false) ?>
                                     </div>
                                 <?php } else { ?>
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 user-data">
-                                        <?= Yii::t('comments', 'As') . ' <b>' . $commentModel->username . '</b>'; ?>
+                                        Как <b><?= $commentModel->getAuthorName() ?></b>
                                     </div>
                                 <?php } ?>
                             <?php else: ?>
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 user-data">
-                                    <?= Yii::t('comments', 'As') . ' <b>' . Yii::$app->user->identity->username . '</b>'; ?>
+                                    Как <b><?= $commentModel->getAuthorName() ?></b>
                                 </div>
                             <?php endif; ?>
 
                             <?php if (Yii::$app->user->isGuest && ($commentModel->username === null || $commentModel->email === null)) { ?>
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
                                     <?= Html::button(
-                                        Yii::t('comments', 'Cancel'), [
+                                        'Отмена', [
                                             'class' => 'btn btn-default reply-cancel',
                                             'type' => 'reset',
                                             'data' => [
@@ -112,28 +113,29 @@ use ogheo\comments\helpers\CommentsHelper;
                                             ]
                                         ]
                                     ) ?>
-                                    <?= Html::submitButton(Yii::t('comments', 'Post'), [
-                                        'id' => $widget->submitButtonId,
-                                        'class' => 'btn btn-primary',
-                                        'data' => [
-                                            'action' => Url::to(
-                                                [
-                                                    '/comments/default/create', 'data' => CommentsHelper::encryptData(
+                                    <?= Html::submitButton(
+                                        'Опубликовать', [
+                                            'id' => $widget->submitButtonId,
+                                            'class' => 'btn btn-primary',
+                                            'data' => [
+                                                'action' => Url::to(
                                                     [
-                                                        'url' => $commentModel->url,
-                                                        'model' => $commentModel->model,
-                                                        'model_key' => $commentModel->model_key
+                                                        '/comments/default/create', 'data' => CommentsHelper::encryptData(
+                                                        [
+                                                            'url' => $commentModel->url,
+                                                            'model' => $commentModel->model,
+                                                            'model_key' => $commentModel->model_key
+                                                        ]
+                                                    )
                                                     ]
                                                 )
-                                                ]
-                                            )
-                                        ]
+                                            ]
                                     ]) ?>
                                 </div>
                             <?php } else { ?>
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
                                     <?= Html::button(
-                                        Yii::t('comments', 'Cancel'), [
+                                        'Отмена', [
                                             'class' => 'btn btn-default btn-xs reply-cancel',
                                             'type' => 'reset',
                                             'data' => [
@@ -141,22 +143,23 @@ use ogheo\comments\helpers\CommentsHelper;
                                             ]
                                         ]
                                     ) ?>
-                                    <?= Html::submitButton(Yii::t('comments', 'Post'), [
-                                        'id' => $widget->submitButtonId,
-                                        'class' => 'btn btn-primary btn-xs',
-                                        'data' => [
-                                            'action' => Url::to(
-                                                [
-                                                    '/comments/default/create', 'data' => CommentsHelper::encryptData(
-                                                        [
-                                                            'url' => $commentModel->url,
-                                                            'model' => $commentModel->model,
-                                                            'model_key' => $commentModel->model_key
-                                                        ]
-                                                    )
-                                                ]
-                                            )
-                                        ]
+                                    <?= Html::submitButton(
+                                        'Опубликовать', [
+                                            'id' => $widget->submitButtonId,
+                                            'class' => 'btn btn-primary btn-xs',
+                                            'data' => [
+                                                'action' => Url::to(
+                                                    [
+                                                        '/comments/default/create', 'data' => CommentsHelper::encryptData(
+                                                            [
+                                                                'url' => $commentModel->url,
+                                                                'model' => $commentModel->model,
+                                                                'model_key' => $commentModel->model_key
+                                                            ]
+                                                        )
+                                                    ]
+                                                )
+                                            ]
                                     ]) ?>
                                 </div>
                             <?php } ?>
@@ -168,7 +171,7 @@ use ogheo\comments\helpers\CommentsHelper;
                     <noscript>
                         <div class="media-buttons active-media-buttons text-right">
                             <?= Html::button(
-                                Yii::t('comments', 'Cancel'), [
+                                'Отмена', [
                                     'id' => 'reply-cancel',
                                     'class' => 'btn btn-default btn-xs reply-cancel',
                                     'type' => 'reset',
@@ -179,7 +182,7 @@ use ogheo\comments\helpers\CommentsHelper;
                             )
                             ?>
                             <?= Html::submitButton(
-                                Yii::t('comments', 'Post'), [
+                                'Опубликовать', [
                                     'class' => 'btn btn-primary btn-xs comment-submit',
                                 ]
                             )
