@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
                     <div class="row">
-                    <div class="col-md-5" style="padding: 0 0 0 30px; text-align: left; text-decoration: none">
+                    <div class="col-md-4" style="padding: 0 0 0 10px; text-align: right; text-decoration: none">
                        <span>
                             <?= Html::a('Подарки: ' . $count, '', ['class' => 'gift-button-view',
                                 'data-id' => $id,
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                        </span>
                         <?if(Yii::$app->user->id == $id) {?>
                     </div>
-                        <div class="col-md-6" style=" padding:  0 0 0 10px;  text-align: right;"> "Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
+                        <div class="col-md-8" style="   text-align: center;"> "Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
                     </div>
                     <?php }?>
                       <?php } ?>
