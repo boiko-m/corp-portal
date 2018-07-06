@@ -189,7 +189,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col">
                                 Скайп
                             </div>
-                           </div>
                             <div class="col">
                                 <a href="skype:<?= $model->skype ?>?chat"><?= $model->skype ?></a>
                             </div>
