@@ -15,7 +15,7 @@ use ogheo\comments\helpers\CommentsHelper;
         <?= $model->getAuthorUrl() === null ? (
         $model->getAuthorAvatar() === null ?
             Html::tag(
-                'span', '', ['class' => 'media-object img-rounded without-image']
+                'span', '', ['class' => 'media-object without-image']
             ) : Html::img(
                 $model->getAuthorAvatar(),
                 [
@@ -26,7 +26,7 @@ use ogheo\comments\helpers\CommentsHelper;
         ) : Html::a(
             $model->getAuthorAvatar() === null ?
                 Html::tag(
-                    'span', '', ['class' => 'media-object img-rounded without-image']
+                    'span', '', ['class' => 'media-object without-image']
                 ) : Html::img(
                     $model->getAuthorAvatar(), [
                         'class' => 'media-object img-rounded',

@@ -6,10 +6,8 @@ use yii\widgets\ListView;
 use ogheo\comments\helpers\CommentsHelper;
 use ogheo\comments\Module as CommentsModule;
 
-/** @var $commentModel */
-/** @var $commentsCounter */
-/** @var $dataProvider */
-/** @var $widget */
+use app\assets\CommentsAsset;
+CommentsAsset::register($this);
 
 $cacheKey = $commentModel->url . $commentModel->model . $commentModel->model_key;
 $cacheTag = Url::previous(CommentsModule::getInstance()->urlCacheSessionKey);
@@ -21,39 +19,16 @@ $cacheProperties = CommentsHelper::getCacheProperties($cacheTag);
 
     <?php if ($widget->defaultCommentsView === 'restricted') : ?>
         <div id="<?= $widget->showCommentsId ?>" class="show-comments text-center">
-            <a href="#" data-action="show-comments">
-                <?= Yii::t('comments', 'Comments') ?>
-            </a>
+            <h5><b>Комментарии (<?= $commentsCounter->count() ?>)</b></h5>
         </div>
     <?php endif; ?>
-
-    <div id="<?= $widget->fullCommentsId ?>" <?= $widget->defaultCommentsView === 'restricted' ? 'class="hidden"' : '' ?>>
 
         <?php Pjax::begin([
             'id' => $widget->pjaxContainerId
         ]); ?>
 
         <div id="comments-container-header" class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments-header">
-
-                <?php if ($widget->defaultCommentsView === 'restricted') : ?>
-                    <div class="hide-comments">
-                        <a href="#" data-action="hide-comments">
-                            <?= Yii::t('comments', 'Hide') ?> <i class="glyphicon glyphicon-remove"></i>
-                        </a>
-                    </div>
-                <?php endif; ?>
-
-                <?php if ($this->beginCache($cacheKey . '-counter', $cacheProperties)) { ?>
-                    <h2 class="page-header">
-                        <?= Yii::t('comments', 'Comments') ?>
-                        <small>
-                            (<?= $commentsCounter->count() ?>)
-                        </small>
-                    </h2>
-                <?php $this->endCache(); } ?>
-
-            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments-header"></div>
         </div>
 
         <?php if ($widget->formPosition === 'top') {

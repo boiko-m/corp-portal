@@ -1,14 +1,8 @@
 <?php
-	/* @var $this yii\web\View */
-
-	use ogheo\comments\widget\Comments;
-
 	$this->title = $data['name'];
-
 	$this->params['breadcrumbs'][] = ['label' => 'Видео материал', 'url' => ['index']];
 	/*$this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
 	$this->params['breadcrumbs'][] = $this->title;
-
 ?>
 
 <div class="row">

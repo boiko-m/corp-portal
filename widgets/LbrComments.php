@@ -25,5 +25,5 @@ class LbrComments extends \ogheo\comments\widget\Comments
     /**
      * @var string
      */
-    // public $formView = 'comments/_form';
+    public $formView = '_form';
 }
