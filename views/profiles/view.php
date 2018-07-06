@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                        </span>
                         <?if(Yii::$app->user->id == $id) {?>
                     </div>
-                        <div class="col-md-8" style="   text-align: center;"> "Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
+                        <div class="col-md-8" style="   text-align: center;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
                     </div>
                     <?php }?>
                       <?php } ?>
