@@ -82,8 +82,13 @@ class DialogController extends \yii\web\Controller
     }
 
     private function isGroupExist($id_user) {
-        $id_group_my = ImGroupUsers::find()->where(['id_user' => Yii::$app->user->id])->asArray()->all();
-        $id_group_your = ImGroupUsers::find()->where(['id_user' => $id_user])->asArray()->all();
+        $receiver = "(SELECT `id_group_im` FROM `im_group_users` WHERE `id_user` = " . $id_user .")";
+        $sender = "(SELECT `id_group_im` FROM `im_group_users` WHERE `id_user` = " . Yii::$app->user->id . ")";
+        $query = (new \yii\db\Query)->select('`gr1`.`id_group_im`')->from(['gr1' => $receiver, 'gr2' => $sender]);
+        $rows = $query->all();
+        $command = $query->createCommand();
+        $rows = $command->queryAll();
+        debug($rows);exit();
         if (!empty($id_group_my) && !empty($id_group_your)) {
             $intersect = array_intersect($id_group_your, $id_group_my);
             foreach ($intersect as $group) {

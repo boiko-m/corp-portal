@@ -1,14 +1,13 @@
 <?php
-/* @var $this yii\web\View */
+	/* @var $this yii\web\View */
 
-use ogheo\comments\widget\Comments;
+	use ogheo\comments\widget\Comments;
 
-$this->title = $data['name'];
+	$this->title = $data['name'];
 
-$this->params['breadcrumbs'][] = ['label' => 'Видео материал', 'url' => ['index']];
-/*$this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
-$this->params['breadcrumbs'][] = $this->title;
-
+	$this->params['breadcrumbs'][] = ['label' => 'Видео материал', 'url' => ['index']];
+	/*$this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
+	$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
@@ -20,9 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="row">
 	<div class="col-12">
-		<?php echo Comments::widget([
-		    'model' => 'video',
+		<?php echo \app\widgets\LbrComments::widget([
+			'model' => 'video',
 		    'model_key' => $data['id']
-		]); ?>
+		]) ?>
+		
 	</div>
 </div>
