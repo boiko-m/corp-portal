@@ -97,7 +97,6 @@ $(document).ready(function(){
 $(document).on('mouseenter', '.ajax-user', function () {
     var id = $(this).attr('data-default');
     if($("#ajax_"+id).next().is('.toolajax')){
-      /*  $('.toolajax').show();*/
         $("#ajax_"+id).next().show();
            }
     else{

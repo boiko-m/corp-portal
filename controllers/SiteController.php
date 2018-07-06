@@ -74,7 +74,7 @@ class SiteController extends Controller
         $time_online = time() - 180;
         $profile = Profile::find()->where(['id' => $post['data']])->one();
         if($profile->last_visit > $time_online && $profile->last_visit != null){
-            $online = 'online';
+            $online = "<span style='color: #008000'>online</span>";
         }
         elseif( $profile->last_visit != null){
             if($profile->sex == 1){

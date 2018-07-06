@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= Html::a('Подарки: ' . $count, '', ['class' => 'gift-button-view',
                             'data-id' => $id,
                             'style' => ' color: black; cursor: pointer']) ?>
+                        <?if(Yii::$app->user->id == $id) {
+                       echo "<span style='text-align: right'>Количество монет: <span/><span style='color: #CCC'>$model->coins</span>" ?>
+                        <?php }?>
+
                     </div>
                 <?php } ?>
 
@@ -127,13 +131,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div> Должность: <?= $model->position ?> </div>
                 <?php endif ?>
             </div>
-               <!-- <span class="tooltipuser">
-                     <span data-default="<?/*=$model->id;*/?>" id="ajax_<?/*=$model->id;*/?>" class="ajax-user "></span>
+            <!--<span class="tooltipN">
+                     <span data-default="4080" id="ajax_4080" class="ajax-user "></span>
                 </span>
-                <span class="tooltipuser">
-                     <span data-default="4080" id="ajax_4080"  class="ajax-user "></span>
-                </span>-->
-
+-->
             <?php if (isset($user->email)): ?>
             <ul class="nav nav-tabs tabs-bordered">
                 <li class="nav-item">
@@ -188,6 +189,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col">
                                 Скайп
                             </div>
+                           </div>
                             <div class="col">
                                 <a href="skype:<?= $model->skype ?>?chat"><?= $model->skype ?></a>
                             </div>

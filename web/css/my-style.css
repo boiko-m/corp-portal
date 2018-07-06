@@ -522,10 +522,11 @@ span .online-in-tooltip{
     border-radius: 5px;
 
 }
+
 .ajax-tooltip-img{
-    margin-top: 10px;
     width: 40px;
     padding: 2px;
+    margin-left: 10px;
 }
 .toolajax{
     width: 250px;
@@ -542,3 +543,49 @@ span .online-in-tooltip{
 .href-tooltip{
     text-align: left;
     }
+
+
+
+
+.tooltip-user {
+    position: relative;
+    display: inline-block;
+
+}
+
+.tooltip-user .toolajax {
+    visibility: hidden;
+    width: 220px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: #CCCCCC solid 1px;
+}
+
+.tooltip-user .toolajax::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+    font-size: 10px!important;
+}
+.tooltip-text {
+    font-size: 10px!important;
+}
+
+.tooltip-user:hover .toolajax {
+    visibility: visible;
+    opacity: 1;
+}
