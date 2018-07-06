@@ -14,6 +14,8 @@ class AddCoinClass  extends \yii\base\Component
                 $user->save();
                 CoinNotification::create(CoinNotification::COIN_NOTIFY, [
                     'userId' => Yii::$app->user->id,
+                  /*  'profile' => $user,
+                    'col' => 6,*/
                 ])->send();
             }
             $currentData = date('y,m,d', time());
@@ -23,6 +25,8 @@ class AddCoinClass  extends \yii\base\Component
                 $user->save();
                 CoinNotification::create(CoinNotification::COIN_NOTIFY, [
                     'userId' => Yii::$app->user->id,
+                    'userCoins' => $user->coins,
+                    'col' => 3,
                 ])->send();
 
             }

@@ -73,7 +73,7 @@ jQuery(function($){
     $('#text-search').css('width', width);
     $('#submitSearch').hide(1);
     if(width1 != width ){
-        $('.close-search').css('right', width1 - width);
+         $('.close-search').css('right', width1 - width);
     }
 
     $('#hidden-search-close').show(100);// скрываем отображение лупы при клике
