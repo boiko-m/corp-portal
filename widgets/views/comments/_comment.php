@@ -37,12 +37,12 @@ use ogheo\comments\helpers\CommentsHelper;
     </div>
     <div class="media-body">
         <div class="media-info">
-            <h4 class="media-heading">
+            <h6 class="media-heading">
                 <?= $model->getAuthorUrl() === null ? $model->getAuthorName() : Html::a(
                     $model->getAuthorName(), [$model->getAuthorUrl()]
                 ) ?>
                 <small><?= $model->getPostedDate() ?></small>
-            </h4>
+            </h6>
 
             <?= Html::encode($model->content); ?>
 
