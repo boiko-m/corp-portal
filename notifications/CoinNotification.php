@@ -13,13 +13,11 @@ use webzop\notifications\Notification;
 class CoinNotification extends Notification
 {
     const COIN_NOTIFY = 'coin_notify';
-
+public $userCoins;
+public $col;
     public function getTitle(){
-        switch($this->key){
-            case self::COIN_NOTIFY:
-                return Yii::t('app','Вам начислены монеты');
 
+                return Yii::t('app',sprintf("  Вам начилены %s монеты. Всего монет %s", $this->col, $this->userCoins));
         }
-    }
 
 }
