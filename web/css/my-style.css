@@ -593,3 +593,13 @@ span .online-in-tooltip{
     width: 100%;
     margin-bottom: 6px;
 }
+
+.information_row {
+    border-bottom: 1px solid #ebebeb;
+    padding: 5px;
+    margin: 5px;
+}
+.information_row_last {
+    padding: 5px;
+    margin: 5px;
+}

@@ -134,6 +134,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($model->position): ?>
                     <div> Должность: <?= $model->position ?> </div>
                 <?php endif ?>
+
+
+
             </div>
             <!--<span class="tooltipN">
                      <span data-default="4080" id="ajax_4080" class="ajax-user "></span>
@@ -159,14 +162,6 @@ $this->params['breadcrumbs'][] = $this->title;
                    </a>
                </li> -->
             </ul>
-
-            <style>
-                .information_row {
-                    border-bottom: 1px solid #ebebeb;
-                    padding: 5px;
-                    margin: 5px;
-                }
-            </style>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
 
@@ -209,8 +204,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-
-
+                    <?php if ($model->birthday): ?>
+                        <div class="row information_row">
+                            <div class="col">
+                                День рождения
+                            </div>
+                            <div class="col">
+                                <?= $model->getBirthday()?>
+                            </div>
+                        </div>
+                    <?php endif ?>
                     <?php if (isset($model->sip) and $model->sip != 0): ?>
                         <div class="row information_row">
                             <div class="col">
@@ -252,6 +255,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
+
                 </div>
 
                 <div class="tab-pane fade" id="profile-b1">
