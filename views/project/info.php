@@ -530,9 +530,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
   <div class="col-12">
-    <?php echo Comments::widget([
-        'model' => 'project_news',
-        'model_key' => $data['id']
-    ]); ?>
+    <?php echo \app\widgets\LbrComments::widget([
+      'model' => 'video',
+        'model_key' => $data['id'],
+        'name_widget' => 'Форум',
+    ]) ?>
   </div>
 </div>

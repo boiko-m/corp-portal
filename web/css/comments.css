@@ -3,9 +3,10 @@
   overflow: hidden; 
 }
   .comments .show-comments {
-    border: 1px solid #eeeeee;
+    /*border: 1px solid #eeeeee;
     background-color: #eeeeee;
-    border-radius: 6px;
+    border-radius: 6px;*/
+    margin-top: 20px;
   }
     .comments .show-comments a {
       display: block;
