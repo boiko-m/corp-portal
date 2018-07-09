@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                       <?php if ($col != 1): ?>
                                           <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif; ?>
                                       <div class="col-md-12"
-                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 20px;">
+                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 0;">
                                                     "<?= ($value['message']) ?>"
                                                 </div>
                                   <?php endif; ?>
