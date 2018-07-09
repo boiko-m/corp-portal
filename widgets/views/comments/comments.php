@@ -18,7 +18,7 @@ $cacheProperties = CommentsHelper::getCacheProperties($cacheTag);
 
     <?php if ($widget->defaultCommentsView === 'restricted') : ?>
         <div id="<?= $widget->showCommentsId ?>" class="show-comments text-center">
-            <h5><b><?= $name_widget ?> (<?= $commentsCounter->count() ?>)</b></h5>
+            <h5><b><?= $name_widget ?> <!--(<?= $commentsCounter->count() ?>) --></b></h5>
         </div>
     <?php endif; ?>
 

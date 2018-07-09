@@ -535,6 +535,5 @@ $this->params['breadcrumbs'][] = $this->title;
         'model_key' => $data['id'],
         'name_widget' => 'Форум',
     ]) ?>
-    
   </div>
 </div>
