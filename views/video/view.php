@@ -15,7 +15,8 @@
 	<div class="col-12">
 		<?php echo \app\widgets\LbrComments::widget([
 			'model' => 'video',
-		    'model_key' => $data['id']
+		    'model_key' => $data['id'],
+		    'name_widget' => 'Комментарии',
 		]) ?>
 		
 	</div>
