@@ -79,7 +79,6 @@ class DialogController extends \yii\web\Controller
         $message->id_user_from = Yii::$app->user->id;
         $message->id_user_to = $id_user;
         $message->save();
-        debug($message);exit();
     }
 
     private function isGroupExist($id_user) {
@@ -87,8 +86,7 @@ class DialogController extends \yii\web\Controller
         $command = $connection->createCommand("
             select gr1.id_group_im from (SELECT id_group_im FROM im_group_users WHERE id_user = " . Yii::$app->user->id . ") as gr1, (SELECT id_group_im FROM im_group_users WHERE id_user = " . $id_user .") as gr2 where gr1.id_group_im = gr2.id_group_im");
         $result = $command->queryAll();
-            return $result[0]['id_group_im'];
-        return 0;
+        return $result[0]['id_group_im'];
     }
 
 }

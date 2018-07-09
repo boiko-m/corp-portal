@@ -251,6 +251,25 @@ $('.im-user-input-search').on('input', function(){
 
 
 $('body').delegate('.im-icon-paper','click',function() {
+  sendMessage()
+});
+
+$('.im-dialog-message-input').keypress(function() {
+  if (event.which == 13) {
+    event.preventDefault()
+    sendMessage()
+  }
+  if (event.ctrlKey) {
+    let txt = $('.im-dialog-message-input')
+    txt.val(txt.val() + "\n")
+  }
+});
+
+
+// ------------- Ajax requests -------------
+
+
+function sendMessage() {
   let inputMessage = $('.im-dialog-message-input').val()
   $.ajax({
     url: '/im/dialog/send-message',
@@ -262,10 +281,7 @@ $('body').delegate('.im-icon-paper','click',function() {
       console.log('Возникла ошибка: ' + xhr.responseText)
     }
   });
-});
-
-// ------------- Ajax requests -------------
-
+}
 
 
 function bytesToSize(bytes) {
@@ -336,7 +352,7 @@ function appendMessage(data) {
       $('.im-dialog-list-messages').append('<li class="im-dialog-message-select" id-message=' +
        result[i].id + '><div class="im-dialog-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
        result[i]['profileFrom'].img + '" alt="profilepicture" class="im-dialog-field-image"><a href=/profiles/' +
-       result[i]['profileFrom'].id + ' class="im-message-user-link" style="color: #42648b; font-weight: 700;">' +
+       result[i]['profileFrom'].id + ' target="_blank" class="im-message-user-link" style="color: #42648b; font-weight: 700;">' +
        result[i]['profileFrom'].first_name + '<span class="time" style="font-weight: 400;"> ' +
        moment.unix(result[i].create_at).format("HH:mm") + '</span></a><p class="message">' +
        result[i].message + '</p></div></li>')
