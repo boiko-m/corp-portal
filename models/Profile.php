@@ -91,7 +91,58 @@ class Profile extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id']);
     }
+    public function getBirthday() {
 
+        $birthday = substr($this->birthday, 5);
+        $birthday = explode('-', $birthday);
+        switch ($birthday[0]) {
+            case '01':
+               $month = 'января';
+                break;
+            case  '02':
+                $month = 'февраля';
+                break;
+            case  '03':
+                $month = 'марта';
+                break;
+            case  '04':
+                $month = 'апреля';
+                break;
+            case  '05':
+                $month = 'мая';
+                break;
+            case  '06':
+                $month = 'июня';
+                break;
+            case  '07':
+                $month = 'июля';
+                break;
+            case  '08':
+                $month = 'августа';
+                break;
+            case  '09':
+                $month = 'сентября';
+                break;
+            case  '10':
+                $month = 'октября';
+                break;
+                break;
+            case  '11':
+                $month = 'ноября';
+                break;
+                break;
+            case  '12':
+                $month = 'декабря';
+                break;
+        }
+        if(substr($birthday[1],0, 1) == 0 ){
+            $birthday[1] = substr($birthday[1], 1);
+                 }
+
+
+
+        return $birthday[1].' '.$month;
+    }
     public function getName()
     {
         return sprintf("%s %s %s", $this->last_name, $this->first_name, $this->middle_name);

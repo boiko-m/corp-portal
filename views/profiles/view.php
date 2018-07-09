@@ -29,17 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
-                    <div style="width: 100%; padding:  0 0 0 10px; text-align: left; text-decoration: none">
+                    <div class="row">
+                         <div class="col-md-4" style="padding: 0 0 0 20px; text-align: left; text-decoration: none">
                         <?= Html::a('Подарки: ' . $count, '', ['class' => 'gift-button-view',
-                            'data-id' => $id,
-                            'style' => ' color: black; cursor: pointer']) ?>
-                        <?if(Yii::$app->user->id == $id) {
-                       echo "<span style='text-align: right'>Количество монет: <span/><span style='color: #CCC'>$model->coins</span>" ?>
-                        <?php }?>
-
+                            'data-id' => $id,'style' => ' color: black; cursor: pointer']) ?>
+                         </div>
+                        <?if(Yii::$app->user->id == $id) {?>
+                            <div class="col-md-8" style="text-align: right; padding: 0 20px 0 0;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
+                        <?php } ?>
                     </div>
+                <?php }
+                else{?>
+                     <?if(Yii::$app->user->id == $id) {?>
+                    <div class="col-md-8" style="   text-align: center;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
+                     <?php } ?>
                 <?php } ?>
-
 
                 <?php
                 foreach ($gifts_user as $value) { //формирование 3 подарков под пользователем
@@ -81,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                       <?php if ($col != 1): ?>
                                           <hr style="  margin-top: 0; margin-bottom: 0; "> <?php endif; ?>
                                       <div class="col-md-12"
-                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 20px;">
+                                           style="color: #0a0a0a; text-align: center; padding: 5px 0 0 0;">
                                                     "<?= ($value['message']) ?>"
                                                 </div>
                                   <?php endif; ?>
@@ -130,6 +134,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($model->position): ?>
                     <div> Должность: <?= $model->position ?> </div>
                 <?php endif ?>
+
+
+
             </div>
             <!--<span class="tooltipN">
                      <span data-default="4080" id="ajax_4080" class="ajax-user "></span>
@@ -155,14 +162,6 @@ $this->params['breadcrumbs'][] = $this->title;
                    </a>
                </li> -->
             </ul>
-
-            <style>
-                .information_row {
-                    border-bottom: 1px solid #ebebeb;
-                    padding: 5px;
-                    margin: 5px;
-                }
-            </style>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
 
@@ -205,8 +204,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-
-
+                    <?php if ($model->birthday): ?>
+                        <div class="row information_row">
+                            <div class="col">
+                                День рождения
+                            </div>
+                            <div class="col">
+                                <?= $model->getBirthday()?>
+                            </div>
+                        </div>
+                    <?php endif ?>
                     <?php if (isset($model->sip) and $model->sip != 0): ?>
                         <div class="row information_row">
                             <div class="col">
@@ -248,6 +255,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
+
                 </div>
 
                 <div class="tab-pane fade" id="profile-b1">

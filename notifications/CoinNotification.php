@@ -17,7 +17,7 @@ public $userCoins;
 public $col;
     public function getTitle(){
 
-                return Yii::t('app',sprintf("  Вам начилены %s монеты. Всего монет %s", $this->col, $this->userCoins));
+                return Yii::t('app',sprintf("  Вам начиcлены %s монеты. Всего монет %s", $this->col, $this->userCoins));
         }
 
 }

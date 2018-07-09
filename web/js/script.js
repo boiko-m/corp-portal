@@ -15,3 +15,9 @@ $(document).ready(function() {
 
 
 });
+$(document).ready(function() {
+
+   $("div.information_row").last().addClass('information_row_last');
+    $("div.information_row").last().removeClass('information_row');
+});
+
