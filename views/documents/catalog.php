@@ -111,6 +111,10 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div>
 			<span><a href="http://portal.lbr.ru/lbrgroup/photouser/katalog/McCormick.rdp" target="_blank">12. McCormick.rdp</a></span>
+            <div>
+                Логин: catalog-pxe\katalog <br>
+                Пароль: rfnfkju
+            </div>
 		</div>
 		<div>
 			<span><a href="http://www.diecispareparts.com/dcs/Ordini/Login.aspx?CheckCookie=YES" target="_blank">13. DIECI </a></span>
