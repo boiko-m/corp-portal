@@ -86,7 +86,7 @@
     <hr>
 
 <?php } ?>
-<div style="margin: 10px"><?= \yii\helpers\Html::a('Открыть все результаты', \yii\helpers\Url::to('/search/view/'), ['class' => 'btn  waves-effect w-md btn-light',
+<div style="margin: 10px"><?= \yii\helpers\Html::a('Открыть все результаты', \yii\helpers\Url::to('/search/view/'), ['class' => 'btn  waves-effect w-md btn-light open-results',
         'data' => [
             'method' => 'get',
             'params' => [
