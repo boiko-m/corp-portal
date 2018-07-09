@@ -79,24 +79,15 @@ class DialogController extends \yii\web\Controller
         $message->id_user_from = Yii::$app->user->id;
         $message->id_user_to = $id_user;
         $message->save();
+        debug($message);exit();
     }
 
     private function isGroupExist($id_user) {
-        $receiver = "(SELECT `id_group_im` FROM `im_group_users` WHERE `id_user` = " . $id_user .")";
-        $sender = "(SELECT `id_group_im` FROM `im_group_users` WHERE `id_user` = " . Yii::$app->user->id . ")";
-        $query = (new \yii\db\Query)->select('`gr1`.`id_group_im`')->from(['gr1' => $receiver, 'gr2' => $sender]);
-        $rows = $query->all();
-        $command = $query->createCommand();
-        $rows = $command->queryAll();
-        debug($rows);exit();
-        if (!empty($id_group_my) && !empty($id_group_your)) {
-            $intersect = array_intersect($id_group_your, $id_group_my);
-            foreach ($intersect as $group) {
-                if (\app\models\ImGroups::find()->where(['id_type_group_im' => '1'])) {
-                    return $group['id_group_im'];
-                }
-            }
-        }
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("
+            select gr1.id_group_im from (SELECT id_group_im FROM im_group_users WHERE id_user = " . Yii::$app->user->id . ") as gr1, (SELECT id_group_im FROM im_group_users WHERE id_user = " . $id_user .") as gr2 where gr1.id_group_im = gr2.id_group_im");
+        $result = $command->queryAll();
+            return $result[0]['id_group_im'];
         return 0;
     }
 

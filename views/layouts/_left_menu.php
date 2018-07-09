@@ -22,12 +22,7 @@
                 
                 <?if(\Yii::$app->user->can("viewProject")):?>
                     <li>
-                        <a href="javascript: void(0);"><i class="fi-share"></i> <span> Проекты компании </span> <span class="menu-arrow"></span></a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="/project/">Проекты в работе</a></li>
-                            <li><a href="/project/news/">Новости</a></li>
-                            <li><a href="/project/forum/">Форум проектов</a></li>
-                        </ul>
+                        <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
                         <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
                             <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
                                 <ul class="nav-third-level nav collapse" aria-expanded="false">
