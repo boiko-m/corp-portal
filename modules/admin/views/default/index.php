@@ -15,7 +15,7 @@ $this->title = 'Админ-панель';
             <div class="table-responsive wrap-relative">
                 <div class="preloader" ></div>
 
-               <div style="text-align: center" >Добро пожаловать в админ-панель. Согласно вашим правам вам отрыт доступ в соответсвующее меню слева.</div>
+               <div style="text-align: center" >Добро пожаловать в админ-панель. Согласно вашим правам вам отрыт доступ в соответствующее меню слева.</div>
             </div>
         </div>
     </div>
