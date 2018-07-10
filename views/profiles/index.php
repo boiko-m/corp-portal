@@ -51,23 +51,23 @@ echo Html::jsFile('@web/js/ajax.js');
                             'class' => 'yii\grid\ActionColumn',
                             'template' => '{view}',
                         ],
-
-                        'name',
                         [
-                            'label' => 'SIP',
-                            'value' => function ($data) {
-                                return $data->sip ? $data->sip : "&nbsp;";
+                            'attribute' => 'grid',
+                            'value' =>   function (\app\models\Profile $data) {
+                                $link =$data->getName().'<br>'.$data->getGrid();
+                                return $link;
                             },
-                            'format' => 'raw'
+                            'format' => 'raw',
+
                         ],
-                        'user.email',
                         'branch',
-                        'department',
+                        'position',
                         [
                             'attribute' => 'phone',
                             'value' =>   function (\app\models\Profile $data) {
                                 $onePhone = explode(",", $data->phone);
-                                $link = "<a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a>';
+                                $link =  $data->sip ? 'SIP '.$data->sip : "&nbsp;";
+                                $link =$link. "<br><a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a><br>';
                                 $link = $link.' '."<a href=tel:".$onePhone[1].'>'.$onePhone[1].'</a>';
 
 
