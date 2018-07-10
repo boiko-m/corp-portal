@@ -16,59 +16,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <style>
     .work-group-title {
-        padding: 10px 20px;
-
+      padding: 10px 20px;
     }
     .work-group-content {
-        margin-left: 40px;
+      margin-left: 40px;
     }
     .work-group-content a {
-        display: block
+      display: block
     }
     .work-group-content small {
-        color: black
+      color: black
     }
     h5 {
       font-size:20px!important;
     }
 </style>
-
-<div class="row">
-    <div class="col-xs-12 col-md-9">
-        
-
-                <div class="card mb-3">
-
-
-          <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
-                <li class="nav-item">
-                      <a href="#tab1" style="line-height: 1;" class="nav-link active" data-toggle="tab" aria-expanded="false">О проекте</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#tab2" style = "line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цели</a>
-                  </li>
-              </ul>
-
-            <!-- <h5 class="card-header" id = "information">
-                О проекте
-            </h5> -->
-            <div >
-              <div class = "tab-content" style="padding-top: 10px">
-                
-              
-                <div id = "tab1" class="tab-pane active" style="padding: 0px 20px 10px;">
-                    <div style="font-size: 11px;background: whitesmoke;padding: 10px;border-radius: 5px;">
-                        <b>Индивидуальный план рекламы (ИПР)</b> – проект, направленный на индивидуальный подход к каждому клиенту.
-                      Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
-                      Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
-                    </div>
- <hr> 
-<div id = "news">
-    <h5>
-        Движение по проекту:
-    </h5>
-</div>
-
 
 <style>
   .news-project-n div {
@@ -78,120 +40,187 @@ $this->params['breadcrumbs'][] = $this->title;
     padding-top: 10px;
   }
   .news-project-n > div > div:nth-child(1) {
-    color:grey;
+    color: grey;
     text-align: right;
     padding-right: 10px;
+    margin-top: 5px;
   }
   .news-project-n > div > div:nth-child(2) {
-    font-size:17px;
+    font-size: 17px;
+  }
+  .news-project-n > div > div:nth-child(2) > input {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .news-project-n > div:nth-child(2) > div:nth-child(1) {
+    text-align: center;
+    font-size: 12px;
   }
   .news-project-n > div:nth-child(2) > div:nth-child(2) {
     font-size: 13px;
+    margin-top: -30px;
+  }
+  .news-project-n > div:nth-child(2) > div:nth-child(2) > textarea {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .news-project-n > div:nth-child(3) > div:nth-child(2) > button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
   }
 </style>
 
-
 <style>
-    .project-news-title {
-        font-size: 14px;
-        padding-left: 10px;
-        padding-top: 3px;
-    }
-    .project-news-title a {
-        font-size: 14px;
-        color: #979797;
-        transition: 0.3s;
+  .project-news-title {
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 3px;
+  }
+  .project-news-title a {
+    font-size: 14px;
+    color: #979797;
+    transition: 0.3s;
 
-    }
-    .project-news-title a:hover {
-        color: black;
-    }
-    .project-news-content {
-        padding: 5px;
-    }
-    .project .btn-group {
-        margin-top: 5px;
-    }
-    .work-group-view-content .btn-group {
-        margin-top: 5px;
-    }
-    .work-group-view-content .btn {
-        padding-top: 2px;
-        padding-bottom: 2px;
-    }
-    .project-target-items {
-      margin:10px;
-    }
-    .project-target-items{
-        padding: 10px;
-        background: #f5f5f5;
-        margin-top: 10px;
-        box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
-    }
-    .success-border {
-        border: 1px solid #43c499!important;
-    }
-    .stage-goal > div {
-      margin:10px;
-      background: #f5f5f5;
-      box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
-    }
+  }
+  .project-news-title a:hover {
+    color: black;
+  }
+  .project-news-content {
+    padding: 5px;
+  }
+  .project .btn-group {
+    margin-top: 5px;
+  }
+  .work-group-view-content .btn-group {
+    margin-top: 5px;
+  }
+  .work-group-view-content .btn {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .project-target-items {
+    margin: 10px;
+  }
+  .project-target-items{
+    padding: 10px;
+    background: #f5f5f5;
+    margin-top: 10px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+  }
+  .success-border {
+    border: 1px solid #43c499!important;
+  }
+  .stage-goal > div {
+    margin:10px;
+    background: #f5f5f5;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+  }
 
-    .stage-goal > div > div {
-      padding: 10px;
-      font-size: 12px;
-    }
+  .stage-goal > div > div {
+    padding: 10px;
+    font-size: 12px;
+  }
 
-    .stage-goal > div > div:nth-child(1) {
-      border-right:1px solid #dbdbdb;
-    }
-    .colorgreen {
-      color: #109d10
-    }
-    .colororange {
-      color: #ff8f00;
-    }
+  .stage-goal > div > div:nth-child(1) {
+    border-right:1px solid #dbdbdb;
+  }
+  .colorgreen {
+    color: #109d10
+  }
+  .colororange {
+    color: #ff8f00;
+  }
 </style>
 
-<div class="news-project-n">
-  <div class="row">
-    <div class="col-xs-12 col-md-1">
-      20.02
-    </div>
-    <div class="col-xs-12 col-md-11">
-     Начали работу  над 2-м этапом проекта
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-xs-12 col-md-1">
-      </div>
-      <div class="col-xs-12 col-md-11">
-      Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
-      </div>
-      
-    </div>
-</div>
+<div class="row">
+  <div class="col-xs-12 col-md-9">
+    <div class="card mb-3">
+      <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >
+        <li class="nav-item">
+          <a href="#tab1" style="line-height: 1;" class="nav-link active" data-toggle="tab" aria-expanded="false">О проекте</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2" style = "line-height: 1;" class="nav-link" data-toggle="tab" aria-expanded="false">Цели</a>
+        </li>
+      </ul>
 
-<div class="news-project-n">
-  <div class="row">
-    <div class="col-xs-12 col-md-1">
-      20.01
-    </div>
-    <div class="col-xs-12 col-md-11">
-     Начали работу  над 1-м этапом проекта
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-xs-12 col-md-1">
-      </div>
-      <div class="col-xs-12 col-md-11">
-      Разработан индивидуальный план рекламы для 7 клиентов. Выработана методику поиска контактов. Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч.
-      </div>
-      
-    </div>
-</div>
+      <!-- <h5 class="card-header" id = "information">
+          О проекте
+      </h5> -->
+      <div >
+        <div class = "tab-content" style="padding-top: 10px">
+          <div id = "tab1" class="tab-pane active" style="padding: 0px 20px 10px;">
+            <div style="font-size: 11px;background: whitesmoke;padding: 10px;border-radius: 5px;">
+              <b>Индивидуальный план рекламы (ИПР)</b> – проект, направленный на индивидуальный подход к каждому клиенту.
+                Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
+                Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
+            </div>
+            <hr> 
+            <div id="news">
+              <h5>
+                Движение по проекту:
+              </h5>
+            </div>
 
+            <div class="news-project-n">
+              <div class="row">
+                <div class="col-xs-12 col-md-1"><img src="/img/current-events-512.png" width="55"></div>
+                <div class="col-xs-12 col-md-11">Начали работу  над 2-м этапом проекта</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-1">20.02.18</div>
+                <div class="col-xs-12 col-md-11">
+                  <p>
+                    Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
+                  </p>
+                  <p>
+                    Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
+                  </p>
                 </div>
+              </div>
+            </div>
+
+            <div class="news-project-n">
+              <div class="row">
+                <div class="col-xs-12 col-md-1"><img src="/img/current-events-512.png" width="55"></div>
+                <div class="col-xs-12 col-md-11">Начали работу  над 1-м этапом проекта</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-1">20.01.18</div>
+                <div class="col-xs-12 col-md-11">
+                  <p>
+                    Разработан индивидуальный план рекламы для 7 клиентов. Выработана методику поиска контактов. Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <?php if(\Yii::$app->user->can("controlProject")): ?>
+            <div class="news-project-n">
+              <div class="row">
+                <div class="col-xs-12 col-md-1">
+                  <img src="/img/current-events-512.png" width="55">
+                </div>
+                <div class="col-xs-12 col-md-11">
+                 <input type="text" name="" placeholder="Заголовок">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-1"><?= date('d.m.y', time()) ?></div>
+                <div class="col-xs-12 col-md-11">
+                  <textarea placeholder="Содержание новости"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-1"></div>
+                <div class="col-xs-12 col-md-11">
+                  <button class="btn  waves-effect w-md btn-light" style="width: 50%">Опубликовать</button>
+                </div>
+              </div>
+            </div>
+            <? endif; ?>
+          </div>
 
                 <div id = "tab2" class="tab-pane">
                     <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" >

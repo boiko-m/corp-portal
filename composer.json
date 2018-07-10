@@ -25,7 +25,9 @@
         "2amigos/yii2-tinymce-widget": "~1.1",
         "hauntd/yii2-vote": "0.3.*",
         "cinghie/yii2-fontawesome": "*",
-        "webzop/yii2-notifications": "*"
+        "webzop/yii2-notifications": "*",
+        "yiisoft/yii2-jui": "^2.0",
+        "2amigos/yii2-date-picker-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

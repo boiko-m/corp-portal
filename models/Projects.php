@@ -38,8 +38,8 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'create_at', 'close_at', 'create_user'], 'required'],
-            [['name', 'description', 'goal'], 'string'],
-            [['create_at', 'close_at', 'archive', 'create_user'], 'integer'],
+            [['name', 'description', 'goal', 'create_at', 'close_at'], 'string'],
+            [['archive', 'create_user'], 'integer'],
             [['create_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['create_user' => 'id']],
         ];
     }
