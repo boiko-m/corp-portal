@@ -62,7 +62,7 @@
                                     <li class="im-dialog-option-item"><span>Документ</span></li>
                                 </ul>
                             </div>
-                            <input type="text" name="" class="im-dialog-message-input" placeholder="Введите сообщение...">
+                            <textarea name="" class="im-dialog-message-input" placeholder="Введите сообщение..."></textarea>
                             <i class="fa fa-arrow-right im-icon im-icon-paper" title="Отправить сообщение"></i>
                             <!-- <i class="fa fa-microphone im-icon im-icon-microphone" title="Голосовое сообщение"></i> -->
                         </div>

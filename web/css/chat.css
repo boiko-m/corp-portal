@@ -324,6 +324,7 @@
     background-color: #fff;
     border-radius: 6px;
     border: 1px solid #d3d3d3;
+    resize: none;
 }
 
 .im-dialog-message-input::placeholder {
