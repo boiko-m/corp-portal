@@ -55,7 +55,7 @@ class Projects extends \yii\db\ActiveRecord
             'description' => 'Описание',
             'goal' => 'Цели',
             'create_at' => 'Дата начала',
-            'close_at' => 'Дата акончания',
+            'close_at' => 'Дата окончания',
             'archive' => 'Архивация',
             'create_user' => 'Создатель',
         ];

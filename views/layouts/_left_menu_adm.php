@@ -52,7 +52,7 @@ use app\models\News;
                 <?endif;?>
                 <?if(\Yii::$app->user->can("controlProject")):?>
                 <li>
-                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Проекты </span></a>
+                    <a href="/admin/projects"><i class="fi-file"></i><span> Проекты </span></a>
                 </li>
                 <?endif;?>
                     <?if(\Yii::$app->user->can("controlMessages")):?>
