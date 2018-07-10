@@ -32,6 +32,7 @@ class Profile extends \yii\db\ActiveRecord
     public $full_name;
     public $user_email;
     public $name_grid;
+    public $department_position;
     /**
      * @inheritdoc
      */
@@ -84,6 +85,7 @@ class Profile extends \yii\db\ActiveRecord
             'name' => 'ФИО',
             'grid' => 'ФИО',
             'user_email' => 'Почта',
+            'department_position'=>'Отдел, должность'
         ];
     }
 
@@ -155,12 +157,14 @@ class Profile extends \yii\db\ActiveRecord
     public function getGrid()
     {$user = User::findOne($this->id);
 
-        return  $user->email;
+        return  "<span style='font-size: 13px; font-weight: bold'>$user->email</span>";
     }
-   /* public function getNameGrid($email)
+
+
+   public function getDepartment_position()
     {
-        return  $this->last_name.' '.$this->first_name.' '. $this->middle_name."<br>".$email;
-    }*/
+        return sprintf("%s %s %s", $this->department,  '<br>', $this->position);
+    }
 
     public function getImage() {
 

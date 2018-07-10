@@ -42,22 +42,32 @@ echo Html::jsFile('@web/js/ajax.js');
 
                     'options'=>['class'=>'table table-striped',],
                     'columns' => [
-                        [
+                       /* [
 
                             'class' => 'yii\grid\ActionColumn',
                             'template' => '{view}',
-                        ],
+                        ],*/
                         [
                             'attribute' => 'grid',
                             'value' =>   function (\app\models\Profile $data) {
-                                $link =$data->getName().'<br>'.$data->getGrid();
+                                $link = "<a href=/profiles/".$data->id.'>'.$data->getName().'</a><br>';
+                                $link = $link.$data->getGrid();
                                 return $link;
                             },
                             'format' => 'raw',
 
                         ],
                         'branch',
-                        'position',
+                        [
+                            'attribute' => 'department_position',
+                            'value' =>   function (\app\models\Profile $data) {
+                                $link =$data->department.'<br>'.$data->position;
+
+                                return $link;
+                            },
+                            'format' => 'raw',
+
+                        ],
                         [
                             'attribute' => 'phone',
                             'value' =>   function (\app\models\Profile $data) {

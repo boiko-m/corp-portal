@@ -32,5 +32,3 @@ class GiftNotification extends Notification
         return ['/profiles/view/', 'id' => $this->userIdPath];
     }
 }
-
-?>
