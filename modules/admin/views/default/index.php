@@ -13,9 +13,9 @@ $this->title = 'Админ-панель';
     <div class="col-md-12">
         <div class="card-box">
             <div class="table-responsive wrap-relative">
-                <div class="preloader"></div>
+                <div class="preloader" ></div>
 
-               <p>Добро пожаловать в админ-панель. Согласно вашим правам вам отрыт доступ в соответсвующее меню слева.</p>
+               <div style="text-align: center" >Добро пожаловать в админ-панель. Согласно вашим правам вам отрыт доступ в соответсвующее меню слева.</div>
             </div>
         </div>
     </div>
