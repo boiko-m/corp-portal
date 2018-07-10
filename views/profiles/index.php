@@ -27,19 +27,15 @@ echo Html::jsFile('@web/js/ajax.js');
                     'options' => ['class' => 'alphabet-wrap',
                         ],
                     'letters' => $alphabet,
-                    'actionLink' => 'profiles/index'
+                    'actionLink' => 'profiles/index',
                 ]);
 
             }
             else{
                 $searchModel = null;
             }
-
             ?>
-
-
-
-                <?= GridView::widget([
+                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'summary' => "",
@@ -66,8 +62,8 @@ echo Html::jsFile('@web/js/ajax.js');
                             'attribute' => 'phone',
                             'value' =>   function (\app\models\Profile $data) {
                                 $onePhone = explode(",", $data->phone);
-                                $link =  $data->sip ? 'SIP '.$data->sip : "&nbsp;";
-                                $link =$link. "<br><a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a><br>';
+                                $link =  $data->sip ? 'SIP '.$data->sip.'<br>': "&nbsp;";
+                                $link =$link. "<a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a><br>';
                                 $link = $link.' '."<a href=tel:".$onePhone[1].'>'.$onePhone[1].'</a>';
 
 

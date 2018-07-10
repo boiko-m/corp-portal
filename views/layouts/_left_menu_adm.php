@@ -28,7 +28,7 @@ use app\models\News;
                         <i class="fi-grid"></i> <span> Главная </span>
                     </a>
                 </li>
-
+                <?if(\Yii::$app->user->can("allAccess")):?>
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Роли </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -38,7 +38,8 @@ use app\models\News;
                         <li><a href="/rbac/assignment">Назначения</a></li>
                     </ul>
                 </li>
-
+                <?endif;?>
+                <?if(\Yii::$app->user->can("allAccess")):?>
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Пользователи </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -48,28 +49,35 @@ use app\models\News;
                         <li><a href="/admin/setting-options">Настройки интерфейса</a></li>
                     </ul>
                 </li>
-
+                <?endif;?>
+                    <?if(\Yii::$app->user->can("controlMessages")):?>
                 <li>
+
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Сообщения </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/admin/im-groups/">Группы</a></li>
                         <li><a href="/admin/type-group-im">Тип групп</a></li>
                         <li><a href="/admin/attachments-message">Вложения сообщений</a></li>
                     </ul>
-                </li>
 
+                </li>
+            <?endif;?>
+                <?if(\Yii::$app->user->can("controlNews")):?>
                 <li>
                     <a href="/admin/news">
                         <i class="fi-file"></i> <span>Новости</span><span class="badge badge-info badge-info-status" style="margin-top: 2px;"><?= $unconfirmedNews ?></span>
                     </a>
                 </li>
-
+                <?endif;?>
+                <?if(\Yii::$app->user->can("controlVideo")):?>
                 <li>
+
                     <a href="/admin/videos">
                         <i class="fi-file"></i> <span>Видео</span>
                     </a>
                 </li>
-
+            <?endif;?>
+                <?if(\Yii::$app->user->can("controlFAQ")):?>
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Обуч. материал </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -77,7 +85,8 @@ use app\models\News;
                         <li><a href="/admin/faq-type">Типы</a></li>
                     </ul>
                 </li>
-
+                <?endif;?>
+                <?if(\Yii::$app->user->can("controlGift")):?>
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Подарки </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -85,7 +94,7 @@ use app\models\News;
                         <li><a href="/admin/gift-type">Типы подарков</a></li>
                     </ul>
                 </li>
-                
+                <?endif;?>
 
             </ul>
 
