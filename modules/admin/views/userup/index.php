@@ -13,27 +13,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="row card-box" style="text-align: center;">
-    <div class="col-6">
-        <button class="btn  waves-effect w-md btn-light" onclick="ajax('insert','', 'update_user','Идет синхронизация. Ожидайте...')">
-            Синхронизация новых пользователей
-        </button>
+    <div class="col-12">
 
-        <div class="row">
-             <div class="col-12" id = "update_user">
-                 
-             </div>
+       
+        <button type="button" class="btn btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="true"> Синхронизация пользователей <span class="caret"></span> </button>
+
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <a class="dropdown-item" href="#" onclick="ajax('insert','', 'update_user','Идет синхронизация пользователей. Ожидайте...')">обычных</a>
+            <a class="dropdown-item" href="#" onclick="ajax('replace','', 'update_user','Идет синхронизация пользователей по договору подряда. Ожидайте...')">по договору подряда</a>
         </div>
-    </div>
 
-    <div class="col-6">
-        <button class="btn  waves-effect w-md btn-light" onclick="ajax('replace','', 'replace_user','Идет синхронизация. Ожидайте...')">
+
+
+        <button class="btn  waves-effect w-md btn-light" onclick="ajax('replace','', 'update_user','Идет обновление. Ожидайте...')">
             Обновление пользовательской информации
         </button>
 
-        <div class="row">
-             <div class="col-12" id = "replace_user">
-                 
-             </div>
+        <div id="update_user" style="margin-top: 30px">
+            
         </div>
+
+
+
+
     </div>
+
 </div>
