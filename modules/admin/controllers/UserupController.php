@@ -23,15 +23,20 @@ class UserupController extends Controller
     public function actionInsert() {
     	$odata = new Odata();
 
-    	$data = $odata->get("Catalog_Сотрудники", array(
-    		'top' => 10,
-    		'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
-    		'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
-    		'orderby' => 'ДатаПриема desc'
-    	));
+        $tdata = new Tdata();
 
-        
+        if (Yii::$app->request->get('dogovor')) {
+            $data = $tdata->doc('Catalog_Сотрудники')->key('Parent_Key', '9ffae14d-4d43-11e5-8bed-005056a36ce0')->select('ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key')->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->orderby('ДатаПриема desc')->top(10)->all();
+        } else {
+            $data = $odata->get("Catalog_Сотрудники", array(
+                'top' => 10,
+                'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
+                'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
+                'orderby' => 'ДатаПриема desc'
+            ));
+        }
 
+       
     	for ($i=0; $i < count($data); $i++) {
 
     		$data_cat = $odata->get("InformationRegister_РейтингиСотрудников", array(
@@ -103,9 +108,12 @@ class UserupController extends Controller
     	}
 
 
-    	foreach ($data as $up) {
-    		if (!in_array($up['Логин'], $users)) {
 
+    	foreach ($data as $up) {
+
+    		if (!in_array($up['Логин'], $users) && isset($up['Логин'])) {
+                //echo "<pre>".print_r($up, true)."</pre>";
+                $up['Email'] = ($up['Email']) ? $up['Email'] : $up['Логин'] . "@lbr.ru";
     			// добавление в бд
     			$max_id = User::find()->max('id');
 
