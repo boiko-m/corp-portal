@@ -29,6 +29,9 @@ use Yii;
  */
 class Profile extends \yii\db\ActiveRecord
 {
+    public $full_name;
+    public $user_email;
+    public $name_grid;
     /**
      * @inheritdoc
      */
@@ -46,7 +49,7 @@ class Profile extends \yii\db\ActiveRecord
             [['id'], 'required'],
             [['id', 'sex', 'sip', 'coins'], 'integer'],
             [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
-            [['birthday', 'date_job'], 'safe'],
+            [['birthday', 'date_job', 'user_email'], 'safe'],
             [['id'], 'unique'],
         ];
     }
@@ -79,6 +82,8 @@ class Profile extends \yii\db\ActiveRecord
             'service' => 'Service',
             'sip' => 'SIP',
             'name' => 'ФИО',
+            'grid' => 'ФИО',
+            'user_email' => 'Почта',
         ];
     }
 
@@ -147,6 +152,15 @@ class Profile extends \yii\db\ActiveRecord
     {
         return sprintf("%s %s %s", $this->last_name, $this->first_name, $this->middle_name);
     }
+    public function getGrid()
+    {$user = User::findOne($this->id);
+
+        return  $user->email;
+    }
+   /* public function getNameGrid($email)
+    {
+        return  $this->last_name.' '.$this->first_name.' '. $this->middle_name."<br>".$email;
+    }*/
 
     public function getImage() {
 

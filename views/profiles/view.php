@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
         <? if (isset($gifts_user)): ?>
-            <div class=" gift-four" style="width: 100%;padding: 10px;">
+            <div class=" gift-four" style="width: 100%;padding: 15px;">
                 <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
