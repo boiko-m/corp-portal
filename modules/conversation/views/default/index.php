@@ -72,7 +72,7 @@
                 <div class="im-dialog-preview">
                     <div class="im-dialog-preview-main">
                         <i class="fa fa-envelope im-icon im-icon-envelope"></i>
-                        <p class="im-dialog-preview-text">Выберите диалог и начните переписываться</p>
+                        <p class="im-dialog-preview-text">Выберите диалог и начните общаться</p>
                     </div>
                 </div>
             </div>

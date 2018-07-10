@@ -41,9 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
   }
   .news-project-n > div > div:nth-child(1) {
     color: grey;
-    text-align: right;
     padding-right: 10px;
     margin-top: 5px;
+    text-align: center;
+    max-width: 12.66666%;
   }
   .news-project-n > div > div:nth-child(2) {
     font-size: 17px;
@@ -156,7 +157,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров, сократит трудозатраты на бесполезные рассылки КП и повысит результативность рекламы.
                 Основным продуктом на первых этапах проекта станет посадочная страница, перейдя по ссылке на которую, клиент увидит перечень предложений, специально под его парк техники и возможности.
             </div>
-            <hr> 
+            <hr>
+
             <div id="news">
               <h5>
                 Движение по проекту:
@@ -165,12 +167,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="news-project-n">
               <div class="row">
-                <div class="col-xs-12 col-md-1"><img src="/img/current-events-512.png" width="55"></div>
-                <div class="col-xs-12 col-md-11">Начали работу  над 2-м этапом проекта</div>
+                <div class="col-md-2"><img src="/img/current-events-512.png" width="55"></div>
+                <div class="col-md-10">Начали работу  над 2-м этапом проекта</div>
               </div>
               <div class="row">
-                <div class="col-xs-12 col-md-1">20.02.18</div>
-                <div class="col-xs-12 col-md-11">
+                <div class="col-md-2">20.02.18</div>
+                <div class="col-md-10">
                   <p>
                     Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
                   </p>
@@ -183,12 +185,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="news-project-n">
               <div class="row">
-                <div class="col-xs-12 col-md-1"><img src="/img/current-events-512.png" width="55"></div>
-                <div class="col-xs-12 col-md-11">Начали работу  над 1-м этапом проекта</div>
+                <div class="col-md-2"><img src="/img/current-events-512.png" width="55"></div>
+                <div class="col-md-10">Начали работу  над 1-м этапом проекта</div>
               </div>
               <div class="row">
-                <div class="col-xs-12 col-md-1">20.01.18</div>
-                <div class="col-xs-12 col-md-11">
+                <div class="col-md-2">20.01.18</div>
+                <div class="col-md-10">
                   <p>
                     Разработан индивидуальный план рекламы для 7 клиентов. Выработана методику поиска контактов. Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч.
                   </p>
@@ -199,22 +201,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php if(\Yii::$app->user->can("controlProject")): ?>
             <div class="news-project-n">
               <div class="row">
-                <div class="col-xs-12 col-md-1">
+                <div class="col-md-2">
                   <img src="/img/current-events-512.png" width="55">
                 </div>
-                <div class="col-xs-12 col-md-11">
+                <div class="col-md-10">
                  <input type="text" name="" placeholder="Заголовок">
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-12 col-md-1"><?= date('d.m.y', time()) ?></div>
-                <div class="col-xs-12 col-md-11">
+                <div class="col-md-2"><?= date('d.m.y', time()) ?></div>
+                <div class="col-md-10">
                   <textarea placeholder="Содержание новости"></textarea>
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-12 col-md-1"></div>
-                <div class="col-xs-12 col-md-11">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
                   <button class="btn  waves-effect w-md btn-light" style="width: 50%">Опубликовать</button>
                 </div>
               </div>

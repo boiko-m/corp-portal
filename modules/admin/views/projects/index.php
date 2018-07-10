@@ -36,7 +36,14 @@
             'goal:ntext',
             'create_at',
             'close_at',
-            //'archive',
+            [
+                'attribute' => 'archive',
+                'value' => function($model) {
+                    $model->archive ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+                'headerOptions' => ['style' => 'width:12%'],
+            ],
             //'create_user',
 
             ['class' => 'yii\grid\ActionColumn'],

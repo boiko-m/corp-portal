@@ -54,7 +54,7 @@
             'language' => 'ru',
             'clientOptions' => [
                 // 'autoclose' => true,
-                'format' => 'dd-M-yyyy'
+                'format' => 'dd MM yyyy'
             ]
         ])->label(false);?>
     </div>

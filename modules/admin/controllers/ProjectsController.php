@@ -23,7 +23,7 @@ class ProjectsController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['GET'],
                 ],
             ],
         ];
@@ -66,7 +66,10 @@ class ProjectsController extends Controller
     {
         $model = new Projects();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->create_at = strtotime($model->create_at);
+            $model->close_at = strtotime($model->close_at);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -86,7 +89,10 @@ class ProjectsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->create_at = strtotime($model->create_at);
+            $model->close_at = strtotime($model->close_at);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
