@@ -98,7 +98,7 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'phone_cabinet', $this->phone_cabinet])
             ->andFilterWhere(['like', 'about', $this->about])
             ->andFilterWhere(['like', 'category', $this->category])
-            ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->name])
+            ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->grid])
             ->andFilterWhere(['like', "CONCAT(`department`, ' ', `position`)", $this->department_position])
             ->andFilterWhere(['like', 'service', $this->service]);
 

@@ -50,7 +50,7 @@ echo Html::jsFile('@web/js/ajax.js');
                         [
                             'attribute' => 'grid',
                             'value' =>   function (\app\models\Profile $data) {
-                                $link = "<a href=".$data->getName().'>'.$data->getName().'</a><br>';
+                                $link = "<a href=/profiles/".$data->id.'>'.$data->getName().'</a><br>';
                                 $link = $link.$data->getGrid();
                                 return $link;
                             },
