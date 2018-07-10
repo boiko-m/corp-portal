@@ -7,8 +7,17 @@ use yii\helpers\Html;
 $this->title = 'Админ-панель';
 ?>
 
-<div class="admin-default-index">
-    <p>
-        <code><?= __FILE__ ?></code>
-    </p>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+            <div class="table-responsive wrap-relative">
+                <div class="preloader"></div>
+
+               <p>Добро пожаловать в админ-панель. Согласно вашим правам вам отрыт доступ в соответсвующее меню слева.</p>
+            </div>
+        </div>
+    </div>
 </div>
+

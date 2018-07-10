@@ -15,6 +15,7 @@ class ProfileSearch extends Profile
     public $name;
     public $user_email;
     public $grid;
+    public $department_position;
 
     /**
      * @inheritdoc
@@ -23,7 +24,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['id', 'sex', 'sip'], 'integer'],
-            [['id_1c', 'first_name', 'last_name','grid', 'middle_name', 'birthday', 'name', 'date_job', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service', 'user_email'], 'safe'],
+            [['id_1c', 'first_name', 'last_name','grid','department_position', 'middle_name', 'birthday', 'name', 'date_job', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service', 'user_email'], 'safe'],
         ];
     }
 
@@ -98,7 +99,7 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'about', $this->about])
             ->andFilterWhere(['like', 'category', $this->category])
             ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->name])
-            ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->grid])
+            ->andFilterWhere(['like', "CONCAT(`department`, ' ', `position`)", $this->department_position])
             ->andFilterWhere(['like', 'service', $this->service]);
 
         return $dataProvider;
