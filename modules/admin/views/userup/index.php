@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
             <a class="dropdown-item" href="#" onclick="ajax('insert','', 'update_user','Идет синхронизация пользователей. Ожидайте...')">обычных</a>
-            <a class="dropdown-item" href="#" onclick="ajax('replace','', 'update_user','Идет синхронизация пользователей по договору подряда. Ожидайте...')">по договору подряда</a>
+            <a class="dropdown-item" href="#" onclick="ajax('insert/?dogovor=true','', 'update_user','Идет синхронизация пользователей по договору подряда. Ожидайте...')">по договору подряда</a>
         </div>
 
 
