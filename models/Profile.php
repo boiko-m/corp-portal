@@ -52,6 +52,7 @@ class Profile extends \yii\db\ActiveRecord
             [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
             [['birthday', 'date_job', 'user_email'], 'safe'],
             [['id'], 'unique'],
+            [['id_profile_position'], 'exist', 'skipOnError' => true, 'targetClass' => ProfilePosition::className(), 'targetAttribute' => ['id_profile_position' => 'id']],
         ];
     }
 
@@ -85,7 +86,8 @@ class Profile extends \yii\db\ActiveRecord
             'name' => 'ФИО',
             'grid' => 'ФИО',
             'user_email' => 'Почта',
-            'department_position'=>'Отдел, должность'
+            'department_position'=>'Отдел, должность',
+            'id_profile_position' => 'Уникальный номер должности',
         ];
     }
 
@@ -150,13 +152,15 @@ class Profile extends \yii\db\ActiveRecord
 
         return $birthday[1].' '.$month;
     }
+
     public function getName()
     {
         return sprintf("%s %s %s", $this->last_name, $this->first_name, $this->middle_name);
     }
-    public function getGrid()
-    {$user = User::findOne($this->id);
 
+    public function getGrid()
+    {
+        $user = User::findOne($this->id);
         return  "<span style='font-size: 13px; font-weight: bold'>$user->email</span>";
     }
 
@@ -186,4 +190,10 @@ class Profile extends \yii\db\ActiveRecord
         }*/
         return $img;
     }
+
+    public function getProfilePosition()
+    {
+        return $this->hasOne(ProfilePosition::className(), ['id' => 'id_profile_position']);
+    }
+
 }
