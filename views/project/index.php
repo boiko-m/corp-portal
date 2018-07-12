@@ -17,7 +17,7 @@ $this->title = 'Проекты компании';
         display: block;
         color:black;
         width: 100%;
-        padding: 10px!important;
+        padding: 10px 5px !important;
         transition: 0.3s;
         border-bottom:1px solid #dfdfdf;
         border-radius: 5px;
@@ -52,6 +52,13 @@ $this->title = 'Проекты компании';
       font-size: 17px; 
       text-align: center;
     }
+    .description {
+      display: block;
+      height: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 </style>
 <div class="row">
   <div class="col-xs-12 col-md-12">
@@ -74,32 +81,41 @@ $this->title = 'Проекты компании';
 
         <?php foreach ($projects as $key => $project) { ?>
             <div class="project">
-                <span title="Хочу принять участие" style="display: inline-block; color: #f7931d; font-size:20px !important">
-                    <i class=" mdi mdi-account-star"></i>
-                </span>
-                <?php if (\Yii::$app->user->can("controlProject")) : ?>
-                    <a href="/project/<?= $project->id ?>" style="display: inline-block;">
-                        <h5 class="card-title"><?= $project->name ?></h5>
-                    </a>
+              <span title="Я участвую!" class="icon-project" style="display: inline-block; color: #f7931d; font-size:20px !important">
+                  <i class="fa fa-cube"></i>
+              </span>
+                <?php if (\Yii::$app->user->can("controlProject") && !$project->active): ?>
+                  <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
+                    <h5 class="card-title"><?= $project->name ?></h5>
+                  </a>
+                  <span style="font-size: 18px;">(В разработке)</span>
+                <?  elseif (\Yii::$app->user->can("controlProject")) : ?>
+                  <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
+                    <h5 class="card-title"><?= $project->name ?></h5>
+                  </a>
+                <?  elseif ($project->active) : ?>
+                  <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
+                    <h5 class="card-title"><?= $project->name ?></h5>
+                  </a>
                 <? else : ?>
-                    <a href="/project/info/<?= $project->id ?>#information" style="display: inline-block;">
-                        <h5 class="card-title"><?= $project->name ?></h5>
-                    </a>
+                  <span href="" style="display: inline-block;">
+                    <h5 class="card-title"><?= $project->name ?> (В разработке)</h5>
+                  </span>
                 <? endif; ?>
                 <?php if (\Yii::$app->user->can("controlProject")) : ?>
-                    <a href="/admin/projects/update?id=<?= $project->id ?>" style="margin-left:10px;display: inline-block; color: #555555">
-                        <i class="mdi mdi-settings"></i>
-                    </a>
+                  <a href="/admin/projects/update?id=<?= $project->id ?>" style="margin-left:10px; display: inline-block; color: #555555">
+                    <i class="mdi mdi-settings"></i>
+                  </a>
                 <? endif; ?>
                 <div style="padding-left: 20px">
-                    <div class="project-item-menu"> 
-                        <a href="/project/info/<?= $project->id ?>#information">Информация</a>
-                        <a href="/project/info/1#work_group">Рабочая группа</a>
-                        <a href="/project/info/1#news">Движение по проекту</a>
-                    </div>
-                    <div style="">
-                        <small><?= $project->description ?></small>
-                    </div>
+                  <!-- <div class="project-item-menu"> 
+                      <a href="/project/info/<?= $project->id ?>#information">Информация</a>
+                      <a href="/project/info/1#work_group">Рабочая группа</a>
+                      <a href="/project/info/1#news">Движение по проекту</a>
+                  </div> -->
+                  <div>
+                    <small class="description"><?= $project->description ?></small>
+                  </div>
                 </div>
             </div>
         <? } ?>

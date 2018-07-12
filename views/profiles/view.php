@@ -69,8 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     style="width: 40px">
                                            <? endif; ?>
                                         </div>
-                                        <div class="col-md-9"
-                                             style=" text-align: justify; font-size: 13px">
+                                        <div class="col-md-9" style=" text-align: justify; font-size: 13px">
                                          <?= \yii\helpers\Html::a($value['userFrom']['profile']['first_name'] .
                                              ' ' . $value['userFrom']['profile']['last_name'],
                                              \yii\helpers\Url::to(['/profiles/' . $value['userFrom']['profile']['id']]),
@@ -121,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card m-b-30">
             <div class="card-header">
                 <h5 class=""
-                    style="font-weight: bold;color: black;margin: 0px;"><?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name?>  <span class="online"><?=' '.$online?></span> </h5>
+                    style="font-weight: bold; color: black; margin: 0px;"><?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name?>  <span class="online"><?=' '.$online?></span> </h5>
             </div>
 
             <div class="col-12" style="padding: 10px 20px;">

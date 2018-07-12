@@ -23,16 +23,6 @@
                 <?if(\Yii::$app->user->can("viewProject")):?>
                     <li>
                         <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
-                        <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
-                            <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
-                                <ul class="nav-third-level nav collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);">энергонасыщенные тракторы</a></li>
-                                    <li><a href="javascript: void(0);">прикатывающие катки</a></li>
-                                    <li><a href="javascript: void(0);">навесное оборудование к фронтальным погрузчикам</a></li>
-                                    <li><a href="javascript: void(0);">косилки</a></li>
-                                </ul>
-                            </li>
-                        </ul> -->
                     </li>
                 <?endif;?>
 

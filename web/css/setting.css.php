@@ -53,4 +53,12 @@
 	.im-icon-envelope {
 		color: <?= $backgroundColor ?> !important;
 	}
+
+	.want-to-project {
+		color: <?= $backgroundColor ?> !important;
+	}
+
+	.icon-project {
+		color: <?= $backgroundColor ?> !important;
+	}
 </style>

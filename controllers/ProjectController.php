@@ -9,7 +9,10 @@ class ProjectController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $projects = Projects::find()->where(['visible' => true])->all();
+        if (\Yii::$app->user->can("controlProject"))
+            $projects = Projects::find()->all();
+        else
+            $projects = Projects::find()->where(['visible' => true])->all();
 
         return $this->render('index', [
             'projects' => $projects,
