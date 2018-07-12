@@ -53,93 +53,38 @@ $this->title = 'Проекты компании';
                 </div>
                 <input class="form-control" type="search" name="search_project">
             </div>
-            <div class="project">
-                    <span title="Я участвую!" style="display: inline-block; color: #f7931d;font-size:20px!important">
+
+            <?php foreach ($projects as $key => $project) { ?>
+                <div class="project">
+                    <span title="Хочу принять участие" style="display: inline-block; color: #f7931d; font-size:20px !important">
                         <i class=" mdi mdi-account-star"></i>
                     </span>
-                    <a href="/project/1" style="display: inline-block;">
-                        <h5 class="card-title">Индивидуальный план рекламы (ИПР)</h5>
-                    </a>
-
-                    <a href="" style="margin-left:10px;display: inline-block; color: #555555">
-                        <i class="mdi mdi-settings"></i>
-                    </a>
-    
+                    <?php if (\Yii::$app->user->can("controlProject")) : ?>
+                        <a href="/project/<?= $project->id ?>" style="display: inline-block;">
+                            <h5 class="card-title"><?= $project->name ?></h5>
+                        </a>
+                    <? else : ?>
+                        <a href="/project/info/<?= $project->id ?>#information" style="display: inline-block;">
+                            <h5 class="card-title"><?= $project->name ?></h5>
+                        </a>
+                    <? endif; ?>
+                    <?php if (\Yii::$app->user->can("controlProject")) : ?>
+                        <a href="/admin/projects/update?id=<?= $project->id ?>" style="margin-left:10px;display: inline-block; color: #555555">
+                            <i class="mdi mdi-settings"></i>
+                        </a>
+                    <? endif; ?>
                     <div style="padding-left: 20px">
-                        <div class="project-item-menu">
-                            <a href="/project/info/1">Информация</a>
-                        </div>
-                        <div style="">
-                            <small>Индивидуальный план рекламы (ИПР) – проект, направленный на индивидуальный подход к каждому клиенту. Благодаря проекту, каждый клиент будет получать именно ту рекламу, которая для него интересна, по тем каналам связи, которые ему удобны. Это облегчит работу менеджеров ...</small>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="project">
-                    <span title="Я участвую!" style="display: inline-block; color: #f7931d;font-size:20px!important">
-                        <i class=" mdi mdi-account-star"></i>
-                    </span>
-                    <a href="/project/1" style="display: inline-block;">
-                        <h5 class="card-title">Время и удобство обслуживания клиента на складе в момент отгрузки</h5>
-                    </a>
-
-
-                    <a href="" style="margin-left:10px;display: inline-block; color: #555555">
-                        <i class="mdi mdi-settings"></i>
-                    </a>
-    
-                    <div style="padding-left: 20px">
-                        <div class="project-item-menu">
-                              
-                            <a href="/project/info/1#information">Информация</a>
+                        <div class="project-item-menu"> 
+                            <a href="/project/info/<?= $project->id ?>#information">Информация</a>
                             <a href="/project/info/1#work_group">Рабочая группа</a>
                             <a href="/project/info/1#news">Движение по проекту</a>
-
                         </div>
                         <div style="">
-                            <small>Доставка запчастей до двери клиента в оговоренные с ним сроки и по рыночным ценам позволит нам быть конкурентноспособными на рынке,   удержать старых и привлечь новых ...</small>
+                            <small><?= $project->description ?></small>
                         </div>
                     </div>
-            </div>
-
-            <div class="project">
-                    <a href="/project/1" style="display: inline-block;">
-                        <h5 class="card-title">Доставки запчастей до двери клиента</h5>
-                    </a>
-
-                    <div style="padding-left: 20px">
-                        <div class="project-item-menu">
-                              
-                            <a href="/project/info/1#information">Информация</a>
-                            <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Движение по проекту</a>
-
-                        </div>
-                        <div style="">
-                            <small>Доставка запчастей до двери клиента в оговоренные с ним сроки и по рыночным ценам позволит нам быть конкурентноспособными на рынке,   удержать старых и привлечь новых ...</small>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="project">
-                    <a href="/project/1" style="display: inline-block;">
-                        <h5 class="card-title">Единое предложение по стоимости (единая скидка)</h5>
-                    </a>
-
-                    <div style="padding-left: 20px">
-                        <div class="project-item-menu">
-                              
-                            <a href="/project/info/1#information">Информация</a>
-                            <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Движение по проекту</a>
-
-                        </div>
-                        <div style="">
-                            <small>Доставка запчастей до двери клиента в оговоренные с ним сроки и по рыночным ценам позволит нам быть конкурентноспособными на рынке,   удержать старых и привлечь новых ...</small>
-                        </div>
-                    </div>
-            </div>
-
+                </div>
+            <? } ?>
 
         </div>
     </div>

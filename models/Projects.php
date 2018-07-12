@@ -15,6 +15,8 @@ use Yii;
  * @property int $close_at
  * @property int $archive
  * @property int $create_user
+ * @property int $visible
+ * @property int $active
  *
  * @property ProjectNews[] $projectNews
  * @property ProjectUser[] $projectUsers
@@ -38,8 +40,8 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'create_at', 'close_at', 'create_user'], 'required'],
-            [['name', 'description', 'goal', 'create_at', 'close_at'], 'string'],
-            [['archive', 'create_user'], 'integer'],
+            [['name', 'description', 'goal'], 'string'],
+            [['create_at', 'close_at', 'archive', 'create_user', 'visible', 'active'], 'integer'],
             [['create_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['create_user' => 'id']],
         ];
     }
@@ -53,11 +55,13 @@ class Projects extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'description' => 'Описание',
-            'goal' => 'Цели',
+            'goal' => 'Цель',
             'create_at' => 'Дата начала',
             'close_at' => 'Дата окончания',
             'archive' => 'Архивация',
             'create_user' => 'Создатель',
+            'visible' => 'Видимость',
+            'active' => 'Автивность',
         ];
     }
 

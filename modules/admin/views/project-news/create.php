@@ -1,12 +1,11 @@
 <?php
 	use yii\helpers\Html;
 
-	$this->title = 'Создание проекта';
-	$this->params['breadcrumbs'][] = ['label' => 'Проекты', 'url' => ['index']];
+	$this->title = 'Создание новости проекта';
+	$this->params['breadcrumbs'][] = ['label' => 'Новости проектов', 'url' => ['index']];
 	$this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="projects-create">
+<div class="project-news-create">
 
     <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 

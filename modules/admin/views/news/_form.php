@@ -68,11 +68,9 @@ use dosamigos\tinymce\TinyMce;
           'language' => 'ru',
           'clientOptions' => [
               'plugins' => [
-                  "advlist autolink lists link charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table contextmenu paste image"
+                  'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help'
               ],
-              'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+              'toolbar' => "undo redo cut copy paste | styleselect fontselect fontsizeselect | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | charmap newdocument blockquote ",
               'file_picker_callback' => new yii\web\JsExpression("function(cb, value, meta) {
                  var input = document.createElement('input');
                  input.setAttribute('type', 'file');

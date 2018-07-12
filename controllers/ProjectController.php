@@ -1,14 +1,19 @@
 <?php
 
 namespace app\controllers;
-
+use app\models\Projects;
+use app\models\ProjectNews;
 
 
 class ProjectController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $projects = Projects::find()->where(['visible' => true])->all();
+
+        return $this->render('index', [
+            'projects' => $projects,
+        ]);
     }
 
     public function actionView()
@@ -18,7 +23,10 @@ class ProjectController extends \yii\web\Controller
 
     public function actionInfo($id)
     {
-        return $this->render('info');
+        return $this->render('info', [
+            'project' => Projects::findOne($id),
+            'project_news' => ProjectNews::find()->where(['id_project' => $id])->all(),
+        ]);
     }
 
     public function actionInfoajax($id)

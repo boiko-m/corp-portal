@@ -44,7 +44,20 @@
                     $model->archive ? $ret = 'Да' : $ret = 'Нет';
                     return $ret;
                 },
-                'headerOptions' => ['style' => 'width:12%'],
+            ],
+            [
+                'attribute' => 'visible',
+                'value' => function($model) {
+                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+            ],
+            [
+                'attribute' => 'active',
+                'value' => function($model) {
+                    $model->active ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
             ],
             'create_user',
         ],

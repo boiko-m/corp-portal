@@ -3,16 +3,16 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\Projects;
-use app\models\ProjectsSearch;
+use app\models\ProjectNews;
+use app\models\ProjectNewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProjectsController implements the CRUD actions for Projects model.
+ * ProjectNewsController implements the CRUD actions for ProjectNews model.
  */
-class ProjectsController extends Controller
+class ProjectNewsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Lists all Projects models.
+     * Lists all ProjectNews models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProjectsSearch();
+        $searchModel = new ProjectNewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Displays a single Projects model.
+     * Displays a single ProjectNews model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,18 +58,15 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Creates a new Projects model.
+     * Creates a new ProjectNews model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Projects();
+        $model = new ProjectNews();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->create_at = strtotime($model->create_at);
-            $model->close_at = strtotime($model->close_at);
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -79,7 +76,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Updates an existing Projects model.
+     * Updates an existing ProjectNews model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,13 +85,8 @@ class ProjectsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->create_at = gmdate("d M Y", $model->create_at);
-        $model->close_at = gmdate("d M Y", $model->close_at);
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->create_at = strtotime($model->create_at);
-            $model->close_at = strtotime($model->close_at);
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -104,7 +96,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Deletes an existing Projects model.
+     * Deletes an existing ProjectNews model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,15 +110,15 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Finds the Projects model based on its primary key value.
+     * Finds the ProjectNews model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Projects the loaded model
+     * @return ProjectNews the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Projects::findOne($id)) !== null) {
+        if (($model = ProjectNews::findOne($id)) !== null) {
             return $model;
         }
 

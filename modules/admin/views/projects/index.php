@@ -7,16 +7,9 @@
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<style>
-    .title-projects {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-</style>
-
 <div class="projects-index">
 
-    <h1 class="title-projects"><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -34,12 +27,28 @@
             'name:ntext',
             // 'description:ntext',
             'goal:ntext',
-            'create_at',
-            'close_at',
+            // 'create_at',
+            // 'close_at',
             [
                 'attribute' => 'archive',
                 'value' => function($model) {
                     $model->archive ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+                'headerOptions' => ['style' => 'width:12%'],
+            ],
+            [
+                'attribute' => 'visible',
+                'value' => function($model) {
+                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+                'headerOptions' => ['style' => 'width:12%'],
+            ],
+            [
+                'attribute' => 'active',
+                'value' => function($model) {
+                    $model->active ? $ret = 'Да' : $ret = 'Нет';
                     return $ret;
                 },
                 'headerOptions' => ['style' => 'width:12%'],

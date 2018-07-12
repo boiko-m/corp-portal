@@ -7,16 +7,9 @@
 	$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 
-<style>
-    .title-update-projects {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-</style>
-
 <div class="projects-update">
 
-    <h1 class="title-update-projects"><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
