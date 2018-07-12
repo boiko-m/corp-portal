@@ -43,49 +43,67 @@ $this->title = 'Проекты компании';
     .project-item-menu a:hover {
         color: black;
     }
+    .search-project {
+      color:#5d5d5d; 
+      margin-bottom: 5px; 
+      font-size: 15px;
+    }
+    .non-project {
+      font-size: 17px; 
+      text-align: center;
+    }
 </style>
 <div class="row">
-    <div class="col-xs-12 col-md-12">
-        <div class="card-box">
-            <div>
-                <div style="color:#5d5d5d">
-                    Поиск по проектам:
-                </div>
-                <input class="form-control" type="search" name="search_project">
-            </div>
+  <div class="col-xs-12 col-md-12">
+    <div class="card-box">
 
-            <?php foreach ($projects as $key => $project) { ?>
-                <div class="project">
-                    <span title="Хочу принять участие" style="display: inline-block; color: #f7931d; font-size:20px !important">
-                        <i class=" mdi mdi-account-star"></i>
-                    </span>
-                    <?php if (\Yii::$app->user->can("controlProject")) : ?>
-                        <a href="/project/<?= $project->id ?>" style="display: inline-block;">
-                            <h5 class="card-title"><?= $project->name ?></h5>
-                        </a>
-                    <? else : ?>
-                        <a href="/project/info/<?= $project->id ?>#information" style="display: inline-block;">
-                            <h5 class="card-title"><?= $project->name ?></h5>
-                        </a>
-                    <? endif; ?>
-                    <?php if (\Yii::$app->user->can("controlProject")) : ?>
-                        <a href="/admin/projects/update?id=<?= $project->id ?>" style="margin-left:10px;display: inline-block; color: #555555">
-                            <i class="mdi mdi-settings"></i>
-                        </a>
-                    <? endif; ?>
-                    <div style="padding-left: 20px">
-                        <div class="project-item-menu"> 
-                            <a href="/project/info/<?= $project->id ?>#information">Информация</a>
-                            <a href="/project/info/1#work_group">Рабочая группа</a>
-                            <a href="/project/info/1#news">Движение по проекту</a>
-                        </div>
-                        <div style="">
-                            <small><?= $project->description ?></small>
-                        </div>
+      <?php if(count($projects) != 0) : ?>
+        <div>
+          <div class="search-project">
+            Поиск по проектам:
+          </div>
+          <input class="form-control" type="search" name="search_project">
+        </div>
+      <? else : ?>
+        <div>
+          <div class="non-project">
+            На данный момент нет проектов
+          </div>
+        </div>
+      <? endif; ?>
+
+        <?php foreach ($projects as $key => $project) { ?>
+            <div class="project">
+                <span title="Хочу принять участие" style="display: inline-block; color: #f7931d; font-size:20px !important">
+                    <i class=" mdi mdi-account-star"></i>
+                </span>
+                <?php if (\Yii::$app->user->can("controlProject")) : ?>
+                    <a href="/project/<?= $project->id ?>" style="display: inline-block;">
+                        <h5 class="card-title"><?= $project->name ?></h5>
+                    </a>
+                <? else : ?>
+                    <a href="/project/info/<?= $project->id ?>#information" style="display: inline-block;">
+                        <h5 class="card-title"><?= $project->name ?></h5>
+                    </a>
+                <? endif; ?>
+                <?php if (\Yii::$app->user->can("controlProject")) : ?>
+                    <a href="/admin/projects/update?id=<?= $project->id ?>" style="margin-left:10px;display: inline-block; color: #555555">
+                        <i class="mdi mdi-settings"></i>
+                    </a>
+                <? endif; ?>
+                <div style="padding-left: 20px">
+                    <div class="project-item-menu"> 
+                        <a href="/project/info/<?= $project->id ?>#information">Информация</a>
+                        <a href="/project/info/1#work_group">Рабочая группа</a>
+                        <a href="/project/info/1#news">Движение по проекту</a>
+                    </div>
+                    <div style="">
+                        <small><?= $project->description ?></small>
                     </div>
                 </div>
-            <? } ?>
+            </div>
+        <? } ?>
 
-        </div>
     </div>
+  </div>
 </div>
