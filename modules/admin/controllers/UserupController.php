@@ -8,6 +8,7 @@ use app\models\Odata;
 use app\models\Tdata;
 use app\models\User;
 use app\models\Profile;
+use app\models\ProfilePosition;
 
 ini_set('max_execution_time', 900);
 /**
@@ -19,6 +20,29 @@ class UserupController extends Controller
      * Renders the index view for the module
      * @return string
      */
+
+
+    public function actionPosition() {
+        $odata = new Tdata();
+        $data = $odata->doc('Catalog_КорпоративныеДолжности')->top(500)->select('Description,Code')->where('DeletionMark eq false')->all();
+
+
+        foreach ($data as $user) {
+            $position = ProfilePosition::find()->where(['code' => $user['Code']])->one();
+            if (!isset($position)) {
+               $position = new ProfilePosition();
+               $position->name = $user['Description'];
+               $position->code = $user['Code'];
+               if ($position->save()) {
+                   $posisitionAdd[] = $position->name;
+               }
+            }
+        }
+
+        return $this->renderPartial('position', array(
+            'positions' => $posisitionAdd
+        ));
+    }
 
     public function actionInsert() {
     	$odata = new Odata();
@@ -149,7 +173,7 @@ class UserupController extends Controller
     			$profile->department = $up['ФункциональноеПодразделение']['Description'];
     			$profile->phone_cabinet = $up['ГТС'];
     			$profile->category = $up['Категория'] . " от " . $up['ДатаКатегории'];
-    			$profile->sip = $up['SIP'];
+    			$profile->sip = (int)$up['SIP'];
                 $profile->coins = 6;
 
 
@@ -188,10 +212,14 @@ class UserupController extends Controller
     }
 
      public function actionReplace() {
+
         $data = new Tdata();
 
         $dismissed = $data->doc('Catalog_Пользователи')->select('Description,Parent_Key')->all();
         $employees = User::find()->select('username')->all();
+        $pp = ProfilePosition::find()->asArray()->select('id,code,name')->all();
+
+
         for ($i = 0; $i < count($employees); $i++) {
             for ($j = 0; $j <= count($dismissed); $j++) {
                 if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
@@ -206,8 +234,8 @@ class UserupController extends Controller
         }
 
         for ($p = 1; $p <= 13; $p++) {
-            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,КорпоративнаяДолжность/Description,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
-
+            $client = $data->doc("Catalog_Сотрудники")->expand('КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->select('ФункциональноеПодразделение/Description,Description,Code,ДатаПриема,ДатаУвольнения,ПоловаяПринадлежность,Email,ФИОЛат,Подразделение/НаименованиеКраткое,КорпоративнаяДолжность/Description,КорпоративнаяДолжность/Code,ДатаРождения,Ref_Key')->key('Parent_Key', '00000000-0000-0000-0000-000000000000')->orderby('ДатаПриема desc')->page($p, 50)->all();
+            
             for ($i=0; $i < count($client); $i++) {
                 $data_cat = $data->doc('InformationRegister_РейтингиСотрудников')->key('Сотрудник_Key', $client[$i]['Ref_Key'])->select('Рейтинг/Description')->expand('Рейтинг')->orderby('Period desc')->top(1)->all();
 
@@ -279,12 +307,18 @@ class UserupController extends Controller
                     $user->email = $up['Email'];
                     $user->password_external = $up['Пароль1С'];
                 }
-                // else
-                //     $profile->skype = $up['Email'];
 
                 $profile->phone = $up['Сотовые'];
                 $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
                 $profile->position = $up['КорпоративнаяДолжность']['Description'];
+
+
+
+                foreach ($pp as $pos) {
+                    if ($pos['code'] == $up['КорпоративнаяДолжность']['Code']) { $profile_position = $pos; }
+                }
+                
+                $profile->id_profile_position = $profile_position['id'];
                 $profile->department = $up['ФункциональноеПодразделение']['Description'];
                 $profile->category = $up['Категория'];
                 $user->password_external = $up['Пароль1С'];
@@ -294,9 +328,13 @@ class UserupController extends Controller
                 //     $profile->phone_cabinet = $up['ГТС'];
                 // }
                 if ($up['SIP'] != '') {
-                    $profile->sip = $up['SIP'];
+                    $profile->sip = (int)$up['SIP'];
                 }
 
+                if (!$profile->validate()) {
+                    // echo "<pre>".print_r($profile->errors, true)."</pre>";
+                    echo "no save:" . $profile->last_name . " <br>";
+                }
                 $profile->save();
                 $user->save();
             }
