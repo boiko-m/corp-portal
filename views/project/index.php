@@ -1,14 +1,9 @@
 <?php
+  use yii\helpers\Html;
+  use yii\bootstrap\ActiveForm;
+  use yii\widgets\LinkPager;
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
-
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
-$this->title = 'Проекты компании';
-//$this->params['breadcrumbs'][] = $this->title;
+  $this->title = 'Проекты компании';
 ?>
 
 
@@ -119,6 +114,12 @@ $this->title = 'Проекты компании';
                 </div>
             </div>
         <? } ?>
+
+        <div style="padding-top: 10px;">
+          <?php echo LinkPager::widget([
+              'pagination' => $pages,
+          ]); ?>
+        </div>
 
     </div>
   </div>

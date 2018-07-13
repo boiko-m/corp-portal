@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use yii\data\Pagination;
 use app\models\Projects;
 use app\models\ProjectNews;
 
@@ -10,12 +11,17 @@ class ProjectController extends \yii\web\Controller
     public function actionIndex()
     {
         if (\Yii::$app->user->can("controlProject"))
-            $projects = Projects::find()->all();
+            $projects = Projects::find();
         else
-            $projects = Projects::find()->where(['visible' => true])->all();
+            $projects = Projects::find()->where(['visible' => true]);
+
+        $countQuery = clone $projects;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 6]);
+        $projects = $projects->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
             'projects' => $projects,
+            'pages' => $pages,
         ]);
     }
 
