@@ -32,7 +32,12 @@
         <div class="tab-content" style="padding-top: 10px">
           <div id="tab1" class="tab-pane active" style="padding: 0px 20px 10px;">
             <div style="font-size: 11px;background: whitesmoke;padding: 10px;border-radius: 5px;">
-              <?= $project->description ?>
+              <?php if (!empty($project->description)) : ?>
+                <?= $project->description ?>
+              <? else : ?>
+                <center><b class="non-description">На данный момент описание проекта отсутствует</b></center>
+                
+              <? endif; ?>
             </div>
             <? if(\Yii::$app->user->can("controlProject")): ?>
             <div>
