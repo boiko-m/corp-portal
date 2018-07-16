@@ -54,6 +54,49 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+    .paddination-main {
+      display: flow-root;
+    }
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      padding-left: 0;
+      list-style: none;
+      border-radius: .25rem;
+    }
+    .page-link {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      color: #007bff;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    .p-active > a {
+      background-color: #457FD2;
+    }
+    .prev-page > span {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      color: #007bff;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    .next-page > span {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      color: #007bff;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
 </style>
 <div class="row">
   <div class="col-xs-12 col-md-12">
@@ -115,9 +158,19 @@
             </div>
         <? } ?>
 
-        <div style="padding-top: 10px;">
+        <div class="paddination-main">
           <?php echo LinkPager::widget([
               'pagination' => $pages,
+              'options'=>['class' => 'pagination float-right'],
+
+              'activePageCssClass' => 'p-active',
+              'linkOptions' => ['class' => 'page-link'],
+              'maxButtonCount' => 5,
+
+              'disabledPageCssClass' => 'disabled',
+
+              'prevPageCssClass' => 'prev-page',
+              'nextPageCssClass' => 'next-page',
           ]); ?>
         </div>
 
