@@ -13,9 +13,9 @@
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
+    <!-- <p>
         <?= Html::a('Создать новость проекта', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p> -->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,7 +35,7 @@
             [
                 'attribute' => 'create_at',
                 'value' => function($model) {
-                    return date('d M Y', $model->create_at);
+                    return date('d.m.Y', $model->create_at);
                 },
             ],
             // 'short_description',

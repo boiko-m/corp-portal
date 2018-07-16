@@ -69,7 +69,13 @@
                     return $ret;
                 },
             ],
-            'create_user',
+            [
+                'attribute' => 'create_user',
+                'value' => function($model) {
+                    $project = app\models\Profile::findOne($model->create_user);
+                    return $project->name . "($model->create_user)";
+                },
+            ],
         ],
     ]) ?>
 

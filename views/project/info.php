@@ -81,7 +81,7 @@
                 <div class="row">
                   <div class="col-md-4"></div>
                   <div class="col-md-12">
-                    <a href="/admin/project-news/create">
+                    <a href="/admin/project-news/create?id=<?= $project->id ?>">
                       <button class="btn waves-effect w-md btn-light" style="width: 50%">Добавить новость</button>
                     </a>
                   </div>

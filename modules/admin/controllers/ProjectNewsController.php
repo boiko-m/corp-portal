@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
+use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\ProjectNewsSearch;
 use yii\web\Controller;
@@ -62,11 +63,13 @@ class ProjectNewsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new ProjectNews();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_project = (Projects::find()->where(['id' => $id])->one())->id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

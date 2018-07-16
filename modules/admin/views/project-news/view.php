@@ -37,8 +37,19 @@
                 },
             ],
             'avatar',
-            'create_at',
-            'create_user',
+            [
+                'attribute' => 'create_at',
+                'value' => function($model) {
+                    return date('d.m.Y', $model->create_at);
+                },
+            ],
+            [
+                'attribute' => 'create_user',
+                'value' => function($model) {
+                    $project = app\models\Profile::findOne($model->create_user);
+                    return $project->name . "($model->create_user)";
+                },
+            ],
         ],
     ]) ?>
 

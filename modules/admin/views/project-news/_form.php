@@ -53,8 +53,7 @@
         </form>
     </iframe>
 
-    <?php $projectArray = ArrayHelper::map(\app\models\Projects::find()->all(), 'id', 'name') ?>
-    <?= $form->field($model, 'id_project')->dropDownList($projectArray, ['prompt' => '---- Выберите проект ----'])->label('Проект') ?>
+    <?= $form->field($model, 'id_project', ['enableClientValidation' => false])->textInput(['value' => (\app\models\Projects::find()->where(['id' => Yii::$app->request->get('id')])->one())->name, 'readonly' => true])->label('Проект') ?>
 
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
