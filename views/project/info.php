@@ -1,133 +1,18 @@
 <?php
+  use yii\helpers\Html;
+  use yii\bootstrap\ActiveForm;
+  use ogheo\comments\widget\Comments;
+  use \app\widgets\LbrComments;
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+  use app\assets\ProjectAsset;
+  use app\assets\AppAsset;
+  AppAsset::register($this);
+  ProjectAsset::register($this);
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use ogheo\comments\widget\Comments;
-
-$this->title = $project->name;
-$this->params['breadcrumbs'][] = "Проекты компании";
-$this->params['breadcrumbs'][] = $this->title;
+  $this->title = $project->name;
+  $this->params['breadcrumbs'][] = "Проекты компании";
+  $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
-<style>
-    .work-group-title {
-      padding: 10px 20px;
-    }
-    .work-group-content {
-      margin-left: 40px;
-    }
-    .work-group-content a {
-      display: block
-    }
-    .work-group-content small {
-      color: black
-    }
-    h5 {
-      font-size:20px!important;
-    }
-</style>
-
-<style>
-  .news-project-n div {
-    padding: 0px;
-  }
-  .news-project-n {
-    padding-top: 10px;
-  }
-  .news-project-n > div > div:nth-child(1) {
-    color: grey;
-    padding-right: 10px;
-    margin-top: 5px;
-    text-align: center;
-    max-width: 12.66666%;
-  }
-  .news-project-n > div > a {
-    font-size: 17px;
-  }
-  .news-project-n > div > a >div {
-    max-width: none;
-  }
-  .news-project-n > div > div:nth-child(2) > a > button {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 5px;
-  }
-  .news-project-n > div:nth-child(2) > div:nth-child(1) {
-    text-align: center;
-    font-size: 12px;
-  }
-  .news-project-n > div:nth-child(2) > div:nth-child(2) {
-    font-size: 13px;
-    margin-top: -30px;
-  }
-</style>
-
-<style>
-  .project-news-title {
-    font-size: 14px;
-    padding-left: 10px;
-    padding-top: 3px;
-  }
-  .project-news-title a {
-    font-size: 14px;
-    color: #979797;
-    transition: 0.3s;
-
-  }
-  .project-news-title a:hover {
-    color: black;
-  }
-  .project-news-content {
-    padding: 5px;
-  }
-  .project .btn-group {
-    margin-top: 5px;
-  }
-  .work-group-view-content .btn-group {
-    margin-top: 5px;
-  }
-  .work-group-view-content .btn {
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  .project-target-items {
-    margin: 10px;
-  }
-  .project-target-items{
-    padding: 10px;
-    background: #f5f5f5;
-    margin-top: 10px;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8 !important;
-  }
-  .success-border {
-    border: 1px solid #43c499!important;
-  }
-  .stage-goal > div {
-    margin:10px;
-    background: #f5f5f5;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
-  }
-
-  .stage-goal > div > div {
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  .stage-goal > div > div:nth-child(1) {
-    border-right:1px solid #dbdbdb;
-  }
-  .colorgreen {
-    color: #109d10
-  }
-  .colororange {
-    color: #ff8f00;
-  }
-</style>
 
 <div class="row">
   <div class="col-xs-12 col-md-9">
@@ -161,11 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <? if(count($project_news) != 0) : ?>
               <div id="news">
-                <h5>Движение по проекту:</h5>
+                <h5 class="h5-class">Движение по проекту:</h5>
               </div>
             <? else : ?>
               <div id="news">
-                <h5>Пока нет новостей</h5>
+                <h5 class="h5-class">Пока нет новостей</h5>
               </div>
             <? endif; ?>
 
@@ -375,13 +260,13 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
 
                 <!--<hr>
-                <h5>
+                <h5 class="h5-class">
                     Цель проекта:
                 </h5>
                 <div  style="padding-left: 15px">
                     Увеличить выручку по зпч на 100млн р (20 млн р дохода) за счет доставки этих зпч клиентам , которые с нами не работают или работают мало, не всего потенциала  из-за отсутствия доставки
                 </div> -->
-                <!-- <h5>
+                <!-- <h5 class="h5-class">
                     Итоги проекта:
                 </h5>
                 <div  style="padding-left: 15px">
@@ -402,7 +287,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="col-xs-12 col-md-3 mb-2">
         <div class="card">
-            <h5 class="card-header">
+            <h5 class="card-header h5-class">
                 <span style="display: inline-block;">Рабочая группа</span>
             </h5>
 
@@ -458,7 +343,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- 
 <div id = "news">
-    <h5>
+    <h5 class="h5-class">
         Движение по проекту
     </h5>
 </div>
@@ -511,7 +396,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
   <div class="col-12">
-    <?php echo \app\widgets\LbrComments::widget([
+    <?php echo LbrComments::widget([
       'model' => 'video',
         'model_key' => $data['id'],
         'name_widget' => 'Форум',

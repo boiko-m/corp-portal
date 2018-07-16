@@ -36,8 +36,18 @@
             'name:ntext',
             'description:ntext',
             'goal:ntext',
-            'create_at',
-            'close_at',
+            [
+                'attribute' => 'create_at',
+                'value' => function($model) {
+                    return date('d.m.Y', $model->create_at);
+                },
+            ],
+            [
+                'attribute' => 'close_at',
+                'value' => function($model) {
+                    return date('d.m.Y', $model->close_at);
+                },
+            ],
             [
                 'attribute' => 'archive',
                 'value' => function($model) {

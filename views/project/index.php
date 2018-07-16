@@ -3,101 +3,14 @@
   use yii\bootstrap\ActiveForm;
   use yii\widgets\LinkPager;
 
+  use app\assets\ProjectAsset;
+  use app\assets\AppAsset;
+  AppAsset::register($this);
+  ProjectAsset::register($this);
+
   $this->title = 'Проекты компании';
 ?>
 
-
-<style>
-    .project {
-        display: block;
-        color:black;
-        width: 100%;
-        padding: 10px 5px !important;
-        transition: 0.3s;
-        border-bottom:1px solid #dfdfdf;
-        border-radius: 5px;
-        margin-top: 5px;
-    }
-    .project .card-title{
-        font-size:18px;
-    }
-    .project:hover {
-        background: #f3f3f3!important;
-    }
-    .project-item-menu {
-        font-size: 13px;
-        margin-right: 15px;
-        font-weight: normal;
-    }
-    .project-item-menu a {
-        display: inline-block;
-        margin-right: 15px;
-        color: #707070;
-        transition: 0.3s;
-    }
-    .project-item-menu a:hover {
-        color: black;
-    }
-    .search-project {
-      color:#5d5d5d; 
-      margin-bottom: 5px; 
-      font-size: 15px;
-    }
-    .non-project {
-      font-size: 17px; 
-      text-align: center;
-    }
-    .description {
-      display: block;
-      height: 20px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .paddination-main {
-      display: flow-root;
-    }
-    .pagination {
-      margin-top: 20px;
-      display: flex;
-      padding-left: 0;
-      list-style: none;
-      border-radius: .25rem;
-    }
-    .page-link {
-      position: relative;
-      display: block;
-      padding: .5rem .75rem;
-      margin-left: -1px;
-      line-height: 1.25;
-      color: #007bff;
-      background-color: #fff;
-      border: 1px solid #ddd;
-    }
-    .p-active > a {
-      background-color: #457FD2;
-    }
-    .prev-page > span {
-      position: relative;
-      display: block;
-      padding: .5rem .75rem;
-      margin-left: -1px;
-      line-height: 1.25;
-      color: #007bff;
-      background-color: #fff;
-      border: 1px solid #ddd;
-    }
-    .next-page > span {
-      position: relative;
-      display: block;
-      padding: .5rem .75rem;
-      margin-left: -1px;
-      line-height: 1.25;
-      color: #007bff;
-      background-color: #fff;
-      border: 1px solid #ddd;
-    }
-</style>
 <div class="row">
   <div class="col-xs-12 col-md-12">
     <div class="card-box">

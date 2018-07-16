@@ -56,6 +56,7 @@ use app\models\News;
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/admin/projects">Проекты</a></li>
                         <li><a href="/admin/project-news">Новости о проектах</a></li>
+                        <li><a href="/admin/project-user-group">Группы пользователей</a></li>
                     </ul>
                 </li>
                 <?endif;?>
