@@ -65,7 +65,7 @@
                       <a href="/project/info/1#news">Движение по проекту</a>
                   </div> -->
                   <div>
-                    <?php if (!empty($project->description)) : ?>
+                    <?php if (!empty($project->description) && $project->description_visible) : ?>
                       <small class="description"><?= $project->description ?></small>
                     <? endif; ?>
                   </div>

@@ -33,6 +33,8 @@
 
     <?= $form->field($model, "active")->checkbox(['label' => 'Доступность к просмотру'], ['value' => true]); ?>
 
+    <?= $form->field($model, "description_visible")->checkbox(['label' => 'Видимость описания'], ['value' => true]); ?>
+
     <div class="center-datepicker">
         <?= $form->field($model, 'create_at', 
             ['options' => ['class' => 'form-group class-inline'], 'enableClientValidation' => false])

@@ -11,9 +11,9 @@ class ProjectController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        // if (!\Yii::$app->user->can("controlProject")) {
-        //     return $this->goHome();
-        // }
+        if (!\Yii::$app->user->can("controlProject")) {
+            return $this->goHome();
+        }
         if (\Yii::$app->user->can("controlProject"))
             $projects = Projects::find();
         else
