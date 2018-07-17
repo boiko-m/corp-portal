@@ -62,7 +62,7 @@
             <?php foreach ($project_news as $key => $news) { ?>
               <div class="news-project-n">
                 <div class="row">
-                  <div class="col-md-2"><img src="/img/current-events-512.png" width="55"></div>
+                  <div class="col-md-2"><img src="/img/project-news/<?= $news->avatar ?>" width="55"></div>
                   <a href="/project-news/view/<?= $news->id ?>" target="_blank">
                     <div class="col-md-10"><?= $news->title ?></div>
                   </a>

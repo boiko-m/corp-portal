@@ -45,7 +45,7 @@
             'language' => 'en',
             'clientOptions' => [
                 // 'autoclose' => true,
-                'format' => 'dd M Y'
+                'format' => 'd M Y'
             ]
         ])->label(false);?>
         <?= $form->field($model, 'close_at', 
@@ -57,7 +57,7 @@
             'language' => 'en',
             'clientOptions' => [
                 // 'autoclose' => true,
-                'format' => 'dd M Y',
+                'format' => 'd M Y',
             ]
         ])->label(false);?>
     </div>

@@ -9,6 +9,12 @@ use app\models\ProjectNewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\CropboxForm;
+use yii\imagine\Image;
+use Imagine\Image\Box;
+use Imagine\Image\Point;
+use yii\helpers\Json;
+use \yii\web\UploadedFile;
 
 /**
  * ProjectNewsController implements the CRUD actions for ProjectNews model.
@@ -68,6 +74,7 @@ class ProjectNewsController extends Controller
         $model = new ProjectNews();
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
             $model->id_project = (Projects::find()->where(['id' => $id])->one())->id;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
@@ -89,7 +96,10 @@ class ProjectNewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
+            $model->id_project = (Projects::find()->where(['id' => $id])->one())->id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

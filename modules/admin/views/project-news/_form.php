@@ -2,12 +2,16 @@
     use yii\helpers\Html;
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
+    use bupy7\cropbox\CropboxWidget;
     use dosamigos\tinymce\TinyMce;
 ?>
 
+
 <div class="project-news-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype'=>'multipart/form-data'],
+    ]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -47,15 +51,17 @@
             }"),
         ]
     ]);?>
-    <iframe id="form_target" name="form_target" style="display:none">
-        <form id="my_form" action="/upload/" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
-            <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
+    <iframe id="form_target" name="form_target" style="display: none">
+        <form id="my_form" action="/upload/" target="form_target" method="post" enctype="multipart/form-data" style="width: 0px; height: 0; overflow: hidden">
+            <input name="image" type="file" onchange="$('#my_form').submit(); this.value='';">
         </form>
     </iframe>
 
     <?= $form->field($model, 'id_project', ['enableClientValidation' => false])->textInput(['value' => (\app\models\Projects::find()->where(['id' => Yii::$app->request->get('id')])->one())->name, 'readonly' => true])->label('Проект') ?>
 
-    <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->widget(CropboxWidget::className(), [
+        'croppedDataAttribute' => 'crop_info',
+    ]); ?>
 
     <?= $form->field($model, 'create_at')->hiddenInput(['value' => time()])->label(false); ?>
 

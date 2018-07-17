@@ -73,14 +73,14 @@ class GiftController extends Controller
     public function actionCreate()
     {
         $model = new Gift();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         $model1 = new CropboxForm();
-        if (Yii::$app->request->isAjax && $model1->load(Yii::$app->request->post()))
-
-
-        {   $model1->image = UploadedFile::getInstance($model1, 'image');
+        if (Yii::$app->request->isAjax && $model1->load(Yii::$app->request->post())) {   
+            $model1->image = UploadedFile::getInstance($model1, 'image');
             $image = Image::getImagine()->open($model1->image->tempName);
             $cropInfo = Json::decode($model1->crop_info)[0];
 
@@ -88,10 +88,7 @@ class GiftController extends Controller
             $cropSizeThumb = new Box(400, 400);
             $cropPointThumb = new Point(intval($cropInfo['x'] / $cropInfo['ratio']), intval($cropInfo['y'] / $cropInfo['ratio']));
             $imageName ='/gift_'. time() . '.' . $model1->image->getExtension();
-            $pathThumbImage = Yii::getAlias('@app/web/img/gift')
-                . $imageName;
-
-
+            $pathThumbImage = Yii::getAlias('@app/web/img/gift') . $imageName;
 
             $isSaved = $image->crop($cropPointThumb, $newSizeThumb)
                 ->resize($cropSizeThumb)
@@ -102,6 +99,7 @@ class GiftController extends Controller
                 return  '/img/gift'.$imageName;
             }
         }
+        
         return $this->render('create', [
             'model' => $model,
         ]);

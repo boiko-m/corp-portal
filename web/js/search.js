@@ -1,7 +1,5 @@
 $('#MainForm').on('submit',
-
     function(){
-
         $.ajax({
             url:    '/search/',
             type:     "POST", //метод отправки
@@ -41,7 +39,6 @@ $('#MainForm').on('submit',
 );
 
 
-
 jQuery(function($){
     $(document).mouseup(function (e){ // событие клика по веб-документу
         var width = $('#for-search').outerWidth();
@@ -64,7 +61,6 @@ jQuery(function($){
 });
 
 
-
 /*$(document).on('click', '#text-search',function(){*/
     $('#text-search').focus(function(){
     var width = $('#for-search').outerWidth();
@@ -77,7 +73,6 @@ jQuery(function($){
     }
 
     $('#hidden-search-close').show(100);// скрываем отображение лупы при клике
-
 });
 
 
@@ -114,9 +109,14 @@ $(document).on('mouseenter', '.ajax-user', function () {
         });
     }
 });
-    $(document).on('mouseleave', '.tooltipuser', function () {
-            $('.toolajax').hide();
-        });
+
+
+
+$(document).on('mouseleave', '.tooltipuser', function () {
+    $('.toolajax').hide();
+});
+
+
 
 $(document).ready(function() {
     $('.ajax-user').each(function () {
@@ -135,6 +135,9 @@ $(document).ready(function() {
         });
     });
 });
+
+
+
 $('.vote-toggle').click(function () {
     $('.glyphicon-heart').removeClass('active-like');
 });
