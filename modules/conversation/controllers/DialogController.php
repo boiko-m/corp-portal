@@ -15,10 +15,9 @@ class DialogController extends \yii\web\Controller
     public function actionSearchEmployees()
     {
         $textSearch = Yii::$app->request->get('text');
-        $profiles = Profile::find()->orFilterWhere(['OR',
-                ['like', 'first_name',  $textSearch],
-                ['like', 'last_name',  $textSearch],
-            ])->all();
+        $profiles = Profile::find()->where('CONCAT_WS(" ",last_name,first_name) LIKE :search')
+            ->params([':search' => '%' . $textSearch . '%'])->with('user')
+            ->orWhere(['like', 'first_name',  $textSearch])->orWhere(['like', 'last_name',  $textSearch])->all();
         return JSON::encode($profiles);
     }
 

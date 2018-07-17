@@ -9,12 +9,11 @@ use app\models\ProjectNewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\CropboxForm;
+use yii\helpers\FileHelper;
 use yii\imagine\Image;
+use yii\helpers\Json;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
-use yii\helpers\Json;
-use \yii\web\UploadedFile;
 
 /**
  * ProjectNewsController implements the CRUD actions for ProjectNews model.
@@ -77,6 +76,44 @@ class ProjectNewsController extends Controller
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
             $model->id_project = (Projects::find()->where(['id' => $id])->one())->id;
             $model->save();
+
+            try {
+                // open image
+                $image = Image::getImagine()->open($model->image->tempName);
+                // rendering information about crop of ONE option 
+                $cropInfo = Json::decode($model->crop_info)[0];
+                $cropInfo['dWidth'] = (int)$cropInfo['dWidth']; //new width image
+                $cropInfo['dHeight'] = (int)$cropInfo['dHeight']; //new height image
+                $cropInfo['x'] = $cropInfo['x']; //begin position of frame crop by X
+                $cropInfo['y'] = $cropInfo['y']; //begin position of frame crop by Y
+
+                //delete old images
+                $oldImages = FileHelper::findFiles(Yii::getAlias('@app/web/img/project-news'), [
+                    'only' => [
+                        $model->id . '.*',
+                        'thumb_' . $model->id . '.*',
+                    ], 
+                ]);
+                for ($i = 0; $i != count($oldImages); $i++) {
+                    @unlink($oldImages[$i]);
+                }
+
+                //saving thumbnail
+                $newSizeThumb = new Box($cropInfo['dWidth'], $cropInfo['dHeight']);
+                $cropSizeThumb = new Box(200, 200); //frame size of crop
+                $cropPointThumb = new Point($cropInfo['x'], $cropInfo['y']);
+                $pathThumbImage = Yii::getAlias('@app/web/img/project-news/');
+                $nameImage .= 'thumb_' . $model->id . '.' . $model->image->getExtension();
+                $pathThumbImage .= $nameImage;
+
+                $image->resize($newSizeThumb)
+                    ->crop($cropPointThumb, $cropSizeThumb)
+                    ->save($pathThumbImage, ['quality' => 100]);
+
+                $model->avatar = $nameImage;
+                $model->save();
+            } catch (\Exception $exception) { }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -95,10 +132,10 @@ class ProjectNewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $project = $model->id_project;
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
-            $model->id_project = (Projects::find()->where(['id' => $id])->one())->id;
+            $model->id_project = $project;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
