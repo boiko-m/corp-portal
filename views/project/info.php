@@ -3,6 +3,7 @@
   use yii\bootstrap\ActiveForm;
   use ogheo\comments\widget\Comments;
   use \app\widgets\LbrComments;
+  use app\models\ProjectUserGroup;
 
   use app\assets\ProjectAsset;
   use app\assets\AppAsset;
@@ -12,6 +13,8 @@
   $this->title = $project->name;
   $this->params['breadcrumbs'][] = "Проекты компании";
   $this->params['breadcrumbs'][] = $this->title;
+
+  $userGroup = '';
 ?>
 
 <div class="row">
@@ -36,7 +39,6 @@
                 <?= $project->description ?>
               <? else : ?>
                 <center><b class="non-description">На данный момент описание проекта отсутствует</b></center>
-                
               <? endif; ?>
             </div>
             <? if(\Yii::$app->user->can("controlProject")): ?>
@@ -291,57 +293,29 @@
     </div>
 
     <div class="col-xs-12 col-md-3 mb-2">
-        <div class="card">
-            <h5 class="card-header h5-class">
-                <span style="display: inline-block;">Рабочая группа</span>
-            </h5>
-
-          <div class="work-group">
+      <div class="card" style="padding-bottom: 20px;">
+        <h5 class="card-header h5-class">
+            <span style="display: inline-block;">Рабочая группа</span>
+        </h5>
+        <?php foreach ($project_group as $key => $group) { ?>
+          <?php if ($userGroup != $group->id_project_user_group) : ?>
+            <div class="work-group">
               <div class="work-group-title">
-                  Руководитель проекта
+                <?= (ProjectUserGroup::find()->where(['id' => $group->id_project_user_group])->one())->name ?>
               </div>
-              <div class="work-group-content">
-                <span class="tooltipuser">
-                   <span data-default="3844" id="ajax_3844" class="ajax-user"></span>
-              </span>
-              </div>
+          <? endif; ?>
+          <div class="work-group-content">
+            <span class="tooltipuser">
+            <span data-default="<?= $group->id_user ?>" id="ajax_<?= $group->id_user ?>" class="ajax-user"></span>
+            </span>
           </div>
+          <?php if ($userGroup != $group->id_project_user_group) : ?>
+            <?php $userGroup = $group->id_project_user_group ?>
+            </div>
+          <? endif; ?>
+        <? } ?>
 
-          <div class="work-group">
-              <div class="work-group-title">
-                  Скрам-мастер
-              </div>
-              <div class="work-group-content">
-                  <a href="">Чиж А.</a> 
-              </div>
-          </div>
-
-          <div class="work-group">
-              <div class="work-group-title">
-                  Команда
-              </div>
-              <div class="work-group-content">
-                  <a href="">Власов С.</a>
-                  <a href="">Гавриленко А.</a>
-                  <a href="">Горустович Ю.</a>
-                  <a href="">Савченко А.</a>
-                  <a href="">Солтан Д.</a>
-              </div>
-          </div>
-
-          <div class="work-group">
-              <div class="work-group-title">
-                  Привлеченный состав:
-              </div>
-              <div class="work-group-content">
-                  <a href="">Жуковский Ю.</a>
-                  <a href="">Дубовик С.</a>
-                  <a href="">Бондарев С.</a><br>
-              </div>
-          </div>
-
-          
-        </div>
+      </div>
     </div>
 </div>
 

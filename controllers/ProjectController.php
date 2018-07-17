@@ -4,6 +4,7 @@ namespace app\controllers;
 use yii\data\Pagination;
 use app\models\Projects;
 use app\models\ProjectNews;
+use app\models\ProjectUser;
 use yii\web\Controller;
 
 
@@ -42,6 +43,7 @@ class ProjectController extends \yii\web\Controller
         return $this->render('info', [
             'project' => Projects::findOne($id),
             'project_news' => ProjectNews::find()->where(['id_project' => $id])->all(),
+            'project_group' => ProjectUser::find()->where(['id_project' => $id])->orderBy('id_project_user_group')->all(),
         ]);
     }
 
