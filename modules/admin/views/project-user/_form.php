@@ -39,7 +39,7 @@
 	    ])->input('text', ['placeholder' => "Введите название проекта"]);
 	?>
 
-	<? $listdata = Profile::find()->select(['id as value', 'last_name as label'])->asArray()->all(); ?>
+	<? $listdata = Profile::find()->select(['id as value', 'CONCAT_WS(" ",last_name,first_name) as label'])->asArray()->all(); ?>
     <?= $form->field($model, 'id_user')->widget(
 	    AutoComplete::className(), [            
 	        'clientOptions' => [
