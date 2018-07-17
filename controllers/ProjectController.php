@@ -12,9 +12,6 @@ class ProjectController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can("controlProject")) {
-            return $this->goHome();
-        }
         if (\Yii::$app->user->can("controlProject"))
             $projects = Projects::find();
         else
@@ -37,9 +34,6 @@ class ProjectController extends \yii\web\Controller
 
     public function actionInfo($id)
     {
-        if (!\Yii::$app->user->can("controlProject")) {
-            return $this->goHome();
-        }
         return $this->render('info', [
             'project' => Projects::findOne($id),
             'project_news' => ProjectNews::find()->where(['id_project' => $id])->all(),
