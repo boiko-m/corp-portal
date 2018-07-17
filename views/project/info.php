@@ -315,6 +315,9 @@
           <? endif; ?>
         <? } ?>
 
+        <?php if (count($project_group) == 0) : ?>
+          <center style="font-size: 11px; padding-top: 15px;"><b class="non-description">Рабочая группа не определена</b></center>
+        <? endif; ?>
       </div>
     </div>
 </div>
