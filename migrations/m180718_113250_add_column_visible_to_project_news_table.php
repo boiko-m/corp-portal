@@ -12,7 +12,7 @@ class m180718_113250_add_column_visible_to_project_news_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn('project_news', 'visible', $this->boolean()->defaultValue(true));
     }
 
     /**

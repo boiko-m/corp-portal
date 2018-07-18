@@ -71,6 +71,8 @@
         ])->input('text', ['placeholder' => "Введите название проекта"]);
     ?>
 
+    <?= $form->field($model, "visible")->checkbox(['label' => 'Видимость новости'], ['value' => true]); ?>
+
     <?= $form->field($model, 'image')->widget(CropboxWidget::className(), [
         'croppedDataAttribute' => 'crop_info',
     ])->label('Картинка'); ?>

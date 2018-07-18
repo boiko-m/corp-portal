@@ -53,7 +53,7 @@ class ProjectNews extends \yii\db\ActiveRecord
             ['crop_info', 'safe'],
             [['title', 'content', 'short_description', 'create_at', 'create_user', 'id_project'], 'required'],
             [['content'], 'string'],
-            [['create_at', 'create_user', 'id_project'], 'integer'],
+            [['create_at', 'create_user', 'id_project', 'visible'], 'integer'],
             [['avatar'], 'string', 'max' => 100],
             [['title'], 'string', 'max' => 150],
             [['short_description'], 'string', 'max' => 250],
@@ -76,6 +76,7 @@ class ProjectNews extends \yii\db\ActiveRecord
             'create_user' => 'Создатель',
             'id_project' => 'Проект',
             'short_description' => 'Краткое описание',
+            'visible' => 'Видимость новости'
         ];
     }
 

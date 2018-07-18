@@ -34,9 +34,14 @@ class ProjectController extends \yii\web\Controller
 
     public function actionInfo($id)
     {
+        if (\Yii::$app->user->can("controlProject"))
+            $projects_news = ProjectNews::find()->where(['id_project' => $id])->all();
+        else
+            $projects_news = ProjectNews::find()->where(['id_project' => $id, 'visible' => true])->all();
+
         return $this->render('info', [
             'project' => Projects::findOne($id),
-            'project_news' => ProjectNews::find()->where(['id_project' => $id])->all(),
+            'project_news' => $projects_news,
             'project_group' => ProjectUser::find()->where(['id_project' => $id])->orderBy('id_project_user_group')->all(),
         ]);
     }

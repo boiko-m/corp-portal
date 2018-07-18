@@ -44,6 +44,13 @@
                 },
             ],
             [
+                'attribute' => 'visible',
+                'value' => function($model) {
+                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+            ],
+            [
                 'attribute' => 'create_user',
                 'value' => function($model) {
                     $project = app\models\Profile::findOne($model->create_user);

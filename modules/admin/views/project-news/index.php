@@ -38,6 +38,13 @@
                     return date('d.m.Y', $model->create_at);
                 },
             ],
+            [
+                'attribute' => 'visible',
+                'value' => function($model) {
+                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+            ],
             // 'short_description',
             // 'content:ntext',
             // 'avatar',
