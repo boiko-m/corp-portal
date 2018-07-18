@@ -4,13 +4,16 @@
     use yii\helpers\ArrayHelper;
     use bupy7\cropbox\CropboxWidget;
     use dosamigos\tinymce\TinyMce;
+    use yii\jui\AutoComplete;
     use app\models\Projects;
 ?>
 
 
 <div class="project-news-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype'=>'multipart/form-data'],
+    ]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -56,18 +59,28 @@
         </form>
     </iframe>
 
-    <?= $form->field($model, 'id_project', ['enableClientValidation' => false])->textInput(['value' => (Projects::find()->where(['id' => $model->isNewRecord ? Yii::$app->request->get('id') : $model->id_project])->one())->name, 'readonly' => true])->label('Проект') ?>
+    <? $listdata = Projects::find()->select(['id as value', 'name as label'])->asArray()->all(); ?>
+    <?= $form->field($model, 'id_project')->widget(
+        AutoComplete::className(), [            
+            'clientOptions' => [
+                'source' => $listdata,
+            ],
+            'options'=>[
+                'class'=>'form-control'
+            ]
+        ])->input('text', ['placeholder' => "Введите название проекта"]);
+    ?>
 
-    <?= $model->isNewRecord ? $form->field($model, 'image')->widget(CropboxWidget::className(), [
+    <?= $form->field($model, 'image')->widget(CropboxWidget::className(), [
         'croppedDataAttribute' => 'crop_info',
-    ])->label('Картинка') : ''; ?>
+    ])->label('Картинка'); ?>
 
     <?= $form->field($model, 'create_at')->hiddenInput(['value' => $model->isNewRecord ? time() : $model->create_at])->label(false); ?>
 
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => $model->isNewRecord ? Yii::$app->user->id : $model->create_user])->label(false); ?>
 
     <div class="form-group crud-button-save">
-        <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Редактировать', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

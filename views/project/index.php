@@ -39,7 +39,7 @@
                   <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
                     <h5 class="card-title"><?= $project->name ?></h5>
                   </a>
-                  <span style="font-size: 18px;">(В разработке)</span>
+                  <span style="font-size: 17px; color: gray; font-style: italic;">(в разработке)</span>
                 <?  elseif (\Yii::$app->user->can("controlProject")) : ?>
                   <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
                     <h5 class="card-title"><?= $project->name ?></h5>
@@ -50,7 +50,7 @@
                   </a>
                 <? else : ?>
                   <span href="" style="display: inline-block;">
-                    <h5 class="card-title"><?= $project->name ?> (В разработке)</h5>
+                    <h6 class="card-title" style="color: gray; font-style: italic;"><?= $project->name ?> (в разработке)</h6>
                   </span>
                 <? endif; ?>
                 <?php if (\Yii::$app->user->can("controlProject")) : ?>

@@ -16,7 +16,7 @@
 
 <div class="projects-view">
 
-    <h1 class="title-view-projects"><?= Html::encode($this->title) ?></h1>
+    <!-- <h1 class="title-view-projects"><?= Html::encode($this->title) ?></h1> -->
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

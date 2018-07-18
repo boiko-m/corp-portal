@@ -8,7 +8,7 @@
 ?>
 <div class="project-user-group-update">
 
-    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
+    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
 
     <?= $this->render('_form', [
         'model' => $model,

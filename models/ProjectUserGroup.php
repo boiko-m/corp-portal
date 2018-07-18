@@ -46,10 +46,10 @@ class ProjectUserGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'create_at' => 'Create At',
-            'create_user' => 'Create User',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'create_at' => 'Дата создания',
+            'create_user' => 'Создатель',
         ];
     }
 

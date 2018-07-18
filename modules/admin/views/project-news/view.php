@@ -9,7 +9,7 @@
 
 <div class="project-news-view">
 
-    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
+    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

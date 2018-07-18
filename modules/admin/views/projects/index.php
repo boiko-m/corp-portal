@@ -9,7 +9,7 @@
 
 <div class="projects-index">
 
-    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
+    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -23,10 +23,13 @@
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'headerOptions' => ['style' => 'width:5%'],
+            ],
             'name:ntext',
             // 'description:ntext',
-            'goal:ntext',
+            // 'goal:ntext',
             // 'create_at',
             // 'close_at',
             [
@@ -35,7 +38,7 @@
                     $model->archive ? $ret = 'Да' : $ret = 'Нет';
                     return $ret;
                 },
-                'headerOptions' => ['style' => 'width:12%'],
+                'headerOptions' => ['style' => 'width:9%'],
             ],
             [
                 'attribute' => 'visible',
@@ -43,7 +46,15 @@
                     $model->visible ? $ret = 'Да' : $ret = 'Нет';
                     return $ret;
                 },
-                'headerOptions' => ['style' => 'width:12%'],
+                'headerOptions' => ['style' => 'width:9%'],
+            ],
+            [
+                'attribute' => 'description_visible',
+                'value' => function($model) {
+                    $model->description_visible ? $ret = 'Да' : $ret = 'Нет';
+                    return $ret;
+                },
+                'headerOptions' => ['style' => 'width:17%'],
             ],
             [
                 'attribute' => 'active',
@@ -51,7 +62,7 @@
                     $model->active ? $ret = 'Да' : $ret = 'Нет';
                     return $ret;
                 },
-                'headerOptions' => ['style' => 'width:12%'],
+                'headerOptions' => ['style' => 'width:10%'],
             ],
             //'create_user',
 

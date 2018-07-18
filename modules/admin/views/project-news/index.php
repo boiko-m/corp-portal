@@ -9,13 +9,13 @@
 
 <div class="project-news-index">
 
-    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
+    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <!-- <p>
+    <p>
         <?= Html::a('Создать новость проекта', ['create'], ['class' => 'btn btn-success']) ?>
-    </p> -->
+    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
