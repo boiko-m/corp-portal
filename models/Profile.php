@@ -146,9 +146,7 @@ class Profile extends \yii\db\ActiveRecord
         }
         if(substr($birthday[1],0, 1) == 0 ){
             $birthday[1] = substr($birthday[1], 1);
-                 }
-
-
+        }
 
         return $birthday[1].' '.$month;
     }

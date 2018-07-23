@@ -18,7 +18,7 @@ class ProjectController extends \yii\web\Controller
             $projects = Projects::find()->where(['visible' => true]);
 
         $countQuery = clone $projects;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 6]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
         $projects = $projects->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
@@ -55,8 +55,5 @@ class ProjectController extends \yii\web\Controller
     {
         return $this->renderPartial('view_bottom');
     }
-
-
-
 
 }

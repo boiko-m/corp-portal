@@ -18,8 +18,8 @@ class ProjectNewsSearch extends ProjectNews
     public function rules()
     {
         return [
-            [['id', 'create_at', 'create_user', 'id_project'], 'integer'],
-            [['avatar', 'title', 'content', 'short_description'], 'safe'],
+            [['id', 'visible'], 'integer'],
+            [['avatar', 'title', 'content', 'short_description', 'id_project', 'create_user', 'create_at'], 'safe'],
         ];
     }
 
@@ -42,6 +42,7 @@ class ProjectNewsSearch extends ProjectNews
     public function search($params)
     {
         $query = ProjectNews::find();
+        $query->joinWith('project');
 
         // add conditions that should always apply here
 
@@ -59,16 +60,19 @@ class ProjectNewsSearch extends ProjectNews
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'create_at' => $this->create_at,
-            'create_user' => $this->create_user,
-            'id_project' => $this->id_project,
+            'project_news.id' => $this->id,
+            'project_news.create_user' => $this->create_user,
+            'project_news.visible' => $this->visible,
         ]);
 
-        $query->andFilterWhere(['like', 'avatar', $this->avatar])
-            ->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'short_description', $this->short_description]);
+        $query->andFilterWhere(['like', 'project_news.avatar', $this->avatar])
+            ->andFilterWhere(['like', 'project_news.title', $this->title])
+            ->andFilterWhere(['like', 'project_news.content', $this->content])
+            ->andFilterWhere(['like', 'projects.name', $this->id_project])
+            ->andFilterWhere(['like', 'project_news.short_description', $this->short_description]);
+
+        if($this->create_at)
+          $query->andFilterWhere(['between', 'project_news.create_at', strtotime($this->create_at), strtotime($this->create_at)+86400]);
 
         return $dataProvider;
     }

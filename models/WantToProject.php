@@ -46,10 +46,10 @@ class WantToProject extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'complete' => 'Complete',
-            'decision' => 'Decision',
-            'id_user' => 'Id User',
-            'id_project' => 'Id Project',
+            'complete' => 'Завершенность',
+            'decision' => 'Решение',
+            'id_user' => 'Сотрудник',
+            'id_project' => 'Проект',
         ];
     }
 
@@ -67,5 +67,13 @@ class WantToProject extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
     }
 }

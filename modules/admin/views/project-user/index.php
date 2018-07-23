@@ -25,24 +25,21 @@
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'headerOptions' => ['style' => 'width:7%'],
+            ],
             [
                 'attribute' => 'id_project',
-                'value' => function($model) {
-                    return (Projects::findOne($model->id_project))->name;
-                },
+                'value' => 'project.name',
             ],
             [
                 'attribute' => 'id_user',
-                'value' => function($model) {
-                    return (Profile::findOne($model->id_user))->name;
-                },
+                'value' => 'profile.name',
             ],
             [
                 'attribute' => 'id_project_user_group',
-                'value' => function($model) {
-                    return (ProjectUserGroup::findOne($model->id_project_user_group))->name;
-                },
+                'value' => 'projectUserGroup.name',
             ],
             [
                 'attribute' => 'create_at',

@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\News;
+use app\models\ProjectNews;
 use app\models\Videos;
 use app\models\User;
 use app\models\Session;
@@ -59,7 +60,8 @@ class SiteController extends Controller
 
         $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
         return $this->render('index', [
-            "news" => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
+            'news' => News::find()->where(['status' => 1])->orderBy('id desc')->limit(5)->all(),
+            "news_project" => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc')->limit(5)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
             'user_new' => Profile::find()->orderBy('date_job desc')->limit(3)->all(),
             'online' => Session::getOnline(),
