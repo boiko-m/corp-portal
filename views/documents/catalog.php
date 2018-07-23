@@ -80,9 +80,10 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 
 		<div>
-			<span><a href="http://lovol.crm.lovol.com.cn/signin.aspx?targeturl=http://lovol.crm.lovol.com.cn/default.aspx" target="_blank">8. Foton</a></span>
+			<span><a href="http://ses.lovol.com/extjs/" target="_blank">8. Foton</a></span>
 			<div>
-				Запускается только через браузер Internet Explorer <br>
+				<?/*Запускается только через браузер Internet Explorer <br>*/?>
+                Код: D01356<br>
 				Username: D01356 <br>
 				Password: 123456 <br>
 				<a href="http://portal.lbr.ru/lbrgroup/photouser/katalog/Foton.pdf" target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i> Инструкция по входу в каталог Foton</a>
