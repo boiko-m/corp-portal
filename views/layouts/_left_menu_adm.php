@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use app\models\User;
 use app\models\News;
+use app\models\WantToProject;
 
 ?>
 
@@ -14,6 +15,7 @@ use app\models\News;
 </style>
 
 <?php $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count() ?>
+<?php $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count() ?>
 
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
@@ -57,6 +59,7 @@ use app\models\News;
                         <li><a href="/admin/projects">Проекты</a></li>
                         <li><a href="/admin/project-news">Новости о проектах</a></li>
                         <li><a href="/admin/project-user">Назначения</a></li>
+                        <li><a href="/admin/want-to-project">Желающие<span class="badge badge-info badge-info-status"><?= $unconfirmedStatements ?></span></a></li>
                         <li><a href="/admin/project-user-group">Группы пользователей</a></li>
                     </ul>
                 </li>
@@ -76,7 +79,7 @@ use app\models\News;
                 <?if(\Yii::$app->user->can("controlNews")):?>
                 <li>
                     <a href="/admin/news">
-                        <i class="fi-file"></i> <span>Новости</span><span class="badge badge-info badge-info-status" style="margin-top: 2px;"><?= $unconfirmedNews ?></span>
+                        <i class="fi-file"></i> <span>Новости</span><span class="badge badge-info badge-info-status"><?= $unconfirmedNews ?></span>
                     </a>
                 </li>
                 <?endif;?>

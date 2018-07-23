@@ -25,48 +25,46 @@
 
             [
                 'attribute' => 'id',
-                'headerOptions' => ['style' => 'width:5%'],
+                'headerOptions' => ['style' => 'width:7%'],
             ],
             'name:ntext',
-            // 'description:ntext',
-            // 'goal:ntext',
-            // 'create_at',
-            // 'close_at',
             [
                 'attribute' => 'archive',
-                'value' => function($model) {
-                    $model->archive ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
                 'headerOptions' => ['style' => 'width:9%'],
             ],
             [
                 'attribute' => 'visible',
-                'value' => function($model) {
-                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
                 'headerOptions' => ['style' => 'width:9%'],
             ],
             [
                 'attribute' => 'description_visible',
-                'value' => function($model) {
-                    $model->description_visible ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
                 'headerOptions' => ['style' => 'width:17%'],
             ],
             [
                 'attribute' => 'active',
-                'value' => function($model) {
-                    $model->active ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
                 'headerOptions' => ['style' => 'width:10%'],
             ],
-            //'create_user',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '
+                    {view}
+                    {update}
+                    {delete}
+                    {appointments}
+                ',
+                'buttons' => [
+                    'appointments' => function () {
+                        return Html::a('<i class="fa fa-user-plus"></i>', '/admin/project-user/create', [
+                            'title' => 'Создать назначение',
+                        ]);
+                    },
+                ]
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -18,7 +18,8 @@ class ProjectUserSearch extends ProjectUser
     public function rules()
     {
         return [
-            [['id', 'id_project', 'id_user', 'id_project_user_group', 'create_at'], 'integer'],
+            [['id'], 'integer'],
+            [['id_project', 'id_user', 'id_project_user_group', 'create_at'], 'safe'],
         ];
     }
 
@@ -41,6 +42,9 @@ class ProjectUserSearch extends ProjectUser
     public function search($params)
     {
         $query = ProjectUser::find();
+        $query->joinWith('project');
+        $query->joinWith('profile');
+        $query->joinWith('projectUserGroup as group');
 
         // add conditions that should always apply here
 
@@ -58,12 +62,16 @@ class ProjectUserSearch extends ProjectUser
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'id_project' => $this->id_project,
-            'id_user' => $this->id_user,
-            'id_project_user_group' => $this->id_project_user_group,
-            'create_at' => $this->create_at,
+            'project_user.id' => $this->id,
+            // 'project_user.create_at' => $this->create_at,
         ]);
+
+        $query->andFilterWhere(['like', 'projects.name', $this->id_project])
+              ->andFilterWhere(['like', 'group.name', $this->id_project_user_group])
+              ->andFilterWhere(['like', 'profile.last_name', $this->id_user]);
+
+        if($this->create_at)
+          $query->andFilterWhere(['between', 'project_user.create_at', strtotime($this->create_at), strtotime($this->create_at)+86400]);
 
         return $dataProvider;
     }

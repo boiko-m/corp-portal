@@ -41,10 +41,15 @@ use yii\widgets\ActiveForm;
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
-            <ul class="nav nav-tabs tabs-bordered" style="padding-top: 3px">
+            <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="padding-top: 3px">
                 <li class="nav-item">
                     <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                        Новости
+                        Новости компании
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        Новости проектов
                     </a>
                 </li>
             </ul>
@@ -60,10 +65,26 @@ use yii\widgets\ActiveForm;
                         <?php endforeach ?>
                         <div style="padding-left: 10px;">
                             <div style="padding-top: 10px; display: inline-block; ;">
-                                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости</a>
+                                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости компании</a>
                             </div>
                             <div style="padding-top: 10px; display: inline-block;">
                                 <a href="/news/offer" class="news-offer">Предложить новость</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="home-b2" class="tab-pane">
+                    <div style="margin-bottom: 15px;">
+                        <?php foreach ($news_project as $item): ?>
+                            <div class="col-xs-12 news-a" >
+                                <a href="/project-news/<?=$item['id']?>" style = "padding-left: 15px;">
+                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['create_at']) ?></small>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+                        <div style="padding-left: 10px;">
+                            <div style="padding-top: 10px; display: inline-block; ;">
+                                <a href="/project-news" class="btn  waves-effect w-md btn-light">Открыть все новости проектов</a>
                             </div>
                         </div>
                     </div>

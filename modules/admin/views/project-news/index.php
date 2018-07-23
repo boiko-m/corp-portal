@@ -23,34 +23,44 @@
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'headerOptions' => ['style' => 'width:7%'],
+            ],
             'title',
             [
                 'attribute' => 'id_project',
-                'value' => function($model) {
-                    $project = app\models\Projects::findOne($model->id_project);
-                    return $project->name;
-                },
+                'value' => 'project.name'
             ],
             [
                 'attribute' => 'create_at',
                 'value' => function($model) {
                     return date('d.m.Y', $model->create_at);
                 },
+                'headerOptions' => ['style' => 'width:13%'],
             ],
             [
                 'attribute' => 'visible',
-                'value' => function($model) {
-                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
+                'headerOptions' => ['style' => 'width:16%'],
             ],
-            // 'short_description',
-            // 'content:ntext',
-            // 'avatar',
-            //'create_user',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '
+                    {view}
+                    {update}
+                    {delete}
+                    {go_ever}
+                ',
+                'buttons' => [
+                    'go_ever' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-tv"></i>', '/project-news/'.$model->id, [
+                            'title' => 'Перейти к просмотру',
+                        ]);
+                    },
+                ]
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

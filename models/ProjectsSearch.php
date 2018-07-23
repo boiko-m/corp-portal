@@ -18,7 +18,8 @@ class ProjectsSearch extends Projects
     public function rules()
     {
         return [
-            [['id', 'create_at', 'close_at', 'archive', 'create_user'], 'integer'],
+            [['id', 'create_at', 'close_at', 'archive', 'create_user', 'active', 'description_visible'], 'integer'],
+            [['visible'], 'string'],
             [['name', 'description', 'goal'], 'safe'],
         ];
     }
@@ -64,6 +65,9 @@ class ProjectsSearch extends Projects
             'close_at' => $this->close_at,
             'archive' => $this->archive,
             'create_user' => $this->create_user,
+            'visible' => $this->visible,
+            'active' => $this->active,
+            'description_visible' => $this->description_visible,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
