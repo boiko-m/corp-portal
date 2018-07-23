@@ -47,11 +47,13 @@ use yii\widgets\ActiveForm;
                         Новости компании
                     </a>
                 </li>
+                <?php if (\Yii::$app->user->can("controlProject")) : ?>
                 <li class="nav-item">
                     <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
                         Новости проектов
                     </a>
                 </li>
+                <?endif; ?>
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
                 <div class="tab-pane fade active show" id="home-b1">
