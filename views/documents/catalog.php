@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 Код: D01356<br>
 				Username: D01356 <br>
 				Password: 123456 <br>
-				<a href="http://portal.lbr.ru/lbrgroup/photouser/katalog/Foton.pdf" target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i> Инструкция по входу в каталог Foton</a>
+				<a href="http://portal.lbr.ru/lbrgroup/photouser/katalog/foton1.pptx" target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i> Инструкция по входу в каталог Foton</a>
 			</div>
 		</div>
 		<div>
