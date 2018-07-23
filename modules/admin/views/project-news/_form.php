@@ -6,6 +6,11 @@
     use dosamigos\tinymce\TinyMce;
     use yii\jui\AutoComplete;
     use app\models\Projects;
+
+    use app\assets\ProjectAsset;
+    use app\assets\AppAsset;
+    AppAsset::register($this);
+    ProjectAsset::register($this);
 ?>
 
 
@@ -80,6 +85,17 @@
     <?= $form->field($model, 'create_at')->hiddenInput(['value' => $model->isNewRecord ? time() : $model->create_at])->label(false); ?>
 
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => $model->isNewRecord ? Yii::$app->user->id : $model->create_user])->label(false); ?>
+
+    <!-- <div class="row">
+        <div class="col-md-6" style="padding: 10px;">
+            <input type="text" name="" style="width: 100%">
+            <button class="btn waves-effect w-md btn-light">Добавить</button>
+        </div>
+        <div class="col-md-6" style="padding: 10px;">
+            <input type="text" name="" style="width: 100%">
+            <button class="btn waves-effect w-md btn-light">Добавить</button>
+        </div>
+    </div> -->
 
     <div class="form-group crud-button-save">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

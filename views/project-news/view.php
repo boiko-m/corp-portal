@@ -12,7 +12,6 @@ $this->title = $model->title;
    <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="card-box">
-        <h5 class="card-title"><?= $model->title?></h5>
         <p class="card-text"><?=htmlspecialchars_decode($model->content)?></p>
 
 </div>
