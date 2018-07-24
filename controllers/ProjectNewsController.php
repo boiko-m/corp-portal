@@ -36,7 +36,7 @@ class ProjectNewsController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => ProjectNews::find(),
+            'query' => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc'),
         ]);
 
         return $this->render('index', [

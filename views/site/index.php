@@ -54,7 +54,7 @@ use yii\widgets\ActiveForm;
                 </li>
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
-                <div class="tab-pane" id="home-b1">
+                <div id="home-b1" class="tab-pane">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
