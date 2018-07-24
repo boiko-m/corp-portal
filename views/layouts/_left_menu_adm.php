@@ -57,7 +57,7 @@ use app\models\WantToProject;
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Проекты </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="/admin/projects">Проекты</a></li>
-                        <li><a href="/admin/project-news">Новости о проектах</a></li>
+                        <li><a href="/admin/project-news">Новости проектов</a></li>
                         <li><a href="/admin/project-user">Назначения</a></li>
                         <li><a href="/admin/want-to-project">Желающие<span class="badge badge-info badge-info-status"><?= $unconfirmedStatements ?></span></a></li>
                         <li><a href="/admin/project-user-group">Группы пользователей</a></li>

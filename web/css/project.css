@@ -228,3 +228,38 @@
 }
 
 /*-------------- Project info --------------*/
+
+
+/*-------------- Project create --------------*/
+
+.attachment-zone-title {
+  margin-top: 30px;
+  margin-left: -10px;
+}
+
+.video-n-file-project-news-place {
+  border: 1px solid #918e8e;
+  border-radius: 3px;
+}
+
+.video-input-link {
+  display: block;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border: 2px solid #fff;
+}
+
+.center-button {
+  text-align: center;
+}
+
+.project-news-buttons {
+  margin-top: 10px;
+}
+
+/*-------------- Project create --------------*/

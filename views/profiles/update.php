@@ -178,6 +178,14 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                     <label class="black" for="hat-color-black"></label>
                   </div>
                 </div>
+
+                <div style="text-align: center">
+                  <h5><?= Yii::$app->setting->getName('news-panel-setting'); ?></h5>
+                  <div class="btn-group mb-2" style="display: flex; justify-content: center; align-items: center;">
+                    <button type="button" class="btn btn-light waves-effect event-news-panel" value="1">Новости компании</button>
+                    <button type="button" class="btn btn-light waves-effect event-news-panel" value="2">Новости проектов</button>
+                  </div>
+                </div>
               </div>
             </div>
           

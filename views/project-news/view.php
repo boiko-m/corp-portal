@@ -12,6 +12,9 @@ $this->title = $model->title;
    <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="card-box">
-        <p class="card-text"><?=htmlspecialchars_decode($model->content)?></p>
+      	<h5>Кратное описание</h5>
+      	<p style="font-size: 12px; padding: 5px;"><?= $model->short_description ?></p>
+      	<h5>Содержание</h5>
+        <p class="card-text"><?= htmlspecialchars_decode($model->content) ?></p>
 
 </div>

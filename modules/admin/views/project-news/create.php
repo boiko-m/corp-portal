@@ -7,8 +7,6 @@
 ?>
 <div class="project-news-create">
 
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

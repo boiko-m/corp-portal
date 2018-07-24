@@ -8,8 +8,6 @@
     use app\models\Projects;
 
     use app\assets\ProjectAsset;
-    use app\assets\AppAsset;
-    AppAsset::register($this);
     ProjectAsset::register($this);
 ?>
 
@@ -39,7 +37,6 @@
 
                 input.onchange = function() {
                    var file = this.files[0];
-                   console.log(file);
                    
                    var reader = new FileReader();
                    reader.onload = function () {
@@ -86,21 +83,34 @@
 
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => $model->isNewRecord ? Yii::$app->user->id : $model->create_user])->label(false); ?>
 
-    <!-- <div class="row">
-        <div class="col-md-6" style="padding: 10px;">
-            <input type="text" name="" style="width: 100%">
-            <button class="btn waves-effect w-md btn-light">Добавить</button>
-        </div>
-        <div class="col-md-6" style="padding: 10px;">
-            <input type="text" name="" style="width: 100%">
-            <button class="btn waves-effect w-md btn-light">Добавить</button>
-        </div>
-    </div> -->
-
     <div class="form-group crud-button-save">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <!-- <h3 class="attachment-zone-title">Область вложений</h3>
+    <div class="row video-n-file-project-news-place">
+        <div class="col-md-6" id="fields_video"></div>
+        <div class="col-md-6" id="fields_file"></div>
+        <div class="col-md-6" style="padding: 10px;">
+            <form method="POST" id="link_video" action="javascript:void(null);">
+                <label for="add_video">Ссылка на видео</label>
+                <input type="text" name="add_video" id="add_video" class="video-input-link">
+                <div class="center-button">
+                    <button class="btn waves-effect w-md btn-light center-button project-news-buttons">Добавить видео</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6" style="padding: 10px;">
+            <form id="link_file">
+                <label for="add_file">Прикрепить файл</label>
+                <input type="file" name="add_file" id="add_file">
+                <div class="center-button">
+                    <button class="btn waves-effect w-md btn-light center-button project-news-buttons">Добавить файл</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
 
 </div>

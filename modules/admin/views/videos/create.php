@@ -62,18 +62,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <script>
 	$('#link').bind('submit', function (e) {
-  	var link = $('#link').serialize();
-    $.ajax({
-      type: 'POST',
-      url: 'create',
-      data: link,
-      success: function(data) {
-      	$( "#link" ).hide();
-      	$('#fields').html(data);
-      },
-      error: function(xhr, str){
-        alert('Возникла ошибка: ' + xhr.responseCode);
-      }
-    });
-  });
+	  	var link = $('#link').serialize();
+	    $.ajax({
+	      type: 'POST',
+	      url: 'create',
+	      data: link,
+	      success: function(data) {
+	      	$( "#link" ).hide();
+	      	$('#fields').html(data);
+	      },
+	      error: function(xhr, str){
+	        alert('Возникла ошибка: ' + xhr.responseCode);
+	      }
+	    });
+  	});
 </script>

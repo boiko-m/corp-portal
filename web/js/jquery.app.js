@@ -72,6 +72,20 @@
         });
     }
 
+    function initChangeNewsPanel() {
+        $('.event-news-panel').on('click', function (e) {
+            let panel = $(this).val();
+            $.ajax({
+              url: '/profiles/update-setting-news-panel?toggle-news-panel=' + panel,
+              data: panel,
+              success: function(data) {},
+              error: function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+              }
+            });
+        });
+    }
+
     function initActiveMenu() {
         // === following js will activate the menu in left side bar based on url ====
         $("#sidebar-menu a").each(function () {
@@ -95,6 +109,7 @@
         initEnlarge();
         initActiveMenu();
         initChangeBgNb();
+        initChangeNewsPanel();
     }
 
     init();

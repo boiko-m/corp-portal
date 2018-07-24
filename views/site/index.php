@@ -43,20 +43,18 @@ use yii\widgets\ActiveForm;
         <div class="card">
             <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="padding-top: 3px">
                 <li class="nav-item">
-                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link">
                         Новости компании
                     </a>
                 </li>
-                <?php if (\Yii::$app->user->can("controlProject")) : ?>
                 <li class="nav-item">
-                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
                         Новости проектов
                     </a>
                 </li>
-                <?endif; ?>
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
-                <div class="tab-pane fade active show" id="home-b1">
+                <div class="tab-pane" id="home-b1">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
@@ -75,7 +73,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </div>
-                <div id="home-b2" class="tab-pane">
+                <div id="home-b2" class="tab-pane fade active show">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news_project as $item): ?>
                             <div class="col-xs-12 news-a" >

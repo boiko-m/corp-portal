@@ -9,6 +9,7 @@ use app\models\ProjectNewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * ProjectNewsController implements the CRUD actions for ProjectNews model.
@@ -66,6 +67,10 @@ class ProjectNewsController extends Controller
     public function actionCreate()
     {
         $model = new ProjectNews();
+
+        if (Yii::$app->request->post('link_video') !== null) { 
+            return 0;
+        }
 
         if ($model->load(Yii::$app->request->post())) {
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');

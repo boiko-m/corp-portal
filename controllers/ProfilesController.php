@@ -173,6 +173,15 @@ class ProfilesController extends Controller
         }
     }
 
+    public function actionUpdateSettingNewsPanel()
+    {
+        if (Yii::$app->setting->isValue('news-panel-setting')) {
+            Yii::$app->setting->setValue('news-panel-setting', Yii::$app->request->get('toggle-news-panel'));
+        } else {
+            Yii::$app->setting->newValue('news-panel-setting', Yii::$app->request->get('toggle-news-panel'));
+        }
+    }
+
     protected function isOwnProfile()
     {
         return Yii::$app->request->get('id') == Yii::$app->user->id;
