@@ -43,18 +43,18 @@ use yii\widgets\ActiveForm;
         <div class="card">
             <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="padding-top: 3px">
                 <li class="nav-item">
-                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'active' : null ?>">
                         Новости компании
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'active' : null ?>">
                         Новости проектов
                     </a>
                 </li>
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
-                <div id="home-b1" class="tab-pane">
+                <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
@@ -73,7 +73,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </div>
-                <div id="home-b2" class="tab-pane fade active show">
+                <div id="home-b2" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news_project as $item): ?>
                             <div class="col-xs-12 news-a" >
