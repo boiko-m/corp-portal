@@ -7,7 +7,7 @@ use yii\widgets\Date;
 
 $this->title = 'Новость';
 $this->params['breadcrumbs'][] = $this->title;
-//echo "<pre>".print_r($users, true)."</pre>";
+
 if(!isset($like)){
     $like = '';
 }
@@ -19,42 +19,25 @@ if(!isset($like)){
             <h5 class="card-title"><?=$news['title']?></h5>
             <p class="card-text"><?=htmlspecialchars_decode($news['content'])?></p>
 
+            <div class="d-inline-block margin">
+                <?php $icon = '<i class="glyphicon glyphicon-glyphicon glyphicon-heart '.$like.'"></i>'; ?>
+                <?= \hauntd\vote\widgets\Like::widget([
+                    'entity' => 'itemLike',
+                    'model' => $news,
 
+                    'buttonOptions' => [
+                        'icon' => $icon,
+                        'id' => 'like-id',
+                        'class' => ' btn background-for-like',
+                        'label' => Yii::t('app', 'Мне нравится'),
+                    ]
+                ]); ?>
+            </div>
 
-<div class="d-inline-block margin">
-
-<?php
-$icon = '<i class="glyphicon glyphicon-glyphicon glyphicon-heart '.$like.'"></i>';
-?>
-            <?= \hauntd\vote\widgets\Like::widget([
-                'entity' => 'itemLike',
-                'model' => $news,
-
-                'buttonOptions' => [
-                    'icon' => $icon,
-                    'id' => 'like-id',
-                    'class' => ' btn  background-for-like',
-                    'label' => Yii::t('app', 'Мне нравится'),
-
-                ]
-
-            ]); ?>
-</div>
-
-
-          
-
-
-
-
-
-<hr>
-
+            <hr>
             <p class="card-text">
-
                 <small class="text-muted">от <?php echo date("d.m.Y h:s:m", $news['date']) ?></small>
             </p>
         </div>
     </div>
-
 </div>
