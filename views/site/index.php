@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
                 </li>
                 <li class="nav-item">
                     <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
-                        Новости проектов <i class="fa fa-exclamation fa-2x news-alert"></i>
+                        Новости проектов <i class="fa fa-exclamation fa-1x news-alert"></i>
                     </a>
                 </li>
             </ul>
