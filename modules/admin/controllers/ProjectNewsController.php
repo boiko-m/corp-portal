@@ -68,9 +68,9 @@ class ProjectNewsController extends Controller
     {
         $model = new ProjectNews();
 
-        if (Yii::$app->request->post('link_video') !== null) { 
-            return 0;
-        }
+        // if (Yii::$app->request->post('link_video') !== null) { 
+        //     return 0;
+        // }
 
         if ($model->load(Yii::$app->request->post())) {
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
@@ -97,7 +97,9 @@ class ProjectNewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
+            $model->save();
             // return $this->redirect(['view', 'id' => $model->id]);
         }
 

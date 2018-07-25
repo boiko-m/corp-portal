@@ -30,14 +30,15 @@ use yii\widgets\ActiveForm;
     }
 </style>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-12">
         <div class="alert alert-danger" role="alert">
             <b>Уважаемый пользователь портала!</b> <br>
             Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
         </div>
     </div>
-</div>
+</div> -->
+
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
@@ -130,15 +131,10 @@ use yii\widgets\ActiveForm;
 
 <div class="row">
     <?php if ($birthdays): ?>
-        <div class="col-xs-12 col-md-4 ">
-            
+        <div class="col-xs-12 col-md-4">
             <div class="card">
-                <div class="card-header">
-                    Дни Рождения
-                </div>
-
+                <div class="card-header">Дни Рождения</div>
                 <div>
-
                     <?php foreach ($birthdays as $user): ?>
                         <div class="row" style="padding:10px">
                             <div class="col-2">
@@ -148,30 +144,21 @@ use yii\widgets\ActiveForm;
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
                                 <div style="font-size: 11px">
                                     <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
-
                                 </div>
                             </div>
                         </div>
                     <?php endforeach ?>
                     <div style="padding-top: 10px; display: inline-block;">
                         <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
-
                     </div>
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
     <?php endif ?>
 
     <div class="col-xs-12 col-md-4 ">
         <div class="card">
-            
-            <div class="card-header">
-                Новые сотрудники
-            </div>
-
+            <div class="card-header">Новые сотрудники</div>
             <div>
                 <?php foreach ($user_new as $user): ?>
                     <div class="row" style="padding:10px">
@@ -190,81 +177,35 @@ use yii\widgets\ActiveForm;
                     <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
                 </div>
             </div>
-
         </div>
-
     </div>
+
     <div class="col-xs-12 col-md-4">
         <div class="card">
-            <div class="card-header">Пользователи онлайн: <?=$countOnline?></div>
-
+            <div class="card-header">Пользователи онлайн: <?= $countOnline ?></div>
             <div>
-
-                <?php $i=0;
+                <?php $i = 0;
                 foreach ($online as $user): $i++ ?>
-
-                    <?php if($i == 5){break;}
-                    ?>
+                    <?php if($i == 5) { break; } ?>
                     <div class="row" style="padding:10px">
                         <div class="col-2">
-                            <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                            <img src="<?= $user->getImage(); ?>" alt="" style="width: 50px; border-radius: 5px;">
                         </div>
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>
                             <div style="font-size: 11px">
-                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+                                <?= $user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
                             </div>
                         </div>
                     </div>
                 <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
-                </div>
-            </div>
-
-        </div>
-
-
-
-    </div>
-
-
-    <?php /*
-
-    <div class="col-xs-12 col-md-4">
-        <div class="card-box">
-
-            <div>
-                Пользователи в сети: <?=count($online) ?>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <?php if ($online): ?>
-                        <?php foreach ($online as $user): ?>
-                            <div class="row" style="padding:10px">
-                               <div class="col-2">
-                                   <img src="http://portal.lbr.ru/<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
-                               </div>
-                               <div class="col-10" >
-                                    <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                                    <div style="font-size: 11px">
-                                        <?=$user->branch ?>, <?=$user->position ?>
-                                    </div>
-                               </div>
-                            </div>
-                        <?php endforeach ?>
-                    <?php endif ?>
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px; margin-bottom:10px;'])?>
                 </div>
             </div>
         </div>
     </div>
-
-*/
-    ?>
-
-
 
 </div>
-
 
 </div>

@@ -56,21 +56,8 @@ class ProjectNewsController extends Controller
         if (!($this->findModel($id))->visible)
             throw new \yii\web\NotFoundHttpException(404);
 
-        $newsEntity = '2788134213';
-
-        $user_id = Yii::$app->user->id;
-        $like = Vote::find()->where(['user_id' => $user_id])->andWhere(['entity' =>$newsEntity])->andWhere(['target_id' =>$id])->one();
-        if(isset($like)){
-            $like = 'active-like';
-
-        }
-        else{
-            $like = '';
-        }
-
         return $this->render('view', [
-            'news' => ProjectNews::findOne($id), 
-            'like' => $like
+            'news' => ProjectNews::findOne($id)
         ]);
     }
 

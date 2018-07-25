@@ -87,7 +87,7 @@ class ProjectNews extends \yii\db\ActiveRecord
         } catch (\Exception $exception) { 
             return parent::beforeSave($insert);
        }
-
+       
         // rendering information about crop of ONE option 
         $cropInfo = Json::decode($this->crop_info)[0];
         $cropInfo['dWidth'] = (int)$cropInfo['dWidth']; //new width image

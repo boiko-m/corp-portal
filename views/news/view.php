@@ -1,27 +1,26 @@
 <?php
+    use yii\helpers\html;
+    use yii\widgets\Pjax;
+    use yii\widgets\Date;
+    use hauntd\vote\widgets\Like;
 
-/* @var $this yii\web\View */
-use yii\helpers\html;
-use yii\widgets\Pjax;
-use yii\widgets\Date;
+    $this->title = 'Новость';
+    $this->params['breadcrumbs'][] = $this->title;
 
-$this->title = 'Новость';
-$this->params['breadcrumbs'][] = $this->title;
-
-if(!isset($like)){
-    $like = '';
-}
+    if(!isset($like)){
+        $like = '';
+    }
 ?>
 
 <div class="row">
     <div class="col-md-12 col-xs-12">
         <div class="card-box">
-            <h5 class="card-title"><?=$news['title']?></h5>
-            <p class="card-text"><?=htmlspecialchars_decode($news['content'])?></p>
+            <h5 class="card-title"><?= $news['title'] ?></h5>
+            <p class="card-text"><?= htmlspecialchars_decode($news['content']) ?></p>
 
             <div class="d-inline-block margin">
-                <?php $icon = '<i class="glyphicon glyphicon-glyphicon glyphicon-heart '.$like.'"></i>'; ?>
-                <?= \hauntd\vote\widgets\Like::widget([
+                <?php $icon = '<i class="glyphicon glyphicon-glyphicon glyphicon-heart' . $like . '"></i>'; ?>
+                <?= Like::widget([
                     'entity' => 'itemLike',
                     'model' => $news,
 
