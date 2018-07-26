@@ -2,21 +2,20 @@
     use yii\helpers\Html;
     use yii\widgets\DetailView;
 
-    $this->title = $model->title;
-    $this->params['breadcrumbs'][] = ['label' => 'Новости проектов', 'url' => ['index']];
+    $this->title = $model->name;
+    $this->params['breadcrumbs'][] = ['label' => 'Трансляции', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="broadcast-view">
 
-<div class="project-news-view">
-
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы действительно хотите удалить данную новость?',
+                'confirm' => 'Вы действительно хотите удалить данную трансляцию?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -26,29 +25,24 @@
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
-            'short_description',
-            'content:ntext',
+            'link',
+            'name:ntext',
+            'description:ntext',
             [
-                'attribute' => 'id_project',
+                'attribute' => 'close_at',
                 'value' => function($model) {
-                    $project = app\models\Projects::findOne($model->id_project);
-                    return $project->name;
-                },
-            ],
-            'avatar',
-            [
-                'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
+                    return $model->close_at == null ? 'Трансляция не завершена' : date('d.m.Y', $model->close_at);
                 },
             ],
             [
-                'attribute' => 'visible',
+                'attribute' => 'close_at',
                 'value' => function($model) {
-                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
+                    return $model->close_at == null ? 'Трансляция не завершена' : date('d.m.Y', $model->close_at);
                 },
+            ],
+            [
+                'attribute' => 'complete',
+                'format' => 'boolean',
             ],
             [
                 'attribute' => 'create_user',

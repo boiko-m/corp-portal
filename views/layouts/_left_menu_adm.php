@@ -64,7 +64,7 @@ use app\models\WantToProject;
                     </ul>
                 </li>
                 <?endif;?>
-                    <?if(\Yii::$app->user->can("controlMessages")):?>
+                <?if(\Yii::$app->user->can("controlMessages")):?>
                 <li>
 
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Сообщения </span> <span class="menu-arrow"></span></a>
@@ -75,7 +75,7 @@ use app\models\WantToProject;
                     </ul>
 
                 </li>
-            <?endif;?>
+                <?endif;?>
                 <?if(\Yii::$app->user->can("controlNews")):?>
                 <li>
                     <a href="/admin/news">
@@ -85,12 +85,11 @@ use app\models\WantToProject;
                 <?endif;?>
                 <?if(\Yii::$app->user->can("controlVideo")):?>
                 <li>
-
                     <a href="/admin/videos">
                         <i class="fi-file"></i> <span>Видео</span>
                     </a>
                 </li>
-            <?endif;?>
+                <?endif;?>
                 <?if(\Yii::$app->user->can("controlFAQ")):?>
                 <li>
                     <a href="javascript: void(0);"><i class="fi-file"></i><span> Обуч. материал </span> <span class="menu-arrow"></span></a>
@@ -107,6 +106,12 @@ use app\models\WantToProject;
                         <li><a href="/admin/gift">Подарки</a></li>
                         <li><a href="/admin/gift-type">Типы подарков</a></li>
                     </ul>
+                </li>
+                <?endif;?>
+
+                <?if(\Yii::$app->user->can("controlBroadcast")):?>
+                <li>
+                    <a href="/admin/broadcast"><i class="fi-file"></i><span> Трансляции </span></a>
                 </li>
                 <?endif;?>
 

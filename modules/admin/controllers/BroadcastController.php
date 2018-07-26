@@ -3,20 +3,19 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\Videos;
-use app\models\VideosSearch;
+use app\models\Broadcast;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\UploadedFile;
 
 /**
- * VideosController implements the CRUD actions for Videos model.
+ * BroadcastController implements the CRUD actions for Broadcast model.
  */
-class VideosController extends Controller
+class BroadcastController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -31,23 +30,22 @@ class VideosController extends Controller
     }
 
     /**
-     * Lists all Videos models.
+     * Lists all Broadcast models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new VideosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
+        $dataProvider = new ActiveDataProvider([
+            'query' => Broadcast::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Videos model.
+     * Displays a single Broadcast model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,55 +58,34 @@ class VideosController extends Controller
     }
 
     /**
-     * Creates a new Videos model.
+     * Creates a new Broadcast model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-      $model = new Videos();
-      $model->date = date_timestamp_get(date_create());
-      $model->id_user = Yii::$app->user->id;
+        $model = new Broadcast();
 
-      if (Yii::$app->request->post('link_check') !== null) {
-        $model->link = Yii::$app->request->post('link_check');
+        if ($model->load(Yii::$app->request->post())) {
+            $parsed_url = parse_url($model->link);
+            if ($parsed_url['host'] != 'www.youtube.com') {
+                return 0;
+            }
 
-        $parsed_url = parse_url($model->link);
-        if ($parsed_url['host'] != 'www.youtube.com') {
-            return 'Неверный адрес';
+            $youtube_id = $this->findIdVideo($model->link);
+            $model->link = 'https://www.youtube.com/embed/' . $youtube_id;
+
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $youtube_id = $this->findIdVideo($model->link);
-
-        $tags = get_meta_tags($model->link);
-        $model->name = $tags['title'];
-
-        $model->img = "img/videos/". $youtube_id .".jpg";
-
-        $model->link = 'https://www.youtube.com/embed/' . $youtube_id;
-
-        if (Videos::find()->where(['link' => $model->link])->exists()) {
-          return 'Видео уже существует';
-        }
-
-        return $this->renderAjax('_form', [
-          'model' => $model,
+        return $this->render('create', [
+            'model' => $model,
         ]);
-      }
-
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        $url_img = "https://img.youtube.com/vi/". $this->findIdVideo($model->link) ."/mqdefault.jpg";
-        file_put_contents($model->img, file_get_contents($url_img));
-        return $this->redirect(['view', 'id' => $model->id]);
-      }
-
-      return $this->render('create', [
-        'model' => $model,
-      ]);
     }
 
     /**
-     * Updates an existing Videos model.
+     * Updates an existing Broadcast model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -118,7 +95,10 @@ class VideosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->complete && $model->close_at == null)
+                $model->close_at = time();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -128,7 +108,7 @@ class VideosController extends Controller
     }
 
     /**
-     * Deletes an existing Videos model.
+     * Deletes an existing Broadcast model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -142,15 +122,15 @@ class VideosController extends Controller
     }
 
     /**
-     * Finds the Videos model based on its primary key value.
+     * Finds the Broadcast model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Videos the loaded model
+     * @return Broadcast the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Videos::findOne($id)) !== null) {
+        if (($model = Broadcast::findOne($id)) !== null) {
             return $model;
         }
 

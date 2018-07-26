@@ -31,16 +31,6 @@
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="/scripts/">Скрипты</a></li>
                         </ul>
-                        <!-- <ul class="nav-second-level nav collapse" aria-expanded="false">
-                            <li><a href="javascript: void(0);">Скрипты <span class="menu-arrow"></span></a>
-                                <ul class="nav-third-level nav collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);">энергонасыщенные тракторы</a></li>
-                                    <li><a href="javascript: void(0);">прикатывающие катки</a></li>
-                                    <li><a href="javascript: void(0);">навесное оборудование к фронтальным погрузчикам</a></li>
-                                    <li><a href="javascript: void(0);">косилки</a></li>
-                                </ul>
-                            </li>
-                        </ul> -->
                     </li>
                 <?endif;?>
 
@@ -49,6 +39,7 @@
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="https://www.lbr.ru/company/contacts/">Филиалы</a></li>
                         <li><a href="/company/presentation">Презентация компании</a></li>
+                        <li><a href="/broadcast">Трансляции</a></li>
                     </ul>
                 </li>
 
@@ -81,14 +72,9 @@
                         <i class="fi-help"></i> <span> Помощь сотруднику </span>
                     </a>
                 </li>
-
             </ul>
-
         </div>
-        <!-- Sidebar -->
         <div class="clearfix"></div>
-
+        
     </div>
-    <!-- Sidebar -left -->
-
 </div>
