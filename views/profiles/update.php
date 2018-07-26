@@ -1,15 +1,10 @@
 <?php
+  use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
+  use yii\widgets\Pjax;
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-use yii\widgets\Pjax;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Profile */
-
-$this->title = 'Изменение данных';
-$this->params['breadcrumbs'][] = 'Мой профиль';
+  $this->title = 'Изменение данных';
+  $this->params['breadcrumbs'][] = 'Мой профиль';
 ?>
 
 <style>
@@ -182,8 +177,8 @@ $this->params['breadcrumbs'][] = 'Мой профиль';
                 <div style="text-align: center">
                   <h5><?= Yii::$app->setting->getName('news-panel-setting'); ?></h5>
                   <div class="btn-group mb-2" style="display: flex; justify-content: center; align-items: center;">
-                    <button type="button" class="btn btn-light waves-effect event-news-panel" value="1">Новости компании</button>
-                    <button type="button" class="btn btn-light waves-effect event-news-panel" value="2">Новости проектов</button>
+                    <button type="button" class="btn btn-light waves-effect event-news-panel" <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'disabled' : null ?> value="1">Новости компании</button>
+                    <button type="button" class="btn btn-light waves-effect event-news-panel" <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'disabled' : null ?> value="2">Новости проектов</button>
                   </div>
                 </div>
               </div>

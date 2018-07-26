@@ -3718,3 +3718,11 @@ h3.timeline-title {
     opacity:0.4; text-shadow: none; 
   }
 }
+
+.event-news-panel {
+  border: 1px solid black;
+}
+
+.event-news-panel:disabled {
+  border: 1px solid #d9d9d9;
+}

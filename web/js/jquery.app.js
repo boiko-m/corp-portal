@@ -74,11 +74,14 @@
 
     function initChangeNewsPanel() {
         $('.event-news-panel').on('click', function (e) {
-            let panel = $(this).val();
+            let panel = $(this);
             $.ajax({
-              url: '/profiles/update-setting-news-panel?toggle-news-panel=' + panel,
-              data: panel,
-              success: function(data) {},
+              url: '/profiles/update-setting-news-panel?toggle-news-panel=' + panel.val(),
+              data: panel.val(),
+              success: function(data) {
+                $('.event-news-panel:disabled').removeAttr('disabled')
+                panel.attr('disabled', 'disabled')
+              },
               error: function(xhr, str){
                 alert('Возникла ошибка: ' + xhr.responseCode);
               }

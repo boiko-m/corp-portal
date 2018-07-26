@@ -96,38 +96,23 @@ use yii\widgets\ActiveForm;
     <div class="col-xs-12 col-md-4">
         <div class="card">
             <div class="card-header">Новое видео на портале</div>
-
             <div class="m-b-10" style="padding-top: 10px">
                 <a href="/video/id/<?=$video['id']?>">
                     <div class="d-flex justify-content-around">
-                        <img class = "col-3 ml-15 " src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
+                        <img class="col-3 ml-15" src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
                     </div>
                     <img src="/<?=$video['img']?>" alt="" style="width: 100%">
                 </a>
             </div>
-
             <div class="block m-t-10" style="padding: 10px">
                 <div class="btn-group mb-2" style="width: 100%">
-                    <a href = "/video/?tab=forum" class="btn  waves-effect w-md btn-light" style="width: 100%">Форум</a>
-                    <a href = "/video/" class="btn  waves-effect w-md btn-light" style="width: 100%">Все видео</a>
+                    <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%">Форум</a>
+                    <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%">Все видео</a>
                 </div>
-
             </div>
-
         </div>
-
-
-
-        </div>
-
-
     </div>
-
 </div>
-
-
-
-
 
 <div class="row">
     <?php if ($birthdays): ?>
