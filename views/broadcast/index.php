@@ -1,14 +1,10 @@
 <?php
-/* @var $this yii\web\View */
-use app\models\Broadcast;
+    use app\models\Broadcast;
 
-
-$this->title = "Видео материал";
-
-/*$this->params['breadcrumbs'][] = ['label' => 'Обучающий материал', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
-$this->params['breadcrumbs'][] = $this->title;
-
+    $this->title = "Видео материал";
+    /*$this->params['breadcrumbs'][] = ['label' => 'Обучающий материал', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
@@ -36,14 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="tab-content">
             <div class="tab-pane fade active show" id="home">
                 <div class="row">
-                    <?php $lives = Broadcast::find()->limit(0)->orderby('id desc')->all(); ?>
+                    <?php $lives = Broadcast::find()->limit(4)->orderby('id desc')->all(); ?>
                     <?php if (count($lives) == 0) : ?>
                         <h5 class="col-md-12 text-center">На данный момент не было ни одной трансляции</h5>
                     <? endif; ?>
                     <?php foreach ($lives as $video): ?>
-                        <div class="col-xl-3 col-xs-12 videos_link" onclick="window.open('/broadcast/<?=$video->id ?>')" style="cursor: pointer; text-align: center;">
+                        <div class="col-xl-3 col-xs-12 videos_link" onclick="window.open('/broadcast/<?= $video->id ?>')" style="cursor: pointer; text-align: center;">
                             <div>
-                                <img src="http://portal.lbr.ru/img/broadcast/<?= $video->complete ? 'not-live.png' : 'live.png'?>" alt="" width="<?= $video->complete ? '340' : '240'?>" height="180" style="padding: 60px;">
+                                <img src="http://portal.lbr.ru/img/broadcast/<?= $video->complete ? 'not-live.png' : 'live.png'?>" alt="" width="<?= $video->complete ? '325' : '240'?>" height="180" style="padding: 60px;">
                             </div>
                             <div class="text-left" style="font-size: 10px">
                                 <?= date('d.m.Y', $video->create_at) ?>

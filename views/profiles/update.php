@@ -179,6 +179,7 @@
                   <div class="btn-group mb-2" style="display: flex; justify-content: center; align-items: center;">
                     <button type="button" class="btn btn-light waves-effect event-news-panel" <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'disabled' : null ?> value="1">Новости компании</button>
                     <button type="button" class="btn btn-light waves-effect event-news-panel" <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'disabled' : null ?> value="2">Новости проектов</button>
+                    <!-- <button type="button" class="btn btn-light waves-effect event-news-panel" <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'disabled' : null ?> value="3">Опросы компании</button> -->
                   </div>
                 </div>
               </div>

@@ -53,20 +53,25 @@ use yii\widgets\ActiveForm;
                         Новости проектов <i class="fa fa-exclamation fa-1x news-alert"></i>
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="#home-b3" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'active' : null ?>">
+                        Опросы компании
+                    </a>
+                </li> -->
             </ul>
             <div class="tab-content" style="padding-top: 10px;">
                 <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
-                                <a href="/news/<?=$item['id']?>" style = "padding-left: 15px;">
-                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['date']) ?></small>
+                                <a href="/news/<?= $item['id'] ?>" style="padding-left: 15px;">
+                                    <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s",$item['date']) ?></small>
                                 </a>
                             </div>
                         <?php endforeach ?>
                         <div style="padding-left: 10px;">
                             <div style="padding-top: 10px; display: inline-block; ;">
-                                <a href="/news" class="btn  waves-effect w-md btn-light">Открыть все новости компании</a>
+                                <a href="/news" class="btn waves-effect w-md btn-light">Открыть все новости компании</a>
                             </div>
                             <div style="padding-top: 10px; display: inline-block;">
                                 <a href="/news/offer" class="news-offer">Предложить новость</a>
@@ -78,52 +83,57 @@ use yii\widgets\ActiveForm;
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news_project as $item): ?>
                             <div class="col-xs-12 news-a" >
-                                <a href="/project-news/<?=$item['id']?>" style = "padding-left: 15px;">
+                                <a href="/project-news/<?= $item['id'] ?>" style = "padding-left: 15px;">
                                     <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['create_at']) ?></small>
                                 </a>
                             </div>
                         <?php endforeach ?>
                         <div style="padding-left: 10px;">
-                            <div style="padding-top: 10px; display: inline-block; ;">
-                                <a href="/project-news" class="btn  waves-effect w-md btn-light">Открыть все новости проектов</a>
+                            <div style="padding-top: 10px; display: inline-block;">
+                                <a href="/project-news" class="btn waves-effect w-md btn-light">Открыть все новости проектов</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- <div id="home-b3" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'fade active show' : null ?>">
+                    <div style="margin-bottom: 15px;">
+                        
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
     <div class="col-xs-12 col-md-4">
         <div class="card">
             <div class="card-header">Новое видео на портале</div>
-            <div class="m-b-10" style="padding-top: 10px">
-                <a href="/video/id/<?=$video['id']?>">
+            <div class="m-b-10" style="padding-top: 10px;">
+                <a href="/video/id/<?= $video['id'] ?>">
                     <div class="d-flex justify-content-around">
-                        <img class="col-3 ml-15" src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px">
+                        <img class="col-3 ml-15" src="/img/icon/youtube.png" alt="" style="position: absolute;padding-top: 100px;">
                     </div>
-                    <img src="/<?=$video['img']?>" alt="" style="width: 100%">
+                    <img src="/<?= $video['img'] ?>" alt="" width="100%">
                 </a>
             </div>
-            <div class="block m-t-10" style="padding: 10px">
-                <div class="btn-group mb-2" style="width: 100%">
-                    <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%">Форум</a>
-                    <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%">Все видео</a>
+            <div class="block m-t-10" style="padding: 10px;">
+                <div class="btn-group mb-2" style="width: 100%;">
+                    <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%;">Форум</a>
+                    <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%;">Все видео</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin-top: 10px;">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4">
             <div class="card">
                 <div class="card-header">Дни Рождения</div>
                 <div>
                     <?php foreach ($birthdays as $user): ?>
-                        <div class="row" style="padding:10px">
+                        <div class="row" style="padding:10px;">
                             <div class="col-2">
-                                <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                                <img src="<?= $user->getImage(); ?>" alt="" width="50" style="border-radius: 5px;">
                             </div>
                             <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
@@ -134,7 +144,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     <?php endforeach ?>
                     <div style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left: 10px; margin-bottom: 10px;'])?>
                     </div>
                 </div>
             </div>
