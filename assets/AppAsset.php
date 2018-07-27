@@ -33,7 +33,6 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/modernizr.min.js',
-        //'js/jquery.min.js',
         'js/popper.min.js',
         'js/bootstrap.min.js',
         'js/metisMenu.min.js',
@@ -43,7 +42,6 @@ class AppAsset extends AssetBundle
         'plugins/moment/moment.js',
         'plugins/waypoints/lib/jquery.waypoints.min.js',
         'plugins/counterup/jquery.counterup.min.js',
-        //'pages/jquery.dashboard.init.js',
         'plugins/counterup/jquery.counterup.min.js',
         'plugins/fullcalendar/js/fullcalendar.min.js',
         'pages/jquery.calendar.js',

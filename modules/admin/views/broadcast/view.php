@@ -1,6 +1,7 @@
 <?php
     use yii\helpers\Html;
     use yii\widgets\DetailView;
+    use app\models\Profile;
 
     $this->title = $model->name;
     $this->params['breadcrumbs'][] = ['label' => 'Трансляции', 'url' => ['index']];
@@ -29,9 +30,9 @@
             'name:ntext',
             'description:ntext',
             [
-                'attribute' => 'close_at',
+                'attribute' => 'create_at',
                 'value' => function($model) {
-                    return $model->close_at == null ? 'Трансляция не завершена' : date('d.m.Y', $model->close_at);
+                    return date('d.m.Y', $model->create_at);
                 },
             ],
             [
@@ -47,7 +48,7 @@
             [
                 'attribute' => 'create_user',
                 'value' => function($model) {
-                    $profile = app\models\Profile::findOne($model->create_user);
+                    $profile = Profile::findOne($model->create_user);
                     return $profile->name . "($model->create_user)";
                 },
             ],

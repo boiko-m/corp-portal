@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         transition: 0.3s;
     }
     .videos_link:hover {
-        color: black!important;
+        color: black !important;
     }
     .videos_link img {
         border-radius: 5px;
@@ -29,27 +29,27 @@ $this->params['breadcrumbs'][] = $this->title;
         <ul class="nav nav-tabs tabs-bordered">
             <li class="nav-item">
                 <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                    Главная
+                    Трансляции компании
                 </a>
             </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade active show" id="home">
                 <div class="row">
-                    <div class="col-12" style="padding-bottom: 10px">
-                        <h5><a class = "text-muted videos_link" href="/video/<?=$item['id']?>"><?=$item['name_category'] ?></a></h5>
-                    </div>
-                    <?php $lives = Broadcast::find()->limit(4)->orderby('id desc')->all(); ?>
+                    <?php $lives = Broadcast::find()->limit(0)->orderby('id desc')->all(); ?>
+                    <?php if (count($lives) == 0) : ?>
+                        <h5 class="col-md-12 text-center">На данный момент не было ни одной трансляции</h5>
+                    <? endif; ?>
                     <?php foreach ($lives as $video): ?>
-                        <div class="col-xl-3 col-xs-12 videos_link" onclick="window.open('/broadcast/<?=$video['id'] ?>')" style = "cursor: pointer;">
+                        <div class="col-xl-3 col-xs-12 videos_link" onclick="window.open('/broadcast/<?=$video->id ?>')" style="cursor: pointer; text-align: center;">
                             <div>
-                                <img src="http://portal.lbr.ru/img/live.png" alt="" width="378" height="212" style="width: 100%">
+                                <img src="http://portal.lbr.ru/img/broadcast/<?= $video->complete ? 'not-live.png' : 'live.png'?>" alt="" width="<?= $video->complete ? '340' : '240'?>" height="180" style="padding: 60px;">
                             </div>
                             <div class="text-left" style="font-size: 10px">
-                                <?=date('d.m.Y',$video['create_at']) ?>
+                                <?= date('d.m.Y', $video->create_at) ?>
                             </div>
                             <div class="text-center" style="padding: 5px">
-                                <?=$video['name'] ?>
+                                <?= $video->name ?>
                             </div>
 
                         </div>
