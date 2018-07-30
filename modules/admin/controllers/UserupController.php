@@ -259,9 +259,6 @@ class UserupController extends Controller
                 $client[$i]['Пароль1С'] = $login['0']['Пароль'];
             }
 
-
-
-
             for ($i=0; $i < count($client); $i++) {
                 if ($client[$i]['ПоловаяПринадлежность'] == "Мальчик") {
                     $client[$i]['ПоловаяПринадлежность'] = 1;
@@ -312,8 +309,6 @@ class UserupController extends Controller
                 $profile->branch = $up['Подразделение']['НаименованиеКраткое'];
                 $profile->position = $up['КорпоративнаяДолжность']['Description'];
 
-
-
                 foreach ($pp as $pos) {
                     if ($pos['code'] == $up['КорпоративнаяДолжность']['Code']) { $profile_position = $pos; }
                 }
@@ -339,8 +334,6 @@ class UserupController extends Controller
                 $user->save();
             }
         }
-
-
 
         return $this->renderPartial('update', array(
             'update' => $update

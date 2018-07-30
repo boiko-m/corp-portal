@@ -1,16 +1,12 @@
 <?php
+    use app\models\Profile;
+    use app\models\Session;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\widgets\ActiveForm;
+    use \app\widgets\Questionnaire;
 
-/* @var $this yii\web\View */
-
-$this->title = 'Главная';
-use app\models\Profile;
-use app\models\Session;
-use yii\helpers\Html;
-use yii\helpers\Url;
-
-
-use yii\widgets\ActiveForm;
-
+    $this->title = 'Главная';
 ?>
 <style>
     .news-a > a {
@@ -59,13 +55,14 @@ use yii\widgets\ActiveForm;
                     </a>
                 </li> -->
             </ul>
+
             <div class="tab-content" style="padding-top: 10px;">
                 <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
                             <div class="col-xs-12 news-a" >
                                 <a href="/news/<?= $item['id'] ?>" style="padding-left: 15px;">
-                                    <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s",$item['date']) ?></small>
+                                    <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
                                 </a>
                             </div>
                         <?php endforeach ?>
@@ -82,9 +79,9 @@ use yii\widgets\ActiveForm;
                 <div id="home-b2" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news_project as $item): ?>
-                            <div class="col-xs-12 news-a" >
+                            <div class="col-xs-12 news-a">
                                 <a href="/project-news/<?= $item['id'] ?>" style = "padding-left: 15px;">
-                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s",$item['create_at']) ?></small>
+                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s", $item['create_at']) ?></small>
                                 </a>
                             </div>
                         <?php endforeach ?>
@@ -97,12 +94,15 @@ use yii\widgets\ActiveForm;
                 </div>
                 <!-- <div id="home-b3" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
-                        
+                        <?php echo Questionnaire::widget([
+                            'message' => 'Good morning'
+                        ]) ?>
                     </div>
                 </div> -->
             </div>
         </div>
     </div>
+
     <div class="col-xs-12 col-md-4">
         <div class="card">
             <div class="card-header">Новое видео на портале</div>
@@ -124,7 +124,7 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 
-<div class="row" style="margin-top: 10px;">
+<div class="row">
     <?php if ($birthdays): ?>
         <div class="col-xs-12 col-md-4">
             <div class="card">

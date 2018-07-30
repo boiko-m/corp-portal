@@ -61,7 +61,6 @@ class DialogController extends \yii\web\Controller
 
 
 
-
     private function insertGroupUser($id_group, $id_user) {
         $groupuserone = new ImGroupUsers();
         $groupuserone->id_group_im = $id_group;
