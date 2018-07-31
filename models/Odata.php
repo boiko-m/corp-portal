@@ -34,7 +34,7 @@ class Odata // библеотека для работы с odata by Андрей
 
     public function params($params) {
 
-        $mas = array("dateto", "datefrom", "key", "date", "where", "eq", "ne");
+        $mas = array("dateto", "datefrom", "key", "date", "where", "eq", "ne", "whereone");
         foreach ($params as $name_params => $param) {
             if (!in_array($name_params, $mas)) {
                 $this->params['$'.$name_params] = $param;
@@ -148,6 +148,10 @@ class Odata // библеотека для работы с odata by Андрей
         }
         
     }
+    public function whereone($where) { // new where
+        $this->params['$filter'] = $where;
+
+    }
 
     public function get($doc, $params = null) {
         $this->params = null;
@@ -158,9 +162,11 @@ class Odata // библеотека для работы с odata by Андрей
         if ($params) {
             $this->params($params);
         }
+        $url = $this->url . urlencode($this->doc) . $this->generateParams();
         return $this->getReturn();
 
     }
+
     public function one ($doc, $key, $params = null) {
         $this->params = null;
 

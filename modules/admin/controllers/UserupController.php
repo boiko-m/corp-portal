@@ -10,7 +10,8 @@ use app\models\User;
 use app\models\Profile;
 use app\models\ProfilePosition;
 
-ini_set('max_execution_time', 900);
+ini_set('max_execution_time', 4200);
+ini_set('max_allowed_packet', 524288000);
 /**
  * Default controller for the `admin` module
  */
@@ -45,6 +46,17 @@ class UserupController extends Controller
     }
 
     public function actionInsert() {
+        $isset_users = User::find()->select('username')->where(["dismissed" => null])->all();
+        $max_id = User::find()->max('id');
+        
+
+        foreach ($isset_users as $isset_user) {
+            if (isset($isset_user['username']) and $isset_user['username'] != "0") {
+                $users[] = $isset_user['username'];
+            }
+        }
+
+
     	$odata = new Odata();
 
         $tdata = new Tdata();
@@ -53,98 +65,98 @@ class UserupController extends Controller
             $data = $tdata->doc('Catalog_Сотрудники')->key('Parent_Key', '9ffae14d-4d43-11e5-8bed-005056a36ce0')->select('ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key')->expand('КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение')->orderby('ДатаПриема desc')->top(10)->all();
         } else {
             $data = $odata->get("Catalog_Сотрудники", array(
-                'top' => 10,
+                'whereone' => "DeletionMark eq false and Parent_Key eq guid'00000000-0000-0000-0000-000000000000' and ДатаУвольнения eq datetime'0001-01-01T00:00:00'",
                 'select' => 'ФункциональноеПодразделение/Description, Description, Code, ДатаПриема, ПоловаяПринадлежность, Email, Подразделение/НаименованиеКраткое, КорпоративнаяДолжность/Description, ДатаРождения,Ref_Key',
                 'expand' => 'КорпоративнаяДолжность,КорпоративнаяДолжность,ФункциональноеПодразделение,Подразделение',
                 'orderby' => 'ДатаПриема desc'
             ));
+
         }
 
        
     	for ($i=0; $i < count($data); $i++) {
+            $login = $odata->get("Catalog_Пользователи", array(
+                'top' => 1,
+                'select' => "ДоступныеРоли, Description, Пароль",
+                'key' => array("Сотрудник_Key" => $data[$i]['Ref_Key']),
+            ));
 
-    		$data_cat = $odata->get("InformationRegister_РейтингиСотрудников", array(
-	    		'top' => 1,
-	    		'select' => 'Period,Рейтинг/Description',
-	    		'key' => array("Сотрудник_Key" => $data[$i]['Ref_Key']),
-	    		'orderby' => 'Period desc',
-	    		'expand' => 'Рейтинг'
-	    	));
+            if (!in_array($login[0]['Description'], $users) && isset($login[0]['Description'])) {
+        		$data_cat = $odata->get("InformationRegister_РейтингиСотрудников", array(
+    	    		'top' => 1,
+    	    		'select' => 'Period,Рейтинг/Description',
+    	    		'key' => array("Сотрудник_Key" => $data[$i]['Ref_Key']),
+    	    		'orderby' => 'Period desc',
+    	    		'expand' => 'Рейтинг'
+    	    	));
 
-	    	$login = $odata->get("Catalog_Пользователи", array(
-	    		'top' => 1,
-	    		'select' => "ДоступныеРоли, Description, Пароль",
-	    		'key' => array("Сотрудник_Key" => $data[$i]['Ref_Key']),
-	    	));
-
-
-	    	$phones = $odata->get("InformationRegister_ТелефонныеНомера", array(
-				'select' => 'КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description',
-	    		'where' => array('Сотрудник', 'ef4e8ed6-622a-11e3-9d51-005056c00008', 'Catalog_Сотрудники'),
-	    		'expand' => 'ВидСвязи'
-	    	));
+    	    	
 
 
-
-	    	foreach ($phones as $phone) {
-	    		if ($phone['ВидСвязи']['Description'] == "Сотовая") {
-	    			$data[$i]['Сотовые'] .= $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона']. ";";
-	    		}
-	    		if ($phone['ВидСвязи']['Description'] == "IP") {
-	    			$data[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
-	    		}
-	    		if ($phone['ВидСвязи']['Description'] == "ГТС") {
-	    			$data[$i]['ГТС'] .= $phone['ВидСвязи']['Description'];
-	    		}
-	    	}
-
-	    	$data[$i]['Категория'] = $data_cat['0']['Рейтинг']['Description'];
-
-	    	$data[$i]['ДатаКатегории'] = date("d.m.Y", strtotime($data_cat['0']['Period']));
-	    	$data[$i]['Логин'] = $login['0']['Description'];
-	    	$data[$i]['Пароль1С'] = $login['0']['Пароль'];
-    	}
-
-    	for ($i=0; $i < count($data); $i++) {
-    		if ($data[$i]['ПоловаяПринадлежность'] == "Мальчик") {
-    			$data[$i]['ПоловаяПринадлежность'] = 1;
-    		} else {
-    			$data[$i]['ПоловаяПринадлежность'] = 2;
-    		}
-    		$data[$i]['ДатаРождения'] = date("Y-m-d", strtotime($data[$i]['ДатаРождения']));
-    		$data[$i]['ДатаПриема'] = date("Y-m-d", strtotime($data[$i]['ДатаПриема']));
-    		$name = explode(" ", $data[$i]['Description']);
-    		$data[$i]['Имя'] = $name[1];
-    		$data[$i]['Фамилия'] = $name[0];
-    		$data[$i]['Отчество'] = $name[2];
-    	}
+    	    	$phones = $odata->get("InformationRegister_ТелефонныеНомера", array(
+    				'select' => 'КодСтраны,КодОператора,НомерТелефона,ВидСвязи/Description',
+    	    		'where' => array('Сотрудник', 'ef4e8ed6-622a-11e3-9d51-005056c00008', 'Catalog_Сотрудники'),
+    	    		'expand' => 'ВидСвязи'
+    	    	));
 
 
 
-    	$isset_users = User::find()->select('username')->where(["dismissed" => null])->all();
-      
+    	    	foreach ($phones as $phone) {
+    	    		if ($phone['ВидСвязи']['Description'] == "Сотовая") {
+    	    			$data[$i]['Сотовые'] .= $phone['КодСтраны'] . $phone['КодОператора'] . $phone['НомерТелефона']. ";";
+    	    		}
+    	    		if ($phone['ВидСвязи']['Description'] == "IP") {
+    	    			$data[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
+    	    		}
+    	    		if ($phone['ВидСвязи']['Description'] == "ГТС") {
+    	    			$data[$i]['ГТС'] .= $phone['ВидСвязи']['Description'];
+    	    		}
+    	    	}
+
+    	    	$data[$i]['Категория'] = $data_cat['0']['Рейтинг']['Description'];
+
+    	    	$data[$i]['ДатаКатегории'] = date("d.m.Y", strtotime($data_cat['0']['Period']));
+    	    	$data[$i]['Логин'] = $login['0']['Description'];
+    	    	$data[$i]['Пароль1С'] = $login['0']['Пароль'];
+        	
+
+        		if ($data[$i]['ПоловаяПринадлежность'] == "Мальчик") {
+        			$data[$i]['ПоловаяПринадлежность'] = 1;
+        		} else {
+        			$data[$i]['ПоловаяПринадлежность'] = 2;
+        		}
+        		$data[$i]['ДатаРождения'] = date("Y-m-d", strtotime($data[$i]['ДатаРождения']));
+        		$data[$i]['ДатаПриема'] = date("Y-m-d", strtotime($data[$i]['ДатаПриема']));
+        		$name = explode(" ", $data[$i]['Description']);
+        		$data[$i]['Имя'] = $name[1];
+        		$data[$i]['Фамилия'] = $name[0];
+        		$data[$i]['Отчество'] = $name[2];
+            
+            }
+        }
 
 
-	    foreach ($isset_users as $isset_user) {
-    		if (isset($isset_user['username'])) {
-    			$users[] = $isset_user['username'];
-    		}
-    	}
+        
 
 
+
+	    
+        
 
     	foreach ($data as $up) {
-
     		if (!in_array($up['Логин'], $users) && isset($up['Логин'])) {
                 //echo "<pre>".print_r($up, true)."</pre>";
                 $up['Email'] = ($up['Email']) ? $up['Email'] : $up['Логин'] . "@lbr.ru";
     			// добавление в бд
-    			$max_id = User::find()->max('id');
+    			
 
     			$user = new User();
                 $user->generateAuthKey();
 
-    			$user->id = $max_id+1;
+                $max_id++;
+
+
+    			$user->id = $max_id;
 				$user->username = $up['Логин'];
 				$user->auth_key = $user->getAuthKey();
 				$user->email = $up['Email'];
@@ -185,12 +197,8 @@ class UserupController extends Controller
         				$update[]['error'] = $up['Логин'];
         			}
                 }
-
-
-    		} else {
-    			// echo "<div style = 'color:blue'>".$up['Логин']. " - добавлен </div>";
-    		}
-    	}
+        	}
+        }
 
     	// КорпоративнаяДолжность/ПрофильКандидата
         return $this->renderPartial('update', array(
