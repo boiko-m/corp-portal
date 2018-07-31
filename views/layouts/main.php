@@ -51,10 +51,9 @@ AppAsset::register($this);
 
             <ul class="list-unstyled topbar-right-menu float-right mb-0 ">
                 <li>
-                    <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                    <a class="nav-link  arrow-none waves-light waves-effect d-none d-md-block" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="true">
-
-                        <span style="padding: 10px;color:white;" class="d-none d-md-block">Нужна помощь?</span>
+                        <span style="padding: 10px;color:white;">Нужна помощь?</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
