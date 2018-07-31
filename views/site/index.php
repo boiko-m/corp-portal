@@ -103,7 +103,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 m-b-30">
         <div class="card">
             <div class="card-header">Новое видео на портале</div>
             <div class="m-b-10" style="padding-top: 10px;">
@@ -126,14 +126,14 @@
 
 <div class="row">
     <?php if ($birthdays): ?>
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4 m-b-30">
             <div class="card">
                 <div class="card-header">Дни Рождения</div>
                 <div>
                     <?php foreach ($birthdays as $user): ?>
-                        <div class="row" style="padding:10px;">
+                        <div class="row p-2">
                             <div class="col-2">
-                                <img src="<?= $user->getImage(); ?>" alt="" width="50" style="border-radius: 5px;">
+                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
                             </div>
                             <div class="col-10" >
                                 <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
@@ -151,7 +151,7 @@
         </div>
     <?php endif ?>
 
-    <div class="col-xs-12 col-md-4 ">
+    <div class="col-xs-12 col-md-4 m-b-30">
         <div class="card">
             <div class="card-header">Новые сотрудники</div>
             <div>
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 m-b-30">
         <div class="card">
             <div class="card-header">Пользователи онлайн: <?= $countOnline ?></div>
             <div>
