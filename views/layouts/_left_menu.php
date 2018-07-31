@@ -26,10 +26,12 @@
                     <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
                 </li>
 
+                <?if(\Yii::$app->user->can("viewScripts")):?>
+                    <li>
+                        <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
+                    </li>
+                <?endif;?>
 
-                <li>
-                    <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
-                </li>
 
 
                 <?if(\Yii::$app->user->can("viewScripts")):?>
