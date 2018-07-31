@@ -156,9 +156,9 @@
             <div class="card-header">Новые сотрудники</div>
             <div>
                 <?php foreach ($user_new as $user): ?>
-                    <div class="row" style="padding:10px">
+                    <div class="row p-2">
                         <div class="col-2">
-                            <img src="<?=$user->getImage();?>" alt="" style = "width: 50px;border-radius: 5px;">
+                            <img src="<?=$user->getImage();?>" style = "border-radius: 5px;" class ="img-fluid">
                         </div>
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
@@ -182,9 +182,9 @@
                 <?php $i = 0;
                 foreach ($online as $user): $i++ ?>
                     <?php if($i == 5) { break; } ?>
-                    <div class="row" style="padding:10px">
+                    <div class="row p-2">
                         <div class="col-2">
-                            <img src="<?= $user->getImage(); ?>" alt="" style="width: 50px; border-radius: 5px;">
+                            <img src="<?= $user->getImage(); ?>" style="border-radius: 5px;" class ="img-fluid">
                         </div>
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>
