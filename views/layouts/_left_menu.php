@@ -12,6 +12,8 @@
                     </a>
                 </li>
 
+                
+
                 <?if(\Yii::$app->user->can("viewOrdersClient")):?>
                     <li>
                         <a href="/ordersclient/">
@@ -25,6 +27,11 @@
                 </li>
 
 
+                <li>
+                    <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
+                </li>
+
+
                 <?if(\Yii::$app->user->can("viewScripts")):?>
                     <li>
                         <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
@@ -34,12 +41,17 @@
                     </li>
                 <?endif;?>
 
-                <li>
+
+
+
+                
+
+
+                <li> 
                     <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="https://www.lbr.ru/company/contacts/">Филиалы</a></li>
                         <li><a href="/company/presentation">Презентация компании</a></li>
-                        <li><a href="/broadcast">Трансляции</a></li>
                     </ul>
                 </li>
 

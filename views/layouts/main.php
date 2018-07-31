@@ -38,9 +38,9 @@ AppAsset::register($this);
         <!-- LOGO -->
         <div class="topbar-left preview-nb-bg-color">
             <a href="/" class="logo">
-                        <span>
-                            <img src="/images/logo.png" alt="" height="35">
-                        </span>
+                <span>
+                    <img src="/images/logo.png" alt="" height="35">
+                </span>
                 <i>
                     <img src="/images/logo_sm.png" alt="" height="35">
                 </i>
@@ -49,12 +49,12 @@ AppAsset::register($this);
 
         <nav class="navbar-custom">
 
-            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+            <ul class="list-unstyled topbar-right-menu float-right mb-0 ">
                 <li>
                     <a class="nav-link  arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="true">
 
-                        <span style="padding: 10px;color:white;">Нужна помощь?</span>
+                        <span style="padding: 10px;color:white;" class="d-none d-md-block">Нужна помощь?</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
@@ -64,7 +64,7 @@ AppAsset::register($this);
 
                         </div>
 
-                        <div style="padding:  0px 10px;">
+                        <div style="padding:  0px 10px;" class="">
                             <small>
                                 <b>Возникли затруднения?</b> <br>
                                 <div>
@@ -89,7 +89,7 @@ AppAsset::register($this);
                 <?php echo \app\widgets\LbrNotifications::widget() ?>
 
                 <?php if (\Yii::$app->user->can('SuperAdmin')) : ?>
-                    <li class="dropdown notification-list">
+                    <li class="dropdown notification-list d-none d-md-block">
                         <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="false" aria-expanded="false">
                             <i class="fi-speech-bubble noti-icon"></i>
