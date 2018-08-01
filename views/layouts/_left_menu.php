@@ -17,12 +17,12 @@
                     <div>
                         <ul class="nav nav-tabs nav-justified nav-project tabs-bordered menu-me">
                             <li class="nav-item">
-                                <a href="#menu-main"  style = "touch-action: auto;pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                <a href="#menu-main" id-user-setting="1" style="touch-action: auto; pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'active' : null ?> trigger-left-menu-tab">
                                     Основное   
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#menu-work"  style = "touch-action: auto;pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link ">
+                                <a href="#menu-work" id-user-setting="2" style="touch-action: auto; pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'active' : null ?> trigger-left-menu-tab">
                                     Рабочее
                                 </a>
                             </li>
@@ -32,7 +32,7 @@
 
 
                 <div class="tab-content" style="padding: 0px;">
-                    <div id = "menu-main" class="tab-pane fade active show">
+                    <div id = "menu-main" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'fade active show' : null ?>">
                             <li>
                                 <a href="/">
                                     <i class="fi-grid"></i> <span> Главная </span>
@@ -84,7 +84,7 @@
                     </div>
                 
 
-                <div id = "menu-work" class="tab-pane fade">
+                <div id = "menu-work" class="tab-pane fade <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'active show' : null ?>">
                     <li>
                         <a href="/documents/catalog/">
                             <i class="dripicons-document"></i> <span> Каталоги </span>

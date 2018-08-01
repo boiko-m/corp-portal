@@ -50,6 +50,22 @@
         });
     }
 
+    function initChangeLeftMenuTab() {
+        // Left menu collapse
+        $('.trigger-left-menu-tab').on('click', function (event) {
+            event.preventDefault();
+            let current = $(this);
+            $.ajax({
+              url: '/profiles/update-setting-left-menu-tab',
+              data: 'left-menu-tab-setting=' + current.attr('id-user-setting'),
+              success: function(data) {},
+              error: function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+              }
+            });
+        });
+    }
+
     function initEnlarge() {
         if ($(window).width() < 1025 && !$('body').hasClass('enlarged')) {
             $('body').addClass('enlarged');
@@ -113,6 +129,7 @@
         initActiveMenu();
         initChangeBgNb();
         initChangeNewsPanel();
+        initChangeLeftMenuTab();
     }
 
     init();

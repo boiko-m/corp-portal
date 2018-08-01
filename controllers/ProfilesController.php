@@ -182,6 +182,15 @@ class ProfilesController extends Controller
         }
     }
 
+    public function actionUpdateSettingLeftMenuTab()
+    {
+        if (Yii::$app->setting->isValue('left-menu-tab-setting')) {
+            Yii::$app->setting->setValue('left-menu-tab-setting', Yii::$app->request->get('left-menu-tab-setting'));
+        } else {
+            Yii::$app->setting->newValue('left-menu-tab-setting', Yii::$app->request->get('left-menu-tab-setting'));
+        }
+    }
+
     protected function isOwnProfile()
     {
         return Yii::$app->request->get('id') == Yii::$app->user->id;
