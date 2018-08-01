@@ -46,14 +46,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
-                        Новости проектов <i class="fa fa-exclamation fa-1x news-alert"></i>
+                        Новости проектов
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="#home-b3" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'active' : null ?>">
-                        Опросы компании
-                    </a>
-                </li> -->
             </ul>
 
             <div class="tab-content" style="padding-top: 10px;">
@@ -92,13 +87,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div id="home-b3" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'fade active show' : null ?>">
-                    <div style="margin-bottom: 15px;">
-                        <?php echo Questionnaire::widget([
-                            'message' => 'Good morning'
-                        ]) ?>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -122,6 +110,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <div class="row">
@@ -177,12 +166,21 @@
 
     <div class="col-xs-12 col-md-4">
         <div class="card">
+            <div class="card-header">Опросы</div>
+                <?php echo Questionnaire::widget([
+                    'question' => 1,
+                ]) ?>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4" style="margin-top: 20px;">
+        <div class="card">
             <div class="card-header">Пользователи онлайн: <?= $countOnline ?></div>
             <div>
                 <?php $i = 0;
                 foreach ($online as $user): $i++ ?>
                     <?php if($i == 5) { break; } ?>
-                    <div class="row" style="padding:10px">
+                    <div class="row" style="padding: 10px">
                         <div class="col-2">
                             <img src="<?= $user->getImage(); ?>" alt="" style="width: 50px; border-radius: 5px;">
                         </div>
@@ -195,7 +193,7 @@
                     </div>
                 <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px; margin-bottom:10px;'])?>
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left: 10px; margin-bottom: 10px;'])?>
                 </div>
             </div>
         </div>

@@ -27,7 +27,9 @@
         "cinghie/yii2-fontawesome": "*",
         "webzop/yii2-notifications": "*",
         "yiisoft/yii2-jui": "^2.0",
-        "2amigos/yii2-date-picker-widget": "~1.0"
+        "2amigos/yii2-date-picker-widget": "~1.0",
+        "yii2mod/yii2-c3-chart": "*",
+        "scotthuangzl/yii2-google-chart": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
