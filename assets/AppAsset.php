@@ -46,7 +46,7 @@ class AppAsset extends AssetBundle
         'plugins/fullcalendar/js/fullcalendar.min.js',
         'pages/jquery.calendar.js',
         'js/jquery.core.js',
-        'js/jquery.app.js',
+        'js/jquery.app.js?version=2',
         'js/myajax.js',
         'js/search.js',
         'js/script.js',
