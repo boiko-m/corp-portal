@@ -171,19 +171,19 @@ File: Main Css File
   background-color: transparent;
   font-size: 16px; }
 
-#sidebar-menu > ul > li > a {
+#sidebar-menu > ul > div > div > li > a {
   color: black;
   display: block;
   padding: 12px 20px;
   margin: 2px 0;
   font-size: 16px;
   position: relative; }
-  #sidebar-menu > ul > li > a:hover, #sidebar-menu > ul > li > a:focus, #sidebar-menu > ul > li > a:active {
+  #sidebar-menu > ul > div > div > li > a:hover, #sidebar-menu > ul > div > div > li > a:focus, #sidebar-menu > ul > div > div > li > a:active {
     color: #313a46;
     text-decoration: none;
     background-color: whitesmoke; }
 
-#sidebar-menu > ul > li > a > span {
+#sidebar-menu > ul > div > div > li > a > span {
   vertical-align: middle; }
 
 #sidebar-menu {
@@ -263,13 +263,13 @@ File: Main Css File
 .enlarged #wrapper .left.side-menu {
   width: 70px;
   z-index: 5; }
-  .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a {
+  .enlarged #wrapper .left.side-menu #sidebar-menu > ul > div > div > li > a {
     padding: 15px 20px;
     min-height: 56px; }
-    .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a:hover, .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a:active, .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a:focus {
+    .enlarged #wrapper .left.side-menu #sidebar-menu > div > div > ul > li > a:hover, .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a:active, .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a:focus {
       color: #313a46;
       background-color: whitesmoke; }
-    .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li > a i {
+    .enlarged #wrapper .left.side-menu #sidebar-menu > div > div > ul > li > a i {
       font-size: 18px;
       margin-right: 20px; }
   .enlarged #wrapper .left.side-menu .label {
@@ -279,28 +279,28 @@ File: Main Css File
     text-indent: 0;
     display: block;
     padding: .2em .6em .3em; }
-  .enlarged #wrapper .left.side-menu #sidebar-menu ul > li {
+  .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li {
     position: relative;
     white-space: nowrap; }
-    .enlarged #wrapper .left.side-menu #sidebar-menu ul > li:hover > a {
+    .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li:hover > a {
       position: relative;
       width: 260px;
       color: #313a46;
       background-color: whitesmoke; }
-    .enlarged #wrapper .left.side-menu #sidebar-menu ul > li:hover > ul {
+    .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li:hover > ul {
       display: block;
       left: 70px;
       position: absolute;
       width: 190px; }
-      .enlarged #wrapper .left.side-menu #sidebar-menu ul > li:hover > ul a {
+      .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li:hover > ul a {
         box-shadow: none;
         padding: 8px 20px;
         position: relative;
         width: 190px;
         z-index: 6; }
-        .enlarged #wrapper .left.side-menu #sidebar-menu ul > li:hover > ul a:hover {
+        .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li:hover > ul a:hover {
           color: #313a46; }
-    .enlarged #wrapper .left.side-menu #sidebar-menu ul > li:hover a span {
+    .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li:hover a span {
       display: inline; }
   .enlarged #wrapper .left.side-menu #sidebar-menu ul ul li:hover > ul {
     display: block;
@@ -317,7 +317,7 @@ File: Main Css File
     transform: rotate(270deg); }
   .enlarged #wrapper .left.side-menu #sidebar-menu ul ul li.active a {
     color: #313a46; }
-  .enlarged #wrapper .left.side-menu #sidebar-menu ul > li > a span {
+  .enlarged #wrapper .left.side-menu #sidebar-menu ul > div > div > li > a span {
     display: none;
     padding-left: 10px; }
   .enlarged #wrapper .left.side-menu .user-details {

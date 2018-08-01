@@ -184,7 +184,7 @@
                     <?php if($i == 5) { break; } ?>
                     <div class="row p-2">
                         <div class="col-2">
-                            <img src="<?= $user->getImage(); ?>" style="border-radius: 5px;" class ="img-fluid">
+                            <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
                         </div>
                         <div class="col-10" >
                             <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>

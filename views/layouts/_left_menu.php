@@ -1,3 +1,9 @@
+<style>
+    #sidebar-menu > ul > div > div > li > a {
+        padding: 10px 10px;
+    }
+</style>
+
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
 
@@ -5,87 +11,108 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
-                <li class="menu-title">ЛБР-Агромаркет</li>
-                <li>
-                    <a href="/">
-                        <i class="fi-grid"></i> <span> Главная </span>
-                    </a>
+                
+                <li class="menu-title p-0 ">
+                    <div style="font-size:14px;color:#939393" class="pl-2">Меню</div>
+                    <div>
+                        <ul class="nav nav-tabs nav-justified nav-project tabs-bordered menu-me">
+                            <li class="nav-item">
+                                <a href="#menu-main"  style = "touch-action: auto;pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                    Основное   
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#menu-work"  style = "touch-action: auto;pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link ">
+                                    Рабочее
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
+
+                <div class="tab-content" style="padding: 0px;">
+                    <div id = "menu-main" class="tab-pane fade active show">
+                            <li>
+                                <a href="/">
+                                    <i class="fi-grid"></i> <span> Главная </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/profiles">
+                                    <i class="dripicons-user-group"></i> <span> Сотрудники </span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
+                            </li>
+
+                            <?if(\Yii::$app->user->can("viewScripts")):?>
+                                <li>
+                                    <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
+                                </li>
+                            <?endif;?>
+
+                            <li> 
+                                <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="https://www.lbr.ru/company/contacts/">Филиалы</a></li>
+                                    <li><a href="/company/presentation">Презентация компании</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class=" dripicons-information"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
+                                    <li><a href="/training/">Обучающий материал</a></li>
+                                    <li><a href="/video/">Видео материал</a></li>
+                                    <li><a href="/knowledge/indebtedness/">Общение с клиентом по погашению просроченной задолжности</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="javascript: void(0);"><i class=" fi-help"></i><span> Помощь </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/documents/it/">Часто задаваемые вопросы - Отдел ИТ</a></li>
+                                    <li><a href="/help/">Инструкции от IT</a></li>
+                                </ul>
+                            </li>
+                    </div>
                 
 
-                <?if(\Yii::$app->user->can("viewOrdersClient")):?>
+                <div id = "menu-work" class="tab-pane fade">
                     <li>
-                        <a href="/ordersclient/">
-                            <i class="dripicons-list"></i> <span> Заказ покупателя </span>
+                        <a href="/documents/catalog/">
+                            <i class="dripicons-document"></i> <span> Каталоги </span>
                         </a>
                     </li>
-                <?endif;?>
-                
-                <li>
-                    <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
-                </li>
 
-                <?if(\Yii::$app->user->can("viewScripts")):?>
-                    <li>
-                        <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
-                    </li>
-                <?endif;?>
+                    <?if(\Yii::$app->user->can("viewOrdersClient")):?>
+                        <li>
+                            <a href="/ordersclient/">
+                                <i class="dripicons-list"></i> <span> Заказ покупателя </span>
+                            </a>
+                        </li>
+                    <?endif;?>
 
+                    <?if(\Yii::$app->user->can("viewScripts")):?>
+                        <li>
+                            <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="/scripts/">Скрипты</a></li>
+                            </ul>
+                        </li>
+                    <?endif;?>
 
+                </div>
 
-                <?if(\Yii::$app->user->can("viewScripts")):?>
-                    <li>
-                        <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="/scripts/">Скрипты</a></li>
-                        </ul>
-                    </li>
-                <?endif;?>
-
+                </div>
 
 
-
-                
-
-
-                <li> 
-                    <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="https://www.lbr.ru/company/contacts/">Филиалы</a></li>
-                        <li><a href="/company/presentation">Презентация компании</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="/profiles">
-                        <i class="dripicons-user-group"></i> <span> Сотрудники </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Документы </span> <span class="menu-arrow"></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/documents/it/">Часто задаваемые вопросы - Отдел ИТ</a></li>
-                        <li><a href="/documents/catalog/">Доступ к каталогам компании</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class=" dripicons-information"></i><span> База знаний </span> <span class="menu-arrow"></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/knowledge/dictionary/">Словари и глоссарии</a></li>
-                        <li><a href="/training/">Обучающий материал</a></li>
-                        <li><a href="/video/">Видео материал</a></li>
-                        <li><a href="/knowledge/indebtedness/">Общение с клиентом по погашению просроченной задолжности</a></li>
-                    </ul>
-                </li>
-
-                 <li>
-                    <a href="/help/">
-                        <i class="fi-help"></i> <span> Помощь сотруднику </span>
-                    </a>
-                </li>
             </ul>
         </div>
         <div class="clearfix"></div>

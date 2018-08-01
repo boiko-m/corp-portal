@@ -48,8 +48,7 @@ AppAsset::register($this);
         </div>
 
         <nav class="navbar-custom">
-
-            <ul class="list-unstyled topbar-right-menu float-right mb-0 ">
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
                 <li>
                     <a class="nav-link  arrow-none waves-light waves-effect d-none d-md-block" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="true">
@@ -62,7 +61,6 @@ AppAsset::register($this);
                             <h6 class="m-0 text-center">Удаленная поддержка</h6>
 
                         </div>
-
                         <div style="padding:  0px 10px;" class="">
                             <small>
                                 <b>Возникли затруднения?</b> <br>
@@ -73,15 +71,11 @@ AppAsset::register($this);
                                 <b>Просто скачайте и запустите:</b>
                             </small>
                         </div>
-
                         <div class="text-center">
                             <a href="https://get.teamviewer.com/jbvpufc" target="_blank">
                                 <img src="/img/icon/help.jpg" alt="" style="width:60%">
                             </a>
                         </div>
-
-
-
                     </div>
                 </li>
 

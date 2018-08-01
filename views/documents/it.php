@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-    <div class="col-md-9 container-fluid">
+    <div class="col-md-12 ">
         <div class="card-box">
             <div class="row">
                 <div class="col-12">
@@ -336,15 +336,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 		
 </div>
-<script type="text/javascript">
-	$(".helpitnext>div").find('a').click(function()
-			{
-				console.log(this);
-				console.log($(this).parent());
-				$(this).parent().parent().find('.conthelpit').fadeToggle( "slow", "linear" );
-			}
-		);
-</script>
+
 
 
 
@@ -355,3 +347,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+	$(".helpitnext>div").find('a').click(function()
+			{
+				console.log(this);
+				console.log($(this).parent());
+				$(this).parent().parent().find('.conthelpit').fadeToggle( "slow", "linear" );
+			}
+		);
+</script>
