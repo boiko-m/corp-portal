@@ -56,4 +56,9 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
     ];
+
+    public function __construct($config = []) {
+        $this->publishOptions['forceCopy'] = (YII_ENV_DEV || YII_ENV_DEV);
+        parent::__construct($config);
+    }
 }
