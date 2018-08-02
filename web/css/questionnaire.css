@@ -1,0 +1,83 @@
+.center-button {
+	text-align: center;
+}
+
+.answer-button {
+	margin: 10px 0 20px 0;
+}
+
+#button-answer {
+	margin-top: 30px;
+}
+
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	top: auto !important;
+	margin-bottom: 30px;
+}
+
+.col-md-12 {
+	padding: 0 0 0 15px !important;
+}
+
+#form_answer {
+	margin: -10px 0 0 0 !important;
+}
+
+.carousel {
+	width: 100% !important;
+	overflow: auto !important; 
+	max-width: none;
+	padding-right: 15px !important;
+	margin: 0 !important;
+	padding-top: -10px !important;
+}
+
+.carousel-item {
+	margin-top: 10px;
+}
+
+/*-------- SCROLLE -------*/
+
+/* Let's get this party started */
+#carouselExampleControls::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+#carouselExampleControls::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #e5e5e5;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* Handle */
+#carouselExampleControls::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+#carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
+  background: #c9c9c9;
+}
+
+/*-------- SCROLLE -------*/
+
+.thank-you {
+	display: none;
+	margin-top: 150px;
+}
+
+.wait-more {
+	display: none;
+	margin-top: 150px;
+}

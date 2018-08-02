@@ -1,26 +1,49 @@
 <?php
     namespace app\widgets;
 
+    use Yii;
     use yii\base\Widget;
     use yii\helpers\Html;
-    use Yii;
     use yii\helpers\ArrayHelper;
+    use app\assets\AppAsset;
+    use app\assets\QuestionnaireAsset;
+    use app\models\Questionnaire as QuestionnaireModel;
+    use app\models\Answers as AnswersModel;
 
     class Questionnaire extends Widget
     {
-        public $message;
+        public $countQuestion = [];
+        public $title = 'Опросы';
+        public $col_size = 12;
+        public $width = '290';
+        private $questions;
 
-        public function init()
-        {
+        public function init() {
+            $this->registerAssets();
             parent::init();
-            if ($this->message === null) {
-                $this->message = 'Hello World';
-            }
         }
 
-        public function run()
+        public function run() {
+            if (isset($this->countQuestion)) {
+                $this->questions = QuestionnaireModel::find()->all();
+            } else {
+                $this->questions = QuestionnaireModel::findOne($this->countQuestion);
+            }
+            return $this->render('questionnaire/question', [
+                'questions' => $this->questions,
+                'title' => $this->title,
+                'col_size' => $this->col_size,
+                'width' => $this->width,
+            ]);
+        }
+
+        /**
+        * Register assets.
+        */
+        public function registerAssets()
         {
-            return Html::encode($this->message);
+            AppAsset::register($this->getView());
+            QuestionnaireAsset::register($this->getView());
         }
     }
 ?>

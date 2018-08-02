@@ -46,14 +46,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
-                        Новости проектов <i class="fa fa-exclamation fa-1x news-alert"></i>
+                        Новости проектов
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="#home-b3" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'active' : null ?>">
-                        Опросы компании
-                    </a>
-                </li> -->
             </ul>
 
             <div class="tab-content" style="padding-top: 10px;">
@@ -92,13 +87,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div id="home-b3" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 3 ? 'fade active show' : null ?>">
-                    <div style="margin-bottom: 15px;">
-                        <?php echo Questionnaire::widget([
-                            'message' => 'Good morning'
-                        ]) ?>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -122,6 +110,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <div class="row">
@@ -175,6 +164,14 @@
         </div>
     </div>
 
+    <?if(\Yii::$app->user->can("allAccess")):?>
+        <?php echo Questionnaire::widget([
+            'title' => 'Опросы',
+            'col_size' => 4,
+            'width' => '290',
+        ]) ?>
+    <? endif; ?>
+
     <div class="col-xs-12 col-md-4 m-b-30">
         <div class="card">
             <div class="card-header">Пользователи онлайн: <?= $countOnline ?></div>
@@ -195,7 +192,7 @@
                     </div>
                 <?php endforeach ?>
                 <div style="padding-top: 10px; display: inline-block;">
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px; margin-bottom:10px;'])?>
+                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left: 10px; margin-bottom: 10px;'])?>
                 </div>
             </div>
         </div>
