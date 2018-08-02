@@ -39,10 +39,10 @@ AppAsset::register($this);
         <div class="topbar-left preview-nb-bg-color">
             <a href="/" class="logo">
                 <span>
-                    <img src="/images/logo.png" alt="" height="35">
+                    <img src="/images/logo.png" alt="" height="32">
                 </span>
                 <i>
-                    <img src="/images/logo_sm.png" alt="" height="35">
+                    <img src="/images/logo_sm.png" alt="" height="32">
                 </i>
             </a>
         </div>
