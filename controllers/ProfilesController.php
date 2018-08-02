@@ -32,6 +32,13 @@ use app\notifications\GiftNotification;
 /**
  * ProfilesController implements the CRUD actions for Profile model.
  */
+
+
+ini_set('upload_max_filesize', '128M');
+ini_set('post_max_size', '128M');
+
+
+
 class ProfilesController extends Controller
 {
     /**
