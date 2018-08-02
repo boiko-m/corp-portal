@@ -30,8 +30,7 @@
 .carousel {
 	width: 100% !important;
 	overflow: auto !important; 
-	max-height: 290px !important;
-	min-height: 290px !important;
+	max-width: none;
 	padding-right: 15px !important;
 	margin: 0 !important;
 	padding-top: -10px !important;
@@ -70,6 +69,11 @@
 /*-------- SCROLLE -------*/
 
 .thank-you {
+	display: none;
+	margin-top: 150px;
+}
+
+.wait-more {
 	display: none;
 	margin-top: 150px;
 }

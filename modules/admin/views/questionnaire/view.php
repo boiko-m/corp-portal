@@ -71,7 +71,7 @@
           )
       )); ?>
     </div>
-    <div class="col-md-6" style="margin-top: 25px">
+    <div class="col-md-6" style="margin-top: 50px">
       <?php echo GoogleChart::widget(array('visualization' => 'PieChart',
         'data' => $arrayChart,
         'options' => array(
@@ -80,7 +80,7 @@
         )
       )); ?>
     </div>
-    <div class="col-md-6" style="margin-top: 25px">
+    <div class="col-md-6" style="margin-top: 50px">
       <?php echo GoogleChart::widget(array('visualization' => 'PieChart',
         'data' => $arrayChart,
         'options' => array(

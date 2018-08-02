@@ -164,14 +164,13 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-md-4">
-        <div class="card">
-            <div class="card-header">Опросы</div>
-                <?php echo Questionnaire::widget([
-                    'question' => 1,
-                ]) ?>
-        </div>
-    </div>
+    <?if(\Yii::$app->user->can("allAccess")):?>
+        <?php echo Questionnaire::widget([
+            'title' => 'Опросы',
+            'col_size' => 4,
+            'width' => '290',
+        ]) ?>
+    <? endif; ?>
 
     <div class="col-xs-12 col-md-4" style="margin-top: 20px;">
         <div class="card">

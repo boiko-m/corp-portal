@@ -12,7 +12,10 @@
 
     class Questionnaire extends Widget
     {
-        public $question;
+        public $countQuestion = [];
+        public $title = 'Опросы';
+        public $col_size = 12;
+        public $width = '290';
         private $questions;
 
         public function init() {
@@ -21,13 +24,16 @@
         }
 
         public function run() {
-            if (isset($this->question)) {
+            if (isset($this->countQuestion)) {
                 $this->questions = QuestionnaireModel::find()->all();
             } else {
-                $this->questions = QuestionnaireModel::findOne($this->question);
+                $this->questions = QuestionnaireModel::findOne($this->countQuestion);
             }
             return $this->render('questionnaire/question', [
                 'questions' => $this->questions,
+                'title' => $this->title,
+                'col_size' => $this->col_size,
+                'width' => $this->width,
             ]);
         }
 

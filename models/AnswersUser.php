@@ -31,10 +31,11 @@ class AnswersUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date', 'id_answer', 'id_user'], 'required'],
-            [['date', 'id_answer', 'id_user'], 'integer'],
+            [['date', 'id_answer', 'id_user', 'id_question'], 'required'],
+            [['date', 'id_answer', 'id_user', 'id_question'], 'integer'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['id_answer'], 'exist', 'skipOnError' => true, 'targetClass' => Answers::className(), 'targetAttribute' => ['id_answer' => 'id']],
+            [['id_question'], 'exist', 'skipOnError' => true, 'targetClass' => Questionnaire::className(), 'targetAttribute' => ['id_question' => 'id']],
         ];
     }
 
@@ -48,6 +49,7 @@ class AnswersUser extends \yii\db\ActiveRecord
             'date' => 'Date',
             'id_answer' => 'Id Answer',
             'id_user' => 'Id User',
+            'id_question' => 'Id Questionnaire',
         ];
     }
 

@@ -1,5 +1,12 @@
+$( document ).ready(function() {
+    if ($('#question').length == 0) {
+      $('.qiestion-controle').hide();
+      $('.wait-more').show();
+    }
+});
+
 $('.carousel').carousel({
-  interval: 10000,
+  interval: 20000,
 })
 
 $('#carouselExampleControls').on('slide.bs.carousel', function () {
@@ -8,22 +15,22 @@ $('#carouselExampleControls').on('slide.bs.carousel', function () {
 
 $('#form_answer').bind('submit', function (e) {
   let answer = $('#form_answer').serializeArray();
-  let question = $('#question');
-  answer.push({name: 'question', value: question.attr('id-question')});
+  let question = $('#question.active');
   $.ajax({
     type: 'POST',
-    url: '',
+    url: 'questionnaire/user-answer',
     data: answer,
   	dataTYpe: 'json',
     success: function(data) {
   		clearInputs();
-  		$(question).fadeOut(1500, function() {
+
+      $('#button-answer').attr('disabled', 'disabled');
+
+  		$(question).fadeOut(1000, function() {
   			$('.thank-you').fadeIn(500, function() {
 	  			setTimeout(function() {
-					  $('.thank-you').hide();
-	  				$(question).next().addClass('active');
-						$(question).remove();
-					}, 1500);
+            isExistNextOrPrev(question);
+					}, 1000);
   			})
 			});
     },
@@ -37,4 +44,20 @@ function clearInputs() {
 	$("input[name='answer']").each(function(){
 	  $(this).prop("checked", false);
  	});
+}
+
+function isExistNextOrPrev(question) {
+  $('.thank-you').hide();
+            
+  if ($(question).next('#question').length) {
+    $(question).next().addClass('active');
+  } else if ($(question).prev('#question').length){
+    $(question).prev().addClass('active');
+  } else {
+    $('.qiestion-controle').hide();
+    $('.wait-more').show();
+  }
+
+  $(question).remove();
+  $('#button-answer').removeAttr('disabled');
 }
