@@ -212,7 +212,7 @@ class ProfilesController extends Controller
             $cropInfo = Json::decode($model->crop_info)[0];
 
             $newSizeThumb = new Box(intval($cropInfo['width'] / $cropInfo['ratio']), intval($cropInfo['height'] / $cropInfo['ratio']));
-            $cropSizeThumb = new Box(400, 400);
+            $cropSizeThumb = new Box(500, 500);
             $cropPointThumb = new Point(intval($cropInfo['x'] / $cropInfo['ratio']), intval($cropInfo['y'] / $cropInfo['ratio']));
             $imageName = Yii::$app->user->id . '.' . $model->image->getExtension();
             $pathThumbImage = Yii::getAlias('@app/web/img/user')
