@@ -116,18 +116,18 @@ use app\models\WantToProject;
                             <a href="/admin/broadcast"><i class="fi-file"></i><span> Трансляции </span></a>
                         </li>
                         <?endif;?>
+
+                        <?if(\Yii::$app->user->can("SuperAdmin")):?>
+                        <li>
+                            <a href="javascript: void(0);"><i class="fi-file"></i><span> Компания </span> <span class="menu-arrow"></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="/admin/filials">Филиалы</a></li>
+                                <li><a href="/admin/questionnaire">Опросы</a></li>
+                            </ul>
+                        </li>
+                        <?endif;?>
                     </div>
                 </div>
-
-                <?if(\Yii::$app->user->can("SuperAdmin")):?>
-                <li>
-                    <a href="javascript: void(0);"><i class="fi-file"></i><span> Компания </span> <span class="menu-arrow"></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="/admin/filials">Филиалы</a></li>
-                        <li><a href="/admin/questionnaire">Опросы</a></li>
-                    </ul>
-                </li>
-                <?endif;?>
 
             </ul>
 

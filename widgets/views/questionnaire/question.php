@@ -13,7 +13,7 @@
     <div class="card-header"><?= $title ?></div>
 		<div class="col-md-12">
 			<form method="POST" id="form_answer" action="javascript:void(null);">
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: <?= $width ?>px; min-height: <?= $width ?>px !important;">
+				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: <?= $width ?>px !important;">
 			  		<div class="carousel-inner">
 						<?php foreach ($questions as $key => $question) { ?>
 
