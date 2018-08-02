@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     if ($('#question').length == 0) {
       $('.qiestion-controle').hide();
+      $('.carousel').css('margin-bottom', ' 150px');
       $('.wait-more').show();
     }
 });
@@ -27,6 +28,7 @@ $('#form_answer').bind('submit', function (e) {
       $('#button-answer').attr('disabled', 'disabled');
 
   		$(question).fadeOut(1000, function() {
+        $('.carousel').css('margin-bottom', ' 150px');
   			$('.thank-you').fadeIn(500, function() {
 	  			setTimeout(function() {
             isExistNextOrPrev(question);
@@ -55,9 +57,13 @@ function isExistNextOrPrev(question) {
     $(question).prev().addClass('active');
   } else {
     $('.qiestion-controle').hide();
+    $('.carousel').css('margin-bottom', ' 150px !important');
     $('.wait-more').show();
+    $(question).remove();
+    return 0;
   }
 
   $(question).remove();
   $('#button-answer').removeAttr('disabled');
+  $('.carousel').css('margin-bottom', ' 0');
 }

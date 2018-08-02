@@ -41,6 +41,8 @@ class BroadcastController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'videos' => Broadcast::find()->where(['complete' => false, 'link_only' => true])->limit(4)->orderby('id desc')->all(),
+            'broadcasts' => Broadcast::find()->where(['complete' => false, 'link_only' => false])->limit(4)->orderby('id desc')->all(),
         ]);
     }
 

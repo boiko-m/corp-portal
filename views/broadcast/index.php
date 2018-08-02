@@ -5,9 +5,6 @@
     /*$this->params['breadcrumbs'][] = ['label' => 'Обучающий материал', 'url' => ['index']];
     $this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
     $this->params['breadcrumbs'][] = $this->title;
-
-    $videos = Broadcast::find()->where(['complete' => false, 'link_only' => true])->limit(4)->orderby('id desc')->all();
-    $broadcasts = Broadcast::find()->where(['complete' => false, 'link_only' => false])->limit(4)->orderby('id desc')->all();
 ?>
 
 

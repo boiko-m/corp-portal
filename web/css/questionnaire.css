@@ -36,7 +36,7 @@
 	overflow: auto !important; 
 	max-width: none;
 	padding-right: 15px !important;
-	margin: 0 !important;
+	margin: 0;
 	padding-top: -10px !important;
 }
 
