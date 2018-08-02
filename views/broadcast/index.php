@@ -5,6 +5,9 @@
     /*$this->params['breadcrumbs'][] = ['label' => 'Обучающий материал', 'url' => ['index']];
     $this->params['breadcrumbs'][] = ['label' => $faqtype->name, 'url' => "/training/type/" . $faqtype->id];*/
     $this->params['breadcrumbs'][] = $this->title;
+
+    $videos = Broadcast::find()->where(['complete' => false, 'link_only' => true])->limit(4)->orderby('id desc')->all();
+    $broadcasts = Broadcast::find()->where(['complete' => false, 'link_only' => false])->limit(4)->orderby('id desc')->all();
 ?>
 
 
@@ -26,16 +29,18 @@
                     Трансляции компании
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#videos" data-toggle="tab" aria-expanded="false" class="nav-link">
-                    Видео трансляций
-                </a>
-            </li>
+            <?php if (isset($videos) and \Yii::$app->user->can("controlBroadcast")): ?>
+                <li class="nav-item">
+                    <a href="#videos" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        Трансляции по ссылке
+                    </a>
+                </li>
+            <?php endif ?>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade active show" id="broadcasts">
                 <div class="row">
-                    <?php $broadcasts = Broadcast::find()->where(['complete' => false])->limit(4)->orderby('id desc')->all(); ?>
+                    <?php  ?>
                     <?php if (count($broadcasts) == 0) : ?>
                         <h5 class="col-md-12 text-center">На данный момент нет трансляций</h5>
                     <? endif; ?>
@@ -55,7 +60,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="videos">
-                <?php $videos = Broadcast::find()->where(['complete' => true])->limit(4)->orderby('id desc')->all(); ?>
+                
                 <?php if (count($videos) == 0) : ?>
                         <h5 class="col-md-12 text-center">Трансляций еще не было</h5>
                     <? endif; ?>

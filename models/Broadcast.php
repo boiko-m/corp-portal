@@ -36,7 +36,7 @@ class Broadcast extends \yii\db\ActiveRecord
         return [
             [['link', 'name', 'create_at', 'create_user'], 'required'],
             [['description'], 'string'],
-            [['create_at', 'close_at', 'complete', 'create_user'], 'integer'],
+            [['create_at', 'close_at', 'complete', 'create_user', 'link_only'], 'integer'],
             [['link'], 'string', 'max' => 100],
             [['name'], 'string', 'max' => 200],
             [['create_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['create_user' => 'id']],
@@ -57,6 +57,7 @@ class Broadcast extends \yii\db\ActiveRecord
             'close_at' => 'Дата окончания',
             'complete' => 'Окончена',
             'create_user' => 'Создатель',
+            'link_only' => 'Доступ только по ссылке'
         ];
     }
 

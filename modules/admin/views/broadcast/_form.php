@@ -19,6 +19,8 @@
 
     <?= $form->field($model, 'complete')->checkbox(['label' => 'Завершенность', 'disabled' => $model->isNewRecord || $model->complete ? true : false], ['value' => false]) ?>
 
+    <?= $form->field($model, 'link_only')->checkbox(['label' => 'Доступ только по ссылке']) ?>
+
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>
 
     <div class="form-group crud-button-save">
