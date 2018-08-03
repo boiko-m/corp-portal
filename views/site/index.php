@@ -26,14 +26,7 @@
     }
 </style>
 
-<!-- <div class="row">
-    <div class="col-12">
-        <div class="alert alert-danger" role="alert">
-            <b>Уважаемый пользователь портала!</b> <br>
-            Настоятельно просим актуализировать информацию в своем <a href="/profiles/update/<?php echo Yii::$app->user->identity->id;?>">личном профиле</a>, а так же <b>перезагрузить фотографию</b> в лучшем качестве.
-        </div>
-    </div>
-</div> -->
+
 
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
@@ -113,91 +106,115 @@
 
 </div>
 
+
+
+<style>
+    .tabs-vertical-env .nav.tabs-vertical li > a.active {
+        background: <?=\Yii::$app->setting->getValue('navbar-background-color')?>
+    }
+</style>
+
 <div class="row">
-    <?php if ($birthdays): ?>
-        <div class="col-xs-12 col-md-4 m-b-30">
-            <div class="card">
-                <div class="card-header">Дни Рождения</div>
-                <div>
-                    <?php foreach ($birthdays as $user): ?>
-                        <div class="row p-2">
-                            <div class="col-2">
-                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
+    <div class="col-xs-12 col-md-8 m-b-30">
+        <div class="card">
+            <div class="card-header">Сотрудники</div>
+
+            <div class="card-body">
+                    
+
+                <div class="tabs-vertical-env">
+                    <ul class="nav tabs-vertical m-b-30">
+                        <li class="nav-item">
+                            <a href="#v-birthday" class="nav-link active" data-toggle="tab" aria-expanded="true">Дни Рождения</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#v-new" class="nav-link " data-toggle="tab" aria-expanded="false">Новые</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#v-online" class="nav-link" data-toggle="tab" aria-expanded="false">Онлайн <span class="badge badge-primary" style="background: <?=\Yii::$app->setting->getValue('navbar-background-color')?>"><?= $countOnline ?></span></a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content d-block d-md-table-cell" style="width: 100%;">
+                        <div class="tab-pane active" id="v-birthday">
+                            <div class="row">
+                                <?php foreach ($birthdays as $user): ?>
+                                    <div class="col-12 col-lg-2">
+                                        <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
+                                            <a href="/profiles/<?php echo $user->id ?>">
+                                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
+                                            </a>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                             <a href="/profiles/<?php echo $user->id ?>" style = "font-size:14px"><?=$user->first_name?></a>
+                                        </div>
+                                        <div class="text-center " style="font-size:12px;" title = "<?=$user->branch ?>"><b><?=($user->position) ? $user->position : ""?></b>
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
                             </div>
-                            <div class="col-10" >
-                                <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                                <div style="font-size: 11px">
-                                    <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+                            <div class="row">
+                                <div class="col-12 pt-3">
+                                    <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ';'])?>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
-                    <div style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left: 10px; margin-bottom: 10px;'])?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
-
-    <div class="col-xs-12 col-md-4 m-b-30">
-        <div class="card">
-            <div class="card-header">Новые сотрудники</div>
-            <div>
-                <?php foreach ($user_new as $user): ?>
-                    <div class="row p-2">
-                        <div class="col-2">
-                            <img src="<?=$user->getImage();?>" style = "border-radius: 5px;" class ="img-fluid">
-                        </div>
-                        <div class="col-10" >
-                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a> <br>
-                            <div style="font-size: 11px">
-                                <?=$user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
+                        <div class="tab-pane " id="v-new">
+                            <div class="row">
+                                <?php foreach ($user_new as $user): ?>
+                                    <div class="col-12 col-lg-2">
+                                        <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
+                                            <a href="/profiles/<?php echo $user->id ?>">
+                                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
+                                            </a>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                             <a href="/profiles/<?php echo $user->id ?>" style = "font-size:14px"><?=$user->first_name?></a>
+                                        </div>
+                                        <div class="text-center " style="font-size:12px;" title = "<?=$user->branch ?>"><b><?=($user->position) ? $user->position : ""?></b>
+                                        </div>
+                                        <div class="text-center" style="color:#868686;font-size:10px;">
+                                            <?=date('d.m', strtotime($user->date_job))?>
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
                             </div>
                         </div>
+                        <div class="tab-pane" id="v-online">
+                            <div class="row">
+                                <?php foreach ($online as $user): ?>
+                                    <div class="col-12 col-md-2">
+                                        <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
+                                            <a href="/profiles/<?php echo $user->id ?>">
+                                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
+                                            </a>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                             <a href="/profiles/<?php echo $user->id ?>"><?=$user->first_name?></a>
+                                        </div>
+                                        <div class="text-center " style="font-size:12px;color: #a2a2a2;">
+                                            <?=date('H:i:s',$user->last_visit) ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
+
+                            </div>
+                            <div style="padding-top: 10px; display: inline-block;">
+                                <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ''])?>
+                        </div>
                     </div>
-                <?php endforeach ?>
-                <div style="padding-top: 10px; display: inline-block;">
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left:10px;margin-bottom:10px;'])?>
                 </div>
+
+
             </div>
         </div>
     </div>
-
-    <?if(\Yii::$app->user->can("allAccess")):?>
-        <?php echo Questionnaire::widget([
-            'title' => 'Опросы',
-            'col_size' => 4,
-            'width' => '290',
-        ]) ?>
-    <? endif; ?>
-
-    <div class="col-xs-12 col-md-4 m-b-30">
-        <div class="card">
-            <div class="card-header">Пользователи онлайн: <?= $countOnline ?></div>
-            <div>
-                <?php $i = 0;
-                foreach ($online as $user): $i++ ?>
-                    <?php if($i == 5) { break; } ?>
-                    <div class="row p-2">
-                        <div class="col-2">
-                            <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
-                        </div>
-                        <div class="col-10" >
-                            <a href="/profiles/<?php echo $user->id ?>"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a><br>
-                            <div style="font-size: 11px">
-                                <?= $user->branch ?><?php echo ($user->position) ? ", ". $user->position : "" ;?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach ?>
-                <div style="padding-top: 10px; display: inline-block;">
-                    <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => 'margin-left: 10px; margin-bottom: 10px;'])?>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
+
+<?php echo Questionnaire::widget([
+    'title' => 'Опросы',
+    'col_size' => 4,
+    'width' => '290',
+]) ?>
 
 </div>
