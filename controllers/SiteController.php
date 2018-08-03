@@ -54,19 +54,21 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $time_online = time() - 180;
-        $online = Profile::find()->where(['>','last_visit',$time_online])->all();
-        $countOnline = count($online);
+        $online = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->limit(6)->all();
+        $online_count = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->count();
 
+        $countOnline = count($online);
 
         $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
         return $this->render('index', [
             'news' => News::find()->where(['status' => 1])->orderBy('id desc')->limit(6)->all(),
             "news_project" => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc')->limit(6)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
-            'user_new' => Profile::find()->orderBy('date_job desc')->limit(3)->all(),
+            'user_new' => Profile::find()->orderBy('date_job desc')->limit(6)->all(),
             'online' => Session::getOnline(),
             'birthdays' => $birthdays,
             'online' =>$online,
+            'online_count' =>$online_count,
             'countOnline' =>$countOnline,
         ]);
     }
