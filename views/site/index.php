@@ -131,7 +131,7 @@
                             <a href="#v-new" class="nav-link " data-toggle="tab" aria-expanded="false">Новые</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#v-online" class="nav-link" data-toggle="tab" aria-expanded="false">Онлайн <span class="badge badge-primary" style="background: <?=\Yii::$app->setting->getValue('navbar-background-color')?>"><?= $countOnline ?></span></a>
+                            <a href="#v-online" class="nav-link" data-toggle="tab" aria-expanded="false">Онлайн <span class="badge badge-primary" style="background: <?=\Yii::$app->setting->getValue('navbar-background-color')?>"><?= $online_count ?></span></a>
                         </li>
                     </ul>
 
