@@ -6,12 +6,14 @@ use Yii;
 use app\models\Questionnaire;
 use app\models\QuestionnaireSearch;
 use app\models\Answers;
+use app\models\AnswersUser;
 use app\models\QuestionFilials;
 use app\models\Filials;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use yii\data\ActiveDataProvider;
 
 /**
  * QuestionnaireController implements the CRUD actions for Questionnaire model.
@@ -56,9 +58,14 @@ class QuestionnaireController extends Controller
      */
     public function actionView($id)
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => AnswersUser::find()->where(['id_question' => $id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'answers' => Answers::find()->where(['id_question' => $id])->all(),
+            'dataProvider' => $dataProvider,
         ]);
     }
 

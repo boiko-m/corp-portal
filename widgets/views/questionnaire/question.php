@@ -8,7 +8,7 @@
 	$isFirst = true;
 ?>
 
-<div class="col-xs-12 col-md-<?= $col_size ?>">
+<div class="col-xs-12 col-md-<?= $col_size ?> m-b-30">
   <div class="card">
     <div class="card-header"><?= $title ?></div>
 		<div class="col-md-12">
@@ -45,7 +45,7 @@
 						<span>Спасибо за Ваш голос!</span>
 					</div>
 					<div class="text-center wait-more">
-						<span>Благодарим за участие в голосовании. Ждите больше опросов</span>
+						<span>Благодарим за участие в голосовании</span>
 					</div>
 				</div>
 				<div class="qiestion-controle">

@@ -87,28 +87,4 @@
 
     <?php ActiveForm::end(); ?>
 
-    <!-- <h3 class="attachment-zone-title">Область вложений</h3>
-    <div class="row video-n-file-project-news-place">
-        <div class="col-md-6" id="fields_video"></div>
-        <div class="col-md-6" id="fields_file"></div>
-        <div class="col-md-6" style="padding: 10px;">
-            <form method="POST" id="link_video" action="javascript:void(null);">
-                <label for="add_video">Ссылка на видео</label>
-                <input type="text" name="add_video" id="add_video" class="video-input-link">
-                <div class="center-button">
-                    <button class="btn waves-effect w-md btn-light center-button project-news-buttons">Добавить видео</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-6" style="padding: 10px;">
-            <form id="link_file">
-                <label for="add_file">Прикрепить файл</label>
-                <input type="file" name="add_file" id="add_file">
-                <div class="center-button">
-                    <button class="btn waves-effect w-md btn-light center-button project-news-buttons">Добавить файл</button>
-                </div>
-            </form>
-        </div>
-    </div> -->
-
 </div>
