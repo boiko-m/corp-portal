@@ -112,8 +112,6 @@
         </div>
         
 
-
-
         <?php Pjax::begin(); ?>
 
         <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true, 'class' => 'pt-2']]); ?>
@@ -127,15 +125,27 @@
         <?php ActiveForm::end(); ?>
 
         <script>
+            function pull() {
+                $('.pullmessage').val('')
+               /* var messages_list = $('#carouselExampleControls');
+                var height = messages_list[0].scrollHeight;
+                messages_list.scrollTop(height);*/
+                var objDiv = $("#carouselExampleControls");
+                var h = objDiv.get(0).scrollHeight;
+                objDiv.animate({scrollTop: h});
+            }
+
             $(document).ready(function() {
+
                 $("#pull_message").click(function() {
-                    setTimeout("$('.pullmessage').val('')", 500);
+                    setTimeout("pull()", 1000);
                  });
 
                  $('.pullmessage').keyup(function(){
                     if(event.keyCode==13)
                        {
-                          setTimeout("$('.pullmessage').val('')", 500);
+                          setTimeout("pull()", 1000);
+
                           return false;
                        }
                 })
@@ -158,6 +168,9 @@
 
 
 <script>
+
+
+
 $(document).ready(function() {
     setInterval(function(){ $("#refreshButton").click(); }, 2000);
 });
