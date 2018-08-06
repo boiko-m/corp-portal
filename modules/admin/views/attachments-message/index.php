@@ -27,11 +27,14 @@
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'date',
+            [
+                'attribute' => 'date',
+                'format' => ['date', 'php:d.m.Y'],
+                'headerOptions' => ['style' => 'width:8%'],
+            ],
             'name',
             'link',
             'type',

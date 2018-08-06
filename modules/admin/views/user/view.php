@@ -1,25 +1,21 @@
 <?php
+    use yii\helpers\Html;
+    use yii\widgets\DetailView;
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+    $this->title = $model->username;
+    $this->params['breadcrumbs'][] = ['label' => 'Пользователи', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Подумайте, прежде чем удалять данные пользователя!',
                 'method' => 'post',
             ],
         ]) ?>
@@ -35,8 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'password_reset_token',
             'email:email',
             'status',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'format' => ['date', 'php:d.m.Y'],
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => ['date', 'php:d.m.Y'],
+            ],
         ],
     ]) ?>
 

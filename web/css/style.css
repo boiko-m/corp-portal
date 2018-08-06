@@ -3734,3 +3734,7 @@ h3.timeline-title {
   50% { color: #FBB; }
   100% { color: #E50F0F; } 
 }
+
+#sidebar-menu > ul > div > div > li > a {
+  padding: 10px 10px;
+}

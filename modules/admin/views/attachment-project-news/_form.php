@@ -17,7 +17,7 @@
 
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>
 
-    <?= $form->field($model, 'id_project_news')->dropDownList($listProjectNews, ['prompt' => '---- Выберите новость ----'])->label('Назначение') ?>
+    <?= $form->field($model, 'id_project_news')->dropDownList($listProjectNews, ["disabled" => "disabled"], ['prompt' => '---- Выберите новость ----'])->label('Назначение') ?>
 
     <div class="form-group crud-button-save">
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', ['class' => 'btn btn-success']) ?>

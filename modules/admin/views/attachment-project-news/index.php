@@ -10,10 +10,6 @@
 
     <?php Pjax::begin(); ?>
 
-    <p>
-        <?= Html::a('Создать вложение', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -22,23 +18,27 @@
                 'attribute' => 'id',
                 'headerOptions' => ['style' => 'width:4%'],
             ],
-            'link',
+            [
+                'attribute' => 'link',
+                'label' => 'Название',
+                'value' => function($model) {
+                    return end(explode('/', $model->link));
+                }
+            ],
             [
                 'attribute' => 'type',
                 'value' => function($model) {
-                    $model->type == 0 ? $type = 'Ссылка' : null;
-                    $model->type == 1 ? $type = 'Видео' : null;
-                    $model->type == 2 ? $type = 'Файл' : null;
+                    $type = $model->type == 0 ? 'Ссылка' : null;
+                    $type = $model->type == 1 ? 'Видео' : null;
+                    $type = $model->type == 2 ? 'Файл' : null;
                     return $type;
                 },
                 'headerOptions' => ['style' => 'width:8%'],
             ],
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
-                'headerOptions' => ['style' => 'width:8%'],
+                'format' => ['date', 'php:d.m.Y'],
+                'headerOptions' => ['style' => 'width:13%'],
             ],
             [
                 'attribute' => 'create_user',

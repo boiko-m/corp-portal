@@ -17,15 +17,14 @@
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'summary' => false,
         'columns' => [
             'id',
             'name:ntext',
             // 'description:ntext',
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
+                'format' => ['date', 'php:d.m.Y'],
                 'headerOptions' => ['style' => 'width:13%'],
             ],
             [
@@ -33,7 +32,7 @@
                 'value' => function($model) {
                     return $model->close_at == null ? 'Трансляция не завершена' : date('d.m.Y', $model->close_at);
                 },
-                'headerOptions' => ['style' => 'width:13%'],
+                'headerOptions' => ['style' => 'width:16%'],
             ],
             [
                 'attribute' => 'complete',
