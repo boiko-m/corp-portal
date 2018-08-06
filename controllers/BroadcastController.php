@@ -8,7 +8,7 @@ use app\models\BroadcastSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\ChatBroadcast;
 /**
  * BroadcastController implements the CRUD actions for Broadcast model.
  */
@@ -54,10 +54,52 @@ class BroadcastController extends Controller
      */
     public function actionView($id)
     {
+
+        $chat = new ChatBroadcast();
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost && $chat->load($request->post())) {
+            $chat->id_broadcast = $id;
+            $chat->id_user = \Yii::$app->user->id;
+            $chat->create_at = time();
+            $chat->save();
+        }
+
+        
+
         return $this->render('view', [
+            'chat' => $chat,
             'model' => $this->findModel($id),
+            'message' => array_reverse(ChatBroadcast::find()->orderby('id desc')->with('user.profile')->limit(15)->asArray()->all()),
         ]);
     }
+
+
+    public function actionChat()
+    {
+        $time = date('H:i:s');
+
+        $id_broadcast = 1;
+
+        $model = new ChatBroadcast();
+
+
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost && $model->load($request->post())) {
+            $model->id_broadcast = $id_broadcast;
+            $model->id_user = \Yii::$app->user->id;
+            $model->create_at = time();
+            $model->save();
+        }
+
+        return $this->render('chat', [
+            'time' => $time,
+            'model' => $model,
+            'message' => array_reverse(ChatBroadcast::find()->orderby('id desc')->with('user.profile')->limit(10)->asArray()->all()),
+        ]);
+    }
+
 
     /**
      * Creates a new Broadcast model.
