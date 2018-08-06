@@ -34,16 +34,15 @@
             }
             
 
-            if ($count) {
+            if ($this->count) {
                $users = Profile::find()->where(['controller_visit' => $this->controller, 'action_visit' => $this->action, 'id_visit' => $this->id])->andWhere(['>','last_visit',$time_online])->count();    
            }
 
-           if ($return) {
+           if ($this->return) {
                $users = Profile::find()->where(['controller_visit' => $this->controller, 'action_visit' => $this->action, 'id_visit' => $this->id])->andWhere(['>','last_visit',$time_online])->all();  
            }
-
+           
             return $users;
-            
         }
 
         public function registerAssets()
