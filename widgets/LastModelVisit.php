@@ -42,11 +42,7 @@
                $users = Profile::find()->where(['controller_visit' => $this->controller, 'action_visit' => $this->action, 'id_visit' => $this->id])->andWhere(['>','last_visit',$time_online])->all();  
            }
 
-            if ($this->return) {
-                return $users;
-            } else {
-                return true;
-            }
+            return $users;
             
         }
 
