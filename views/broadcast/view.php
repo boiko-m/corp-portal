@@ -69,7 +69,7 @@
 
 <div class="row">
     <div class="col-8 card-box" style="position:relative; ">
-        <!-- <iframe class="col-12" id="broadcast-player" width="500" height="700" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> -->
+        <iframe class="col-12" id="broadcast-player" width="500" height="700" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> 
         <div class="col-12 overlay"></div>
     </div>
     <div class="col-4 chat">
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-10 message px-3 py-2" style="background:<?=($mes['user']['profile']['id'] != \Yii::$app->user->id) ? 'white' : '#e1e5eb'?>">
                                     <div>
-                                        <a href="/profiles/<?=$mes['user']['id'] ?>"> <?=$mes['user']['profile']['first_name'] ?> </a> <small> в <?=date('H:i:s', $mes['create_at'])?></small>
+                                        <a target = "_blank" href="/profiles/<?=$mes['user']['id'] ?>"> <?=$mes['user']['profile']['first_name'] ?> </a> <small> в <?=date('H:i:s', $mes['create_at'])?></small>
                                     </div>
                                     <div>
                                         <?php if ($mes['message'] == ':smile') { ?>
@@ -140,7 +140,7 @@
                 var objDiv = $("#carouselExampleControls");
                 var h = objDiv.get(0).scrollHeight;
                 objDiv.animate({scrollTop: h});
-                
+
                 $("#pull_message").click(function() {
                     setTimeout("pull()", 1000);
                  });
