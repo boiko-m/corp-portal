@@ -12,9 +12,8 @@
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             [
                 'attribute' => 'id',
                 'headerOptions' => ['style' => 'width:7%'],

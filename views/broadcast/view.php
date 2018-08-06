@@ -68,7 +68,7 @@
 </style>
 
 <div class="row">
-    <div class="col-8 card-box" style="position:relative; ">
+    <div class="col-8 card-box" style="position:relative;">
         <iframe class="col-12" id="broadcast-player" width="500" height="700" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> 
         <div class="col-12 overlay"></div>
     </div>

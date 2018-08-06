@@ -1,11 +1,6 @@
 <?php
-
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
-/* @var $form yii\widgets\ActiveForm */
+    use yii\helpers\Html;
+    use yii\widgets\ActiveForm;
 ?>
 
 <div class="user-form">
@@ -30,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updated_at')->textInput() ?>
 
-    <div class="form-group">
+    <div class="form-group crud-button-save">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 

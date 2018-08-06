@@ -63,12 +63,12 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_1c' => 'Id 1c',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'middle_name' => 'Middle Name',
+            'id_1c' => 'ID 1С',
+            'first_name' => 'Имя',
+            'last_name' => 'Фамилия',
+            'middle_name' => 'Отчество',
             'birthday' => 'Дата рождения',
-            'date_job' => 'Date Job',
+            'date_job' => 'Дата устройства',
             'sex' => 'Пол',
             'skype' => 'Skype',
             'phone' => 'Телефон',
@@ -80,14 +80,15 @@ class Profile extends \yii\db\ActiveRecord
             'cabinet' => 'Кабинет',
             'phone_cabinet' => 'Внутренний телефон',
             'about' => 'О себе',
-            'category' => 'Category',
-            'service' => 'Service',
+            'category' => 'Категория',
+            'service' => 'Сервис',
             'sip' => 'SIP',
             'name' => 'ФИО',
             'grid' => 'ФИО',
             'user_email' => 'Почта',
             'department_position'=>'Отдел, должность',
             'id_profile_position' => 'Уникальный номер должности',
+            'img' => 'Картинка',
         ];
     }
 

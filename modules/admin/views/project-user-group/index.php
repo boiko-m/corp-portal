@@ -20,8 +20,6 @@
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             [
                 'attribute' => 'id',
                 'headerOptions' => ['style' => 'width:7%'],

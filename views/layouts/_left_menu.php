@@ -3,11 +3,6 @@
   $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : ''
 ?>
 
-<style>
-    #sidebar-menu > ul > div > div > li > a {
-        padding: 10px 10px;
-    }
-</style>
 
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">

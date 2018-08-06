@@ -1,14 +1,30 @@
 <?php
-    use yii\helpers\Html;
-    use yii\widgets\DetailView;
-    use yii\grid\GridView;
-    use scotthuangzl\googlechart\GoogleChart;
-    use app\models\AnswersUser;
+  use yii\helpers\Html;
+  use yii\widgets\DetailView;
+  use yii\grid\GridView;
+  use yii\helpers\ArrayHelper;
+  use app\models\AnswersUser;
+  use scotthuangzl\googlechart\GoogleChart;
 
-    $this->title = $model->name;
-    $this->params['breadcrumbs'][] = ['label' => 'Опросы', 'url' => ['index']];
-    $this->params['breadcrumbs'][] = $this->title;
+  $this->title = $model->name;
+  $this->params['breadcrumbs'][] = ['label' => 'Опросы', 'url' => ['index']];
+  $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<style>
+  .view_answer_dropdown {
+    width: 100%;
+    padding: 1px 5px 1px 5px;
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #a5a5a5;
+  }
+</style>
 
 <div class="questionnaire-view">
 
@@ -98,6 +114,7 @@
   <div style="margin-top: 40px; background-color: #FFFFFF; padding: 10px 20px;">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'summary' => '<h6 style="font-weight: bold">Ответы пользователей</h6>',
         'columns' => [
           [
             'attribute' => 'id',
@@ -105,7 +122,6 @@
           ],
           [
             'attribute' => 'id_user',
-            // 'value' => 'profile.name',
             'format' => 'raw',
             'value' => function($model) {
               $profile = app\models\Profile::findOne($model->id_user);
@@ -115,14 +131,16 @@
           ],
           [
             'attribute' => 'id_answer',
-            'value' => 'answer.name'
+            'format' => 'raw',
+            'value' => function($model) {
+              $answers = app\models\Answers::find()->where(['id_question' => $model->id_question])->all();
+              return Html::dropDownList('id_answer', $model->id_answer, ArrayHelper::map($answers, 'id', 'name'), ['class' => 'view_answer_dropdown']);
+            },
           ],
           [
             'attribute' => 'date',
-            'value' => function($model) {
-              return date('d.m.Y', $model->date);
-            },
-            'headerOptions' => ['style' => 'width:13%'],
+            'format' => ['date', 'php:d.m.Y'],
+            'headerOptions' => ['style' => 'width:8%'],
           ],
         ],
       ]); ?>

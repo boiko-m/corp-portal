@@ -18,6 +18,7 @@
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
         'columns' => [
             [
                 'attribute' => 'id',
@@ -30,10 +31,8 @@
             ],
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
-                'headerOptions' => ['style' => 'width: 13%'],
+                'format' => ['date', 'php:d.m.Y'],
+                'headerOptions' => ['style' => 'width:13%'],
             ],
             [
                 'attribute' => 'visible',

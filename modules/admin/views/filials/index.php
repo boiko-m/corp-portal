@@ -10,7 +10,6 @@
 
     <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Добавить филиал', ['create'], ['class' => 'btn btn-success']) ?>

@@ -10,7 +10,6 @@
 
     <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Создать опрос', ['create'], ['class' => 'btn btn-success']) ?>
@@ -19,6 +18,7 @@
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
         'columns' => [
             [
                 'attribute' => 'id',
@@ -29,18 +29,15 @@
             [
                 'attribute' => 'type',
                 'format' => 'boolean',
-                'headerOptions' => ['style' => 'width:13%']
+                'headerOptions' => ['style' => 'width:15%']
             ],
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
+                'format' => ['date', 'php:d.m.Y'],
                 'headerOptions' => ['style' => 'width:8%'],
             ],
-            //'create_user',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'header' => 'Действия',],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
