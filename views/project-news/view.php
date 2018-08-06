@@ -31,7 +31,7 @@
         <? if (count($attachmentVideo) != 0) : ?>
           <? foreach ($attachmentVideo as $key => $video) { ?>
             <a href="<?= $video->link ?>" target="_blank" style="margin: 0 10px 0 10px;">
-              <i class="fa fa-video-camera" aria-hidden="true" title="<?= $video->link ?>" style="font-size: 40px; margin: 15px 0 0"></i>
+              <i class="fa fa-video-camera" aria-hidden="true" title="<?= end(explode('/', $video->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
             </a>
           <? } ?>
         <? else : ?>
@@ -47,7 +47,7 @@
         <? if (count($attachmentDocument) != 0) : ?>
           <? foreach ($attachmentDocument as $key => $document) { ?>
             <a href="#" onclick="OpenDocumentContent('<?= $document->link ?>')" style="margin: 0 10px 0 10px;">
-              <i class="fa fa-file-archive-o" aria-hidden="true" title="<?= $document->link ?>" style="font-size: 40px; margin: 15px 0 0"></i>
+              <i class="fa fa-file-archive-o" aria-hidden="true" title="<?= end(explode('/', $document->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
             </a>
           <? } ?>
         <? else : ?>
@@ -62,7 +62,7 @@
 
 <script>
   function OpenDocumentContent(content) {
-    var newWin = open('','Вложение',"width="+screen.availWidth+",height="+screen.availHeight);
-    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width=100% height=100% frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
+    let newWin = open('', '',"width=" + screen.availWidth + ",height=" + screen.availHeight);
+    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width=100% height=90% scrolling='auto' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
   }
 </script>

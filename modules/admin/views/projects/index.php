@@ -9,9 +9,7 @@
 
 <div class="projects-index">
 
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Создать проект', ['create'], ['class' => 'btn btn-success']) ?>
@@ -21,8 +19,6 @@
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             [
                 'attribute' => 'id',
                 'headerOptions' => ['style' => 'width:3%'],
