@@ -1,20 +1,16 @@
 <?php
+    use app\widgets\Alert;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\bootstrap\Nav;
+    use yii\bootstrap\NavBar;
+    use yii\widgets\Breadcrumbs;
+    use app\assets\AppAsset;
+    use app\assets\AppAssetBottom;
 
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-use app\widgets\Alert;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
-use app\assets\AppAssetBottom;
-
-AppAsset::register($this);
-
+    AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -66,7 +62,6 @@ AppAsset::register($this);
 
             <?=$this->render('_left_menu_adm.php')?>
 
-
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -99,8 +94,6 @@ AppAsset::register($this);
                     </div> <!-- container -->
 
                 </div> <!-- content -->
-
-
 
 </div>
 

@@ -56,15 +56,14 @@
         ],
         [
           'attribute' => 'create_at',
-          'value' => function($model) {
-            return date('d.m.Y', $model->create_at);
-          },
+          'format' => ['date', 'php:d.m.Y'],
+          'headerOptions' => ['style' => 'width:8%'],
         ],
         [
           'attribute' => 'create_user',
           'value' => function($model) {
             $profile = app\models\Profile::findOne($model->create_user);
-            return $profile->name . "($model->create_user)";
+            return $profile->name . " ($model->create_user)";
           },
         ],
       ],
