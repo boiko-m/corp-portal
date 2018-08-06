@@ -1,6 +1,6 @@
 <?php
   use app\models\Broadcast;
-  $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : ''
+  $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : '';
 ?>
 
 

@@ -18,6 +18,7 @@ use app\models\Session;
 use app\models\Profile;
 use yii\db\Query;
 use yii\helpers\Json;
+use app\models\Broadcast;
 
 
 class SiteController extends Controller
@@ -60,6 +61,10 @@ class SiteController extends Controller
         $countOnline = count($online);
 
         $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
+
+         
+        $live = Broadcast::find()->where(['link_only' => false, 'complete' => false])->limit(1)->one();
+
         return $this->render('index', [
             'news' => News::find()->where(['status' => 1])->orderBy('id desc')->limit(6)->all(),
             "news_project" => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc')->limit(6)->all(),
@@ -70,6 +75,7 @@ class SiteController extends Controller
             'online' =>$online,
             'online_count' =>$online_count,
             'countOnline' =>$countOnline,
+            'live' => $live
         ]);
     }
 

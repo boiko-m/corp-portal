@@ -68,9 +68,19 @@
 </style>
 
 <div class="row">
-    <div class="col-8 card-box" style="position:relative;">
-        <iframe class="col-12" id="broadcast-player" width="500" height="700" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> 
+    <div class="col-8 card-box" style="position:relative; ">
+        <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> 
         <div class="col-12 overlay"></div>
+        <div class="row">
+            <div class="col-3 p-4">
+                <a href="/broadcastfull/<?=$model->id?>"  class="btn btn-light waves-effect"> <i class=" mdi mdi-access-point-network m-r-5"></i> <span>Во весь экран</span> </a>
+            </div>
+            <div class="col-8 pt-4">
+                <div style="padding-top: 7px;">
+                    Количество просматривающих: <br> <span style="font-size:30px">10</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-4 chat">
         <div class="row">
@@ -86,7 +96,9 @@
                         <div class="col-11">
                             <div class="row ">
                                 <div class="col-2 align-self-center">
-                                    <img src="<?=Profile::getImageStatic($mes['user']['profile']['id']);?>"  class = "img-fluid" alt="" style = "border-radius: 100px;">
+                                    <a href="/profiles/<?=$mes['user']['id'] ?>" target="_blank">
+                                        <img src="<?=Profile::getImageStatic($mes['user']['profile']['id']);?>"  class = "img-fluid" alt="" style = "border-radius: 100px;">
+                                    </a>
                                 </div>
                                 <div class="col-10 message px-3 py-2" style="background:<?=($mes['user']['profile']['id'] != \Yii::$app->user->id) ? 'white' : '#e1e5eb'?>">
                                     <div>
