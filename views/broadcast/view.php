@@ -137,6 +137,10 @@
 
             $(document).ready(function() {
 
+                var objDiv = $("#carouselExampleControls");
+                var h = objDiv.get(0).scrollHeight;
+                objDiv.animate({scrollTop: h});
+                
                 $("#pull_message").click(function() {
                     setTimeout("pull()", 1000);
                  });
