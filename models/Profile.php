@@ -189,9 +189,33 @@ class Profile extends \yii\db\ActiveRecord
         return $img;
     }
 
+
     public function getProfilePosition()
     {
         return $this->hasOne(ProfilePosition::className(), ['id' => 'id_profile_position']);
+    }
+
+    public static function getImageStatic($id) {
+
+        $model = Profile::findOne($id);
+
+        if ($model->img) {
+            $img = "/img/user/thumbnail_" . $model->img;
+        }
+
+        if (!$img or $model->img == "noimg.jpg") {
+            if ($model->sex == 1) {
+                $img = '/img/user/thumbnail_no-profile-m.png';
+            } else {
+                $img = '/img/user/thumbnail_no-profile-f.png';
+            }
+        }
+
+        /*if (!$this->img_accept) { // доделать
+            $img = $not_img;
+            $this->img == "noimg.jpg"
+        }*/
+        return $img;
     }
 
 }

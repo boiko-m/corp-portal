@@ -184,9 +184,9 @@
                             <div class="row">
                                 <?php foreach ($online as $user): ?>
                                     <div class="col-12 col-md-2">
-                                        <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
-                                            <a href="/profiles/<?php echo $user->id ?>">
-                                                <img src="<?= $user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
+                                        <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
+                                            <a href="/profiles/<?=$user->id ?>">
+                                                <img src="<?=$user->getImage(); ?>" alt="" style="border-radius: 5px;" class ="img-fluid">
                                             </a>
                                         </div>
                                         <div class="text-center pt-2">
