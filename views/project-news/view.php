@@ -62,7 +62,7 @@
 
 <script>
   function OpenDocumentContent(content) {
-    var newWin = open('','windowName','height=500,width=500');
-    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
+    var newWin = open('','Вложение',"width="+screen.availWidth+",height="+screen.availHeight);
+    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width=100% height=100% frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
   }
 </script>
