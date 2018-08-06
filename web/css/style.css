@@ -3716,3 +3716,21 @@ h3.timeline-title {
 }
 
 /*--------------- User setting project news -----------------*/
+
+.icon-broadcast-flicker {
+  -webkit-animation: flicker 2s linear infinite; 
+  animation: flicker 2s linear infinite; 
+  font-weight: bold; 
+}
+
+@-webkit-keyframes flicker { 
+  0% { color: #F00; }
+  50% { color: #FBB; }
+  100% { color: #E50F0F; }
+}
+
+@keyframes flicker {  
+  0% { color: #F00; }
+  50% { color: #FBB; }
+  100% { color: #E50F0F; } 
+}

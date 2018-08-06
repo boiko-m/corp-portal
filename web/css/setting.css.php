@@ -61,4 +61,8 @@
 	.icon-project {
 		color: <?= $backgroundColor ?> !important;
 	}
+
+	.icon-left-menu-broadcast {
+		color: <?= $backgroundColor ?> !important;
+	}
 </style>
