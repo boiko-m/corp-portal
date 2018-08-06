@@ -48,8 +48,8 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'sex', 'sip', 'coins'], 'integer'],
-            [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service'], 'string'],
+            [['id', 'sex', 'sip', 'coins', 'id_visit'], 'integer'],
+            [['id_1c', 'first_name', 'last_name', 'middle_name', 'skype', 'phone', 'phone1', 'phone2', 'branch', 'position', 'department', 'cabinet', 'phone_cabinet', 'about', 'category', 'service', 'controller_visit', 'action_visit'], 'string'],
             [['birthday', 'date_job', 'user_email'], 'safe'],
             [['id'], 'unique'],
             [['id_profile_position'], 'exist', 'skipOnError' => true, 'targetClass' => ProfilePosition::className(), 'targetAttribute' => ['id_profile_position' => 'id']],
