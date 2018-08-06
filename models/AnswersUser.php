@@ -46,10 +46,10 @@ class AnswersUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'date' => 'Date',
-            'id_answer' => 'Id Answer',
-            'id_user' => 'Id User',
-            'id_question' => 'Id Questionnaire',
+            'date' => 'Дата',
+            'id_answer' => 'Ответ',
+            'id_user' => 'Сотрудник',
+            'id_question' => 'Вопрос',
         ];
     }
 
@@ -59,6 +59,14 @@ class AnswersUser extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
     use yii\helpers\Html;
     use yii\widgets\DetailView;
+    use yii\grid\GridView;
     use scotthuangzl\googlechart\GoogleChart;
     use app\models\AnswersUser;
 
@@ -71,7 +72,7 @@
           )
       )); ?>
     </div>
-    <div class="col-md-6" style="margin-top: 50px">
+    <div class="col-md-6" style="margin-top: 40px">
       <?php echo GoogleChart::widget(array('visualization' => 'PieChart',
         'data' => $arrayChart,
         'options' => array(
@@ -80,7 +81,7 @@
         )
       )); ?>
     </div>
-    <div class="col-md-6" style="margin-top: 50px">
+    <div class="col-md-6" style="margin-top: 40px">
       <?php echo GoogleChart::widget(array('visualization' => 'PieChart',
         'data' => $arrayChart,
         'options' => array(
@@ -91,6 +92,40 @@
         )
       )); ?>
     </div>
+
   </div>
+
+  <div style="margin-top: 40px; background-color: #FFFFFF; padding: 10px 20px;">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+          [
+            'attribute' => 'id',
+            'headerOptions' => ['style' => 'width:5%'],
+          ],
+          [
+            'attribute' => 'id_user',
+            // 'value' => 'profile.name',
+            'format' => 'raw',
+            'value' => function($model) {
+              $profile = app\models\Profile::findOne($model->id_user);
+              return Html::a($profile->name, ["/profiles/$model->id_user"]);
+            },
+            'headerOptions' => ['style' => 'width:25%'],
+          ],
+          [
+            'attribute' => 'id_answer',
+            'value' => 'answer.name'
+          ],
+          [
+            'attribute' => 'date',
+            'value' => function($model) {
+              return date('d.m.Y', $model->date);
+            },
+            'headerOptions' => ['style' => 'width:13%'],
+          ],
+        ],
+      ]); ?>
+    </div>
 
 </div>

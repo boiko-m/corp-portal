@@ -84,7 +84,7 @@
                     </div>
                 
 
-                <div id = "menu-work" class="tab-pane fade <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'active show' : null ?>">
+                <div id = "menu-work" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'fade active show' : null ?>">
                     <li>
                         <a href="/documents/catalog/">
                             <i class="dripicons-document"></i> <span> Каталоги </span>

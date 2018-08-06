@@ -6,9 +6,8 @@
 	$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 	$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
-<div class="project-news-update">
 
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
+<div class="project-news-update">
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\ProjectNews;
-use app\models\Vote;
+use app\models\AttachmentProjectNews;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -53,11 +53,10 @@ class ProjectNewsController extends Controller
      */
     public function actionView($id)
     {
-        if (!($this->findModel($id))->visible)
-            throw new \yii\web\NotFoundHttpException(404);
-
         return $this->render('view', [
-            'news' => ProjectNews::findOne($id)
+            'news' => ProjectNews::find()->where(['id' => $id])->with('project')->one(),
+            'attachmentVideo' => AttachmentProjectNews::findAll(['type' => 1]),
+            'attachmentDocument' => AttachmentProjectNews::findAll(['type' => 0, 'type' => 2]),
         ]);
     }
 

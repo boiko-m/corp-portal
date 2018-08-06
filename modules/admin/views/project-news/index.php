@@ -25,7 +25,7 @@
 
             [
                 'attribute' => 'id',
-                'headerOptions' => ['style' => 'width:7%'],
+                'headerOptions' => ['style' => 'width:3%'],
             ],
             'title',
             [
@@ -41,8 +41,9 @@
             ],
             [
                 'attribute' => 'visible',
+                'label' => 'Видимость',
                 'format' => 'boolean',
-                'headerOptions' => ['style' => 'width:16%'],
+                'headerOptions' => ['style' => 'width:11%'],
             ],
 
             [
@@ -52,11 +53,17 @@
                     {update}
                     {delete}
                     {go_ever}
+                    {attachments}
                 ',
                 'buttons' => [
                     'go_ever' => function ($url, $model, $key) {
                         return Html::a('<i class="fa fa-tv"></i>', '/project-news/'.$model->id, [
                             'title' => 'Перейти к просмотру',
+                        ]);
+                    },
+                    'attachments' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-paperclip"></i>', ['/admin/attachment-project-news/create/', 'id' => $model->id], [
+                            'title' => 'Добавить вложение',
                         ]);
                     },
                 ]
