@@ -105,7 +105,12 @@
           ],
           [
             'attribute' => 'id_user',
-            'value' => 'profile.name',
+            // 'value' => 'profile.name',
+            'format' => 'raw',
+            'value' => function($model) {
+              $profile = app\models\Profile::findOne($model->id_user);
+              return Html::a($profile->name, ["/profiles/$model->id_user"]);
+            },
             'headerOptions' => ['style' => 'width:25%'],
           ],
           [

@@ -18,7 +18,7 @@ class ProjectController extends \yii\web\Controller
             $projects = Projects::find()->where(['visible' => true]);
 
         $countQuery = clone $projects;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
+        // $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
         $projects = $projects->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
@@ -35,9 +35,9 @@ class ProjectController extends \yii\web\Controller
     public function actionInfo($id)
     {
         if (\Yii::$app->user->can("controlProject"))
-            $projects_news = ProjectNews::find()->where(['id_project' => $id])->all();
+            $projects_news = ProjectNews::find()->where(['id_project' => $id])->orderBy('id desc')->all();
         else
-            $projects_news = ProjectNews::find()->where(['id_project' => $id, 'visible' => true])->all();
+            $projects_news = ProjectNews::find()->where(['id_project' => $id, 'visible' => true])->orderBy('id desc')->all();
 
         return $this->render('info', [
             'project' => Projects::findOne($id),

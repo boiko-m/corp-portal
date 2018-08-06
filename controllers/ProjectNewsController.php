@@ -53,11 +53,8 @@ class ProjectNewsController extends Controller
      */
     public function actionView($id)
     {
-        if (!($this->findModel($id))->visible)
-            throw new \yii\web\NotFoundHttpException(404);
-
         return $this->render('view', [
-            'news' => ProjectNews::findOne($id),
+            'news' => ProjectNews::find()->where(['id' => $id])->with('project')->one(),
             'attachmentVideo' => AttachmentProjectNews::findAll(['type' => 1]),
             'attachmentDocument' => AttachmentProjectNews::findAll(['type' => 0, 'type' => 2]),
         ]);

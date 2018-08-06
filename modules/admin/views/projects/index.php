@@ -25,14 +25,14 @@
 
             [
                 'attribute' => 'id',
-                'headerOptions' => ['style' => 'width:7%'],
+                'headerOptions' => ['style' => 'width:3%'],
             ],
             'name:ntext',
-            [
-                'attribute' => 'archive',
-                'format' => 'boolean',
-                'headerOptions' => ['style' => 'width:9%'],
-            ],
+            // [
+            //     'attribute' => 'archive',
+            //     'format' => 'boolean',
+            //     'headerOptions' => ['style' => 'width:9%'],
+            // ],
             [
                 'attribute' => 'visible',
                 'format' => 'boolean',
