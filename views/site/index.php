@@ -28,6 +28,16 @@
 
 
 
+<?php if ($live): ?>
+    <div class="row ">
+        <div class="col-12 mb-4 ml-3 w-100" >
+            <div class="row">
+                <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-3 ">Сейчас проходит трансляция! <br> <b>Подключайтесь!</b></a>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
