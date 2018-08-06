@@ -5,13 +5,12 @@
     use yii\helpers\Html;
     use app\models\Profile;
     use yii\widgets\ActiveForm;
-
+    use app\widgets\LastModelVisit;
 
     $this->title = $model->name;
     $this->params['breadcrumbs'][] = ['label' => 'Список трансляции', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 
-    
 ?>
 
 <style>
@@ -69,7 +68,7 @@
 
 <div class="row">
     <div class="col-8 card-box" style="position:relative; ">
-        <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe> 
+         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>  
         <div class="col-12 overlay"></div>
         <div class="row">
             <div class="col-3 p-4">
@@ -77,7 +76,16 @@
             </div>
             <div class="col-8 pt-4">
                 <div style="padding-top: 7px;">
-                    Количество просматривающих: <br> <span style="font-size:30px">10</span>
+                    Количество просматривающих: <br> 
+                    <span style="font-size:30px">
+                        <?php 
+                        echo LastModelVisit::widget([
+                            'controller' => 'broadcast',
+                            'action' => 'view',
+                            'id' => $model->id,
+                            'count' => true
+                        ]); ?>
+                    </span>
                 </div>
             </div>
         </div>

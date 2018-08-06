@@ -1,8 +1,11 @@
 <?php
+
 namespace app\components;
 use app\models\Profile;
 use Yii;
 use app\notifications\CoinNotification;
+
+
 class AddCoinClass  extends \yii\base\Component
 {
     public function init() {
