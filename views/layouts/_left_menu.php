@@ -1,3 +1,8 @@
+<?php
+  use app\models\Broadcast;
+  $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : ''
+?>
+
 <style>
     #sidebar-menu > ul > div > div > li > a {
         padding: 10px 10px;
@@ -13,7 +18,7 @@
             <ul class="metismenu" id="side-menu">
                 
                 <li class="menu-title p-0 ">
-                    <div style="font-size:14px;color:#939393" class="pl-2">Меню</div>
+                    <div style="font-size: 14px; color: #939393" class="pl-2">Меню</div>
                     <div>
                         <ul class="nav nav-tabs nav-justified nav-project tabs-bordered menu-me">
                             <li class="nav-item">
@@ -44,14 +49,18 @@
                                     <i class="dripicons-user-group"></i> <span> Сотрудники </span>
                                 </a>
                             </li>
-                            
-                            <li>
-                                <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span></a>
+
+                            <li> 
+                                <a href="/project/"><i class="fi-share"></i> <span> Проекты компании </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/project/">Проекты</a></li>
+                                    <li><a href="/project-news">Новости</a></li>
+                                </ul>
                             </li>
 
                             <?if(\Yii::$app->user->can("viewScripts")):?>
                                 <li>
-                                    <a href="/broadcast"><i class="mdi mdi-access-point" style="color:<?=Yii::$app->setting->getValue('navbar-background-color')?>;font-weight: bold;font-size:24px"></i> <span> Трансляции </span></a>
+                                    <a href="/broadcast"><i class="mdi mdi-access-point icon-left-menu-broadcast <?= $live ?>" style="font-weight: bold; font-size: 24px"></i> <span> Трансляции </span></a>
                                 </li>
                             <?endif;?>
 

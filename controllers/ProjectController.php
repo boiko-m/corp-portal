@@ -15,11 +15,11 @@ class ProjectController extends \yii\web\Controller
         if (\Yii::$app->user->can("controlProject"))
             $projects = Projects::find();
         else
-            $projects = Projects::find()->where(['visible' => true]);
+            $projects = Projects::find()->where(['visible' => true])->orderBy('name');
 
         $countQuery = clone $projects;
         // $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
-        $projects = $projects->offset($pages->offset)->limit($pages->limit)->all();
+        $projects = $projects->offset($pages->offset)->orderBy('name')->limit($pages->limit)->all();
 
         return $this->render('index', [
             'projects' => $projects,

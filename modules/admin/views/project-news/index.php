@@ -9,9 +9,7 @@
 
 <div class="project-news-index">
 
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Создать новость проекта', ['create'], ['class' => 'btn btn-success']) ?>
@@ -21,11 +19,9 @@
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             [
                 'attribute' => 'id',
-                'headerOptions' => ['style' => 'width:3%'],
+                'headerOptions' => ['style' => 'width: 3%'],
             ],
             'title',
             [
@@ -37,13 +33,13 @@
                 'value' => function($model) {
                     return date('d.m.Y', $model->create_at);
                 },
-                'headerOptions' => ['style' => 'width:13%'],
+                'headerOptions' => ['style' => 'width: 13%'],
             ],
             [
                 'attribute' => 'visible',
                 'label' => 'Видимость',
                 'format' => 'boolean',
-                'headerOptions' => ['style' => 'width:11%'],
+                'headerOptions' => ['style' => 'width: 11%'],
             ],
 
             [

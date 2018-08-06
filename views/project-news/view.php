@@ -27,35 +27,35 @@
 
   <div class="col-xs-12 col-md-3 m-b-30">
     <div class="card-box">
-        <h5 class="card-title text-center">Видео</h5>
-        <? if (count($attachmentVideo) != 0) : ?>
-          <? foreach ($attachmentVideo as $key => $video) { ?>
-            <a href="<?= $video->link ?>" target="_blank" style="margin: 0 10px 0 10px;">
-              <i class="fa fa-video-camera" aria-hidden="true" title="<?= end(explode('/', $video->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
-            </a>
-          <? } ?>
-        <? else : ?>
-          <div class="col-xs-12 col-md-12 m-b-30 text-center">
-            <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
-            <p style="margin: 10px 0 -20px 0;">Видео на данный момент отсутствуют</p>
-          </div>
-        <? endif; ?>
+      <h5 class="card-title text-center">Видео</h5>
+      <? if (count($attachmentVideo) != 0) : ?>
+        <? foreach ($attachmentVideo as $key => $video) { ?>
+          <a href="<?= $video->link ?>" target="_blank" style="margin: 0 10px 0 10px;">
+            <i class="fa fa-video-camera" aria-hidden="true" title="<?= end(explode('/', $video->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
+          </a>
+        <? } ?>
+      <? else : ?>
+        <div class="col-xs-12 col-md-12 m-b-30 text-center">
+          <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
+          <p style="margin: 10px 0 -20px 0;">Видео на данный момент отсутствуют</p>
+        </div>
+      <? endif; ?>
     </div>
 
     <div class="card-box">
-        <h5 class="card-title text-center">Файлы для просмотра</h5>
-        <? if (count($attachmentDocument) != 0) : ?>
-          <? foreach ($attachmentDocument as $key => $document) { ?>
-            <a href="#" onclick="OpenDocumentContent('<?= $document->link ?>')" style="margin: 0 10px 0 10px;">
-              <i class="fa fa-file-archive-o" aria-hidden="true" title="<?= end(explode('/', $document->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
-            </a>
-          <? } ?>
-        <? else : ?>
-          <div class="col-xs-12 col-md-12 m-b-30 text-center">
-            <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
-            <p style="margin: 10px 0 -20px 0;">Файлы на данный момент отсутствуют</p>
-          </div>
-        <? endif; ?>
+      <h5 class="card-title text-center">Файлы для просмотра</h5>
+      <? if (count($attachmentDocument) != 0) : ?>
+        <? foreach ($attachmentDocument as $key => $document) { ?>
+          <a href="#" onclick="OpenDocumentContent('<?= $document->link ?>')" style="margin: 0 10px 0 10px;">
+            <i class="fa fa-file-archive-o" aria-hidden="true" title="<?= end(explode('/', $document->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
+          </a>
+        <? } ?>
+      <? else : ?>
+        <div class="col-xs-12 col-md-12 m-b-30 text-center">
+          <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
+          <p style="margin: 10px 0 -20px 0;">Файлы на данный момент отсутствуют</p>
+        </div>
+      <? endif; ?>
     </div>
   </div>
 </div>
