@@ -29,7 +29,7 @@ class NewsCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'pintogram'], 'required'],
+            [['name'], 'required'],
             [['name', 'pintogram'], 'string', 'max' => 200],
         ];
     }
