@@ -1,10 +1,13 @@
 <?php
+    use yii\helpers\Url;
+    use app\models\User;
+    use app\models\News;
+    use app\models\WantToProject;
+    use app\models\Profile;
 
-use yii\helpers\Url;
-use app\models\User;
-use app\models\News;
-use app\models\WantToProject;
-
+    $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count();
+    $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count();
+    $scrumMaster = (Profile::findOne(Yii::$app->user->id))->id_profile_position;
 ?>
 
 <style>
@@ -13,9 +16,6 @@ use app\models\WantToProject;
         background-color: #F7931D;
     }
 </style>
-
-<?php $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count() ?>
-<?php $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count() ?>
 
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
@@ -55,7 +55,7 @@ use app\models\WantToProject;
                         </li>
                         <?endif;?>
                         <?if(\Yii::$app->user->can("controlProject")):?>
-                        <li>
+                        <li class="<?= $scrumMaster == 150 ? 'active' : null ?>">
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Проекты </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="/admin/projects">Проекты</a></li>
@@ -67,16 +67,14 @@ use app\models\WantToProject;
                             </ul>
                         </li>
                         <?endif;?>
-                        <?if(\Yii::$app->user->can("controlMessages")):?>
+                        <?if(\Yii::$app->user->can("allAccess")):?>
                         <li>
-
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Сообщения </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="/admin/im-groups/">Группы</a></li>
                                 <li><a href="/admin/type-group-im">Тип групп</a></li>
                                 <li><a href="/admin/attachments-message">Вложения сообщений</a></li>
                             </ul>
-
                         </li>
                         <?endif;?>
                         <?if(\Yii::$app->user->can("controlNews")):?>
@@ -86,7 +84,7 @@ use app\models\WantToProject;
                             </a>
                         </li>
                         <?endif;?>
-                        <?if(\Yii::$app->user->can("controlVideo")):?>
+                        <?if(\Yii::$app->user->can("Marketing")):?>
                         <li>
                             <a href="/admin/videos">
                                 <i class="fi-file"></i> <span>Видео</span>
@@ -112,13 +110,13 @@ use app\models\WantToProject;
                         </li>
                         <?endif;?>
 
-                        <?if(\Yii::$app->user->can("controlBroadcast")):?>
+                        <?if(\Yii::$app->user->can("Broadcast manager")):?>
                         <li>
                             <a href="/admin/broadcast"><i class="fi-file"></i><span> Трансляции </span></a>
                         </li>
                         <?endif;?>
 
-                        <?if(\Yii::$app->user->can("SuperAdmin")):?>
+                        <?if(\Yii::$app->user->can("Questionnaire manager")):?>
                         <li>
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Компания </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">

@@ -37,7 +37,23 @@
                 'headerOptions' => ['style' => 'width:8%'],
             ],
 
-            ['class' => 'yii\grid\ActionColumn', 'header' => 'Действия',],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Действия',
+                'template' => '
+                    {view}
+                    {update}
+                    {delete}
+                    {charts}
+                ',
+                'buttons' => [
+                    'charts' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-line-chart" aria-hidden="true"></i>', ['/admin/questionnaire/charts/', 'id' => $model->id], [
+                            'title' => 'Статистика',
+                        ]);
+                    },
+                ]
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

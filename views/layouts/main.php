@@ -1,20 +1,19 @@
 <?php
-/* @var $this \yii\web\View */
-/* @var $content string */
-use app\widgets\Alert;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
-use app\assets\AppAssetBottom;
-use yii\widgets\ActiveForm;
-use cinghie\fontawesome\FontAwesomeAsset;
-use yii\bootstrap\Modal;
-//FontAwesomeAsset::register($this);
-AppAsset::register($this);
+    use app\widgets\Alert;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\bootstrap\Nav;
+    use yii\bootstrap\NavBar;
+    use yii\widgets\Breadcrumbs;
+    use app\assets\AppAsset;
+    use app\assets\AppAssetBottom;
+    use yii\widgets\ActiveForm;
+    use cinghie\fontawesome\FontAwesomeAsset;
+    use yii\bootstrap\Modal;
+    //FontAwesomeAsset::register($this);
+    AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
