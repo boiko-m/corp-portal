@@ -58,11 +58,24 @@ class QuestionnaireController extends Controller
      */
     public function actionView($id)
     {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Displays a single Questionnaire model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionCharts($id)
+    {
         $dataProvider = new ActiveDataProvider([
             'query' => AnswersUser::find()->where(['id_question' => $id]),
         ]);
 
-        return $this->render('view', [
+        return $this->render('charts', [
             'model' => $this->findModel($id),
             'answers' => Answers::find()->where(['id_question' => $id])->all(),
             'dataProvider' => $dataProvider,

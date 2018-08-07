@@ -1,10 +1,11 @@
 <?php
+    use yii\helpers\Url;
+    use app\models\User;
+    use app\models\News;
+    use app\models\WantToProject;
 
-use yii\helpers\Url;
-use app\models\User;
-use app\models\News;
-use app\models\WantToProject;
-
+    $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count();
+    $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count();
 ?>
 
 <style>
@@ -13,9 +14,6 @@ use app\models\WantToProject;
         background-color: #F7931D;
     }
 </style>
-
-<?php $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count() ?>
-<?php $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count() ?>
 
 <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
@@ -86,7 +84,7 @@ use app\models\WantToProject;
                             </a>
                         </li>
                         <?endif;?>
-                        <?if(\Yii::$app->user->can("controlVideo")):?>
+                        <?if(\Yii::$app->user->can("Marketing")):?>
                         <li>
                             <a href="/admin/videos">
                                 <i class="fi-file"></i> <span>Видео</span>
@@ -112,13 +110,13 @@ use app\models\WantToProject;
                         </li>
                         <?endif;?>
 
-                        <?if(\Yii::$app->user->can("controlBroadcast")):?>
+                        <?if(\Yii::$app->user->can("Broadcast manager")):?>
                         <li>
                             <a href="/admin/broadcast"><i class="fi-file"></i><span> Трансляции </span></a>
                         </li>
                         <?endif;?>
 
-                        <?if(\Yii::$app->user->can("SuperAdmin")):?>
+                        <?if(\Yii::$app->user->can("Questionnaire manager")):?>
                         <li>
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Компания </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">
