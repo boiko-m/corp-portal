@@ -256,6 +256,11 @@ class ProfilesController extends Controller
         $time_online = time() - 180;
         $last_online =  Profile::find()->andWhere(['id' => $id])->one();
 
+        \Yii::$app->visit->set([
+            'controller' => 'profiles',
+            'action' => 'view',
+            'id'=> $id
+        ]);
 
 
         if($last_online->last_visit > $time_online && $last_online->last_visit != null){

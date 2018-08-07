@@ -5,15 +5,32 @@
     use yii\helpers\Html;
     use app\models\Profile;
     use yii\widgets\ActiveForm;
-    use app\widgets\LastModelVisit;
 
     $this->title = $model->name;
     $this->params['breadcrumbs'][] = ['label' => 'Список трансляции', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 
+
+    $users_online = \Yii::$app->visit->get([
+        'controller' => 'broadcast',
+        'action' => 'view',
+        'id'=> $model->id,
+        'return' => true
+    ]);
+
+
 ?>
 
 <style>
+    .user-online {
+        display: inline-block;
+    }
+    .user-online-block {
+        height:81px;
+    }
+    .user-online-block > div > div {
+        padding-right: 10px;
+    }
     .overlay {
         position: absolute;
         top: 0;
@@ -58,35 +75,72 @@
       -webkit-border-radius: 5px;
       border-radius: 5px;
       background: #e5e5e5;
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     }
 
     #carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
+      background: #e5e5e5;
+    }
+
+
+    .carouselExampleControls::-webkit-scrollbar {
+          height: 7px;
+    }
+
+    /* Track */
+    .carouselExampleControls::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px #e5e5e5;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+    }
+
+    /* Handle */
+    .carouselExampleControls::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: #e5e5e5;
+    }
+
+    .carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
       background: #c9c9c9;
     }
 </style>
 
 <div class="row">
-    <div class="col-8 card-box" style="position:relative; ">
-         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>  
+    <div class="col-8 card-box" style="position:relative; "> 
+         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>   
         <div class="col-12 overlay"></div>
         <div class="row">
             <div class="col-3 p-4">
                 <a href="/broadcastfull/<?=$model->id?>"  class="btn btn-light waves-effect"> <i class=" mdi mdi-access-point-network m-r-5"></i> <span>Во весь экран</span> </a>
             </div>
-            <div class="col-8 pt-4">
+            <div class="col-7 pt-4">
                 <div style="padding-top: 7px;">
                     Количество просматривающих: <br> 
                     <span style="font-size:30px">
                         <?php 
-                        echo LastModelVisit::widget([
-                            'controller' => 'broadcast',
-                            'action' => 'view',
-                            'id' => $model->id,
-                            'count' => true
-                        ]); ?>
+                        echo count($users_online); ?>
                     </span>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-none d-md-block user-online-block carouselExampleControls" style="width:3000px;overflow: auto !important;">
+                   <div style="height: 10px" class="d-flex">
+                       <?php foreach ($users_online as $user): ?>
+                           <div title = "<?=$user->first_name?> <?=$user->last_name?>" style = "width:60px; text-align: center" class = "user-online">
+                               <div>
+                                    <a href="/profiles/<?=$user->id?>" target = "_blank" class = "mx-auto d-block">
+                                       <img src="<?=Profile::getImageStatic($user->id);?>" class = "" alt="" style = "width:50px;border-radius: 100px;">
+                                    </a>
+                               </div>
+                               <div class="text-center">
+                                    <a href="/profiles/<?=$user->id?>" target = "_blank">
+                                        <small><?=$user->first_name?></small>
+                                    </a>
+                               </div>
+                           </div>
+                       <?php endforeach ?>
+                   </div>
             </div>
         </div>
     </div>

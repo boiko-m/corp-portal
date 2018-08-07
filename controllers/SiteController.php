@@ -54,6 +54,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+        \Yii::$app->visit->set([
+            'controller' => 'main',
+            'action' => 'view'
+        ]);
+
         $time_online = time() - 180;
         $online = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->limit(6)->all();
         $online_count = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->count();
