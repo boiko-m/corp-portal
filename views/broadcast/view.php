@@ -155,6 +155,7 @@
             <?php Pjax::begin(); ?>
             <?= Html::a("Обновить", ['/broadcast/'.$model->id], ['class' => 'btn btn-lg btn-primary', 'id' => 'refreshButton', 'style' => 'display:none;']) ?>
                 <?php foreach ($message as $mes): ?>
+                    <?php if ($mes['message'] != "") { ?>
                     <div class="row mx-1 justify-content-<?=($mes['user']['profile']['id'] == \Yii::$app->user->id) ? "end" : "start" ?>">
                         <div class="col-11">
                             <div class="row ">
@@ -182,6 +183,7 @@
                             <?php// echo "<pre>".print_r($mes, true)."</pre>"; ?>
                         </div>
                     </div>
+                    <?php } ?>
                 <?php endforeach ?>
             <?php Pjax::end(); ?>
         </div>
