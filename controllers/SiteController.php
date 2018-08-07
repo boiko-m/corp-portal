@@ -61,18 +61,14 @@ class SiteController extends Controller
         ]);
 
         $time_online = time() - 180;
-        $online = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->limit(6)->all();
-        $online_count = Profile::find()->where(['>','last_visit',$time_online])->orderby('last_visit desc')->count();
-
+        $online = Profile::find()->where(['>', 'last_visit', $time_online])->orderby('last_visit desc')->limit(6)->all();
+        $online_count = Profile::find()->where(['>', 'last_visit', $time_online])->orderby('last_visit desc')->count();
         $countOnline = count($online);
-
-        $birthdays = Profile::find()->where("birthday LIKE '%".date('m-d')."'")->all();
-
-         
+        $birthdays = Profile::find()->where("birthday LIKE '%" . date('m-d') . "'")->all();
         $live = Broadcast::find()->where(['link_only' => false, 'complete' => false])->limit(1)->one();
 
         return $this->render('index', [
-            'news' => News::find()->where(['status' => 1])->orderBy('id desc')->limit(6)->all(),
+            'news' => News::find()->where(['status' => 1])->with('newsCategory')->orderBy('id desc')->limit(6)->all(),
             "news_project" => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc')->limit(6)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
             'user_new' => Profile::find()->orderBy('date_job desc')->limit(6)->all(),

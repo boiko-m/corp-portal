@@ -3717,6 +3717,8 @@ h3.timeline-title {
 
 /*--------------- User setting project news -----------------*/
 
+/*--------------- Flicker -----------------*/
+
 .icon-broadcast-flicker {
   -webkit-animation: flicker 2s linear infinite; 
   animation: flicker 2s linear infinite; 
@@ -3734,6 +3736,8 @@ h3.timeline-title {
   50% { color: #FBB; }
   100% { color: #E50F0F; } 
 }
+
+/*--------------- Flicker -----------------*/
 
 #sidebar-menu > ul > div > div > li > a {
   padding: 10px 10px;

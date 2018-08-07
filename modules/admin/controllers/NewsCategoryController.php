@@ -3,22 +3,19 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\News;
 use app\models\NewsCategory;
-use app\models\NewsSearch;
-use yii\helpers\ArrayHelper;
+use app\models\NewsCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\UploadedFile;
 
 /**
- * NewsController implements the CRUD actions for News model.
+ * NewsCategoryController implements the CRUD actions for NewsCategory model.
  */
-class NewsController extends Controller
+class NewsCategoryController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -33,14 +30,13 @@ class NewsController extends Controller
     }
 
     /**
-     * Lists all News models.
+     * Lists all NewsCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
+        $searchModel = new NewsCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -49,7 +45,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single News model.
+     * Displays a single NewsCategory model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,18 +58,13 @@ class NewsController extends Controller
     }
 
     /**
-     * Creates a new News model.
+     * Creates a new NewsCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new News();
-        $model->date = strval(date_timestamp_get(date_create()));
-        $model->id_user = Yii::$app->user->id;
-        $model->type = 0;
-        $model->img_icon = '/img/gift/VAUPWTE.jpg';
-        $model->status = 1;
+        $model = new NewsCategory();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -81,12 +72,11 @@ class NewsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'news_category' => ArrayHelper::map(NewsCategory::find()->orderBy('id')->all(), 'id', 'name'),
         ]);
     }
 
     /**
-     * Updates an existing News model.
+     * Updates an existing NewsCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -102,12 +92,11 @@ class NewsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'news_category' => ArrayHelper::map(NewsCategory::find()->orderBy('id')->all(), 'id', 'name'),
         ]);
     }
 
     /**
-     * Deletes an existing News model.
+     * Deletes an existing NewsCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,19 +110,18 @@ class NewsController extends Controller
     }
 
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the NewsCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return News the loaded model
+     * @return NewsCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = NewsCategory::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
 }

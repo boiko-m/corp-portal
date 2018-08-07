@@ -10,6 +10,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\News;
 use app\models\NewsSearch;
+use app\models\NewsCategory;
+use yii\helpers\ArrayHelper;
 
 
 class NewsController extends Controller
@@ -68,6 +70,7 @@ class NewsController extends Controller
 
         return $this->render('offer', array(
             'model' => $model,
+            'news_category' => ArrayHelper::map(NewsCategory::find()->orderBy('id')->all(), 'id', 'name'),
         ));
     }
 }

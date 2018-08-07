@@ -54,7 +54,8 @@
             <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
         </form>
       </iframe>
-    </div>
+
+      <?= $form->field($model, 'id_news_category')->dropDownList($news_category, ['prompt' => '---- Выберите категорию новости ----']) ?>
 
     <div class="form-group form-create-button form-create-button">
         <?= Html::submitButton('Предложить новость', ['class' => 'btn btn-success']) ?>

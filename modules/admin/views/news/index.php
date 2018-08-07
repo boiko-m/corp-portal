@@ -43,13 +43,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title:ntext',
             // 'content:ntext',
-            'status',
+            'status:boolean',
             //'img_icon:ntext',
             //'id_user',
             //'status',
             //'like_active',
 
             ['class' => 'yii\grid\ActionColumn'],
+        ],
+        'pager' => [
+            'options'=>['class' => 'pagination float-right'],
+            'linkOptions' => ['class' => 'page-link'],
+            'hideOnSinglePage' => true,
+            'disabledPageCssClass' => 'page-link'
         ],
     ]); ?>
 </div>
