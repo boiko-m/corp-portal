@@ -3,9 +3,11 @@
     use app\models\User;
     use app\models\News;
     use app\models\WantToProject;
+    use app\models\Profile;
 
     $unconfirmedNews = News::find()->where(['status' => 0])->orderBy('id desc')->count();
     $unconfirmedStatements = WantToProject::find()->where(['complete' => 0])->orderBy('id desc')->count();
+    $scrumMaster = (Profile::findOne(Yii::$app->user->id))->id_profile_position;
 ?>
 
 <style>
@@ -53,7 +55,7 @@
                         </li>
                         <?endif;?>
                         <?if(\Yii::$app->user->can("controlProject")):?>
-                        <li>
+                        <li class="<?= $scrumMaster == 150 ? 'active' : null ?>">
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Проекты </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="/admin/projects">Проекты</a></li>
@@ -65,16 +67,14 @@
                             </ul>
                         </li>
                         <?endif;?>
-                        <?if(\Yii::$app->user->can("controlMessages")):?>
+                        <?if(\Yii::$app->user->can("allAccess")):?>
                         <li>
-
                             <a href="javascript: void(0);"><i class="fi-file"></i><span> Сообщения </span> <span class="menu-arrow"></span></a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="/admin/im-groups/">Группы</a></li>
                                 <li><a href="/admin/type-group-im">Тип групп</a></li>
                                 <li><a href="/admin/attachments-message">Вложения сообщений</a></li>
                             </ul>
-
                         </li>
                         <?endif;?>
                         <?if(\Yii::$app->user->can("controlNews")):?>
