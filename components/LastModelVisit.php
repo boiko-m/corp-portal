@@ -68,7 +68,7 @@ class LastModelVisit  extends \yii\base\Component
            }
 
            if ($this->return) {
-               $users = Profile::find()->where(['controller_visit' => $this->controller, 'action_visit' => $this->action, 'id_visit' => $this->id])->andWhere(['>','last_visit',$time_online])->all();  
+               $users = Profile::find()->where(['controller_visit' => $this->controller, 'action_visit' => $this->action, 'id_visit' => $this->id])->andWhere(['>','last_visit',$time_online])->orderby('last_visit desc')->all();  
            }
 
            return $users;
