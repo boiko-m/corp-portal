@@ -26,6 +26,7 @@
         display: inline-block;
     }
     .user-online-block {
+
         height:81px;
     }
     .user-online-block > div > div {
@@ -123,7 +124,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top: 10px;">
             <div class="col-12 d-none d-md-block user-online-block carouselExampleControls" style="width:3000px;overflow: auto !important;">
                    <div style="height: 10px" class="d-flex">
                        <?php foreach ($users_online as $user): ?>
