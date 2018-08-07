@@ -108,13 +108,10 @@
 
 <div class="row">
     <div class="col-8 card-box" style="position:relative; "> 
-         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>   
+         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
         <div class="col-12 overlay"></div>
         <div class="row">
-            <div class="col-3 p-4">
-                <a href="/broadcastfull/<?=$model->id?>"  class="btn btn-light waves-effect"> <i class=" mdi mdi-access-point-network m-r-5"></i> <span>Во весь экран</span> </a>
-            </div>
-            <div class="col-7 pt-4">
+            <div class="col-7">
                 <div style="padding-top: 7px;">
                     Количество просматривающих: <br> 
                     <span style="font-size:30px">
@@ -123,7 +120,11 @@
                     </span>
                 </div>
             </div>
+            <div class="col-5 text-right">
+                <a href="/broadcast/full/?id=<?=$model->id?>"  class="btn btn-light waves-effect"> <i class=" mdi mdi-access-point-network m-r-5"></i> <span>Во весь экран</span> </a>
+            </div>
         </div>
+        <hr>
         <div class="row" style="padding-top: 10px;">
             <div class="col-12 d-none d-md-block user-online-block carouselExampleControls" style="width:3000px;overflow: auto !important;">
                    <div style="height: 10px" class="d-flex">
