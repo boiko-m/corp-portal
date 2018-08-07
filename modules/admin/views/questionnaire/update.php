@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <h3 class="answer-zone-title">Область филиалов</h3>
+    <!-- <h3 class="answer-zone-title">Область филиалов</h3>
     <div class="row video-n-file-project-news-place">
       <div class="col-md-12 answer-zone-list" id="fields_filial">
         <? foreach ($question_filials as $qustion_filial) { ?>
@@ -119,7 +119,7 @@
         	</div>
         </form>
       </div>
-    </div>
+    </div> -->
 
 </div>
 
@@ -157,34 +157,34 @@
 
   //-------------- FILIAL ------------------
 
-  $('#form_filial').bind('submit', function (e) {
-    var answer = $('#form_filial').serialize();
-    $.ajax({
-      type: 'POST',
-      url: 'update?id=<?= $model->id ?>',
-      data: answer,
-      success: function(data) {
-      	let result = $.parseJSON(data);
-        $('#fields_filial').append('<p class="answer-zone-item" style="margin-left: 5px;">' + result.id_filials + ' <i class="fa fa-times answer-zone-icon" id="' + result.id + '"></i></p>');
-        $('#add_filial').val('');
-      },
-      error: function(xhr, str){
-        alert('Возникла ошибка: ' + xhr.responseCode);
-      }
-    });
-  });
+ //  $('#form_filial').bind('submit', function (e) {
+ //    var answer = $('#form_filial').serialize();
+ //    $.ajax({
+ //      type: 'POST',
+ //      url: 'update?id=<?= $model->id ?>',
+ //      data: answer,
+ //      success: function(data) {
+ //      	let result = $.parseJSON(data);
+ //        $('#fields_filial').append('<p class="answer-zone-item" style="margin-left: 5px;">' + result.id_filials + ' <i class="fa fa-times answer-zone-icon" id="' + result.id + '"></i></p>');
+ //        $('#add_filial').val('');
+ //      },
+ //      error: function(xhr, str){
+ //        alert('Возникла ошибка: ' + xhr.responseCode);
+ //      }
+ //    });
+ //  });
 
-	$('body').delegate('.filial-zone-icon','click',function() {
-  	element = $(this);
-    $.ajax({
-      type: 'GET',
-      url: 'update?id=<?= $model->id ?>&delete_filial=' + element.attr('id'),
-      success: function(data) {
-        element.closest('p').remove();
-      },
-      error: function(xhr, str){
-        alert('Возникла ошибка: ' + xhr.responseCode);
-      }
-    });
-  });
+	// $('body').delegate('.filial-zone-icon','click',function() {
+ //  	element = $(this);
+ //    $.ajax({
+ //      type: 'GET',
+ //      url: 'update?id=<?= $model->id ?>&delete_filial=' + element.attr('id'),
+ //      success: function(data) {
+ //        element.closest('p').remove();
+ //      },
+ //      error: function(xhr, str){
+ //        alert('Возникла ошибка: ' + xhr.responseCode);
+ //      }
+ //    });
+ //  });
 </script>
