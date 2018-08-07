@@ -108,7 +108,7 @@
 
 <div class="row">
     <div class="col-8 card-box" style="position:relative; "> 
-         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>   
+         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>   
         <div class="col-12 overlay"></div>
         <div class="row">
             <div class="col-3 p-4">
