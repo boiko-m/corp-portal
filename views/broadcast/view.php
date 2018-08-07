@@ -194,7 +194,7 @@
         <?= $form->field($chat, 'message')->input('text', ['placeholder' => 'Ваше сообщение','class' => 'pullmessage form-control', 'autocomplete' => 'off']) ?>
 
         <div class="form-group mx-0" >
-            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'style' => 'cursor:pointer;width:100%;','id' => 'pull_message']) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'style' => 'cursor:pointer;width:100%;','id' => 'pull_message', 'required' => true] ) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
