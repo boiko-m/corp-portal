@@ -9,6 +9,24 @@
     $this->title = 'Главная';
 ?>
 
+<style>
+    .news-a > a {
+      color:#444444;
+      transition: 0.3s;
+      display: block;
+      padding: 5px;
+    }
+    .news-a a:hover {
+      color: black;
+      background: #f5f5f5;
+    }
+    .news-offer {
+      text-decoration: underline;
+      font-size: 11px;
+      color: #747474;
+    }
+</style>
+
 <?php if ($live): ?>
     <div class="row ">
         <div class="col-12 mb-4 ml-3 w-100" >
