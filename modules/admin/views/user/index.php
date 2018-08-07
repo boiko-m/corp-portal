@@ -49,5 +49,11 @@
 
             ],
         ],
+        'pager' => [
+            'options'=>['class' => 'pagination float-right'],
+            'linkOptions' => ['class' => 'page-link'],
+            'hideOnSinglePage' => true,
+            'disabledPageCssClass' => 'page-link'
+        ],
     ]); ?>
 </div>

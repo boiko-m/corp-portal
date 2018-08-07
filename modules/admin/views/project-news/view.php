@@ -28,34 +28,29 @@
             'id',
             'title',
             'short_description',
-            'content:ntext',
+            'content:html',
             [
-                'attribute' => 'id_project',
+                'attribute' => 'project.name',
+                'label' => 'Проект',
+            ],
+            [
+                'attribute' => 'avatar',
+                'format' => ['image', ['width' => '100', 'height' => '100']],
                 'value' => function($model) {
-                    $project = app\models\Projects::findOne($model->id_project);
-                    return $project->name;
+                    return '/img/project-news/' . $model->avatar;
                 },
             ],
-            'avatar',
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
+                'format' => ['date', 'php:d.m.Y'],
             ],
             [
                 'attribute' => 'visible',
-                'value' => function($model) {
-                    $model->visible ? $ret = 'Да' : $ret = 'Нет';
-                    return $ret;
-                },
+                'format' => 'boolean',
             ],
             [
-                'attribute' => 'create_user',
-                'value' => function($model) {
-                    $profile = app\models\Profile::findOne($model->create_user);
-                    return $profile->name . "($model->create_user)";
-                },
+                'attribute' => 'profile.name',
+                'label' => 'Создатель',
             ],
         ],
     ]) ?>

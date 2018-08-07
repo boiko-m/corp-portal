@@ -22,8 +22,8 @@ $this->params['breadcrumbs'][] = $model->title;
     <h1 class="title-view"><?= Html::encode($model->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -36,18 +36,27 @@ $this->params['breadcrumbs'][] = $model->title;
         'model' => $model,
         'attributes' => [
             'id',
-            // 'date:ntext',
             [
                 'attribute' => 'date',
-                'format' => ['date', 'dd.MM.yyyy h:i:a']
+                'format' => ['date', 'php:d.m.Y'],
             ],
             'title:ntext',
-            'content:ntext',
-            'type',
-            'img_icon:ntext',
-            'id_user',
-            'status',
-            'like_active',
+            'content:html',
+            'type:boolean',
+            [
+                'attribute' => 'img_icon',
+                'format' => ['image', ['width' => '150', 'height' => '100']],
+            ],
+            [
+                'attribute' => 'profile.name',
+                'label' => 'Создатель',
+            ],
+            'status:boolean',
+            'like_active:boolean',
+            [
+                'attribute' => 'newsCategory.name',
+                'label' => 'Категория',
+            ]
         ],
     ]) ?>
 

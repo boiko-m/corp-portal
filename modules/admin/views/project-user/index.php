@@ -43,12 +43,16 @@
             ],
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
+                'format' => ['date', 'php:d.m.Y'],
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
+        ],
+        'pager' => [
+            'options'=>['class' => 'pagination float-right'],
+            'linkOptions' => ['class' => 'page-link'],
+            'hideOnSinglePage' => true,
+            'disabledPageCssClass' => 'page-link'
         ],
     ]); ?>
     <?php Pjax::end(); ?>

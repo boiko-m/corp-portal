@@ -29,28 +29,17 @@
         'attributes' => [
             'id',
             [
-                'attribute' => 'id_project',
-                'value' => function($model) {
-                    return (Projects::findOne($model->id_project))->name;
-                },
+                'attribute' => 'project.name',
+                'label' => 'Проект',
             ],
             [
-                'attribute' => 'id_user',
-                'value' => function($model) {
-                    return (Profile::findOne($model->id_user))->name;
-                },
+                'attribute' => 'profile.name',
+                'label' => 'Участник',
             ],
-            [
-                'attribute' => 'id_project_user_group',
-                'value' => function($model) {
-                    return (ProjectUserGroup::findOne($model->id_project_user_group))->name;
-                },
-            ],
+            'projectUserGroup.name',
             [
                 'attribute' => 'create_at',
-                'value' => function($model) {
-                    return date('d.m.Y', $model->create_at);
-                },
+                'format' => ['date', 'php:d.m.Y'],
             ],
         ],
     ]) ?>

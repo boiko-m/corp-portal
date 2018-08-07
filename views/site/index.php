@@ -8,25 +8,6 @@
 
     $this->title = 'Главная';
 ?>
-<style>
-    .news-a > a {
-        color:#444444;
-        transition: 0.3s;
-        display: block;
-        padding: 5px;
-    }
-    .news-a a:hover {
-        color: black;
-        background: #f5f5f5;
-    }
-    .news-offer {
-        text-decoration: underline;
-        font-size: 11px;
-        color: #747474;
-    }
-</style>
-
-
 
 <?php if ($live): ?>
     <div class="row ">
@@ -58,10 +39,15 @@
                 <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
                     <div style="margin-bottom: 15px;">
                         <?php foreach ($news as $item): ?>
-                            <div class="col-xs-12 news-a" >
-                                <a href="/news/<?= $item['id'] ?>" style="padding-left: 15px;">
-                                    <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
-                                </a>
+                            <div class="row" style="margin-left: 10px;">
+                                <div class="col-sm-1 news-a" style="flex: 0 0 2.333333%; margin-top: 10px;">
+                                    <i class="fa <?= $item['newsCategory']['pintogram'] ?> fa-2x" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-sm-11 news-a" style="flex: 0 0 94.666667%; max-width: 93.666667%;">
+                                    <a href="/news/<?= $item['id'] ?>">
+                                        <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
+                                    </a>
+                                </div>
                             </div>
                         <?php endforeach ?>
                         <div style="padding-left: 10px;">

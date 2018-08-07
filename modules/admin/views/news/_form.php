@@ -1,12 +1,7 @@
 <?php
-
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use dosamigos\tinymce\TinyMce;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\News */
-/* @var $form yii\widgets\ActiveForm */
+  use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
+  use dosamigos\tinymce\TinyMce;
 ?>
 
 <style> 
@@ -114,6 +109,7 @@ use dosamigos\tinymce\TinyMce;
       <?= $form->field($model, 'type')->textInput(['rows' => 6, 'disabled' => true]) ?>
       <?= $form->field($model, 'date')->textInput(['rows' => 6, 'disabled' => true]) ?>
       <?= $form->field($model, 'id_user')->textInput(['rows' => 6, 'disabled' => true]) ?>
+      <?= $form->field($model, 'id_news_category')->dropDownList($news_category, ['prompt' => '---- Выберите категорию новости ----']) ?>
     </div>
 
     <div class="section"><span>1</span>Настройки доступа и ограничения</div>

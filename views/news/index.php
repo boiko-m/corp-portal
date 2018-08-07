@@ -27,10 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'label' => 'Заголовок новости',
+                            'format' => 'raw',
                             'value' => function ($data) {
                                 return strip_tags($data->title);
                             },
-                            'format' => 'raw'
+                        ],
+                        [
+                            'attribute' => 'newsCategory.name',
+                            'label' => 'Категория',
                         ],
                     ],
                     'pager' => [

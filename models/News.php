@@ -33,9 +33,9 @@ class News extends ActiveRecord
     public function rules()
     {
         return [
-            [['date', 'title', 'content', 'img_icon', 'id_user', 'status', 'like_active'], 'required'],
+            [['date', 'title', 'content', 'img_icon', 'id_user', 'status', 'like_active', 'id_news_category'], 'required'],
             [['date', 'title', 'content', 'img_icon'], 'string'],
-            [['type', 'id_user', 'status', 'like_active'], 'integer'],
+            [['type', 'id_user', 'status', 'like_active', 'id_news_category'], 'integer'],
         ];
     }
 
@@ -54,11 +54,22 @@ class News extends ActiveRecord
             'id_user' => 'Пользлватель',
             'status' => 'Статус',
             'like_active' => 'Доступ к оцениванию',
+            'id_news_category' => 'Категория',
         ];
     }
 
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
+    }
+
+    public function getNewsCategory()
+    {
+        return $this->hasOne(NewsCategory::className(), ['id' => 'id_news_category']);
     }
 }

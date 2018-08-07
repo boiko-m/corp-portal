@@ -3,36 +3,26 @@
     use yii\grid\GridView;
     use yii\widgets\Pjax;
 
-    $this->title = 'Тип групп диалогов';
+    $this->title = 'Катерогии новостей';
     $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="news-category-index">
 
-<style>
-    .title-type-group-im {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-</style>
-
-<div class="type-group-im-index">
-
-    <h1 class="title-type-group-im"><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать тип', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать катерогию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'name',
-            'code',
+            'pintogram',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -133,6 +133,14 @@ class ProjectNews extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'create_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getProject()
     {
         return $this->hasOne(Projects::className(), ['id' => 'id_project']);
