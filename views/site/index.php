@@ -98,7 +98,7 @@
                                                         </a>
                                                     </div>
                                                     <div>
-                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
+                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y H:i:s", $item['date']) ?></small>
                                                     </div>
                                                 </div>
                                             </div>

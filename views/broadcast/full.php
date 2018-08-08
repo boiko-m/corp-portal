@@ -43,7 +43,7 @@
     .overlay {
         position: absolute;
         top: 0;
-        width: calc(100% - 70px);
+        width: 100%;
         height: 100%;
         background-image: -webkit-linear-gradient(top, black, black 10%, transparent 10%, transparent 100%);
     }
@@ -118,8 +118,19 @@
     .carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
       background: #c9c9c9;
     }
+    #trigger_chat {
+        cursor: pointer;
+        background: #f1f1f1
+    }
+    #trigger_chat:hover{
+        background: #e9e9e9;
+    }
 </style>
-
+    <div style="position: fixed; z-index: 10;right:0px">
+        <div id = "trigger_chat" class="p-2">
+            <i class="fa fa-commenting" style=""></i> Отображение чата
+        </div>
+    </div>
     <div class="row" style="margin:0px;">
         <div class="col-12" style="position:absolute; padding: 0px;"> 
              <iframe class="col-12" id="broadcast-player" height="100%" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
@@ -131,7 +142,8 @@
                     <h4>Чат</h4>
                 </div>
             </div>
-            <div id = "carouselExampleControls" style="overflow: auto !important;">
+
+            <div id = "carouselExampleControls" class = "mt-2" style="overflow: auto !important;">
                 <?php Pjax::begin(); ?>
                 <?= Html::a("Обновить", ['/broadcast/full/?id='.$model->id], ['class' => 'btn btn-lg btn-primary', 'id' => 'refreshButton', 'style' => 'display:none;']) ?>
                     <?php foreach ($message as $mes): ?>
@@ -247,8 +259,10 @@ $(document).ready(function() {
         var height = document.documentElement.clientHeight;
         $('body').css({'min-height' : height, 'overflow' : 'hidden'});
         $('iframe').attr('height', height);
-        var height2 = height-130;
+        var height2 = height-140;
         $('#carouselExampleControls').css({'height': height2});
-
+        $('#trigger_chat').on('click', function() {
+            $('.chat').fadeToggle( "slow", "linear" );
+        });
     });
 </script>
