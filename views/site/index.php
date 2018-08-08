@@ -40,13 +40,37 @@
     .news-container i {
         color: #bfbfbf;
     }
+    .btn-outline-danger {
+        color: #e50f0f;
+        border-color: #e50f0f;
+    }
+    .btn-outline-danger:hover {
+        color: #fff;
+        background: #e50f0f;
+        opacity: 1;
+    }
+    .warning * {
+        line-height: 1;
+    }
 </style>
 
 <?php if ($live): ?>
-    <div class="row ">
+    <div class="row warning">
         <div class="col-12 mb-4 w-100 ml-3" >
             <div class="row">
-                <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-3 ">Сейчас проходит трансляция! <br> <b>Подключайтесь!</b></a>
+                <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-6 ">
+                    
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <i class="mdi mdi-access-point icon-left-menu-broadcast icon-broadcast-flicker" style="font-weight: bold; font-size: 30px"></i>
+                        </div>
+                        <div class="col-9 text-left" style="word-wrap:break-word">
+                            <b>Подключайтесь!</b> <br>
+                            <small>Сейчас проходит трансляция!</small> <br>
+                            <b>Тема:</b> Посадочная страница 
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
