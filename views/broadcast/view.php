@@ -35,9 +35,8 @@
     .overlay {
         position: absolute;
         top: 0;
-        margin: 20px 15px 15px 15px;
-        width: calc(100% - 70px);
-        height: 100%;
+        width: 100%;
+        height: 900px;
         background-image: -webkit-linear-gradient(top, black, black 10%, transparent 10%, transparent 100%);
     }
     .chat > div > div > div{

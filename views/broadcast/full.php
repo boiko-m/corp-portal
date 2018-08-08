@@ -118,14 +118,28 @@
     .carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
       background: #c9c9c9;
     }
-    #trigger_chat {
+    #trigger_chat, #trigger_chat2{
         cursor: pointer;
-        background: #f1f1f1
+        background: #f1f1f1;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        color:black;
     }
-    #trigger_chat:hover{
+    #trigger_chat {
+        border-bottom-right-radius:0px;
+    }
+    #trigger_chat:hover, #trigger_chat2:hover{
         background: #e9e9e9;
     }
 </style>
+
+    <div style="position: fixed; z-index: 10;right:170px">
+        <a href="/broadcast/<?=$model->id?>">
+            <div id = "trigger_chat2" class="p-2">
+                <i class="fa fa-window-restore"></i> <span class="pl-1">Выйти</span>
+            </div>
+        </a>
+    </div>
     <div style="position: fixed; z-index: 10;right:0px">
         <div id = "trigger_chat" class="p-2">
             <i class="fa fa-commenting" style=""></i> Отображение чата
@@ -261,6 +275,7 @@ $(document).ready(function() {
         $('iframe').attr('height', height);
         var height2 = height-140;
         $('#carouselExampleControls').css({'height': height2});
+        $('.chat').fadeToggle( "slow", "linear" );
         $('#trigger_chat').on('click', function() {
             $('.chat').fadeToggle( "slow", "linear" );
         });

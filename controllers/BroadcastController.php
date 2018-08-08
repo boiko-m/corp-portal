@@ -75,7 +75,7 @@ class BroadcastController extends Controller
         return $this->render('view', [
             'chat' => $chat,
             'model' => $this->findModel($id),
-            'message' => array_reverse(ChatBroadcast::find()->where(['id_broadcast' => $id])->orderby('id desc')->with('user.profile')->limit(15)->asArray()->all()),
+            'message' => array_reverse(ChatBroadcast::find()->where(['id_broadcast' => $id])->orderby('id desc')->with('user.profile')->limit(25)->asArray()->all()),
         ]);
     }
 
@@ -96,7 +96,7 @@ class BroadcastController extends Controller
         return $this->render('full', [
             'chat' => $chat,
             'model' => $this->findModel($id),
-            'message' => array_reverse(ChatBroadcast::find()->where(['id_broadcast' => $id])->orderby('id desc')->with('user.profile')->limit(15)->asArray()->all()),
+            'message' => array_reverse(ChatBroadcast::find()->where(['id_broadcast' => $id])->orderby('id desc')->with('user.profile')->limit(25)->asArray()->all()),
         ]);
     }
 
