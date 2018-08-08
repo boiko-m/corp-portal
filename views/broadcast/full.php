@@ -43,7 +43,7 @@
     .overlay {
         position: absolute;
         top: 0;
-        width: calc(100% - 70px);
+        width: 100%;
         height: 100%;
         background-image: -webkit-linear-gradient(top, black, black 10%, transparent 10%, transparent 100%);
     }
@@ -118,11 +118,36 @@
     .carouselExampleControls::-webkit-scrollbar-thumb:window-inactive {
       background: #c9c9c9;
     }
+    #trigger_chat, #trigger_chat2{
+        cursor: pointer;
+        background: #f1f1f1;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        color:black;
+    }
+    #trigger_chat {
+        border-bottom-right-radius:0px;
+    }
+    #trigger_chat:hover, #trigger_chat2:hover{
+        background: #e9e9e9;
+    }
 </style>
 
+    <div style="position: fixed; z-index: 10;right:170px">
+        <a href="/broadcast/<?=$model->id?>">
+            <div id = "trigger_chat2" class="p-2">
+                <i class="fa fa-window-restore"></i> <span class="pl-1">Выйти</span>
+            </div>
+        </a>
+    </div>
+    <div style="position: fixed; z-index: 10;right:0px">
+        <div id = "trigger_chat" class="p-2">
+            <i class="fa fa-commenting" style=""></i> Отображение чата
+        </div>
+    </div>
     <div class="row" style="margin:0px;">
         <div class="col-12" style="position:absolute; padding: 0px;"> 
-             <iframe class="col-12" id="broadcast-player" height="100%" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
+             <iframe class="col-12" id="broadcast-player" height="100%" src="<?= $model->link ?>?autoplay=1&controls=0&disablekb=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
             <div class="col-12 overlay"></div>
         </div>
         <div class="col-4 chat">
@@ -131,7 +156,8 @@
                     <h4>Чат</h4>
                 </div>
             </div>
-            <div id = "carouselExampleControls" style="overflow: auto !important;">
+
+            <div id = "carouselExampleControls" class = "mt-2" style="overflow: auto !important;">
                 <?php Pjax::begin(); ?>
                 <?= Html::a("Обновить", ['/broadcast/full/?id='.$model->id], ['class' => 'btn btn-lg btn-primary', 'id' => 'refreshButton', 'style' => 'display:none;']) ?>
                     <?php foreach ($message as $mes): ?>
@@ -226,7 +252,7 @@
     function concealment(){
       $('.overlay').css('background-image', 'none')
     }
-    setTimeout(concealment, 8000);
+    setTimeout(concealment, 3000);
 </script>
 
 
@@ -247,8 +273,11 @@ $(document).ready(function() {
         var height = document.documentElement.clientHeight;
         $('body').css({'min-height' : height, 'overflow' : 'hidden'});
         $('iframe').attr('height', height);
-        var height2 = height-130;
+        var height2 = height-140;
         $('#carouselExampleControls').css({'height': height2});
-
+        $('.chat').fadeToggle( "slow", "linear" );
+        $('#trigger_chat').on('click', function() {
+            $('.chat').fadeToggle( "slow", "linear" );
+        });
     });
 </script>

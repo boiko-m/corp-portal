@@ -35,10 +35,9 @@
     .overlay {
         position: absolute;
         top: 0;
-        margin: 20px 15px 15px 15px;
-        width: calc(100% - 70px);
-        height: 100%;
-        background-image: -webkit-linear-gradient(top, black, black 10%, transparent 10%, transparent 100%);
+        width: 100%;
+        height: 900px;
+        
     }
     .chat > div > div > div{
         transition: 0.3s;
@@ -108,7 +107,7 @@
 
 <div class="row">
     <div class="col-8 card-box" style="position:relative; "> 
-         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
+         <iframe class="col-12" id="broadcast-player" height="490" src="<?= $model->link ?>?autoplay=1&controls=0&disablekb=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
         <div class="col-12 overlay"></div>
         <div class="row">
             <div class="col-7">
@@ -129,8 +128,8 @@
             <div class="col-12 d-none d-md-block user-online-block carouselExampleControls" style="width:3000px;overflow: auto !important;">
                    <div style="height: 10px" class="d-flex">
                        <?php foreach ($users_online as $user): ?>
-                           <div title = "<?=$user->first_name?> <?=$user->last_name?>" style = "width:60px; text-align: center" class = "user-online">
-                               <div>
+                           <div title = "<?=$user->first_name?> <?=$user->last_name?>" style = "width:70px; text-align: center" class = "user-online">
+                               <div style="width: 60px">
                                     <a href="/profiles/<?=$user->id?>" target = "_blank" class = "mx-auto d-block">
                                        <img src="<?=Profile::getImageStatic($user->id);?>" class = "" alt="" style = "width:50px;border-radius: 100px;">
                                     </a>

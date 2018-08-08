@@ -40,21 +40,46 @@
     .news-container i {
         color: #bfbfbf;
     }
+    .btn-outline-danger {
+        color: #e50f0f;
+        border-color: #e50f0f;
+    }
+    .btn-outline-danger:hover {
+        color: #fff;
+        background: #e50f0f;
+        opacity: 1;
+    }
+    .warning * {
+        line-height: 1;
+    }
 </style>
 
 <?php if ($live): ?>
-    <div class="row ">
-        <div class="col-12 mb-4 w-100" >
+    <div class="row warning">
+        <div class="col-12 mb-4 w-100 ml-3" >
             <div class="row">
-                <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-3 ">Сейчас проходит трансляция! <br> <b>Подключайтесь!</b></a>
+                <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-6 ">
+                    
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <i class="mdi mdi-access-point icon-left-menu-broadcast icon-broadcast-flicker" style="font-weight: bold; font-size: 30px"></i>
+                        </div>
+                        <div class="col-9 text-left" style="word-wrap:break-word">
+                            <b>Подключайтесь!</b> <br>
+                            <small>Сейчас проходит трансляция!</small> <br>
+                            <b>Тема:</b> <?=$live->name?> 
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 <?php endif ?>
 
 <div class="row">
-    <div class="col-xs-12 col-md-8 card px-0" style="margin-bottom: 30px;">
-            <div class="row">
+    <div class="col-xs-12 col-md-8 m-b-30" style="margin-bottom: 30px;">
+            <div class="card pb-2">
+                <div class="row">
                 <div class="col-12">
                     <ul class="nav nav-tabs  nav-project tabs-bordered" style="padding-top: 3px">
                         <li class="nav-item">
@@ -80,10 +105,10 @@
                                     <div class="col-12">
                                         <?php foreach ($news as $item): ?>
                                             <div class="row pl-2 pt-3 align-items-center news-container">
-                                                <div class="d-none d-md-block col-md-1 text-right">
+                                                <div class="d-none d-lg-block col-md-1 text-right pr-0">
                                                     <i class="fa <?= $item['newsCategory']['pintogram'] ?> fa-2x" aria-hidden="true"></i>
                                                 </div>
-                                                <div class="col-md-10 p-0" >
+                                                <div class="col-md-10" >
                                                     <div>
                                                         <?php $visit = Yii::$app->visit->get([
                                                             'controller' => 'news',
@@ -97,7 +122,7 @@
                                                         </a>
                                                     </div>
                                                     <div>
-                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
+                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y H:i:s", $item['date']) ?></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,11 +133,11 @@
 
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        <div class="row align-items-center mr-2">
+                                        <div class="row align-items-center mx-2">
                                             <div class="col-8">
                                                 <a href="/news/offer" class="news-offer">Предложить новость</a>
                                             </div>
-                                            <a href="/news" class="btn waves-effect w-md btn-light col-4">Открыть все новости компании</a>
+                                            <a href="/news" class="btn waves-effect w-md btn-light col-12 col-lg-4">Открыть все новости компании</a>
                                         </div>
                                     </div>
                                 </div>
@@ -135,6 +160,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
     </div>
 
