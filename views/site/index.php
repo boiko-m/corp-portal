@@ -67,7 +67,7 @@
                         <div class="col-9 text-left" style="word-wrap:break-word">
                             <b>Подключайтесь!</b> <br>
                             <small>Сейчас проходит трансляция!</small> <br>
-                            <b>Тема:</b> Посадочная страница 
+                            <b>Тема:</b> <?=$live->name?> 
                         </div>
                     </div>
                 </a>
