@@ -4,6 +4,8 @@ namespace app\modules\admin\controllers;
 
 use Yii;
 use app\models\ProjectUser;
+use app\models\Projects;
+use app\models\Profile;
 use app\models\ProjectUserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -66,8 +68,11 @@ class ProjectUserController extends Controller
     {
         $model = new ProjectUser();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_project = (Projects::findOne(['name' => $model->id_project]))->id;
+            $model->id_user = (Profile::find()->where('CONCAT_WS(" ", last_name, first_name, middle_name) LIKE :search')->params([':search' => '%' . $model->id_user . '%'])->one())->id;
+            $model->save();
+            $this->refresh();
         }
 
         return $this->render('create', [
@@ -85,8 +90,13 @@ class ProjectUserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->id_project = (Projects::findOne($model->id_project))->name;
+        $model->id_user = (Profile::find()->select(['CONCAT_WS(" ",last_name,first_name, middle_name) as full_name'])->where(['id' => $model->id_user])->one())->full_name;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_project = (Projects::findOne(['name' => $model->id_project]))->id;
+            $model->id_user = (Profile::find()->where('CONCAT_WS(" ", last_name, first_name, middle_name) LIKE :search')->params([':search' => '%' . $model->id_user . '%'])->one())->id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -27,8 +27,8 @@
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <? $listdata = Projects::find()->select(['id as value', 'name as label'])->asArray()->all(); ?>
-    <?= $form->field($model, 'id_project')->widget(
+    <? $listdata = Projects::find()->select(['name as value', 'name as label', 'id as id'])->asArray()->all(); ?>
+    <?= $form->field($model, 'id_project', ['enableClientValidation' => false])->widget(
 	    AutoComplete::className(), [            
 	        'clientOptions' => [
 	            'source' => $listdata,
@@ -39,8 +39,8 @@
 	    ])->input('text', ['placeholder' => "Введите название проекта"]);
 	?>
 
-	<? $listdata = Profile::find()->select(['id as value', 'CONCAT_WS(" ",last_name,first_name) as label'])->asArray()->all(); ?>
-    <?= $form->field($model, 'id_user')->widget(
+	<? $listdata = Profile::find()->select(['CONCAT_WS(" ",last_name,first_name, middle_name) as value', 'CONCAT_WS(" ",last_name,first_name, middle_name) as label', 'id as id'])->asArray()->all(); ?>
+    <?= $form->field($model, 'id_user', ['enableClientValidation' => false])->widget(
 	    AutoComplete::className(), [            
 	        'clientOptions' => [
 	            'source' => $listdata,
