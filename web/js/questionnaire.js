@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     if ($('#question').length == 0) {
       $('.qiestion-controle').hide();
-      $('.carousel').css('margin-bottom', ' 150px');
+      $('.carousel').css('margin-bottom', ' 140px');
       $('.wait-more').show();
     }
 });
