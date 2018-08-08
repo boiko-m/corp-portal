@@ -107,6 +107,15 @@ class ProjectNewsController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
             $model->save();
+            $news = new News;
+            $news->title = $model->title;
+            $news->date = strval(time());
+            $news->id_user = Yii::$app->user->id;
+            $news->status = 1;
+            $news->like_active = 1;
+            $news->id_news_category = (NewsCategory::findOne(['name' => 'Проекты']))->id;
+            $news->link_project_news = '/project-news/' . $model->id;
+            $news->save();
             // return $this->redirect(['view', 'id' => $model->id]);
         }
 
