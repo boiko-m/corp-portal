@@ -37,6 +37,16 @@
     .news-container a:hover {
         opacity: 0.7;
     }
+    .news-container small a {
+        font-weight: normal;
+        color: black;
+        opacity: 0.9;
+        transition: 0.3s;
+    }
+    .news-container small a:hover {
+        text-decoration: underline;
+        color: black;
+    }
     .news-container i {
         color: #bfbfbf;
     }
@@ -122,7 +132,7 @@
                                                         </a>
                                                     </div>
                                                     <div>
-                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y H:i:s", $item['date']) ?></small>
+                                                         <small>Категория: <a href="news-category/<?= $item['newsCategory']['id'] ?>" target="_blank"><b><?= $item['newsCategory']['name'] ?></b></a> от <?= date("d.m.Y H:i:s", $item['date']) ?></small>
                                                     </div>
                                                 </div>
                                             </div>
