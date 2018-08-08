@@ -11,7 +11,7 @@
     $this->params['breadcrumbs'][] = $this->title;
 
 
-    $users_online = \Yii::$app->visit->get([
+    $users_online = \Yii::$app->visit_cur->get([
         'controller' => 'broadcast',
         'action' => 'view',
         'id'=> $model->id,

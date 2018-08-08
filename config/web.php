@@ -92,8 +92,11 @@ $config = [
         'AddCoinClass'=>[
             'class'=>'app\components\AddCoinClass'
         ],
-        'visit' => [
+        'visit_cur' => [
             'class' => 'app\components\LastModelVisit'
+        ],
+        'visit' => [
+            'class' => 'app\components\VisitUser'
         ],
         /*'session'=>[
             'class'=>'yii\web\DbSession',

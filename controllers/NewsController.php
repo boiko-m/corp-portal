@@ -31,11 +31,16 @@ class NewsController extends Controller
         $like = Vote::find()->where(['user_id' => $user_id])->andWhere(['entity' =>$newsEntity])->andWhere(['target_id' =>$id])->one();
         if(isset($like)){
             $like = 'active-like';
-
-        }
-        else{
+        } else{
             $like = '';
         }
+
+        \Yii::$app->visit->set([
+            'controller' => 'news',
+            'action' => 'view',
+            'id' => $id
+        ]);
+
         return $this->render('view', array(
             'news' => News::findOne($id), 'like' =>$like,
         ));

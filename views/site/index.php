@@ -25,11 +25,26 @@
       font-size: 11px;
       color: #747474;
     }
+    .news-container * {
+        line-height: 1;
+    }
+    .news-container a {
+        font-weight: normal;
+        color: <?=Yii::$app->setting->getValue('navbar-background-color')?>;
+        opacity: 0.9;
+        transition: 0.3s;
+    }
+    .news-container a:hover {
+        opacity: 0.7;
+    }
+    .news-container i {
+        color: #bfbfbf;
+    }
 </style>
 
 <?php if ($live): ?>
     <div class="row ">
-        <div class="col-12 mb-4 ml-3 w-100" >
+        <div class="col-12 mb-4 w-100" >
             <div class="row">
                 <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-3 ">Сейчас проходит трансляция! <br> <b>Подключайтесь!</b></a>
             </div>
@@ -38,64 +53,89 @@
 <?php endif ?>
 
 <div class="row">
-    <div class="col-xs-12 col-md-8 m-b-30">
-        <div class="card">
-            <ul class="nav nav-tabs nav-justified nav-project tabs-bordered" style="padding-top: 3px">
-                <li class="nav-item">
-                    <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'active' : null ?>">
-                        Новости компании
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
-                        Новости проектов
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content" style="padding-top: 10px;">
-                <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
-                    <div style="margin-bottom: 15px;">
-                        <?php foreach ($news as $item): ?>
-                            <div class="row" style="margin-left: 10px;">
-                                <div class="col-sm-1 news-a" style="flex: 0 0 2.333333%; margin-top: 10px;">
-                                    <i class="fa <?= $item['newsCategory']['pintogram'] ?> fa-2x" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-sm-11 news-a" style="flex: 0 0 94.666667%; max-width: 93.666667%;">
-                                    <a href="/news/<?= $item['id'] ?>">
-                                        <?=$item['title'] ?> <br><small class="">от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
-                                    </a>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                        <div style="padding-left: 10px;">
-                            <div style="padding-top: 10px; display: inline-block; ;">
-                                <a href="/news" class="btn waves-effect w-md btn-light">Открыть все новости компании</a>
-                            </div>
-                            <div style="padding-top: 10px; display: inline-block;">
-                                <a href="/news/offer" class="news-offer">Предложить новость</a>
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-xs-12 col-md-8 card px-0" style="margin-bottom: 30px;">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs  nav-project tabs-bordered" style="padding-top: 3px">
+                        <li class="nav-item">
+                            <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'active' : null ?>">
+                                Новости компании
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
+                                Новости проектов
+                            </a>
+                        </li> -->
+                    </ul>
                 </div>
-                <div id="home-b2" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'fade active show' : null ?>">
-                    <div style="margin-bottom: 15px;">
-                        <?php foreach ($news_project as $item): ?>
-                            <div class="col-xs-12 news-a">
-                                <a href="/project-news/<?= $item['id'] ?>" style = "padding-left: 15px;">
-                                    <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s", $item['create_at']) ?></small>
-                                </a>
-                            </div>
-                        <?php endforeach ?>
-                        <div style="padding-left: 10px;">
-                            <div style="padding-top: 10px; display: inline-block;">
-                                <a href="/project-news" class="btn waves-effect w-md btn-light">Открыть все новости проектов</a>
+            </div>
+
+            <div class="row ">
+                <div class="col-12">
+                    <div class="tab-content pt-0">
+                        <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
+                                
+                                <div class="row align-items-center">
+                                    <div class="col-12">
+                                        <?php foreach ($news as $item): ?>
+                                            <div class="row pl-2 pt-3 align-items-center news-container">
+                                                <div class="d-none d-md-block col-md-1 text-right">
+                                                    <i class="fa <?= $item['newsCategory']['pintogram'] ?> fa-2x" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="col-md-10 p-0" >
+                                                    <div>
+                                                        <?php $visit = Yii::$app->visit->get([
+                                                            'controller' => 'news',
+                                                            'action' => 'view',
+                                                            'id' => $item['id'],
+                                                            'save' => false,
+                                                            'one' => true
+                                                        ]); ?>
+                                                        <a href="/news/<?= $item['id'] ?>" style = "<?=($visit) ? 'opacity: 0.3' : '';?>">
+                                                            <?=$item['title'] ?>
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                         <small>Категория: <b><?=$item['newsCategory']['name']?></b> от <?= date("d.m.Y h:i:s", $item['date']) ?></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php endforeach ?>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <div class="row align-items-center mr-2">
+                                            <div class="col-8">
+                                                <a href="/news/offer" class="news-offer">Предложить новость</a>
+                                            </div>
+                                            <a href="/news" class="btn waves-effect w-md btn-light col-4">Открыть все новости компании</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div id="home-b2" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'fade active show' : null ?>">
+                            <div style="margin-bottom: 15px;">
+                                <?php foreach ($news_project as $item): ?>
+                                    <div class="col-xs-12 news-a">
+                                        <a href="/project-news/<?= $item['id'] ?>" style = "padding-left: 15px;">
+                                            <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s", $item['create_at']) ?></small>
+                                        </a>
+                                    </div>
+                                <?php endforeach ?>
+                                <div style="padding-left: 10px;">
+                                    <div style="padding-top: 10px; display: inline-block;">
+                                        <a href="/project-news" class="btn waves-effect w-md btn-light">Открыть все новости проектов</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <div class="col-xs-12 col-md-4 m-b-30">
