@@ -147,7 +147,7 @@
     </div>
     <div class="row" style="margin:0px;">
         <div class="col-12" style="position:absolute; padding: 0px;"> 
-             <iframe class="col-12" id="broadcast-player" height="100%" src="<?= $model->link ?>?autoplay=1&controls=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
+             <iframe class="col-12" id="broadcast-player" height="100%" src="<?= $model->link ?>?autoplay=1&controls=0&disablekb=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media;" style ="padding: 0px;border-radius: 3px;" allowfullscreen></iframe>   
             <div class="col-12 overlay"></div>
         </div>
         <div class="col-4 chat">
@@ -252,7 +252,7 @@
     function concealment(){
       $('.overlay').css('background-image', 'none')
     }
-    setTimeout(concealment, 8000);
+    setTimeout(concealment, 3000);
 </script>
 
 
