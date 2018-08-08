@@ -55,7 +55,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        \Yii::$app->visit->set([
+        \Yii::$app->visit_cur->set([
             'controller' => 'main',
             'action' => 'view'
         ]);

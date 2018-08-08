@@ -11,7 +11,7 @@
     $this->params['breadcrumbs'][] = $this->title;
 
 
-    $users_online = \Yii::$app->visit->get([
+    $users_online = \Yii::$app->visit_cur->get([
         'controller' => 'broadcast',
         'action' => 'view',
         'id'=> $model->id,
@@ -52,6 +52,7 @@
         right:0px;
         z-index:1;
         background: #f1f1f1;
+        height: 2000px
     }
     .chat > div > div > div{
         transition: 0.3s;
@@ -235,7 +236,6 @@
 
 $(document).ready(function() {
     setInterval(function(){ $("#refreshButton").click(); }, 2000);
-     console.log(123);
 });
 </script>
 
@@ -244,7 +244,6 @@ $(document).ready(function() {
         $("*").parents('.parents').unwrap();
         var elements = $('.parents').html();
         $("#wrapper").html(elements);
-        console.log(123);
         var height = document.documentElement.clientHeight;
         $('body').css({'min-height' : height, 'overflow' : 'hidden'});
         $('iframe').attr('height', height);

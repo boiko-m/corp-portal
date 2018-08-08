@@ -256,7 +256,7 @@ class ProfilesController extends Controller
         $time_online = time() - 180;
         $last_online =  Profile::find()->andWhere(['id' => $id])->one();
 
-        \Yii::$app->visit->set([
+        \Yii::$app->visit_cur->set([
             'controller' => 'profiles',
             'action' => 'view',
             'id'=> $id
