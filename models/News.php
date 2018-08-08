@@ -33,8 +33,8 @@ class News extends ActiveRecord
     public function rules()
     {
         return [
-            [['date', 'title', 'content', 'img_icon', 'id_user', 'status', 'like_active', 'id_news_category'], 'required'],
-            [['date', 'title', 'content', 'img_icon'], 'string'],
+            [['date', 'title', 'id_user', 'status', 'like_active'], 'required'],
+            [['date', 'title', 'content', 'img_icon', 'link_project_news'], 'string'],
             [['type', 'id_user', 'status', 'like_active', 'id_news_category'], 'integer'],
         ];
     }
@@ -55,6 +55,7 @@ class News extends ActiveRecord
             'status' => 'Статус',
             'like_active' => 'Доступ к оцениванию',
             'id_news_category' => 'Категория',
+            'link_project_news' => 'Ссылка на новость проекта',
         ];
     }
 

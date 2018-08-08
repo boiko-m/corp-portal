@@ -112,7 +112,7 @@
       <?= $form->field($model, 'id_news_category')->dropDownList($news_category, ['prompt' => '---- Выберите категорию новости ----']) ?>
     </div>
 
-    <div class="section"><span>1</span>Настройки доступа и ограничения</div>
+    <div class="section"><span>3</span>Настройки доступа и ограничения</div>
     <div class="inner-wrap">
       <?= $form->field($model, "status")->checkbox(['value' => 1]); ?>
       <?= $form->field($model, "like_active")->checkbox(); ?>

@@ -3,6 +3,8 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
+use app\models\News;
+use app\models\NewsCategory;
 use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\ProjectNewsSearch;
@@ -10,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use yii\web\UploadedFile;
 
 /**
  * ProjectNewsController implements the CRUD actions for ProjectNews model.
@@ -68,15 +71,19 @@ class ProjectNewsController extends Controller
     {
         $model = new ProjectNews();
 
-        // if (Yii::$app->request->post('link_video') !== null) { 
-        //     return 0;
-        // }
-
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
+            $model->image = UploadedFile::getInstance($model, 'image');
     
-            if ($model->save()) 
-            {
+            if ($model->save()) {
+                $news = new News;
+                $news->title = $model->title;
+                $news->date = strval(time());
+                $news->id_user = Yii::$app->user->id;
+                $news->status = 1;
+                $news->like_active = 1;
+                $news->id_news_category = (NewsCategory::findOne(['name' => 'Проекты']))->id;
+                $news->link_project_news = '/project-news/' . $model->id;
+                $news->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
