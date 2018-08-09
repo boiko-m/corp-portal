@@ -87,7 +87,7 @@ class ProfilesController extends Controller
             $dataProvider->query->where(['>','last_visit',$time_online]);
 
         }
-        $alphabetModels = Profile::find()->select(['last_name'])->all();
+        $alphabetModels = Profile::find()->select(['last_name'])->andWhere(['dismissed' => null])->all();
 
 
         return $this->render('index', [

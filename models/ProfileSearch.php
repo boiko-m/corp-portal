@@ -51,7 +51,7 @@ class ProfileSearch extends Profile
             $query->limit(15);
 
         }
-        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")]);
+        $query->select(['*', new \yii\db\Expression("CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`")])->andWhere(['dismissed' => null]);
         //$query->select("*, CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`) as `name`");
 
         //echo "<pre>".print_r($query, true)."</pre>";
@@ -79,6 +79,7 @@ class ProfileSearch extends Profile
             'date_job' => $this->date_job,
             'sex' => $this->sex,
             'sip' => $this->sip,
+            'dismissed' => null
         ]);
 
         $query->andFilterWhere(['like', 'id_1c', $this->id_1c])
@@ -100,6 +101,7 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'category', $this->category])
             ->andFilterWhere(['like', "CONCAT(`last_name`, ' ', `first_name`, ' ', `middle_name`)", $this->grid])
             ->andFilterWhere(['like', "CONCAT(`department`, ' ', `position`)", $this->department_position])
+            ->andFilterWhere(["dismissed" => null])
             ->andFilterWhere(['like', 'service', $this->service]);
 
         return $dataProvider;

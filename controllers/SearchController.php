@@ -21,8 +21,12 @@ class SearchController extends Controller
     public function actionIndex()
     {
         $post = Yii::$app->request->post('ProfileMain')['text'];
-        $profile = Profile::find()->where('CONCAT_WS(" ",last_name,first_name) LIKE :search')->params([':search' => '%' . $post . '%'])->with('user')
-            ->orWhere(['like', 'first_name',  $post])->orWhere(['like', 'last_name',  $post])->limit(10)->all();
+        $name = explode(' ',$post);
+
+        $or = ($name[1]) ? 'and' : 'or';
+        $name[1] = ($name[1]) ? $name[1] : $name[0];
+
+        $profile = Profile::find()->where('((first_name LIKE "%'.$name[0].'%" '.$or.' last_name LIKE "%'.$name[1].'%") or (first_name LIKE "%'.$name[1].'%" '.$or.' last_name LIKE "%'.$name[0].'%"))')->andWhere(['dismissed' => null])->limit(10)->all();
         return $this->renderAjax('index', compact('profile', 'post'));
     }
 

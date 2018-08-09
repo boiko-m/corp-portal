@@ -232,10 +232,18 @@ class UserupController extends Controller
             for ($j = 0; $j <= count($dismissed); $j++) {
                 if ($employees[$i]['username'] == $dismissed[$j]['Description'] && $dismissed[$j]['Parent_Key'] != '00000000-0000-0000-0000-000000000000') {
                     $user_delete = User::find()->where(['username' => $employees[$i]['username']])->one();
+                    $user_delete->dismissed = 1;
+                    $user_delete->save();
+
                     $profile_delete = Profile::find()->where(['id' => $user_delete->id])->one();
-                    if ($profile_delete != null)
-                        $profile_delete->delete();
-                    $user_delete->delete();
+
+                    if ($profile_delete) {
+                        $profile_delete->dismissed = 1;
+                        $profile_delete->dismissed_at = time();
+                        $profile_delete->save();
+                    }
+                    
+
                     break;
                 }
             }
