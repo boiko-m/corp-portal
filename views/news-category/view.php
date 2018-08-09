@@ -13,7 +13,7 @@
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     //'filterModel' => $searchModel,
-                    'summary' => "",
+                    'summary' => false,
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
                         [
