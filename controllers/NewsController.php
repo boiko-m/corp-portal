@@ -29,9 +29,9 @@ class NewsController extends Controller
 
         $user_id = Yii::$app->user->id;
         $like = Vote::find()->where(['user_id' => $user_id])->andWhere(['entity' =>$newsEntity])->andWhere(['target_id' =>$id])->one();
-        if(isset($like)){
+        if(isset($like)) {
             $like = 'active-like';
-        } else{
+        } else {
             $like = '';
         }
 
@@ -41,8 +41,12 @@ class NewsController extends Controller
             'id' => $id
         ]);
 
+        $news = News::findOne($id);
+        if (!is_null($news->link_project_news))
+            return $this->redirect($news->link_project_news)->send();
+
         return $this->render('view', array(
-            'news' => News::findOne($id), 'like' =>$like,
+            'news' => $news, 'like' =>$like,
         ));
     }
 

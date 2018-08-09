@@ -127,7 +127,7 @@
                                                             'save' => false,
                                                             'one' => true
                                                         ]); ?>
-                                                        <a href="<?= is_null($item['link_project_news']) ? '/news/' . $item["id"] : $item["link_project_news"] ?>" style = "<?= ($visit) ? 'opacity: 0.3' : '' ;?>">
+                                                        <a href="/news/<?= $item["id"] ?>" style = "<?= ($visit) ? 'opacity: 0.3' : '' ;?>">
                                                             <?= $item['title'] ?>
                                                         </a>
                                                     </div>
