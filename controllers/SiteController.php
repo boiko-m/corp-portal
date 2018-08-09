@@ -68,7 +68,7 @@ class SiteController extends Controller
         $live = Broadcast::find()->where(['link_only' => false, 'complete' => false])->limit(1)->one();
 
         return $this->render('index', [
-            'news' => News::find()->where(['status' => 1])->with('newsCategory')->orderBy('id desc')->limit(7)->all(),
+            'news' => News::find()->where(['status' => 1])->with('newsCategory')->orderBy('date desc')->limit(7)->all(),
             "news_project" => ProjectNews::find()->where(['visible' => 1])->orderBy('id desc')->limit(6)->all(),
             'video' => Videos::find()->orderBy('id desc')->one(),
             'user_new' => Profile::find()->orderBy('date_job desc')->limit(6)->all(),
