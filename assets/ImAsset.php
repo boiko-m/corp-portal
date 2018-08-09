@@ -11,10 +11,13 @@ class ImAsset extends AssetBundle
 
     public $css = [
     	'css/chat.css',
+    	'plugins/custombox/css/custombox.min.css',
     ];
 
     public $js = [
         'js/moment.js',
-    	'js/chat.js'
+    	'js/chat.js',
+    	'plugins/custombox/js/legacy.min.js',
+    	'plugins/custombox/js/custombox.min.js',
     ];
 }

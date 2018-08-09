@@ -1,8 +1,16 @@
 var user_id;
+var dropDialog = document.getElementById('slimmcroll-2');
+var dropZone = document.getElementById('drop-zone');
+var dropFIles = [];
+var countAttachments = 0;
+
+
+// --------------- TUTORIAL ----------------------
+
 
 // ------------- Mobile version -------------
 $(document).ready(function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+  if (checkDevice()) {
     $('.im-dialog-preview').hide()
     $('.list-user-panel').removeClass('col-md-3')
     $('.list-user-panel').addClass('col-md-12')
@@ -13,25 +21,26 @@ $(document).ready(function() {
   getListDialogs();
 });
 
-$('body').delegate('.im-list-user-message-select','click',function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+$('body').delegate('.im-list-user-message-select', 'click',function() {
+  if (checkDevice()) {
     $('.list-user-panel').css('display', 'none')
     $('.dialog-panel').css('display', 'block')
   }
 });
 
-$('body').delegate('.im-icon-arrow','click',function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+$('body').delegate('.im-icon-arrow', 'click', function() {
+  if (checkDevice()) {
     $('.dialog-panel').hide()
     $('.list-user-panel').show()
   }
 });
 
-$('body').delegate('.im-list-user-message-select','click',function() {
+$('body').delegate('.im-list-user-message-select', 'click', function() {
     $(".im-list-user-messages li").removeClass("im-list-user-message-choose")
     let thisElement = $(this)
     user_id = thisElement.attr('id')
-    $(this).toggleClass("im-list-user-message-choose")
+    if (!checkDevice())
+      thisElement.toggleClass("im-list-user-message-choose")
     $.ajax({
       url: '/im/dialog/choose-dialog',
       data: 'id=' + $(this).attr('id'),
@@ -51,6 +60,7 @@ $('body').delegate('.im-list-user-message-select','click',function() {
         $('.im-dialog-panel-name').text(thisElement.children('div').children('span').text())
         $('.im-dialog-header-image').attr('src', thisElement.children('div').children('img').attr('src'))
         appendMessage(data)
+        $("#slimmcroll-2").animate({ scrollTop: $('.im-dialog-list-messages').height() }, 10)
       },
       error: function(xhr, str){
         console.log('Возникла ошибка: ' + xhr.responseText)
@@ -62,10 +72,6 @@ $('body').delegate('.im-list-user-message-select','click',function() {
 
 
 // ------------- DropZone -------------
-var dropDialog = document.getElementById('slimmcroll-2');
-var dropZone = document.getElementById('drop-zone');
-var dropFIles = [];
-var countAttachments = 0;
 var startUpload = function(files) {
   dropFIles.push(files)
   countAttachments += 1;
@@ -160,8 +166,6 @@ $(".im-icon-plus").on('click', function() {
       $(".im-icon-plus").removeClass('rotate45')
       $(".im-icon-plus").removeClass('rotate-45')
     }, 600);
-  } else {
-    alert('Open modal dialog')
   }
 });
 
@@ -179,6 +183,7 @@ $( ".im-user-input-search" ).focusout(function() {
   if (inputValue.length == 0) {
     $(".im-list-user-messages").empty();
     $(".im-icon-plus").addClass('rotate-45')
+    $(".im-icon-plus").removeAttr('rotate-45')
     setTimeout(function(){
       $(".im-icon-plus").removeClass('rotate45')
       $(".im-icon-plus").removeClass('rotate-45')
@@ -189,7 +194,7 @@ $( ".im-user-input-search" ).focusout(function() {
 // ------------- Rotate plus -------------
 
 
-$('body').delegate('.im-dialog-message-select','click',function() {
+$('body').delegate('.im-dialog-message-select', 'click', function() {
   $(this).toggleClass("im-dialog-message-choose")
 });
 
@@ -214,6 +219,7 @@ $('#slimmcroll-2').slimScroll({
   distance: '15px',
   size: "6px",
   color: '#9ea5ab',
+  start: 'bottom',
   alwaysVisible: false,
   railVisible: false,
   disableFadeOut: true
@@ -250,7 +256,7 @@ $('.im-user-input-search').on('input', function(){
 });
 
 
-$('body').delegate('.im-icon-paper','click',function() {
+$('body').delegate('.im-icon-paper', 'click', function() {
   sendMessage()
 });
 
@@ -268,6 +274,13 @@ $('.im-dialog-message-input').keypress(function() {
 
 // ------------- Ajax requests -------------
 
+
+function checkDevice() {
+  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024)
+    return true;
+  else
+    return false;
+}
 
 function sendMessage() {
   let inputMessage = $('.im-dialog-message-input').val()

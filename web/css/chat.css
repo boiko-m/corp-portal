@@ -298,7 +298,7 @@
     border-top: 1px solid #F1F1F1;
     padding: 15px 40px 10px 20px;
     bottom: 0;
-    max-height: 65px;
+    height: 65px;
     min-height: 65px;
 }
 
@@ -315,16 +315,19 @@
 }
 
 .im-dialog-message-input {
-    margin-left: 15px;
-    padding-left: 15px;
-    width: 100%;
-    height: 30px;
-    font-size: 0.8rem;
-    color: #495057;
-    background-color: #fff;
-    border-radius: 6px;
-    border: 1px solid #d3d3d3;
-    resize: none;
+  margin-left: 15px;
+  padding-left: 15px;
+  padding-top: 6.5px;
+  width: 100%;
+  height: 35px;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #495057;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #d3d3d3;
+  resize: none;
+  overflow: hidden;
 }
 
 .im-dialog-message-input::placeholder {
@@ -391,6 +394,14 @@
 
 .tajax-vertigal-center {
     margin-top: 150px;
+}
+
+.button-successful-clear {
+  min-width: 70px;
+}
+
+.setting-dialog-list, .create-group-list {
+  list-style-type: none;
 }
 
 @media only screen and (max-width: 1024px) {

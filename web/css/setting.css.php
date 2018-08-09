@@ -65,4 +65,13 @@
 	.icon-left-menu-broadcast {
 		color: <?= $backgroundColor ?> !important;
 	}
+
+	.custom-modal-title {
+		background-color: <?= $backgroundColor ?> !important;
+	}
+
+	.crate-dialog-group-button {
+		background-color: <?= $backgroundColor ?> !important;
+		border-color: <?= $backgroundColor ?> !important;
+	}
 </style>
