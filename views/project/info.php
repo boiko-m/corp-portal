@@ -1,7 +1,6 @@
 <?php
   use yii\helpers\Html;
   use yii\bootstrap\ActiveForm;
-  use ogheo\comments\widget\Comments;
   use \app\widgets\LbrComments;
   use app\models\ProjectUserGroup;
 
@@ -379,9 +378,9 @@
 <div class="row">
   <div class="col-12">
     <?php echo LbrComments::widget([
-      'model' => 'video',
-        'model_key' => $data['id'],
-        'name_widget' => 'Форум',
+      'model' => 'project',
+      'model_key' => $project['id'],
+      'name_widget' => 'Форум',
     ]) ?>
   </div>
 </div>
