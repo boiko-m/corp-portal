@@ -284,7 +284,7 @@ class ProfilesController extends Controller
         $user = User::findIdentity($model->id);
         $gifts_user = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
-            ])->limit(3)->all();
+            ])->limit(4)->all(); 
 
 
         if(Yii::$app->request->post()){

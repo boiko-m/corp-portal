@@ -18,15 +18,24 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4">
-        <img class="card-img-top img-fluid card m-b-30" src="<?= $model->getImage() ?>"
+    <div class="col-xs-12 col-md-4 ">
+        
+        <div class="row">
+            <div class="col-12 m-b-30">
+                <img class="card-img-top img-fluid card" src="<?= $model->getImage() ?>"
              alt="<?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name ?>"
-             style="border-radius: 5px">
+             style="border-radius: 5px;">
+            </div>
+        </div>
 
 
         <? if (isset($gifts_user)): ?>
-            <div class=" gift-four" style="width: 100%;padding: 15px;">
-                <?php
+            <div class="row">
+                <div class="col-12 m-b-30">
+                    <div class="card d-block p-4">
+                        
+                    
+                    <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
                     <div class="row">
@@ -44,7 +53,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-md-8" style="   text-align: center;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
                      <?php } ?>
                 <?php } ?>
+    
 
+                <div class="row p-3">
                 <?php
                 foreach ($gifts_user as $value) { //формирование 3 подарков под пользователем
                     $a = Html::a($value['userFrom']['profile']['first_name'] . ' ' . $value['userFrom']['profile']['last_name'], '/profiles/' . $value['userFrom']['id']);
@@ -53,9 +64,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     } else {
                         $img = $value['gift']['img'];
                     } ?>
-                    <span class="tooltiplbr"> <!--подарки с ховером-->
-                          <img class="gift-in-view gift-button-view" id="<?= $value['id'] ?>" src="<?= $img ?>"
-                               data-id="<?= $id ?>">
+                    
+                        <div class="col-3">
+                            <span class="tooltiplbr"> <!--подарки с ховером-->
+                          <img class="img-fluid" id="<?= $value['id'] ?>" src="<?= $img ?>" data-id="<?= $id ?>">
                               <span class="tooltiptext" style=" width: auto"> <!--hover-->
                                    <div class="row" style="padding: 10px; width: auto">
 
@@ -97,20 +109,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                   </div>
                               </span>
                         </span>
-                <?php } ?>
-
-
-                <?php if (Yii::$app->user->id != $id) { ?>
-                    <div class="" style=" border-radius: 5px; padding: 10px">
-                        <?= Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
-                            'class' => 'btn  waves-effect w-md btn-light showModalButton',
-                            'data' => $id,
-                            'style' => ' border-radius: 5px'
-                        ]) ?>
+                        
                     </div>
                 <?php } ?>
+                </div>
 
+                <?php if (Yii::$app->user->id != $id) { ?>
+                        <div class="row">
+                            <div class="col-12 text-center pt-3">
+                                <?= Html::a('<i class="fa fa-gift "></i>Отправить подарок', '', [
+                                    'class' => 'btn  waves-effect w-md btn-light showModalButton mx-auto',
+                                    'data' => $id,
+                                    'style' => ' border-radius: 2px'
+                                ]) ?>
+                            </div>
+                        </div>
+                <?php } ?>
+                </div>
 
+                </div>
             </div>
             <?php endif; ?>
     </div>
