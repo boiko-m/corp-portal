@@ -18,7 +18,14 @@
                     'columns' => [
                         [
                             'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}'
+                            'template' => '{view}',
+                            'buttons' => [
+                                'view' => function ($url, $model, $key) {
+                                    return Html::a('<i class="glyphicon glyphicon-eye-open"></i>', '/news/' . $model->id, [
+                                        'title' => 'Перейти к просмотру',
+                                    ]);
+                                },
+                            ]
                         ],
                         [
                             'label' => 'Заголовок новости',
