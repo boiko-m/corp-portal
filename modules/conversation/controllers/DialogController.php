@@ -10,7 +10,7 @@ use app\models\Messages;
 use yii\web\Controller;
 use yii\helpers\Json;
 
-class DialogController extends \yii\web\Controller
+class DialogController extends Controller
 {
     public function actionSearchEmployees()
     {
@@ -33,8 +33,7 @@ class DialogController extends \yii\web\Controller
         }
     }
 
-    public function actionSendMessage()
-    {
+    public function actionSendMessage() {
         $id_type = ImGroups::getIdTypeGroup('private');
         if ($this->isGroupExist(Yii::$app->request->get('id')) == 0) {
             $imgroup = new ImGroups();
@@ -49,8 +48,7 @@ class DialogController extends \yii\web\Controller
         }
     }
 
-    public function actionListDialogs()
-    {
+    public function actionListDialogs() {
         $list = array();
         $list_dialog = ImGroupUsers::find()->select('id_group_im')->where(['id_user' => Yii::$app->user->id])->asArray()->all();
         foreach ($list_dialog as $key => $dialog) {

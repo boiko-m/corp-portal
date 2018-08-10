@@ -39,8 +39,8 @@ class FaqType extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
+            'name' => 'Название',
+            'description' => 'Описание',
         ];
     }
 

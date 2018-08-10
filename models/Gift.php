@@ -47,8 +47,8 @@ class Gift extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название подарка',
             'img' => 'Подарок',
-            'id_user' => 'Id User',
-            'date' => 'Date',
+            'id_user' => 'Создатель',
+            'date' => 'Дата добавления',
             'sum_coin' => 'Стоимость подарка',
             'id_gift_type' => 'Тип подарка',
             'visible' => 'Видимость',
@@ -63,5 +63,10 @@ class Gift extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id' => 'id_user']);
     }
 }

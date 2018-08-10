@@ -40,8 +40,8 @@ class GiftType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'visible' => 'Visible',
+            'name' => 'Название',
+            'visible' => 'Видимость',
         ];
     }
 

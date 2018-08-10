@@ -1,18 +1,12 @@
 <?php
-
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use bupy7\cropbox\CropboxWidget;
-use yii\widgets\Pjax;
-
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Gift */
-/* @var $form yii\widgets\ActiveForm */
+    use yii\helpers\Html;
+    use yii\widgets\ActiveForm;
+    use bupy7\cropbox\CropboxWidget;
+    use yii\widgets\Pjax;
 ?>
 
 
-<div class="test btn btn-primary">загрузить картинку </div>
+<div class="test btn btn-primary">Загрузить картинку </div>
 
 <div class="admin-gift"> </div>
 </div>
@@ -40,7 +34,8 @@ use yii\widgets\Pjax;
         <?= $form->field($model, 'img')->hiddenInput(/*['disabled' => 'true']*/)->label(false); ?>
 
         <?= $form->field($model, 'id_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false); ?>
-        <div class="form-group">
+        
+        <div class="form-group crud-button-save">
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success',  'form' => 'full_gift']) ?>
         </div>
 

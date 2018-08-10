@@ -1,18 +1,14 @@
 <?php
+	use yii\helpers\Html;
 
-use yii\helpers\Html;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\GiftType */
-
-$this->title = 'Update Gift Type: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Gift Types', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+	$this->title = 'Редактирование категории подарков';
+	$this->params['breadcrumbs'][] = ['label' => 'Катерогии подарков', 'url' => ['index']];
+	$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+	$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="gift-type-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

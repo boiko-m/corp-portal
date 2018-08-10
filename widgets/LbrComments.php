@@ -45,6 +45,37 @@ class LbrComments extends \ogheo\comments\widget\Comments
         $view->registerJs("jQuery('#{$this->wrapperId}').comment({$this->getClientOptions()});");
     }
 
+    /**
+     * @return array
+     */
+    public function getListViewConfig()
+    {
+        if ($this->listViewConfig === null) {
+            $this->listViewConfig = [
+                'layout' => '{items}<div class="text-center">{pager}</div>',
+                'options' => ['class' => 'comments-list'],
+                'itemOptions' => ['class' => 'media'],
+                'itemView' => function ($model, $key, $index, $widget) {
+                    return $this->render($this->commentView, [
+                        'maxNestedLevel' => $this->maxNestedLevel,
+                        'nestedLevel' => 1,
+                        'widget' => $this,
+                        'model' => $model,
+                    ]);
+                },
+                'emptyText' => '',
+                'pager' => [
+                    'options'=>['class' => 'pagination float-left'],
+                    'linkOptions' => ['class' => 'page-link'],
+                    'hideOnSinglePage' => true,
+                    'disabledPageCssClass' => 'page-link'
+                ],
+            ];
+        }
+
+        return $this->listViewConfig;
+    }
+
     public function run() {
         $commentClass = CommentsModule::getInstance()->commentModelClass;
         $commentsCounter = $commentClass::getCommentsCounter([

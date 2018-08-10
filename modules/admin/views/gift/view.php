@@ -7,19 +7,19 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Gift */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Gifts', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Подарки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="gift-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить подарок?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name:ntext',
             'img:ntext',
-            'id_user',
-            'date:ntext',
+            'profile.name',
+            'date:date',
             'sum_coin',
-            'id_gift_type',
-            'visible',
+            'giftType.name',
+            'visible:boolean',
         ],
     ]) ?>
 

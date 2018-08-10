@@ -32,7 +32,7 @@
 
         <?php foreach ($projects as $key => $project) { ?>
             <div class="project">
-              <span title="Я участвую!" class="icon-project" style="display: inline-block; color: #f7931d; font-size:20px !important">
+              <span class="icon-project" style="display: inline-block; color: #f7931d; font-size:20px !important">
                   <i class="fa fa-cube"></i>
               </span>
                 <?php if (\Yii::$app->user->can("controlProject") && !$project->active): ?>

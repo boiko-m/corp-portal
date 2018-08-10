@@ -42,6 +42,7 @@ class GiftSearch extends Gift
     public function search($params)
     {
         $query = Gift::find();
+        $query->joinWith('profile');
 
         // add conditions that should always apply here
 
@@ -59,16 +60,18 @@ class GiftSearch extends Gift
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'id_user' => $this->id_user,
-            'sum_coin' => $this->sum_coin,
-            'id_gift_type' => $this->id_gift_type,
-            'visible' => $this->visible,
+            'gift.id' => $this->id,
+            'gift.sum_coin' => $this->sum_coin,
+            'gift.id_gift_type' => $this->id_gift_type,
+            'gift.visible' => $this->visible,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'img', $this->img])
-            ->andFilterWhere(['like', 'date', $this->date]);
+            ->andFilterWhere(['like', 'ptofile.name', $this->id_user]);
+
+        if($this->date)
+          $query->andFilterWhere(['between', 'gift.date', strtotime($this->date), strtotime($this->date)+86400]);
 
         return $dataProvider;
     }

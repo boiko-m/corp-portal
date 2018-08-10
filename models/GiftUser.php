@@ -47,12 +47,12 @@ class GiftUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_gift' => 'Id Gift',
-            'id_user_from' => 'Id User From',
-            'date' => 'Date',
-            'anonim' => 'Anonim',
+            'id_gift' => 'Подарок',
+            'id_user_from' => 'Отправитель',
+            'date' => 'Дата отпрпавления',
+            'anonim' => 'Аноним',
             'message' => 'Сообщение',
-            'id_user_to' => 'Id User To',
+            'id_user_to' => 'Получатель',
         ];
     }
 
