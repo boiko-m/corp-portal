@@ -3,6 +3,8 @@
     use yii\widgets\Pjax;
     use yii\widgets\Date;
     use hauntd\vote\widgets\Like;
+    use \app\widgets\LbrComments;
+
 
     $this->title = 'Новость';
     $this->params['breadcrumbs'][] = $this->title;
@@ -40,3 +42,21 @@
         </div>
     </div>
 </div>
+
+
+<div class="row">
+  <div class="col-12">
+    <?php echo LbrComments::widget([
+      'model' => 'news',
+        'model_key' => $news['id'],
+        'name_widget' => 'Комментарии:',
+    ]) ?>
+
+  </div>
+</div>
+
+<style>
+    .comments .show-comments {
+        margin:0px;
+    }
+</style>
