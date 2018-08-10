@@ -1,8 +1,9 @@
 var user_id;
 
+
 // ------------- Mobile version -------------
 $(document).ready(function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+  if (checkDevice()) {
     $('.im-dialog-preview').hide()
     $('.list-user-panel').removeClass('col-md-3')
     $('.list-user-panel').addClass('col-md-12')
@@ -13,102 +14,20 @@ $(document).ready(function() {
   getListDialogs();
 });
 
-$('body').delegate('.im-list-user-message-select','click',function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+$('body').delegate('.im-list-user-message-select', 'click',function() {
+  if (checkDevice()) {
     $('.list-user-panel').css('display', 'none')
     $('.dialog-panel').css('display', 'block')
   }
 });
 
-$('body').delegate('.im-icon-arrow','click',function() {
-  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024) {
+$('body').delegate('.im-icon-arrow', 'click', function() {
+  if (checkDevice()) {
     $('.dialog-panel').hide()
     $('.list-user-panel').show()
   }
 });
-
-$('body').delegate('.im-list-user-message-select','click',function() {
-    $(".im-list-user-messages li").removeClass("im-list-user-message-choose")
-    let thisElement = $(this)
-    user_id = thisElement.attr('id')
-    $(this).toggleClass("im-list-user-message-choose")
-    $.ajax({
-      url: '/im/dialog/choose-dialog',
-      data: 'id=' + $(this).attr('id'),
-      beforeSend: function() {
-        $('.im-dialog-preview').show()
-        $('.dialog-panel').hide()
-        spinnerShow('.im-dialog-preview')
-      },
-      complete: function() {
-        spinnerRemove()
-      },
-      success: function(data) {
-        $('.im-dialog-preview').hide()
-        $('.dialog-panel').show()
-        $(this).children('.im-list-user-link').text()
-        $('.im-dialog-header').children('a').attr('href', '/profiles/' + user_id)
-        $('.im-dialog-panel-name').text(thisElement.children('div').children('span').text())
-        $('.im-dialog-header-image').attr('src', thisElement.children('div').children('img').attr('src'))
-        appendMessage(data)
-      },
-      error: function(xhr, str){
-        console.log('Возникла ошибка: ' + xhr.responseText)
-      }
-    });
-});
-
 // ------------- Mobile version -------------
-
-
-// ------------- DropZone -------------
-var dropDialog = document.getElementById('slimmcroll-2');
-var dropZone = document.getElementById('drop-zone');
-var dropFIles = [];
-var countAttachments = 0;
-var startUpload = function(files) {
-  dropFIles.push(files)
-  countAttachments += 1;
-  $('.im-dialog-field').css('height', '315px')
-  if (countAttachments <= 3) {
-    $('.im-dialog-footer-attachments')
-      .append('<div class="col-sm attachment"><i class="fa fa-file im-icon"></i><span>' 
-        + files[0].name + '</span><p class="file-size">' 
-        + bytesToSize(files[0].size) +'</p></div>')
-  }
-  console.log(dropFIles)
-}
-
-if (dropZone !== null) {
-  dropZone.ondrop = function(e) {
-    e.preventDefault()
-    this.className = 'upload-drop-zone'
-    $('.im-dialog-field').show()
-    $('.upload-drop-zone').hide()
-
-    startUpload(e.dataTransfer.files)
-  }
-
-  dropDialog.ondragover = function() {
-    $('.im-dialog-field').hide()
-    $('.upload-drop-zone').show()
-    return false;
-  }
-
-  dropZone.ondragover = function() {
-    this.className = 'upload-drop-zone drop'
-    return false;
-  }
-
-  dropZone.ondragleave = function() {
-    $('.im-dialog-field').show()
-    $('.upload-drop-zone').hide()
-    this.className = 'upload-drop-zone'
-    return false;
-  }
-}
-
-// ------------- DropZone -------------
 
 
 // $('.im-dialog-message-input').on('input', function (event) {
@@ -160,8 +79,6 @@ $(".im-icon-plus").on('click', function() {
       $(".im-icon-plus").removeClass('rotate45')
       $(".im-icon-plus").removeClass('rotate-45')
     }, 600);
-  } else {
-    alert('Open modal dialog')
   }
 });
 
@@ -179,6 +96,7 @@ $( ".im-user-input-search" ).focusout(function() {
   if (inputValue.length == 0) {
     $(".im-list-user-messages").empty();
     $(".im-icon-plus").addClass('rotate-45')
+    $(".im-icon-plus").removeAttr('rotate-45')
     setTimeout(function(){
       $(".im-icon-plus").removeClass('rotate45')
       $(".im-icon-plus").removeClass('rotate-45')
@@ -189,7 +107,7 @@ $( ".im-user-input-search" ).focusout(function() {
 // ------------- Rotate plus -------------
 
 
-$('body').delegate('.im-dialog-message-select','click',function() {
+$('body').delegate('.im-dialog-message-select', 'click', function() {
   $(this).toggleClass("im-dialog-message-choose")
 });
 
@@ -200,18 +118,6 @@ $('#slimmcroll-1').slimScroll({
   railColor:'#FAFAFA',
   height: 'auto',
   position: 'right',
-  size: "6px",
-  color: '#9ea5ab',
-  alwaysVisible: false,
-  railVisible: false,
-  disableFadeOut: true
-});
-
-$('#slimmcroll-2').slimScroll({
-  railColor:'#FAFAFA',
-  height: 'auto',
-  position: 'right',
-  distance: '15px',
   size: "6px",
   color: '#9ea5ab',
   alwaysVisible: false,
@@ -250,46 +156,15 @@ $('.im-user-input-search').on('input', function(){
 });
 
 
-$('body').delegate('.im-icon-paper','click',function() {
-  sendMessage()
-});
-
-$('.im-dialog-message-input').keypress(function() {
-  if (event.which == 13) {
-    event.preventDefault()
-    sendMessage()
-  }
-  if (event.ctrlKey) {
-    let txt = $('.im-dialog-message-input')
-    txt.val(txt.val() + "\n")
-  }
-});
-
-
 // ------------- Ajax requests -------------
 
 
-function sendMessage() {
-  let inputMessage = $('.im-dialog-message-input').val()
-  $.ajax({
-    url: '/im/dialog/send-message',
-    data: 'id=' + user_id + '&message=' + inputMessage,
-    success: function(data) {
-      $('.im-dialog-message-input').val("")
-    },
-    error: function(xhr, str){
-      console.log('Возникла ошибка: ' + xhr.responseText)
-    }
-  });
+function checkDevice() {
+  if(/Android|windows phone|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width() < 1024)
+    return true;
+  else
+    return false;
 }
-
-
-function bytesToSize(bytes) {
- var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
- if (bytes == 0) return '0 Byte'
- var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
- return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
-};
 
 function spinnerShow(selector) {
   $(selector).show()
@@ -341,23 +216,5 @@ function appendListDialog(data) {
     }
   } else {
     $('.im-list-user-messages').append('<li class="im-list-user-empty-search">Нет результатов поиска</li>')
-  }
-}
-
-function appendMessage(data) {
-  let result = $.parseJSON(data)
-  $(".im-dialog-list-messages").empty()
-  if (result != 0) {
-    for(let i = 0; i < result.length; i++) {
-      $('.im-dialog-list-messages').append('<li class="im-dialog-message-select" id-message=' +
-       result[i].id + '><div class="im-dialog-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
-       result[i]['profileFrom'].img + '" alt="profilepicture" class="im-dialog-field-image"><a href=/profiles/' +
-       result[i]['profileFrom'].id + ' target="_blank" class="im-message-user-link" style="color: #42648b; font-weight: 700;">' +
-       result[i]['profileFrom'].first_name + '<span class="time" style="font-weight: 400;"> ' +
-       moment.unix(result[i].create_at).format("HH:mm") + '</span></a><p class="message">' +
-       result[i].message + '</p></div></li>')
-    }
-  } else {
-    $('.im-dialog-list-messages').append('<li class="im-list-user-empty-search">Нет сообщений с данным сотрудником</li>')
   }
 }
