@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <? if (isset($gifts_user)): ?>
             <div class="row">
                 <div class="col-12 m-b-30">
-                    <div class="card d-block p-4">
+                    <div class="card d-block px-3 py-2">
                         
                     
                     <?php
