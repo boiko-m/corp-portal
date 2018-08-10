@@ -17,6 +17,13 @@ $this->params['breadcrumbs'][] = ['label' => 'Сотрудники', 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+
+<style>
+    .main-info-filial b {
+        width:100px;
+        display: inline-block;
+    }
+</style>
 <div class="row">
     <div class="col-xs-12 col-md-4 ">
         
@@ -140,19 +147,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     style="font-weight: bold; color: black; margin: 0px;"><?= $model->last_name ?> <?= $model->first_name ?> <?= $model->middle_name?>  <span class="online"><?=' '.$online?></span> </h5>
             </div>
 
-            <div class="col-12" style="padding: 10px 20px;">
-                <?php if ($model->branch): ?>
-                    <div> Филиал: <?= $model->branch ?> </div>
-                <?php endif ?>
-                <?php if ($model->department): ?>
-                    <div> Отдел: <?= $model->department ?> </div>
-                <?php endif ?>
-                <?php if ($model->position): ?>
-                    <div> Должность: <?= $model->position ?> </div>
-                <?php endif ?>
+            <div class="row main-info-filial">
+                <div class="col-12 my-2 pl-5">
+                    <?php if ($model->branch): ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div> <b>Филиал:</b> <?= $model->branch ?> </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    <?php if ($model->department): ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div> <b>Отдел:</b> <?= $model->department ?> </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    <?php if ($model->position): ?>
+                        <div class="row">
+                            <div class="col-12">
+                                    <div> <b>Должность:</b> <?= $model->position ?> </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
 
-
-
+                </div>
             </div>
             <!--<span class="tooltipN">
                      <span data-default="4080" id="ajax_4080" class="ajax-user "></span>
