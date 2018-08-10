@@ -46,13 +46,11 @@
 
 <div class="row">
   <div class="col-12">
-    <div><h4>Комментарии:</h4></div>
-
     <?php echo LbrComments::widget([
       'model' => 'news',
         'model_key' => $news['id'],
         'name_widget' => 'Комментарии:',
     ]) ?>
-    
+
   </div>
 </div>
