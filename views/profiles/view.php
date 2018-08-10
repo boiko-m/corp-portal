@@ -204,7 +204,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php $phones = explode(";", $model->phone); ?>
                         <?php foreach ($phones as $phone): ++$i;?>
                             <div class="row information_row">
-                                <div class="col-3">
+                                <div class="col-12 col-md-3">
                                     Телефон <?php echo ($i>1) ?  "№".$i: ''; ?>
                                 </div>
                                 <div class="col-9">
@@ -220,7 +220,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if ($model->skype): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 Скайп
                             </div>
                             <div class="col-9">
@@ -231,7 +231,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if ($user->email): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 Электронная почта
                             </div>
                             <div class="col">
@@ -241,7 +241,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
                     <?php if ($model->birthday): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 День рождения
                             </div>
                             <div class="col">
@@ -251,7 +251,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
                     <?php if (isset($model->sip) and $model->sip != 0): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 SIP
                             </div>
                             <div class="col">
@@ -262,7 +262,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php if ($model->cabinet): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 Кабинет
                             </div>
                             <div class="col">
@@ -272,7 +272,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
                     <?php if ($model->phone_cabinet and $model->phone_cabinet != "-"): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 Внутренний телефон
                             </div>
                             <div class="col">
@@ -282,7 +282,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
                     <?php if ($model->about): ?>
                         <div class="row information_row">
-                            <div class="col-3">
+                            <div class="col-12 col-md-3">
                                 Обо мне
                             </div>
                             <div class="col">
