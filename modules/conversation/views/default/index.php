@@ -85,17 +85,10 @@
         <p>Выберите нескольких сотрудников и создайте беседу</p>
         <div class="row">
             <div class="col-lg-12">
+                <input type="text" class="search-create-group" name="">
                 <div class="card-box text-left">
                     <div class="inbox-widget slimscroll">
-                        <a href="#">
-                            <input type="checkbox" name="" style="float: left; margin: 20px 10px 0 0;">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" class="rounded-circle bx-shadow-lg" alt=""></div>
-                                <p class="inbox-item-author">Arashasghari</p>
-                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                <p class="inbox-item-date">10:15 AM</p>
-                            </div>
-                        </a>
+                        <p class="info-create-group text-center">Здесь будут отображаться результаты поиска</p>
                     </div>
                 </div>
             </div>

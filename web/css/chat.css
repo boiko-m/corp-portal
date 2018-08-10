@@ -396,12 +396,37 @@
     margin-top: 150px;
 }
 
+.info-create-group {
+    margin-top: 110px;
+}
+
 .button-successful-clear {
   min-width: 70px;
 }
 
 .setting-dialog-list, .create-group-list {
   list-style-type: none;
+}
+
+.search-create-group {
+    width: 100%;
+    border: 1px solid #A9A9A9;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 2px;
+}
+
+.checkbox-create-group {
+    float: left; 
+    margin: 20px 10px 0 0;
+}
+
+.inbox-item {
+    min-height: 61px;
+}
+
+.inbox-widget .inbox-item .inbox-item-author {
+    margin: 6px 0 0 0;
 }
 
 @media only screen and (max-width: 1024px) {
