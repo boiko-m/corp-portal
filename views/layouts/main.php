@@ -28,7 +28,10 @@
 
     <?php include 'css/setting.css.php'; ?>
 </head>
-<body class="<?= Yii::$app->setting->getValue('sidebar-user-toggle'); ?>">
+
+
+<body class="<?=Yii::$app->setting->getValue('sidebar-user-toggle');?>" style = "<?=(Yii::$app->controller->id == "profiles" and Yii::$app->controller->action->id == "view" and Yii::$app->request->get('id') == "3675") ? "background: url('/images/background/pakemon.png')" : '' ?>">
+
 <?php $this->beginBody() ?>
 
 <div id = "wrapper">
