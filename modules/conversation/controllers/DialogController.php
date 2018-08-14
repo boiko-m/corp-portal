@@ -48,12 +48,26 @@ class DialogController extends Controller
         }
     }
 
+
     public function actionListDialogs() {
         $list = array();
         $list_dialog = ImGroupUsers::find()->select('id_group_im')->where(['id_user' => Yii::$app->user->id])->asArray()->all();
         foreach ($list_dialog as $key => $dialog) {
-            array_push($list, ImGroupUsers::find()->select('id_user')->where(['id_group_im' => $dialog['id_group_im']])->andWhere(['!=', 'id_user', Yii::$app->user->id])->with('profile')->asArray()->all());
+            array_push($list, ImGroupUsers::find()
+                ->select(['id_user, id_group_im, messages.message,  messages.create_at, profile.id, CONCAT(profile.first_name, " ", profile.last_name) AS name, profile.img'])
+                ->where(['id_group_im' => $dialog['id_group_im']])
+                ->andWhere(['!=', 'id_user', Yii::$app->user->id])
+                ->joinWith('profile')
+                ->joinWith([
+                    'groupIm' => function($query) {
+                        $query->joinWith('messagesLast');
+                    },
+                ])
+                ->asArray()
+                ->orderBy('create_at desc')
+                ->one());
         }
+        // debug($list);exit();
         return JSON::encode($list);
     }
 

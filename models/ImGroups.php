@@ -81,4 +81,12 @@ class ImGroups extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Messages::className(), ['id_group' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMessagesLast()
+    {
+        return $this->hasMany(Messages::className(), ['id_group' => 'id'])->orderBy(['messages.create_at' => SORT_DESC])->limit(1);
+    }
 }

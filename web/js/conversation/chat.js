@@ -186,13 +186,15 @@ function getListDialogs() {
     },
     success: function(data) {
       let result = $.parseJSON(data);
+      console.log(result);
       $(".im-list-user-messages").empty()
       if (result.length != 0) {
         for(let i = 0; i < result.length; i++) {
           $('.im-list-user-messages').append('<li class="im-list-user-message-select" id="' + 
-            result[i][0]['profile'].id + '"><div class="im-list-user-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
-            result[i][0]['profile'].img + '" alt="profilepicture" class="im-list-user-field-image"><span class="im-list-user-link">' +
-            result[i][0]['profile'].first_name + ' ' + result[i][0]['profile'].last_name + '</span><p class="message-list-user">Нет сообщений</p></div></li>');
+            result[i].id + '"><div class="im-list-user-message"><img src="http://portal.lbr.ru/img/user/thumbnail_' +
+            result[i].img + '" alt="profilepicture" class="im-list-user-field-image"><span class="im-list-user-link">' +
+            result[i].name + '</span><p class="message-list-user">' +
+            result[i].message + '</p></div></li>');
         }
       } else {
         $('.im-list-user-messages').append('<li class="im-list-user-empty-search">У вас нет диалогов</li>')
