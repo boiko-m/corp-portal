@@ -39,7 +39,7 @@
     ?>
 
   <div class="row">
-    <div class="col-md-12" style="margin-top: 25px;">
+    <div class="card col-md-12" style="margin-top: 25px;">
       <?php echo GoogleChart::widget(array('visualization' => 'ColumnChart',
           'data' => $arrayChart,
           'options' => array(
@@ -72,7 +72,7 @@
 
   </div>
 
-  <div style="margin-top: 40px; background-color: #FFFFFF; padding: 10px 20px;">
+  <div class="card" style="margin-top: 40px; background-color: #FFFFFF; padding: 10px 20px;">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'summary' => '<h6 style="font-weight: bold">Ответы пользователей</h6>',
@@ -104,6 +104,12 @@
             'format' => ['date', 'php:d.m.Y'],
             'headerOptions' => ['style' => 'width:8%'],
           ],
+        ],
+        'pager' => [
+            'options'=>['class' => 'pagination float-right'],
+            'linkOptions' => ['class' => 'page-link'],
+            'hideOnSinglePage' => true,
+            'disabledPageCssClass' => 'page-link'
         ],
       ]); ?>
     </div>
