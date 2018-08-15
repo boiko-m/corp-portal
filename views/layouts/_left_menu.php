@@ -50,6 +50,7 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="/project/">Проекты</a></li>
                                     <li><a href="/project-news">Новости</a></li>
+                                    <li><a href="/project-forum">Форум</a></li>
                                 </ul>
                             </li>
 

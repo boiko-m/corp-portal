@@ -17,23 +17,19 @@
 
       <?php if(count($projects) != 0) : ?>
         <div>
-          <div class="search-project">
-            Поиск по проектам:
-          </div>
+          <div class="search-project">Поиск по проектам:</div>
           <input class="form-control" type="search" name="search_project">
         </div>
       <? else : ?>
         <div>
-          <div class="non-project">
-            На данный момент нет проектов
-          </div>
+          <div class="non-project">На данный момент нет проектов</div>
         </div>
       <? endif; ?>
 
         <?php foreach ($projects as $key => $project) { ?>
             <div class="project">
               <span class="icon-project" style="display: inline-block; color: #f7931d; font-size:20px !important">
-                  <i class="fa fa-cube"></i>
+                  <i class="fa fa-share-alt"></i>
               </span>
                 <?php if (\Yii::$app->user->can("controlProject") && !$project->active): ?>
                   <a href="/project/info/<?= $project->id ?>" style="display: inline-block;">
