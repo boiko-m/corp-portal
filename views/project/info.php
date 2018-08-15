@@ -305,7 +305,7 @@
           <? endif; ?>
           <div class="work-group-content">
             <span class="tooltipuser">
-            <span data-default="<?= $group->id_user ?>" id="ajax_<?= $group->id_user ?>" class="ajax-user"></span>
+              <span data-default="<?= $group->id_user ?>" id="ajax_<?= $group->id_user ?>" class="ajax-user"></span>
             </span>
           </div>
           <?php if ($userGroup != $group->id_project_user_group) : ?>
@@ -315,7 +315,9 @@
         <? } ?>
 
         <?php if (count($project_group) == 0) : ?>
-          <center style="font-size: 11px; padding-top: 15px;"><b class="non-description">Рабочая группа не определена</b></center>
+          <center style="font-size: 11px; padding-top: 15px;">
+            <b class="non-description">Рабочая группа не определена</b>
+          </center>
         <? endif; ?>
       </div>
     </div>

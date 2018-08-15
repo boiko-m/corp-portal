@@ -1,4 +1,4 @@
-.gift-button-view{
+.gift-button-view {
     width: 100%;
 }
 
@@ -6,17 +6,17 @@ div.content .modal .modal-dialog .modal-content .modal-body {
     top: 20px;
 }
 
-.gift-four{
+.gift-four {
     background-color: white;
     border-radius: 5px;
     border-color: #CCCCCC;
     margin: 8px 0;
     height: auto;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8 !important;
     text-align: center;
 }
 
-.gift-in-view{
+.gift-in-view {
     width: 70px;
     height: 70px;
     margin: 10px 4px;
@@ -24,31 +24,32 @@ div.content .modal .modal-dialog .modal-content .modal-body {
     vertical-align: middle;
 }
 
-.gift-in-view:hover{
+.gift-in-view:hover {
     cursor: pointer;
 }
-.block-gift-view{
+
+.block-gift-view {
     margin: 15px;
 }
-.content-page .modal .modal-dialog .modal-content .modal-body.padding{
+
+.content-page .modal .modal-dialog .modal-content .modal-body.padding {
     padding: 0;
     top: 0;
 }
 
-.content-page .modal .modal-dialog .modal-content{
+.content-page .modal .modal-dialog .modal-content {
     border-radius: 4px;
 }
-
 
 div .modal .modal-content .modal-dialog .modal-content .modal-body {
     padding: 0;
     top: 0;
 }
 
-
-.margin15{
+.margin15 {
     margin: 15px;
 }
+
 .carousel-button-left.view a, .carousel-button-right.view a {
     width: 25px;
     height: 36px;
@@ -58,42 +59,39 @@ div .modal .modal-content .modal-dialog .modal-content .modal-body {
     text-decoration: none;
 }
 
-
-
-.opacity-modal{
+.opacity-modal {
     opacity: 0.5;
 }
+
 div .modal-body {
     padding: 20px 20px 10px 20px;
 }
+
 div .modal .modal-dialog .modal-content .modal-body {
     padding: 20px 20px 6px 20px;
     top: 10px;
 }
+
 .modal .modal-dialog .modal-content {
     top: 20px;
     height: auto;
     max-height: 520px;
 }
 
-.modal .modal-dialog .modal-content .modal-small{
+.modal .modal-dialog .modal-content .modal-small {
     top: 40px;
     min-height: 270px;
     height: auto;
     max-height: 600px;
 }
 
-
-
-
-
-.showModalButton{
+.showModalButton {
     background-color: #f1f1f1;
     border-radius: 2px;
     margin: 0 5px;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8!important;
-
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8 !important;
 }
+
 .fa-gift:before {
     color: #98a8c0;
     width: 20px;
@@ -101,33 +99,34 @@ div .modal .modal-dialog .modal-content .modal-body {
     font-size: 18px;
     top: -5px;
 }
-.btn.waves-effect.w-md.btn-light.gift-in-view{
-    border-color: #CCCCCC;
 
+.btn.waves-effect.w-md.btn-light.gift-in-view {
+    border-color: #CCCCCC;
     margin: 0 10px 20px 10px;
     width: auto;
 }
 
-.update-img:hover{
-
+.update-img:hover {
     opacity: 0.5;
 }
-.scroll-gift-view{
+
+.scroll-gift-view {
     height: auto;
     max-height: 450px;
 }
-#slimmcroll{
+
+#slimmcroll {
     height: 400px;
 }
 
-.update-img:hover:after{
-
+.update-img:hover:after {
     content: attr(data-title);
-
 }
-.search-a-size{
+
+.search-a-size {
     font-size: 15px;
 }
+
 /*крестик для поиска*/
 .close-search {
     position: absolute;
@@ -157,12 +156,14 @@ div .modal .modal-dialog .modal-content .modal-body {
     cursor: pointer;
     outline: none;
 }
-.close-search.box_x_button{
+
+.close-search.box_x_button {
     padding: 30px 18px 21px 12px;
     width: 20px;
     height: 20px;
     top: -10px;
 }
+
 .close-search:hover {
     opacity: 1;
     cursor: pointer;
@@ -171,11 +172,11 @@ div .modal .modal-dialog .modal-content .modal-body {
 .close-search:before {
     transform: rotate(45deg);
 }
+
 .close-search:after {
     transform: rotate(-45deg);
 }
 /*/крестик для поиска*/
-
 
 /*при клике на поле увеличение поиска и добавление иконки*/
  body input.text-search-focus {
@@ -196,16 +197,14 @@ div .modal .modal-dialog .modal-content .modal-body {
     background: white;
     box-shadow: none;
     border-radius: 5px;
-    width: 200px; }
+    width: 200px; 
+}
 
-
-#hidden-search-close{
+#hidden-search-close {
     display: none;
 }
 
-
 /*/при клике увеличение поиска и добавление иконки*/
-
 
 /*не показывать поиск мобильным устрйоствам*/
 @media screen and (max-width: 600px) {
@@ -216,66 +215,54 @@ div .modal .modal-dialog .modal-content .modal-body {
 }
 
 /*/не показывать поиск мобильным устрйоствам*/
-.all{
+.all {
     margin: 0 0 10px 0;
     height:75px;
     max-height: 600px;
     font-size: 13px;
     text-align: left;
-
-
-
-
-
 }
 
-#one{
+#one {
     float: left;
     width: 12%;
     height: 50px;
-
-
 }
 
-#two{
+#two {
     float:left;
     width:50%;
     height:50px;
     padding: 0 0 0 7px;
-
 }
 
-
-
-#three{
+#three {
     float:left;
     width: 15%;
     height:50px;
 }
 
-
-#four{
+#four {
     float:left;
     width: 17%;
     height:50px;
-
 }
 
-
-.active-like{
+.active-like {
     color: #e74c3c;
 }
-#five{
+
+#five {
     font-size: 40px;
     opacity: 0.5;
     float:left;
     width:6%;
     height:50px;
 }
+
 #five:hover {
     opacity: 0.8;
 }
-
 
 #for-search {/* блок div для вывода поиска в шаблоне*/
     position: absolute;
@@ -295,9 +282,6 @@ div .modal .modal-dialog .modal-content .modal-body {
     z-index: 9999999999;
 }
 
-
-
-
 #for-search::-webkit-scrollbar {
     width: 8px;
     opacity: 0.4;
@@ -305,11 +289,9 @@ div .modal .modal-dialog .modal-content .modal-body {
 
 /* Track */
 #for-search::-webkit-scrollbar-track {
-
     -webkit-border-radius: 10px;
     border-radius: 10px;
     opacity: 0.3;
-
 }
 
 /* Handle */
@@ -317,21 +299,17 @@ div .modal .modal-dialog .modal-content .modal-body {
     background: rgba(0, 0, 0, 0.16);
     position: absolute;
     top: 52px;
-
     display: block;
     border-radius: 7px;
     z-index: 99;
     right: 1px;
     opacity: 0.3;
-
-
 }
+
 #for-search::-webkit-scrollbar-track {
-
     -webkit-border-radius: 10px;
     border-radius: 10px;
     opacity: 0.3;
-
 }
 
 /* Handle */
@@ -339,22 +317,15 @@ div .modal .modal-dialog .modal-content .modal-body {
     background: rgba(0, 0, 0, 0.16);
     position: absolute;
     top: 52px;
-
     display: block;
     border-radius: 7px;
     z-index: 99;
     right: 1px;
     opacity: 0.3;
-
-
 }
-
 /* Handle */
 
-
-
-
-.button-search{ /*//кнопка поиска на полной странице*/
+.button-search { /*//кнопка поиска на полной странице*/
     border: none;
     background-color: transparent;
     position: absolute;
@@ -363,17 +334,17 @@ div .modal .modal-dialog .modal-content .modal-body {
     right: 0;
     display: block;
     color: #CCCCCC;
-
 }
-.button-search:hover{
+
+.button-search:hover {
     color: black;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
-.fa.fa-search{
+.fa.fa-search {
     border: none;
     background-color: transparent;
 }
@@ -392,33 +363,34 @@ div .modal .modal-dialog .modal-content .modal-body {
     background-color: transparent;
 }
 
-.main-search:hover{
+.main-search:hover {
     cursor: pointer;
 }
 
-.giftButton{
+.giftButton {
     margin: 15px 0  30px 30px;
 }
+
 .fa.fa-search-plus:hover {
-
     color: black;
-
 }
 
-.vote-btn.btn.background-for-like{
+.vote-btn.btn.background-for-like {
     background-color: white;
     border-color: #c7d1cd;
     border-radius: 8px;
-
 }
-.vote-btn.btn.background-for-like:hover{
+
+.vote-btn.btn.background-for-like:hover {
     cursor: pointer;
     background-color: #eeeeee;
 }
-span .vote-count{
+
+span .vote-count {
     background-color: green;
 }
-.margin{
+
+.margin {
     margin: 0 50px 10px 10px;
 }
 
@@ -426,7 +398,7 @@ span .vote-count{
     opacity: 0.2;
 }
 
-a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end{
+a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end {
     margin-bottom: 5px;
     padding: 5px 5px 5px 5px;
 
@@ -434,40 +406,48 @@ a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end{
 #calendar .fc-today {
     background-color: #fafafa;
 }
-td.fc-day-number.fc-today.fc-state-highlight{
+
+td.fc-day-number.fc-today.fc-state-highlight {
     color: #f7931d;
     border-color: #dddddd;
 }
-span .icon-like{
+
+span .icon-like {
     background-image: url(../images/);
 }
-tbody.fc-body{
+
+tbody.fc-body {
     border-color: #dddddd;
     background-color: #fafafa;
 }
-td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
+
+td.fc-day-number.fc-thu.fc-today.fc-state-highlight {
     border-color: #dddddd;
 }
-.img-to-send{
+
+.img-to-send {
     border-radius: 5px;
     height: 80px;
     width: 80px;
     float: left;
     margin-left: 20px;
 }
-.shadow-modal{
+
+.shadow-modal {
     height: 65px;
     width: 65px;
 }
-.my-coins{
+
+.my-coins {
     float:left;
     height: 440px
 }
-.choosenGift{
+
+.choosenGift {
     cursor: pointer;
 }
 
-.gift-in-modal{
+.gift-in-modal {
     text-align: center;
     vertical-align: middle;
     display: block;
@@ -477,11 +457,11 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     width: 250px;
 }
 
-.gift-in-modal:hover{
+.gift-in-modal:hover {
     cursor: pointer;
 }
 
-.online{
+.online {
     color: #000;
     border-bottom: none;
     font-size: 1em;
@@ -499,7 +479,7 @@ td.fc-day-number.fc-thu.fc-today.fc-state-highlight{
     text-align: center;
 }
 
-span .online-in-tooltip{
+span .online-in-tooltip {
     border-bottom: none;
     font-weight: 400;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -523,34 +503,38 @@ span .online-in-tooltip{
 
 }
 
-.ajax-tooltip-img{
+.ajax-tooltip-img {
     width: 40px;
     padding: 2px;
     margin-left: 10px;
 }
-.toolajax{
+
+.toolajax {
+    position: absolute; 
     width: 250px;
     font-size: 13px;
+    border: 1px solid #F1F1F1;
+    border-radius: 5px;
+    background-color: white;
 }
-.text-in-tooltip{
+
+.text-in-tooltip {
     color: #0a0a0a;
     text-align: left;
     font-size: 11px;
 }
-.block-text-tooltip{
+
+.block-text-tooltip {
     margin: 8px;
 }
-.href-tooltip{
+
+.href-tooltip {
     text-align: left;
-    }
-
-
-
+}
 
 .tooltip-user {
     position: relative;
     display: inline-block;
-
 }
 
 .tooltip-user .toolajax {
@@ -579,16 +563,18 @@ span .online-in-tooltip{
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-    font-size: 10px!important;
+    font-size: 10px !important;
 }
+
 .tooltip-text {
-    font-size: 10px!important;
+    font-size: 10px !important;
 }
 
 .tooltip-user:hover .toolajax {
     visibility: visible;
     opacity: 1;
 }
+
 .open-results{
     width: 100%;
     margin-bottom: 6px;
@@ -599,6 +585,7 @@ span .online-in-tooltip{
     padding: 5px;
     margin: 5px;
 }
+
 .information_row_last {
     padding: 5px;
     margin: 5px;
