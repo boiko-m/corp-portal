@@ -1,5 +1,5 @@
 <?php
-  use yii\helpers\html;
+  use yii\helpers\Html;
   use yii\widgets\Pjax;
   use yii\widgets\Date;
   use \app\widgets\LbrComments;
