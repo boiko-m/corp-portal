@@ -46,9 +46,7 @@
       <h5 class="card-title text-center">Файлы для просмотра</h5>
       <? if (count($attachmentDocument) != 0) : ?>
         <? foreach ($attachmentDocument as $key => $document) { ?>
-          <a href="#" onclick="OpenDocumentContent('<?= $document->link ?>')" style="margin: 0 10px 0 10px;">
-            <i class="fa fa-file-archive-o" aria-hidden="true" title="<?= end(explode('/', $document->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
-          </a>
+          <?= Html::a('<i class="fa fa-file-archive-o" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>', ['view-attachment/view', 'id' => $document->id], ['style' => ['margin' => '0 10px 0 10px']], ['title' => '<?= end(explode("/", $document->link)) ?>']) ?>
         <? } ?>
       <? else : ?>
         <div class="col-xs-12 col-md-12 m-b-30 text-center">

@@ -157,7 +157,7 @@
                 </div>
             </div>
 
-            <div id = "carouselExampleControls" class = "mt-2" style="overflow: auto !important;">
+            <div id = "carouselExampleControls" class="mt-2" style="overflow: auto !important;">
                 <?php Pjax::begin(); ?>
                 <?= Html::a("Обновить", ['/broadcast/full/?id='.$model->id], ['class' => 'btn btn-lg btn-primary', 'id' => 'refreshButton', 'style' => 'display:none;']) ?>
                     <?php foreach ($message as $mes): ?>
@@ -167,7 +167,7 @@
                                 <div class="row ">
                                     <div class="col-2 align-self-center">
                                         <a href="/profiles/<?=$mes['user']['id'] ?>" target="_blank">
-                                            <img src="<?=Profile::getImageStatic($mes['user']['profile']['id']);?>"  class = "img-fluid" alt="" style = "border-radius: 100px;">
+                                            <img src="<?=Profile::getImageStatic($mes['user']['profile']['id']);?>"  class="img-fluid" alt="" style = "border-radius: 100px;">
                                         </a>
                                     </div>
                                     <div class="col-10 message px-3 py-2" style="background:<?=($mes['user']['profile']['id'] != \Yii::$app->user->id) ? 'white' : '#e1e5eb'?>">
