@@ -19,7 +19,7 @@ class AttachmentProjectNewsSearch extends AttachmentProjectNews
     {
         return [
             [['id', 'type', 'create_at', 'create_user', 'id_project_news'], 'integer'],
-            [['link'], 'safe'],
+            [['link', 'name'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class AttachmentProjectNewsSearch extends AttachmentProjectNews
             'id_project_news' => $this->id_project_news,
         ]);
 
-        $query->andFilterWhere(['like', 'link', $this->link]);
+        $query->andFilterWhere(['like', 'link', $this->link])
+              ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

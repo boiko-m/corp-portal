@@ -13,6 +13,8 @@
 
     <?= $form->field($model, 'file')->fileInput(['style' => 'display: none'])->label(false) ?>
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'create_at')->hiddenInput(['value' => time()])->label(false) ?>
 
     <?= $form->field($model, 'create_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>

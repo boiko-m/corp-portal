@@ -18,13 +18,7 @@
                 'attribute' => 'id',
                 'headerOptions' => ['style' => 'width:4%'],
             ],
-            [
-                'attribute' => 'link',
-                'label' => 'Название',
-                'value' => function($model) {
-                    return end(explode('/', $model->link));
-                }
-            ],
+            'name',
             [
                 'attribute' => 'type',
                 'value' => function($model) {
@@ -49,7 +43,26 @@
                 'value' => 'projectNews.title',
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Действия',
+                'headerOptions' => ['style' => 'width: 10%'],
+                'template' => '
+                    {view}
+                    {update}
+                    {delete}
+                    {go_ever}
+                    {attachments}
+                ',
+                'buttons' => [
+                    'go_ever' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-tv"></i>', 'http://portal.lbr.ru/view-attachment/view/' . $model->id, [
+                            'title' => 'Перейти к просмотру',
+                            'target' => '_blank',
+                        ]);
+                    },
+                ]
+            ],
         ],
         'pager' => [
             'options'=>['class' => 'pagination float-right'],

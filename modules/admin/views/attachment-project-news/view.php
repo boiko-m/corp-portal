@@ -2,13 +2,13 @@
     use yii\helpers\Html;
     use yii\widgets\DetailView;
 
-    $this->title = $model->id;
+    $this->title = $model->name;
     $this->params['breadcrumbs'][] = ['label' => 'Вложения новостей', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attachment-project-news-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="crud-title"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,6 +29,7 @@
                 'headerOptions' => ['style' => 'width:4%'],
             ],
             'link',
+            'name',
             [
                 'attribute' => 'type',
                 'value' => function($model) {

@@ -12,7 +12,7 @@
   $this->params['breadcrumbs'][] = 'Статистика';
 ?>
 
-<style>
+<!-- <style>
   .view_answer_dropdown {
     width: 100%;
     padding: 1px 5px 1px 5px;
@@ -25,7 +25,7 @@
     -moz-border-radius: 3px;
     border: 1px solid #a5a5a5;
   }
-</style>
+</style> -->
 
 <div class="questionnaire-view">
 
@@ -39,7 +39,7 @@
     ?>
 
   <div class="row">
-    <div class="card col-md-12" style="margin-top: 25px;">
+    <div class="col-md-12" style="margin-top: 25px;">
       <?php echo GoogleChart::widget(array('visualization' => 'ColumnChart',
           'data' => $arrayChart,
           'options' => array(

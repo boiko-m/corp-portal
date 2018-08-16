@@ -43,6 +43,8 @@
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Действия',
+                'headerOptions' => ['style' => 'width: auto'],
                 'template' => '
                     {view}
                     {update}

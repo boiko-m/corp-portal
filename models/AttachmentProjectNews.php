@@ -37,7 +37,7 @@ class AttachmentProjectNews extends \yii\db\ActiveRecord
     {
         return [
             [['file'], 'file'],
-            [['link', 'type', 'create_at', 'create_user', 'id_project_news'], 'required'],
+            [['link', 'name', 'type', 'create_at', 'create_user', 'id_project_news'], 'required'],
             [['type', 'create_at', 'create_user', 'id_project_news'], 'integer'],
             [['link'], 'string', 'max' => 100],
             [['id_project_news'], 'exist', 'skipOnError' => true, 'targetClass' => ProjectNews::className(), 'targetAttribute' => ['id_project_news' => 'id']],
@@ -53,6 +53,7 @@ class AttachmentProjectNews extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'link' => 'Ссылка',
+            'name' => 'Название',
             'type' => 'Тип',
             'create_at' => 'Дата создания',
             'create_user' => 'Создатель',

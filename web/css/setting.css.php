@@ -74,4 +74,18 @@
 		background-color: <?= $backgroundColor ?> !important;
 		border-color: <?= $backgroundColor ?> !important;
 	}
+
+	.docs_name > b {
+		color: <?= $backgroundColor ?> !important;
+	}
+
+	.flat_button:nth-child(1) {
+		background-color: <?= $backgroundColor ?> !important;
+	}
+
+	.flat_button:nth-child(2) {
+		background-color: <?= $backgroundColor ?> !important;
+		box-shadow: 0 0.5em 1.5em rgba(0,0,0,0.15);
+		opacity: 0.5;
+	}
 </style>
