@@ -102,8 +102,19 @@
         <span>&times;</span><span class="sr-only">Закрыть</span>
     </button>
     <h4 class="custom-modal-title">Список вложений</h4>
-    <div class="custom-modal-text">
-        <ul class="attachment-dialog-list"></ul>
+    <div class="custom-modal-text text-left">
+        <div class="row">
+            <div class="col-md-12">
+                <i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i>
+                <span>TEXT</span>
+                <p>3 МБ</p>
+            </div>
+            <div class="col-md-12">
+                <i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i>
+                <span>TEXT</span>
+                <p>3 МБ</p>
+            </div>
+        </div>
     </div>
 </div>
 

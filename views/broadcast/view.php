@@ -168,7 +168,7 @@
                                     <div>
                                         <a target = "_blank" href="/profiles/<?=$mes['user']['id'] ?>"> <?=$mes['user']['profile']['first_name'] ?> </a> <small> в <?=date('H:i:s', $mes['create_at'])?></small>
                                     </div>
-                                    <div>
+                                    <div style="word-wrap: break-word;">
                                         <?php if ($mes['message'] == ':smile') { ?>
                                             <div class="text-center">
                                                 <img src="http://portal.lbr.ru/img/gift/gift_1530257840.jpg" alt="Котик манул. Секретный смайл" class="" style="width: 50%">

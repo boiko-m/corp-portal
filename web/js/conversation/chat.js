@@ -87,20 +87,10 @@ $(".im-icon-plus").on('click', function() {
 
 // ------------- Rotate plus -------------
 
-$( ".im-user-input-search" ).focus(function() {
-  $(".im-icon-plus").addClass('rotate45')
-});
-
 $( ".im-user-input-search" ).focusout(function() {
   let inputValue = $('.im-user-input-search').val()
   if (inputValue.length == 0) {
-    $(".im-list-user-messages").empty();
-    $(".im-icon-plus").addClass('rotate-45')
-    $(".im-icon-plus").removeAttr('rotate-45')
-    setTimeout(function(){
-      $(".im-icon-plus").removeClass('rotate45')
-      $(".im-icon-plus").removeClass('rotate-45')
-    }, 600);
+    getListDialogs();
   }
 });
 
@@ -186,7 +176,6 @@ function getListDialogs() {
     },
     success: function(data) {
       let result = $.parseJSON(data);
-      console.log(result);
       $(".im-list-user-messages").empty()
       if (result.length != 0) {
         for(let i = 0; i < result.length; i++) {
