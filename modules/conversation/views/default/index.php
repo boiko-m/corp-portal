@@ -104,15 +104,23 @@
     <h4 class="custom-modal-title">Список вложений</h4>
     <div class="custom-modal-text text-left">
         <div class="row">
-            <div class="col-md-12">
-                <i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i>
-                <span>TEXT</span>
-                <p>3 МБ</p>
+            <div class="col-md-12 attachment-item">
+                <div class="display-inline"><i class="fa fa-file-archive-o fa-3x" aria-hidden="true"></i></div>
+                <div class="display-inline" style="margin-left: 5px;">
+                    <a href="">
+                       <span class="text-attachment">Text name attachment number 1</span> 
+                    </a>
+                    <p class="text-attachment-size">13 МБ</p>
+                </div>
             </div>
-            <div class="col-md-12">
-                <i class="fa fa-file-archive-o fa-2x" aria-hidden="true"></i>
-                <span>TEXT</span>
-                <p>3 МБ</p>
+            <div class="col-md-12 attachment-item">
+                <div class="display-inline"><i class="fa fa-file-archive-o fa-3x" aria-hidden="true"></i></div>
+                <div class="display-inline" style="margin-left: 5px;">
+                    <a href="">
+                       <span class="text-attachment">Text name attachment number 2</span> 
+                    </a>
+                    <p class="text-attachment-size">5 МБ</p>
+                </div>
             </div>
         </div>
     </div>

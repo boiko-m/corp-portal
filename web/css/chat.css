@@ -439,6 +439,20 @@
     }
 }
 
-
 /*Attachments*/
 
+.attachment-item {
+    margin-top: 5px;
+}
+
+.display-inline {
+    display: inline-block;
+}
+
+.text-attachment {
+    font-size: 15px;
+}
+
+.text-attachment-size {
+    font-size: 13px;
+}
