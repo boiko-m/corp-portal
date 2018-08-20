@@ -277,6 +277,9 @@
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
+                      <div class="ml-3" style="padding-top: 10px; display: inline-block;">
+                        <?= Html::a('Показать ещё', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ''])?>
+                      </div>
                     </div>
 
                     <div class="tab-pane" id="v-online">
