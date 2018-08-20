@@ -207,7 +207,7 @@
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
 
-        <div class="card-box">
+        <div class="card-box pt-0 pr-0 pl-0">
 
             <div class="tabs">
                 <ul class="nav nav-tabs tabs-bordered nav-justified">
@@ -246,7 +246,7 @@
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 ml-3">
                           <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ';'])?>
                         </div>
                       </div>
@@ -264,11 +264,15 @@
                           </div>
                           <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
                             <div>
-                                 <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
+                               <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
+                               <span style="color:#999;font-size:85%;">
+                                  · принят <?=date('d.m', strtotime($user->date_job))?>
+                               </span>
                             </div>
                             <div style="font-size: 90%;color: #333;" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
                               <span style="color: #999;"><?=$user->branch?></span>
                             </div>
+
                           </div>
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
@@ -296,7 +300,7 @@
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
-                      <div style="padding-top: 10px; display: inline-block;">
+                      <div class="ml-3" style="padding-top: 10px; display: inline-block;">
                         <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ''])?>
                       </div>
                   </div>
