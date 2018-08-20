@@ -46,10 +46,10 @@
       <h5 class="card-title text-center">Файлы для просмотра</h5>
       <? if (count($attachmentDocument) != 0) : ?>
         <? foreach ($attachmentDocument as $key => $document) { ?>
-          <?= Html::a('<i class="fa fa-file-archive-o" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>', 
+          <?= Html::a("<img src='/img/icon/word.png' style='width: 50px; margin: 15px 0 0'></img>", 
             ['view-attachment/view', 'id' => $document->id], 
             ['style' => 
-              ['margin' => '0 10px 0 10px'], 
+              ['margin' => '0'],
               'target' => '_blank', 
               'title' => $document->name
             ]) ?>
@@ -73,10 +73,3 @@
     ]) ?>
   </div>
 </div>
-
-<script>
-  function OpenDocumentContent(content) {
-    let newWin = open('', '',"width=" + screen.availWidth + ",height=" + screen.availHeight);
-    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width=100% height=90% scrolling='auto' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
-  }
-</script>

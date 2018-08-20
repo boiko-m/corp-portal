@@ -64,9 +64,10 @@ class ProjectUserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new ProjectUser();
+        $model->id_project = (Projects::findOne(['id' => $id]))->name;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->id_project = (Projects::findOne(['name' => $model->id_project]))->id;

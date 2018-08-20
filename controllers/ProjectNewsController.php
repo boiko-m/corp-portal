@@ -112,6 +112,13 @@ class ProjectNewsController extends Controller
         return $this->redirect(['index']);
     }
 
+    protected function getIcon($file){
+        if (end(explode('.', $file)) == 'pptx')
+            return "powerpoint.png";
+        elseif (end(explode('.', $file)) == 'xlsx')
+            return "excel.png";
+    }
+
     /**
      * Finds the ProjectNews model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

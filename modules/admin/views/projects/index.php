@@ -56,8 +56,8 @@
                     {appointments}
                 ',
                 'buttons' => [
-                    'appointments' => function () {
-                        return Html::a('<i class="fa fa-user-plus"></i>', '/admin/project-user/create', [
+                    'appointments' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-user-plus"></i>', ['/admin/project-user/create/', 'id' => $model->id], [
                             'title' => 'Создать назначение',
                         ]);
                     },
