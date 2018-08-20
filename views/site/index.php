@@ -225,7 +225,11 @@
                 <div class="tab-content" style="width: 100%;">
 
                     <div class="tab-pane active" id="v-birthday">
-                      <?php foreach ($birthdays as $user): ?>
+                      <? if (!count($birthdays)) : ?>
+                      <div class='text-center' style='color:#999'>
+                        <p>Сегодня никто не празднует день рождения</p>
+                      </div>
+                      <? else : foreach ($birthdays as $user): ?>
                         <div class="row px-4">
                           <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
                             <div title = "<?=$user->first_name.' '.$user->last_name ?>">
@@ -244,11 +248,9 @@
                           </div>
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
-                      <?php endforeach ?>
-                      <div class="row">
-                        <div class="col-12 ml-3">
-                          <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ';'])?>
-                        </div>
+                      <?php endforeach; endif; ?>
+                      <div class="pl-3 pr-3">
+                        <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ';'])?>
                       </div>
                     </div>
 
@@ -277,8 +279,8 @@
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
-                      <div class="ml-3" style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Показать ещё', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ''])?>
+                      <div class="pl-3 pr-3">
+                        <?= Html::a('Показать ещё', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ''])?>
                       </div>
                     </div>
 
@@ -303,8 +305,8 @@
                         </div>
                         <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
-                      <div class="ml-3" style="padding-top: 10px; display: inline-block;">
-                        <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ''])?>
+                      <div class="pl-3 pr-3">
+                        <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ''])?>
                       </div>
                   </div>
               </div>
