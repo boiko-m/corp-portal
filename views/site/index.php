@@ -135,7 +135,7 @@
                                                             'save' => false,
                                                             'one' => true
                                                         ]); ?>
-                                                        <a href="/news/<?= $item["id"] ?>" style="<?= ($visit) ? 'font-weight: normal' : null ?>">
+                                                        <a href="/news/<?= $item["id"] ?>" class="news-title" style="<?= ($visit) ? 'font-weight: normal' : null ?>">
                                                             <?= $item['title'] ?>
                                                         </a>
                                                     </div>

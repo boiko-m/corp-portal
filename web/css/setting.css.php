@@ -89,7 +89,7 @@
 		opacity: 0.5;
 	}
 
-	.news-container a {
+	.news-title {
 		color: <?=Yii::$app->setting->getValue('navbar-background-color')?> !important;
 	}
 </style>
