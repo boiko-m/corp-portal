@@ -226,8 +226,8 @@
 
                     <div class="tab-pane active" id="v-birthday">
                       <?php foreach ($birthdays as $user): ?>
-                        <div class="row">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center">
+                        <div class="row px-4">
+                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
                             <div title = "<?=$user->first_name.' '.$user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
@@ -254,8 +254,8 @@
 
                     <div class="tab-pane " id="v-new">
                       <?php foreach ($user_new as $user): ?>
-                        <div class="row">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center">
+                        <div class="row px-4">
+                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
                             <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
@@ -281,8 +281,8 @@
 
                     <div class="tab-pane" id="v-online">
                       <?php foreach ($online as $user):?>
-                        <div class="row">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center">
+                        <div class="row px-4">
+                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
                             <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
                               <a href="/profiles/<?=$user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
