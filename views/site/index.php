@@ -207,7 +207,6 @@
 <div class="row">
     <div class="col-xs-12 col-md-8 m-b-30">
         <div class="card">
-            <div class="card-header">Сотрудники</div>
 
             <div class="card-body">
 
@@ -229,18 +228,16 @@
                         <div class="tab-pane active" id="v-birthday">
                           <?php foreach ($birthdays as $user): ?>
                             <div class="row">
-                              <div class="col-2">
-                                <div style="margin-left: 20%;">
-                                  <div title = "<?=$user->first_name.' '.$user->last_name ?>">
-                                      <a href="/profiles/<?php echo $user->id ?>">
-                                          <img src="<?php // $user->getImage(); ?>http://portal.lbr.ru/img/user/thumbnail_no-profile-m.png" alt="" style="border-radius: 50%;" class ="img-fluid">
-                                      </a>
-                                  </div>
+                              <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12">
+                                <div title = "<?=$user->first_name.' '.$user->last_name ?>">
+                                  <a href="/profiles/<?php echo $user->id ?>">
+                                    <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
+                                  </a>
                                 </div>
                               </div>
-                              <div class="col-10">
-                                <div class="pt-2">
-                                     <a href="/profiles/<?php echo $user->id ?>" style = "font-size:14px"><?=$user->last_name.' '.$user->first_name?></a>
+                              <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12">
+                                <div>
+                                   <a href="/profiles/<?php echo $user->id ?>" style = "font-size:14px"><?=$user->last_name.' '.$user->first_name?></a>
                                 </div>
                                 <div style="font-size: 90%;color: #333;" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
                                   <span style="color: #999;"><?=$user->branch?></span>
@@ -250,7 +247,7 @@
                             <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                           <?php endforeach ?>
                           <div class="row">
-                            <div class="col-12 pt-3">
+                            <div class="col-12">
                               <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn  waves-effect w-md btn-light', 'style' => ';'])?>
                             </div>
                           </div>
@@ -259,17 +256,15 @@
                         <div class="tab-pane " id="v-new">
                           <?php foreach ($user_new as $user): ?>
                             <div class="row">
-                              <div class="col-2">
-                                <div style="margin-left: 20%;">
-                                  <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
-                                      <a href="/profiles/<?php echo $user->id ?>">
-                                          <img src="<?php // $user->getImage(); ?>http://portal.lbr.ru/img/user/thumbnail_no-profile-m.png" alt="" style="border-radius: 50%;" class ="img-fluid">
-                                      </a>
-                                  </div>
+                              <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12">
+                                <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
+                                  <a href="/profiles/<?php echo $user->id ?>">
+                                    <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
+                                  </a>
                                 </div>
                               </div>
-                              <div class="col-10">
-                                <div class="pt-2">
+                              <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12">
+                                <div>
                                      <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                                 </div>
                                 <div style="font-size: 90%;color: #333;" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
@@ -284,17 +279,15 @@
                         <div class="tab-pane" id="v-online">
                           <?php foreach ($online as $user):?>
                             <div class="row">
-                              <div class="col-2">
-                                <div style="margin-left: 20%;">
-                                  <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
-                                      <a href="/profiles/<?=$user->id ?>">
-                                          <img src="<?php // $user->getImage(); ?>http://portal.lbr.ru/img/user/thumbnail_no-profile-m.png" alt="" style="border-radius: 50%;" class ="img-fluid">
-                                      </a>
-                                  </div>
+                              <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12">
+                                <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
+                                  <a href="/profiles/<?=$user->id ?>">
+                                    <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
+                                  </a>
                                 </div>
                               </div>
-                              <div class="col-10">
-                                <div class="pt-2">
+                              <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12">
+                                <div>
                                      <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                                 </div>
                                 <div style="font-size: 90%;color: #333;" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
