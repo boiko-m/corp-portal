@@ -3,12 +3,11 @@
 ============= */
 
 .tab-content {
-  padding: 20px 0 0 0;
+  padding: 20px 0 0 0 !important;
 }
 
 .nav-tabs>li>a,.nav-pills>li>a {
   color: $dark;
-  font-weight: 600;
 }
 .nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
   background: $custom;
@@ -20,7 +19,6 @@
   .tab-content {
     background: $white;
     display: table-cell;
-    padding: 0 0 0 20px;
     vertical-align: top;
   }
   .nav.tabs-vertical {
@@ -32,7 +30,6 @@
     li > a {
       color: $dark;
       white-space: nowrap;
-      font-weight: 600;
       border-radius: 2px;
     }
 
@@ -47,7 +44,6 @@
 
 .tabs-vertical-env-right {
   .tab-content {
-    padding: 0 20px 0 0;
   }
 }
 
