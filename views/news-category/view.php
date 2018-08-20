@@ -12,31 +12,22 @@
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel,
                     'summary' => false,
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
                         [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}',
-                            'buttons' => [
-                                'view' => function ($url, $model, $key) {
-                                    return Html::a('<i class="glyphicon glyphicon-eye-open"></i>', '/news/' . $model->id, [
-                                        'title' => 'Перейти к просмотру',
-                                    ]);
-                                },
-                            ]
-                        ],
-                        [
                             'label' => 'Заголовок новости',
                             'format' => 'raw',
-                            'value' => function ($data) {
-                                return strip_tags($data->title);
+                            'value' => function ($model) {
+                                return Html::a(strip_tags($model->title), '/news/' . $model->id, [
+                                    'title' => 'Перейти к просмотру',
+                                ]);
                             },
                         ],
                         [
                             'attribute' => 'date',
                             'format' => ['date', 'php:d.m.Y'],
+                            'headerOptions' => ['style' => 'width:20%'],
                         ],
                     ],
                     'pager' => [

@@ -51,7 +51,6 @@
     }
 
     function initChangeLeftMenuTab() {
-        // Left menu collapse
         $('.trigger-left-menu-tab').on('click', function (event) {
             event.preventDefault();
             let current = $(this);
@@ -88,23 +87,6 @@
         });
     }
 
-    function initChangeNewsPanel() {
-        $('.event-news-panel').on('click', function (e) {
-            let panel = $(this);
-            $.ajax({
-              url: '/profiles/update-setting-news-panel?toggle-news-panel=' + panel.val(),
-              data: panel.val(),
-              success: function(data) {
-                $('.event-news-panel:disabled').removeAttr('disabled')
-                panel.attr('disabled', 'disabled')
-              },
-              error: function(xhr, str){
-                alert('Возникла ошибка: ' + xhr.responseCode);
-              }
-            });
-        });
-    }
-
     function initActiveMenu() {
         // === following js will activate the menu in left side bar based on url ====
         $("#sidebar-menu a").each(function () {
@@ -128,7 +110,6 @@
         initEnlarge();
         initActiveMenu();
         initChangeBgNb();
-        initChangeNewsPanel();
         initChangeLeftMenuTab();
     }
 

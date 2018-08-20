@@ -3,7 +3,7 @@
     use yii\grid\GridView;
     use yii\widgets\Pjax;
 
-    $this->title = 'Вложения новостей';
+    $this->title = 'Подшитые файлы';
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attachment-project-news-index">

@@ -16,49 +16,59 @@
       display: block;
       padding: 5px;
     }
+
     .news-a a:hover {
       color: black;
       background: #f5f5f5;
     }
+
     .news-offer {
       text-decoration: underline;
       font-size: 11px;
       color: #747474;
     }
+
     .news-container * {
         line-height: 1;
     }
+
     .news-container a {
-        font-weight: normal;
-        color: <?=Yii::$app->setting->getValue('navbar-background-color')?>;
+        font-weight: bold;
         opacity: 0.9;
         transition: 0.3s;
     }
+
     .news-container a:hover {
-        opacity: 0.7;
+        opacity: 1.5;
     }
+
     .news-container small a {
         font-weight: normal;
         color: black;
         opacity: 0.9;
         transition: 0.3s;
     }
+
     .news-container small a:hover {
         text-decoration: underline;
         color: black;
     }
+
     .news-container i {
         color: #bfbfbf;
     }
+
     .btn-outline-danger {
         color: #e50f0f;
         border-color: #e50f0f;
     }
+
     .btn-outline-danger:hover {
         color: #fff;
         background: #e50f0f;
         opacity: 1;
     }
+
     .warning * {
         line-height: 1;
     }
@@ -69,7 +79,6 @@
         <div class="col-12 mb-4 w-100 ml-3" >
             <div class="row">
                 <a  href="/broadcast/<?=$live->id?>" target="_blank" class="btn btn-outline-danger waves-light waves-effect w-md col-xs-12 col-md-6 ">
-
                     <div class="row align-items-center">
                         <div class="col-1">
                             <i class="mdi mdi-access-point icon-left-menu-broadcast icon-broadcast-flicker" style="font-weight: bold; font-size: 30px"></i>
@@ -110,7 +119,6 @@
                 <div class="col-12">
                     <div class="tab-content pt-0">
                         <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
-
                                 <div class="row align-items-center">
                                     <div class="col-12">
                                         <?php foreach ($news as $item): ?>
@@ -127,12 +135,12 @@
                                                             'save' => false,
                                                             'one' => true
                                                         ]); ?>
-                                                        <a href="/news/<?= $item["id"] ?>" style = "<?= ($visit) ? 'opacity: 0.3' : '' ;?>">
+                                                        <a href="/news/<?= $item["id"] ?>" style="<?= ($visit) ? 'font-weight: normal' : null ?>">
                                                             <?= $item['title'] ?>
                                                         </a>
                                                     </div>
                                                     <div>
-                                                         <small>Категория: <a href="news-category/<?= $item['newsCategory']['id'] ?>" target="_blank"><b><?= $item['newsCategory']['name'] ?></b></a> от <?= date("d.m.Y H:i:s", $item['date']) ?></small>
+                                                         <small>Категория: <a href="news-category/<?= $item['newsCategory']['id'] ?>" target="_blank"><b><?= $item['newsCategory']['name'] ?></b></a> от <?= date("d.m.Y", $item['date']) ?></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 
     <div class="col-xs-12 col-md-4 m-b-30">

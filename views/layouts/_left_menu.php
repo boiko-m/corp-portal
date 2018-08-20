@@ -1,10 +1,8 @@
 <?php
   use app\models\Broadcast;
-  $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : '';
+  $live = Broadcast::find()->where(['link_only' => 0, 'complete' => 0])->count() > 0 ? 'icon-broadcast-flicker' : null;
 ?>
-
-
-<div class="left side-menu">
+ <div class="left side-menu">
     <div class="slimscroll-menu" id="remove-scroll">
 
         <!--- Sidemenu -->
@@ -18,7 +16,7 @@
                         <ul class="nav nav-tabs nav-justified nav-project tabs-bordered menu-me">
                             <li class="nav-item">
                                 <a href="#menu-main" id-user-setting="1" style="touch-action: auto; pointer-events: auto;" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'active' : null ?> trigger-left-menu-tab">
-                                    Основное   
+                                    Основное
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -32,7 +30,7 @@
 
 
                 <div class="tab-content" style="padding: 0px;">
-                    <div id = "menu-main" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'fade active show' : null ?>">
+                    <div id="menu-main" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'active' : null ?>">
                             <li>
                                 <a href="/">
                                     <i class="fi-grid"></i> <span> Главная </span>
@@ -54,11 +52,11 @@
                                 </ul>
                             </li>
 
-                            <?if(\Yii::$app->user->can("viewScripts")):?>
+                            <? if(\Yii::$app->user->can("viewScripts")) : ?>
                                 <li>
                                     <a href="/broadcast"><i class="mdi mdi-access-point icon-left-menu-broadcast <?= $live ?>" style="font-weight: bold; font-size: 24px"></i> <span> Трансляции </span></a>
                                 </li>
-                            <?endif;?>
+                            <? endif; ?>
 
                             <li> 
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Компания </span> <span class="menu-arrow"></span></a>
@@ -88,35 +86,32 @@
                             </li>
                     </div>
                 
-
-                <div id = "menu-work" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'fade active show' : null ?>">
-                    <li>
-                        <a href="/documents/catalog/">
-                            <i class="dripicons-document"></i> <span> Каталоги </span>
-                        </a>
-                    </li>
-
-                    <?if(\Yii::$app->user->can("viewOrdersClient")):?>
+                    <div id="menu-work" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'active' : null ?>">
                         <li>
-                            <a href="/ordersclient/">
-                                <i class="dripicons-list"></i> <span> Заказ покупателя </span>
+                            <a href="/documents/catalog">
+                                <i class="dripicons-document"></i> <span> Каталоги </span>
                             </a>
                         </li>
-                    <?endif;?>
 
-                    <?if(\Yii::$app->user->can("viewScripts")):?>
-                        <li>
-                            <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/scripts/">Скрипты</a></li>
-                            </ul>
-                        </li>
-                    <?endif;?>
+                        <? if(\Yii::$app->user->can("viewOrdersClient")) : ?>
+                            <li>
+                                <a href="/ordersclient">
+                                    <i class="dripicons-list"></i> <span> Заказ покупателя </span>
+                                </a>
+                            </li>
+                        <? endif; ?>
 
+                        <? if(\Yii::$app->user->can("viewScripts")) : ?>
+                            <li>
+                                <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/scripts">Скрипты</a></li>
+                                </ul>
+                            </li>
+                        <? endif; ?>
+
+                    </div>
                 </div>
-
-                </div>
-
 
             </ul>
         </div>
