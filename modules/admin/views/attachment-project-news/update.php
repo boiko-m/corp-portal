@@ -4,7 +4,7 @@
 	use app\models\ProjectNews;
 
 	$this->title = 'Редактирование вложения';
-	$this->params['breadcrumbs'][] = ['label' => 'Вложения новостей', 'url' => ['index']];
+	$this->params['breadcrumbs'][] = ['label' => 'Подшитые файлы', 'url' => ['index']];
 	$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 	$this->params['breadcrumbs'][] = 'Редактирование';
 ?>

@@ -9,7 +9,7 @@
 ?>
 
 <div class="row">
-  <div class="col-xs-12 col-md-9 m-b-30">
+  <div class="col-xs-12 <?= count($attachmentDocument) == 0 && count($attachmentVideo) == 0 ? 'col-md-12' : 'col-md-9' ?> m-b-30">
     <div class="card-box">
       <h5 class="card-title"><?= $news['title'] ?></h5>
       <div style="margin-bottom: 10px;">
@@ -26,41 +26,27 @@
   </div>
 
   <div class="col-xs-12 col-md-3 m-b-30">
+    <? if (count($attachmentVideo) != 0) : ?>
     <div class="card-box">
       <h5 class="card-title text-center">Видео</h5>
-      <? if (count($attachmentVideo) != 0) : ?>
         <? foreach ($attachmentVideo as $key => $video) { ?>
           <a href="<?= $video->link ?>" target="_blank" style="margin: 0 10px 0 10px;">
             <i class="fa fa-video-camera" aria-hidden="true" title="<?= end(explode('/', $video->link)); ?>" style="font-size: 40px; margin: 15px 0 0"></i>
           </a>
         <? } ?>
-      <? else : ?>
-        <div class="col-xs-12 col-md-12 m-b-30 text-center">
-          <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
-          <p style="margin: 10px 0 -20px 0;">Видео на данный момент отсутствуют</p>
-        </div>
-      <? endif; ?>
     </div>
+  <? endif; ?>
 
+    <? if (count($attachmentDocument) != 0) : ?>
     <div class="card-box">
       <h5 class="card-title text-center">Файлы для просмотра</h5>
-      <? if (count($attachmentDocument) != 0) : ?>
         <? foreach ($attachmentDocument as $key => $document) { ?>
-          <?= Html::a('<i class="fa fa-file-archive-o" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>', 
-            ['view-attachment/view', 'id' => $document->id], 
-            ['style' => 
-              ['margin' => '0 10px 0 10px'], 
-              'target' => '_blank', 
-              'title' => $document->name
-            ]) ?>
+          <a href="/view-attachment/view/<?= $document->id ?>" target="_blank" title="<?= $document->name ?>">
+            <img src="/img/icon/office/<?= end(explode('.', $document->link)) ?>.png" style="width: 50px; margin: 15px 0 0">
+          </a>
         <? } ?>
-      <? else : ?>
-        <div class="col-xs-12 col-md-12 m-b-30 text-center">
-          <i class="fa fa-rocket" aria-hidden="true" style="font-size: 40px; margin: 15px 0 0"></i>
-          <p style="margin: 10px 0 -20px 0;">Файлы на данный момент отсутствуют</p>
-        </div>
-      <? endif; ?>
     </div>
+    <? endif; ?>
   </div>
 </div>
 
@@ -73,10 +59,3 @@
     ]) ?>
   </div>
 </div>
-
-<script>
-  function OpenDocumentContent(content) {
-    let newWin = open('', '',"width=" + screen.availWidth + ",height=" + screen.availHeight);
-    newWin.document.write("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://portal.lbr.ru" + content + "' width=100% height=90% scrolling='auto' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>");
-  }
-</script>

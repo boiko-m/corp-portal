@@ -3,7 +3,7 @@
     use yii\widgets\DetailView;
 
     $this->title = $model->name;
-    $this->params['breadcrumbs'][] = ['label' => 'Вложения новостей', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = ['label' => 'Подшитые файлы', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attachment-project-news-view">

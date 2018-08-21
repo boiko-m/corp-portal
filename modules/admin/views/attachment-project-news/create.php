@@ -4,7 +4,7 @@
 	use app\models\ProjectNews;
 
 	$this->title = 'Создание вложения';
-	$this->params['breadcrumbs'][] = ['label' => 'Вложения новостей', 'url' => ['index']];
+	$this->params['breadcrumbs'][] = ['label' => 'Подшитые файлы', 'url' => ['index']];
 	$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attachment-project-news-create">

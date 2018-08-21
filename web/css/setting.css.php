@@ -88,4 +88,8 @@
 		box-shadow: 0 0.5em 1.5em rgba(0,0,0,0.15);
 		opacity: 0.5;
 	}
+
+	.news-title {
+		color: <?=Yii::$app->setting->getValue('navbar-background-color')?> !important;
+	}
 </style>
