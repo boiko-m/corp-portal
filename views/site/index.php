@@ -1,5 +1,6 @@
 <?php
     use app\models\Profile;
+    use app\models\ProjectNews;
     use app\models\Session;
     use yii\helpers\Html;
     use yii\helpers\Url;
@@ -106,11 +107,6 @@
                                 Новости компании
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'active' : null ?>">
-                                Новости проектов
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -118,10 +114,11 @@
             <div class="row ">
                 <div class="col-12">
                     <div class="tab-content pt-0">
-                        <div id="home-b1" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'fade active show' : null ?>">
+                        <div>
                                 <div class="row align-items-center">
                                     <div class="col-12">
                                         <?php foreach ($news as $item): ?>
+                                            <? if (empty($item->link_project_news) || (ProjectNews::findOne(end(explode('/', $item->link_project_news))))->visible) : ?>
                                             <div class="row pl-2 pt-3 align-items-center news-container">
                                                 <div class="d-none d-lg-block col-md-1 text-right pr-0">
                                                     <i class="fa <?= $item['newsCategory']['pintogram'] ?> fa-2x" aria-hidden="true"></i>
@@ -135,7 +132,7 @@
                                                             'save' => false,
                                                             'one' => true
                                                         ]); ?>
-                                                        <a href="/news/<?= $item["id"] ?>" class="news-title" style="<?= ($visit) ? 'opacity: 0.6' : null ?>">
+                                                        <a href="/news/<?= $item["id"] ?>" class="news-title" style="<?= ($visit) ? 'opacity: 0.5' : null ?>">
                                                             <?= $item['title'] ?>
                                                         </a>
                                                     </div>
@@ -144,7 +141,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php endforeach ?>
+                                            <? endif; ?>
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
 
@@ -159,22 +157,6 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div id="home-b2" class="tab-pane <?= Yii::$app->setting->getValue('news-panel-setting') == 2 ? 'fade active show' : null ?>">
-                            <div style="margin-bottom: 15px;">
-                                <?php foreach ($news_project as $item): ?>
-                                    <div class="col-xs-12 news-a">
-                                        <a href="/project-news/<?= $item['id'] ?>" style = "padding-left: 15px;">
-                                            <?=$item['title'] ?> <br><small class="">от <?=date("d.m.Y h:i:s", $item['create_at']) ?></small>
-                                        </a>
-                                    </div>
-                                <?php endforeach ?>
-                                <div style="padding-left: 10px;">
-                                    <div style="padding-top: 10px; display: inline-block;">
-                                        <a href="/project-news" class="btn waves-effect w-md btn-light">Открыть все новости проектов</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
