@@ -230,7 +230,7 @@
                           </div>
                           <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
                             <div>
-                               <a href="/profiles/<?php echo $user->id ?>" style = "font-size:14px"><?=$user->last_name.' '.$user->first_name?></a>
+                               <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                             </div>
                             <div class="desc" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
                               <span class="branch"><?=$user->branch?></span>
@@ -256,7 +256,7 @@
                           </div>
                           <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
                             <div>
-                               <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
+                               <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                                <span class="date_job">
                                   · принят <?=date('d.m', strtotime($user->date_job))?>
                                </span>
@@ -286,7 +286,7 @@
                           </div>
                           <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
                             <div>
-                                 <a href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
+                               <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                             </div>
                             <div class="desc" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
                               <span class="branch"><?=$user->branch?></span>
