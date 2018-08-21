@@ -28,9 +28,8 @@
                     </div>
                 </li>
 
-
                 <div class="tab-content" style="padding: 0px;">
-                    <div id="menu-main" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'active' : null ?>">
+                    <div id="menu-main" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 1 ? 'fade active show' : null ?> <?= Yii::$app->setting->getValue('left-menu-tab-setting') == null ? 'fade active show' : null ?>">
                             <li>
                                 <a href="/">
                                     <i class="fi-grid"></i> <span> Главная </span>
@@ -76,7 +75,6 @@
                                 </ul>
                             </li>
 
-
                             <li>
                                 <a href="javascript: void(0);"><i class=" fi-help"></i><span> Помощь </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
@@ -85,31 +83,36 @@
                                 </ul>
                             </li>
                     </div>
-                
-                    <div id="menu-work" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'active' : null ?>">
-                        <li>
-                            <a href="/documents/catalog">
-                                <i class="dripicons-document"></i> <span> Каталоги </span>
-                            </a>
-                        </li>
 
-                        <? if(\Yii::$app->user->can("viewOrdersClient")) : ?>
+                    <div id="menu-work" class="tab-pane <?= Yii::$app->setting->getValue('left-menu-tab-setting') == 2 ? 'fade active show' : null ?>">
                             <li>
-                                <a href="/ordersclient">
-                                    <i class="dripicons-list"></i> <span> Заказ покупателя </span>
+                                <a href="/documents/catalog/">
+                                    <i class="dripicons-document"></i> <span> Каталоги </span> <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/documents/catalog">Каталоги</a></li>
+                                </ul>
                             </li>
-                        <? endif; ?>
 
-                        <? if(\Yii::$app->user->can("viewScripts")) : ?>
+                            <? if(\Yii::$app->user->can("viewOrdersClient")) : ?>
                             <li>
-                                <a href="javascript: void(0);"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
+                                <a href="/ordersclient/">
+                                    <i class="dripicons-list"></i> <span> Заказ покупателя </span> <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/ordersclient">Заказ покупателя</a></li>
+                                </ul>
+                            </li>
+                            <? endif; ?>
+
+                            <? if(\Yii::$app->user->can("viewScripts")) : ?>
+                            <li> 
+                                <a href="/scripts/"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="/scripts">Скрипты</a></li>
                                 </ul>
                             </li>
-                        <? endif; ?>
-
+                            <? endif; ?>
                     </div>
                 </div>
 
