@@ -44,6 +44,12 @@ class ProjectForumController extends Controller
         ]);
     }
 
+    public function actionTopic($id) {
+      return $this->render('topic', [
+          'topic' => 0//Forum::find()->where(['id' => $id])->orderBy('id desc')->limit(1)->all()
+      ]);
+    }
+
     /**
      * Displays a single Projects model.
      * @param integer $id

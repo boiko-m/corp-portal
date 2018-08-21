@@ -64,7 +64,7 @@
         <h5 class="text-center title-card">Проекты компании</h5>
         <ul class="topics_projects">
           <?php foreach ($projects as $project): ?>
-            <li><i class="fa fa-list-ul"></i> <a href="#"><?=$project->name?></a></li>
+            <li><i class="fa fa-list-ul"></i> <a href="/project-forum/topic/<?=$project->id?>"><?=$project->name?></a></li>
           <?php endforeach; ?>
         </ul>
       </div>

@@ -286,7 +286,7 @@
                             <div class="align-self-center">
                                <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                                <span class="date_job">
-                                  · был <?=date('H:i',$user->last_visit) ?>
+                                  · был <?=date('H:i:s',$user->last_visit) ?>
                                </span>
                             </div>
                             <div class="desc" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
