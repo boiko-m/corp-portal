@@ -221,15 +221,15 @@
                       </div>
                       <? else : foreach ($birthdays as $user): ?>
                         <div class="row px-4">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
+                          <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?=$user->first_name.' '.$user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
                               </a>
                             </div>
                           </div>
-                          <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
-                            <div>
+                          <div class="col-sm-10 col-md-10 col-xl-11">
+                            <div class="align-self-center">
                                <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                             </div>
                             <div class="desc" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
@@ -247,15 +247,15 @@
                     <div class="tab-pane " id="v-new">
                       <?php foreach ($user_new as $user): ?>
                         <div class="row px-4">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
+                          <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
                               </a>
                             </div>
                           </div>
-                          <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
-                            <div>
+                          <div class="col-sm-10 col-md-10 col-xl-11">
+                            <div class="align-self-center">
                                <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
                                <span class="date_job">
                                   · принят <?=date('d.m', strtotime($user->date_job))?>
@@ -277,16 +277,19 @@
                     <div class="tab-pane" id="v-online">
                       <?php foreach ($online as $user):?>
                         <div class="row px-4">
-                          <div class="col-12 col-sm-2 col-md-2 col-xl-1 col-xs-12 align-self-center text-right">
+                          <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
                               <a href="/profiles/<?=$user->id ?>">
                                 <img src="<?=$user->getImage()?>" alt="" style="border-radius: 50%;" class ="img-fluid">
                               </a>
                             </div>
                           </div>
-                          <div class="col-12 col-sm-10 col-md-10 col-xl-11 col-xs-12 align-self-center">
-                            <div>
+                          <div class="col-sm-10 col-md-10 col-xl-11">
+                            <div class="align-self-center">
                                <a class="news-title" href="/profiles/<?php echo $user->id ?>"><?=$user->last_name.' '.$user->first_name?></a>
+                               <span class="date_job">
+                                  · был <?=date('H:i',$user->last_visit) ?>
+                               </span>
                             </div>
                             <div class="desc" title="<?=$user->branch ?>"><?=($user->position) ? $user->position.' - '.$user->department.'<br>' : ""?>
                               <span class="branch"><?=$user->branch?></span>
