@@ -3786,3 +3786,11 @@ h3.timeline-title {
   color: #f7931d;
   border-color: #f7931d;
 }
+
+.each-hr:after {
+  content: '';
+  width: 90%;
+  height: 1px;
+  background: #eee;
+  margin: 1rem auto;
+}

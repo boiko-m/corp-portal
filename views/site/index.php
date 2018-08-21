@@ -220,7 +220,7 @@
                         <p>Сегодня никто не празднует день рождения</p>
                       </div>
                       <? else : foreach ($birthdays as $user): ?>
-                        <div class="row px-4">
+                        <div class="row px-4 each-hr">
                           <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?=$user->first_name.' '.$user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
@@ -237,7 +237,6 @@
                             </div>
                           </div>
                         </div>
-                        <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach; endif; ?>
                       <div class="pl-3 pr-3">
                         <?= Html::a('Открыть ближайшие', Url::to(['/profiles/birthday']), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ';'])?>
@@ -246,7 +245,7 @@
 
                     <div class="tab-pane " id="v-new">
                       <?php foreach ($user_new as $user): ?>
-                        <div class="row px-4">
+                        <div class="row px-4 each-hr">
                           <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?php echo $user->first_name ?> <?php echo $user->last_name ?>">
                               <a href="/profiles/<?php echo $user->id ?>">
@@ -267,7 +266,6 @@
 
                           </div>
                         </div>
-                        <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
                       <div class="pl-3 pr-3">
                         <?= Html::a('Показать ещё', Url::to(['/profiles', 'param' => 'new' ]), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ''])?>
@@ -276,7 +274,7 @@
 
                     <div class="tab-pane" id="v-online">
                       <?php foreach ($online as $user):?>
-                        <div class="row px-4">
+                        <div class="row px-4 each-hr">
                           <div class="col-sm-2 col-md-2 col-xl-1 align-self-center text-right">
                             <div title = "<?=$user->first_name ?> <?= $user->last_name ?>">
                               <a href="/profiles/<?=$user->id ?>">
@@ -296,7 +294,6 @@
                             </div>
                           </div>
                         </div>
-                        <hr style="border-color:rgba(0,0,0,.05);width: 80%;">
                       <?php endforeach ?>
                       <div class="pl-3 pr-3">
                         <?= Html::a('Список', Url::to(['/profiles', 'param' => 'online' ]), ['class' => 'btn btn-block waves-effect w-md btn-light', 'style' => ''])?>
