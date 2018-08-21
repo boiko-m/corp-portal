@@ -3744,13 +3744,17 @@ h3.timeline-title {
 }
 
 .tabs.employees a {
+  font-size: 14px;
   color: #313a46;
 }
 .tabs.employees .desc,
 .tabs.employees .date_job {
   font-size: 90%;
+}
+.tabs.employees .branch {
   color: #98a6ad;
 }
 .tabs.employees .date_job {
   font-size: 85%;
+  color: #98a6ad;
 }
