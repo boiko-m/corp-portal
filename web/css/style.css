@@ -3720,25 +3720,37 @@ h3.timeline-title {
 /*--------------- Flicker -----------------*/
 
 .icon-broadcast-flicker {
-  -webkit-animation: flicker 2s linear infinite; 
-  animation: flicker 2s linear infinite; 
-  font-weight: bold; 
+  -webkit-animation: flicker 2s linear infinite;
+  animation: flicker 2s linear infinite;
+  font-weight: bold;
 }
 
-@-webkit-keyframes flicker { 
+@-webkit-keyframes flicker {
   0% { color: #F00; }
   50% { color: #FBB; }
   100% { color: #E50F0F; }
 }
 
-@keyframes flicker {  
+@keyframes flicker {
   0% { color: #F00; }
   50% { color: #FBB; }
-  100% { color: #E50F0F; } 
+  100% { color: #E50F0F; }
 }
 
 /*--------------- Flicker -----------------*/
 
 #sidebar-menu > ul > div > div > li > a {
   padding: 10px 10px;
+}
+
+.tabs.employees a {
+  color: #313a46;
+}
+.tabs.employees .desc,
+.tabs.employees .date_job {
+  font-size: 90%;
+  color: #98a6ad;
+}
+.tabs.employees .date_job {
+  font-size: 85%;
 }
