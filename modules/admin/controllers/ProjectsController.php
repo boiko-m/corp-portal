@@ -88,8 +88,8 @@ class ProjectsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->create_at = date("d M yy", $model->create_at);
-        $model->close_at = date("d M yy", $model->close_at);
+        $model->create_at = date("d M Y", $model->create_at);
+        $model->close_at = date("d M Y", $model->close_at);
 
         if ($model->load(Yii::$app->request->post())) {
             $model->create_at = strtotime($model->create_at);

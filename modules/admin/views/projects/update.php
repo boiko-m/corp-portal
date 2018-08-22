@@ -9,10 +9,9 @@
 
 <div class="projects-update">
 
-    <!-- <h1 class="crud-title"><?= Html::encode($this->title) ?></h1> -->
-
     <?= $this->render('_form', [
         'model' => $model,
+        'listStatus' => array('В работе' => 'В работе', 'Завершен' => 'Завершен', 'Переход в другой проект' => 'Переход в другой проект', 'В плане' => 'В плане', 'Обкатка' => 'Обкатка'),
     ]) ?>
 
 </div>

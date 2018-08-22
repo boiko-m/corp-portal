@@ -40,7 +40,7 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'create_at', 'close_at', 'create_user'], 'required'],
-            [['name', 'description', 'goal'], 'string'],
+            [['name', 'description', 'goal', 'status'], 'string'],
             [['create_at', 'close_at', 'archive', 'create_user', 'visible', 'active', 'description_visible'], 'integer'],
             [['create_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['create_user' => 'id']],
         ];
@@ -56,6 +56,7 @@ class Projects extends \yii\db\ActiveRecord
             'name' => 'Название',
             'description' => 'Описание',
             'goal' => 'Цель',
+            'status' => 'Статус',
             'create_at' => 'Дата начала',
             'close_at' => 'Дата окончания',
             'archive' => 'Архивация',

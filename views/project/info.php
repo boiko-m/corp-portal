@@ -10,7 +10,7 @@
   ProjectAsset::register($this);
 
   $this->title = $project->name;
-  $this->params['breadcrumbs'][] = "Проекты компании";
+  $this->params['breadcrumbs'][] = ['label' => 'Проекты компании', 'url' => ['index']];
   $this->params['breadcrumbs'][] = $this->title;
 
   $userGroup = '';
