@@ -32,9 +32,15 @@
               <span class="d-none d-lg-inline-block pr-0 icon-project">
                   <i class="fa fa-share-alt"></i>
               </span>
-              <a href="/project/info/<?= $project->id ?>" style="display: inline-block; height: 20px;">
-                <h5 class="card-title"><?= $project->name ?></h5>
-              </a>
+              <?php if ($project->active): ?>
+                <a href="/project/info/<?= $project->id ?>" style="display: inline-block; height: 20px;">
+                  <h5 class="card-title"><?= $project->name ?></h5>
+                </a>
+              <? else : ?>
+                <span href="" style="display: inline-block; height: 20px;">
+                  <h5 class="card-title" style="color: gray;"><?= $project->name ?></h5>
+                </span>
+              <? endif; ?>
               <?php if (\Yii::$app->user->can("controlProject")) : ?>
                 <a href="/admin/projects/update?id=<?= $project->id ?>" class="d-none d-lg-inline-block" style="color: #555555">
                   <i class="mdi mdi-settings"></i>
