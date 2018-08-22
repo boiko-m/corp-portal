@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\data\Pagination;
 use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\ProjectUser;
 use yii\web\Controller;
+use yii\helpers\Json;
 
 
 class ProjectController extends \yii\web\Controller
@@ -56,6 +58,13 @@ class ProjectController extends \yii\web\Controller
     public function actionAll($id)
     {
         return $this->renderPartial('view_bottom');
+    }
+
+    public function actionFindProject() {
+        $textSearch = Yii::$app->request->post('text');
+        $projects = Projects::find()->where('name LIKE :search')
+            ->params([':search' => '%' . $textSearch . '%'])->all();
+        return JSON::encode($projects);
     }
 
 }

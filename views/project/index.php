@@ -17,7 +17,7 @@
 
       <div>
         <div class="search-project">Поиск по проектам:</div>
-        <input class="form-control" type="search" name="search_project">
+        <input class="form-control" id="search_project" type="search" name="search_project">
       </div>
 
       <div class="row text-center d-none d-lg-flex header-list-project">
@@ -37,7 +37,7 @@
                   <h5 class="card-title"><?= $project->name ?></h5>
                 </a>
               <? else : ?>
-                <span href="" style="display: inline-block; height: 20px;">
+                <span style="display: inline-block; height: 20px;">
                   <h5 class="card-title" style="color: gray;"><?= $project->name ?></h5>
                 </span>
               <? endif; ?>
