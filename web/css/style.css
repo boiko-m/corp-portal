@@ -3758,3 +3758,39 @@ h3.timeline-title {
   font-size: 85%;
   color: #98a6ad;
 }
+
+.topics_projects {
+  list-style-type: none;
+  padding: 0;
+}
+.topics_projects li {
+  border-bottom: 1px solid #eee;
+  padding: 8px;
+  font-weight: 600;
+}
+.topics_projects li:nth-child(2n-1) {
+  background: #f5f5f5;
+}
+.topics_projects .fa {
+  color: #ccc;
+  border: 1.5px solid #aaa;
+  padding: 2px 6px 2px 5px;
+  border-radius: 5px;
+  transform: scale(.7);
+  box-shadow: 0 3px 2px #eee;
+}
+
+.topics_projects li:nth-child(3) .fa,
+.topics_projects li:nth-child(6) .fa,
+.topics_projects li:nth-child(7) .fa {
+  color: #f7931d;
+  border-color: #f7931d;
+}
+
+.each-hr:after {
+  content: '';
+  width: 90%;
+  height: 1px;
+  background: #eee;
+  margin: .6rem auto;
+}

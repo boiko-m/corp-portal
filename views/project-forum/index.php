@@ -59,6 +59,17 @@
 
   <div class="row">
 
+    <div class="col-md-12 col-margin">
+      <div class="card">
+        <h5 class="text-center title-card">Проекты компании</h5>
+        <ul class="topics_projects">
+          <?php foreach ($projects as $project): ?>
+            <li><i class="fa fa-list-ul"></i> <a href="/project-forum/topic/<?=$project->id?>"><?=$project->name?></a></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
+
     <div class="col-md-6 col-margin">
       <div class="card">
         <h5 class="text-center title-card"><b>Последнии 10 комментариев проектов</b></h5>
@@ -134,5 +145,5 @@
     </div>
 
   </div>
-    
+
 </div>

@@ -40,7 +40,14 @@ class ProjectForumController extends Controller
             'model' => Projects::find()->all(),
             'commentNews' => Comment::find()->where(['model' => 'project-news'])->orderby('id desc')->limit(10)->all(),
             'commentProjects' => Comment::find()->where(['model' => 'project'])->orderby('id desc')->limit(10)->all(),
+            'projects' => Projects::find()->where(['visible' => true])->all()
         ]);
+    }
+
+    public function actionTopic($id) {
+      return $this->render('topic', [
+          'topic' => 0//Forum::find()->where(['id' => $id])->orderBy('id desc')->limit(1)->all()
+      ]);
     }
 
     /**
