@@ -16,6 +16,11 @@
     .help-block {
         position: absolute;
     }
+
+    select.form-control:not([size]):not([multiple]) {
+        height: auto;
+        margin-bottom: 20px;
+    }
 </style>
 
 <div class="projects-form">
@@ -26,6 +31,8 @@
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'goal')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'status')->dropDownList($listStatus, ['prompt' => '---- Выберите статус проекта ----'])->label('Статус') ?> 
 
     <?= $form->field($model, "archive")->checkbox(['label' => 'Архивировать проект'], ['value' => false]); ?>
 
@@ -38,33 +45,31 @@
     <div class="center-datepicker">
         <?= $form->field($model, 'create_at', 
             ['options' => ['class' => 'form-group class-inline'], 'enableClientValidation' => false])
-            ->widget(DatePicker::classname(), [
-            'inline' => true, 
-            'options' => ['placeholder' => 'Выбирите дату начала...'],
-            'template' => '<div class="well well-sm" style="background-color: #fff; width:250px;">{input}</div>',
-            'language' => 'en',
-            'clientOptions' => [
-                // 'autoclose' => true,
-                'format' => 'd M yy',
-            ]
-        ])->label(false);?>
+                ->widget(DatePicker::classname(), [
+                'inline' => true, 
+                'options' => ['placeholder' => 'Выбирите дату начала...'],
+                'template' => '<div class="well well-sm" style="background-color: #fff; width:250px;">{input}</div>',
+                'language' => 'en',
+                'clientOptions' => [
+                    // 'autoclose' => true,
+                    'format' => 'd M yy',
+                ]
+        ]); ?>
         <?= $form->field($model, 'close_at', 
             ['options' => ['class' => 'form-group class-inline'], 'enableClientValidation' => false])
-            ->widget(DatePicker::classname(), [
-            'inline' => true, 
-            'options' => ['placeholder' => 'Выбирите дату окончания...'],
-            'template' => '<div class="well well-sm" style="background-color: #fff; width:250px;">{input}</div>',
-            'language' => 'en',
-            'clientOptions' => [
-                // 'autoclose' => true,
-                'format' => 'd M yy',
-            ]
-        ])->label(false);?>
+                ->widget(DatePicker::classname(), [
+                'inline' => true, 
+                'options' => ['placeholder' => 'Выбирите дату окончания...'],
+                'template' => '<div class="well well-sm" style="background-color: #fff; width:250px;">{input}</div>',
+                'language' => 'en',
+                'clientOptions' => [
+                    // 'autoclose' => true,
+                    'format' => 'd M yy',
+                ]
+        ]); ?>
     </div>
 
-    <?= $form->field($model, 'create_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false); ?>
-
-    
+    <?= $form->field($model, 'create_user')->hiddenInput(['value' => Yii::$app->user->id])->label(false); ?>   
 
     <div class="form-group crud-button-save">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

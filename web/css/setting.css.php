@@ -90,6 +90,14 @@
 	}
 
 	.news-title {
-		color: <?=Yii::$app->setting->getValue('navbar-background-color')?> !important;
+		color: <?= $backgroundColor ?> !important;
+	}
+
+	.header-column-project {
+		border-color: <?= $backgroundColor ?> !important;
+	}
+
+	.header-column-status {
+		border-color: <?= $backgroundColor ?> !important;
 	}
 </style>

@@ -12,7 +12,7 @@ class m180820_100635_add_column_status_to_project_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('projects', 'status', $this->string()->notNull());
+        $this->addColumn('projects', 'status', $this->string());
     }
 
     /**

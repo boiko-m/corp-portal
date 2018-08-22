@@ -16,30 +16,22 @@
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel,
-                    'summary' => "",
+                    'summary' => false,
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
                         [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}',
-                            'headerOptions' => ['style' => 'width:1%'],
-                        ],
-                        [
                             'label' => 'Заголовок новости',
-                            'value' => function ($data) {
-                                return strip_tags($data->title);
-                            },
                             'format' => 'raw',
-                            'headerOptions' => ['style' => 'width:50%'],
+                            'value' => function ($model) {
+                                return Html::a(strip_tags($model->title), '/news-project/' . $model->id, [
+                                    'title' => 'Перейти к просмотру',
+                                ]);
+                            },
                         ],
                         [
                             'label' => 'Проект',
-                            'value' => function ($data) {
-                                return (\app\models\Projects::findOne($data->id_project))->name;
-                            },
-                            'format' => 'raw',
-                            'headerOptions' => ['style' => 'width:49%'],
+                            'value' => 'project.name',
+                            'headerOptions' => ['style' => 'width:50%'],
                         ],
                     ],
                     'pager' => [

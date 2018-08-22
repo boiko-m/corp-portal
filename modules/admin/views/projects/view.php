@@ -36,6 +36,7 @@
             'name:ntext',
             'description:ntext',
             'goal:ntext',
+            'status',
             [
                 'attribute' => 'create_at',
                 'value' => function($model) {
@@ -80,7 +81,7 @@
                 'attribute' => 'create_user',
                 'value' => function($model) {
                     $project = app\models\Profile::findOne($model->create_user);
-                    return $project->name . "($model->create_user)";
+                    return $project->name . " ($model->create_user)";
                 },
             ],
         ],

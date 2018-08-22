@@ -19,12 +19,13 @@ class ProjectController extends \yii\web\Controller
             $projects = Projects::find()->where(['visible' => true])->orderBy('name');
 
         $countQuery = clone $projects;
-        // $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
         $projects = $projects->offset($pages->offset)->orderBy('name')->limit($pages->limit)->all();
 
         return $this->render('index', [
             'projects' => $projects,
             'pages' => $pages,
+            'colorsStatus' => array("Завершен" => "grey", "В работе" => "green"),
         ]);
     }
 
