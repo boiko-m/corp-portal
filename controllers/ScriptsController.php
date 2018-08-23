@@ -26,7 +26,6 @@ class ScriptsController extends Controller
                  'rules' => [
                      [
                          'allow' => true,
-                         'roles' => ['Manager'],
                      ],
                  ],
              ]
