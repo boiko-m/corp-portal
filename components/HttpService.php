@@ -8,7 +8,7 @@ use Yii;
 class HttpService  extends \yii\base\Component
 {
     public $curl;
-    public $url = "http://172.16.112.2/Base/hs/NegotiationPlan/v1/";
+    public $url;
     public $login;
     public $password;
     public $doc; // документ
@@ -25,9 +25,9 @@ class HttpService  extends \yii\base\Component
         }
 
         if (!$this->url) {
-            $this->url = Yii::$app->params['odataUrl'];
+            $this->url = Yii::$app->params['httpServiceC'];
         }
-
+        
         if (Yii::$app->user->identity->password_external) {
             $this->password = Yii::$app->user->identity->password_external;
             $this->login = Yii::$app->user->identity->username;
