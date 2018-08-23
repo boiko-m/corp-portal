@@ -68,10 +68,11 @@ class ClientController extends \yii\web\Controller
                 'ClientId' => base64_decode($code) 
             ])->all();
 
+
         for ($i=0; $i < count($plans); $i++) { 
             $plans[$i]['ДатаОкончанияПлан'] = strtotime($plans[$i]['ДатаОкончанияПлан']);
         }
-
+        
         return $this->render('plan', [
             'plans' => $plans
         ]);

@@ -114,13 +114,3 @@
   </div>
 
 </div>
-
-<div class="row">
-  <div class="col-12">
-    <div class="card-box">
-      <?php foreach ($plans as $plan): ?>
-      	 <?php echo "<pre>".print_r($plan, true)."</pre>"; ?>
-      <?php endforeach ?>
-    </div>
-  </div>
-</div>

@@ -80,6 +80,9 @@
                   'hideOnSinglePage' => true,
                   'disabledPageCssClass' => 'page-link'
               ],
+          'options' => [
+            'class' => 'table table-striped table-bordered table-responsive'
+          ]
       ]); ?>
     </div>
   </div>
