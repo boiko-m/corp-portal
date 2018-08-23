@@ -51,14 +51,40 @@ $('#search_project').on('input', function() {
               colorsStatus[result[i]["status"]] + '"><span>' +
               result[i]["status"] + '</span></div></div>';
             $('.project-table').append(project);   
-        }
-      } else {
-        $('.im-list-user-messages').append('<li class="im-list-user-empty-search">У вас нет диалогов</li>')
-      }
+          }
+        } 
       },
       error: function(xhr, str){
         console.log('Возникла ошибка: ' + xhr.responseText)
       }
     });
-  }
+  } else
+      getProjects();
 });
+
+function getProjects() {
+  $.ajax({
+      type: 'GET',
+      url: '/project/get-all-projects',
+      success: function(data) {
+        let result = $.parseJSON(data);
+        $('.project-table').empty();
+        for(let i = 0; i < result.length; i++) {
+          let project = '<div class="row project"><div class="col-md-10 project-name border-right-none"><span class="d-none d-lg-inline-block pr-0 icon-project"><i class="fa fa-share-alt"></i></span>';
+          if (result[i]['active'])
+            project += '<a href="/project/info/' + result[i]["id"] + '" style="display: inline-block; height: 20px; margin-left: 5px;"><h5 class="card-title">' + result[i]["name"] + '</h5></a>';
+          else
+            project += '<span style="display: inline-block; height: 20px;"><h5 class="card-title" style="color: gray; margin-left: 5px;">' + result[i]["name"] + '</h5></span>';
+          if (result[i]["description_visible"])
+            project += '<div class="project-addition-none project-list-addition"><div><small class="description">' + result[i]["description"] + '</small></div></div>';
+          project += '</div><div class="col-md-2 text-center project-status" style="color: ' +
+            colorsStatus[result[i]["status"]] + '"><span>' +
+            result[i]["status"] + '</span></div></div>';
+          $('.project-table').append(project);   
+        }
+      },
+      error: function(xhr, str){
+        console.log('Возникла ошибка: ' + xhr.responseText)
+      }
+    });
+}

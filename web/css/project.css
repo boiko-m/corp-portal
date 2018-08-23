@@ -18,13 +18,13 @@
 }
 
 .header-column-project {
-  border: 1.5px solid #007bff;
+  border: 1px solid #dfdfdf;
   padding-top: 5px;
   border-right: none;
 }
 
 .header-column-status {
-  border: 1.5px solid #007bff;
+  border: 1px solid #dfdfdf;
   padding-top: 5px;
 }
 

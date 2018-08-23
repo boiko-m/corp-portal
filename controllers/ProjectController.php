@@ -63,7 +63,12 @@ class ProjectController extends \yii\web\Controller
     public function actionFindProject() {
         $textSearch = Yii::$app->request->post('text');
         $projects = Projects::find()->where('name LIKE :search')
-            ->params([':search' => '%' . $textSearch . '%'])->all();
+            ->params([':search' => '%' . $textSearch . '%'])->orderBy('name')->all();
+        return JSON::encode($projects);
+    }
+
+    public function actionGetAllProjects() {
+        $projects = Projects::find()->orderBy('name')->all();
         return JSON::encode($projects);
     }
 

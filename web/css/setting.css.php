@@ -92,12 +92,4 @@
 	.news-title {
 		color: <?= $backgroundColor ?> !important;
 	}
-
-	.header-column-project {
-		border-color: <?= $backgroundColor ?> !important;
-	}
-
-	.header-column-status {
-		border-color: <?= $backgroundColor ?> !important;
-	}
 </style>
