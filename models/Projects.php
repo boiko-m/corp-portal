@@ -67,6 +67,10 @@ class Projects extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getTopicsPosts() {
+        return $this->hasMany(TopicsPosts::className(), ['project_id' => 'id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

@@ -4,6 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Projects;
+use app\models\ProjectNews;
+use app\models\Profile;
+use app\models\TopicsPosts;
 use app\models\Comment;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -37,16 +40,26 @@ class ProjectForumController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'model' => Projects::find()->all(),
-            'commentNews' => Comment::find()->where(['model' => 'project-news'])->orderby('id desc')->limit(10)->all(),
+            'model'           => Projects::find()->all(),
+            'commentNews'     => Comment::find()->where(['model' => 'project-news'])->orderby('id desc')->limit(10)->all(),
             'commentProjects' => Comment::find()->where(['model' => 'project'])->orderby('id desc')->limit(10)->all(),
-            'projects' => Projects::find()->where(['visible' => true])->all()
+            'projects'        => Projects::find()->where(['visible' => true])->all()
         ]);
     }
 
     public function actionTopic($id) {
+      $news = ProjectNews::find()->where(['id_project' => $id])->all();
+      foreach ($news as $new) : $arr[] = $new->id; endforeach;
+      $arr[] = $id;
+
       return $this->render('topic', [
-          'topic' => 0//Forum::find()->where(['id' => $id])->orderBy('id desc')->limit(1)->all()
+          'id' => $id,
+          'posts' => Comment::find()->joinWith('user')
+                    ->where(['model' => ['project-news', 'project']])
+                    ->andWhere(['model_key' => array_values($arr)])
+                    ->orderby('id desc')
+                    ->limit(10)->all(),
+          'project' => Projects::findOne($id)
       ]);
     }
 

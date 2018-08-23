@@ -22,7 +22,7 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  * @property string $ip
- * @property int $status                  0-pending,                 1-published,                 2-spam             
+ * @property int $status                  0-pending,                 1-published,                 2-spam
  *
  * @property CommentsRating[] $commentsRatings
  */
@@ -88,4 +88,13 @@ class Comment extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CommentsRating::className(), ['comment_id' => 'id']);
     }
+
+    public function getUser() {
+      return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    public function getProjectNews() {
+      return $this->hasOne(ProjectNews::className(), ['id' => 'id_project']);
+    }
+
 }

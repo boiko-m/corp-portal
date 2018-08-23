@@ -219,4 +219,8 @@ class Profile extends \yii\db\ActiveRecord
         return $img;
     }
 
+    public function getTopicsPosts() {
+      return $this->hasMany(TopicsPosts::className(), ['author_id' => 'id']);
+    }
+
 }

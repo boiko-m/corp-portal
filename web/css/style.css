@@ -3794,3 +3794,22 @@ h3.timeline-title {
   background: #eee;
   margin: .6rem auto;
 }
+.each-hr:last-child:after {
+  margin: 0;
+  height: 0;
+}
+
+.topics-view img {
+  max-width: 80%;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.topics-view .user_info_b {
+  border-right: 1px solid #eee;
+}
+.topics-view .com_date {
+  color: #98a6ad;
+}
+.topics-view .com_content {
+  margin-top: 10px;
+}
