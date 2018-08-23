@@ -92,4 +92,8 @@
 	.news-title {
 		color: <?= $backgroundColor ?> !important;
 	}
+
+	.tabs-vertical-env .nav.tabs-vertical li > a.active {
+        background: <?= $backgroundColor ?> !important;
+    }
 </style>
