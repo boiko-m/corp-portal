@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     use app\widgets\Alert;
     use yii\helpers\Html;
     use yii\helpers\Url;

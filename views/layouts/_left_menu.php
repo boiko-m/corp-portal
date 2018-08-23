@@ -92,24 +92,19 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="/documents/catalog">Каталоги</a></li>
                                 </ul>
-                            </li>
-
-                            <? if(\Yii::$app->user->can("viewOrdersClient")) : ?>
-                            <li>
-                                <a href="/ordersclient/">
-                                    <i class="dripicons-list"></i> <span> Заказ покупателя </span> <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="/ordersclient">Заказ покупателя</a></li>
-                                </ul>
-                            </li>
-                            <? endif; ?>
+                            </li>                            
 
                             <? if(\Yii::$app->user->can("viewScripts")) : ?>
                             <li> 
                                 <a href="/scripts/"><i class="dripicons-browser-upload"></i> <span> Рабочее место </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="/scripts">Скрипты</a></li>
+                                    <? if(\Yii::$app->user->can("viewOrdersClient")) : ?>
+                                        <li><a href="/ordersclient">Заказ покупателя</a></li>
+                                    <? endif; ?>
+                                    <? if(\Yii::$app->user->can("viewClients")) : ?>
+                                        <li><a href="/client">Мои клиенты</a></li>
+                                    <? endif; ?>
                                 </ul>
                             </li>
                             <? endif; ?>
