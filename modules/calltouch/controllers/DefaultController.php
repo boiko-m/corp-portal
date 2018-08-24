@@ -23,18 +23,19 @@ class DefaultController extends Controller
         $params = (Yii::$app->request->get()) ? Yii::$app->request->get() : Yii::$app->request->post();
 
     	foreach ($params as $key => $value) {
+            
     		if ($key == 'id') {
     			$calltouch->id_calltouch = $value;
     		} else {
     			$calltouch->$key = $value;
-    		}
-
-    		if (!$calltouch->save()) {
-    			$calltouch->errors;
-    		} else {
-                return 'true';
-            }
+    		}    		
     	}
+
+        if (!$calltouch->save()) {
+            $calltouch->errors;
+        } else {
+            return 'true';
+        }
 
         return $this->render('index');
     }
