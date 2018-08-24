@@ -54,6 +54,7 @@ class ProjectForumController extends Controller
 
       return $this->render('topic', [
           'id' => $id,
+          'module_keys' => $arr,
           'posts' => Comment::find()->joinWith('user')
                     ->where(['model' => ['project-news', 'project']])
                     ->andWhere(['model_key' => array_values($arr)])
