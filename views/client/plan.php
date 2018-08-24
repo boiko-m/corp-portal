@@ -25,9 +25,11 @@
 				  	<div class="col-12">
 				  		<div class="card p-2">
                 <div class="row mb-1">
+
                   <div class="col-8">
                     <b><?=$plan['Этап']?></b>
                   </div>
+
                   <div class="col-4 text-right" style="font-size:12px; color:#999999">
                     до <?=date('d.m.Y',$plan['ДатаОкончанияПлан'])?>
                   </div>
@@ -40,9 +42,11 @@
                 </div>
 
                 <div class="row">
+                  
                   <div class="col-8" style="font-size:12px; color:#999999">
                     Исполнитель: <?=$plan['ИсполнительФИО']?>
                   </div>
+
                   <div class="col-4 text-right" style="font-size:12px; color:#999999">
                     <?=$plan['НомерЗаказа']?>
                   </div>

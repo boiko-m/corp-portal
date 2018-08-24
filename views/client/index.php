@@ -33,7 +33,6 @@
           'filterModel' => $searchModel,
           'columns' => [
               //['class' => 'yii\grid\SerialColumn'],
-
               [
                 'attribute' => 'Наименование',
                 'format' => 'raw',

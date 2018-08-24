@@ -82,7 +82,11 @@ $config = [
             'as access' => [
                 'class' => yii2mod\rbac\filters\AccessControl::class
             ],
-            ]
+            ],
+        'calltouch' => [
+            'class' => 'app\modules\calltouch\DefaultController',
+            'layout' => '/calltouch',
+        ],
 
     ],
     'components' => [
@@ -187,10 +191,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-
                 '<controller:(comments)>/<action:(create|update|delete|rate)>' => '/<controller>/default/<action>',
-
-
                 '<controller:[\w\-]+>' => '<controller>/index',
                 '<controller:[\w\-]+>/<id:\d+>' => '<controller>/view',
                 '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
@@ -210,15 +211,13 @@ $config = [
             [
                 'actions' => ['login', 'error'],
                 'allow' => true,
-            ],
+            ],  
             [
-                'controllers' => ['analog'],
-                'actions' => ['index'],
+                'controllers' => ['agree', 'analog'],
                 'allow' => true,
             ],
             [
-                'controllers' => ['agree'],
-                'actions' => ['index'],
+                'controllers' => ['calltouch/*'],
                 'allow' => true,
             ],
             [

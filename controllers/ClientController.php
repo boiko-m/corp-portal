@@ -49,7 +49,6 @@ class ClientController extends \yii\web\Controller
             ]);
         }
 
-
         return $this->render('index', [
             'clients' => $provider
         ]);
@@ -72,7 +71,7 @@ class ClientController extends \yii\web\Controller
         for ($i=0; $i < count($plans); $i++) { 
             $plans[$i]['ДатаОкончанияПлан'] = strtotime($plans[$i]['ДатаОкончанияПлан']);
         }
-        
+
         return $this->render('plan', [
             'plans' => $plans
         ]);
