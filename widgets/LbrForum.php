@@ -39,8 +39,6 @@ class LbrForum extends \ogheo\comments\widget\Comments
 
     public $project_id;
 
-    public $formPosition = 'bottom';
-
 
 
     /**

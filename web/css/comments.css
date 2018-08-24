@@ -481,3 +481,12 @@
 .topics-view .media:nth-child(2n-1) {
   background: #f5f5f5;
 }
+
+.comment-quote {
+  font-size: 90%;
+  padding: 8px 20px;
+  background: #fff;
+  width: fit-content;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}

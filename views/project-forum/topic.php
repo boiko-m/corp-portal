@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title; ?>
         'model' => ['project-news', 'project-forum', 'project'],
         'model_key' => $module_keys,
         'project_id' => $id,
-        'commentsPerPage' => 10
+        'commentsPerPage' => 10,
+        'formPosition' => 'bottom'
       ]) ?>
     </div>
   </div>

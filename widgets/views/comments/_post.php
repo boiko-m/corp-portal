@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use ogheo\comments\helpers\CommentsHelper;
 use app\models\Projects;
 use app\models\ProjectNews;
+use app\models\Comments;
 
 /** @var $model */
 /** @var $nestedLevel */
@@ -14,6 +15,7 @@ use app\models\ProjectNews;
 if ($model->model == 'project') : $meta = Projects::findOne($project_id)->name;
 elseif ($model->model == 'project-news') : $met = ProjectNews::findOne(['id' => $model->model_key, 'id_project' => $project_id]); $meta = $met->title;
 endif;
+$p_comment = Comments::findOne($model->parent_id);
 ?>
 
 <div class="media-container">
@@ -53,7 +55,9 @@ endif;
                   <a href="<?=$model->url?>"><?=$meta?></a>
                 </span>
             </h6>
-
+            <?php if ($model->parent_id) : ?>
+            <div class="comment-quote"><b></b><?= Html::encode($p_comment->content) ?></div>
+            <?php endif; ?>
             <?= Html::encode($model->content); ?>
 
             <div class="row nospace">
