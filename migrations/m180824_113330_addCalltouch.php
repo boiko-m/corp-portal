@@ -9,7 +9,7 @@ class m180824_113330_addCalltouch extends Migration
 {
     /**
      * {@inheritdoc}
-     */migr
+     */
     public function safeUp()
     {
         $this->createTable('calltouch', [
