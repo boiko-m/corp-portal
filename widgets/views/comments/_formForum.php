@@ -28,7 +28,7 @@ use app\models\User;
                         'comments/default/create', 'data' => CommentsHelper::encryptData(
                             [
                                 'url' => $commentModel->url,
-                                'model' => 'project',
+                                'model' => 'project-forum',
                                 'model_key' => $commentModel->model_key
                             ]
                         )

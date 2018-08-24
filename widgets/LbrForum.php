@@ -39,6 +39,10 @@ class LbrForum extends \ogheo\comments\widget\Comments
 
     public $project_id;
 
+    public $formPosition = 'bottom';
+
+
+
     /**
      * Register assets.
      */
@@ -56,8 +60,8 @@ class LbrForum extends \ogheo\comments\widget\Comments
     {
         if ($this->listViewConfig === null) {
             $this->listViewConfig = [
-                'layout' => '{items}<div class="text-center">{pager}</div>',
-                'options' => ['class' => 'comments-list'],
+                'layout' => '<div class="pagination_forum">{pager}</div>{items}<div class="pagination_forum">{pager}</div>',
+                'options' => ['class' => 'comments-list posts-list'],
                 'itemOptions' => ['class' => 'media'],
                 'itemView' => function ($model, $key, $index, $widget) {
                     return $this->render($this->commentView, [
@@ -65,12 +69,13 @@ class LbrForum extends \ogheo\comments\widget\Comments
                         'nestedLevel' => 1,
                         'widget' => $this,
                         'model' => $model,
+                        'project_id' => $this->project_id
                     ]);
                 },
                 'emptyText' => '',
                 'pager' => [
                     'options'=>['class' => 'pagination float-left'],
-                    'linkOptions' => ['class' => 'page-link'],
+                    'linkOptions' => ['class' => 'page-link page-link-forum'],
                     'hideOnSinglePage' => true,
                     'disabledPageCssClass' => 'page-link'
                 ],
@@ -82,7 +87,7 @@ class LbrForum extends \ogheo\comments\widget\Comments
 
     public function run() {
         $commentClass = CommentsModule::getInstance()->commentModelClass;
-        $commentClassT = 'ogheo\comments\models\Posts';
+        $commentClassPosts = 'ogheo\comments\models\Posts';
         $commentsCounter = $commentClass::getCommentsCounter([
             'url' => $this->url,
             'model' => $this->model,
@@ -93,7 +98,7 @@ class LbrForum extends \ogheo\comments\widget\Comments
         $dataProvider = new ActiveDataProvider(
             array_merge(
                 [
-                    'query' => $commentClassT::getComments([
+                    'query' => $commentClassPosts::getComments([
                         'url' => $this->url,
                         'model' => $this->model,
                         'model_key' => $this->model_key,
