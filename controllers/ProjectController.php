@@ -31,9 +31,13 @@ class ProjectController extends \yii\web\Controller
         ]);
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        return $this->render('view', [
+            'project' => Projects::findOne($id),
+            'project_news' => ProjectNews::find()->where(['id_project' => $id])->orderBy('id desc')->all(),
+            'project_group' => ProjectUser::find()->where(['id_project' => $id])->orderBy('id_project_user_group')->all(),
+        ]);
     }
 
     public function actionInfo($id)

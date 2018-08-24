@@ -74,7 +74,7 @@ class ProjectNewsController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->image = UploadedFile::getInstance($model, 'image');
     
-            if ($model->save()) {
+            if ($model->save() && $model->visible_in_home_page) {
                 $news = new News;
                 $news->title = $model->title;
                 $news->date = strval(time());
@@ -103,10 +103,21 @@ class ProjectNewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $visible = $model->visible_in_home_page;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
-            $model->save();
+            if ($model->save() && $model->visible_in_home_page && !$visible) {
+                $news = new News;
+                $news->title = $model->title;
+                $news->date = strval(time());
+                $news->id_user = Yii::$app->user->id;
+                $news->status = 1;
+                $news->like_active = 1;
+                $news->id_news_category = (NewsCategory::findOne(['name' => 'Проекты']))->id;
+                $news->link_project_news = '/project-news/' . $model->id;
+                $news->save();
+            }
             // return $this->redirect(['view', 'id' => $model->id]);
         }
 
