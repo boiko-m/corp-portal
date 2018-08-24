@@ -29,6 +29,7 @@ use Yii;
  * @property string $city
  * @property string $device
  * @property string $ip
+ * @property string $reclink
  *
  * @property User $user
  */
@@ -49,8 +50,10 @@ class Calltouch extends \yii\db\ActiveRecord
     {
         return [
             [['id_calltouch', 'id_user', 'ctCallerId', 'duration', 'waiting_time', 'timestamp'], 'integer'],
-            [['callerphone', 'phonenumber', 'callback', 'pool'], 'string', 'max' => 20],
+            [['callerphone', 'phonenumber', 'pool'], 'string', 'max' => 20],
             [['calltime', 'source', 'medium', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'city', 'device', 'ip'], 'string', 'max' => 100],
+            [['callback'], 'string', 'max' => 40],
+            [['reclink'], 'string', 'max' => 200],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];
     }
@@ -83,6 +86,7 @@ class Calltouch extends \yii\db\ActiveRecord
             'city' => 'City',
             'device' => 'Device',
             'ip' => 'Ip',
+            'reclink' => 'Reclink',
         ];
     }
 
