@@ -477,16 +477,37 @@
   margin-top: 0;
   padding: 25px 25px 0;
   border-bottom: 1px solid #eee;
+  background: #f9f9f9;
 }
 .topics-view .media:nth-child(2n-1) {
-  background: #f5f5f5;
+  background: #eee;
 }
 
 .comment-quote {
-  font-size: 90%;
-  padding: 8px 20px;
+  font-size: 85%;
+  padding: 8px 15px;
   background: #fff;
   width: fit-content;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   margin-bottom: 10px;
+}
+.link-author a {
+  color: #000;
+  font-weight: 600;
+  font-size: 85%;
+}
+.comment-quote .p_username {
+  font-weight: 600;
+}
+
+.media .media {
+  background: transparent;
+  border: none;
+}
+
+.media .media .form-control {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 15px 20px;
 }

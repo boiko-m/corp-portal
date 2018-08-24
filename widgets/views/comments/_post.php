@@ -6,6 +6,7 @@ use ogheo\comments\helpers\CommentsHelper;
 use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\Comments;
+use app\models\User;
 
 /** @var $model */
 /** @var $nestedLevel */
@@ -16,6 +17,7 @@ if ($model->model == 'project') : $meta = Projects::findOne($project_id)->name;
 elseif ($model->model == 'project-news') : $met = ProjectNews::findOne(['id' => $model->model_key, 'id_project' => $project_id]); $meta = $met->title;
 endif;
 $p_comment = Comments::findOne($model->parent_id);
+$p_user = User::findOne($p_comment->created_by);
 ?>
 
 <div class="media-container">
@@ -46,9 +48,11 @@ $p_comment = Comments::findOne($model->parent_id);
     <div class="media-body">
         <div class="media-info">
             <h6 class="media-heading">
+                <span class="link-author">
                 <?= $model->getAuthorUrl() === null ? $model->getAuthorName() : Html::a(
                     $model->getAuthorName(), [$model->getAuthorUrl()]
                 ) ?>
+                </span>
                 <small class="com_date"><?= $model->getPostedDate() ?></small>
                 <span class="text-right small com_date">
                   <?php if ($model->model == 'project') echo ' | к проекту '; elseif ($model->model == 'project-news') echo ' | к новости '; ?>
@@ -56,7 +60,7 @@ $p_comment = Comments::findOne($model->parent_id);
                 </span>
             </h6>
             <?php if ($model->parent_id) : ?>
-            <div class="comment-quote"><b></b><?= Html::encode($p_comment->content) ?></div>
+            <div class="comment-quote"><div class="p_username"><?=$p_user->getUsername()?>:</div><?= Html::encode($p_comment->content) ?></div>
             <?php endif; ?>
             <?= Html::encode($model->content); ?>
 
