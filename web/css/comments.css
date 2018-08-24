@@ -465,7 +465,6 @@
 }
 .comments .media-info {
   padding-bottom: 30px;
-  border-bottom: 1px solid #eee;
 }
 .madia-forum .media-body .media {
   margin-left: 0;
@@ -473,4 +472,12 @@
 
 .media-left-forum {
   border-right: 1px solid #eee;
+}
+.topics-view .media {
+  margin-top: 0;
+  padding: 25px 25px 0;
+  border-bottom: 1px solid #eee;
+}
+.topics-view .media:nth-child(2n-1) {
+  background: #f5f5f5;
 }

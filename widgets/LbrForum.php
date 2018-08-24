@@ -39,8 +39,6 @@ class LbrForum extends \ogheo\comments\widget\Comments
 
     public $project_id;
 
-    public $commentsPerPage = 5;
-
     public $formPosition = 'bottom';
 
 
@@ -63,7 +61,7 @@ class LbrForum extends \ogheo\comments\widget\Comments
         if ($this->listViewConfig === null) {
             $this->listViewConfig = [
                 'layout' => '<div class="pagination_forum">{pager}</div>{items}<div class="pagination_forum">{pager}</div>',
-                'options' => ['class' => 'comments-list'],
+                'options' => ['class' => 'comments-list posts-list'],
                 'itemOptions' => ['class' => 'media'],
                 'itemView' => function ($model, $key, $index, $widget) {
                     return $this->render($this->commentView, [
