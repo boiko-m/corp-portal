@@ -29,13 +29,11 @@ class DefaultController extends Controller
 
     		if (!$calltouch->save()) {
     			$calltouch->errors;
-    		}
+    		} else {
+                return 'true';
+            }
     	}
-    	echo "<pre>".print_r($calltouch, true)."</pre>";
-    	//$calltouch->save();
 
-
-    	echo "<pre>".print_r(Yii::$app->request->get(), true)."</pre>";
         return $this->render('index');
     }
 
