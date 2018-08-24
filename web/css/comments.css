@@ -464,9 +464,13 @@
   width: 64px !important;
 }
 .comments .media-info {
-  padding-bottom: 25px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #eee;
 }
 .madia-forum .media-body .media {
   margin-left: 0;
+}
+
+.media-left-forum {
+  border-right: 1px solid #eee;
 }

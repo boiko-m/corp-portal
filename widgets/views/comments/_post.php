@@ -1,17 +1,23 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use ogheo\comments\helpers\CommentsHelper;
+use app\models\Projects;
+use app\models\ProjectNews;
 
 /** @var $model */
 /** @var $nestedLevel */
 /** @var $maxNestedLevel */
 /** @var $widget */
 
+if ($model->model == 'project') : $meta = Projects::findOne($project_id)->name;
+elseif ($model->model == 'project-news') : $met = ProjectNews::findOne(['id' => $model->model_key, 'id_project' => $project_id]); $meta = $met->title;
+endif;
 ?>
 
 <div class="media-container">
-    <div class="media-left">
+    <div class="media-left media-left-forum">
         <?= $model->getAuthorUrl() === null ? (
         $model->getAuthorAvatar() === null ?
             Html::tag(
@@ -41,7 +47,11 @@ use ogheo\comments\helpers\CommentsHelper;
                 <?= $model->getAuthorUrl() === null ? $model->getAuthorName() : Html::a(
                     $model->getAuthorName(), [$model->getAuthorUrl()]
                 ) ?>
-                <small><?= $model->getPostedDate() ?></small>
+                <small class="com_date"><?= $model->getPostedDate() ?></small>
+                <span class="text-right small com_date">
+                  <?php if ($model->model == 'project') echo ' | к проекту '; elseif ($model->model == 'project-news') echo ' | к новости '; ?>
+                  <a href="<?=$model->url?>"><?=$meta?></a>
+                </span>
             </h6>
 
             <?= Html::encode($model->content); ?>

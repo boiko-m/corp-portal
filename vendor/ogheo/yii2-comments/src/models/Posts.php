@@ -25,4 +25,8 @@ class Posts extends Comments {
 
         return $models;
     }
+
+    public function getUrlRel() {
+        return $this->url;
+    }
 }

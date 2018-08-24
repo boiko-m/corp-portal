@@ -3813,3 +3813,21 @@ h3.timeline-title {
 .topics-view .com_content {
   margin-top: 10px;
 }
+
+.pagination_forum {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+.pagination.center {
+  margin: 0 auto;
+}
+.pagination > .active > a {
+  background: #195fb1;
+  color: #fff;
+}
+.pagination > .active > a:hover {
+  background: #1b497f;
+}
