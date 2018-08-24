@@ -73,6 +73,8 @@
 
     <?= $form->field($model, "visible")->checkbox(['label' => 'Видимость новости'], ['value' => true]); ?>
 
+    <?= $form->field($model, "visible_in_home_page")->checkbox(['label' => 'Видимость новости на главной странице'], ['value' => false]); ?>
+
     <?= $form->field($model, 'image')->widget(CropboxWidget::className(), [
         'croppedDataAttribute' => 'crop_info',
     ])->label('Картинка'); ?>
