@@ -43,7 +43,7 @@ $cacheProperties = CommentsHelper::getCacheProperties($cacheTag);
                     <?= ListView::widget(
                         array_merge(
                             [
-                                'dataProvider' => $dataProvider,
+                                'dataProvider' => $dataProvider
                             ], $widget->getListViewConfig()
                         )
                     ) ?>

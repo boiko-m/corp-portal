@@ -49,7 +49,6 @@ class ClientController extends \yii\web\Controller
             ]);
         }
 
-
         return $this->render('index', [
             'clients' => $provider
         ]);
@@ -67,6 +66,7 @@ class ClientController extends \yii\web\Controller
         $plans = $http->get('GetPlan')->params([
                 'ClientId' => base64_decode($code) 
             ])->all();
+
 
         for ($i=0; $i < count($plans); $i++) { 
             $plans[$i]['ДатаОкончанияПлан'] = strtotime($plans[$i]['ДатаОкончанияПлан']);
