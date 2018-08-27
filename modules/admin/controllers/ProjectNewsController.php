@@ -73,6 +73,7 @@ class ProjectNewsController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->image = UploadedFile::getInstance($model, 'image');
+            $model->id_project = (Projects::findOne(['name' => $model->id_project]))->id;
     
             if ($model->save() && $model->visible_in_home_page) {
                 $news = new News;
@@ -107,6 +108,7 @@ class ProjectNewsController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
+            $model->id_project = (Projects::findOne(['name' => $model->id_project]))->id;
             if ($model->save() && $model->visible_in_home_page && !$visible) {
                 $news = new News;
                 $news->title = $model->title;
@@ -120,6 +122,8 @@ class ProjectNewsController extends Controller
             }
             // return $this->redirect(['view', 'id' => $model->id]);
         }
+
+        $model->id_project = (Projects::findOne($model->id_project))->name;
 
         return $this->render('update', [
             'model' => $model,
