@@ -20,22 +20,23 @@ class DefaultController extends Controller
 
     	$calltouch = new Calltouch();
 
-    	foreach (Yii::$app->request->get() as $key => $value) {
+        $params = (Yii::$app->request->get()) ? Yii::$app->request->get() : Yii::$app->request->post();
+
+    	foreach ($params as $key => $value) {
+            
     		if ($key == 'id') {
     			$calltouch->id_calltouch = $value;
     		} else {
     			$calltouch->$key = $value;
-    		}
-
-    		if (!$calltouch->save()) {
-    			$calltouch->errors;
-    		}
+    		}    		
     	}
-    	echo "<pre>".print_r($calltouch, true)."</pre>";
-    	//$calltouch->save();
 
+        if (!$calltouch->save()) {
+            $calltouch->errors;
+        } else {
+            return 'true';
+        }
 
-    	echo "<pre>".print_r(Yii::$app->request->get(), true)."</pre>";
         return $this->render('index');
     }
 
