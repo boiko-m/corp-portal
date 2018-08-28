@@ -16,33 +16,39 @@
 ?>
 
 <div class="row">
-  <div class="col-xs-9 col-md-9 ">
+  <div class="col-xs-9 col-md-9">
     <div class="card">
-      <ul class="nav nav-tabs nav-justified nav-project " style="margin: 10px;">
+      <ul class="nav nav-tabs nav-justified nav-project" style="margin: 10px;">
         <li class="nav-item">
-          <a href="#spr1" class="nav-link active" title="Дата проведения: 01.01.2018 - 21.02.2018" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=1'
-          })">1 этап</a>
+            <a href="#spr1" class="nav-link active" title="Дата проведения: 01.01.2018 - 21.02.2018" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
+              container : 'projectall',
+              data: 'id=1'
+            })">1 этап
+            <? if (Yii::$app->user->can('Scrum-master')) : ?>
+              <i class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" onclick="alert('Удалить этап');" style="float: right"></i>
+            <? endif; ?>
+          </a>
         </li>
         <li class="nav-item col-xs-3 col-md-3">
-          <a href="#target2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
+          <a href="#target1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
             container : 'projectall',
             data: 'id=1'
-          })">Проект <br> <br></a>
+          })">Проект</a>
         </li>
+        <? if (Yii::$app->user->can('Scrum-master')) : ?>
+          <li class="nav-item col-xs-3 col-md-3">
+            <a href="#" class="nav-link" title="Добавить этап" onclick="alert('Добавить этап');"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </li>
+        <? endif; ?>
       </ul>
 
       <div>
-          <div id="projectall">
-              // контент
-          </div>
+          <div id="projectall"></div>
       </div>
-
     </div>
-
   </div>
-  <div class="col-xs-12 col-md-3 ">
+
+  <div class="col-xs-12 col-md-3 right-menu-project">
     <div class="card">
       <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
         <!-- <li class="nav-item col-xs-12">
@@ -56,7 +62,7 @@
         </li> -->
       </ul>
 
-      <div style="padding: 0px 10px; padding-bottom: 10px" class="tab-content">
+      <div class="tab-content" style="padding: 0px 10px; padding-bottom: 10px">
         <!-- <div id="right1" class="tab-pane show">
 
           <div class="dropdown mt-3">
@@ -136,19 +142,21 @@
           <? foreach ($project_group as $key => $group) { ?>
             <div class="work-group-view">
               <?php if ($userGroup != $group->id_project_user_group): ?>
-                <div class="work-group-view-title" style="padding-top: 10px;">
+                <div class="work-group-view-title">
                   <?= (ProjectUserGroup::find()->where(['id' => $group->id_project_user_group])->one())->name ?>
                 </div>
               <? endif; ?>
               <div class="work-group-view-content">
                 <div class="btn-group m-b-10">
-                  <button type="button" class="btn btn-light"><?= $group['profile']['first_name'] . ' ' . $group['profile']['last_name'] ?></button>
-                  <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" href="#">Добавить задачу</a>
-                    <div class="dropdown-divider"></div>
-                    <small style="padding: 10px;"><?= date('d.m.Y', $group->create_at) ?></small>
-                  </div>
+                  <button type="button" class="btn btn-light" onclick="window.open('/profiles/<?= $group['profile']['id'] ?>', '');"><?= $group['profile']['first_name'] . ' ' . $group['profile']['last_name'] ?></button>
+                  <? if (Yii::$app->user->can('Scrum-master')): ?>
+                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                    <div class="dropdown-menu text-center" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                      <a class="dropdown-item" href="#">Добавить задачу</a>
+                      <div class="dropdown-divider"></div>
+                      <small>Принят: <?= date('d.m.Y', $group->create_at) ?></small>
+                    </div>
+                  <? endif; ?>
                 </div>
               </div>
             </div>

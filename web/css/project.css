@@ -3,7 +3,7 @@
   margin: 20px 0 0 0;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 765px) {
   .project-addition-none {  
     display: none;
   }
@@ -14,6 +14,10 @@
 
   .project {
     border-top: 1px solid #dfdfdf;
+  }
+
+  .right-menu-project {
+    margin-top: 20px;
   }
 }
 
@@ -208,6 +212,11 @@
 .project .btn-group {
   margin-top: 5px;
 }
+
+.work-group-view-title {
+  padding-top: 10px;
+}
+
 .work-group-view-content .btn-group {
   margin-top: 5px;
 }
@@ -307,7 +316,7 @@
 }
 
 .nav-project small {
-  font-size: 10px
+  font-size: 10px;
 }
 
 .backlog-block {
@@ -328,7 +337,7 @@
 }
 
 .nav-tabs .nav-link {
-  border: 2px solid #ff000000;
+  border: 1px solid #ff000000;
 }
 
 .project-news-title {
@@ -373,4 +382,13 @@
 
 .success-border {
   border: 1px solid #43c499;
+}
+
+.delete-element {
+  padding: 5px;
+}
+
+.delete-element:hover {
+  border-radius: 50px;
+  background-color: #f2f2f2;
 }
