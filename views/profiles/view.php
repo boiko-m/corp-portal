@@ -270,7 +270,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-"): ?>
+                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
                                 Аналоговый номер
