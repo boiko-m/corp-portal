@@ -249,8 +249,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     <?php endif ?>
 
-                    <?=var_dump($model->sip) ?>
-
                     <?php if (isset($model->sip) and $model->sip != 0): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
