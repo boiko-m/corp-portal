@@ -120,7 +120,6 @@ class ProjectNewsController extends Controller
                 $news->link_project_news = '/project-news/' . $model->id;
                 $news->save();
             }
-            // return $this->redirect(['view', 'id' => $model->id]);
         }
 
         $model->id_project = (Projects::findOne($model->id_project))->name;
