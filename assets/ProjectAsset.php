@@ -11,9 +11,12 @@ class ProjectAsset extends AssetBundle
 
     public $css = [
     	'css/project.css',
+    	'plugins/custombox/css/custombox.min.css',
     ];
 
     public $js = [
-    	'js/project.js'
+    	'js/project.js',
+    	'plugins/custombox/js/legacy.min.js',
+    	'plugins/custombox/js/custombox.min.js',
     ];
 }

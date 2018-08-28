@@ -25,7 +25,7 @@
               data: 'id=1'
             })">1 этап
             <? if (Yii::$app->user->can('Scrum-master')) : ?>
-              <i class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" onclick="alert('Удалить этап');" style="float: right"></i>
+              <i href="#delete-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" style="float: right"></i>
             <? endif; ?>
           </a>
         </li>
@@ -37,7 +37,7 @@
         </li>
         <? if (Yii::$app->user->can('Scrum-master')) : ?>
           <li class="nav-item col-xs-3 col-md-3">
-            <a href="#" class="nav-link" title="Добавить этап" onclick="alert('Добавить этап');"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            <a href="#add-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="nav-link" title="Добавить этап"><i class="fa fa-plus" aria-hidden="true"></i></a>
           </li>
         <? endif; ?>
       </ul>
@@ -228,6 +228,48 @@
       <? endif; ?>
     </div>
 
+  </div>
+</div>
+
+
+<!-- ---------- Models ----------- -->
+
+<div id="add-stage" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.close();">
+    <span>&times;</span><span class="sr-only">Закрыть</span>
+  </button>
+  <h4 class="custom-modal-title">Создание этапа</h4>
+  <div class="custom-modal-text">
+    <form id="add-stage-form">
+      <div class="form-group">
+        <label for="stageDescription">Описание</label>
+        <textarea class="form-control" id="stageDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="stageBegin">Дата начало этапа</label>
+        <input type="date" class="form-control" id="stageBegin">
+      </div>
+      <div class="form-group">
+        <label for="stageEnd">Дата окончания этапа</label>
+        <input type="date" class="form-control" id="stageEnd">
+      </div>
+      <button type="submit" class="btn btn-secondary crate-dialog-group-button">Создать этап</button>
+    </form>
+  </div>
+</div>
+
+<div id="delete-stage" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.close();">
+    <span>&times;</span><span class="sr-only">Закрыть</span>
+  </button>
+  <h4 class="custom-modal-title">Создание этапа</h4>
+  <div class="custom-modal-text">
+    <i class="fa fa-exclamation-triangle fa-4x"></i>
+    <p>Вы действительно хотите удалить данный этап?</p>
+    <div class="center">
+      <button type="button" class="btn btn-danger button-successful-clear" onclick="Custombox.close();">Да, удалить</button>
+      <button type="button" class="btn btn-success button-successful-clear" onclick="Custombox.close();">Отмена</button>
+    </div>
   </div>
 </div>
 

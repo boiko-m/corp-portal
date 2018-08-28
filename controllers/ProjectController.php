@@ -61,7 +61,7 @@ class ProjectController extends \yii\web\Controller
 
     public function actionAll($id)
     {
-        return $this->renderPartial('view_bottom');
+        return $this->renderPartial('view_bottom', array(), true, true);
     }
 
     public function actionFindProject() {
