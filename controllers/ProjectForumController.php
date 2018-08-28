@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Visit;
 
 /**
  * ProjectForumController implements the CRUD actions for Projects model.
@@ -37,20 +38,46 @@ class ProjectForumController extends Controller
      * Lists all Projects models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->render('index', [
-            'model'           => Projects::find()->all(),
-            'commentNews'     => Comment::find()->where(['model' => 'project-news'])->orderby('id desc')->limit(10)->all(),
-            'commentProjects' => Comment::find()->where(['model' => 'project'])->orderby('id desc')->limit(10)->all(),
-            'projects'        => Projects::find()->where(['visible' => true])->all()
-        ]);
+    public function actionIndex() {
+
+      $news = ProjectNews::find()->all();
+      $projects = Projects::find()->all();
+      foreach ($news as $new) : $ids[$new->id_project][] = $new->id; endforeach;
+      foreach ($projects as $project) : $ids[$project->id]['id'] = $project->id; endforeach;
+
+      $last_visit_time = Visit::find()->where([
+                             'controller' => 'project-forum',
+                             'action' => 'topic',
+                             'id_user' => Yii::$app->user->id
+                           ])->select('update_at, id_action')->asArray()->all();
+      foreach ($last_visit_time as $visit) : $visits[$visit['id_action']] = $visit['update_at']/* + 1006*/; endforeach;
+
+      foreach ($ids as $item) {
+        $arr2[] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
+      }
+
+      return $this->render('index', [
+          'projects'        => Projects::find()->where(['visible' => true])->all(),
+          'visits'          => $visits,
+          'post_last'       => Comment::find()->where([
+                                'model' => [
+                                  'project', 'project-forum', 'project-news'
+                                ]
+                              ])->asArray()->all(),
+          'arr' => $ids[12], 'arr2' => $arr2
+      ]);
     }
 
     public function actionTopic($id) {
       $news = ProjectNews::find()->where(['id_project' => $id])->all();
       foreach ($news as $new) : $arr[] = $new->id; endforeach;
       $arr[] = $id;
+
+      \Yii::$app->visit->set([
+          'controller' => 'project-forum',
+          'action' => 'topic',
+          'id'=> $id
+      ]);
 
       return $this->render('topic', [
           'id' => $id,

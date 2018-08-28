@@ -3780,9 +3780,7 @@ h3.timeline-title {
   box-shadow: 0 3px 2px #eee;
 }
 
-.topics_projects li:nth-child(3) .fa,
-.topics_projects li:nth-child(6) .fa,
-.topics_projects li:nth-child(7) .fa {
+.topics_projects li .fa.new {
   color: #f7931d;
   border-color: #f7931d;
 }
