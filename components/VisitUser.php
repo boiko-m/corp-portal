@@ -81,7 +81,7 @@ class VisitUser  extends \yii\base\Component
         }
 
         public function set($array = null) {
-            
+
             if ($array) {
                 foreach ($array as $key => $value) { // кидаем в параметры
                     $this->$key = $value;
@@ -134,12 +134,11 @@ class VisitUser  extends \yii\base\Component
                 $profile->action_visit = $this->action;
                 $profile->id_visit = $this->id;
                 $profile->save();
-            }            
+            }
             return true;
 
         }
 
 
-    
-}
 
+}

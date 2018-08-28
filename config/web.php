@@ -211,7 +211,7 @@ $config = [
             [
                 'actions' => ['login', 'error'],
                 'allow' => true,
-            ],  
+            ],
             [
                 'controllers' => ['agree', 'analog'],
                 'allow' => true,

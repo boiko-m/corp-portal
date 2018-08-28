@@ -40,6 +40,7 @@ $cacheProperties = CommentsHelper::getCacheProperties($cacheTag);
         <?php //if ($this->beginCache($cacheKey, $cacheProperties)) { ?>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  
                     <?= ListView::widget(
                         array_merge(
                             [

@@ -1,5 +1,6 @@
 <?php
   use yii\helpers\Html;
+  use yii\helpers\Url;
   use yii\grid\GridView;
   use yii\widgets\Pjax;
   use app\widgets\LbrComments;
@@ -64,83 +65,13 @@
         <h5 class="text-center title-card">Проекты компании</h5>
         <ul class="topics_projects">
           <?php foreach ($projects as $project): ?>
-            <li><i class="fa fa-list-ul"></i> <a href="/project-forum/topic/<?=$project->id?>"><?=$project->name?></a></li>
+            <li><i class="fa fa-list-ul <?=$arr2[$project->id] ? 'new' : '' ?>"></i>
+              <?= Html::a(
+                  $project->id.' '.$project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
+              ) ?>
+            </li>
           <?php endforeach; ?>
         </ul>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-margin">
-      <div class="card">
-        <h5 class="text-center title-card"><b>Последнии 10 комментариев проектов</b></h5>
-        <? if (count($commentProjects) < 1) : ?>
-          <div class="text-center">
-            <i class="fa fa-frown-o fa-3x"></i>
-            <p>На данный момент не комментарий</p>
-          </div>
-        <? endif; ?>
-        <?php foreach ($commentProjects as $project): ?>
-          <?php $profile = Profile::findOne($project['created_by']); ?>
-          <?php $projectOnly = Projects::findOne($project['model_key']); ?>
-          <div class="each-hr">
-            <div class="row active_forum">
-              <div class="col-xl-1 col-xs-3 d-xl-block d-none">
-                <img src="http://portal.lbr.ru/<?= $profile->getImage() ?>" class="img-fluid rounded-circle d-xs-none cursor-pointer" alt="" onclick="window.open('/profiles/<?= $profile->id ?>')">
-              </div>
-              <div class="col-xl-10 col-xs-12 d-xl-block cursor-pointer" onclick="window.open('/project/info/<?= $project['model_key'] ?>')">
-                <div class="row" >
-                  <div class="col-12">
-                    <div class="notify-details"><?= $profile->first_name ?> <?= $profile->last_name ?> <small>от <?= date('d.m.Y H:i:s', $project['created_at']) ?></small></div>
-                  </div>
-                  <div class="col-12" style="color: black; margin-left: 10px">
-                    <div class="user-msg font-13"><i class="fa fa-share-alt"></i><?= $projectOnly['name'] ?></div>
-                  </div>
-                  <div class="col-12" style="border-radius: 5px; background: #f0f0f0;">
-                    <div class="user-msg"><?= $project['content'] ?></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr>
-          </div>
-        <?php endforeach ?>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-margin">
-      <div class="card">
-        <h5 class="text-center title-card"><b>Последние 10 комментарий новостей</b></h5>
-        <? if (count($commentNews) < 1) : ?>
-          <div class="text-center">
-            <i class="fa fa-frown-o fa-3x"></i>
-            <p>На данный момент не комментарий</p>
-          </div>
-        <? endif; ?>
-        <?php foreach ($commentNews as $news): ?>
-          <?php $profile = Profile::findOne($news['created_by']); ?>
-          <?php $projectNews = ProjectNews::findOne($news['model_key']); ?>
-          <div class="each-hr">
-            <div class="row active_forum">
-              <div class="col-xl-1 col-xs-3 d-xl-block d-none">
-                <img src="http://portal.lbr.ru/<?= $profile->getImage() ?>" class="img-fluid rounded-circle d-xs-none cursor-pointer" alt="" onclick="window.open('/profiles/<?=$profile->id ?>')">
-              </div>
-              <div class="col-xl-10 col-xs-12 d-xl-block cursor-pointer" onclick="window.open('/project-news/<?= $news['model_key'] ?>')">
-                <div class="row" >
-                  <div class="col-12">
-                    <div class="notify-details"><?= $profile->first_name ?> <?= $profile->last_name ?> <small>от <?= date('d.m.Y H:i:s', $news['created_at']) ?></small></div>
-                  </div>
-                  <div class="col-12" style="color: black; margin-left: 10px">
-                    <div class="user-msg font-13"><i class="fa fa-share-alt"></i><?= $projectNews['title'] ?></div>
-                  </div>
-                  <div class="col-12" style="border-radius: 5px; background: #f0f0f0;">
-                    <div class="user-msg"><?= $news['content'] ?></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr>
-          </div>
-        <?php endforeach ?>
       </div>
     </div>
 
