@@ -1,6 +1,7 @@
 <?php
   use yii\helpers\Html;
   use yii\bootstrap\ActiveForm;
+  use app\models\ProjectUserGroup;
 
   use app\assets\ProjectAsset;
   use app\assets\AppAsset;
@@ -10,6 +11,8 @@
   $this->title = $project->name;
   $this->params['breadcrumbs'][] = "Проекты компании";
   $this->params['breadcrumbs'][] = $this->title;
+
+  $userGroup = '';
 ?>
 
 <div class="row">
@@ -17,28 +20,10 @@
     <div class="card">
       <ul class="nav nav-tabs nav-justified nav-project " style="margin: 10px;">
         <li class="nav-item">
-          <a href="#id=1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
+          <a href="#spr1" class="nav-link active" title="Дата проведения: 01.01.2018 - 21.02.2018" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
             container : 'projectall',
             data: 'id=1'
-          })">1 этап (01.01. - 21.02.18)</a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=2'
-          })">2 этап (21.02. - 25.04.18)</small></a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr3" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=3'
-          })">3 этап (27.04 - 21.06.18)</a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=4'
-          })">4 этап <br> <br></a>
+          })">1 этап</a>
         </li>
         <li class="nav-item col-xs-3 col-md-3">
           <a href="#target2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
@@ -49,7 +34,7 @@
       </ul>
 
       <div>
-          <div id = "projectall">
+          <div id="projectall">
               // контент
           </div>
       </div>
@@ -148,24 +133,29 @@
         </div> -->
 
         <div id="right2" class="tab-pane show active">
-          <div class="work-group-view">
-            <div class="work-group-view-title" style="padding-top: 10px;">
-              Руководитель проекта
-            </div>
-            <div class="work-group-view-content">
-              <div class="btn-group m-b-10">
-                <button type="button" class="btn btn-light">Масюк Е.</button>
-                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only">Добавить задачу</span>
-                </button>
-                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item" href="#">Добавить задачу</a>
-                  <div class="dropdown-divider"></div>
-                  <small style="padding: 10px;">с 20.01.2018</small>
+          <? foreach ($project_group as $key => $group) { ?>
+            <div class="work-group-view">
+              <?php if ($userGroup != $group->id_project_user_group): ?>
+                <div class="work-group-view-title" style="padding-top: 10px;">
+                  <?= (ProjectUserGroup::find()->where(['id' => $group->id_project_user_group])->one())->name ?>
+                </div>
+              <? endif; ?>
+              <div class="work-group-view-content">
+                <div class="btn-group m-b-10">
+                  <button type="button" class="btn btn-light"><?= $group['profile']['first_name'] . ' ' . $group['profile']['last_name'] ?></button>
+                  <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                    <a class="dropdown-item" href="#">Добавить задачу</a>
+                    <div class="dropdown-divider"></div>
+                    <small style="padding: 10px;"><?= date('d.m.Y', $group->create_at) ?></small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <?php if ($userGroup != $group->id_project_user_group) : ?>
+              <?php $userGroup = $group->id_project_user_group ?>
+            <? endif; ?>
+          <? } ?>
         </div>
 
         <!-- <div id="right3" class="tab-pane show ">
@@ -222,7 +212,7 @@
     <div class="card">
       <?php foreach ($project_news as $news) { ?>
         <div class="project-news-title">
-          <small>28.01.2018</small> <a href="">Верстка осуществляется с помощью Sublime Text 3.</a> 
+          <small><?= date('d.m.Y', $news->create_at) ?></small> <a href=""><?= $news->title ?></a> 
         </div>
       <? } ?>
       <? if (count($project_news) == 0) : ?>
