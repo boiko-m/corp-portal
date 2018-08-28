@@ -67,7 +67,7 @@
           <?php foreach ($projects as $project): ?>
             <li><i class="fa fa-list-ul <?=$arr2[$project->id] ? 'new' : '' ?>"></i>
               <?= Html::a(
-                  $project->id.' '.$project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
+                  $project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
               ) ?>
             </li>
           <?php endforeach; ?>
