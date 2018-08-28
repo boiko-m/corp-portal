@@ -199,7 +199,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
-
                     <?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
                         <?php $phones = explode(";", $model->phone); ?>
                         <?php foreach ($phones as $phone): ++$i;?>

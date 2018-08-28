@@ -29,7 +29,6 @@ echo Html::jsFile('@web/js/ajax.js');
                     'letters' => $alphabet,
                     'actionLink' => 'profiles/index',
                 ]);
-
             }
             else{
                 $searchModel = null;
