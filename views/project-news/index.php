@@ -11,7 +11,7 @@
         <div class="card-box">
             <div class="table-responsive wrap-relative">
 
-                <h1><?= Html::encode($this->title) ?></h1>
+                <!-- <h1><?= Html::encode($this->title) ?></h1> -->
                 <?php Pjax::begin(); ?>
 
                 <?= GridView::widget([
