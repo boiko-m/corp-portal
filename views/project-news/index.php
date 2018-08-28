@@ -11,7 +11,7 @@
         <div class="card-box">
             <div class="table-responsive wrap-relative">
 
-                <h1><?= Html::encode($this->title) ?></h1>
+                <!-- <h1><?= Html::encode($this->title) ?></h1> -->
                 <?php Pjax::begin(); ?>
 
                 <?= GridView::widget([
@@ -23,14 +23,19 @@
                             'label' => 'Заголовок новости',
                             'format' => 'raw',
                             'value' => function ($model) {
-                                return Html::a(strip_tags($model->title), '/news-project/' . $model->id, [
+                                return Html::a(strip_tags($model->title), '/project-news/' . $model->id, [
                                     'title' => 'Перейти к просмотру',
                                 ]);
                             },
                         ],
                         [
                             'label' => 'Проект',
-                            'value' => 'project.name',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return Html::a(strip_tags($model['project']['name']), '/project/info/' . $model->id_project, [
+                                    'title' => 'Перейти к просмотру',
+                                ]);
+                            },
                             'headerOptions' => ['style' => 'width:50%'],
                         ],
                     ],

@@ -39,7 +39,7 @@
 .project-name {
   border-right: 1px solid #dfdfdf;
   margin-left: 2px;
-  padding: 10px 10px 15px 10px;
+  padding: 5px 10px 7px 10px;
 }
 
 .project .card-title{
@@ -76,7 +76,7 @@
 }
 
 .project-status {
-  padding-top: 15px; 
+  padding-top: 10px; 
   margin-left: -2px;
 }
 

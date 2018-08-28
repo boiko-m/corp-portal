@@ -22,19 +22,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options'=>['class'=>'table table-striped'],
                     'columns' => [
                         [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}'
-                        ],
-                        [
                             'label' => 'Заголовок новости',
                             'format' => 'raw',
-                            'value' => function ($data) {
-                                return strip_tags($data->title);
+                            'value' => function ($model) {
+                                return Html::a(strip_tags($model->title), '/news/' . $model->id, [
+                                    'title' => 'Перейти к просмотру',
+                                ]);
                             },
                         ],
                         [
                             'attribute' => 'newsCategory.name',
                             'label' => 'Категория',
+                        ],
+                        [
+                            'attribute' => 'date',
+                            'label' => 'Дата публикации',
+                            'format' => ['date', 'php:d.m.Y'],
                         ],
                     ],
                     'pager' => [

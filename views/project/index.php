@@ -62,19 +62,19 @@
       </div>
 
       <div class="paddination-main">
-        <?php echo LinkPager::widget([
-          'pagination' => $pages,
-          'options'=>['class' => 'pagination float-right'],
+        <?php //echo LinkPager::widget([
+          //'pagination' => $pages,
+          //'options'=>['class' => 'pagination float-right'],
 
-          'activePageCssClass' => 'p-active',
-          'linkOptions' => ['class' => 'page-link'],
-          'maxButtonCount' => 5,
+          //'activePageCssClass' => 'p-active',
+          //'linkOptions' => ['class' => 'page-link'],
+          //'maxButtonCount' => 5,
 
-          'disabledPageCssClass' => 'disabled',
+          //'disabledPageCssClass' => 'disabled',
 
-          'prevPageCssClass' => 'prev-page',
-          'nextPageCssClass' => 'next-page',
-        ]); ?>
+          //'prevPageCssClass' => 'prev-page',
+          //'nextPageCssClass' => 'next-page',
+        //]); ?>
       </div>
 
     </div>
