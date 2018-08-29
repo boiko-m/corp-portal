@@ -217,6 +217,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
 
 
+                    <?php if (isset($model->sip) and $model->sip != 0): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                IP-номер
+                            </div>
+                            <div class="col">
+                                <?= $model->sip ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
+                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                Аналоговый номер
+                            </div>
+                            <div class="col">
+                                <?= $model->phone_cabinet ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
                     <?php if ($model->skype): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -249,17 +271,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     <?php endif ?>
 
-                    <?php if (isset($model->sip) and $model->sip != 0): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                IP-номер
-                            </div>
-                            <div class="col">
-                                <?= $model->sip ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
-
                     <?php if ($model->cabinet): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -270,16 +281,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                Аналоговый номер
-                            </div>
-                            <div class="col">
-                                <?= $model->phone_cabinet ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
+                    
                     <?php if ($model->about): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
