@@ -200,6 +200,18 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
 
+
+                    <?php if ($user->email): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                Электронная почта
+                            </div>
+                            <div class="col">
+                                <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    
                     <?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
                         <?php $phones = explode(";", $model->phone); ?>
                         <?php foreach ($phones as $phone): ++$i;?>
@@ -218,6 +230,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
 
 
+                    <?php if (isset($model->sip) and $model->sip != 0): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                IP-номер
+                            </div>
+                            <div class="col">
+                                <?= $model->sip ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
+                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                Аналоговый номер
+                            </div>
+                            <div class="col">
+                                <?= $model->phone_cabinet ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
                     <?php if ($model->skype): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -229,16 +263,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     <?php endif ?>
 
-                    <?php if ($user->email): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                Электронная почта
-                            </div>
-                            <div class="col">
-                                <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
-                            </div>
-                        </div>
-                    <?php endif ?>
                     <?php if ($model->birthday): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -246,16 +270,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="col">
                                 <?= $model->getBirthday()?>
-                            </div>
-                        </div>
-                    <?php endif ?>
-                    <?php if (isset($model->sip) and $model->sip != 0): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                SIP
-                            </div>
-                            <div class="col">
-                                <?= $model->sip ?>
                             </div>
                         </div>
                     <?php endif ?>
@@ -270,16 +284,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if ($model->phone_cabinet and $model->phone_cabinet != "-"): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                Внутренний телефон
-                            </div>
-                            <div class="col">
-                                <?= $model->phone_cabinet ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
+                    
                     <?php if ($model->about): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">

@@ -260,7 +260,7 @@ class UserupController extends Controller
                 $phones = $data->doc('InformationRegister_ТелефонныеНомера')->cast(array('Сотрудник', $client[$i]['Ref_Key'], 'Catalog_Сотрудники'))->where("ДатаОкончания eq datetime'0001-01-01T00:00:00' and НеОтображатьТелефон eq false")/*->select('КодСтраны,КодОператора,НомерТелефона,ВидСвязи')*/->expand('ВидСвязи')->top(20)->all();              
                 foreach ($phones as $phone) {
                     if ($phone['ВидСвязи']['Description'] == "IP") {
-                        $client[$i]['SIP'] .= $phone['ВидСвязи']['Description'];
+                        $client[$i]['SIP'] .= $phone['МИКО_НомерТелефона'];
                     }
                     // if ($phone['ВидСвязи']['Description'] == "ГТС") {
                     //     $client[$i]['ГТС'] .= $phone['ВидСвязи']['Description'];

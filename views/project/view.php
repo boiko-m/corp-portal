@@ -1,6 +1,7 @@
 <?php
   use yii\helpers\Html;
   use yii\bootstrap\ActiveForm;
+  use app\models\ProjectUserGroup;
 
   use app\assets\ProjectAsset;
   use app\assets\AppAsset;
@@ -10,54 +11,44 @@
   $this->title = $project->name;
   $this->params['breadcrumbs'][] = "Проекты компании";
   $this->params['breadcrumbs'][] = $this->title;
+
+  $userGroup = '';
 ?>
 
 <div class="row">
-  <div class="col-xs-9 col-md-9 ">
+  <div class="col-xs-9 col-md-9">
     <div class="card">
-      <ul class="nav nav-tabs nav-justified nav-project " style="margin: 10px;">
+      <ul class="nav nav-tabs nav-justified nav-project" style="margin: 10px;">
         <li class="nav-item">
-          <a href="#id=1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=1'
-          })">1 этап (01.01. - 21.02.18)</a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=2'
-          })">2 этап (21.02. - 25.04.18)</small></a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr3" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=3'
-          })">3 этап (27.04 - 21.06.18)</a>
-        </li>
-        <li class="nav-item">
-          <a href="#spr4" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-            container : 'projectall',
-            data: 'id=4'
-          })">4 этап <br> <br></a>
+            <a href="#spr1" class="nav-link active" title="Дата проведения: 01.01.2018 - 21.02.2018" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
+              container : 'projectall',
+              data: 'id=1'
+            })">1 этап
+            <? if (Yii::$app->user->can('Scrum-master')) : ?>
+              <i href="#delete-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" style="float: right"></i>
+            <? endif; ?>
+          </a>
         </li>
         <li class="nav-item col-xs-3 col-md-3">
-          <a href="#target2" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
+          <a href="#target1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
             container : 'projectall',
             data: 'id=1'
-          })">Проект <br> <br></a>
+          })">Проект</a>
         </li>
+        <? if (Yii::$app->user->can('Scrum-master')) : ?>
+          <li class="nav-item col-xs-3 col-md-3">
+            <a href="#add-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="nav-link" title="Добавить этап"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </li>
+        <? endif; ?>
       </ul>
 
       <div>
-          <div id = "projectall">
-              // контент
-          </div>
+          <div id="projectall"></div>
       </div>
-
     </div>
-
   </div>
-  <div class="col-xs-12 col-md-3 ">
+
+  <div class="col-xs-12 col-md-3 right-menu-project">
     <div class="card">
       <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
         <!-- <li class="nav-item col-xs-12">
@@ -71,7 +62,7 @@
         </li> -->
       </ul>
 
-      <div style="padding: 0px 10px; padding-bottom: 10px" class="tab-content">
+      <div class="tab-content" style="padding: 0px 10px; padding-bottom: 10px">
         <!-- <div id="right1" class="tab-pane show">
 
           <div class="dropdown mt-3">
@@ -148,24 +139,31 @@
         </div> -->
 
         <div id="right2" class="tab-pane show active">
-          <div class="work-group-view">
-            <div class="work-group-view-title" style="padding-top: 10px;">
-              Руководитель проекта
-            </div>
-            <div class="work-group-view-content">
-              <div class="btn-group m-b-10">
-                <button type="button" class="btn btn-light">Масюк Е.</button>
-                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only">Добавить задачу</span>
-                </button>
-                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item" href="#">Добавить задачу</a>
-                  <div class="dropdown-divider"></div>
-                  <small style="padding: 10px;">с 20.01.2018</small>
+          <? foreach ($project_group as $key => $group) { ?>
+            <div class="work-group-view">
+              <?php if ($userGroup != $group->id_project_user_group): ?>
+                <div class="work-group-view-title">
+                  <?= (ProjectUserGroup::find()->where(['id' => $group->id_project_user_group])->one())->name ?>
+                </div>
+              <? endif; ?>
+              <div class="work-group-view-content">
+                <div class="btn-group m-b-10">
+                  <button type="button" class="btn btn-light" onclick="window.open('/profiles/<?= $group['profile']['id'] ?>', '');"><?= $group['profile']['first_name'] . ' ' . $group['profile']['last_name'] ?></button>
+                  <? if (Yii::$app->user->can('Scrum-master')): ?>
+                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                    <div class="dropdown-menu text-center" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                      <a class="dropdown-item" href="#">Добавить задачу</a>
+                      <div class="dropdown-divider"></div>
+                      <small>Принят: <?= date('d.m.Y', $group->create_at) ?></small>
+                    </div>
+                  <? endif; ?>
                 </div>
               </div>
             </div>
-          </div>
+            <?php if ($userGroup != $group->id_project_user_group) : ?>
+              <?php $userGroup = $group->id_project_user_group ?>
+            <? endif; ?>
+          <? } ?>
         </div>
 
         <!-- <div id="right3" class="tab-pane show ">
@@ -222,7 +220,7 @@
     <div class="card">
       <?php foreach ($project_news as $news) { ?>
         <div class="project-news-title">
-          <small>28.01.2018</small> <a href="">Верстка осуществляется с помощью Sublime Text 3.</a> 
+          <small><?= date('d.m.Y', $news->create_at) ?></small> <a href=""><?= $news->title ?></a> 
         </div>
       <? } ?>
       <? if (count($project_news) == 0) : ?>
@@ -230,6 +228,48 @@
       <? endif; ?>
     </div>
 
+  </div>
+</div>
+
+
+<!-- ---------- Models ----------- -->
+
+<div id="add-stage" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.close();">
+    <span>&times;</span><span class="sr-only">Закрыть</span>
+  </button>
+  <h4 class="custom-modal-title">Создание этапа</h4>
+  <div class="custom-modal-text">
+    <form id="add-stage-form">
+      <div class="form-group">
+        <label for="stageDescription">Описание</label>
+        <textarea class="form-control" id="stageDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="stageBegin">Дата начало этапа</label>
+        <input type="date" class="form-control" id="stageBegin">
+      </div>
+      <div class="form-group">
+        <label for="stageEnd">Дата окончания этапа</label>
+        <input type="date" class="form-control" id="stageEnd">
+      </div>
+      <button type="submit" class="btn btn-secondary crate-dialog-group-button">Создать этап</button>
+    </form>
+  </div>
+</div>
+
+<div id="delete-stage" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.close();">
+    <span>&times;</span><span class="sr-only">Закрыть</span>
+  </button>
+  <h4 class="custom-modal-title">Создание этапа</h4>
+  <div class="custom-modal-text">
+    <i class="fa fa-exclamation-triangle fa-4x"></i>
+    <p>Вы действительно хотите удалить данный этап?</p>
+    <div class="center">
+      <button type="button" class="btn btn-danger button-successful-clear" onclick="Custombox.close();">Да, удалить</button>
+      <button type="button" class="btn btn-success button-successful-clear" onclick="Custombox.close();">Отмена</button>
+    </div>
   </div>
 </div>
 

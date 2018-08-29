@@ -59,8 +59,8 @@
         </form>
     </iframe>
 
-    <? $listdata = Projects::find()->select(['id as value', 'name as label'])->asArray()->all(); ?>
-    <?= $form->field($model, 'id_project')->widget(
+    <? $listdata = Projects::find()->select(['name as value', 'name as label'])->asArray()->all(); ?>
+    <?= $form->field($model, 'id_project', ['enableClientValidation' => false])->widget(
         AutoComplete::className(), [            
             'clientOptions' => [
                 'source' => $listdata,
@@ -73,7 +73,7 @@
 
     <?= $form->field($model, "visible")->checkbox(['label' => 'Видимость новости'], ['value' => true]); ?>
 
-    <?= $form->field($model, "visible_in_home_page")->checkbox(['label' => 'Видимость новости на главной странице'], ['value' => false]); ?>
+    <?= $form->field($model, "visible_in_home_page")->checkbox(['label' => 'Видимость новости на главной странице'], ['value' => $model->visible_in_home_page]); ?>
 
     <?= $form->field($model, 'image')->widget(CropboxWidget::className(), [
         'croppedDataAttribute' => 'crop_info',

@@ -304,6 +304,9 @@ class ProfilesController extends Controller
             return $this->refresh();
 
         }
+        if (strtotime($model->date_job) < 1480550400 and strripos($model->skype, '@lbr.ru')) {
+            $model->skype = 'lbr-'.$user->username;
+        }
 
         return $this->render('view', [
             'id' => $id,
