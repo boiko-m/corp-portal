@@ -53,18 +53,13 @@ class ProjectForumController extends Controller
       foreach ($last_visit_time as $visit) : $visits[$visit['id_action']] = $visit['update_at']/* + 1006*/; endforeach;
 
       foreach ($ids as $item) {
-        $arr2[] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
+        $new_msgs[$item['id']] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
       }
 
       return $this->render('index', [
           'projects'        => Projects::find()->where(['visible' => true])->all(),
           'visits'          => $visits,
-          'post_last'       => Comment::find()->where([
-                                'model' => [
-                                  'project', 'project-forum', 'project-news'
-                                ]
-                              ])->asArray()->all(),
-          'arr' => $ids[12], 'arr2' => $arr2
+          'new_msgs'        => $new_msgs
       ]);
     }
 

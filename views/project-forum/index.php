@@ -7,6 +7,10 @@
   use app\models\Profile;
   use app\models\Projects;
   use app\models\ProjectNews;
+  use app\models\Comment;
+  use app\assets\CommentsAsset;
+
+  CommentsAsset::register($this);
 
   $this->title = 'Форум проектов';
   $this->params['breadcrumbs'][] = $this->title;
@@ -56,6 +60,10 @@
   }
 </style>
 
+<?php
+
+?>
+
 <div class="projects-index">
 
   <div class="row">
@@ -64,11 +72,16 @@
       <div class="card">
         <h5 class="text-center title-card">Проекты компании</h5>
         <ul class="topics_projects">
+
           <?php foreach ($projects as $project): ?>
-            <li><i class="fa fa-list-ul <?=$arr2[$project->id] ? 'new' : '' ?>"></i>
+
+            <li><i class="fa fa-list-ul <?=$new_msgs[$project->id] ? 'new' : '' ?>"></i>
               <?= Html::a(
                   $project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
               ) ?>
+              <? if ($new_msgs[$project->id]) : ?>
+              <span class="forum_c-new-msgs"><b><?=$new_msgs[$project->id]?></b> новых комментария</span>
+              <? endif; ?>
             </li>
           <?php endforeach; ?>
         </ul>
