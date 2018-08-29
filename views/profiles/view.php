@@ -199,6 +199,19 @@ $this->params['breadcrumbs'][] = $this->title;
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="home-b1">
+
+
+                    <?php if ($user->email): ?>
+                        <div class="row information_row">
+                            <div class="col-12 col-md-3">
+                                Электронная почта
+                            </div>
+                            <div class="col">
+                                <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    
                     <?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
                         <?php $phones = explode(";", $model->phone); ?>
                         <?php foreach ($phones as $phone): ++$i;?>
@@ -250,16 +263,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     <?php endif ?>
 
-                    <?php if ($user->email): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                Электронная почта
-                            </div>
-                            <div class="col">
-                                <a href="mailto:<?= $user->email ?>"><?= $user->email ?></a>
-                            </div>
-                        </div>
-                    <?php endif ?>
                     <?php if ($model->birthday): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
