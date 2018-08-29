@@ -127,6 +127,8 @@ div .modal .modal-dialog .modal-content .modal-body {
     font-size: 15px;
 }
 
+
+
 /*крестик для поиска*/
 .close-search {
     position: absolute;
@@ -197,7 +199,7 @@ div .modal .modal-dialog .modal-content .modal-body {
     background: white;
     box-shadow: none;
     border-radius: 5px;
-    width: 200px; 
+    width: 200px;
 }
 
 #hidden-search-close {
@@ -510,7 +512,7 @@ span .online-in-tooltip {
 }
 
 .toolajax {
-    position: absolute; 
+    position: absolute;
     width: 250px;
     font-size: 13px;
     border: 1px solid #F1F1F1;

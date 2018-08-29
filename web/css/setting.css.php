@@ -2,7 +2,7 @@
 	header("Content-type: text/css; charset: UTF-8");
 	$backgroundColor = Yii::$app->setting->getValue('navbar-background-color');
 ?>
- 
+
 <!-- /** CSS begins **/ -->
 <style>
 	.tabs-bordered li a.active {

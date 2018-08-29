@@ -1277,12 +1277,29 @@ a:focus {
 .btn-pink.focus, .btn-pink:focus, .btn-outline-pink.focus, .btn-outline-pink:focus {
   box-shadow: 0 0 0 2px rgba(224, 97, 201, 0.5); }
 
+
+  .btn.waves-effect.w-md.btn-light.doc
+  {
+    width: 6em;
+    height: 25px;
+    line-height: 90%;
+    min-width:50px;
+  }
+
+  .btn.waves-effect.w-md.btn-light.doc2
+  {
+    width: 11em;
+    height: 25px;
+    line-height: 90%;
+
+  }
 /* button Outline */
+
 .btn-outline-custom {
   color: #3c86d8;
   border-color: #3c86d8;
   background-image: none;
-  background-color: transparent; }
+  background-color: transparent; }.btn.waves-effect.w-md.btn-light.
   .btn-outline-custom:hover {
     background-color: #3c86d8;
     border-color: #3c86d8;
