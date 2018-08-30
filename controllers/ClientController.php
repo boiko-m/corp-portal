@@ -18,7 +18,7 @@ class ClientController extends \yii\web\Controller
 
         $user_access = array('gavrilenko', 'dushin');
 
-        $login = (in_array(Yii::$app->user->identity->username, $user_access)) ? 'kuzmin_a' : Yii::$app->user->identity->username;
+        $login = (in_array(Yii::$app->user->identity->username, $user_access) OR Yii::$app->user->can("viewAdminPanel")) ? 'kuzmin_a' : Yii::$app->user->identity->username;
 
         if (!Yii::$app->cache->get($login)) {
             $clients = $http->get('GetClients')->params([

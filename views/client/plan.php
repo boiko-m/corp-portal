@@ -41,15 +41,22 @@
           height: 7px;
     }
 
-  
     <?php for ($i=0; $i < count($color); $i++) echo ' .task_main > div:nth-child('.($i+1).') > div:nth-child(1) { background: '.$color[$i].'; } .task_main > div:nth-child('.($i+1).') {border-right:1px solid '.$color[$i].'}'  ?>
   </style>
   <div id = "carouselExampleControls" class="row d-flex flex-nowrap task_main " style="overflow: auto">
       <?php foreach ($tasks as $task => $task_acts) { ?>
       <div class="col-3">
         <div class="row">
-          <div class="col-12">
-            <?=date("d.m.Y",$task)?>
+          <div class="col-12 p-2 text-center">
+            <div class="row">
+              <div class="col-8">
+                <?=date("d.m.Y",$task)?>
+              </div>
+              <div class="col-4">
+                <i class="fi-download"></i>
+                <i class="fi-trash" style="margin-left: 10px"></i>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
