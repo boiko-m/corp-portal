@@ -14,6 +14,7 @@ $this->title = 'Сотрудники';
 $this->params['breadcrumbs'][] = $this->title;
 
 echo Html::jsFile('@web/js/ajax.js');
+
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -34,6 +35,7 @@ echo Html::jsFile('@web/js/ajax.js');
                 $searchModel = null;
             }
             ?>
+
                  <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
@@ -46,10 +48,26 @@ echo Html::jsFile('@web/js/ajax.js');
                             'class' => 'yii\grid\ActionColumn',
                             'template' => '{view}',
                         ],*/
+
+                        [
+                          'attribute'=>'',
+                          'headerOptions' => ['width' => '60px'],
+                          'value'=>function(\app\models\Profile $data){
+                            $link = "<a href=/profiles/".$data->id.'>'.
+                            "<img src='".$data->getImage()."'alt='' style='border-radius: 50%; width: 60px;'  class ='img-fluid'>  ".
+                            '</a>';
+                            return $link;
+                          },
+                          'format'=>'raw',
+
+                        ],
                         [
                             'attribute' => 'grid',
                             'value' =>   function (\app\models\Profile $data) {
-                                $link = "<a href=/profiles/".$data->id.'>'.$data->getName().'</a><br>';
+
+                                $link = "<a href=/profiles/".$data->id.'>'.
+                                // "<img src='".$data->getImage()."'alt='' style='border-radius: 50%; width: 30px;' class ='img-fluid'>  ".
+                                $data->getName().'</a><br>';
                                 $link = $link.$data->getGrid();
                                 return $link;
                             },
@@ -81,6 +99,7 @@ echo Html::jsFile('@web/js/ajax.js');
                             'format' => 'raw',
 
                         ],
+
                     ],
                     'pager' => [
                         'options'=>['class' => 'pagination float-right'],
