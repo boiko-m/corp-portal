@@ -40,6 +40,16 @@
     .carouselExampleControls::-webkit-scrollbar {
           height: 7px;
     }
+    .icon-task i{
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .icon-task i:hover{
+      color: <?=Yii::$app->setting->getValue('navbar-background-color')?>;
+    }
+    .task_main > div :hover {
+      background: red
+    }
 
     <?php for ($i=0; $i < count($color); $i++) echo ' .task_main > div:nth-child('.($i+1).') > div:nth-child(1) { background: '.$color[$i].'; } .task_main > div:nth-child('.($i+1).') {border-right:1px solid '.$color[$i].'}'  ?>
   </style>
@@ -82,16 +92,28 @@
                               <div class="col-12 ">
                                 <ul class="connectedSortable">
                                   <?php foreach ($task_to as $t): ?>
-                                    <li class="ui-state-default"><?=$t['Название']?></li>
+                                    <li class="ui-state-default">
+                                      <?=$t['Название']?>
+                                      <div class="row">
+                                        <div class="col-8">
+                                          <i class="dripicons-user"></i> <?=$t['ИсполнительФИО']?>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                          <div class="icon-task">
+                                            <i class="dripicons-copy"></i>
+                                            <i class="dripicons-scale"></i>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
                                   <?php endforeach ?>
                                 </ul>
+                                <div>
+                                  
+                                </div>
                               </div>
                             </div>
                           </div>
-
-
-                    
-
                   <?php endforeach ?>
                   </div>
                 </div>
@@ -107,7 +129,6 @@
 
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
   .connectedSortable {
     min-height: 20px;
@@ -120,6 +141,8 @@
     margin: 0 5px 5px 5px;
     padding: 5px;
     font-size:13px;
+    cursor:pointer;
+    border-radius: 3px;
   }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
