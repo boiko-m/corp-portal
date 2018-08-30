@@ -16,7 +16,11 @@ $(document).ready(function(){
 JS;
 $this->registerJs($script);
 ?>
-
+<style type="text/css">
+   .head-toggle {
+     cursor: pointer;
+   }
+</style>
 <div class="row">
   <div class="col-md-8 col-xs-8">
     <div class="row">
