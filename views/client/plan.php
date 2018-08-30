@@ -47,9 +47,7 @@
     .icon-task i:hover{
       color: <?=Yii::$app->setting->getValue('navbar-background-color')?>;
     }
-    .task_main > div :hover {
-      background: red
-    }
+    
 
     <?php for ($i=0; $i < count($color); $i++) echo ' .task_main > div:nth-child('.($i+1).') > div:nth-child(1) { background: '.$color[$i].'; } .task_main > div:nth-child('.($i+1).') {border-right:1px solid '.$color[$i].'}'  ?>
   </style>
@@ -144,6 +142,9 @@
     cursor:pointer;
     border-radius: 3px;
   }
+  .connectedSortable li:hover{
+      box-shadow: 0 0 1px rgba(0,0,0,0.2);
+    }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
