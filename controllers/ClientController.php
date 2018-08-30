@@ -16,7 +16,9 @@ class ClientController extends \yii\web\Controller
             'error' => true
         ]);
 
-        $login = (Yii::$app->user->identity->username == "gavrilenko") ? 'kuzmin_a' : Yii::$app->user->identity->username;
+        $user_access = array('gavrilenko', 'dushin');
+
+        $login = (in_array(Yii::$app->user->identity->username, $user_access)) ? 'kuzmin_a' : Yii::$app->user->identity->username;
 
         if (!Yii::$app->cache->get($login)) {
             $clients = $http->get('GetClients')->params([
@@ -61,19 +63,43 @@ class ClientController extends \yii\web\Controller
     }
 
     public function actionPlan($code) {
-        $http = new HttpService();
 
-        $plans = $http->get('GetPlan')->params([
+        $id = md5(base64_decode($code));
+
+        if (!Yii::$app->cache->get(($id))) {
+            $http = new HttpService();
+
+            $plans = $http->get('GetPlan')->params([
                 'ClientId' => base64_decode($code) 
             ])->all();
 
+            for ($i=0; $i < count($plans); $i++) { 
+                $plans[$i]['ДатаОкончанияПлан'] = strtotime($plans[$i]['ДатаОкончанияПлан']);
+            }
 
-        for ($i=0; $i < count($plans); $i++) { 
-            $plans[$i]['ДатаОкончанияПлан'] = strtotime($plans[$i]['ДатаОкончанияПлан']);
+            Yii::$app->cache->set($id, $plans, 600);
+
+        } else $plans = Yii::$app->cache->get(($id));
+
+
+        
+        foreach ($plans as $plan) {
+            
+            $contact = explode(' ', $plan['КонтактноеЛицо']);
+            $in = ($contact[1]) ? " " . mb_strcut($contact[1], 0, 2, "UTF-8") . ". " . mb_strcut($contact[2], 0, 2, "UTF-8") . "." : '';
+            $plan['КонтактноеЛицо'] = $contact[0] . $in;
+
+            $count_tasks = count($tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']]);
+            $tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']][$count_tasks]['Название'] = $plan['Задача'];
+            $tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']][$count_tasks]['Этап'] = $plan['Этап'];
+            $tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']][$count_tasks]['НомерЗаказа'] = $plan['НомерЗаказа'];
+            $tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']][$count_tasks]['НомерПоручения'] = $plan['НомерПоручения'];
+            $tasks[$plan['ДатаОкончанияПлан']][$plan['Действие']][$plan['КонтактноеЛицо']][$count_tasks]['ИсполнительФИО'] = $plan['ИсполнительФИО'];
         }
 
         return $this->render('plan', [
-            'plans' => $plans
+            'plans' => $plans,
+            'tasks' => $tasks
         ]);
     }
 
