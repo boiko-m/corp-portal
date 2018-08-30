@@ -187,22 +187,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
   </div>
+  
   <div class="row">
     <div class="col-12 m-b-30">
       <div class="card">
-          <h6 class="card-header news-title">15. Bargam</h6>
-          <div class="card-body">
-              <p class="card-text">Логин: dubovik<br>
-                  Пароль: bargamconf<br></p>
-              <a href="http://bargam.portalservices.it/" target="_blank" class="btn waves-effect w-md btn-light doc">Открыть</a>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 m-b-30">
-      <div class="card">
-          <h6 class="card-header news-title">16. John Deere</h6>
+          <h6 class="card-header news-title">15. John Deere</h6>
           <div class="card-body">
 
               <a href="http://jdpc.deere.com/jdpc/servlet/com.deere.u90490.partscatalog.view.servlets.HomePageServlet_Alt?ui_lang_code=59" target="_blank" class="btn waves-effect w-md btn-light doc" >Открыть</a>
