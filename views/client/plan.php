@@ -43,11 +43,18 @@
     .icon-task i{
       font-size: 18px;
       transition: 0.3s;
+      
     }
     .icon-task i:hover{
       color: <?=Yii::$app->setting->getValue('navbar-background-color')?>;
     }
-    
+    .ui-state-default .icon-task{
+      transition: 0.3s;
+      opacity: 0;
+    }
+    .ui-state-default:hover .icon-task{
+      opacity: 1;
+    }
 
     <?php for ($i=0; $i < count($color); $i++) echo ' .task_main > div:nth-child('.($i+1).') > div:nth-child(1) { background: '.$color[$i].'; } .task_main > div:nth-child('.($i+1).') {border-right:1px solid '.$color[$i].'}'  ?>
   </style>
@@ -94,7 +101,7 @@
                                       <?=$t['Название']?>
                                       <div class="row">
                                         <div class="col-8">
-                                          <i class="dripicons-user"></i> <?=$t['ИсполнительФИО']?>
+                                          <i class="dripicons-user" style="font-size:13px;padding-top:7px;"></i> <b><?=$t['ИсполнительФИО']?></b>
                                         </div>
                                         <div class="col-4 text-right">
                                           <div class="icon-task">
