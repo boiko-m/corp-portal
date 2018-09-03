@@ -10,7 +10,8 @@ use yii\web\DbSession;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Session;
-
+use app\models\User;
+use app\models\UserSearch;
 /**
  * ProfileController implements the CRUD actions for Profile model.
  */
@@ -89,7 +90,7 @@ class ProfileController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -127,5 +128,20 @@ class ProfileController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Authentication by the selected user.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionAuth($id)
+    {
+        if($user = $this->findModel($id)) {
+            \Yii::$app->user->login($user);
+            return $this->goHome();
+        }
+        return $this->goBack();
     }
 }

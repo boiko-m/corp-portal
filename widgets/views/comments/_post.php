@@ -18,6 +18,8 @@ elseif ($model->model == 'project-news') : $met = ProjectNews::findOne(['id' => 
 endif;
 $p_comment = Comments::findOne($model->parent_id);
 $p_user = User::findOne($p_comment->created_by);
+if ($model->model == 'project-news' && !$meta)
+  return true;
 ?>
 
 <div class="media-container">

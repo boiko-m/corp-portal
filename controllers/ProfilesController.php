@@ -275,7 +275,7 @@ class ProfilesController extends Controller
         $user = User::findIdentity($model->id);
         $gifts_user = GiftUser::find()->where(['id_user_to' => $id])->asArray()->with('gift', 'userFrom', 'userFrom.profile')
             ->orderBy(['id' => SORT_DESC //Need this line to be fixed
-            ])->limit(4)->all(); 
+            ])->limit(4)->all();
 
 
         if(Yii::$app->request->post()){
@@ -370,5 +370,33 @@ public function actionModal(){
             $letters[] = mb_strtoupper(substr($model->last_name, 0, 2));
         }
         return array_unique($letters);
+    }
+
+
+    //change coins
+    public function actionCoins()
+    {
+
+      $params=Yii::$app->request->post('Profile');
+
+
+      $model=Profile::findOne($params['id']);
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
+    //Authentication by the selected user
+
+    public function actionAuth($id)
+    {
+        if($user = $this->findModel($id)) {
+            \Yii::$app->user->login($user);
+            return $this->goHome();
+        }
+        return $this->goBack();
     }
 }
