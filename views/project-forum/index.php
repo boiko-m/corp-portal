@@ -61,8 +61,7 @@
 </style>
 
 <?php
-debug($visits);
-debug($new_msgs);
+
 ?>
 
 <div class="projects-index">
