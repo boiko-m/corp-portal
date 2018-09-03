@@ -19,20 +19,22 @@
   <div class="col-xs-9 col-md-9">
     <div class="card">
       <ul class="nav nav-tabs nav-justified nav-project" style="margin: 10px;">
-        <li class="nav-item">
-            <a href="#spr1" class="nav-link active" title="Дата проведения: 01.01.2018 - 21.02.2018" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
-              container : 'projectall',
-              data: 'id=1'
-            })">1 этап
-            <? if (Yii::$app->user->can('Scrum-master')) : ?>
-              <i href="#delete-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" style="float: right"></i>
-            <? endif; ?>
-          </a>
-        </li>
+      	<? foreach ($stages as $key => $stage) { ?>
+					<li class="nav-item">
+							<a href="#stage<?= $stage->id ?>" class="nav-link" title="Дата проведения: <?= date('d.m.Y', $stage->date_begin) ?> - <?= date('d.m.Y', $stage->date_end) ?>" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
+								container : 'projectall',
+								data: 'id=<?= $stage->id ?>'
+							})"><?= $stage->name ?>
+							<? if (Yii::$app->user->can('Scrum-master')) : ?>
+								<i href="#delete-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" style="float: right"></i>
+							<? endif; ?>
+						</a>
+					</li>
+        <? } ?>
         <li class="nav-item col-xs-3 col-md-3">
-          <a href="#target1" class="nav-link" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
+          <a href="#target1" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
             container : 'projectall',
-            data: 'id=1'
+            data: 'id=<?= $project->id ?>'
           })">Проект</a>
         </li>
         <? if (Yii::$app->user->can('Scrum-master')) : ?>
@@ -50,7 +52,7 @@
 
   <div class="col-xs-12 col-md-3 right-menu-project">
     <div class="card">
-      <ul class="nav nav-tabs tabs-bordered nav-justified nav-project ">
+      <ul class="nav nav-tabs tabs-bordered nav-justified nav-project">
         <!-- <li class="nav-item col-xs-12">
           <a href="#right1" class="nav-link " data-toggle="tab" aria-expanded="false"><i class=" dripicons-view-list"></i></a>
         </li> -->
@@ -139,6 +141,9 @@
         </div> -->
 
         <div id="right2" class="tab-pane show active">
+         <div class="float-right add-target">
+         	<i class="fa fa-tasks" aria-hidden="true"></i>
+         </div>
           <? foreach ($project_group as $key => $group) { ?>
             <div class="work-group-view">
               <?php if ($userGroup != $group->id_project_user_group): ?>
@@ -149,14 +154,16 @@
               <div class="work-group-view-content">
                 <div class="btn-group m-b-10">
                   <button type="button" class="btn btn-light" onclick="window.open('/profiles/<?= $group['profile']['id'] ?>', '');"><?= $group['profile']['first_name'] . ' ' . $group['profile']['last_name'] ?></button>
-                  <? if (Yii::$app->user->can('Scrum-master')): ?>
+                  <? // if (Yii::$app->user->can('Scrum-master')): ?>
+<!--
                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                     <div class="dropdown-menu text-center" x-placement="bottom-start" style="position: absolute; transform: translate3d(95px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
                       <a class="dropdown-item" href="#">Добавить задачу</a>
                       <div class="dropdown-divider"></div>
                       <small>Принят: <?= date('d.m.Y', $group->create_at) ?></small>
                     </div>
-                  <? endif; ?>
+-->
+                  <? // endif; ?>
                 </div>
               </div>
             </div>
@@ -242,19 +249,15 @@
   <div class="custom-modal-text">
     <form id="add-stage-form">
       <div class="form-group">
-        <label for="stageDescription">Описание</label>
-        <textarea class="form-control" id="stageDescription" rows="3"></textarea>
-      </div>
-      <div class="form-group">
         <label for="stageBegin">Дата начало этапа</label>
-        <input type="date" class="form-control" id="stageBegin">
+        <input type="date" class="form-control" name="stage-begin" id="stageBegin">
       </div>
       <div class="form-group">
         <label for="stageEnd">Дата окончания этапа</label>
-        <input type="date" class="form-control" id="stageEnd">
+        <input type="date" class="form-control" name="stage-end" id="stageEnd">
       </div>
-      <button type="submit" class="btn btn-secondary crate-dialog-group-button">Создать этап</button>
     </form>
+    <button id="add-button-stage" class="btn btn-secondary crate-dialog-group-button">Создать этап</button>
   </div>
 </div>
 
@@ -276,9 +279,25 @@
 
 <script>
   $(document).ready(function() {
-    tajax('/project/all', {
+    tajax('/project/infoajax', {
       container : 'projectall',
-      data: 'id=3'
+			data: 'id=<?= $project->id ?>'
     })
   });
+	
+	$("#add-button-stage").click(function() {
+		var stage = $('#add-stage-form').serializeArray();
+		stage.push({name: "id-project", value: "<?= $project->id ?>"});
+			$.ajax({
+				type: 'POST',
+				url: '/project/add-stage',
+				data: stage,
+				success: function(data) {
+					location.reload();
+				},
+				error: function(xhr, str){
+					console.log('Возникла ошибка: ' + xhr.responseText)
+				}
+			});
+	})
 </script>

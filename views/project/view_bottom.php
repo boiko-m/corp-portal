@@ -1,31 +1,17 @@
 ﻿<div class="row">
   <div class="col-xs-12 col-md-12">
-    <h5 style="padding-left: 10px;">
-      <span style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt earum, reprehenderit sequi qui recusandae rem labore numquam, deserunt soluta quo?</span>
-    </h5>
-
     <ul class="nav nav-tabs nav-justified nav-project" style="margin: 20px;">
       <li class="nav-item">
-        <a href="#spr1" class="nav-link active" title="Дата проведения: 20.02.2018 - 20.03.2018" data-toggle="tab" aria-expanded="false">Спринт 1
-          <? if (Yii::$app->user->can('Scrum-master')): ?>
-            <i href="#delete-sprint" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить спринт" style="float: right;"></i>
-          <? endif; ?>
-        </a>
+        <a href="#spr1" class="nav-link" title="Дата проведения: 20.02.2018 - 20.03.2018" data-toggle="tab" aria-expanded="false">Спринт 1</a>
       </li>
       <li class="nav-item">
-        <a href="#results" class="nav-link" data-toggle="tab" aria-expanded="false">Цели и итоги</a>
+        <a href="#results" class="nav-link active" data-toggle="tab" aria-expanded="false">Цели и итоги</a>
       </li>
-      <? if (Yii::$app->user->can('Scrum-master')): ?>
-        <li class="nav-item col-xs-3 col-md-3">
-          <a href="#add-sprite" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="nav-link" title="Добавить этап"><i class="fa fa-plus" aria-hidden="true"></i></a>
-        </li>
-      <? endif; ?>
     </ul>
 
     <div class="tab-content" style="padding: 20px;">
-      <div id="spr1" class="tab-pane show active">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt earum, reprehenderit sequi qui recusandae rem labore numquam, deserunt soluta quo?</p>
-        <table class="table project-table table-striped">
+      <div id="spr1" class="tab-pane show">
+        <table class="table table-striped">
           <thead>
             <th>Задача</th>
             <th style="text-align: center;">План.</th>
@@ -48,7 +34,7 @@
         </table>
       </div>
 
-      <div id="results" class="tab-pane show" style="padding: 0px 20px;">
+      <div id="results" class="tab-pane show active" style="padding: 0px 20px;">
         <h5>Цели этапа</h5>
         <div class="project-target" style="padding-left: 20px;">
           <div class="project-target-items" style="background: #f5f5f5;">
@@ -102,48 +88,6 @@
         </div>
 
       </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ---------- Models ----------- -->
-
-<div id="add-sprite" class="modal-demo">
-  <button type="button" class="close" onclick="Custombox.close();">
-    <span>&times;</span><span class="sr-only">Закрыть</span>
-  </button>
-  <h4 class="custom-modal-title">Создание спринта</h4>
-  <div class="custom-modal-text">
-    <form id="add-sprite-form">
-      <div class="form-group">
-        <label for="spriteDescription">Описание</label>
-        <textarea class="form-control" id="spriteDescription" rows="3"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="spriteBegin">Дата начало спринта</label>
-        <input type="date" class="form-control" id="spriteBegin">
-      </div>
-      <div class="form-group">
-        <label for="spriteEnd">Дата окончания спринта</label>
-        <input type="date" class="form-control" id="spriteEnd">
-      </div>
-      <button type="submit" class="btn btn-secondary crate-dialog-group-button">Создать спринт</button>
-    </form>
-  </div>
-</div>
-
-<div id="delete-sprint" class="modal-demo">
-  <button type="button" class="close" onclick="Custombox.close();">
-    <span>&times;</span><span class="sr-only">Закрыть</span>
-  </button>
-  <h4 class="custom-modal-title">Создание спринта</h4>
-  <div class="custom-modal-text">
-    <i class="fa fa-exclamation-triangle fa-4x"></i>
-    <p>Вы действительно хотите удалить данный спринт?</p>
-    <div class="center">
-      <button type="button" class="btn btn-danger button-successful-clear" onclick="Custombox.close();">Да, удалить</button>
-      <button type="button" class="btn btn-success button-successful-clear" onclick="Custombox.close();">Отмена</button>
     </div>
   </div>
 </div>

@@ -5,10 +5,14 @@ namespace app\controllers;
 use Yii;
 use yii\data\Pagination;
 use app\models\Projects;
+use app\models\Stage;
 use app\models\ProjectNews;
 use app\models\ProjectUser;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use yii\data\ActiveDataProvider;
 
 
 class ProjectController extends \yii\web\Controller
@@ -37,6 +41,7 @@ class ProjectController extends \yii\web\Controller
             'project' => Projects::findOne($id),
             'project_news' => ProjectNews::find()->where(['id_project' => $id])->orderBy('id desc')->all(),
             'project_group' => ProjectUser::find()->where(['id_project' => $id])->with('profile')->orderBy('id_project_user_group')->all(),
+						'stages' => Stage::find()->where(['id_project' => $id])->all(),
         ]);
     }
 
@@ -56,12 +61,25 @@ class ProjectController extends \yii\web\Controller
 
     public function actionInfoajax($id)
     {
-        return $this->renderPartial('info');
+        return $this->renderPartial('about', array(
+					'project' => Projects::findOne($id),
+				));
     }
 
     public function actionAll($id)
     {
-        return $this->renderPartial('view_bottom', array(), true, true);
+        return $this->renderAjax('view_bottom');
+    }
+	
+		public function actionAddStage()
+    {
+			$stage = new Stage();
+			$stage->name = (Stage::find()->where(['id_project' => Yii::$app->request->post('id-project')])->count() + 1) . ' этап';
+			$stage->create_at = time();
+			$stage->date_begin = strtotime(Yii::$app->request->post('stage-begin'));
+			$stage->date_end = strtotime(Yii::$app->request->post('stage-end'));
+			$stage->id_project = intval(Yii::$app->request->post('id-project'));
+			$stage->save();
     }
 
     public function actionFindProject() {
