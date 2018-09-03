@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
+use yii\widgets\ActiveForm;
 
 
 /* @var $this yii\web\View */
@@ -26,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 <div class="row">
     <div class="col-xs-12 col-md-4 ">
-        
+
         <div class="row">
             <div class="col-12 m-b-30">
                 <img class="card-img-top img-fluid card" src="<?= $model->getImage() ?>"
@@ -40,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-12 m-b-30">
                     <div class="card d-block px-3 py-2">
-                        
-                    
+
+
                     <?php
                 $count = "<span style='color: #CCC'>$col</span>" ?>
                 <?php if (!$col == 0) { ?>
@@ -60,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-md-8" style="   text-align: center;"> Количество монет: <span style='color: #CCC'><?=$model->coins?></span></div>
                      <?php } ?>
                 <?php } ?>
-    
+
 
                 <div class="row p-3">
                 <?php
@@ -71,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     } else {
                         $img = $value['gift']['img'];
                     } ?>
-                    
+
                         <div class="col-3">
                             <span class="tooltiplbr"> <!--подарки с ховером-->
                           <img class="img-fluid" id="<?= $value['id'] ?>" src="<?= $img ?>" data-id="<?= $id ?>">
@@ -116,7 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                   </div>
                               </span>
                         </span>
-                        
+
                     </div>
                 <?php } ?>
                 </div>
@@ -185,22 +186,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     </a>
                 </li>
 
+
                 <!--<li class="nav-item">
                     <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
                        Подарки
                     </a>
                 </li>-->
-                <!--
+
+                <?php if (Yii::$app->user->can("viewAdminPanel")) { ?>
+
                <li class="nav-item">
                    <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
                        Управление
                    </a>
-               </li> -->
+               </li>
+                     <?php } ?>
             </ul>
+
+
             <div class="tab-content">
+
                 <div class="tab-pane fade active show" id="home-b1">
-
-
                     <?php if ($user->email): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -211,7 +217,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-                    
+
                     <?php if (isset($model->phone) and strlen($model->phone) > 0): ?>
                         <?php $phones = explode(";", $model->phone); ?>
                         <?php foreach ($phones as $phone): ++$i;?>
@@ -226,7 +232,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                             </div>
                         <?php endforeach ?>
-                        
+
                     <?php endif ?>
 
 
@@ -284,7 +290,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                     <?php endif ?>
-                    
+
                     <?php if ($model->about): ?>
                         <div class="row information_row">
                             <div class="col-12 col-md-3">
@@ -298,13 +304,46 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 </div>
 
-                <div class="tab-pane fade" id="profile-b1">
-                    <?php if (Yii::$app->user->id != $id) { ?>
-                        <?= Html::a('Отправить подарок', '', ['class' => 'btn  waves-effect w-md btn-light showModalButton', 'data' => $id]) ?>
+                <div class="container tab-pane fade" id="profile-b1">
+                      <div class="row">
+                          <div class="col-12 col-md-4 col-lg-2">
 
-                    <?php } ?>
-                    <?= Html::a('Просмотреть все', '', ['class' => 'btn  waves-effect w-md btn-light gift-button-view', 'data' => $id]) ?>
+                            <?php $form = ActiveForm::begin([
+                              'action'=>'/profiles/coins/'
+                            ]); ?>
+                            Монеты
+                          </div>
+                          <div class="col-5 col-md-3 col-lg-2">
+                            <?= $form->field($model,'coins')->textInput()->label(false) ?>
+                              <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
+                          </div>
+                          <div class="col">
+                            <?= Html::submitButton('Изменить коины <span class="mdi mdi-star-circle"> </span>', [
+                              'class' => 'btn waves-effect w-md btn-light',
+                               'label' => 'moveProduct',
+                              ]) ?>
+                          </div>
+                      </div>
+                      <div class="row information_row">
+                          <div class="col-12 col-md-3">
+
+                          </div>
+                          <div class="col">
+                          </div>
+                      </div>
+                      <div class="row information_row">
+                          <div class="col-6 col-md-3 col-lg-3">
+                            <?= Html::a('Авторизироваться <span class="mdi mdi-account-circle"></span>',['auth','id' => $model->id],[
+                              'title' => 'Авторизироваться','data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?",
+                              'class' => 'btn waves-effect w-md btn-light',
+                                ])?>
+                          </div>
+                          <div class="col">
+                          </div>
+                      </div>
                 </div>
+                  <?php ActiveForm::end(); ?>
+
                 <?php endif // если нет email, то не выводим всю общую информацию?>
 
             </div>

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "corplbr.profile".
@@ -27,7 +28,7 @@ use Yii;
  * @property string $category
  * @property string $service
  */
-class Profile extends \yii\db\ActiveRecord
+class Profile extends \yii\db\ActiveRecord implements IdentityInterface
 {
     public $full_name;
     public $user_email;
@@ -221,6 +222,30 @@ class Profile extends \yii\db\ActiveRecord
 
     public function getTopicsPosts() {
       return $this->hasMany(TopicsPosts::className(), ['author_id' => 'id']);
+    }
+
+
+    // Arguments for Identity Interface
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
     }
 
 }
