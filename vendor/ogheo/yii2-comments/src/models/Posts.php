@@ -17,10 +17,6 @@ class Posts extends Comments {
                 'model' => $params['model'],
                 'model_key' => $params['model_key']
             ])->with('author', 'ratingAggregation');
-        } else {
-            $models = self::find()->byUrl([
-                'url' => $params['url']
-            ])->with('author', 'ratingAggregation');
         }
 
         return $models;
