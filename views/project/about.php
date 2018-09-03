@@ -28,14 +28,6 @@
 						</div>
 					<? endif; ?>
 					
-					<? if(\Yii::$app->user->can("controlProject")): ?>
-						<div>
-							<span title="Хочу принять участие" class="want-to-project" style="display: inline-block; font-size: 20px !important; padding-top: 5px;">
-									<i class=" mdi mdi-account-star"></i>
-										Принять участие в проекте
-							</span>
-						</div>
-					<? endif; ?>
 				</div>
 			</div>
 			

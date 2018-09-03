@@ -1,16 +1,16 @@
 ﻿<div class="row">
   <div class="col-xs-12 col-md-12">
     <ul class="nav nav-tabs nav-justified nav-project" style="margin: 20px;">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="#spr1" class="nav-link" title="Дата проведения: 20.02.2018 - 20.03.2018" data-toggle="tab" aria-expanded="false">Спринт 1</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a href="#results" class="nav-link active" data-toggle="tab" aria-expanded="false">Цели и итоги</a>
       </li>
     </ul>
 
     <div class="tab-content" style="padding: 20px;">
-      <div id="spr1" class="tab-pane show">
+      <!-- <div id="spr1" class="tab-pane show">
         <table class="table table-striped">
           <thead>
             <th>Задача</th>
@@ -32,60 +32,55 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
 
-      <div id="results" class="tab-pane show active" style="padding: 0px 20px;">
+      <div id="results" class="tab-pane show active objects-stage" style="padding: 0px 20px;">
         <h5>Цели этапа</h5>
         <div class="project-target" style="padding-left: 20px;">
-          <div class="project-target-items" style="background: #f5f5f5;">
-            <div class="project-target-item">
-              Составить индивидуальный план рекламы (ИПР) для 30 клиентов. Выбираем 3-4 филиала, на них взять по несколько клиентов, на ком тренируемся составлять ИПР - ставим по клиенту товарные цели на базе потенциала, чем занимается клиент. Определяем, что можем предложить, в какой срок, по каким каналам связи.
-            </div>
-            <div style="padding-left: 20px;">
-              <small>Цель скорректирована:
-                <b>Причина: </b>Перенос на следующий этап.
-              </small>
-            </div>
-            <div class="text-right">
-                <small>Решено 5/30</small>
-            </div>
-            <div class="progress" style="height: 5px; margin: 0px; border: 1px solid #3ec39685;">
-              <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+         	<? foreach($objects as $key => $object) { ?>
+						<div class="project-target-items" style="background: #f5f5f5;">
+							<div class="project-target-item">
+								<?= $object->description ?>
+							</div>
 
-          <div class="project-target-items">
-            <div class="project-target-item">
-              Посадочная страница для клиента - персонализировать данные для клиента. При переходе по ссылке клиент попадает на страницу с предложениями специально для него.
-            </div>
-            <div style="padding-left: 20px;">
-              <small>Цель скорректирована:
-                <b>Причина: </b>Перенос на следующий этап.
-              </small>
-            </div>
-          </div>
+							<!-- <div style="padding-left: 20px;">
+								<small>Цель скорректирована:
+									<b>Причина: </b>Перенос на следующий этап.
+								</small>
+							</div> -->
+							
+							<? if (!$object->value == 0) : ?>
+								<div class="text-right">
+										<small>Решено 0/<?= $object->value ?></small>
+								</div>
 
-          <div class="project-target-items success-border">
-            <div class="project-target-item">
-              Сформировать стандартный перечень должностей и их роли.
-            </div>
-            <div class="text-right">
-              <small>Цель достигнута!</small>
-            </div>
-          </div>
+								<div class="progress" style="height: 5px; margin: 0px; border: 1px solid #3ec39685;">
+									<div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+							<? endif; ?>
+							
+							<? if ($object->value == 0) : ?>
+								<div class="text-right">
+									<small>Цель достигнута!</small>
+								</div>
+							<? endif; ?>
+						</div>
+       		<? } ?>
         </div>
 
-        <br><br>
-        <h5>Итоги этапа</h5>
+       	<? if ($stage->date_begin < time()) : ?>
+					<br>
+					<h5>Итоги этапа</h5>
 
-        <div class="project-target" style="padding-left: 20px;">
-          <div class="project-target-items">
-            <div class="project-target-item">
-              Разобрались с проблемой и выработали план действий на примере 3-х клиентов.
-            </div>
-          </div>
-          <br>
-        </div>
+					<div class="project-target" style="padding-left: 20px;">
+						<div class="project-target-items">
+							<div class="project-target-item">
+								Разобрались с проблемой и выработали план действий на примере 3-х клиентов.
+							</div>
+						</div>
+						<br>
+					</div>
+        <? endif; ?>
 
       </div>
     </div>

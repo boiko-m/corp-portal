@@ -21,6 +21,22 @@
   }
 }
 
+@media (max-width: 1319px) and (min-width: 765px) {
+	.backlog-control > .float-right {
+			float: none !important;
+	}
+	
+	.backlog-control > div:nth-child(2) {
+			margin-top: 5px;
+	}
+	
+	@media (max-width: 979px) and (min-width: 765px) {
+		.backlog-control {
+			text-align: center;
+		}
+	}
+}
+
 .header-column-project {
   border: 1px solid #dfdfdf;
   padding-top: 5px;
@@ -236,6 +252,11 @@
   padding-bottom: 2px;
 }
 
+.objects-stage {
+	max-height: 500px;
+	overflow: auto;
+}
+
 .project-target-items {
   margin: 10px;
 }
@@ -344,8 +365,14 @@
   border-radius: 5px;
 }
 
+.hr-object-control {
+	margin: 5px;
+}
+
 .backlog-block-title {
-  font-size:10px;
+  font-size: 11px;
+	font-weight: bold;
+	text-align: right;
 }
 
 .backlog-block-content {
@@ -408,4 +435,18 @@
 .delete-element:hover {
   border-radius: 50px;
   background-color: #f2f2f2;
+}
+
+.add-target {
+	margin-right: 5px;
+}
+
+.add-target-button {
+	cursor: pointer;
+}
+
+.icon-object-plus {
+	font-size: 9px;
+	margin-left: -2px;
+	vertical-align: top;
 }

@@ -2,6 +2,7 @@
   use yii\helpers\Html;
   use yii\bootstrap\ActiveForm;
   use app\models\ProjectUserGroup;
+	use yii\widgets\LinkPager;
 
   use app\assets\ProjectAsset;
   use app\assets\AppAsset;
@@ -25,9 +26,6 @@
 								container : 'projectall',
 								data: 'id=<?= $stage->id ?>'
 							})"><?= $stage->name ?>
-							<? if (Yii::$app->user->can('Scrum-master')) : ?>
-								<i href="#delete-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="fa fa-minus delete-element" aria-hidden="true" title="Удалить этап" style="float: right"></i>
-							<? endif; ?>
 						</a>
 					</li>
         <? } ?>
@@ -53,11 +51,13 @@
   <div class="col-xs-12 col-md-3 right-menu-project">
     <div class="card">
       <ul class="nav nav-tabs tabs-bordered nav-justified nav-project">
-        <!-- <li class="nav-item col-xs-12">
-          <a href="#right1" class="nav-link " data-toggle="tab" aria-expanded="false"><i class=" dripicons-view-list"></i></a>
-        </li> -->
+        <? if (Yii::$app->user->can('Scrum-master')): ?>
+					<li class="nav-item col-xs-12">
+          	<a href="#right1" class="nav-link" title="Бэклог" data-toggle="tab" aria-expanded="false"><i class=" dripicons-view-list"></i></a>
+        	</li> 
+         <? endif; ?>
         <li class="nav-item col-xs-12">
-          <a href="#right2" class="nav-link active" data-toggle="tab" aria-expanded="false"><i class="dripicons-user-group"></i></a>
+          <a href="#right2" class="nav-link active" title="Рабочая группа" data-toggle="tab" aria-expanded="false"><i class="dripicons-user-group"></i></a>
         </li>
         <!-- <li class="nav-item col-xs-12">
           <a href="#right3" class="nav-link " data-toggle="tab" aria-expanded="false"><i class="dripicons-toggles"></i></a>
@@ -65,85 +65,78 @@
       </ul>
 
       <div class="tab-content" style="padding: 0px 10px; padding-bottom: 10px">
-        <!-- <div id="right1" class="tab-pane show">
-
-          <div class="dropdown mt-3">
-            <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<div id="right1" class="tab-pane show">
+					<div class="backlog-control mt-3">
+						<!-- <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Бэклог
-            </button>
-            <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-              <a class="dropdown-item" href="#">Добавить</a>
-              <a class="dropdown-item" href="#">Добавить со временем</a>
-            </div>
+            	</button>
+            	<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+              	<a class="dropdown-item" href="#">Добавить</a>
+              	<a class="dropdown-item" href="#">Добавить со временем</a> 
+            	</div> -->
+            
+            	<button type="button" class="btn btn-light waves-effect w-md d-inline-block" title="Начало бэклога (не работает)"><i class="fa fa-play" aria-hidden="true"></i></button>
+            	
+            	<div class="add-target d-inline-block float-right"> <!-- Add class float-right then uncomment buttons -->
+								<button type="button" title="Создание итога" href="#add-result" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="btn btn-light add-target-button">
+									<i class="fa fa-object-group" aria-hidden="true"></i>
+									<i class="fa fa-plus icon-object-plus" aria-hidden="true"></i>
+								</button>
+						 	</div>
+            
+            	<div class="add-target d-inline-block float-right"> <!-- Add class float-right then uncomment buttons -->
+								<button type="button" title="Создание цели" href="#add-object" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="btn btn-light add-target-button">
+									<i class="fa fa-tasks" aria-hidden="true"></i>
+									<i class="fa fa-plus icon-object-plus" aria-hidden="true"></i>
+								</button>
+						 	</div>
+						</div>
+          
+          	<div class="backlog">
+							<? foreach($objects as $key => $object) { ?>
+							<div class="backlog-block">
+								<div class="backlog-block-title">
+								 Этап <?= $object['stage']['name'] ?>
+									цель от <?= date('d.m.Y', $object->create_at) ?>
+									<hr class="hr-object-control">
+								</div>
+								<div class="backlog-block-content">
+									<?= $object->description ?>
+								</div>
+								<div class="backlog-block-content" style="text-align: right;">
+									<!-- <div class="dropdown mt-3">
+										<button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;">
+											Отправить в работу
+										</button>
 
-            <button type="button" class="btn btn-light waves-effect w-md">Старт</button>
-          </div>
-          <div class="backlog">
-            <div class="backlog-block">
-              <div class="backlog-block-title">
-                запись от 20.10 15:25
-              </div>
-              <div class="backlog-block-content">
-                Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. Идейные соображения высшего порядка?
-              </div>
-              <div class="backlog-block-content" style="text-align: right;">
-                <div class="dropdown mt-3">
-                  <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;">
-                    Отправить в работу
-                  </button>
+										<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+											<a class="dropdown-item" href="#">Прикрепить к задаче</a>
+										</div>
+									</div> -->
+								</div>
+							</div>
+							<? } ?>
 
-                  <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                      <a class="dropdown-item" href="#">Прикрепить к задаче</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="backlog-block">
-              <div class="backlog-block-title">
-                запись от 20.10 15:25
-              </div>
-              <div class="backlog-block-content">
-                Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности позволяет оценить значение системы?
-              </div>
-              <div class="backlog-block-content" style="text-align: right;">
-                <div class="dropdown mt-3">
-                  <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;">
-                    Отправить в работу
-                  </button>
+							<div class="paddination-main" style="margin: -20px 0 -15px 0;">
+								<?php echo LinkPager::widget([
+									'pagination' => $objectPages,
+									'options'=>['class' => 'pagination float-right'],
 
-                  <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" href="#">Прикрепить к задаче</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+									'activePageCssClass' => 'p-active',
+									'linkOptions' => ['class' => 'page-link'],
+									'maxButtonCount' => 3,
 
-            <div class="backlog-block">
-              <div class="backlog-block-title">
-                запись от 20.10 15:25
-              </div>
-              <div class="backlog-block-content">
-                Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности позволяет оценить значение системы?
-              </div>
-              <div class="backlog-block-content" style="text-align: right;">
-                <div class="dropdown mt-3">
-                  <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;">
-                    Отправить в работу
-                  </button>
+									'disabledPageCssClass' => 'disabled',
 
-                  <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" href="#">Прикрепить к задаче</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+									'prevPageCssClass' => 'prev-page',
+									'nextPageCssClass' => 'next-page',
+								]); ?>
+							</div>
+
+						</div>
+					</div> 
 
         <div id="right2" class="tab-pane show active">
-         <div class="float-right add-target">
-         	<i class="fa fa-tasks" aria-hidden="true"></i>
-         </div>
           <? foreach ($project_group as $key => $group) { ?>
             <div class="work-group-view">
               <?php if ($userGroup != $group->id_project_user_group): ?>
@@ -227,7 +220,7 @@
     <div class="card">
       <?php foreach ($project_news as $news) { ?>
         <div class="project-news-title">
-          <small><?= date('d.m.Y', $news->create_at) ?></small> <a href=""><?= $news->title ?></a> 
+          <small><?= date('d.m.Y', $news->create_at) ?></small> <a href="/project-news/<?= $news->id ?>" target="_blank"><?= $news->title ?></a> 
         </div>
       <? } ?>
       <? if (count($project_news) == 0) : ?>
@@ -261,20 +254,60 @@
   </div>
 </div>
 
-<div id="delete-stage" class="modal-demo">
+<div id="add-object" class="modal-demo">
   <button type="button" class="close" onclick="Custombox.close();">
     <span>&times;</span><span class="sr-only">Закрыть</span>
   </button>
-  <h4 class="custom-modal-title">Создание этапа</h4>
+  <h4 class="custom-modal-title">Создание цели</h4>
   <div class="custom-modal-text">
-    <i class="fa fa-exclamation-triangle fa-4x"></i>
-    <p>Вы действительно хотите удалить данный этап?</p>
-    <div class="center">
-      <button type="button" class="btn btn-danger button-successful-clear" onclick="Custombox.close();">Да, удалить</button>
-      <button type="button" class="btn btn-success button-successful-clear" onclick="Custombox.close();">Отмена</button>
-    </div>
+    <form id="add-object-form">
+      <div class="form-group">
+        <label for="objectStage">Этап</label>
+        <select class="form-control" name="object-stage" id="objectStage">
+        	<? foreach($stages as $key => $stage) { ?>
+        	<option value="<?= $stage->id ?>"><?= $stage->name ?></option>
+        	<? } ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="objectDescription">Описание</label>
+				<textarea type="text" class="form-control" name="object-description" id="objectDescription"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="objectFinalValue">Финальное значение</label>
+        <input type="number" min="0" class="form-control" name="object-final-value" id="objectFinalValue" value="0">
+        <p class="text-left" style="font-size: 13px; opacity: 0.5">Может имень значение 0</p>
+      </div>
+    </form>
+    <button id="add-button-object" class="btn btn-secondary crate-dialog-group-button">Создать цели</button>
   </div>
 </div>
+
+<div id="add-result" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.close();">
+    <span>&times;</span><span class="sr-only">Закрыть</span>
+  </button>
+  <h4 class="custom-modal-title">Создание итога</h4>
+  <div class="custom-modal-text">
+    <form id="add-result-form">
+      <div class="form-group">
+        <label for="resultStage">Этап</label>
+        <select class="form-control" name="result-stage" id="resultStage">
+        	<? foreach($stages as $key => $stage) { ?>
+        	<option value="<?= $stage->id ?>"><?= $stage->name ?></option>
+        	<? } ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="stageResultDescription">Описание</label>
+				<textarea type="text" class="form-control" name="stage-result-description" id="stageResultDescription"></textarea>
+      </div>
+    </form>
+    <button id="add-button-result" class="btn btn-secondary crate-dialog-group-button">Создать итога</button>
+  </div>
+</div>
+
+<!-- ---------- Models ----------- -->
 
 
 <script>
@@ -292,6 +325,21 @@
 				type: 'POST',
 				url: '/project/add-stage',
 				data: stage,
+				success: function(data) {
+					location.reload();
+				},
+				error: function(xhr, str){
+					console.log('Возникла ошибка: ' + xhr.responseText)
+				}
+			});
+	});
+	
+	$("#add-button-object").click(function() {
+		var object = $('#add-object-form').serializeArray();
+			$.ajax({
+				type: 'POST',
+				url: '/project/add-object',
+				data: object,
 				success: function(data) {
 					location.reload();
 				},
