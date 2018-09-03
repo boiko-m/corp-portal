@@ -50,9 +50,10 @@ class ProjectForumController extends Controller
                              'action' => 'topic',
                              'id_user' => Yii::$app->user->id
                            ])->select('update_at, id_action')->asArray()->all();
-      foreach ($last_visit_time as $visit) : $visits[$visit['id_action']] = $visit['update_at']/* + 1006*/; endforeach;
+      foreach ($last_visit_time as $visit) : $visits[$visit['id_action']] = $visit['update_at'] - 1; endforeach;
 
       foreach ($ids as $item) {
+        // echo '<b>'.$item['id'].':'.$visits[$item['id']].'</b>-';
         $new_msgs[$item['id']] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
       }
 
