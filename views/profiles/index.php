@@ -88,12 +88,12 @@ echo Html::jsFile('@web/js/ajax.js');
                         [
                             'attribute' => 'phone',
                             'value' =>   function (\app\models\Profile $data) {
-                                $onePhone = explode(",", $data->phone);
+                                $onePhone = explode(";", $data->phone);
                                 $link =  $data->sip ? 'SIP '.$data->sip.'<br>': "&nbsp;";
-                                $link =$link. "<a href=tel:".$onePhone[0].'>'.$onePhone[0].'</a><br>';
-                                $link = $link.' '."<a href=tel:".$onePhone[1].'>'.$onePhone[1].'</a>';
-
-
+                                foreach($onePhone as $phone)
+                                {
+                                  $link =$link. "<a href=tel:".$phone.'>'.$phone.'</a><br>';
+                                }
                                 return $link;
                             },
                             'format' => 'raw',
