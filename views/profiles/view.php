@@ -303,12 +303,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <div class="container tab-pane fade" id="profile-b1">
-                      <div class="row">
+                  <?php $form = ActiveForm::begin([
+                    'action'=>'/profiles/coins/'
+                  ]); ?>
+                      <div class="row information_row">
                           <div class="col-12 col-md-4 col-lg-2">
-
-                            <?php $form = ActiveForm::begin([
-                              'action'=>'/profiles/coins/'
-                            ]); ?>
                             Монеты
                           </div>
                           <div class="col-5 col-md-3 col-lg-2">
@@ -316,23 +315,17 @@ $this->params['breadcrumbs'][] = $this->title;
                               <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
                           </div>
                           <div class="col">
-                            <?= Html::submitButton('Изменить коины <span class="mdi mdi-star-circle"> </span>', [
+                            <?= Html::submitButton('Изменить коины', [
                               'class' => 'btn waves-effect w-md btn-light',
                                'label' => 'moveProduct',
                               ]) ?>
                           </div>
                       </div>
-                      <div class="row information_row">
-                          <div class="col-12 col-md-3">
 
-                          </div>
-                          <div class="col">
-                          </div>
-                      </div>
                       <div class="row information_row">
-                          <div class="col-6 col-md-3 col-lg-3">
-                            <?= Html::a('Авторизироваться <span class="mdi mdi-account-circle"></span>',['auth','id' => $model->id],[
-                              'title' => 'Авторизироваться','data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?",
+                          <div class="col-6 col-md-3 col-lg-3" >
+                            <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
+                              'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?",
                               'class' => 'btn waves-effect w-md btn-light',
                                 ])?>
                           </div>
