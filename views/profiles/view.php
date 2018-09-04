@@ -1,5 +1,4 @@
 <?php
-
 use app\models\Session;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -8,11 +7,8 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
-
 $this->title = "Профиль: " . $model->first_name . " " . $model->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Сотрудники', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
