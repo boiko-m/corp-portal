@@ -193,7 +193,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </a>
                 </li>-->
 
-                <?php if (Yii::$app->user->can("viewAdminPanel")) { ?>
+                <?php if (Yii::$app->user->can("editCoin")) { ?>
 
                <li class="nav-item">
                    <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
