@@ -55,7 +55,7 @@ if ($model->model == 'project-news' && !$meta)
                     $model->getAuthorName(), [$model->getAuthorUrl()]
                 ) ?>
                 </span>
-                <small class="com_date"><?= $model->getPostedDate() ?></small>
+                <small class="com_date"><?= date('m.d в h:m', $model->created_at) ?></small>
                 <span class="text-right small com_date">
                   <?php if ($model->model == 'project') echo ' | к проекту '; elseif ($model->model == 'project-news') echo ' | к новости '; ?>
                   <a href="<?=$model->url?>"><?=$meta?></a>
