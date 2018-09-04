@@ -61,18 +61,13 @@
   }
 </style>
 
-<?php
-debug($last_msgs);
-?>
-
 <div class="projects-index">
 
   <div class="row">
 
-    <div class="col-md-12 col-margin">
-      <div class="card">
-        <h5 class="text-center title-card">Проекты компании</h5>
-        <ul class="topics_projects">
+    <div class="col-md-12 col-margin m-0">
+      <div class="card-box">
+        <ul class="topics_projects m-0">
 
           <?php foreach ($projects as $project):
             $last_msg = Comment::find()->where(['model_key' => $ids[$project->id]])->orderBy('created_at ASC')->one();
@@ -94,7 +89,7 @@ debug($last_msgs);
 
               <? if ($last_msg) : ?>
               <span class="forum_c-new-msgs no-border" style="float: right; line-height: 2;">
-                <?=$user->first_name.' '.$user->last_name.' '.date('m.d в h:m', $last_msg->created_at)?>
+                <span style="color: #666;"><?=$user->first_name.' '.$user->last_name?></span> <?=date('m.d в h:m', $last_msg->created_at)?>
               </span>
               <? endif; ?>
             </li>
