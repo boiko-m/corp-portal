@@ -9,7 +9,7 @@ class AgreeController extends \yii\web\Controller
     /**
      * @var integer
      */
-    private $id;
+    public $id;
     private $name;
     private $content;
     private $date;
