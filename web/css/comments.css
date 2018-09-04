@@ -524,12 +524,21 @@
 }
 .forum_c-new-msgs b {
   background: #00000014;
-  color: #788991;
-  padding: 1px 4px 1px 5px;
+  color: #f7931d;
+  padding: 1px 4px 1px 4px;
   border-radius: 3px;
   font-weight: 500;
   text-shadow: 0 1px 1px #fff;
 }
 .topics_projects li:hover b {
   color: #f7931d;
+}
+
+.new-m {
+  line-height: 2;
+  color: #f7931d;
+}
+
+.no-border {
+  border: none !important;
 }

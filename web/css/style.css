@@ -3788,7 +3788,7 @@ h3.timeline-title {
 .topics_projects li:nth-child(2n-1) {
   background: #f5f5f5;
 }
-.topics_projects .fa {
+.fa.topic {
   color: #ccc;
   border: 1.5px solid #aaa;
   padding: 2px 6px 2px 5px;

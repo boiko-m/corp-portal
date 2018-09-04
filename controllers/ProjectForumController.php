@@ -6,6 +6,7 @@ use Yii;
 use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\Profile;
+use app\models\User;
 use app\models\TopicsPosts;
 use app\models\Comment;
 use yii\data\ActiveDataProvider;
@@ -54,13 +55,16 @@ class ProjectForumController extends Controller
 
       foreach ($ids as $item) {
         // echo '<b>'.$item['id'].':'.$visits[$item['id']].'</b>-';
-        $new_msgs[$item['id']] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
+        $new_msgs[$item['id']]['c_new'] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
+        $new_msgs[$item['id']]['c_all'] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->orderBy('model_key DESC')->count();
       }
 
       return $this->render('index', [
           'projects'        => Projects::find()->where(['visible' => true])->all(),
           'visits'          => $visits,
-          'new_msgs'        => $new_msgs
+          'new_msgs'        => $new_msgs,
+          'last_msgs'       => $last_msgs,
+          'ids'            => $ids
       ]);
     }
 

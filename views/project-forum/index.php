@@ -5,6 +5,7 @@
   use yii\widgets\Pjax;
   use app\widgets\LbrComments;
   use app\models\Profile;
+  use app\models\User;
   use app\models\Projects;
   use app\models\ProjectNews;
   use app\models\Comment;
@@ -61,7 +62,7 @@
 </style>
 
 <?php
-
+debug($last_msgs);
 ?>
 
 <div class="projects-index">
@@ -73,14 +74,28 @@
         <h5 class="text-center title-card">Проекты компании</h5>
         <ul class="topics_projects">
 
-          <?php foreach ($projects as $project): ?>
+          <?php foreach ($projects as $project):
+            $last_msg = Comment::find()->where(['model_key' => $ids[$project->id]])->orderBy('created_at ASC')->one();
+            $user = Profile::findOne(['id' => $last_msg->created_by]); ?>
 
-            <li><i class="fa fa-list-ul <?=$new_msgs[$project->id] ? 'new' : '' ?>"></i>
+            <li><i class="fa fa-list-ul topic <?=$new_msgs[$project->id]['c_new'] ? 'new' : '' ?>"></i>
               <?= Html::a(
                   $project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
               ) ?>
-              <? if ($new_msgs[$project->id]) : ?>
-              <span class="forum_c-new-msgs"><b><?=$new_msgs[$project->id]?></b> новых комментария</span>
+              <span class="forum_c-new-msgs">
+                <i class="fa fa-comments"></i> <?=$new_msgs[$project->id]['c_all']?>
+              </span>
+
+              <? if ($new_msgs[$project->id]['c_new']) : ?>
+              <span class="forum_c-new-msgs new-m">
+              <b><?=$new_msgs[$project->id]['c_new']?></b> новых
+              </span>
+              <? endif; ?>
+
+              <? if ($last_msg) : ?>
+              <span class="forum_c-new-msgs no-border" style="float: right; line-height: 2;">
+                <?=$user->first_name.' '.$user->last_name.' '.date('m.d в h:m', $last_msg->created_at)?>
+              </span>
               <? endif; ?>
             </li>
           <?php endforeach; ?>
