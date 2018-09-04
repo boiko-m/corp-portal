@@ -374,6 +374,8 @@ public function actionModal(){
 
 
     //change coins
+
+
     public function actionCoins()
     {
 
@@ -390,6 +392,7 @@ public function actionModal(){
     }
 
     //Authentication by the selected user
+
 
     public function actionAuth($id)
     {
