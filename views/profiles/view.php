@@ -7,6 +7,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
+use bupy7\cropbox\CropboxWidget;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 $this->title = "Профиль: " . $model->first_name . " " . $model->last_name;
@@ -189,14 +190,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     </a>
                 </li>-->
 
-                <?php if (Yii::$app->user->can("editCoin")) { ?>
+                <?php if ((Yii::$app->user->can("editCoin"))) { ?>
 
                <li class="nav-item">
                    <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
                        Управление
                    </a>
                </li>
-                     <?php } ?>
+
+                  <?php } ?>
+
+                  <?php
+                   if (Yii::$app->user->identity->profile->id_profile_position == 66 || Yii::$app->user->identity->profile->id_profile_position == 133 || (Yii::$app->user->identity->profile->id_profile_position==97 && $model->branch == Yii::$app->user->identity->profile->branch)) { ?>
+                     <li class="nav-item">
+                       <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link">
+                         Смена
+                       </a>
+                     </li>
+                   <?php }  ?>
             </ul>
 
 
@@ -315,7 +326,7 @@ $this->params['breadcrumbs'][] = $this->title;
                               <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
                           </div>
                           <div class="col">
-                            <?= Html::submitButton('Изменить коины', [
+                            <?= Html::submitButton('Изменить монеты', [
                               'class' => 'btn waves-effect w-md btn-light',
                                'label' => 'moveProduct',
                               ]) ?>
@@ -330,10 +341,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ])?>
                           </div>
                           <div class="col">
+                            <?= Html::a('Удалить фото', ['/profiles/imagedelete', 'imageName' => $model->img , 'id'=> $model->id],[
+                              'class'=>'btn waves-effect w-md btn-light',
+                              ]) ?>
                           </div>
+
                       </div>
                 </div>
-                  <?php ActiveForm::end(); ?>
+                          <?php ActiveForm::end(); ?>
+
+
+
+                  <div class="tab-pane fade" id="profile-b2">
+
+                          <div class="row information_row">
+                              <div class="col-12 col-md-3">
+                                  Смена фотографии
+                              </div>
+                              <div class="col">
+                                <?= Html::a('Изменить фотографию',['/profiles/imageuserchange','id'=>$model->id],['class'=>'btn waves-effect w-md btn-light']) ?>
+                              </div>
+                          </div>
+
+                  </div>
+
 
                 <?php endif // если нет email, то не выводим всю общую информацию?>
 

@@ -98,10 +98,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </span>
                             <br>
                         <?php } ?>
-                        <?php if (!empty($value['phone_cabinet']) && $value['phone_cabinet'] != '-') { ?>
-                            <span title="Рабочий телефон" >
-                Рабочий телефон
-                                <?=' ' . $value['phone_cabinet']; ?>
+                        <?php if (!empty($value['sip']) && $value['sip'] != '-') { ?>
+                            <span title="Ip-номер" >
+                Ip-номер
+                                <?=' ' . $value['sip']; ?>
             </span>
                         <?php } ?>
                     </div>
@@ -133,5 +133,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 ]);?>
             </div></div></div></div>
-
-

@@ -55,4 +55,8 @@ class ProfilePosition extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Profile::className(), ['id_profile_position' => 'id']);
     }
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
 }

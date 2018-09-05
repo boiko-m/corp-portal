@@ -59,10 +59,10 @@
             </span>
                 <br>
             <?php } ?>
-            <?php if (!empty($value['phone_cabinet']) && $value['phone_cabinet'] != '-') { ?>
-                <span title="Рабочий телефон">
-                Тел.
-                    <?= ' ' . $value['phone_cabinet']; ?>
+            <?php if (!empty($value['sip']) && $value['sip'] != '-') { ?>
+                <span title="Ip">
+                Ip
+                    <?= ' ' . $value['sip']; ?>
             </span>
             <?php } ?>
         </div>
@@ -94,8 +94,3 @@
             ],
         ],]) ?></div><?
 } ?>
-
-
-
-
-
