@@ -47,6 +47,8 @@ File: Main Css File
 ============= */
 /* Metis Menu css */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
+
 .metismenu {
   padding: 0; }
   .metismenu ul {
@@ -3761,11 +3763,11 @@ h3.timeline-title {
 }
 
 .tabs.employees a {
-  font-size: 14px;
   color: #313a46;
 }
 .tabs.employees .desc,
-.tabs.employees .date_job {
+.tabs.employees .date_job,
+.tabs.employees .date_pub {
   font-size: 90%;
 }
 .tabs.employees .branch {
@@ -3845,4 +3847,29 @@ h3.timeline-title {
 }
 .pagination > .active > a:hover {
   background: #1b497f;
+}
+
+.tabs.news .desc {
+  color: #999;
+  font-size: 85%;
+}
+.tabs.news a {
+  color: #333;
+}
+.tabs.news .desc a {
+  font-size: 85%;
+}
+.tabs.news a:hover {
+  color: #666;
+  opacity: 1 !important;
+}
+.tabs.news .desc a:hover {
+  text-decoration: underline;
+}
+.tabs.news .desc .date_pub {
+  border-right: 1px solid #ddd;
+  padding-right: 5px;
+}
+.tabs.news .desc .category {
+
 }
