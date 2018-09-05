@@ -288,7 +288,7 @@
 }
 
 .colorgreen {
-  color: #109d10
+  color: #109d10;
 }
 
 .colororange {
@@ -342,11 +342,11 @@
 }
 
 .work-group-view-content a {
-  display: block
+  display: block;
 }
 
 .work-group-view-content small {
-  color: black
+  color: black;
 }
 
 .project-menu-left small {
@@ -378,6 +378,10 @@
 .backlog-block-content {
   font-size:14px;
   text-align: justify;
+}
+
+.object-console-item {
+	padding: 2px 1rem;
 }
 
 .nav-tabs .nav-link {

@@ -7,6 +7,7 @@ use yii\data\Pagination;
 use app\models\Projects;
 use app\models\Stage;
 use app\models\StageGoal;
+use app\models\StageResult;
 use app\models\ProjectNews;
 use app\models\ProjectUser;
 use yii\web\Controller;
@@ -68,22 +69,31 @@ class ProjectController extends \yii\web\Controller
 					'project' => Projects::findOne($id),
 					'project_news' => $projects_news,
 					'project_group' => ProjectUser::find()->where(['id_project' => $id])->orderBy('id_project_user_group')->all(),
+					'stages' => Stage::find()->where(['id_project' => $id])->all(),
         ]);
+    }
+	
+		public function actionInfostage($id)
+    {
+        return $this->renderPartial('_info_object', [
+					'objects' => StageGoal::find()->where(['id_stage' => $id])->all(),
+				]);
     }
 
     public function actionInfoajax($id)
     {
-        return $this->renderPartial('about', array(
+        return $this->renderPartial('about', [
 					'project' => Projects::findOne($id),
-				));
+				]);
     }
 
     public function actionAll($id)
     {
-			return $this->renderPartial('view_bottom', array(
-				'objects' => StageGoal::find()->where(['id_stage' => $id])->all(),
+			return $this->renderPartial('_view_bottom', [
 				'stage' => Stage::findOne($id),
-			));
+				'objects' => StageGoal::find()->where(['id_stage' => $id])->all(),
+				'results' => StageResult::find()->where(['id_stage' => $id])->all(),
+			]);
     }
 	
 		public function actionAddStage()
@@ -111,6 +121,18 @@ class ProjectController extends \yii\web\Controller
 			$stageGoal->create_at = time();
 			$stageGoal->id_stage = intval(Yii::$app->request->post('object-stage'));
 			$stageGoal->save();
+    }
+	
+		public function actionAddResult()
+    {
+			if (!Yii::$app->user->can("Scrum-master"))
+				throw new ForbiddenHttpException("Доступ запрещен. Нажмите на кнопку 'Принять участие в проекте' и ожидайте ответа");
+			
+			$stageResult = new StageResult();
+			$stageResult->description = Yii::$app->request->post('stage-result-description');
+			$stageResult->create_at = time();
+			$stageResult->id_stage = intval(Yii::$app->request->post('result-stage'));
+			$stageResult->save();
     }
 
     public function actionFindProject() {

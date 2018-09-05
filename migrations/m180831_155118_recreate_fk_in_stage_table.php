@@ -16,18 +16,18 @@ class m180831_155118_recreate_fk_in_stage_table extends Migration
 			$this->dropIndex('ifk-stage-id_project','stage');
 			
 			$this->createIndex(
-            'ifk-stage-id_project',
-            'stage',
-            'id_project'
-        );
-        $this->addForeignKey(
-            'fk-stage-id_project',
-            'stage',
-            'id_project',
-            'projects',
-            'id',
-            'CASCADE'
-        );
+				'ifk-stage-id_project',
+				'stage',
+				'id_project'
+			);
+			$this->addForeignKey(
+				'fk-stage-id_project',
+				'stage',
+				'id_project',
+				'projects',
+				'id',
+				'CASCADE'
+			);
     }
 
     /**
