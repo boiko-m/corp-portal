@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * NewsCategoryController implements the CRUD actions for NewsCategory model.
  */
-class NewsCategoryController extends Controller
+class NewsCategoryController extends Controller 
 {
     /**
      * {@inheritdoc}
