@@ -145,101 +145,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-md-8 m-b-30" style="margin-bottom: 30px;">
-    <div class="card pb-2">
-      <div class="row">
-        <div class="col-12">
-          <ul class="nav nav-tabs  nav-project tabs-bordered" style="padding-top: 3px">
-            <li class="nav-item">
-              <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link <?= Yii::$app->setting->getValue('news-panel-setting') == 1 ? 'active' : null ?> <?= Yii::$app->setting->getValue('news-panel-setting') == null ? 'active' : null ?>">
-                Новости компании
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="tab-content pt-0">
-            <div>
-              <div class="row align-items-center">
-                <div class="col-12">
-                  <?php foreach ($news as $item): ?>
-                    <? if (empty($item->link_project_news) || (ProjectNews::findOne(end(explode('/', $item->link_project_news))))->visible) : ?>
-                      <div class="row pl-2 pt-3 align-items-center news-container">
-                        <div class="d-none d-lg-block col-md-1 text-right pr-0">
-                            <i class="fa <?= $item['newsCategory']['pintogram'] ?>" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-md-11">
-                          <div>
-                            <?php $visit = Yii::$app->visit->get([
-                                'controller' => 'news',
-                                'action' => 'view',
-                                'id' => $item['id'],
-                                'save' => false,
-                                'one' => true
-                            ]); ?>
-                            <a href="/news/<?= $item["id"] ?>" class="news-title" style="<?= ($visit) ? 'opacity: 0.5' : null ?>">
-                              <?= $item['title'] ?>
-                            </a>
-                          </div>
-                          <div>
-                            <small><a href="news-category/<?= $item['newsCategory']['id'] ?>" target="_blank"><b><?= $item['newsCategory']['name'] ?></b></a> от <?= date("d.m.Y", $item['date']) ?></small>
-                          </div>
-                        </div>
-                      </div>
-                    <? endif; ?>
-                  <?php endforeach ?>
-                </div>
-              </div>
-
-              <div class="row">
-                  <div class="col-12 text-right">
-                      <div class="row align-items-center mx-2">
-                          <div class="col-8">
-                              <a href="/news/offer" class="news-offer">Предложить новость</a>
-                          </div>
-                          <a href="/news" class="btn waves-effect w-md btn-light col-12 col-lg-4">Открыть все новости компании</a>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-md-4 m-b-30">
-    <div class="card">
-      <div class="card-header">Новое видео на портале</div>
-      <div class="m-b-10" style="padding-top: 10px;">
-        <a href="/video/id/<?= $video['id'] ?>">
-            <div class="d-flex justify-content-around">
-                <img class="col-3 ml-15" src="/img/icon/youtube.png" alt="" style="position: absolute; padding-top: 100px;">
-            </div>
-            <img src="/<?= $video['img'] ?>" alt="" width="100%">
-        </a>
-      </div>
-      <div class="block m-t-10" style="padding: 10px;">
-        <div class="btn-group mb-2" style="width: 100%;">
-          <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%;">Форум</a>
-          <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%;">Все видео</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-md-8 m-b-30">
 
     <div class="card-box pt-0 pr-0 pl-0">
 
@@ -345,12 +250,34 @@
         </div>
       </div>
     </div>
+
   </div>
 
-  <?php echo Questionnaire::widget([
-      'title' => 'Опросы',
-      'col_size' => 4,
-      'width' => '290',
-  ]) ?>
+  <div class="col-xs-12 col-md-4 m-b-30">
+    <div class="card-box m-b-30">
+      <h4 class="m-t-0 header-title">Новое видео на портале</h4>
+      <div class="m-b-10" style="padding-top: 10px;">
+        <a href="/video/id/<?= $video['id'] ?>">
+            <div class="d-flex justify-content-around">
+                <img class="col-3 ml-15" src="/img/icon/youtube.png" alt="" style="position: absolute; padding-top: 100px;">
+            </div>
+            <img src="/<?= $video['img'] ?>" alt="" width="100%">
+        </a>
+      </div>
+      <div class="block m-t-10" style="padding: 10px;">
+        <div class="btn-group mb-2" style="width: 100%;">
+          <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%;">Форум</a>
+          <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%;">Все видео</a>
+        </div>
+      </div>
+    </div>
+
+    <?= Questionnaire::widget([
+        'title' => 'Опросы',
+        'col_size' => 4,
+        'width' => '290',
+    ]) ?>
+
+  </div>
 
 </div>
