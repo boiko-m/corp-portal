@@ -33,7 +33,7 @@ class ProjectController extends \yii\web\Controller
         return $this->render('index', [
             'projects' => $projects,
             'pages' => $pages,
-            'colorsStatus' => array("Завершен" => "grey", "В работе" => "green"),
+            'colorsStatus' => array("Завершен" => "complited", "В работе" => "in_work", "В плане" => "in_plane"),
         ]);
     }
 
@@ -41,12 +41,12 @@ class ProjectController extends \yii\web\Controller
     {
 			if (!ProjectUser::findOne(['id_project' => $id, 'id_user' => Yii::$app->user->id]) && !Yii::$app->user->can("Scrum-master"))
 				throw new ForbiddenHttpException("Доступ запрещен. Нажмите на кнопку 'Принять участие в проекте' и ожидайте ответа");
-			
+
 			$objects = StageGoal::find()->joinWith('stage')->andWhere(['id_project' => $id]);
 			$countQuery = clone $objects;
 			$objectPages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 2]);
       $objects = $objects->offset($objectPages->offset)->limit($objectPages->limit)->all();
-			
+
 			return $this->render('view', [
 				'project' => Projects::findOne($id),
 				'project_news' => ProjectNews::find()->where(['id_project' => $id])->orderBy('id desc')->all(),
@@ -85,12 +85,12 @@ class ProjectController extends \yii\web\Controller
 				'stage' => Stage::findOne($id),
 			));
     }
-	
+
 		public function actionAddStage()
     {
 			if (!Yii::$app->user->can("Scrum-master"))
 				throw new ForbiddenHttpException("Доступ запрещен. Нажмите на кнопку 'Принять участие в проекте' и ожидайте ответа");
-			
+
 			$stage = new Stage();
 			$stage->name = (Stage::find()->where(['id_project' => Yii::$app->request->post('id-project')])->count() + 1) . ' этап';
 			$stage->create_at = time();
@@ -99,12 +99,12 @@ class ProjectController extends \yii\web\Controller
 			$stage->id_project = intval(Yii::$app->request->post('id-project'));
 			$stage->save();
     }
-	
+
 		public function actionAddObject()
     {
 			if (!Yii::$app->user->can("Scrum-master"))
 				throw new ForbiddenHttpException("Доступ запрещен. Нажмите на кнопку 'Принять участие в проекте' и ожидайте ответа");
-			
+
 			$stageGoal = new StageGoal();
 			$stageGoal->description = Yii::$app->request->post('object-description');
 			$stageGoal->value = Yii::$app->request->post('object-final-value');

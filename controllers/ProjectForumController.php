@@ -54,7 +54,6 @@ class ProjectForumController extends Controller
       foreach ($last_visit_time as $visit) : $visits[$visit['id_action']] = $visit['update_at'] - 1; endforeach;
 
       foreach ($ids as $item) {
-        // echo '<b>'.$item['id'].':'.$visits[$item['id']].'</b>-';
         $new_msgs[$item['id']]['c_new'] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->andWhere(['>', 'created_at', $visits[$item['id']]])->orderBy('model_key DESC')->count();
         $new_msgs[$item['id']]['c_all'] = Comment::find()->asArray()->where(['model_key' => $ids[$item['id']]])->orderBy('model_key DESC')->count();
       }
@@ -64,7 +63,7 @@ class ProjectForumController extends Controller
           'visits'          => $visits,
           'new_msgs'        => $new_msgs,
           'last_msgs'       => $last_msgs,
-          'ids'            => $ids
+          'ids'             => $ids
       ]);
     }
 

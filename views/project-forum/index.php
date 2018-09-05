@@ -73,13 +73,17 @@
             $last_msg = Comment::find()->where(['model_key' => $ids[$project->id]])->orderBy('created_at ASC')->one();
             $user = Profile::findOne(['id' => $last_msg->created_by]); ?>
 
-            <li><i class="fa fa-list-ul topic <?=$new_msgs[$project->id]['c_new'] ? 'new' : '' ?>"></i>
+            <li>
+
+              <span class="forum_c-total-msgs">
+                <i class="fa fa-comments"></i> <?=$new_msgs[$project->id]['c_all']?>
+              </span>
+              <i class="fa fa-list-ul topic <?=$new_msgs[$project->id]['c_new'] ? 'new' : '' ?>"></i>
+
               <?= Html::a(
                   $project->name, [Url::toRoute(['project-forum/topic', 'id' => $project->id])]
               ) ?>
-              <span class="forum_c-new-msgs">
-                <i class="fa fa-comments"></i> <?=$new_msgs[$project->id]['c_all']?>
-              </span>
+
 
               <? if ($new_msgs[$project->id]['c_new']) : ?>
               <span class="forum_c-new-msgs new-m">
@@ -89,7 +93,7 @@
 
               <? if ($last_msg) : ?>
               <span class="forum_c-new-msgs no-border" style="float: right; line-height: 2;">
-                <span style="color: #666;"><?=$user->first_name.' '.$user->last_name?></span> <?=date('m.d в h:m', $last_msg->created_at)?>
+                <span style="color: #666;"><?=$user->first_name.' '.$user->last_name?></span> <?=date('m.d в H:m', $last_msg->created_at)?>
               </span>
               <? endif; ?>
             </li>
