@@ -28,7 +28,7 @@
               <? endif; ?>
               <div class="link">
                 <span class="d-none d-lg-inline-block pr-0 icon-project">
-                    <i class="fa fa-handshake-o mr-2"></i>
+                    <i class="fa fa-share-alt mr-2"></i>
                 </span>
                 <span>
                   <span><?= $project->name ?></span>
