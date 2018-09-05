@@ -144,6 +144,9 @@
 
         </div>
       </div>
+      <a href="/news/offer" class="news-offer">Предложить новость</a>
+      <a href="/news" class="news-offer">Открыть все новости компании</a>
+
     </div>
 
     <div class="card-box pt-0 pr-0 pl-0">
