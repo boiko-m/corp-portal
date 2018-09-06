@@ -138,7 +138,7 @@
 
         </div>
       </div>
-      <div class="container text-center">
+      <div class="container text-center sitelinks">
         <a href="/news/offer" class="news-offer">Предложить новость</a>
         <a href="/news" class="news-offer">Все новости компании</a>
       </div>
@@ -264,9 +264,9 @@
         </a>
       </div>
       <div class="block m-t-10" style="padding: 10px;">
-        <div class="btn-group mb-2" style="width: 100%;">
-          <a href="/video/?tab=forum" class="btn waves-effect w-md btn-light" style="width: 100%;">Форум</a>
-          <a href="/video/" class="btn waves-effect w-md btn-light" style="width: 100%;">Все видео</a>
+        <div class="container text-center sitelinks">
+          <a href="/video/?tab=forum" class="news-offer">Форум</a>
+          <a href="/video/" class="news-offer">Все видео</a>
         </div>
       </div>
     </div>

@@ -50,11 +50,18 @@ class ProjectNewsController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'news' => ProjectNews::find()->where(['id' => $id])->with('project')->one(),
-            'attachmentVideo' => AttachmentProjectNews::findAll(['type' => 1, 'id_project_news' => $id]),
-            'attachmentDocument' => AttachmentProjectNews::findAll(['type' => 0, 'type' => 2, 'id_project_news' => $id]),
-        ]);
+
+      \Yii::$app->visit->set([
+          'controller' => 'project-news',
+          'action' => 'view',
+          'id'=> $id
+      ]);
+
+      return $this->render('view', [
+          'news' => ProjectNews::find()->where(['id' => $id])->with('project')->one(),
+          'attachmentVideo' => AttachmentProjectNews::findAll(['type' => 1, 'id_project_news' => $id]),
+          'attachmentDocument' => AttachmentProjectNews::findAll(['type' => 0, 'type' => 2, 'id_project_news' => $id]),
+      ]);
     }
 
     /**

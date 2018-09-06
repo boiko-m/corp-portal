@@ -3912,3 +3912,10 @@ h3.timeline-title {
   background: #eee;
   color: #111;
 }
+
+a.visited  {
+  opacity: .5;
+}
+
+.sitelinks { margin-top: 10px; }
+.sitelinks a { margin: 0 5px; }

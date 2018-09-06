@@ -13,12 +13,19 @@
             <div class="container-fluid">
 
                 <?php foreach ($news as $new) { ?>
+                  <?php $visit = \Yii::$app->visit->get([
+                      'controller' => 'project-news',
+                      'action' => 'view',
+                      'id' => $new->id,
+                      'save' => false,
+                      'one' => true
+                  ]); ?>
                   <div class="row each-hr">
                     <div class="col-12">
                       <?= Html::a(
                         $new->title,
                         Url::to(['project-news/view', 'id' => $new->id]),
-                        ['class' => ''])
+                        ['class' => $visit ? 'visited' : ''])
                       ?>
                       <span class="news_date"><?=date('d.m.y', $new->create_at)?></span>
                     </div>
