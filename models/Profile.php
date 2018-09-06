@@ -247,5 +247,6 @@ class Profile extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return static::findOne($id);
     }
+    
 
 }

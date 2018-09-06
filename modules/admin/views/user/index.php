@@ -41,8 +41,8 @@
                 'buttons' => [
                     'auth' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-user"></span>', $url, [
-                            'title' => 'Авторизироваться',
-                            'data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?"
+                            'title' => 'Авторизация',
+                            'data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?"
                         ]);
                     },
                 ]

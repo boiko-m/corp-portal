@@ -1,3 +1,4 @@
+
 <?php
 use bupy7\cropbox\CropboxWidget;
 use yii\widgets\ActiveForm;
@@ -7,7 +8,7 @@ use yii\helpers\Html;
 
 
 $pathThumbImage = '/upload/images/thumbnail_'
-    . Yii::$app->user->identity->profile->img;?>
+    . $profile->id ?>
 <div class="row">
     <div class="col-md-12">
     <div class="card-box">
@@ -21,7 +22,7 @@ $af = ActiveForm::begin([
         'enctype' => 'multipart/form-data',
         'class' => 'crop-form'
     ],
-    'action' => ['image', 'submit'],
+    'action' => '/profiles/imageuserchange/'.$profile->id
 ]);
 
 echo $af->field($form, 'image')->widget(CropboxWidget::className(), [
@@ -35,6 +36,5 @@ echo Html::submitButton('Сохранить', ['class' => 'btn btn-outline-warni
 
 ActiveForm::end();
 ?>
-
     </div></div>
 </div>

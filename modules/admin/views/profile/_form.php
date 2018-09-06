@@ -48,10 +48,10 @@
     <?= $form->field($model, 'sip')->textInput() ?>
 
 
-    
+
     <div class="form-group crud-button-save">
-      <?= Html::a('Авторизироваться <span class="glyphicon glyphicon-user"></span>',['auth','id' => $model->id],[
-        'title' => 'Авторизироваться','data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?",
+      <?= Html::a('Авторизоваться <span class="glyphicon glyphicon-user"></span>',['auth','id' => $model->id],[
+        'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите Авторизоваться под этим пользователем?",
         'class' => 'btn btn-success',
           ])?>
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

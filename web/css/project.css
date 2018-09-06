@@ -4,7 +4,7 @@
 }
 
 @media only screen and (max-width: 765px) {
-  .project-addition-none {  
+  .project-addition-none {
     display: none;
   }
 
@@ -25,11 +25,11 @@
 	.backlog-control > .float-right {
 			float: none !important;
 	}
-	
+
 	.backlog-control > div:nth-child(2) {
 			margin-top: 5px;
 	}
-	
+
 	@media (max-width: 979px) and (min-width: 765px) {
 		.backlog-control {
 			text-align: center;
@@ -50,16 +50,26 @@
 
 .project {
   margin: 0 !important;
-  transition: 0.3s;
-  border-right: 1px solid #dfdfdf;
-  border-bottom: 1px solid #dfdfdf;
-  border-left: 1px solid #dfdfdf;
+  border-bottom: 1px solid #eee;
+  background: #f5f5f5;
+}
+.project.in_plane {
+  opacity: .3;
+}
+.project.in_work:hover {
+  background: #fff;
 }
 
 .project-name {
-  border-right: 1px solid #dfdfdf;
-  margin-left: 2px;
-  padding: 5px 10px 7px 10px;
+}
+.project-name a {
+  display: block;
+  width: 100%;
+  color: #333;
+}
+.project-name .link {
+  padding: 10px;
+  width: 100%;
 }
 
 .project .card-title{
@@ -67,19 +77,19 @@
 }
 
 .icon-project {
-  display: inline-block; 
-  color: #f7931d; 
-  font-size:20px !important
+  display: inline-block;
+  color: #f7931d;
+  font-size: 15px !important;
 }
 
 .search-project {
-  color:#5d5d5d; 
-  margin-bottom: 5px; 
+  color:#5d5d5d;
+  margin-bottom: 5px;
   font-size: 15px;
 }
 
 .non-project {
-  font-size: 17px; 
+  font-size: 17px;
   text-align: center;
 }
 
@@ -95,9 +105,29 @@
   text-overflow: ellipsis;
 }
 
-.project-status {
-  padding-top: 10px; 
-  margin-left: -2px;
+.project-status {padding: 12px 0;}
+.project-status .complited,
+.project-status .in_work,
+.project-status .in_plane {
+  border-radius: 2px;
+  width: fit-content;
+  padding: 0px 10px;
+  font-size: 12px;
+  text-transform: lowercase;
+  margin: 0 auto;
+  cursor: default;
+  user-select: none;
+}
+.project-status .complited {
+  background: #f5f5f5;
+}
+.project-status .in_work {
+  background: #66BB6A;
+  color: #fff;
+}
+.project-status .in_plane {
+  background: #FFB300;
+  color: #fff;
 }
 
 .paddination-main {
@@ -449,8 +479,31 @@
 	cursor: pointer;
 }
 
+.search_block {
+  margin-bottom: 15px;
+}
+
 .icon-object-plus {
 	font-size: 9px;
 	margin-left: -2px;
 	vertical-align: top;
+}
+
+a.project_set-btn i {
+  color: transparent;
+  transition: .2s;
+}
+.row.project:hover a.project_set-btn i {
+  color: #999;
+}
+
+a.project_set-btn {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  transition: .2s;
+}
+a.project_set-btn:hover {
+  background: #f5f5f5;
+  color: #444 !important;
 }

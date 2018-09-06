@@ -38,33 +38,33 @@
         <h5>Цели этапа</h5>
         <div class="project-target pl-20">
          	<? foreach($objects as $key => $object) { ?>
-                <div class="project-target-items" style="background: #f5f5f5;">
-                    <div class="project-target-item">
-                        <?= $object->description ?>
-                    </div>
+						<div class="project-target-items" style="background: #f5f5f5;">
+							<div class="project-target-item">
+								<?= $object->description ?>
+							</div>
 
-                    <!-- <div style="padding-left: 20px;">
-                        <small>Цель скорректирована:
-                            <b>Причина: </b>Перенос на следующий этап.
-                        </small>
-                    </div> -->
+							<!-- <div style="padding-left: 20px;">
+								<small>Цель скорректирована:
+									<b>Причина: </b>Перенос на следующий этап.
+								</small>
+							</div> -->
 
-                    <? if (!$object->value == 0) : ?>
-                        <div class="text-right">
-                                <small>Решено <?= $object->factual_value ?>/<?= $object->value ?></small>
-                        </div>
+							<? if (!$object->value == 0) : ?>
+								<div class="text-right">
+									<small>Решено <?= $object->factual_value ?>/<?= $object->value ?></small>
+								</div>
 
-                        <div class="progress" style="height: 5px; margin: 0px; border: 1px solid #3ec39685;">
-                            <div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?= ($object->factual_value * 100) / $object->value ?>%;" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    <? endif; ?> 
+								<div class="progress" style="height: 5px; margin: 0px; border: 1px solid #3ec39685;">
+									<div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?= ($object->factual_value * 100) / $object->value ?>%;" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+							<? endif; ?> 
 
-                    <? if ($object->complete) : ?>
-                        <div class="text-right">
-                            <small>Цель достигнута!</small>
-                        </div>
-                    <? endif; ?>
-                </div>
+							<? if ($object->complete) : ?>
+								<div class="text-right">
+									<small>Цель достигнута!</small>
+								</div>
+							<? endif; ?>
+						</div>
        		<? } ?>
        		<? if (count($objects) < 1): ?>
                 <div class="text-center">

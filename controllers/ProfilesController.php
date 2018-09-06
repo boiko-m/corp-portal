@@ -12,6 +12,7 @@ use app\models\ProfileSearch;
 use app\models\User;
 use app\models\SettingOptions;
 use app\models\SettingValues;
+use app\models\ProfilePosition;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\db\Query;
@@ -246,7 +247,6 @@ class ProfilesController extends Controller
     {
         $time_online = time() - 180;
         $last_online =  Profile::find()->andWhere(['id' => $id])->one();
-
         \Yii::$app->visit_cur->set([
             'controller' => 'profiles',
             'action' => 'view',
@@ -374,6 +374,8 @@ public function actionModal(){
 
 
     //change coins
+
+
     public function actionCoins()
     {
 
@@ -391,6 +393,7 @@ public function actionModal(){
 
     //Authentication by the selected user
 
+
     public function actionAuth($id)
     {
         if($user = $this->findModel($id)) {
@@ -399,4 +402,62 @@ public function actionModal(){
         }
         return $this->goBack();
     }
+
+    //change image users from control View
+
+   public function actionImageuserchange($id)
+    {
+      $model = new CropboxForm();
+      $id=intval($id);
+      $profile = $this->findModel($id);
+      if ($model->load(Yii::$app->request->post()))
+      {
+          $model->image = UploadedFile::getInstance($model, 'image');
+          $image = Image::getImagine()->open($model->image->tempName);
+          $cropInfo = Json::decode($model->crop_info)[0];
+
+          $newSizeThumb = new Box(intval($cropInfo['width'] / $cropInfo['ratio']), intval($cropInfo['height'] / $cropInfo['ratio']));
+          $cropSizeThumb = new Box(500, 500);
+          $cropPointThumb = new Point(intval($cropInfo['x'] / $cropInfo['ratio']), intval($cropInfo['y'] / $cropInfo['ratio']));
+          $imageName = $profile->id. '.' . $model->image->getExtension();
+          $pathThumbImage = Yii::getAlias('@app/web/img/user')
+              . '/thumbnail_'
+              . $imageName;
+
+          $isSaved = $image->crop($cropPointThumb, $newSizeThumb)
+              ->resize($cropSizeThumb)
+              ->save($pathThumbImage, ['quality' => 100]);
+          if($isSaved) {
+              $profile->img = $imageName;
+              $profile->save();
+          }
+          return $this->redirect(['view','id' =>$profile->id]);
+      }
+
+      return $this->render('upload-img-users', [
+          'profile' => $profile,
+          'form' => $model,
+      ]);
+    }
+
+
+    //delete photo user
+    public function actionImagedelete($id)
+    {
+      $profile = $this->findModel($id);
+
+      if (($profile->img) != 'no-profile-f.png' || 'no-profile-m.png')
+      {
+        $imageName = Yii::$app->request->get('imageName');
+        $profile->img='';
+        $profile->save();
+        return $this->redirect(["/profiles/view", "id" => $id]);
+      }
+        return $this->redirect(["/profiles/view", "id" => $id]);
+    }
+
+    //Crop image
+
+
+
 }

@@ -92,30 +92,31 @@
             <? endif; ?>
 
           </div>
-            <div id="tab2" class="tab-pane">
-              <ul class="nav nav-tabs nav-justified nav-project tabs-bordered">
-                <li class="nav-item">
-									<a href="#stage_project" style="line-height: 1; font-size: 14px;" class="nav-link active" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+					<div id="tab2" class="tab-pane">
+						<ul class="nav nav-tabs nav-justified nav-project tabs-bordered">
+							<li class="nav-item">
+								<a href="#stage_project" style="line-height: 1; font-size: 14px;" class="nav-link active" data-toggle="tab" aria-expanded="false">Цель <br> проекта</a>
+							</li>
+							<? foreach($stages as $key => $stage) { ?>
+								<li class="nav-item">
+									<a href="#stage<?= $stage->id?>" class="nav-link" style="<?= time() >= $stage->date_begin && time() <= $stage->date_end ? 'opacity: 0.4' : null ?>; line-height: 1; font-size: 14px" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infostage', {
+										container : 'projectinfostage',
+										data: 'id=<?= $stage->id ?>'
+									})"><?= $stage->name ?><br><small><?= date('d.m.Y', $stage->date_begin) ?> - <?= date('d.m.Y', $stage->date_end) ?></small></a>
 								</li>
-								<? foreach($stages as $key => $stage) { ?>
-									<li class="nav-item">
-										<a href="#stage<?= $stage->id?>" class="nav-link" style="<?= time() >= $stage->date_begin && time() <= $stage->date_end ? 'opacity: 0.4' : null ?>; line-height: 1; font-size: 14px" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infostage', {
-											container : 'projectinfostage',
-											data: 'id=<?= $stage->id ?>'
-										})"><?= $stage->name ?><br><small><?= date('d.m.Y', $stage->date_begin) ?> - <?= date('d.m.Y', $stage->date_end) ?></small></a>
-									</li>
-             		<? } ?>
-              </ul>
-              <div  class="tab-content">
-                <div id="stage_project" class="tab-pane show active" style="padding: 0px 10px 10px"></div>
-								<div id="projectinfostage"></div>
-							</div>
+							<? } ?>
+						</ul>
+						<div  class="tab-content">
+							<div id="stage_project" class="tab-pane show active" style="padding: 0px 10px 10px"></div>
+							<div id="projectinfostage"></div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-    </div>
+
 
     <div class="col-xs-12 col-md-3 mb-2">
       <div class="card pb-20" style="max-height: 500px; overflow: auto;">
@@ -225,13 +226,66 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<!--
+<div id = "news">
+    <h5 class="h5-class">
+        Движение по проекту
+    </h5>
+</div>
+
+<div class="row">
+
+             <div class="col-xs-3 col-md-3">
+                <div class = "card-box">
+                    <h6 style="text-align: center;">
+                        Подвели итоги 1-го этапа проекта
+                    </h6>
+                    <div>
+                        <small>
+                            20.02.2018
+                        </small>
+                    </div>
+                    <div style="text-align: justify!important;">
+                        <small style="">
+                            Составлен индивидуальный план рекламы (ИПР)  для  30 клиентов. Сформирован стандартный перечень должностей и их ролию. Приведен в порядок моб телефоны, емэйлы, найти контакты соц сетей. Посадочная страница для клиента - персонализировать данные для клиента.
+                        </small>
+                    </div>
+                    <div style="text-align: right">
+                        <a href="">Открыть новость</a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-xs-3 col-md-3">
+                <div class = "card-box">
+                    <h6 style="text-align: center;">
+                        Начали работу  над 2-м этапом проекта
+                    </h6>
+                    <div>
+                        <small>
+                            20.01.2018
+                        </small>
+                    </div>
+                    <div style="text-align: justify!important;">
+                        <small style="">
+                            Разработан индивидуальный план рекламы для 7 клиентов. Выработана методику поиска контактов. Составить прототип посадочной страницы по запчастям - со всей инфой по клиенту. Индивидуальная ссылка для клиента, по которой он перейдет на индивид посадочную страницу по зч.
+                        </small>
+                    </div>
+                    <div style="text-align: right">
+                        <a href="">Открыть новость</a>
+                    </div>
+                </div>
+            </div>
 
 </div> -->
 
 <div class="row">
   <div class="col-12">
     <?php echo LbrComments::widget([
-      'model' => 'project',
+      'model' => ['project', 'project-forum'],
       'model_key' => $project['id'],
       'name_widget' => 'Форум',
     ]) ?>

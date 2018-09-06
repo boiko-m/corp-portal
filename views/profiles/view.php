@@ -1,5 +1,4 @@
 <?php
-
 use app\models\Session;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -8,11 +7,9 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
-
-
+use bupy7\cropbox\CropboxWidget;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
-
 $this->title = "Профиль: " . $model->first_name . " " . $model->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Сотрудники', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -193,14 +190,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     </a>
                 </li>-->
 
-                <?php if (Yii::$app->user->can("viewAdminPanel")) { ?>
+                <?php if ((Yii::$app->user->can("editCoin"))) { ?>
 
                <li class="nav-item">
                    <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link ">
                        Управление
                    </a>
                </li>
-                     <?php } ?>
+
+                  <?php } ?>
+
+                  <?php
+                   if (Yii::$app->user->identity->profile->id_profile_position == 66 || Yii::$app->user->identity->profile->id_profile_position == 133 || (Yii::$app->user->identity->profile->id_profile_position==97 && $model->branch == Yii::$app->user->identity->profile->branch)) { ?>
+                     <li class="nav-item">
+                       <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link">
+                         Смена
+                       </a>
+                     </li>
+                   <?php }  ?>
             </ul>
 
 
@@ -304,13 +311,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 </div>
 
-                <div class="container tab-pane fade" id="profile-b1">
-                      <div class="row">
-                          <div class="col-12 col-md-4 col-lg-2">
 
-                            <?php $form = ActiveForm::begin([
-                              'action'=>'/profiles/coins/'
-                            ]); ?>
+
+                <div class="container tab-pane fade" id="profile-b1">
+                  <?php $form = ActiveForm::begin([
+                    'action'=>'/profiles/coins/'
+                  ]); ?>
+                      <div class="row information_row">
+                          <div class="col-12 col-md-4 col-lg-2">
                             Монеты
                           </div>
                           <div class="col-5 col-md-3 col-lg-2">
@@ -318,31 +326,45 @@ $this->params['breadcrumbs'][] = $this->title;
                               <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
                           </div>
                           <div class="col">
-                            <?= Html::submitButton('Изменить коины <span class="mdi mdi-star-circle"> </span>', [
+                            <?= Html::submitButton('Изменить монеты', [
                               'class' => 'btn waves-effect w-md btn-light',
                                'label' => 'moveProduct',
                               ]) ?>
                           </div>
                       </div>
-                      <div class="row information_row">
-                          <div class="col-12 col-md-3">
 
-                          </div>
-                          <div class="col">
-                          </div>
-                      </div>
                       <div class="row information_row">
-                          <div class="col-6 col-md-3 col-lg-3">
-                            <?= Html::a('Авторизироваться <span class="mdi mdi-account-circle"></span>',['auth','id' => $model->id],[
-                              'title' => 'Авторизироваться','data-confirm' => "Вы уверены, что хотите авторизироваться под этим пользователем?",
+                          <div class="col-6 col-md-3 col-lg-3" >
+                            <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
+                              'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?",
                               'class' => 'btn waves-effect w-md btn-light',
                                 ])?>
                           </div>
                           <div class="col">
+                            <?= Html::a('Удалить фото', ['/profiles/imagedelete', 'imageName' => $model->img , 'id'=> $model->id],[
+                              'class'=>'btn waves-effect w-md btn-light',
+                              ]) ?>
                           </div>
+
                       </div>
                 </div>
-                  <?php ActiveForm::end(); ?>
+                          <?php ActiveForm::end(); ?>
+
+
+
+                  <div class="tab-pane fade" id="profile-b2">
+
+                          <div class="row information_row">
+                              <div class="col-12 col-md-3">
+                                  Смена фотографии
+                              </div>
+                              <div class="col">
+                                <?= Html::a('Изменить фотографию',['/profiles/imageuserchange','id'=>$model->id],['class'=>'btn waves-effect w-md btn-light']) ?>
+                              </div>
+                          </div>
+
+                  </div>
+
 
                 <?php endif // если нет email, то не выводим всю общую информацию?>
 
