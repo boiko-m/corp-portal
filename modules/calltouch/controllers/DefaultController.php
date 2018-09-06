@@ -39,7 +39,7 @@ class DefaultController extends Controller
 
         $calltouch_test->reclink = json_encode($params, true);
 
-        if (!$calltouch_test->save() or !isset($params)) {
+        if (!$calltouch_test->save()) {
             //$calltouch->errors;
             throw new HttpException(404, 'Не найдены нужные параметры.');
         } else {
