@@ -111,7 +111,7 @@
 .project-status .in_work,
 .project-status .in_plane {
   border-radius: 2px;
-  width: 75%;
+  width: 72px;
   padding: 0px 10px;
   font-size: 12px;
   text-transform: lowercase;
