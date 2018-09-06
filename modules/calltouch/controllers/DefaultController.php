@@ -23,25 +23,23 @@ class DefaultController extends Controller
         $calltouch_test = new Calltouch();
 
 
-        $params = (Yii::$app->request->get()) ? Yii::$app->request->get() : Yii::$app->request->post();
-        if (!isset($params)) {
-            return 'false';
-        }
-        if (!isset($calltouch_test)) {
-            foreach ($params as $key => $value) {
-                if ($key == 'id') {
-                    $calltouch->id_calltouch = $value;
-                } else {
-                    $calltouch->$key = $value;
-                }
+        $params = Yii::$app->request->get();
+
+        /*foreach ($params as $key => $value) {
+            if ($key == 'id') {
+                $calltouch->id_calltouch = $value;
+            } else {
+                $calltouch->$key = $value;
             }
-        }
+        }*/
+        
 
         $calltouch_test->reclink = json_encode($params, true);
 
         if (!$calltouch_test->save()) {
             //$calltouch->errors;
-            throw new HttpException(404, 'Не найдены нужные параметры.');
+            //throw new HttpException(404, 'Не найдены нужные параметры.');
+            return 'Не найдены нужные параметры';
         } else {
             return 'true';
         }
