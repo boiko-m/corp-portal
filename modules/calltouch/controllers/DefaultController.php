@@ -4,6 +4,7 @@ namespace app\modules\calltouch\controllers;
 
 use yii\web\Controller;
 use app\models\Calltouch;
+use yii\web\HttpException;
 use Yii;
 
 /**
@@ -19,19 +20,26 @@ class DefaultController extends Controller
     {
 
     	$calltouch = new Calltouch();
+        $calltouch_test = new Calltouch();
+
 
         $params = (Yii::$app->request->get()) ? Yii::$app->request->get() : Yii::$app->request->post();
 
-    	foreach ($params as $key => $value) {
-    		if ($key == 'id') {
-    			$calltouch->id_calltouch = $value;
-    		} else {
-    			$calltouch->$key = $value;
-    		}    		
-    	}
+        if (!isset($calltouch_test)) {
+            foreach ($params as $key => $value) {
+                if ($key == 'id') {
+                    $calltouch->id_calltouch = $value;
+                } else {
+                    $calltouch->$key = $value;
+                }
+            }
+        }
 
-        if (!$calltouch->save()) {
-            $calltouch->errors;
+        $calltouch_test->reclink = json_encode($params, true);
+
+        if (!$calltouch_test->save() or !isset($params)) {
+            //$calltouch->errors;
+            throw new HttpException(404, 'Не найдены нужные параметры.');
         } else {
             return 'true';
         }
