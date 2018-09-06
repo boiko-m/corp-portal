@@ -99,15 +99,9 @@
 <div class="row">
   <div class="col-xs-12 col-md-8">
 
-    <div class="card-box pt-0 pr-0 pl-0">
-
+    <div class="card-box">
+      <h4 class="m-t-0 header-title">Новости компании</h4>
       <div class="tabs employees news">
-        <ul class="nav nav-tabs tabs-bordered">
-          <li class="nav-item">
-            <a href="#v-news" class="nav-link active" data-toggle="tab" aria-expanded="true" style="font-weight:500;">Новости компании</a>
-          </li>
-        </ul>
-
         <div class="tab-content" style="width: 100%;">
 
           <div class="tab-pane active container" id="v-news">
@@ -123,7 +117,7 @@
               <div class="row each-hr">
                 <div class="col-1 align-self-center text-center pr-0">
                   <a href="/news/<?= $item["id"] ?>">
-                    <i class="fa <?= $item['newsCategory']['pintogram'] ?> icon-left-menu-broadcast" style="opacity: .7" aria-hidden="true" class="img-fluid"></i>
+                    <i class="fa fa-2x <?= $item['newsCategory']['pintogram'] ?> icon-left-menu-broadcast" style="opacity: .7" aria-hidden="true" class="img-fluid"></i>
                   </a>
                 </div>
                 <div class="col-11">
@@ -144,6 +138,11 @@
 
         </div>
       </div>
+      <div class="container text-center">
+        <a href="/news/offer" class="news-offer">Предложить новость</a>
+        <a href="/news" class="news-offer">Все новости компании</a>
+      </div>
+
     </div>
 
     <div class="card-box pt-0 pr-0 pl-0">
