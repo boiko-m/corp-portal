@@ -243,16 +243,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
 
 
-                    <?php if (isset($model->sip) and $model->sip != 0): ?>
-                        <div class="row information_row">
-                            <div class="col-12 col-md-3">
-                                IP-номер
-                            </div>
-                            <div class="col">
-                                <?= $model->sip ?>
-                            </div>
-                        </div>
-                    <?php endif ?>
+                    <?php if (isset($model->sip) and $model->sip != 0) { 
+                        $sips  = explode(' ', chunk_split($model->sip, 3, ' '));
+                      ?>
+                      <?php foreach ($sips as $sip): $q++;?>
+                       <?php if ($sip): ?>
+                          <div class="row information_row">
+                              <div class="col-12 col-md-3">
+                                  IP-номер <?=($q>1) ? $q : '';?>
+                              </div>
+                              <div class="col">
+                                  <?= $sip ?>
+                              </div>
+                          </div>
+                       <?php endif ?>
+                      <?php endforeach ?>
+                        
+                    <?php } ?>
 
                     <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
                         <div class="row information_row">
