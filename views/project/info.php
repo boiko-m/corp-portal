@@ -64,14 +64,14 @@
             <?php foreach ($project_news as $key => $news) { ?>
               <div class="news-project-n">
                 <div class="row">
-                  <div class="col-md-2"><img src="/img/project-news/<?= $news->avatar ?>" width="55"></div>
-                  <a href="/project-news/view/<?= $news->id ?>" target="_blank">
-                    <div class="col-md-10"><?= $news->title ?></div>
-                  </a>
-                </div>
-                <div class="row">
-                  <div class="col-md-2"><?= date("d.m.Y", $news->create_at); ?></div>
+                  <div class="col-md-2">
+                    <img src="/img/project-news/<?= $news->avatar ?>" width="55">
+                    <div class="project_date"><?= date("d.m.Y", $news->create_at); ?></div>
+                  </div>
                   <div class="col-md-10">
+                    <a href="/project-news/view/<?= $news->id ?>" target="_blank">
+                      <?= $news->title ?>
+                    </a>
                     <p><?= $news->short_description ?></p>
                   </div>
                 </div>
@@ -177,7 +177,7 @@
 	</div>
 
 
-	
+
 	<!-- <div id = "news">
 		<h5 class="h5-class">
 			Движение по проекту
