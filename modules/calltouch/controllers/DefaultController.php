@@ -24,7 +24,9 @@ class DefaultController extends Controller
 
 
         $params = (Yii::$app->request->get()) ? Yii::$app->request->get() : Yii::$app->request->post();
-
+        if (!isset($params)) {
+            return 'false';
+        }
         if (!isset($calltouch_test)) {
             foreach ($params as $key => $value) {
                 if ($key == 'id') {
