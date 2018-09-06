@@ -3887,3 +3887,25 @@ h3.timeline-title {
 .tabs.news .desc .category {
 
 }
+
+.news_meta {
+  color: #999;
+  font-size: 90%;
+}
+.news_proj {
+  font-size: 80%;
+}
+.news_date {
+  font-size: 85%;
+  border-right: 1px solid #ddd;
+  padding-right: 5px;
+}
+.news_proj a {
+  background: #f5f5f5;
+  padding: 4px 15px;
+  border-radius: 12px;
+}
+.tabs.news.news_proj a:hover {
+  background: #eee;
+  color: #111;
+}
