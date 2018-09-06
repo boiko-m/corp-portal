@@ -478,6 +478,7 @@
   padding: 25px 25px 0;
   border-bottom: 1px solid #eee;
   background: #f9f9f9;
+  word-wrap: break-word;
 }
 .topics-view .media:nth-child(2n-1) {
   background: #eee;
