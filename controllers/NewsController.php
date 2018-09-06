@@ -52,14 +52,10 @@ class NewsController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['date' => 'DESC']];
-        $dataProvider->query->where('status <> 0');
-
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+          'news' => News::find()->joinWith('newsCategory')->where('status <> 0')->orderBy('date DESC')->all(),
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
         ]);
     }
 

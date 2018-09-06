@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-box">
-            <div class="container-fluid">
+            <div class="container-fluid news">
 
                 <?php foreach ($news as $new) { ?>
                   <?php $visit = \Yii::$app->visit->get([
