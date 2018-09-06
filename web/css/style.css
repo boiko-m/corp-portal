@@ -3890,15 +3890,18 @@ h3.timeline-title {
 
 .news_meta {
   color: #999;
-  font-size: 90%;
+  font-size: 96%;
 }
 .news_proj {
   font-size: 80%;
 }
 .news_date {
-  font-size: 85%;
-  border-right: 1px solid #ddd;
-  padding-right: 5px;
+  font-size: 76%;
+  padding-right: 10px;
+  margin-right: 7px;
+  color: #999;
+  float: right;
+  margin-top: 3.5px;
 }
 .news_proj a {
   background: #f5f5f5;

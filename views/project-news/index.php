@@ -17,18 +17,20 @@
                     <div class="col-12">
                       <?= Html::a(
                         $new->title,
-                        Url::to(['/project-news/' . $new->id]),
+                        Url::to(['project-news/view', 'id' => $new->id]),
                         ['class' => ''])
                       ?>
+                      <span class="news_date"><?=date('d.m.y', $new->create_at)?></span>
                     </div>
                     <div class="col-12 news_meta">
-                      <span class="news_date"><?=date('d.m.y в H:m', $new->create_at)?></span>
-                      <?= $new->short_description ?></div>
-                    <div class="col-12 news_proj tabs news mt-1">
+                      <span><?= $new->short_description ?></span>
+                    </div>
+                    <div class="col-12 news_proj tabs news mt-2">
+
                       <i class="fa fa-share-alt news-title"></i>
                       <?= Html::a(
                         $new->project->name,
-                        Url::to(['/project/info/' . $new->project->id]),
+                        Url::to(['/project/info/', 'id' => $new->project->id]),
                         ['class' => ''])
                       ?>
                     </div>
