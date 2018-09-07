@@ -36,7 +36,7 @@
 
       <div id="results" class="tab-pane show active objects-stage" style="padding: 0px 20px;">
         <h5>Цели этапа</h5>
-        <div class="project-target" style="padding-left: 20px;">
+        <div class="project-target pl-20">
          	<? foreach($objects as $key => $object) { ?>
 						<div class="project-target-items" style="background: #f5f5f5;">
 							<div class="project-target-item">
@@ -48,38 +48,50 @@
 									<b>Причина: </b>Перенос на следующий этап.
 								</small>
 							</div> -->
-							
+
 							<? if (!$object->value == 0) : ?>
 								<div class="text-right">
-										<small>Решено 0/<?= $object->value ?></small>
+									<small>Решено <?= $object->factual_value ?>/<?= $object->value ?></small>
 								</div>
 
 								<div class="progress" style="height: 5px; margin: 0px; border: 1px solid #3ec39685;">
-									<div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+									<div class="progress-bar progress-lg bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?= ($object->factual_value * 100) / $object->value ?>%;" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-							<? endif; ?>
-							
-							<? if ($object->value == 0) : ?>
+							<? endif; ?> 
+
+							<? if ($object->complete) : ?>
 								<div class="text-right">
 									<small>Цель достигнута!</small>
 								</div>
 							<? endif; ?>
 						</div>
        		<? } ?>
+       		<? if (count($objects) < 1): ?>
+                <div class="text-center">
+                    <i class="fa fa-question fa-4x" aria-hidden="true" title="На данный момент цели этапа отсутствуют" style="transform: rotate(180deg)"></i>
+      			</div>
+       		<? endif; ?>
         </div>
 
        	<? if ($stage->date_begin < time()) : ?>
-					<br>
-					<h5>Итоги этапа</h5>
+            <br>
+            <h5>Итоги этапа</h5>
 
-					<div class="project-target" style="padding-left: 20px;">
-						<div class="project-target-items">
-							<div class="project-target-item">
-								Разобрались с проблемой и выработали план действий на примере 3-х клиентов.
-							</div>
-						</div>
-						<br>
-					</div>
+            <div class="project-target pl-20">
+                <? foreach($results as $key => $result) { ?>
+                    <div class="project-target-items">
+                        <div class="project-target-item">
+                            <?= $result->description ?>
+                        </div>
+                    </div>
+                <? } ?>
+
+                <? if (count($results) < 1): ?>
+                    <div class="text-center">
+                        <i class="fa fa-question fa-4x" aria-hidden="true" title="На данный момент итоги этапа отсутствуют" style="transform: rotate(180deg)"></i>
+                    </div>
+                <? endif; ?>
+            </div>
         <? endif; ?>
 
       </div>

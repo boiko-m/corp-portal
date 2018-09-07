@@ -70,7 +70,7 @@
         <ul class="topics_projects m-0">
 
           <?php foreach ($projects as $project):
-            $last_msg = Comment::find()->where(['model_key' => $ids[$project->id]])->orderBy('created_at ASC')->one();
+            $last_msg = Comment::find()->where(['model_key' => array_values($ids[$project->id])])->orderBy('created_at DESC')->one();
             $user = Profile::findOne(['id' => $last_msg->created_by]); ?>
 
             <li>
@@ -93,7 +93,7 @@
 
               <? if ($last_msg) : ?>
               <span class="forum_c-new-msgs no-border" style="float: right; line-height: 2;">
-                <span style="color: #666;"><?=$user->first_name.' '.$user->last_name?></span> <?=date('m.d в H:m', $last_msg->created_at)?>
+                <span style="color: #666;"><?=$user->first_name.' '.$user->last_name?></span> <?=date('d.m.y в H:m', $last_msg->created_at)?>
               </span>
               <? endif; ?>
             </li>

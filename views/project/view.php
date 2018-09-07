@@ -16,10 +16,22 @@
   $userGroup = '';
 ?>
 
+<style>
+	body {
+		min-height: 100px !important;
+	}
+</style>
+
 <div class="row">
   <div class="col-xs-9 col-md-9">
     <div class="card">
       <ul class="nav nav-tabs nav-justified nav-project" style="margin: 10px;">
+      	<li class="nav-item col-xs-3 col-md-3">
+          <a href="#target1" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
+            container : 'projectall',
+            data: 'id=<?= $project->id ?>'
+          })">Проект</a>
+        </li>
       	<? foreach ($stages as $key => $stage) { ?>
 					<li class="nav-item">
 							<a href="#stage<?= $stage->id ?>" class="nav-link" title="Дата проведения: <?= date('d.m.Y', $stage->date_begin) ?> - <?= date('d.m.Y', $stage->date_end) ?>" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/all', {
@@ -29,12 +41,6 @@
 						</a>
 					</li>
         <? } ?>
-        <li class="nav-item col-xs-3 col-md-3">
-          <a href="#target1" class="nav-link active" data-toggle="tab" aria-expanded="false" onclick="tajax('/project/infoajax', {
-            container : 'projectall',
-            data: 'id=<?= $project->id ?>'
-          })">Проект</a>
-        </li>
         <? if (Yii::$app->user->can('Scrum-master')) : ?>
           <li class="nav-item col-xs-3 col-md-3">
             <a href="#add-stage" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="10" data-overlayColor="#36404a" class="nav-link" title="Добавить этап"><i class="fa fa-plus" aria-hidden="true"></i></a>
@@ -64,7 +70,7 @@
         </li> -->
       </ul>
 
-      <div class="tab-content" style="padding: 0px 10px; padding-bottom: 10px">
+      <div class="tab-content" style="padding: 0px 10px 10px 10px;">
 				<div id="right1" class="tab-pane show">
 					<div class="backlog-control mt-3">
 						<!-- <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -96,28 +102,29 @@
 							<? foreach($objects as $key => $object) { ?>
 							<div class="backlog-block">
 								<div class="backlog-block-title">
-								 Этап <?= $object['stage']['name'] ?>
+								 <?= $object['stage']['name'] ?>
 									цель от <?= date('d.m.Y', $object->create_at) ?>
 									<hr class="hr-object-control">
 								</div>
 								<div class="backlog-block-content">
 									<?= $object->description ?>
 								</div>
-								<div class="backlog-block-content" style="text-align: right;">
-									<!-- <div class="dropdown mt-3">
-										<button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;">
-											Отправить в работу
+								<div class="backlog-block-content text-right" style="margin-top: -12px;">
+									<div class="dropdown mt-3">
+										<button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											Управление целью
 										</button>
 
-										<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-											<a class="dropdown-item" href="#">Прикрепить к задаче</a>
+										<div class="dropdown-menu">
+											<!-- <a class="dropdown-item" href="#">Прикрепить к задаче</a> -->
+											<a class="dropdown-item object-console-item" href="#">Промежуточные итоги</a>
 										</div>
-									</div> -->
+									</div>
 								</div>
 							</div>
 							<? } ?>
 
-							<div class="paddination-main" style="margin: -20px 0 -15px 0;">
+							<div class="paddination-main">
 								<?php echo LinkPager::widget([
 									'pagination' => $objectPages,
 									'options'=>['class' => 'pagination float-right'],
@@ -214,19 +221,18 @@
 
     </div>
 
-    <div class="project-news" style="padding: 10px 0px;">
-      Новости проекта
-    </div>
-    <div class="card">
-      <?php foreach ($project_news as $news) { ?>
-        <div class="project-news-title">
-          <small><?= date('d.m.Y', $news->create_at) ?></small> <a href="/project-news/<?= $news->id ?>" target="_blank"><?= $news->title ?></a> 
-        </div>
-      <? } ?>
-      <? if (count($project_news) == 0) : ?>
-        <p class="text-center" style="margin-top: 15px;">На данный момент нет новостей</p>
-      <? endif; ?>
-    </div>
+   	<? if (count($project_news) > 0): ?>
+			<div class="project-news" style="padding: 10px 0px;">
+				Новости проекта
+			</div>
+			<div class="card">
+				<?php foreach ($project_news as $news) { ?>
+					<div class="project-news-title">
+						<small><?= date('d.m.Y', $news->create_at) ?></small> <a href="/project-news/<?= $news->id ?>" target="_blank"><?= $news->title ?></a> 
+					</div>
+				<? } ?>
+			</div>
+		<? endif; ?>
 
   </div>
 </div>
@@ -339,6 +345,20 @@
 			$.ajax({
 				type: 'POST',
 				url: '/project/add-object',
+				data: object,
+				success: function(data) {
+					location.reload();
+				},
+				error: function(xhr, str){
+					console.log('Возникла ошибка: ' + xhr.responseText)
+				}
+			});
+	})
+	$("#add-button-result").click(function() {
+		var object = $('#add-result-form').serializeArray();
+			$.ajax({
+				type: 'POST',
+				url: '/project/add-result',
 				data: object,
 				success: function(data) {
 					location.reload();

@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * NewsCategoryController implements the CRUD actions for NewsCategory model.
  */
-class NewsCategoryController extends Controller 
+class NewsCategoryController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -53,13 +53,9 @@ class NewsCategoryController extends Controller
      */
     public function actionView($id)
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => News::find()->where(['id_news_category' => $id])->orderBy('id desc'),
-        ]);
-
         return $this->render('view', [
-            'model' => NewsCategory::findOne($id),
-            'dataProvider' => $dataProvider,
+          'category' => NewsCategory::findOne($id),
+          'news' => News::find()->joinWith('newsCategory')->where('status <> 0')->andWhere(['id_news_category' => $id])->orderBy('date DESC')->all()
         ]);
     }
 

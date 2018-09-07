@@ -7,14 +7,24 @@ use app\models\Profile;
 
 class AnswerCommentNotification extends Notification {
 
-  const COMMENT = 'comment';
+  const COMMENT_NOTIFY = 'comment';
   const COMMENT_FROM = 'comment_from';
 
-  public $userCoins;
-  public $col;
+  public $userIdPath;
+  public $userFrom;
 
-  public function getTitle() {
-    return Yii::t('app',sprintf("  Вам начиcлены %s монеты. Всего монет %s", $this->col, $this->userCoins));
+  public function getTitle(){
+      switch($this->key){
+         case self::COMMENT_NOTIFY:
+              return Yii::t('app', sprintf("%s %s ответил(a) на ваш комментарий", $this->userFrom->first_name, $this->userFrom->last_name));
+     }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function getRoute(){
+      return ['/profiles/view/', 'id' => 4222];
   }
 
 }

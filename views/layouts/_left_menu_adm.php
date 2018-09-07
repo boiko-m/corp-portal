@@ -80,10 +80,10 @@
                         <?if(\Yii::$app->user->can("controlNews")):?>
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="fi-file"></i> <span>Новости</span> <span class="menu-arrow"></span>
+                                <i class="fi-file"></i> <span>Новости <span class="badge badge-info badge-info-status"><?= $unconfirmedNews ?></span></span> <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/admin/news">Новости<span class="badge badge-info badge-info-status"><?= $unconfirmedNews ?></span></a></li>
+                                <li><a href="/admin/news">Новости</a></li>
                                 <li><a href="/admin/news-category">Категории</a></li>
                             </ul>
                         </li>

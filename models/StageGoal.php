@@ -33,8 +33,8 @@ class StageGoal extends \yii\db\ActiveRecord
     {
         return [
             [['description', 'value', 'create_at', 'id_stage'], 'required'],
-            [['description'], 'string'],
-            [['value', 'create_at', 'id_stage'], 'integer'],
+            [['description', 'total'], 'string'],
+            [['value', 'create_at', 'id_stage', 'complete', 'factual_value'], 'integer'],
             [['id_stage'], 'exist', 'skipOnError' => true, 'targetClass' => Stage::className(), 'targetAttribute' => ['id_stage' => 'id']],
         ];
     }
@@ -45,11 +45,14 @@ class StageGoal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'description' => 'Description',
-            'value' => 'Value',
-            'create_at' => 'Create At',
-            'id_stage' => 'Id Stage',
+					'id' => 'ID',
+					'description' => 'Описание',
+					'value' => 'Запланированное значение',
+					'factual_value' => 'Фактическое значение',
+					'create_at' => 'Дата создания',
+					'complete' => 'Завершенность',
+					'total' => 'Итог по цели',			
+					'id_stage' => 'Этап',
         ];
     }
 

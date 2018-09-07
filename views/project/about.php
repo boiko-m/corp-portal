@@ -14,20 +14,23 @@
 			<div class="tab-content" style="padding-top: 5px">
 				<div class="tab-pane active" style="padding: 0px 10px 10px;">
 				
-					<?php if (!empty($project->description) && $project->description_visible) : ?>
+					<? if (!empty($project->description) && $project->description_visible) : ?>
 						<div style="font-size: 11px; background: whitesmoke; padding: 10px; border-radius: 5px;">
 							<h4>Описание: </h4>
 								<?= $project->description ?>
 						</div>
 					<? endif; ?>
 					
-					<?php if (!empty($project->goal)) : ?>
+					<? if (!empty($project->goal)) : ?>
 						<div style="font-size: 11px; background: whitesmoke; padding: 10px; border-radius: 5px; margin-top: 10px;">
 							<h4>Цель: </h4>
 								<?= $project->goal ?>
 						</div>
 					<? endif; ?>
 					
+					<? if (empty($project->goal) && empty($project->description) && !$project->description_visible): ?>
+						<p class="text-center">На данный момент нет данных о проекте</p>
+					<? endif; ?>
 				</div>
 			</div>
 			

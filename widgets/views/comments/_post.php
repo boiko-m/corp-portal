@@ -7,6 +7,7 @@ use app\models\Projects;
 use app\models\ProjectNews;
 use app\models\Comments;
 use app\models\User;
+use app\models\Links;
 
 /** @var $model */
 /** @var $nestedLevel */
@@ -55,16 +56,16 @@ if ($model->model == 'project-news' && !$meta)
                     $model->getAuthorName(), [$model->getAuthorUrl()]
                 ) ?>
                 </span>
-                <small class="com_date"><?= date('m.d в h:m', $model->created_at) ?></small>
+                <small class="com_date"><?= date('d.m.y в H:m', $model->created_at) ?></small>
                 <span class="text-right small com_date">
                   <?php if ($model->model == 'project') echo ' | к проекту '; elseif ($model->model == 'project-news') echo ' | к новости '; ?>
                   <a href="<?=$model->url?>"><?=$meta?></a>
                 </span>
             </h6>
             <?php if ($model->parent_id) : ?>
-            <div class="comment-quote"><div class="p_username"><?=$p_user->getUsername()?>:</div><?= Html::encode($p_comment->content) ?></div>
+            <div class="comment-quote"><div class="p_username"><?=$p_user->getUsername()?>:</div><?= Links::correctLinks($p_comment->content) ?></div>
             <?php endif; ?>
-            <?= Html::encode($model->content); ?>
+            <?= Links::correctLinks($model->content); ?>
 
             <div class="row nospace">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
