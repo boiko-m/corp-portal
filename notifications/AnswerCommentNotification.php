@@ -1,4 +1,4 @@
-z<?php
+<?php
 namespace app\notifications;
 
 use Yii;
