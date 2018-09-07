@@ -245,7 +245,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php endif ?>
 
 
-                    <?php if (isset($model->sip) and $model->sip != 0) { 
+                    <?php if (isset($model->sip) and $model->sip != 0) {
                         $sips  = explode(' ', chunk_split($model->sip, 3, ' '));
                       ?>
                       <?php foreach ($sips as $sip): $q++;?>
@@ -260,7 +260,7 @@ $this->params['breadcrumbs'][] = $this->title;
                           </div>
                        <?php endif ?>
                       <?php endforeach ?>
-                        
+
                     <?php } ?>
 
                     <?php if ($model->phone_cabinet and $model->phone_cabinet != "-" and $model->phone_cabinet != $model->sip): ?>
@@ -340,7 +340,7 @@ $this->params['breadcrumbs'][] = $this->title;
                       </div>
                       <?php if(Yii::$app->user->identity->id!=$model->id) { ?>
                       <div class="row information_row">
-                        
+
                           <div class="col-6 col-md-3 col-lg-3" >
                             <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
                               'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?",
@@ -370,7 +370,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   <div class="tab-pane fade" id="profile-b2">
 
                           <div class="row information_row">
-                              <div class="col-12 col-md-3">
+                              <div class="col-6 col-md-3 col-lg-3">
                                   Смена фотографии
                               </div>
                               <div class="col">
