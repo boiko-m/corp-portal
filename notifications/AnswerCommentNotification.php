@@ -7,7 +7,7 @@ use app\models\Profile;
 
 class AnswerCommentNotification extends Notification {
 
-  const COMMENT = 'comment';
+  const COMMENT_NOTIFY = 'comment';
   const COMMENT_FROM = 'comment_from';
 
   public $userIdPath;
@@ -24,7 +24,7 @@ class AnswerCommentNotification extends Notification {
    * @inheritdoc
    */
   public function getRoute(){
-      return ['/profiles/view/', 'id' => $this->userIdPath];
+      return ['/profiles/view/', 'id' => 4222];
   }
 
 }
