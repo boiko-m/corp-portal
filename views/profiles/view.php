@@ -326,28 +326,19 @@ $this->params['breadcrumbs'][] = $this->title;
                   <?php $form = ActiveForm::begin([
                     'action'=>'/profiles/coins/'
                   ]); ?>
-                      <div class="row information_row">
-                          <div class="col-12 col-md-4 col-lg-2">
-                            Монеты
-                          </div>
-                          <div class="col-5 col-md-3 col-lg-2">
-                            <?= $form->field($model,'coins')->textInput()->label(false) ?>
-                              <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
-                          </div>
-                          <div class="col">
-                            <?= Html::submitButton('Изменить монеты', [
-                              'class' => 'btn waves-effect w-md btn-light',
-                               'label' => 'moveProduct',
-                              ]) ?>
-                          </div>
+                  <div class="row information_row mid">
+                      <div class="col-12 col-md-12 col-lg-4">
+                        Управление пользователем
                       </div>
+                  </div>
+
                       <?php if(Yii::$app->user->identity->id!=$model->id) { ?>
                       <div class="row information_row">
 
-                          <div class="col-6 col-md-3 col-lg-3" >
+                          <div class="col-12 col-md-12 col-lg-4" >
                             <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
                               'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?",
-                              'class' => 'btn waves-effect w-md btn-light',
+                              'class' => 'btn waves-effect w-md btn-light btn-block',
                                 ])?>
                           </div>
                           <div class="col">
@@ -355,15 +346,44 @@ $this->params['breadcrumbs'][] = $this->title;
                       </div>
                     <?php } ?>
                       <div class="row information_row">
-                          <div class="col-6 col-md-3 col-lg-3" >
+                          <div class="col-12 col-md-12 col-lg-4" >
                             <?= Html::a('Удалить фото', ['/profiles/imagedelete', 'imageName' => $model->img , 'id'=> $model->id],[
-                              'class'=>'btn waves-effect w-md btn-light',
+                              'class'=>'btn waves-effect w-md btn-light btn-block',
                               ]) ?>
                           </div>
                           <div class="col">
 
                           </div>
 
+                      </div>
+
+                      <div class="row information_row">
+                          <div class="col-12 col-md-12 col-lg-4">
+
+                                        <button  type="button"class="btn waves-effect w-md btn-light btn-block" data-toggle="modal" data-target=".bs-example-modal-sm">Изменить монеты</button>
+
+                          </div>
+                          <div class="col-12 col-md-3 col-lg-2">
+                            <div class="coin modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+                                      <div class="modal-dialog modal-sm" >
+                                          <div class="coin modal-content" >
+                                              <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                  <h5 class="modal-title">Монеты</h5>
+                                              </div>
+                                              <div class="modal-body"1>
+                                                <?= $form->field($model,'coins')->textInput()->label(false) ?>
+                                                  <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
+                                                  <?= Html::submitButton('Применить', [
+                                                    'class' => 'btn waves-effect w-md btn-light btn-block',
+                                                     'label' => 'moveProduct',
+                                                     'autocomplete'=>'off',
+                                                    ]) ?>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                          </div>
                       </div>
                 </div>
                           <?php ActiveForm::end(); ?>
