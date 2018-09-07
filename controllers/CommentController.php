@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\caching\TagDependency;
 use ogheo\comments\models\CommentsRating;
 use ogheo\comments\helpers\CommentsHelper;
+use app\notifications\AnswerCommentNotification;
 use ogheo\comments\models\Comments as CommentsModel;
 
 class CommentController extends \ogheo\comments\controllers\DefaultController
@@ -46,17 +47,13 @@ class CommentController extends \ogheo\comments\controllers\DefaultController
                         Url::previous(Yii::$app->controller->module->urlCacheSessionKey)
                     );
 
-                    if (!empty(Yii::$app->request->post('name'))) {
+                    if (!empty(Yii::$app->request->post('name')) || true) {
 
                         $user_id = CommentsModel::find()->select('created_by')->where(['id' => Yii::$app->request->post('value')])->one();
-                        AnswerCommentNotification::create(AnswerCommentNotification::GIFT_NOTIFY, [
+                        AnswerCommentNotification::create(AnswerCommentNotification::COMMENT_NOTIFY, [
                             'userId' => $user_id['created_by'],
                             'userIdPath' => $user_id['created_by'],
                             'userFrom' => Profile::findOne($user_id['created_by'])
-                        ])->send();
-                        AnswerCommentNotification::create(AnswerCommentNotification::GIFT_NOTIFY_FROM, [
-                          'userId' => $user_id['created_by'],
-                          'userIdPath' => $user_id['created_by']
                         ])->send();
                     }
 
