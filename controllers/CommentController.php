@@ -47,16 +47,6 @@ class CommentController extends \ogheo\comments\controllers\DefaultController
                         Url::previous(Yii::$app->controller->module->urlCacheSessionKey)
                     );
 
-                    if (!empty(Yii::$app->request->post('name')) || true) {
-
-                        $user_id = CommentsModel::find()->select('created_by')->where(['id' => Yii::$app->request->post('value')])->one();
-                        AnswerCommentNotification::create(AnswerCommentNotification::COMMENT_NOTIFY, [
-                            'userId' => 4222,
-                            'userIdPath' => $user_id['created_by'],
-                            'userFrom' => Profile::findOne($user_id['created_by'])
-                        ])->send();
-                    }
-
                     return [
                         'status' => 'success',
                         'message' => Yii::t('comments', 'Comment has been added successfully.')

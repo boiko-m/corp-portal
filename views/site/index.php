@@ -126,7 +126,7 @@
                   </div>
                   <div class="desc">
                     <span class="date_pub"><?= date("d.m.Y", $item['date']) ?></span>
-                    <a class="category" href="news-category/<?= $item['newsCategory']['id'] ?>" target="_blank">
+                    <a class="category" href="<?= $item['newsCategory']['id'] === 3 ? 'project-news/' : 'news-category/'.$item['newsCategory']['id'] ?>">
                       <?= $item['newsCategory']['name'] ?>
                     </a>
                   </div>
