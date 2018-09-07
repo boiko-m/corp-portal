@@ -322,7 +322,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-                <div class="container tab-pane fade" id="profile-b1">
+                <div class=" tab-pane fade" id="profile-b1">
                   <?php $form = ActiveForm::begin([
                     'action'=>'/profiles/coins/'
                   ]); ?>
@@ -335,7 +335,10 @@ $this->params['breadcrumbs'][] = $this->title;
                               <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
                           </div>
                           <div class="col">
-
+                            <?= Html::submitButton('Изменить монеты', [
+                              'class' => 'btn waves-effect w-md btn-light',
+                               'label' => 'moveProduct',
+                              ]) ?>
                           </div>
                       </div>
                       <?php if(Yii::$app->user->identity->id!=$model->id) { ?>
