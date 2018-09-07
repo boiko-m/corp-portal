@@ -333,6 +333,7 @@ $this->params['breadcrumbs'][] = $this->title;
                       </div>
                       <?php if(Yii::$app->user->identity->id!=$model->id) { ?>
                       <div class="row information_row">
+                        
                           <div class="col-6 col-md-3 col-lg-3" >
                             <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
                               'title' => 'Авторизоваться','data-confirm' => "Вы уверены, что хотите авторизоваться под этим пользователем?",
