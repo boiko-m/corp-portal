@@ -201,10 +201,12 @@ $this->params['breadcrumbs'][] = $this->title;
                   <?php } ?>
 
                   <?php
-                   if (Yii::$app->user->identity->profile->id_profile_position == 66 || Yii::$app->user->identity->profile->id_profile_position == 133 || (Yii::$app->user->identity->profile->id_profile_position==97 && $model->branch == Yii::$app->user->identity->profile->branch)) { ?>
+                   if (Yii::$app->user->identity->profile->id_profile_position == 66 || Yii::$app->user->identity->profile->id_profile_position == 133 || (Yii::$app->user->identity->profile->id_profile_position==97 && $model->branch == Yii::$app->user->identity->profile->branch) ||
+                 (Yii::$app->user->identity->profile->id_profile_position==150 && Yii::$app->user->identity->profile->department == 'Административный отдел')
+               || Yii::$app->user->identity->profile->department == 'Отдел web-программирования' ) { ?>
                      <li class="nav-item">
                        <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link">
-                         Смена
+                         Изменить профиль
                        </a>
                      </li>
                    <?php }  ?>
@@ -326,13 +328,10 @@ $this->params['breadcrumbs'][] = $this->title;
                               <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
                           </div>
                           <div class="col">
-                            <?= Html::submitButton('Изменить монеты', [
-                              'class' => 'btn waves-effect w-md btn-light',
-                               'label' => 'moveProduct',
-                              ]) ?>
+
                           </div>
                       </div>
-
+                      <?php if(Yii::$app->user->identity->id!=$model->id) { ?>
                       <div class="row information_row">
                           <div class="col-6 col-md-3 col-lg-3" >
                             <?= Html::a('Авторизоваться',['auth','id' => $model->id],[
@@ -341,9 +340,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ])?>
                           </div>
                           <div class="col">
+                          </div>
+                      </div>
+                    <?php } ?>
+                      <div class="row information_row">
+                          <div class="col-6 col-md-3 col-lg-3" >
                             <?= Html::a('Удалить фото', ['/profiles/imagedelete', 'imageName' => $model->img , 'id'=> $model->id],[
                               'class'=>'btn waves-effect w-md btn-light',
                               ]) ?>
+                          </div>
+                          <div class="col">
+
                           </div>
 
                       </div>
