@@ -1,4 +1,4 @@
-<?php
+z<?php
 namespace app\notifications;
 
 use Yii;
@@ -24,7 +24,7 @@ class AnswerCommentNotification extends Notification {
    * @inheritdoc
    */
   public function getRoute(){
-      return ['/profiles/view/', 'id' => 4222];
+      return ['/profiles/view/', 'id' => $this->userIdPath];
   }
 
 }

@@ -33,7 +33,7 @@
                       <i class="fa <?= $new->newsCategory->pintogram ?> news-title"></i>
                       <?= Html::a(
                         $new->newsCategory->name,
-                        Url::to(['news-category/view', 'id' => $new->newsCategory->id]),
+                        Url::to( $new->newsCategory->id === 3 ? ['project/index'] : ['news-category/view', 'id' => $new->newsCategory->id]),
                         ['class' => ''])
                       ?>
                     </div>
