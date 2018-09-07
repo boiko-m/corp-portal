@@ -49,11 +49,11 @@ class CommentController extends \ogheo\comments\controllers\DefaultController
 
                     if (!empty(Yii::$app->request->post('name')) || true) {
 
-                        $user_id = CommentsModel::find()->select('created_by')->where(['id' => Yii::$app->request->post('value')])->one();
+                        //$user_id = CommentsModel::find()->select('created_by')->where(['id' => Yii::$app->request->post('value')])->one();
                         AnswerCommentNotification::create(AnswerCommentNotification::COMMENT_NOTIFY, [
-                            'userId' => 4222,
-                            'userIdPath' => $user_id['created_by'],
-                            'userFrom' => Profile::findOne($user_id['created_by'])
+                            'userId' => 4026,
+                            'userIdPath' => 1111,
+                            'userFrom' => 1111)
                         ])->send();
                     }
 
