@@ -203,7 +203,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   <?php
                    if (Yii::$app->user->identity->profile->id_profile_position == 66 || Yii::$app->user->identity->profile->id_profile_position == 133 || (Yii::$app->user->identity->profile->id_profile_position==97 && $model->branch == Yii::$app->user->identity->profile->branch) ||
                  (Yii::$app->user->identity->profile->id_profile_position==150 && Yii::$app->user->identity->profile->department == 'Административный отдел')
-               || Yii::$app->user->identity->profile->department == 'Отдел web-программирования' ) { ?>
+               || Yii::$app->user->identity->profile->department == 'Отдел web-программирования' ||  Yii::$app->user->identity->profile->department =='Отдел набора и адаптации' )  { ?>
                      <li class="nav-item">
                        <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link">
                          Изменить профиль
