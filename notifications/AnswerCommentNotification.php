@@ -4,6 +4,7 @@ namespace app\notifications;
 use Yii;
 use webzop\notifications\Notification;
 use app\models\Profile;
+use app\models\User;
 
 class AnswerCommentNotification extends Notification {
 
@@ -16,7 +17,7 @@ class AnswerCommentNotification extends Notification {
   public function getTitle(){
       switch($this->key){
          case self::COMMENT_NOTIFY:
-              return Yii::t('app', sprintf("%s %s ответил(a) на ваш комментарий", $this->userFrom->first_name, $this->userFrom->last_name));
+              return Yii::t('app', sprintf("%s ответил(a) на ваш комментарий", $this->userFrom));
      }
   }
 
@@ -24,7 +25,7 @@ class AnswerCommentNotification extends Notification {
    * @inheritdoc
    */
   public function getRoute(){
-      return ['/profiles/view/', 'id' => $this->userIdPath];
+      return ['/project-forum/topic/', 'id' => $this->userIdPath];
   }
 
 }

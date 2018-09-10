@@ -24,9 +24,11 @@ var Notifications = (function(opts) {
         switch (key) {
             case "gift_notify_from":
             case "gift_notify":
-                return "mdi-gift";
+                return "mdi-gift"; break;
+            case "comment_notify": case "comment":
+                return "mdi-comment-outline blue-notify"; break;
             default:
-                return "mdi-information-outline";
+                return "mdi-information-outline"; break;
         }
     }
 

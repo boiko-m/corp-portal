@@ -21,7 +21,7 @@ Thumbs.db
 # composer vendor dir
 /vendor
 !/vendor/ogheo/yii2-comments/src/models/Posts.php
-!vendor/ogheo/yii2-comments/src/models/Posts.php
+!/vendor/ogheo/yii2-comments/src/models/Comments.php
 
 # Uploads dir
 web/media
@@ -55,7 +55,7 @@ tests/_support/_generated
 #vagrant folder
 /.vagrant
 
-# other 
+# other
 /web/imagesAll/
 /web/upload/
 /web/img/
