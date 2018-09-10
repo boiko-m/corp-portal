@@ -20,8 +20,7 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
-!/vendor/ogheo/yii2-comments/src/models/Posts.php
-!/vendor/ogheo/yii2-comments/src/models/Comments.php
+!/vendor/ogheo/yii2-comments/src/models
 
 # Uploads dir
 web/media
