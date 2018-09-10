@@ -59,7 +59,7 @@ if ($model->model == 'project-news' && !$meta)
                 <small class="com_date"><?= date('d.m.y в H:m', $model->created_at) ?></small>
                 <span class="text-right small com_date">
                   <?php if ($model->model == 'project') echo ' | к проекту '; elseif ($model->model == 'project-news') echo ' | к новости '; ?>
-                  <a href="<?=$model->url?>"><?=$meta?></a>
+                  <a href="<?=$model->url?>" target="_blank"><?=$meta?></a>
                 </span>
             </h6>
             <?php if ($model->parent_id) : ?>
