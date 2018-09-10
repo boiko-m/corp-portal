@@ -285,7 +285,7 @@
 <div class="row">
   <div class="col-12">
     <?php echo LbrComments::widget([
-      'model' => ['project', 'project-forum'],
+      'model' => ['project', 'project-forum', 'project-news'],
       'model_key' => $project['id'],
       'name_widget' => 'Форум',
     ]) ?>
